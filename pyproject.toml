@@ -1,0 +1,25 @@
+[project]
+name = "fhan"
+version = "0.1.0"
+description = "Add your description here"
+authors = [{ name = "Till Rostalski", email = "tillrostalski@gmail.com" }]
+dependencies = [
+    "requests>=2.31.0",
+    "jinja2>=3.1.2",
+    "click>=8.1.7",
+]
+readme = "README.md"
+requires-python = ">= 3.8"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.rye]
+managed = true
+dev-dependencies = [
+    "black>=23.9.1",
+]
+
+[tool.hatch.metadata]
+allow-direct-references = true

@@ -1,0 +1,168 @@
+"""
+Generated class for VerificationResult. 
+Time: 2023-09-19 20:34:27
+"""
+from dataclasses import dataclass
+from fhan.models.R5.Meta import *
+from fhan.models.R5.Signature import *
+from fhan.models.R5.BackboneElement import *
+from fhan.models.R5.Extension import *
+from fhan.models.R5.CodeableConcept import *
+from fhan.models.R5.Resource import *
+from fhan.models.R5.Timing import *
+from fhan.models.R5.Narrative import *
+from fhan.models.R5.Reference import *
+
+
+@dataclass
+class VerificationResult:
+    """ Describes validation requirements, source(s), status and dates for one or more elements.
+    :param str id: Logical id of this artifact
+    :param Meta meta: Metadata about the resource
+    :param str implicitRules: A set of rules under which this content was created
+    :param str language: Language of the resource content
+    :param Narrative text: Text summary of the resource, for human interpretation
+    :param Resource contained: Contained, inline Resources
+    :param Extension extension: Additional content defined by implementations
+    :param Extension modifierExtension: Extensions that cannot be ignored
+    :param Reference target: A resource that was validated
+    :param str targetLocation: The fhirpath location(s) within the resource that was validated
+    :param CodeableConcept need: none | initial | periodic
+    :param str status: attested | validated | in-process | req-revalid | val-fail | reval-fail | entered-in-error
+    :param str statusDate: When the validation status was updated
+    :param CodeableConcept validationType: nothing | primary | multiple
+    :param CodeableConcept validationProcess: The primary process by which the target is validated (edit check; value set; primary source; multiple sources; standalone; in context)
+    :param Timing frequency: Frequency of revalidation
+    :param str lastPerformed: The date/time validation was last completed (including failed validations)
+    :param str nextScheduled: The date when target is next validated, if appropriate
+    :param CodeableConcept failureAction: fatal | warn | rec-only | none
+    :param BackboneElement primarySource: Information about the primary source(s) involved in validation
+    :param str id: Unique id for inter-element referencing
+    :param Extension extension: Additional content defined by implementations
+    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param Reference who: Reference to the primary source
+    :param CodeableConcept type: Type of primary source (License Board; Primary Education; Continuing Education; Postal Service; Relationship owner; Registration Authority; legal source; issuing source; authoritative source)
+    :param CodeableConcept communicationMethod: Method for exchanging information with the primary source
+    :param CodeableConcept validationStatus: successful | failed | unknown
+    :param str validationDate: When the target was validated against the primary source
+    :param CodeableConcept canPushUpdates: yes | no | undetermined
+    :param CodeableConcept pushTypeAvailable: specific | any | source
+    :param BackboneElement attestation: Information about the entity attesting to information
+    :param str id: Unique id for inter-element referencing
+    :param Extension extension: Additional content defined by implementations
+    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param Reference who: The individual or organization attesting to information
+    :param Reference onBehalfOf: When the who is asserting on behalf of another (organization or individual)
+    :param CodeableConcept communicationMethod: The method by which attested information was submitted/retrieved
+    :param str date: The date the information was attested to
+    :param str sourceIdentityCertificate: A digital identity certificate associated with the attestation source
+    :param str proxyIdentityCertificate: A digital identity certificate associated with the proxy entity submitting attested information on behalf of the attestation source
+    :param Signature proxySignature: Proxy signature (digital or image)
+    :param Signature sourceSignature: Attester signature (digital or image)
+    :param BackboneElement validator: Information about the entity validating information
+    :param str id: Unique id for inter-element referencing
+    :param Extension extension: Additional content defined by implementations
+    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param Reference organization: Reference to the organization validating information
+    :param str identityCertificate: A digital identity certificate associated with the validator
+    :param Signature attestationSignature: Validator signature (digital or image)
+    
+    """
+    id: str = None
+    
+    meta: "Meta" = None
+    
+    implicitRules: str = None
+    
+    language: str = None
+    
+    text: "Narrative" = None
+    
+    contained: "Resource" = None
+    
+    extension: "Extension" = None
+    
+    modifierExtension: "Extension" = None
+    
+    target: "Reference" = None
+    
+    targetLocation: str = None
+    
+    need: "CodeableConcept" = None
+    
+    status: str = None
+    
+    statusDate: str = None
+    
+    validationType: "CodeableConcept" = None
+    
+    validationProcess: "CodeableConcept" = None
+    
+    frequency: "Timing" = None
+    
+    lastPerformed: str = None
+    
+    nextScheduled: str = None
+    
+    failureAction: "CodeableConcept" = None
+    
+    primarySource: "BackboneElement" = None
+    
+    id: str = None
+    
+    extension: "Extension" = None
+    
+    modifierExtension: "Extension" = None
+    
+    who: "Reference" = None
+    
+    type: "CodeableConcept" = None
+    
+    communicationMethod: "CodeableConcept" = None
+    
+    validationStatus: "CodeableConcept" = None
+    
+    validationDate: str = None
+    
+    canPushUpdates: "CodeableConcept" = None
+    
+    pushTypeAvailable: "CodeableConcept" = None
+    
+    attestation: "BackboneElement" = None
+    
+    id: str = None
+    
+    extension: "Extension" = None
+    
+    modifierExtension: "Extension" = None
+    
+    who: "Reference" = None
+    
+    onBehalfOf: "Reference" = None
+    
+    communicationMethod: "CodeableConcept" = None
+    
+    date: str = None
+    
+    sourceIdentityCertificate: str = None
+    
+    proxyIdentityCertificate: str = None
+    
+    proxySignature: "Signature" = None
+    
+    sourceSignature: "Signature" = None
+    
+    validator: "BackboneElement" = None
+    
+    id: str = None
+    
+    extension: "Extension" = None
+    
+    modifierExtension: "Extension" = None
+    
+    organization: "Reference" = None
+    
+    identityCertificate: str = None
+    
+    attestationSignature: "Signature" = None
+    

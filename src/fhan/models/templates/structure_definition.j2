@@ -1,0 +1,28 @@
+"""
+Generated class for {{structure_definition.type}}. 
+Time: {{time}}
+"""
+from dataclasses import dataclass
+{% for dependency in structure_definition.dependencies -%}
+from fhan.models.{{dir_name}}.{{dependency}} import *
+{% endfor %}
+
+@dataclass
+class {{structure_definition.type}}:
+    """ {{structure_definition.description}}
+    {% for element in structure_definition.elements -%}
+    {%- if element.is_primitive -%}
+    :param {{element.python_type.__name__}} {{element.name}}: {{element.short}}
+    {% else -%}
+    :param {{element.type}} {{element.name}}: {{element.short}}
+    {% endif -%}
+    {% endfor -%}
+    """
+
+    {%- for element in structure_definition.elements -%}
+    {% if element.is_primitive %}
+    {{element.name}}: {{element.python_type.__name__}} = None
+    {% else %}
+    {{element.name}}: "{{element.type}}" = None
+    {% endif -%}
+    {% endfor %}

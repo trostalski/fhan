@@ -1,15 +1,24 @@
 """
 Generated class for Age. 
-Time: 2023-09-19 20:21:26
+Time: 2023-09-19 22:48:02
 """
 from dataclasses import dataclass
+
 from fhan.models.R4.Extension import *
+from fhan.models.R4.Element import *
+
 
 
 @dataclass
-class Age:
-    """
-    Base StructureDefinition for Age Type: A duration of time during which an organism (or a process) has existed.
+class Age(Element):
+    """ Base StructureDefinition for Age Type: A duration of time during which an organism (or a process) has existed.
+    :param str id: Unique id for inter-element referencing
+    :param Extension extension: Additional content defined by implementations
+    :param float value: Numerical value (with implicit precision)
+    :param str comparator: < | <= | >= | > - how to understand the value
+    :param str unit: Unit representation
+    :param str system: System that defines coded unit form
+    :param str code: Coded form of the unit
     """
     id: str = None
     

@@ -1,20 +1,37 @@
 """
 Generated class for Linkage. 
-Time: 2023-09-19 20:21:26
+Time: 2023-09-19 22:48:02
 """
 from dataclasses import dataclass
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.Resource import *
+
 from fhan.models.R4.Reference import *
+from fhan.models.R4.Meta import *
+from fhan.models.R4.Resource import *
+from fhan.models.R4.Narrative import *
 from fhan.models.R4.Extension import *
 from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Meta import *
+from fhan.models.generator_models import ModelBase
 
 
 @dataclass
-class Linkage:
-    """
-    Identifies two or more records (resource instances) that refer to the same real-world "occurrence".
+class Linkage(ModelBase):
+    """ Identifies two or more records (resource instances) that refer to the same real-world "occurrence".
+    :param str id: Logical id of this artifact
+    :param Meta meta: Metadata about the resource
+    :param str implicitRules: A set of rules under which this content was created
+    :param str language: Language of the resource content
+    :param Narrative text: Text summary of the resource, for human interpretation
+    :param Resource contained: Contained, inline Resources
+    :param Extension extension: Additional content defined by implementations
+    :param Extension modifierExtension: Extensions that cannot be ignored
+    :param bool active: Whether this linkage assertion is active or not
+    :param Reference author: Who is responsible for linkages
+    :param BackboneElement item: Item to be linked
+    :param str id: Unique id for inter-element referencing
+    :param Extension extension: Additional content defined by implementations
+    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param str type: source | alternate | historical
+    :param Reference resource: Resource being linked
     """
     id: str = None
     

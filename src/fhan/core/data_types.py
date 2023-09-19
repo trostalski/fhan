@@ -2,6 +2,44 @@ import logging
 
 logger = logging.getLogger(__name__)
 
+PYTHON_KEYWORDS = [
+    "False",
+    "None",
+    "True",
+    "and",
+    "as",
+    "assert",
+    "async",
+    "await",
+    "break",
+    "class",
+    "continue",
+    "def",
+    "del",
+    "elif",
+    "else",
+    "except",
+    "finally",
+    "for",
+    "from",
+    "global",
+    "if",
+    "import",
+    "in",
+    "is",
+    "lambda",
+    "nonlocal",
+    "not",
+    "or",
+    "pass",
+    "raise",
+    "return",
+    "try",
+    "while",
+    "with",
+    "yield",
+]
+
 
 FHIR_PRIMITIVES_TO_PYTHON_MAP = {
     "base64Binary": str,

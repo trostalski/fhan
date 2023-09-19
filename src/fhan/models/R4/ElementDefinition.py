@@ -1,47 +1,344 @@
 """
 Generated class for ElementDefinition. 
-Time: 2023-09-19 20:21:26
+Time: 2023-09-19 22:48:02
 """
 from dataclasses import dataclass
-from fhan.models.R4.UsageContext import *
-from fhan.models.R4.TriggerDefinition import *
-from fhan.models.R4.Expression import *
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Quantity import *
-from fhan.models.R4.Money import *
-from fhan.models.R4.Identifier import *
-from fhan.models.R4.SampledData import *
-from fhan.models.R4.Period import *
-from fhan.models.R4.ContactPoint import *
-from fhan.models.R4.Contributor import *
-from fhan.models.R4.Duration import *
-from fhan.models.R4.Range import *
-from fhan.models.R4.Dosage import *
-from fhan.models.R4.Count import *
+
+from fhan.models.R4.Reference import *
 from fhan.models.R4.ParameterDefinition import *
-from fhan.models.R4.Signature import *
-from fhan.models.R4.Extension import *
+from fhan.models.R4.Period import *
+from fhan.models.R4.Quantity import *
+from fhan.models.R4.Address import *
 from fhan.models.R4.RelatedArtifact import *
 from fhan.models.R4.ContactDetail import *
-from fhan.models.R4.Element import *
-from fhan.models.R4.Age import *
-from fhan.models.R4.Coding import *
-from fhan.models.R4.Distance import *
-from fhan.models.R4.Address import *
-from fhan.models.R4.Attachment import *
-from fhan.models.R4.Reference import *
-from fhan.models.R4.DataRequirement import *
-from fhan.models.R4.Ratio import *
-from fhan.models.R4.Timing import *
+from fhan.models.R4.Duration import *
 from fhan.models.R4.Annotation import *
-from fhan.models.R4.HumanName import *
+from fhan.models.R4.Attachment import *
+from fhan.models.R4.Ratio import *
+from fhan.models.R4.Range import *
+from fhan.models.R4.Money import *
+from fhan.models.R4.UsageContext import *
+from fhan.models.R4.Distance import *
+from fhan.models.R4.Extension import *
+from fhan.models.R4.DataRequirement import *
+from fhan.models.R4.Count import *
+from fhan.models.R4.Expression import *
+from fhan.models.R4.Signature import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.Contributor import *
+from fhan.models.R4.Dosage import *
+from fhan.models.R4.Timing import *
+from fhan.models.R4.Coding import *
+from fhan.models.R4.Age import *
+from fhan.models.R4.TriggerDefinition import *
+from fhan.models.R4.ContactPoint import *
+from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.SampledData import *
 from fhan.models.R4.Meta import *
+from fhan.models.R4.HumanName import *
+from fhan.models.R4.Element import *
+from fhan.models.R4.Element import *
+
 
 
 @dataclass
-class ElementDefinition:
-    """
-    Base StructureDefinition for ElementDefinition Type: Captures constraints on each element within the resource, profile, or extension.
+class ElementDefinition(Element):
+    """ Base StructureDefinition for ElementDefinition Type: Captures constraints on each element within the resource, profile, or extension.
+    :param str id: Unique id for inter-element referencing
+    :param Extension extension: Additional content defined by implementations
+    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param str path: Path of the element in the hierarchy of elements
+    :param str representation: xmlAttr | xmlText | typeAttr | cdaText | xhtml
+    :param str sliceName: Name for this particular element (in a set of slices)
+    :param bool sliceIsConstraining: If this slice definition constrains an inherited slice definition (or not)
+    :param str label: Name for element to display with or prompt for element
+    :param Coding code: Corresponding codes in terminologies
+    :param Element slicing: This element is sliced - slices follow
+    :param str id: Unique id for inter-element referencing
+    :param Extension extension: Additional content defined by implementations
+    :param Element discriminator: Element values that are used to distinguish the slices
+    :param str id: Unique id for inter-element referencing
+    :param Extension extension: Additional content defined by implementations
+    :param str type: value | exists | pattern | type | profile
+    :param str path: Path to element value
+    :param str description: Text description of how slicing works (or not)
+    :param bool ordered: If elements must be in same order as slices
+    :param str rules: closed | open | openAtEnd
+    :param str short: Concise definition for space-constrained presentation
+    :param str definition: Full formal definition as narrative text
+    :param str comment: Comments about the use of this element
+    :param str requirements: Why this resource has been created
+    :param str alias: Other names
+    :param int min: Minimum Cardinality
+    :param str max: Maximum Cardinality (a number or *)
+    :param Element base: Base definition information for tools
+    :param str id: Unique id for inter-element referencing
+    :param Extension extension: Additional content defined by implementations
+    :param str path: Path that identifies the base element
+    :param int min: Min cardinality of the base element
+    :param str max: Max cardinality of the base element
+    :param str contentReference: Reference to definition of content for the element
+    :param Element type: Data type and Profile for this element
+    :param str id: Unique id for inter-element referencing
+    :param Extension extension: Additional content defined by implementations
+    :param str code: Data type or Resource (reference to definition)
+    :param str profile: Profiles (StructureDefinition or IG) - one must apply
+    :param str targetProfile: Profile (StructureDefinition or IG) on the Reference/canonical target - one must apply
+    :param str aggregation: contained | referenced | bundled - how aggregated
+    :param str versioning: either | independent | specific
+    :param str defaultValuebase64Binary: Specified value if missing from instance
+    :param bool defaultValuebase64Binary: Specified value if missing from instance
+    :param str defaultValuebase64Binary: Specified value if missing from instance
+    :param str defaultValuebase64Binary: Specified value if missing from instance
+    :param str defaultValuebase64Binary: Specified value if missing from instance
+    :param str defaultValuebase64Binary: Specified value if missing from instance
+    :param float defaultValuebase64Binary: Specified value if missing from instance
+    :param str defaultValuebase64Binary: Specified value if missing from instance
+    :param str defaultValuebase64Binary: Specified value if missing from instance
+    :param int defaultValuebase64Binary: Specified value if missing from instance
+    :param str defaultValuebase64Binary: Specified value if missing from instance
+    :param str defaultValuebase64Binary: Specified value if missing from instance
+    :param int defaultValuebase64Binary: Specified value if missing from instance
+    :param str defaultValuebase64Binary: Specified value if missing from instance
+    :param str defaultValuebase64Binary: Specified value if missing from instance
+    :param int defaultValuebase64Binary: Specified value if missing from instance
+    :param str defaultValuebase64Binary: Specified value if missing from instance
+    :param str defaultValuebase64Binary: Specified value if missing from instance
+    :param str defaultValuebase64Binary: Specified value if missing from instance
+    :param Address defaultValuebase64Binary: Specified value if missing from instance
+    :param Age defaultValuebase64Binary: Specified value if missing from instance
+    :param Annotation defaultValuebase64Binary: Specified value if missing from instance
+    :param Attachment defaultValuebase64Binary: Specified value if missing from instance
+    :param CodeableConcept defaultValuebase64Binary: Specified value if missing from instance
+    :param Coding defaultValuebase64Binary: Specified value if missing from instance
+    :param ContactPoint defaultValuebase64Binary: Specified value if missing from instance
+    :param Count defaultValuebase64Binary: Specified value if missing from instance
+    :param Distance defaultValuebase64Binary: Specified value if missing from instance
+    :param Duration defaultValuebase64Binary: Specified value if missing from instance
+    :param HumanName defaultValuebase64Binary: Specified value if missing from instance
+    :param Identifier defaultValuebase64Binary: Specified value if missing from instance
+    :param Money defaultValuebase64Binary: Specified value if missing from instance
+    :param Period defaultValuebase64Binary: Specified value if missing from instance
+    :param Quantity defaultValuebase64Binary: Specified value if missing from instance
+    :param Range defaultValuebase64Binary: Specified value if missing from instance
+    :param Ratio defaultValuebase64Binary: Specified value if missing from instance
+    :param Reference defaultValuebase64Binary: Specified value if missing from instance
+    :param SampledData defaultValuebase64Binary: Specified value if missing from instance
+    :param Signature defaultValuebase64Binary: Specified value if missing from instance
+    :param Timing defaultValuebase64Binary: Specified value if missing from instance
+    :param ContactDetail defaultValuebase64Binary: Specified value if missing from instance
+    :param Contributor defaultValuebase64Binary: Specified value if missing from instance
+    :param DataRequirement defaultValuebase64Binary: Specified value if missing from instance
+    :param Expression defaultValuebase64Binary: Specified value if missing from instance
+    :param ParameterDefinition defaultValuebase64Binary: Specified value if missing from instance
+    :param RelatedArtifact defaultValuebase64Binary: Specified value if missing from instance
+    :param TriggerDefinition defaultValuebase64Binary: Specified value if missing from instance
+    :param UsageContext defaultValuebase64Binary: Specified value if missing from instance
+    :param Dosage defaultValuebase64Binary: Specified value if missing from instance
+    :param Meta defaultValuebase64Binary: Specified value if missing from instance
+    :param str meaningWhenMissing: Implicit meaning when this element is missing
+    :param str orderMeaning: What the order of the elements means
+    :param str fixedbase64Binary: Value must be exactly this
+    :param bool fixedbase64Binary: Value must be exactly this
+    :param str fixedbase64Binary: Value must be exactly this
+    :param str fixedbase64Binary: Value must be exactly this
+    :param str fixedbase64Binary: Value must be exactly this
+    :param str fixedbase64Binary: Value must be exactly this
+    :param float fixedbase64Binary: Value must be exactly this
+    :param str fixedbase64Binary: Value must be exactly this
+    :param str fixedbase64Binary: Value must be exactly this
+    :param int fixedbase64Binary: Value must be exactly this
+    :param str fixedbase64Binary: Value must be exactly this
+    :param str fixedbase64Binary: Value must be exactly this
+    :param int fixedbase64Binary: Value must be exactly this
+    :param str fixedbase64Binary: Value must be exactly this
+    :param str fixedbase64Binary: Value must be exactly this
+    :param int fixedbase64Binary: Value must be exactly this
+    :param str fixedbase64Binary: Value must be exactly this
+    :param str fixedbase64Binary: Value must be exactly this
+    :param str fixedbase64Binary: Value must be exactly this
+    :param Address fixedbase64Binary: Value must be exactly this
+    :param Age fixedbase64Binary: Value must be exactly this
+    :param Annotation fixedbase64Binary: Value must be exactly this
+    :param Attachment fixedbase64Binary: Value must be exactly this
+    :param CodeableConcept fixedbase64Binary: Value must be exactly this
+    :param Coding fixedbase64Binary: Value must be exactly this
+    :param ContactPoint fixedbase64Binary: Value must be exactly this
+    :param Count fixedbase64Binary: Value must be exactly this
+    :param Distance fixedbase64Binary: Value must be exactly this
+    :param Duration fixedbase64Binary: Value must be exactly this
+    :param HumanName fixedbase64Binary: Value must be exactly this
+    :param Identifier fixedbase64Binary: Value must be exactly this
+    :param Money fixedbase64Binary: Value must be exactly this
+    :param Period fixedbase64Binary: Value must be exactly this
+    :param Quantity fixedbase64Binary: Value must be exactly this
+    :param Range fixedbase64Binary: Value must be exactly this
+    :param Ratio fixedbase64Binary: Value must be exactly this
+    :param Reference fixedbase64Binary: Value must be exactly this
+    :param SampledData fixedbase64Binary: Value must be exactly this
+    :param Signature fixedbase64Binary: Value must be exactly this
+    :param Timing fixedbase64Binary: Value must be exactly this
+    :param ContactDetail fixedbase64Binary: Value must be exactly this
+    :param Contributor fixedbase64Binary: Value must be exactly this
+    :param DataRequirement fixedbase64Binary: Value must be exactly this
+    :param Expression fixedbase64Binary: Value must be exactly this
+    :param ParameterDefinition fixedbase64Binary: Value must be exactly this
+    :param RelatedArtifact fixedbase64Binary: Value must be exactly this
+    :param TriggerDefinition fixedbase64Binary: Value must be exactly this
+    :param UsageContext fixedbase64Binary: Value must be exactly this
+    :param Dosage fixedbase64Binary: Value must be exactly this
+    :param Meta fixedbase64Binary: Value must be exactly this
+    :param str patternbase64Binary: Value must have at least these property values
+    :param bool patternbase64Binary: Value must have at least these property values
+    :param str patternbase64Binary: Value must have at least these property values
+    :param str patternbase64Binary: Value must have at least these property values
+    :param str patternbase64Binary: Value must have at least these property values
+    :param str patternbase64Binary: Value must have at least these property values
+    :param float patternbase64Binary: Value must have at least these property values
+    :param str patternbase64Binary: Value must have at least these property values
+    :param str patternbase64Binary: Value must have at least these property values
+    :param int patternbase64Binary: Value must have at least these property values
+    :param str patternbase64Binary: Value must have at least these property values
+    :param str patternbase64Binary: Value must have at least these property values
+    :param int patternbase64Binary: Value must have at least these property values
+    :param str patternbase64Binary: Value must have at least these property values
+    :param str patternbase64Binary: Value must have at least these property values
+    :param int patternbase64Binary: Value must have at least these property values
+    :param str patternbase64Binary: Value must have at least these property values
+    :param str patternbase64Binary: Value must have at least these property values
+    :param str patternbase64Binary: Value must have at least these property values
+    :param Address patternbase64Binary: Value must have at least these property values
+    :param Age patternbase64Binary: Value must have at least these property values
+    :param Annotation patternbase64Binary: Value must have at least these property values
+    :param Attachment patternbase64Binary: Value must have at least these property values
+    :param CodeableConcept patternbase64Binary: Value must have at least these property values
+    :param Coding patternbase64Binary: Value must have at least these property values
+    :param ContactPoint patternbase64Binary: Value must have at least these property values
+    :param Count patternbase64Binary: Value must have at least these property values
+    :param Distance patternbase64Binary: Value must have at least these property values
+    :param Duration patternbase64Binary: Value must have at least these property values
+    :param HumanName patternbase64Binary: Value must have at least these property values
+    :param Identifier patternbase64Binary: Value must have at least these property values
+    :param Money patternbase64Binary: Value must have at least these property values
+    :param Period patternbase64Binary: Value must have at least these property values
+    :param Quantity patternbase64Binary: Value must have at least these property values
+    :param Range patternbase64Binary: Value must have at least these property values
+    :param Ratio patternbase64Binary: Value must have at least these property values
+    :param Reference patternbase64Binary: Value must have at least these property values
+    :param SampledData patternbase64Binary: Value must have at least these property values
+    :param Signature patternbase64Binary: Value must have at least these property values
+    :param Timing patternbase64Binary: Value must have at least these property values
+    :param ContactDetail patternbase64Binary: Value must have at least these property values
+    :param Contributor patternbase64Binary: Value must have at least these property values
+    :param DataRequirement patternbase64Binary: Value must have at least these property values
+    :param Expression patternbase64Binary: Value must have at least these property values
+    :param ParameterDefinition patternbase64Binary: Value must have at least these property values
+    :param RelatedArtifact patternbase64Binary: Value must have at least these property values
+    :param TriggerDefinition patternbase64Binary: Value must have at least these property values
+    :param UsageContext patternbase64Binary: Value must have at least these property values
+    :param Dosage patternbase64Binary: Value must have at least these property values
+    :param Meta patternbase64Binary: Value must have at least these property values
+    :param Element example: Example value (as defined for type)
+    :param str id: Unique id for inter-element referencing
+    :param Extension extension: Additional content defined by implementations
+    :param str label: Describes the purpose of this example
+    :param str valuebase64Binary: Value of Example (one of allowed types)
+    :param bool valuebase64Binary: Value of Example (one of allowed types)
+    :param str valuebase64Binary: Value of Example (one of allowed types)
+    :param str valuebase64Binary: Value of Example (one of allowed types)
+    :param str valuebase64Binary: Value of Example (one of allowed types)
+    :param str valuebase64Binary: Value of Example (one of allowed types)
+    :param float valuebase64Binary: Value of Example (one of allowed types)
+    :param str valuebase64Binary: Value of Example (one of allowed types)
+    :param str valuebase64Binary: Value of Example (one of allowed types)
+    :param int valuebase64Binary: Value of Example (one of allowed types)
+    :param str valuebase64Binary: Value of Example (one of allowed types)
+    :param str valuebase64Binary: Value of Example (one of allowed types)
+    :param int valuebase64Binary: Value of Example (one of allowed types)
+    :param str valuebase64Binary: Value of Example (one of allowed types)
+    :param str valuebase64Binary: Value of Example (one of allowed types)
+    :param int valuebase64Binary: Value of Example (one of allowed types)
+    :param str valuebase64Binary: Value of Example (one of allowed types)
+    :param str valuebase64Binary: Value of Example (one of allowed types)
+    :param str valuebase64Binary: Value of Example (one of allowed types)
+    :param Address valuebase64Binary: Value of Example (one of allowed types)
+    :param Age valuebase64Binary: Value of Example (one of allowed types)
+    :param Annotation valuebase64Binary: Value of Example (one of allowed types)
+    :param Attachment valuebase64Binary: Value of Example (one of allowed types)
+    :param CodeableConcept valuebase64Binary: Value of Example (one of allowed types)
+    :param Coding valuebase64Binary: Value of Example (one of allowed types)
+    :param ContactPoint valuebase64Binary: Value of Example (one of allowed types)
+    :param Count valuebase64Binary: Value of Example (one of allowed types)
+    :param Distance valuebase64Binary: Value of Example (one of allowed types)
+    :param Duration valuebase64Binary: Value of Example (one of allowed types)
+    :param HumanName valuebase64Binary: Value of Example (one of allowed types)
+    :param Identifier valuebase64Binary: Value of Example (one of allowed types)
+    :param Money valuebase64Binary: Value of Example (one of allowed types)
+    :param Period valuebase64Binary: Value of Example (one of allowed types)
+    :param Quantity valuebase64Binary: Value of Example (one of allowed types)
+    :param Range valuebase64Binary: Value of Example (one of allowed types)
+    :param Ratio valuebase64Binary: Value of Example (one of allowed types)
+    :param Reference valuebase64Binary: Value of Example (one of allowed types)
+    :param SampledData valuebase64Binary: Value of Example (one of allowed types)
+    :param Signature valuebase64Binary: Value of Example (one of allowed types)
+    :param Timing valuebase64Binary: Value of Example (one of allowed types)
+    :param ContactDetail valuebase64Binary: Value of Example (one of allowed types)
+    :param Contributor valuebase64Binary: Value of Example (one of allowed types)
+    :param DataRequirement valuebase64Binary: Value of Example (one of allowed types)
+    :param Expression valuebase64Binary: Value of Example (one of allowed types)
+    :param ParameterDefinition valuebase64Binary: Value of Example (one of allowed types)
+    :param RelatedArtifact valuebase64Binary: Value of Example (one of allowed types)
+    :param TriggerDefinition valuebase64Binary: Value of Example (one of allowed types)
+    :param UsageContext valuebase64Binary: Value of Example (one of allowed types)
+    :param Dosage valuebase64Binary: Value of Example (one of allowed types)
+    :param Meta valuebase64Binary: Value of Example (one of allowed types)
+    :param str minValuedate: Minimum Allowed Value (for some types)
+    :param str minValuedate: Minimum Allowed Value (for some types)
+    :param str minValuedate: Minimum Allowed Value (for some types)
+    :param str minValuedate: Minimum Allowed Value (for some types)
+    :param float minValuedate: Minimum Allowed Value (for some types)
+    :param int minValuedate: Minimum Allowed Value (for some types)
+    :param int minValuedate: Minimum Allowed Value (for some types)
+    :param int minValuedate: Minimum Allowed Value (for some types)
+    :param Quantity minValuedate: Minimum Allowed Value (for some types)
+    :param str maxValuedate: Maximum Allowed Value (for some types)
+    :param str maxValuedate: Maximum Allowed Value (for some types)
+    :param str maxValuedate: Maximum Allowed Value (for some types)
+    :param str maxValuedate: Maximum Allowed Value (for some types)
+    :param float maxValuedate: Maximum Allowed Value (for some types)
+    :param int maxValuedate: Maximum Allowed Value (for some types)
+    :param int maxValuedate: Maximum Allowed Value (for some types)
+    :param int maxValuedate: Maximum Allowed Value (for some types)
+    :param Quantity maxValuedate: Maximum Allowed Value (for some types)
+    :param int maxLength: Max length for strings
+    :param str condition: Reference to invariant about presence
+    :param Element constraint: Condition that must evaluate to true
+    :param str id: Unique id for inter-element referencing
+    :param Extension extension: Additional content defined by implementations
+    :param str key: Target of 'condition' reference above
+    :param str requirements: Why this constraint is necessary or appropriate
+    :param str severity: error | warning
+    :param str human: Human description of constraint
+    :param str expression: FHIRPath expression of constraint
+    :param str xpath: XPath expression of constraint
+    :param str source: Reference to original source of constraint
+    :param bool mustSupport: If the element must be supported
+    :param bool isModifier: If this modifies the meaning of other elements
+    :param str isModifierReason: Reason that this element is marked as a modifier
+    :param bool isSummary: Include when _summary = true?
+    :param Element binding: ValueSet details if this is coded
+    :param str id: Unique id for inter-element referencing
+    :param Extension extension: Additional content defined by implementations
+    :param str strength: required | extensible | preferred | example
+    :param str description: Human explanation of the value set
+    :param str valueSet: Source of value set
+    :param Element mapping: Map element to another set of definitions
+    :param str id: Unique id for inter-element referencing
+    :param Extension extension: Additional content defined by implementations
+    :param str identity: Reference to mapping declaration
+    :param str language: Computable language of mapping
+    :param str map: Details of the mapping
+    :param str comment: Comments about the mapping or its use
     """
     id: str = None
     

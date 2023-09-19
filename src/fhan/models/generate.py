@@ -13,6 +13,7 @@ from fhan.models.generator_models import GeneratorStructureDefinition
 
 logger = logging.getLogger(__name__)
 
+# TODO move to config
 TEMLPATE_DIR = "./templates"
 OUTPUT_DIR = "./"
 TEMPLATE_NAMES = ["structure_definition.j2"]
@@ -72,13 +73,10 @@ class ModelGenerator:
         for template_name in self._template_names:
             template = env.get_template(template_name)
             for structure_definition in generator_struc_defs:
-                if not structure_definition.has_snapshot:
-                    logger.info(
-                        "Skipping %s because it has no snapshot.",
-                        structure_definition.id,
-                    )
-                    continue
-                elif structure_definition.is_primitive:
+                if (
+                    not structure_definition.has_snapshot
+                    or structure_definition.is_primitive
+                ):
                     continue
                 model_code = template.render(
                     structure_definition=structure_definition,
@@ -108,7 +106,7 @@ def get_full_path_to_dir(dir: str):
 
 
 def main():
-    generator = ModelGenerator(version="R5")
+    generator = ModelGenerator(version="R4")
     generator._generate_structure_definition_classes()
 
 

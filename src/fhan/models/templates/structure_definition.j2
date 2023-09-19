@@ -3,12 +3,21 @@ Generated class for {{structure_definition.type}}.
 Time: {{time}}
 """
 from dataclasses import dataclass
+
 {% for dependency in structure_definition.dependencies -%}
 from fhan.models.{{dir_name}}.{{dependency}} import *
 {% endfor %}
+{%- if structure_definition.base_class %}
+{%- if structure_definition.base_import_string -%}
+from {{structure_definition.base_import_string}} import {{structure_definition.base_class}}
+{%- else -%}
+from fhan.models.{{dir_name}}.{{structure_definition.base_class}} import *
+{% endif -%}
+{%- endif %}
+
 
 @dataclass
-class {{structure_definition.type}}:
+class {{structure_definition.type}}{% if structure_definition.base_class %}({{structure_definition.base_class}}){% endif %}:
     """ {{structure_definition.description}}
     {% for element in structure_definition.elements -%}
     {%- if element.is_primitive -%}

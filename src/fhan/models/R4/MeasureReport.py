@@ -1,19 +1,19 @@
 """
 Generated class for MeasureReport. 
-Time: 2023-09-20 20:29:43
+Time: 2023-09-20 20:39:03
 """
 from dataclasses import dataclass
 from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.BackboneElement import *
 from fhan.models.R4.Element import *
-from fhan.models.R4.Extension import *
-from fhan.models.R4.Period import *
-from fhan.models.R4.Quantity import *
-from fhan.models.R4.Identifier import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.Reference import *
+from fhan.models.R4.Meta import *
 from fhan.models.R4.Resource import *
+from fhan.models.R4.Reference import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Period import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.Quantity import *
+from fhan.models.R4.Extension import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -78,6 +78,7 @@ class Population(Element):
     count: int = None
     subjectResults: "Reference" = None
     
+
   
     
     
@@ -99,6 +100,7 @@ class Stratum(Element):
     population: list[Population] = None
     measureScore: "Quantity" = None
     
+
   
     
     
@@ -116,6 +118,7 @@ class Stratifier(Element):
     code: list[CodeableConcept] = None
     stratum: list[Stratum] = None
     
+
   
     
     
@@ -137,6 +140,7 @@ class Group(Element):
     measureScore: "Quantity" = None
     stratifier: list[Stratifier] = None
     
+
 @dataclass
 class MeasureReport(ModelBase):
     """ The MeasureReport resource contains the results of the calculation of a measure; and optionally a reference to the resources involved in that calculation.
@@ -160,6 +164,8 @@ class MeasureReport(ModelBase):
     :param Group group: Measure results for each group
     :param Reference evaluatedResource: What data was used to calculate the measure score
     """
+
+    resourceType: str = "MeasureReport"
     id: str = None
     
     meta: "Meta" = None

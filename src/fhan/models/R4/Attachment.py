@@ -1,10 +1,11 @@
 """
 Generated class for Attachment. 
-Time: 2023-09-20 20:29:43
+Time: 2023-09-20 20:39:03
 """
 from dataclasses import dataclass
 from fhan.models.R4.Extension import *
 from fhan.models.R4.Element import *
+
 
 @dataclass
 class Attachment(Element):
@@ -20,6 +21,8 @@ class Attachment(Element):
     :param str title: Label to display in place of the data
     :param str creation: Date attachment was first created
     """
+
+    resourceType: str = "Attachment"
     id: str = None
     
     extension: list["Extension"] = None

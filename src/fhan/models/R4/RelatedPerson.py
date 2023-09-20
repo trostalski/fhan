@@ -1,22 +1,22 @@
 """
 Generated class for RelatedPerson. 
-Time: 2023-09-20 20:29:43
+Time: 2023-09-20 20:39:03
 """
 from dataclasses import dataclass
 from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Attachment import *
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Element import *
-from fhan.models.R4.HumanName import *
-from fhan.models.R4.Extension import *
-from fhan.models.R4.Period import *
-from fhan.models.R4.ContactPoint import *
-from fhan.models.R4.Identifier import *
 from fhan.models.R4.Address import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.Reference import *
+from fhan.models.R4.Meta import *
 from fhan.models.R4.Resource import *
+from fhan.models.R4.ContactPoint import *
+from fhan.models.R4.Attachment import *
+from fhan.models.R4.Reference import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Period import *
+from fhan.models.R4.HumanName import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.Element import *
+from fhan.models.R4.Extension import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -36,6 +36,7 @@ class Communication(Element):
     
     preferred: bool = None
     
+
 @dataclass
 class RelatedPerson(ModelBase):
     """ Information about a person that is involved in the care for a patient, but who is not the target of healthcare, nor has a formal responsibility in the care process.
@@ -60,6 +61,8 @@ class RelatedPerson(ModelBase):
     :param Period period: Period of time that this relationship is considered valid
     :param Communication communication: A language which may be used to communicate with about the patient's health
     """
+
+    resourceType: str = "RelatedPerson"
     id: str = None
     
     meta: "Meta" = None

@@ -1,10 +1,11 @@
 """
 Generated class for Count. 
-Time: 2023-09-20 20:29:43
+Time: 2023-09-20 20:39:03
 """
 from dataclasses import dataclass
 from fhan.models.R4.Extension import *
 from fhan.models.R4.Element import *
+
 
 @dataclass
 class Count(Element):
@@ -17,6 +18,8 @@ class Count(Element):
     :param str system: System that defines coded unit form
     :param str code: Coded form of the unit
     """
+
+    resourceType: str = "Count"
     id: str = None
     
     extension: list["Extension"] = None

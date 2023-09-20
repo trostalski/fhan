@@ -1,11 +1,12 @@
 """
 Generated class for SampledData. 
-Time: 2023-09-20 20:29:43
+Time: 2023-09-20 20:39:03
 """
 from dataclasses import dataclass
 from fhan.models.R4.Quantity import *
 from fhan.models.R4.Extension import *
 from fhan.models.R4.Element import *
+
 
 @dataclass
 class SampledData(Element):
@@ -20,6 +21,8 @@ class SampledData(Element):
     :param int dimensions: Number of sample points at each time point
     :param str data: Decimal values with spaces, or "E" | "U" | "L"
     """
+
+    resourceType: str = "SampledData"
     id: str = None
     
     extension: list["Extension"] = None

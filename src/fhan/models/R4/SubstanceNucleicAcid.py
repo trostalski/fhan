@@ -1,17 +1,17 @@
 """
 Generated class for SubstanceNucleicAcid. 
-Time: 2023-09-20 20:29:43
+Time: 2023-09-20 20:39:03
 """
 from dataclasses import dataclass
 from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Meta import *
-from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Resource import *
 from fhan.models.R4.Attachment import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Identifier import *
 from fhan.models.R4.Element import *
 from fhan.models.R4.Extension import *
-from fhan.models.R4.Identifier import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.Resource import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -60,6 +60,7 @@ class Sugar(Element):
     
     residueSite: str = None
     
+
   
     
     
@@ -92,6 +93,7 @@ class Subunit(Element):
     linkage: list[Linkage] = None
     sugar: list[Sugar] = None
     
+
 @dataclass
 class SubstanceNucleicAcid(ModelBase):
     """ Nucleic acids are defined by three distinct elements: the base, sugar and linkage. Individual substance/moiety IDs will be created for each of these elements. The nucleotide sequence will be always entered in the 5’-3’ direction.
@@ -109,6 +111,8 @@ class SubstanceNucleicAcid(ModelBase):
     :param CodeableConcept oligoNucleotideType: (TBC)
     :param Subunit subunit: Subunits are listed in order of decreasing length; sequences of the same length will be ordered by molecular weight; subunits that have identical sequences will be repeated multiple times
     """
+
+    resourceType: str = "SubstanceNucleicAcid"
     id: str = None
     
     meta: "Meta" = None

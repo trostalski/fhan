@@ -1,22 +1,22 @@
 """
 Generated class for ChargeItem. 
-Time: 2023-09-20 20:29:43
+Time: 2023-09-20 20:39:03
 """
 from dataclasses import dataclass
 from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Money import *
-from fhan.models.R4.Annotation import *
 from fhan.models.R4.Element import *
-from fhan.models.R4.Extension import *
-from fhan.models.R4.Period import *
-from fhan.models.R4.Quantity import *
-from fhan.models.R4.Identifier import *
-from fhan.models.R4.Timing import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.Reference import *
+from fhan.models.R4.Meta import *
 from fhan.models.R4.Resource import *
+from fhan.models.R4.Timing import *
+from fhan.models.R4.Reference import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Annotation import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Period import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.Money import *
+from fhan.models.R4.Quantity import *
+from fhan.models.R4.Extension import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -35,6 +35,7 @@ class Performer(Element):
     function: "CodeableConcept" = None
     actor: "Reference" = None
     
+
 @dataclass
 class ChargeItem(ModelBase):
     """ The resource ChargeItem describes the provision of healthcare provider products for a certain patient, therefore referring not only to the product, but containing in addition details of the provision, like date, time, amounts and participating organizations and persons. Main Usage of the ChargeItem is to enable the billing process and internal cost allocation.
@@ -73,6 +74,8 @@ class ChargeItem(ModelBase):
     :param Annotation note: Comments made about the ChargeItem
     :param Reference supportingInformation: Further information supporting this charge
     """
+
+    resourceType: str = "ChargeItem"
     id: str = None
     
     meta: "Meta" = None

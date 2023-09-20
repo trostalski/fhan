@@ -1,11 +1,12 @@
 """
 Generated class for Ratio. 
-Time: 2023-09-20 20:29:43
+Time: 2023-09-20 20:39:03
 """
 from dataclasses import dataclass
 from fhan.models.R4.Quantity import *
 from fhan.models.R4.Extension import *
 from fhan.models.R4.Element import *
+
 
 @dataclass
 class Ratio(Element):
@@ -15,6 +16,8 @@ class Ratio(Element):
     :param Quantity numerator: Numerator value
     :param Quantity denominator: Denominator value
     """
+
+    resourceType: str = "Ratio"
     id: str = None
     
     extension: list["Extension"] = None

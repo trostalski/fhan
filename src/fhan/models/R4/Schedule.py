@@ -1,17 +1,18 @@
 """
 Generated class for Schedule. 
-Time: 2023-09-20 20:29:43
+Time: 2023-09-20 20:39:03
 """
 from dataclasses import dataclass
 from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Meta import *
-from fhan.models.R4.Extension import *
+from fhan.models.R4.Resource import *
+from fhan.models.R4.Reference import *
+from fhan.models.R4.Narrative import *
 from fhan.models.R4.Period import *
 from fhan.models.R4.Identifier import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.Reference import *
-from fhan.models.R4.Resource import *
+from fhan.models.R4.Extension import *
 from fhan.models.generator_models import ModelBase
+
 @dataclass
 class Schedule(ModelBase):
     """ A container for slots of time that may be available for booking appointments.
@@ -32,6 +33,8 @@ class Schedule(ModelBase):
     :param Period planningHorizon: Period of time covered by schedule
     :param str comment: Comments on availability
     """
+
+    resourceType: str = "Schedule"
     id: str = None
     
     meta: "Meta" = None

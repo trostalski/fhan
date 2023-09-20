@@ -1,15 +1,16 @@
 """
 Generated class for Timing. 
-Time: 2023-09-20 20:29:43
+Time: 2023-09-20 20:39:03
 """
 from dataclasses import dataclass
 from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Range import *
+from fhan.models.R4.Period import *
+from fhan.models.R4.Duration import *
 from fhan.models.R4.Element import *
 from fhan.models.R4.Extension import *
-from fhan.models.R4.Duration import *
-from fhan.models.R4.Period import *
 from fhan.models.R4.Element import *
+
 
 @dataclass
 class Timing(Element):
@@ -38,6 +39,8 @@ class Timing(Element):
     :param int offset: Minutes from event (before or after)
     :param CodeableConcept code: BID | TID | QID | AM | PM | QD | QOD | +
     """
+
+    resourceType: str = "Timing"
     id: str = None
     
     extension: list["Extension"] = None

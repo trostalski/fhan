@@ -1,17 +1,17 @@
 """
 Generated class for SubstanceProtein. 
-Time: 2023-09-20 20:29:43
+Time: 2023-09-20 20:39:03
 """
 from dataclasses import dataclass
 from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Meta import *
-from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Resource import *
 from fhan.models.R4.Attachment import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Identifier import *
 from fhan.models.R4.Element import *
 from fhan.models.R4.Extension import *
-from fhan.models.R4.Identifier import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.Resource import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -47,6 +47,7 @@ class Subunit(Element):
     
     cTerminalModification: str = None
     
+
 @dataclass
 class SubstanceProtein(ModelBase):
     """ A SubstanceProtein is defined as a single unit of a linear amino acid sequence, or a combination of subunits that are either covalently linked or have a defined invariant stoichiometric relationship. This includes all synthetic, recombinant and purified SubstanceProteins of defined sequence, whether the use is therapeutic or prophylactic. This set of elements will be used to describe albumins, coagulation factors, cytokines, growth factors, peptide/SubstanceProtein hormones, enzymes, toxins, toxoids, recombinant vaccines, and immunomodulators.
@@ -63,6 +64,8 @@ class SubstanceProtein(ModelBase):
     :param str disulfideLinkage: The disulphide bond between two cysteine residues either on the same subunit or on two different subunits shall be described. The position of the disulfide bonds in the SubstanceProtein shall be listed in increasing order of subunit number and position within subunit followed by the abbreviation of the amino acids involved. The disulfide linkage positions shall actually contain the amino acid Cysteine at the respective positions
     :param Subunit subunit: This subclause refers to the description of each subunit constituting the SubstanceProtein. A subunit is a linear sequence of amino acids linked through peptide bonds. The Subunit information shall be provided when the finished SubstanceProtein is a complex of multiple sequences; subunits are not used to delineate domains within a single sequence. Subunits are listed in order of decreasing length; sequences of the same length will be ordered by decreasing molecular weight; subunits that have identical sequences will be repeated multiple times
     """
+
+    resourceType: str = "SubstanceProtein"
     id: str = None
     
     meta: "Meta" = None

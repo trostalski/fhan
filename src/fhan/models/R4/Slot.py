@@ -1,16 +1,17 @@
 """
 Generated class for Slot. 
-Time: 2023-09-20 20:29:43
+Time: 2023-09-20 20:39:03
 """
 from dataclasses import dataclass
 from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Meta import *
-from fhan.models.R4.Extension import *
-from fhan.models.R4.Identifier import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.Reference import *
 from fhan.models.R4.Resource import *
+from fhan.models.R4.Reference import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.Extension import *
 from fhan.models.generator_models import ModelBase
+
 @dataclass
 class Slot(ModelBase):
     """ A slot of time on a schedule that may be available for booking appointments.
@@ -34,6 +35,8 @@ class Slot(ModelBase):
     :param bool overbooked: This slot has already been overbooked, appointments are unlikely to be accepted for this time
     :param str comment: Comments on the slot to describe any extended information. Such as custom constraints on the slot
     """
+
+    resourceType: str = "Slot"
     id: str = None
     
     meta: "Meta" = None

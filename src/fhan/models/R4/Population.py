@@ -1,12 +1,13 @@
 """
 Generated class for Population. 
-Time: 2023-09-20 20:29:43
+Time: 2023-09-20 20:39:03
 """
 from dataclasses import dataclass
 from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Range import *
 from fhan.models.R4.Extension import *
 from fhan.models.R4.Element import *
+
 
 @dataclass
 class Population(Element):
@@ -19,6 +20,8 @@ class Population(Element):
     :param CodeableConcept race: Race of the specific population
     :param CodeableConcept physiologicalCondition: The existing physiological conditions of the specific population to which this applies
     """
+
+    resourceType: str = "Population"
     id: str = None
     
     extension: list["Extension"] = None

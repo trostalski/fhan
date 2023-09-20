@@ -1,25 +1,25 @@
 """
 Generated class for Contract. 
-Time: 2023-09-20 20:29:43
+Time: 2023-09-20 20:39:03
 """
 from dataclasses import dataclass
 from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Attachment import *
-from fhan.models.R4.Coding import *
-from fhan.models.R4.Money import *
-from fhan.models.R4.Annotation import *
 from fhan.models.R4.Element import *
-from fhan.models.R4.Extension import *
+from fhan.models.R4.Meta import *
+from fhan.models.R4.Resource import *
+from fhan.models.R4.Attachment import *
+from fhan.models.R4.Timing import *
+from fhan.models.R4.Reference import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Annotation import *
+from fhan.models.R4.Coding import *
+from fhan.models.R4.Narrative import *
 from fhan.models.R4.Period import *
-from fhan.models.R4.Quantity import *
 from fhan.models.R4.Signature import *
 from fhan.models.R4.Identifier import *
-from fhan.models.R4.Timing import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.Reference import *
-from fhan.models.R4.Resource import *
+from fhan.models.R4.Money import *
+from fhan.models.R4.Quantity import *
+from fhan.models.R4.Extension import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -108,6 +108,7 @@ class Answer(Element):
     
     valueBoolean: bool = None
     
+
   
     
     
@@ -214,6 +215,7 @@ class ValuedItem(Element):
     
     securityLabelNumber: int = None
     
+
   
     
     
@@ -278,6 +280,7 @@ class Subject(Element):
     reference: list[Reference] = None
     role: "CodeableConcept" = None
     
+
   
     
     
@@ -342,6 +345,7 @@ class Action(Element):
     
     securityLabelNumber: int = None
     
+
   
     
     
@@ -447,6 +451,7 @@ class Rule(Element):
     modifierExtension: list[Extension] = None
     contentAttachment: "Attachment" = None
     
+
 @dataclass
 class Contract(ModelBase):
     """ Legally enforceable, formally recorded unilateral or bilateral directive i.e., a policy or agreement.
@@ -491,6 +496,8 @@ class Contract(ModelBase):
     :param Legal legal: Contract Legal Language
     :param Rule rule: Computable Contract Language
     """
+
+    resourceType: str = "Contract"
     id: str = None
     
     meta: "Meta" = None

@@ -1,23 +1,24 @@
 """
 Generated class for Library. 
-Time: 2023-09-20 20:29:43
+Time: 2023-09-20 20:39:03
 """
 from dataclasses import dataclass
 from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Attachment import *
-from fhan.models.R4.ParameterDefinition import *
-from fhan.models.R4.Extension import *
-from fhan.models.R4.Period import *
-from fhan.models.R4.RelatedArtifact import *
-from fhan.models.R4.DataRequirement import *
-from fhan.models.R4.Identifier import *
 from fhan.models.R4.ContactDetail import *
 from fhan.models.R4.UsageContext import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.Reference import *
+from fhan.models.R4.DataRequirement import *
+from fhan.models.R4.Meta import *
 from fhan.models.R4.Resource import *
+from fhan.models.R4.Attachment import *
+from fhan.models.R4.Reference import *
+from fhan.models.R4.ParameterDefinition import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Period import *
+from fhan.models.R4.RelatedArtifact import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.Extension import *
 from fhan.models.generator_models import ModelBase
+
 @dataclass
 class Library(ModelBase):
     """ Enforces the minimum information set for the library metadata required by HL7 and other organizations that share and publish libraries
@@ -61,6 +62,8 @@ class Library(ModelBase):
     :param DataRequirement dataRequirement: What data is referenced by this library
     :param Attachment content: Contents of the library, either embedded or referenced
     """
+
+    resourceType: str = "Library"
     id: str = None
     
     meta: "Meta" = None

@@ -1,10 +1,11 @@
 """
 Generated class for Extension. 
-Time: 2023-09-20 20:29:43
+Time: 2023-09-20 20:39:03
 """
 from dataclasses import dataclass
 from fhan.models.R4.Reference import *
 from fhan.models.R4.Element import *
+
 
 @dataclass
 class Extension(Element):
@@ -14,6 +15,8 @@ class Extension(Element):
     :param str url: identifies the meaning of the extension
     :param Reference valueReference: Value of extension
     """
+
+    resourceType: str = "Extension"
     id: str = None
     
     extension: "Extension" = None

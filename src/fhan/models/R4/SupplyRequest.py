@@ -1,21 +1,21 @@
 """
 Generated class for SupplyRequest. 
-Time: 2023-09-20 20:29:43
+Time: 2023-09-20 20:39:03
 """
 from dataclasses import dataclass
 from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.BackboneElement import *
 from fhan.models.R4.Range import *
 from fhan.models.R4.Element import *
-from fhan.models.R4.Extension import *
-from fhan.models.R4.Quantity import *
+from fhan.models.R4.Meta import *
+from fhan.models.R4.Resource import *
+from fhan.models.R4.Timing import *
+from fhan.models.R4.Reference import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Narrative import *
 from fhan.models.R4.Period import *
 from fhan.models.R4.Identifier import *
-from fhan.models.R4.Timing import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.Reference import *
-from fhan.models.R4.Resource import *
+from fhan.models.R4.Quantity import *
+from fhan.models.R4.Extension import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -34,6 +34,7 @@ class Parameter(Element):
     code: "CodeableConcept" = None
     valueCodeableConcept: "CodeableConcept" = None
     
+
 @dataclass
 class SupplyRequest(ModelBase):
     """ A record of a request for a medication, substance or device used in the healthcare setting.
@@ -61,6 +62,8 @@ class SupplyRequest(ModelBase):
     :param Reference deliverFrom: The origin of the supply
     :param Reference deliverTo: The destination of the supply
     """
+
+    resourceType: str = "SupplyRequest"
     id: str = None
     
     meta: "Meta" = None

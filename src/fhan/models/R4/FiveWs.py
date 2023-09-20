@@ -1,14 +1,15 @@
 """
 Generated class for FiveWs. 
-Time: 2023-09-20 20:29:43
+Time: 2023-09-20 20:39:03
 """
 from dataclasses import dataclass
 from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Identifier import *
 from fhan.models.R4.Timing import *
 from fhan.models.R4.Reference import *
 from fhan.models.R4.Period import *
+from fhan.models.R4.Identifier import *
 from fhan.models.generator_models import ModelBase
+
 @dataclass
 class FiveWs(ModelBase):
     """ Logical Model: Who What When Where Why - Common pattern for all resources that deals with attribution.
@@ -33,6 +34,8 @@ class FiveWs(ModelBase):
     :param CodeableConcept whereCodeableConcept: The location of the work described
     :param CodeableConcept whyCodeableConcept: Why this work was done
     """
+
+    resourceType: str = "FiveWs"
     identifier: list["Identifier"] = None
     
     version: str = None

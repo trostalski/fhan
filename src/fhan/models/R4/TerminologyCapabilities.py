@@ -1,17 +1,17 @@
 """
 Generated class for TerminologyCapabilities. 
-Time: 2023-09-20 20:29:43
+Time: 2023-09-20 20:39:03
 """
 from dataclasses import dataclass
 from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Element import *
-from fhan.models.R4.Extension import *
 from fhan.models.R4.ContactDetail import *
 from fhan.models.R4.UsageContext import *
-from fhan.models.R4.Narrative import *
+from fhan.models.R4.Meta import *
 from fhan.models.R4.Resource import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Element import *
+from fhan.models.R4.Extension import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -74,6 +74,7 @@ class Filter(Element):
     
     op: str = None
     
+
   
     
     
@@ -104,6 +105,7 @@ class Version(Element):
     
     property: str = None
     
+
   
     
     
@@ -146,6 +148,7 @@ class Parameter(Element):
     
     documentation: str = None
     
+
   
     
     
@@ -221,6 +224,7 @@ class Closure(Element):
     
     translation: bool = None
     
+
 @dataclass
 class TerminologyCapabilities(ModelBase):
     """ A TerminologyCapabilities resource documents a set of capabilities (behaviors) of a FHIR Terminology Server that may be used as a statement of actual server functionality or a statement of required or desired server implementation.
@@ -257,6 +261,8 @@ class TerminologyCapabilities(ModelBase):
     :param Translation translation: Information about the [ConceptMap/$translate](conceptmap-operation-translate.html) operation
     :param Closure closure: Information about the [ConceptMap/$closure](conceptmap-operation-closure.html) operation
     """
+
+    resourceType: str = "TerminologyCapabilities"
     id: str = None
     
     meta: "Meta" = None

@@ -1,29 +1,29 @@
 """
 Generated class for PlanDefinition. 
-Time: 2023-09-20 20:29:43
+Time: 2023-09-20 20:39:03
 """
 from dataclasses import dataclass
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.RelatedArtifact import *
-from fhan.models.R4.Expression import *
-from fhan.models.R4.Timing import *
-from fhan.models.R4.Period import *
-from fhan.models.R4.Resource import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Range import *
-from fhan.models.R4.TriggerDefinition import *
-from fhan.models.R4.Element import *
-from fhan.models.R4.Quantity import *
 from fhan.models.R4.Age import *
-from fhan.models.R4.Duration import *
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.DataRequirement import *
+from fhan.models.R4.Resource import *
 from fhan.models.R4.Identifier import *
+from fhan.models.R4.Quantity import *
+from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.UsageContext import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.Extension import *
-from fhan.models.R4.ContactDetail import *
+from fhan.models.R4.TriggerDefinition import *
+from fhan.models.R4.Meta import *
+from fhan.models.R4.DataRequirement import *
+from fhan.models.R4.Timing import *
 from fhan.models.R4.Reference import *
+from fhan.models.R4.Period import *
+from fhan.models.R4.Expression import *
+from fhan.models.R4.ContactDetail import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Duration import *
+from fhan.models.R4.Element import *
+from fhan.models.R4.Range import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.RelatedArtifact import *
+from fhan.models.R4.Extension import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -46,6 +46,7 @@ class Target(Element):
     detailQuantity: "Quantity" = None
     due: "Duration" = None
     
+
   
     
     
@@ -150,6 +151,7 @@ class DynamicValue(Element):
     path: str = None
     expression: "Expression" = None
     
+
   
     
     
@@ -229,6 +231,7 @@ class Action(Element):
     transform: str = None
     dynamicValue: list[DynamicValue] = None
     
+
 @dataclass
 class PlanDefinition(ModelBase):
     """ Enforces the minimum information set for the plan definition metadata required by HL7 and other organizations that share and publish plan definitions
@@ -272,6 +275,8 @@ class PlanDefinition(ModelBase):
     :param Goal goal: What the plan is trying to accomplish
     :param Action action: Action defined by the plan
     """
+
+    resourceType: str = "PlanDefinition"
     id: str = None
     
     meta: "Meta" = None

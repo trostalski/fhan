@@ -1,16 +1,16 @@
 """
 Generated class for SubstanceSourceMaterial. 
-Time: 2023-09-20 20:29:43
+Time: 2023-09-20 20:39:03
 """
 from dataclasses import dataclass
 from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Meta import *
+from fhan.models.R4.Resource import *
 from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Identifier import *
 from fhan.models.R4.Element import *
 from fhan.models.R4.Extension import *
-from fhan.models.R4.Identifier import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.Resource import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -98,6 +98,7 @@ class OrganismGeneral(Element):
     _class: "CodeableConcept" = None
     order: "CodeableConcept" = None
     
+
   
     
     
@@ -150,6 +151,7 @@ class PartDescription(Element):
     part: "CodeableConcept" = None
     partLocation: "CodeableConcept" = None
     
+
 @dataclass
 class SubstanceSourceMaterial(ModelBase):
     """ Source material shall capture information on the taxonomic and anatomical origins as well as the fraction of a material that can result in or can be modified to form a substance. This set of data elements shall be used to define polymer substances isolated from biological matrices. Taxonomic and anatomical origins shall be described using a controlled vocabulary as required. This information is captured for naturally derived polymers ( . starch) and structurally diverse substances. For Organisms belonging to the Kingdom Plantae the Substance level defines the fresh material of a single species or infraspecies, the Herbal Drug and the Herbal preparation. For Herbal preparations, the fraction information will be captured at the Substance information level and additional information for herbal extracts will be captured at the Specified Substance Group 1 information level. See for further explanation the Substance Class: Structurally Diverse and the herbal annex.
@@ -175,6 +177,8 @@ class SubstanceSourceMaterial(ModelBase):
     :param Organism organism: This subclause describes the organism which the substance is derived from. For vaccines, the parent organism shall be specified based on these subclause elements. As an example, full taxonomy will be described for the Substance Name: ., Leaf
     :param PartDescription partDescription: To do
     """
+
+    resourceType: str = "SubstanceSourceMaterial"
     id: str = None
     
     meta: "Meta" = None

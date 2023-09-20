@@ -1,23 +1,23 @@
 """
 Generated class for InsurancePlan. 
-Time: 2023-09-20 20:29:43
+Time: 2023-09-20 20:39:03
 """
 from dataclasses import dataclass
 from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Money import *
 from fhan.models.R4.Element import *
-from fhan.models.R4.HumanName import *
-from fhan.models.R4.Extension import *
-from fhan.models.R4.Quantity import *
-from fhan.models.R4.ContactPoint import *
-from fhan.models.R4.Identifier import *
-from fhan.models.R4.Reference import *
 from fhan.models.R4.Address import *
+from fhan.models.R4.Meta import *
+from fhan.models.R4.Resource import *
+from fhan.models.R4.ContactPoint import *
+from fhan.models.R4.Reference import *
+from fhan.models.R4.BackboneElement import *
 from fhan.models.R4.Narrative import *
 from fhan.models.R4.Period import *
-from fhan.models.R4.Resource import *
+from fhan.models.R4.HumanName import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.Money import *
+from fhan.models.R4.Quantity import *
+from fhan.models.R4.Extension import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -61,6 +61,7 @@ class Limit(Element):
     value: "Quantity" = None
     code: "CodeableConcept" = None
     
+
   
     
     
@@ -81,6 +82,7 @@ class Benefit(Element):
     requirement: str = None
     limit: list[Limit] = None
     
+
   
     
     
@@ -152,6 +154,7 @@ class Cost(Element):
     qualifiers: list[CodeableConcept] = None
     value: "Quantity" = None
     
+
   
     
     
@@ -169,6 +172,7 @@ class Benefit(Element):
     type: "CodeableConcept" = None
     cost: list[Cost] = None
     
+
   
     
     
@@ -186,6 +190,7 @@ class SpecificCost(Element):
     category: "CodeableConcept" = None
     benefit: list[Benefit] = None
     
+
   
     
     
@@ -211,6 +216,7 @@ class Plan(Element):
     generalCost: list[GeneralCost] = None
     specificCost: list[SpecificCost] = None
     
+
 @dataclass
 class InsurancePlan(ModelBase):
     """ Details of a Health Insurance product/plan provided by an organization.
@@ -237,6 +243,8 @@ class InsurancePlan(ModelBase):
     :param Coverage coverage: Coverage details
     :param Plan plan: Plan details
     """
+
+    resourceType: str = "InsurancePlan"
     id: str = None
     
     meta: "Meta" = None

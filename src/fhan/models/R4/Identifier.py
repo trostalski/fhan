@@ -1,13 +1,14 @@
 """
 Generated class for Identifier. 
-Time: 2023-09-20 20:29:43
+Time: 2023-09-20 20:39:03
 """
 from dataclasses import dataclass
 from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Reference import *
-from fhan.models.R4.Extension import *
 from fhan.models.R4.Period import *
+from fhan.models.R4.Extension import *
+from fhan.models.R4.Reference import *
 from fhan.models.R4.Element import *
+
 
 @dataclass
 class Identifier(Element):
@@ -21,6 +22,8 @@ class Identifier(Element):
     :param Period period: Time period when id is/was valid for use
     :param Reference assigner: Organization that issued id (may be just text)
     """
+
+    resourceType: str = "Identifier"
     id: str = None
     
     extension: list["Extension"] = None

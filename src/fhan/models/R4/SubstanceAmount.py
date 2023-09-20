@@ -1,14 +1,15 @@
 """
 Generated class for SubstanceAmount. 
-Time: 2023-09-20 20:29:43
+Time: 2023-09-20 20:39:03
 """
 from dataclasses import dataclass
 from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Range import *
-from fhan.models.R4.Element import *
 from fhan.models.R4.Quantity import *
+from fhan.models.R4.Element import *
 from fhan.models.R4.Extension import *
 from fhan.models.R4.Element import *
+
 
 @dataclass
 class SubstanceAmount(Element):
@@ -25,6 +26,8 @@ class SubstanceAmount(Element):
     :param Quantity lowLimit: Lower limit possible or expected
     :param Quantity highLimit: Upper limit possible or expected
     """
+
+    resourceType: str = "SubstanceAmount"
     id: str = None
     
     extension: list["Extension"] = None

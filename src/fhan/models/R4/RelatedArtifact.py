@@ -1,11 +1,12 @@
 """
 Generated class for RelatedArtifact. 
-Time: 2023-09-20 20:29:43
+Time: 2023-09-20 20:39:03
 """
 from dataclasses import dataclass
 from fhan.models.R4.Attachment import *
 from fhan.models.R4.Extension import *
 from fhan.models.R4.Element import *
+
 
 @dataclass
 class RelatedArtifact(Element):
@@ -20,6 +21,8 @@ class RelatedArtifact(Element):
     :param Attachment document: What document is being referenced
     :param str resource: What resource is being referenced
     """
+
+    resourceType: str = "RelatedArtifact"
     id: str = None
     
     extension: list["Extension"] = None

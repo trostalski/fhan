@@ -1,17 +1,17 @@
 """
 Generated class for SearchParameter. 
-Time: 2023-09-20 20:29:43
+Time: 2023-09-20 20:39:03
 """
 from dataclasses import dataclass
 from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Element import *
-from fhan.models.R4.Extension import *
 from fhan.models.R4.ContactDetail import *
 from fhan.models.R4.UsageContext import *
-from fhan.models.R4.Narrative import *
+from fhan.models.R4.Meta import *
 from fhan.models.R4.Resource import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Element import *
+from fhan.models.R4.Extension import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -32,6 +32,7 @@ class Component(Element):
     
     expression: str = None
     
+
 @dataclass
 class SearchParameter(ModelBase):
     """ A search parameter that defines a named search item that can be used to search/filter on a resource.
@@ -70,6 +71,8 @@ class SearchParameter(ModelBase):
     :param str chain: Chained names supported
     :param Component component: For Composite resources to define the parts
     """
+
+    resourceType: str = "SearchParameter"
     id: str = None
     
     meta: "Meta" = None

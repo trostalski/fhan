@@ -1,11 +1,12 @@
 """
 Generated class for Reference. 
-Time: 2023-09-20 20:29:43
+Time: 2023-09-20 20:39:03
 """
 from dataclasses import dataclass
 from fhan.models.R4.Identifier import *
 from fhan.models.R4.Extension import *
 from fhan.models.R4.Element import *
+
 
 @dataclass
 class Reference(Element):
@@ -17,6 +18,8 @@ class Reference(Element):
     :param Identifier identifier: Logical reference, when literal reference is not known
     :param str display: Text alternative for the resource
     """
+
+    resourceType: str = "Reference"
     id: str = None
     
     extension: list["Extension"] = None

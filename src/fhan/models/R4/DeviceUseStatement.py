@@ -1,19 +1,20 @@
 """
 Generated class for DeviceUseStatement. 
-Time: 2023-09-20 20:29:43
+Time: 2023-09-20 20:39:03
 """
 from dataclasses import dataclass
 from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Meta import *
+from fhan.models.R4.Resource import *
+from fhan.models.R4.Timing import *
+from fhan.models.R4.Reference import *
 from fhan.models.R4.Annotation import *
-from fhan.models.R4.Extension import *
+from fhan.models.R4.Narrative import *
 from fhan.models.R4.Period import *
 from fhan.models.R4.Identifier import *
-from fhan.models.R4.Timing import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.Reference import *
-from fhan.models.R4.Resource import *
+from fhan.models.R4.Extension import *
 from fhan.models.generator_models import ModelBase
+
 @dataclass
 class DeviceUseStatement(ModelBase):
     """ A record of a device being used by a patient where the record is the result of a report from the patient or another clinician.
@@ -39,6 +40,8 @@ class DeviceUseStatement(ModelBase):
     :param CodeableConcept bodySite: Target body site
     :param Annotation note: Addition details (comments, instructions)
     """
+
+    resourceType: str = "DeviceUseStatement"
     id: str = None
     
     meta: "Meta" = None

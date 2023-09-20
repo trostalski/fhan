@@ -1,10 +1,11 @@
 """
 Generated class for Coding. 
-Time: 2023-09-20 20:29:43
+Time: 2023-09-20 20:39:03
 """
 from dataclasses import dataclass
 from fhan.models.R4.Extension import *
 from fhan.models.R4.Element import *
+
 
 @dataclass
 class Coding(Element):
@@ -17,6 +18,8 @@ class Coding(Element):
     :param str display: Representation defined by the system
     :param bool userSelected: If this coding was chosen directly by the user
     """
+
+    resourceType: str = "Coding"
     id: str = None
     
     extension: list["Extension"] = None

@@ -1,10 +1,11 @@
 """
 Generated class for Expression. 
-Time: 2023-09-20 20:29:43
+Time: 2023-09-20 20:39:03
 """
 from dataclasses import dataclass
 from fhan.models.R4.Extension import *
 from fhan.models.R4.Element import *
+
 
 @dataclass
 class Expression(Element):
@@ -17,6 +18,8 @@ class Expression(Element):
     :param str expression: Expression in specified language
     :param str reference: Where the expression is found
     """
+
+    resourceType: str = "Expression"
     id: str = None
     
     extension: list["Extension"] = None

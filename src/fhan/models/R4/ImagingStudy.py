@@ -1,19 +1,19 @@
 """
 Generated class for ImagingStudy. 
-Time: 2023-09-20 20:29:43
+Time: 2023-09-20 20:39:03
 """
 from dataclasses import dataclass
 from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Meta import *
+from fhan.models.R4.Resource import *
+from fhan.models.R4.Reference import *
 from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Coding import *
 from fhan.models.R4.Annotation import *
+from fhan.models.R4.Coding import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Identifier import *
 from fhan.models.R4.Element import *
 from fhan.models.R4.Extension import *
-from fhan.models.R4.Identifier import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.Reference import *
-from fhan.models.R4.Resource import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -58,6 +58,7 @@ class Instance(Element):
     
     title: str = None
     
+
   
     
     
@@ -100,6 +101,7 @@ class Series(Element):
     performer: list[Performer] = None
     instance: list[Instance] = None
     
+
 @dataclass
 class ImagingStudy(ModelBase):
     """ Representation of the content produced in a DICOM imaging study. A study comprises a set of series, each of which includes a set of Service-Object Pair Instances (SOP Instances - images or other data) acquired or produced in a common context.  A series is of only one modality (e.g. X-ray, CT, MR, ultrasound), but a study may have multiple series of different modalities.
@@ -132,6 +134,8 @@ class ImagingStudy(ModelBase):
     :param str description: Institution-generated description
     :param Series series: Each study has one or more series of instances
     """
+
+    resourceType: str = "ImagingStudy"
     id: str = None
     
     meta: "Meta" = None

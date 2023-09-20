@@ -1,20 +1,20 @@
 """
 Generated class for HealthcareService. 
-Time: 2023-09-20 20:29:43
+Time: 2023-09-20 20:39:03
 """
 from dataclasses import dataclass
 from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Meta import *
+from fhan.models.R4.Resource import *
 from fhan.models.R4.Attachment import *
+from fhan.models.R4.Reference import *
 from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Element import *
-from fhan.models.R4.Extension import *
+from fhan.models.R4.Narrative import *
 from fhan.models.R4.Period import *
 from fhan.models.R4.ContactPoint import *
 from fhan.models.R4.Identifier import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.Reference import *
-from fhan.models.R4.Resource import *
+from fhan.models.R4.Element import *
+from fhan.models.R4.Extension import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -77,6 +77,7 @@ class NotAvailable(Element):
     description: str = None
     during: "Period" = None
     
+
 @dataclass
 class HealthcareService(ModelBase):
     """ The details of a healthcare service available at a location.
@@ -113,6 +114,8 @@ class HealthcareService(ModelBase):
     :param str availabilityExceptions: Description of availability exceptions
     :param Reference endpoint: Technical endpoints providing access to electronic services operated for the healthcare service
     """
+
+    resourceType: str = "HealthcareService"
     id: str = None
     
     meta: "Meta" = None

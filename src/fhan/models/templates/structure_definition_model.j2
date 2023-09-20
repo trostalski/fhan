@@ -42,7 +42,7 @@ class {{ element.type }}({{ element.base_class }}):
         {{ render_backbone_elements(element.backbone_children) }}  {# Recursively call render_backbone_elements for backbone_children #}
     {% endif %}
     {{ render_backbone_element(element) }}
-{% endfor -%}
+{% endfor %}
 {% endmacro -%}
 
 {{ render_backbone_elements(structure_definition.backbone_elements) -}}
@@ -57,6 +57,8 @@ class {{structure_definition.type}}{% if structure_definition.base_class %}({{st
     {% endif -%}
     {% endfor -%}
     """
+
+    resourceType: str = "{{structure_definition.type}}"
 
     {%- for element in structure_definition.defined_elements -%}
     {% if element.is_primitive %}

@@ -1,18 +1,18 @@
 """
 Generated class for Appointment. 
-Time: 2023-09-20 20:29:43
+Time: 2023-09-20 20:39:03
 """
 from dataclasses import dataclass
 from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Meta import *
+from fhan.models.R4.Resource import *
+from fhan.models.R4.Reference import *
 from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Element import *
-from fhan.models.R4.Extension import *
+from fhan.models.R4.Narrative import *
 from fhan.models.R4.Period import *
 from fhan.models.R4.Identifier import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.Reference import *
-from fhan.models.R4.Resource import *
+from fhan.models.R4.Element import *
+from fhan.models.R4.Extension import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -39,6 +39,7 @@ class Participant(Element):
     status: str = None
     period: "Period" = None
     
+
 @dataclass
 class Appointment(ModelBase):
     """ A booking of a healthcare event among patient(s), practitioner(s), related person(s) and/or device(s) for a specific date/time. This may result in one or more Encounter(s).
@@ -73,6 +74,8 @@ class Appointment(ModelBase):
     :param Participant participant: Participants involved in appointment
     :param Period requestedPeriod: Potential date/time interval(s) requested to allocate the appointment within
     """
+
+    resourceType: str = "Appointment"
     id: str = None
     
     meta: "Meta" = None

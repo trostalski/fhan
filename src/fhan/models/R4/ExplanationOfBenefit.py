@@ -1,23 +1,23 @@
 """
 Generated class for ExplanationOfBenefit. 
-Time: 2023-09-20 20:29:43
+Time: 2023-09-20 20:39:03
 """
 from dataclasses import dataclass
 from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Attachment import *
-from fhan.models.R4.Coding import *
-from fhan.models.R4.Money import *
 from fhan.models.R4.Element import *
-from fhan.models.R4.Extension import *
-from fhan.models.R4.Period import *
-from fhan.models.R4.Quantity import *
-from fhan.models.R4.Identifier import *
 from fhan.models.R4.Address import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.Reference import *
+from fhan.models.R4.Meta import *
 from fhan.models.R4.Resource import *
+from fhan.models.R4.Attachment import *
+from fhan.models.R4.Reference import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Coding import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Period import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.Money import *
+from fhan.models.R4.Quantity import *
+from fhan.models.R4.Extension import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -264,6 +264,7 @@ class SubDetail(Element):
     
     noteNumber: int = None
     
+
   
     
     
@@ -306,6 +307,7 @@ class Detail(Element):
     noteNumber: int = None
     subDetail: list[SubDetail] = None
     
+
   
     
     
@@ -406,6 +408,7 @@ class SubDetail(Element):
     
     noteNumber: int = None
     
+
   
     
     
@@ -440,6 +443,7 @@ class Detail(Element):
     noteNumber: int = None
     subDetail: list[SubDetail] = None
     
+
   
     
     
@@ -583,6 +587,7 @@ class Financial(Element):
     
     usedUnsignedInt: int = None
     
+
   
     
     
@@ -615,6 +620,7 @@ class BenefitBalance(Element):
     term: "CodeableConcept" = None
     financial: list[Financial] = None
     
+
 @dataclass
 class ExplanationOfBenefit(ModelBase):
     """ This resource provides: the claim details; adjudication details from the processing of a Claim; and optionally account balance information, for informing the subscriber of the benefits provided.
@@ -669,6 +675,8 @@ class ExplanationOfBenefit(ModelBase):
     :param Period benefitPeriod: When the benefits are applicable
     :param BenefitBalance benefitBalance: Balance by Benefit Category
     """
+
+    resourceType: str = "ExplanationOfBenefit"
     id: str = None
     
     meta: "Meta" = None

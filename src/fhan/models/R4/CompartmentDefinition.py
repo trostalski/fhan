@@ -1,16 +1,16 @@
 """
 Generated class for CompartmentDefinition. 
-Time: 2023-09-20 20:29:43
+Time: 2023-09-20 20:39:03
 """
 from dataclasses import dataclass
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Element import *
-from fhan.models.R4.Extension import *
 from fhan.models.R4.ContactDetail import *
 from fhan.models.R4.UsageContext import *
-from fhan.models.R4.Narrative import *
+from fhan.models.R4.Meta import *
 from fhan.models.R4.Resource import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Element import *
+from fhan.models.R4.Extension import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -34,6 +34,7 @@ class Resource(Element):
     
     documentation: str = None
     
+
 @dataclass
 class CompartmentDefinition(ModelBase):
     """ A compartment definition that defines how resources are accessed on a server.
@@ -60,6 +61,8 @@ class CompartmentDefinition(ModelBase):
     :param bool search: Whether the search syntax is supported
     :param Resource resource: How a resource is related to the compartment
     """
+
+    resourceType: str = "CompartmentDefinition"
     id: str = None
     
     meta: "Meta" = None

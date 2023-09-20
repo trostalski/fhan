@@ -1,12 +1,13 @@
 """
 Generated class for Signature. 
-Time: 2023-09-20 20:29:43
+Time: 2023-09-20 20:39:03
 """
 from dataclasses import dataclass
-from fhan.models.R4.Reference import *
 from fhan.models.R4.Coding import *
 from fhan.models.R4.Extension import *
+from fhan.models.R4.Reference import *
 from fhan.models.R4.Element import *
+
 
 @dataclass
 class Signature(Element):
@@ -21,6 +22,8 @@ class Signature(Element):
     :param str sigFormat: The technical format of the signature
     :param str data: The actual signature content (XML DigSig. JWS, picture, etc.)
     """
+
+    resourceType: str = "Signature"
     id: str = None
     
     extension: list["Extension"] = None

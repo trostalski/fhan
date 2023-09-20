@@ -1,21 +1,21 @@
 """
 Generated class for ChargeItemDefinition. 
-Time: 2023-09-20 20:29:43
+Time: 2023-09-20 20:39:03
 """
 from dataclasses import dataclass
 from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.ContactDetail import *
+from fhan.models.R4.UsageContext import *
 from fhan.models.R4.Meta import *
+from fhan.models.R4.Resource import *
+from fhan.models.R4.Reference import *
 from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Period import *
+from fhan.models.R4.Identifier import *
 from fhan.models.R4.Money import *
 from fhan.models.R4.Element import *
 from fhan.models.R4.Extension import *
-from fhan.models.R4.Identifier import *
-from fhan.models.R4.ContactDetail import *
-from fhan.models.R4.UsageContext import *
-from fhan.models.R4.Reference import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.Period import *
-from fhan.models.R4.Resource import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -64,6 +64,7 @@ class PriceComponent(Element):
     factor: float = None
     amount: "Money" = None
     
+
   
     
     
@@ -79,6 +80,7 @@ class PropertyGroup(Element):
     modifierExtension: list[Extension] = None
     priceComponent: list[PriceComponent] = None
     
+
 @dataclass
 class ChargeItemDefinition(ModelBase):
     """ The ChargeItemDefinition resource provides the properties that apply to the (billing) codes necessary to calculate costs and prices. The properties may differ largely depending on type and realm, therefore this resource gives only a rough structure and requires profiling for each type of billing code system.
@@ -114,6 +116,8 @@ class ChargeItemDefinition(ModelBase):
     :param Applicability applicability: Whether or not the billing code is applicable
     :param PropertyGroup propertyGroup: Group of properties which are applicable under the same conditions
     """
+
+    resourceType: str = "ChargeItemDefinition"
     id: str = None
     
     meta: "Meta" = None

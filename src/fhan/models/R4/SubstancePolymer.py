@@ -1,17 +1,17 @@
 """
 Generated class for SubstancePolymer. 
-Time: 2023-09-20 20:29:43
+Time: 2023-09-20 20:39:03
 """
 from dataclasses import dataclass
 from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.BackboneElement import *
 from fhan.models.R4.SubstanceAmount import *
+from fhan.models.R4.Meta import *
+from fhan.models.R4.Resource import *
 from fhan.models.R4.Attachment import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Narrative import *
 from fhan.models.R4.Element import *
 from fhan.models.R4.Extension import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.Resource import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -37,6 +37,7 @@ class StartingMaterial(Element):
     isDefining: bool = None
     amount: "SubstanceAmount" = None
     
+
   
     
     
@@ -95,6 +96,7 @@ class StructuralRepresentation(Element):
     representation: str = None
     attachment: "Attachment" = None
     
+
   
     
     
@@ -121,6 +123,7 @@ class RepeatUnit(Element):
     degreeOfPolymerisation: list[DegreeOfPolymerisation] = None
     structuralRepresentation: list[StructuralRepresentation] = None
     
+
   
     
     
@@ -144,6 +147,7 @@ class Repeat(Element):
     repeatUnitAmountType: "CodeableConcept" = None
     repeatUnit: list[RepeatUnit] = None
     
+
 @dataclass
 class SubstancePolymer(ModelBase):
     """ Todo.
@@ -162,6 +166,8 @@ class SubstancePolymer(ModelBase):
     :param MonomerSet monomerSet: Todo
     :param Repeat repeat: Todo
     """
+
+    resourceType: str = "SubstancePolymer"
     id: str = None
     
     meta: "Meta" = None

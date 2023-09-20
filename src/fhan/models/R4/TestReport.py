@@ -1,16 +1,16 @@
 """
 Generated class for TestReport. 
-Time: 2023-09-20 20:29:43
+Time: 2023-09-20 20:39:03
 """
 from dataclasses import dataclass
-from fhan.models.R4.BackboneElement import *
 from fhan.models.R4.Meta import *
+from fhan.models.R4.Resource import *
+from fhan.models.R4.Reference import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Identifier import *
 from fhan.models.R4.Element import *
 from fhan.models.R4.Extension import *
-from fhan.models.R4.Identifier import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.Reference import *
-from fhan.models.R4.Resource import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -82,6 +82,7 @@ class _assert(Element):
     
     detail: str = None
     
+
   
     
     
@@ -99,6 +100,7 @@ class Action(Element):
     operation: "Operation" = None
     _assert: "_assert" = None
     
+
   
     
     
@@ -129,6 +131,7 @@ class Action(Element):
     extension: list[Extension] = None
     modifierExtension: list[Extension] = None
     
+
   
     
     
@@ -170,6 +173,7 @@ class Action(Element):
     extension: list[Extension] = None
     modifierExtension: list[Extension] = None
     
+
   
     
     
@@ -185,6 +189,7 @@ class Teardown(Element):
     modifierExtension: list[Extension] = None
     action: list[Action] = None
     
+
 @dataclass
 class TestReport(ModelBase):
     """ A summary of information based on the results of executing a TestScript.
@@ -209,6 +214,8 @@ class TestReport(ModelBase):
     :param Test test: A test executed from the test script
     :param Teardown teardown: The results of running the series of required clean up steps
     """
+
+    resourceType: str = "TestReport"
     id: str = None
     
     meta: "Meta" = None

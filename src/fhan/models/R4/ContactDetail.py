@@ -1,11 +1,12 @@
 """
 Generated class for ContactDetail. 
-Time: 2023-09-20 20:29:43
+Time: 2023-09-20 20:39:03
 """
 from dataclasses import dataclass
-from fhan.models.R4.ContactPoint import *
 from fhan.models.R4.Extension import *
+from fhan.models.R4.ContactPoint import *
 from fhan.models.R4.Element import *
+
 
 @dataclass
 class ContactDetail(Element):
@@ -15,6 +16,8 @@ class ContactDetail(Element):
     :param str name: Name of an individual to contact
     :param ContactPoint telecom: Contact details for individual or organization
     """
+
+    resourceType: str = "ContactDetail"
     id: str = None
     
     extension: list["Extension"] = None

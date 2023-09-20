@@ -1,13 +1,14 @@
 """
 Generated class for ProductShelfLife. 
-Time: 2023-09-20 20:29:43
+Time: 2023-09-20 20:39:03
 """
 from dataclasses import dataclass
 from fhan.models.R4.Identifier import *
-from fhan.models.R4.Quantity import *
 from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Quantity import *
 from fhan.models.R4.Extension import *
 from fhan.models.R4.Element import *
+
 
 @dataclass
 class ProductShelfLife(Element):
@@ -20,6 +21,8 @@ class ProductShelfLife(Element):
     :param Quantity period: The shelf life time period can be specified using a numerical value for the period of time and its unit of time measurement The unit of measurement shall be specified in accordance with ISO 11240 and the resulting terminology The symbol and the symbol identifier shall be used
     :param CodeableConcept specialPrecautionsForStorage: Special precautions for storage, if any, can be specified using an appropriate controlled vocabulary The controlled term and the controlled term identifier shall be specified
     """
+
+    resourceType: str = "ProductShelfLife"
     id: str = None
     
     extension: list["Extension"] = None

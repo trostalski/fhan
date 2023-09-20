@@ -1,17 +1,17 @@
 """
 Generated class for MedicinalProductContraindication. 
-Time: 2023-09-20 20:29:43
+Time: 2023-09-20 20:39:03
 """
 from dataclasses import dataclass
 from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Meta import *
+from fhan.models.R4.Resource import *
+from fhan.models.R4.Reference import *
 from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Narrative import *
 from fhan.models.R4.Element import *
 from fhan.models.R4.Extension import *
 from fhan.models.R4.Population import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.Reference import *
-from fhan.models.R4.Resource import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -30,6 +30,7 @@ class OtherTherapy(Element):
     therapyRelationshipType: "CodeableConcept" = None
     medicationCodeableConcept: "CodeableConcept" = None
     
+
 @dataclass
 class MedicinalProductContraindication(ModelBase):
     """ The clinical particulars - indications, contraindications etc. of a medicinal product, including for regulatory purposes.
@@ -49,6 +50,8 @@ class MedicinalProductContraindication(ModelBase):
     :param OtherTherapy otherTherapy: Information about the use of the medicinal product in relation to other therapies described as part of the indication
     :param Population population: The population group to which this applies
     """
+
+    resourceType: str = "MedicinalProductContraindication"
     id: str = None
     
     meta: "Meta" = None

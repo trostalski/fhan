@@ -1,10 +1,11 @@
 """
 Generated class for Period. 
-Time: 2023-09-20 20:29:43
+Time: 2023-09-20 20:39:03
 """
 from dataclasses import dataclass
 from fhan.models.R4.Extension import *
 from fhan.models.R4.Element import *
+
 
 @dataclass
 class Period(Element):
@@ -14,6 +15,8 @@ class Period(Element):
     :param str start: Starting time with inclusive boundary
     :param str end: End time with inclusive boundary, if not ongoing
     """
+
+    resourceType: str = "Period"
     id: str = None
     
     extension: list["Extension"] = None

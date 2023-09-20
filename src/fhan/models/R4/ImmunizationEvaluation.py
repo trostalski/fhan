@@ -1,16 +1,17 @@
 """
 Generated class for ImmunizationEvaluation. 
-Time: 2023-09-20 20:29:43
+Time: 2023-09-20 20:39:03
 """
 from dataclasses import dataclass
 from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Meta import *
-from fhan.models.R4.Extension import *
-from fhan.models.R4.Identifier import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.Reference import *
 from fhan.models.R4.Resource import *
+from fhan.models.R4.Reference import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.Extension import *
 from fhan.models.generator_models import ModelBase
+
 @dataclass
 class ImmunizationEvaluation(ModelBase):
     """ Describes a comparison of an immunization event against published recommendations to determine if the administration is "valid" in relation to those  recommendations.
@@ -36,6 +37,8 @@ class ImmunizationEvaluation(ModelBase):
     :param int doseNumberPositiveInt: Dose number within series
     :param int seriesDosesPositiveInt: Recommended number of doses for immunity
     """
+
+    resourceType: str = "ImmunizationEvaluation"
     id: str = None
     
     meta: "Meta" = None

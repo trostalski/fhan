@@ -1,18 +1,18 @@
 """
 Generated class for MedicinalProductIndication. 
-Time: 2023-09-20 20:29:43
+Time: 2023-09-20 20:39:03
 """
 from dataclasses import dataclass
 from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.BackboneElement import *
 from fhan.models.R4.Element import *
-from fhan.models.R4.Extension import *
-from fhan.models.R4.Quantity import *
-from fhan.models.R4.Population import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.Reference import *
+from fhan.models.R4.Meta import *
 from fhan.models.R4.Resource import *
+from fhan.models.R4.Reference import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Quantity import *
+from fhan.models.R4.Extension import *
+from fhan.models.R4.Population import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -31,6 +31,7 @@ class OtherTherapy(Element):
     therapyRelationshipType: "CodeableConcept" = None
     medicationCodeableConcept: "CodeableConcept" = None
     
+
 @dataclass
 class MedicinalProductIndication(ModelBase):
     """ Indication for the Medicinal Product.
@@ -52,6 +53,8 @@ class MedicinalProductIndication(ModelBase):
     :param Reference undesirableEffect: Describe the undesirable effects of the medicinal product
     :param Population population: The population group to which this applies
     """
+
+    resourceType: str = "MedicinalProductIndication"
     id: str = None
     
     meta: "Meta" = None

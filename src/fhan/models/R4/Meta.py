@@ -1,11 +1,12 @@
 """
 Generated class for Meta. 
-Time: 2023-09-20 20:29:43
+Time: 2023-09-20 20:39:03
 """
 from dataclasses import dataclass
 from fhan.models.R4.Coding import *
 from fhan.models.R4.Extension import *
 from fhan.models.R4.Element import *
+
 
 @dataclass
 class Meta(Element):
@@ -19,6 +20,8 @@ class Meta(Element):
     :param Coding security: Security Labels applied to this resource
     :param Coding tag: Tags applied to this resource
     """
+
+    resourceType: str = "Meta"
     id: str = None
     
     extension: list["Extension"] = None

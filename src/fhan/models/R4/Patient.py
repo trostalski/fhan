@@ -1,22 +1,22 @@
 """
 Generated class for Patient. 
-Time: 2023-09-20 20:29:43
+Time: 2023-09-20 20:39:03
 """
 from dataclasses import dataclass
 from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Attachment import *
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Element import *
-from fhan.models.R4.HumanName import *
-from fhan.models.R4.Extension import *
-from fhan.models.R4.Period import *
-from fhan.models.R4.ContactPoint import *
-from fhan.models.R4.Identifier import *
 from fhan.models.R4.Address import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.Reference import *
+from fhan.models.R4.Meta import *
 from fhan.models.R4.Resource import *
+from fhan.models.R4.ContactPoint import *
+from fhan.models.R4.Attachment import *
+from fhan.models.R4.Reference import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Period import *
+from fhan.models.R4.HumanName import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.Element import *
+from fhan.models.R4.Extension import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -82,6 +82,7 @@ class Link(Element):
     
     type: str = None
     
+
 @dataclass
 class Patient(ModelBase):
     """ Demographics and other administrative information about an individual or animal receiving care or other health-related services.
@@ -110,6 +111,8 @@ class Patient(ModelBase):
     :param Reference managingOrganization: Organization that is the custodian of the patient record
     :param Link link: Link to another patient resource that concerns the same actual person
     """
+
+    resourceType: str = "Patient"
     id: str = None
     
     meta: "Meta" = None

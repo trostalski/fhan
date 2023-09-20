@@ -1,17 +1,17 @@
 """
 Generated class for AdverseEvent. 
-Time: 2023-09-20 20:29:43
+Time: 2023-09-20 20:39:03
 """
 from dataclasses import dataclass
 from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Meta import *
+from fhan.models.R4.Resource import *
+from fhan.models.R4.Reference import *
 from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Identifier import *
 from fhan.models.R4.Element import *
 from fhan.models.R4.Extension import *
-from fhan.models.R4.Identifier import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.Reference import *
-from fhan.models.R4.Resource import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -37,6 +37,7 @@ class Causality(Element):
     author: "Reference" = None
     method: "CodeableConcept" = None
     
+
   
     
     
@@ -54,6 +55,7 @@ class SuspectEntity(Element):
     instance: "Reference" = None
     causality: list[Causality] = None
     
+
 @dataclass
 class AdverseEvent(ModelBase):
     """ Actual or  potential/avoided event causing unintended physical injury resulting from or contributed to by medical care, a research study or other healthcare setting factors that requires additional monitoring, treatment, or hospitalization, or that results in death.
@@ -86,6 +88,8 @@ class AdverseEvent(ModelBase):
     :param Reference referenceDocument: AdverseEvent.referenceDocument
     :param Reference study: AdverseEvent.study
     """
+
+    resourceType: str = "AdverseEvent"
     id: str = None
     
     meta: "Meta" = None

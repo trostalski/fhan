@@ -1,21 +1,21 @@
 """
 Generated class for CarePlan. 
-Time: 2023-09-20 20:29:43
+Time: 2023-09-20 20:39:03
 """
 from dataclasses import dataclass
 from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Element import *
 from fhan.models.R4.Meta import *
+from fhan.models.R4.Resource import *
+from fhan.models.R4.Timing import *
+from fhan.models.R4.Reference import *
 from fhan.models.R4.BackboneElement import *
 from fhan.models.R4.Annotation import *
-from fhan.models.R4.Element import *
-from fhan.models.R4.Extension import *
-from fhan.models.R4.Period import *
-from fhan.models.R4.Quantity import *
-from fhan.models.R4.Identifier import *
-from fhan.models.R4.Timing import *
 from fhan.models.R4.Narrative import *
-from fhan.models.R4.Reference import *
-from fhan.models.R4.Resource import *
+from fhan.models.R4.Period import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.Quantity import *
+from fhan.models.R4.Extension import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -72,6 +72,7 @@ class Detail(Element):
     
     description: str = None
     
+
   
     
     
@@ -95,6 +96,7 @@ class Activity(Element):
     reference: "Reference" = None
     detail: "Detail" = None
     
+
 @dataclass
 class CarePlan(ModelBase):
     """ Describes the intention of how one or more practitioners intend to deliver care for a particular patient, group or community for a period of time, possibly limited to care for a specific condition or set of conditions.
@@ -130,6 +132,8 @@ class CarePlan(ModelBase):
     :param Activity activity: Action to occur as part of plan
     :param Annotation note: Comments about the plan
     """
+
+    resourceType: str = "CarePlan"
     id: str = None
     
     meta: "Meta" = None

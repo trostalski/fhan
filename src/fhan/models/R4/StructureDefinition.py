@@ -1,20 +1,20 @@
 """
 Generated class for StructureDefinition. 
-Time: 2023-09-20 20:29:43
+Time: 2023-09-20 20:39:03
 """
 from dataclasses import dataclass
 from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.ElementDefinition import *
-from fhan.models.R4.Coding import *
-from fhan.models.R4.Element import *
-from fhan.models.R4.Extension import *
-from fhan.models.R4.Identifier import *
 from fhan.models.R4.ContactDetail import *
 from fhan.models.R4.UsageContext import *
-from fhan.models.R4.Narrative import *
+from fhan.models.R4.ElementDefinition import *
+from fhan.models.R4.Meta import *
 from fhan.models.R4.Resource import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Coding import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.Element import *
+from fhan.models.R4.Extension import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -93,6 +93,7 @@ class Differential(Element):
     modifierExtension: list[Extension] = None
     element: list[ElementDefinition] = None
     
+
 @dataclass
 class StructureDefinition(ModelBase):
     """ A definition of a FHIR structure. This resource is used to describe the underlying resources, data types defined in FHIR, and also for describing extensions and constraints on resources and data types.
@@ -131,6 +132,8 @@ class StructureDefinition(ModelBase):
     :param Snapshot snapshot: Snapshot view of the structure
     :param Differential differential: Differential view of the structure
     """
+
+    resourceType: str = "StructureDefinition"
     id: str = None
     
     meta: "Meta" = None

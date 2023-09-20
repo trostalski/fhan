@@ -1,22 +1,22 @@
 """
 Generated class for Claim. 
-Time: 2023-09-20 20:29:43
+Time: 2023-09-20 20:39:03
 """
 from dataclasses import dataclass
 from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Attachment import *
-from fhan.models.R4.Money import *
 from fhan.models.R4.Element import *
-from fhan.models.R4.Extension import *
-from fhan.models.R4.Period import *
-from fhan.models.R4.Quantity import *
-from fhan.models.R4.Identifier import *
 from fhan.models.R4.Address import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.Reference import *
+from fhan.models.R4.Meta import *
 from fhan.models.R4.Resource import *
+from fhan.models.R4.Attachment import *
+from fhan.models.R4.Reference import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Period import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.Money import *
+from fhan.models.R4.Quantity import *
+from fhan.models.R4.Extension import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -248,6 +248,7 @@ class SubDetail(Element):
     net: "Money" = None
     udi: list[Reference] = None
     
+
   
     
     
@@ -287,6 +288,7 @@ class Detail(Element):
     udi: list[Reference] = None
     subDetail: list[SubDetail] = None
     
+
   
     
     
@@ -349,6 +351,7 @@ class Item(Element):
     encounter: list[Reference] = None
     detail: list[Detail] = None
     
+
 @dataclass
 class Claim(ModelBase):
     """ A provider issued list of professional services and products which have been provided, or are to be provided, to a patient which is sent to an insurer for reimbursement.
@@ -388,6 +391,8 @@ class Claim(ModelBase):
     :param Item item: Product or service provided
     :param Money total: Total claim cost
     """
+
+    resourceType: str = "Claim"
     id: str = None
     
     meta: "Meta" = None

@@ -1,22 +1,22 @@
 """
 Generated class for DeviceDefinition. 
-Time: 2023-09-20 20:29:43
+Time: 2023-09-20 20:39:03
 """
 from dataclasses import dataclass
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Meta import *
 from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.ProductShelfLife import *
-from fhan.models.R4.Annotation import *
+from fhan.models.R4.ProdCharacteristic import *
 from fhan.models.R4.Element import *
-from fhan.models.R4.Extension import *
-from fhan.models.R4.Quantity import *
+from fhan.models.R4.Meta import *
+from fhan.models.R4.Resource import *
+from fhan.models.R4.ProductShelfLife import *
+from fhan.models.R4.Reference import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Annotation import *
+from fhan.models.R4.Narrative import *
 from fhan.models.R4.ContactPoint import *
 from fhan.models.R4.Identifier import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.Reference import *
-from fhan.models.R4.ProdCharacteristic import *
-from fhan.models.R4.Resource import *
+from fhan.models.R4.Quantity import *
+from fhan.models.R4.Extension import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -135,6 +135,7 @@ class Material(Element):
     
     allergenicIndicator: bool = None
     
+
 @dataclass
 class DeviceDefinition(ModelBase):
     """ The characteristics, operational status and capabilities of a medical-related component of a medical device.
@@ -169,6 +170,8 @@ class DeviceDefinition(ModelBase):
     :param Reference parentDevice: The parent device it can be part of
     :param Material material: A substance used to create the material(s) of which the device is made
     """
+
+    resourceType: str = "DeviceDefinition"
     id: str = None
     
     meta: "Meta" = None

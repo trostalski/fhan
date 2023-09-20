@@ -1,15 +1,16 @@
 """
 Generated class for Definition. 
-Time: 2023-09-20 20:29:43
+Time: 2023-09-20 20:39:03
 """
 from dataclasses import dataclass
 from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.ContactDetail import *
 from fhan.models.R4.UsageContext import *
-from fhan.models.R4.Identifier import *
 from fhan.models.R4.Reference import *
 from fhan.models.R4.Period import *
+from fhan.models.R4.Identifier import *
 from fhan.models.generator_models import ModelBase
+
 @dataclass
 class Definition(ModelBase):
     """ Logical Model: A pattern to be followed by resources that represent a specific proposal, plan and/or order for some sort of action or service.
@@ -37,6 +38,8 @@ class Definition(ModelBase):
     :param Period effectivePeriod: The effective date range for the {{title}}
     :param CodeableConcept performerType: Desired kind of service performer
     """
+
+    resourceType: str = "Definition"
     url: str = None
     
     identifier: "Identifier" = None

@@ -1,18 +1,18 @@
 """
 Generated class for CatalogEntry. 
-Time: 2023-09-20 20:29:43
+Time: 2023-09-20 20:39:03
 """
 from dataclasses import dataclass
 from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Meta import *
+from fhan.models.R4.Resource import *
+from fhan.models.R4.Reference import *
 from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Element import *
-from fhan.models.R4.Extension import *
+from fhan.models.R4.Narrative import *
 from fhan.models.R4.Period import *
 from fhan.models.R4.Identifier import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.Reference import *
-from fhan.models.R4.Resource import *
+from fhan.models.R4.Element import *
+from fhan.models.R4.Extension import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -32,6 +32,7 @@ class RelatedEntry(Element):
     relationtype: str = None
     item: "Reference" = None
     
+
 @dataclass
 class CatalogEntry(ModelBase):
     """ Catalog entries are wrappers that contextualize items included in a catalog.
@@ -57,6 +58,8 @@ class CatalogEntry(ModelBase):
     :param CodeableConcept additionalClassification: Additional classification of the catalog entry
     :param RelatedEntry relatedEntry: An item that this catalog entry is related to
     """
+
+    resourceType: str = "CatalogEntry"
     id: str = None
     
     meta: "Meta" = None

@@ -1,20 +1,20 @@
 """
 Generated class for Person. 
-Time: 2023-09-20 20:29:43
+Time: 2023-09-20 20:39:03
 """
 from dataclasses import dataclass
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Attachment import *
-from fhan.models.R4.Element import *
-from fhan.models.R4.HumanName import *
-from fhan.models.R4.Extension import *
-from fhan.models.R4.ContactPoint import *
-from fhan.models.R4.Identifier import *
 from fhan.models.R4.Address import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.Reference import *
+from fhan.models.R4.Meta import *
 from fhan.models.R4.Resource import *
+from fhan.models.R4.ContactPoint import *
+from fhan.models.R4.Attachment import *
+from fhan.models.R4.Reference import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.HumanName import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.Element import *
+from fhan.models.R4.Extension import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -34,6 +34,7 @@ class Link(Element):
     
     assurance: str = None
     
+
 @dataclass
 class Person(ModelBase):
     """ Demographics and administrative information about a person independent of a specific health-related context.
@@ -56,6 +57,8 @@ class Person(ModelBase):
     :param bool active: This person's record is in active use
     :param Link link: Link to a resource that concerns the same actual person
     """
+
+    resourceType: str = "Person"
     id: str = None
     
     meta: "Meta" = None

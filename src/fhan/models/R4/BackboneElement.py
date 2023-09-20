@@ -1,10 +1,11 @@
 """
 Generated class for BackboneElement. 
-Time: 2023-09-20 20:29:43
+Time: 2023-09-20 20:39:03
 """
 from dataclasses import dataclass
 from fhan.models.R4.Extension import *
 from fhan.models.R4.Element import *
+
 
 @dataclass
 class BackboneElement(Element):
@@ -13,6 +14,8 @@ class BackboneElement(Element):
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     """
+
+    resourceType: str = "BackboneElement"
     id: str = None
     
     extension: list["Extension"] = None

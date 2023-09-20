@@ -1,15 +1,15 @@
 """
 Generated class for Subscription. 
-Time: 2023-09-20 20:29:43
+Time: 2023-09-20 20:39:03
 """
 from dataclasses import dataclass
-from fhan.models.R4.BackboneElement import *
 from fhan.models.R4.Meta import *
-from fhan.models.R4.Element import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.Extension import *
-from fhan.models.R4.ContactPoint import *
 from fhan.models.R4.Resource import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.ContactPoint import *
+from fhan.models.R4.Element import *
+from fhan.models.R4.Extension import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -36,6 +36,7 @@ class Channel(Element):
     
     header: str = None
     
+
 @dataclass
 class Subscription(ModelBase):
     """ The subscription resource is used to define a push-based subscription from a server to another system. Once a subscription is registered with the server, the server checks every resource that is created or updated, and if the resource matches the given criteria, it sends a message on the defined "channel" so that another system can take an appropriate action.
@@ -55,6 +56,8 @@ class Subscription(ModelBase):
     :param str error: Latest error note
     :param Channel channel: The channel on which to report matches to the criteria
     """
+
+    resourceType: str = "Subscription"
     id: str = None
     
     meta: "Meta" = None

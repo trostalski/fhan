@@ -1,20 +1,20 @@
 """
 Generated class for Organization. 
-Time: 2023-09-20 20:29:43
+Time: 2023-09-20 20:39:03
 """
 from dataclasses import dataclass
 from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.BackboneElement import *
 from fhan.models.R4.Element import *
-from fhan.models.R4.HumanName import *
-from fhan.models.R4.Extension import *
+from fhan.models.R4.Address import *
+from fhan.models.R4.Meta import *
+from fhan.models.R4.Resource import *
+from fhan.models.R4.Reference import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Narrative import *
 from fhan.models.R4.ContactPoint import *
 from fhan.models.R4.Identifier import *
-from fhan.models.R4.Address import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.Reference import *
-from fhan.models.R4.Resource import *
+from fhan.models.R4.HumanName import *
+from fhan.models.R4.Extension import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -37,6 +37,7 @@ class Contact(Element):
     telecom: list[ContactPoint] = None
     address: "Address" = None
     
+
 @dataclass
 class Organization(ModelBase):
     """ A formally or informally recognized grouping of people or organizations formed for the purpose of achieving some form of collective action.  Includes companies, institutions, corporations, departments, community groups, healthcare practice groups, payer/insurer, etc.
@@ -59,6 +60,8 @@ class Organization(ModelBase):
     :param Contact contact: Contact for the organization for a certain purpose
     :param Reference endpoint: Technical endpoints providing access to services operated for the organization
     """
+
+    resourceType: str = "Organization"
     id: str = None
     
     meta: "Meta" = None

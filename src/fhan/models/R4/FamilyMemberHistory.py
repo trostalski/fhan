@@ -1,21 +1,21 @@
 """
 Generated class for FamilyMemberHistory. 
-Time: 2023-09-20 20:29:43
+Time: 2023-09-20 20:39:03
 """
 from dataclasses import dataclass
 from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Meta import *
+from fhan.models.R4.Age import *
 from fhan.models.R4.Range import *
+from fhan.models.R4.Meta import *
+from fhan.models.R4.Resource import *
+from fhan.models.R4.Reference import *
 from fhan.models.R4.BackboneElement import *
 from fhan.models.R4.Annotation import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Period import *
+from fhan.models.R4.Identifier import *
 from fhan.models.R4.Element import *
 from fhan.models.R4.Extension import *
-from fhan.models.R4.Period import *
-from fhan.models.R4.Age import *
-from fhan.models.R4.Identifier import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.Reference import *
-from fhan.models.R4.Resource import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -41,6 +41,7 @@ class Condition(Element):
     onsetAge: "Age" = None
     note: list[Annotation] = None
     
+
 @dataclass
 class FamilyMemberHistory(ModelBase):
     """ Significant health conditions for a person related to the patient relevant in the context of care for the patient.
@@ -71,6 +72,8 @@ class FamilyMemberHistory(ModelBase):
     :param Annotation note: General note about related person
     :param Condition condition: Condition that the related person had
     """
+
+    resourceType: str = "FamilyMemberHistory"
     id: str = None
     
     meta: "Meta" = None

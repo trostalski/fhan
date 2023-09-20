@@ -1,16 +1,17 @@
 """
 Generated class for Event. 
-Time: 2023-09-20 20:29:43
+Time: 2023-09-20 20:39:03
 """
 from dataclasses import dataclass
 from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Annotation import *
-from fhan.models.R4.Element import *
-from fhan.models.R4.Identifier import *
 from fhan.models.R4.Timing import *
 from fhan.models.R4.Reference import *
+from fhan.models.R4.Annotation import *
 from fhan.models.R4.Period import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.Element import *
 from fhan.models.generator_models import ModelBase
+
 @dataclass
 class Event(ModelBase):
     """ Logical Model: A pattern to be followed by resources that represent the performance of some activity, possibly in accordance with a request or service definition.
@@ -36,6 +37,8 @@ class Event(ModelBase):
     :param Reference reasonReference: Why was {{title}} performed?
     :param Annotation note: Comments made about the event
     """
+
+    resourceType: str = "Event"
     identifier: list["Identifier"] = None
     
     instantiatesCanonical: str = None

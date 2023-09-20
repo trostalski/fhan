@@ -1,18 +1,18 @@
 """
 Generated class for DeviceMetric. 
-Time: 2023-09-20 20:29:43
+Time: 2023-09-20 20:39:03
 """
 from dataclasses import dataclass
 from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Meta import *
+from fhan.models.R4.Resource import *
+from fhan.models.R4.Timing import *
+from fhan.models.R4.Reference import *
 from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Identifier import *
 from fhan.models.R4.Element import *
 from fhan.models.R4.Extension import *
-from fhan.models.R4.Identifier import *
-from fhan.models.R4.Timing import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.Reference import *
-from fhan.models.R4.Resource import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -36,6 +36,7 @@ class Calibration(Element):
     
     time: str = None
     
+
 @dataclass
 class DeviceMetric(ModelBase):
     """ Describes a measurement, calculation or setting capability of a medical device.
@@ -58,6 +59,8 @@ class DeviceMetric(ModelBase):
     :param Timing measurementPeriod: Describes the measurement repetition time
     :param Calibration calibration: Describes the calibrations that have been performed or that are required to be performed
     """
+
+    resourceType: str = "DeviceMetric"
     id: str = None
     
     meta: "Meta" = None

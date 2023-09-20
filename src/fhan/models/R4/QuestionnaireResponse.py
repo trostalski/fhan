@@ -1,19 +1,19 @@
 """
 Generated class for QuestionnaireResponse. 
-Time: 2023-09-20 20:29:43
+Time: 2023-09-20 20:39:03
 """
 from dataclasses import dataclass
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Attachment import *
-from fhan.models.R4.Coding import *
 from fhan.models.R4.Element import *
-from fhan.models.R4.Extension import *
-from fhan.models.R4.Quantity import *
-from fhan.models.R4.Identifier import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.Reference import *
+from fhan.models.R4.Meta import *
 from fhan.models.R4.Resource import *
+from fhan.models.R4.Attachment import *
+from fhan.models.R4.Reference import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Coding import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.Quantity import *
+from fhan.models.R4.Extension import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -33,6 +33,7 @@ class Answer(Element):
     
     valueBoolean: bool = None
     
+
   
     
     
@@ -57,6 +58,7 @@ class Item(Element):
     text: str = None
     answer: list[Answer] = None
     
+
 @dataclass
 class QuestionnaireResponse(ModelBase):
     """ A structured set of questions and their answers. The questions are ordered and grouped into coherent subsets, corresponding to the structure of the grouping of the questionnaire being responded to.
@@ -80,6 +82,8 @@ class QuestionnaireResponse(ModelBase):
     :param Reference source: The person who answered the questions
     :param Item item: Groups and questions
     """
+
+    resourceType: str = "QuestionnaireResponse"
     id: str = None
     
     meta: "Meta" = None

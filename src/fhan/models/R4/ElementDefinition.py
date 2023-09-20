@@ -1,42 +1,43 @@
 """
 Generated class for ElementDefinition. 
-Time: 2023-09-20 20:29:43
+Time: 2023-09-20 20:39:03
 """
 from dataclasses import dataclass
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Coding import *
-from fhan.models.R4.SampledData import *
-from fhan.models.R4.RelatedArtifact import *
-from fhan.models.R4.Expression import *
-from fhan.models.R4.Timing import *
-from fhan.models.R4.Contributor import *
-from fhan.models.R4.Period import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Attachment import *
-from fhan.models.R4.Range import *
-from fhan.models.R4.Element import *
-from fhan.models.R4.TriggerDefinition import *
-from fhan.models.R4.HumanName import *
-from fhan.models.R4.Quantity import *
 from fhan.models.R4.Age import *
-from fhan.models.R4.Dosage import *
-from fhan.models.R4.ContactPoint import *
-from fhan.models.R4.Duration import *
-from fhan.models.R4.Ratio import *
+from fhan.models.R4.Attachment import *
 from fhan.models.R4.Count import *
+from fhan.models.R4.Dosage import *
 from fhan.models.R4.Annotation import *
-from fhan.models.R4.Money import *
-from fhan.models.R4.Signature import *
-from fhan.models.R4.DataRequirement import *
 from fhan.models.R4.Identifier import *
+from fhan.models.R4.Quantity import *
+from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.UsageContext import *
-from fhan.models.R4.Address import *
-from fhan.models.R4.Distance import *
-from fhan.models.R4.ParameterDefinition import *
-from fhan.models.R4.Extension import *
-from fhan.models.R4.ContactDetail import *
+from fhan.models.R4.DataRequirement import *
+from fhan.models.R4.TriggerDefinition import *
+from fhan.models.R4.Meta import *
+from fhan.models.R4.SampledData import *
+from fhan.models.R4.Timing import *
 from fhan.models.R4.Reference import *
+from fhan.models.R4.Signature import *
+from fhan.models.R4.Period import *
+from fhan.models.R4.Expression import *
+from fhan.models.R4.ContactDetail import *
+from fhan.models.R4.Address import *
+from fhan.models.R4.Coding import *
+from fhan.models.R4.ContactPoint import *
+from fhan.models.R4.HumanName import *
+from fhan.models.R4.Duration import *
 from fhan.models.R4.Element import *
+from fhan.models.R4.Ratio import *
+from fhan.models.R4.Contributor import *
+from fhan.models.R4.Range import *
+from fhan.models.R4.Extension import *
+from fhan.models.R4.ParameterDefinition import *
+from fhan.models.R4.RelatedArtifact import *
+from fhan.models.R4.Money import *
+from fhan.models.R4.Distance import *
+from fhan.models.R4.Element import *
+
 
 @dataclass
 class ElementDefinition(Element):
@@ -125,6 +126,8 @@ class ElementDefinition(Element):
     :param str map: Details of the mapping
     :param str comment: Comments about the mapping or its use
     """
+
+    resourceType: str = "ElementDefinition"
     id: str = None
     
     extension: list["Extension"] = None

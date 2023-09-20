@@ -1,11 +1,12 @@
 """
 Generated class for CodeableConcept. 
-Time: 2023-09-20 20:29:43
+Time: 2023-09-20 20:39:03
 """
 from dataclasses import dataclass
 from fhan.models.R4.Coding import *
 from fhan.models.R4.Extension import *
 from fhan.models.R4.Element import *
+
 
 @dataclass
 class CodeableConcept(Element):
@@ -15,6 +16,8 @@ class CodeableConcept(Element):
     :param Coding coding: Code defined by a terminology system
     :param str text: Plain text representation of the concept
     """
+
+    resourceType: str = "CodeableConcept"
     id: str = None
     
     extension: list["Extension"] = None

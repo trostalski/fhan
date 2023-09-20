@@ -1,22 +1,22 @@
 """
 Generated class for DeviceRequest. 
-Time: 2023-09-20 20:29:43
+Time: 2023-09-20 20:39:03
 """
 from dataclasses import dataclass
 from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.BackboneElement import *
 from fhan.models.R4.Range import *
-from fhan.models.R4.Annotation import *
 from fhan.models.R4.Element import *
-from fhan.models.R4.Extension import *
-from fhan.models.R4.Quantity import *
+from fhan.models.R4.Meta import *
+from fhan.models.R4.Resource import *
+from fhan.models.R4.Timing import *
+from fhan.models.R4.Reference import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Annotation import *
+from fhan.models.R4.Narrative import *
 from fhan.models.R4.Period import *
 from fhan.models.R4.Identifier import *
-from fhan.models.R4.Timing import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.Reference import *
-from fhan.models.R4.Resource import *
+from fhan.models.R4.Quantity import *
+from fhan.models.R4.Extension import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -35,6 +35,7 @@ class Parameter(Element):
     code: "CodeableConcept" = None
     valueCodeableConcept: "CodeableConcept" = None
     
+
 @dataclass
 class DeviceRequest(ModelBase):
     """ Represents a request for a patient to employ a medical device. The device may be an implantable device, or an external assistive device, such as a walker.
@@ -71,6 +72,8 @@ class DeviceRequest(ModelBase):
     :param Annotation note: Notes or comments
     :param Reference relevantHistory: Request provenance
     """
+
+    resourceType: str = "DeviceRequest"
     id: str = None
     
     meta: "Meta" = None

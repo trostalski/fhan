@@ -1,15 +1,16 @@
 """
 Generated class for EnrollmentRequest. 
-Time: 2023-09-20 20:29:43
+Time: 2023-09-20 20:39:03
 """
 from dataclasses import dataclass
 from fhan.models.R4.Meta import *
-from fhan.models.R4.Extension import *
-from fhan.models.R4.Identifier import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.Reference import *
 from fhan.models.R4.Resource import *
+from fhan.models.R4.Reference import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.Extension import *
 from fhan.models.generator_models import ModelBase
+
 @dataclass
 class EnrollmentRequest(ModelBase):
     """ This resource provides the insurance enrollment details to the insurer regarding a specified coverage.
@@ -29,6 +30,8 @@ class EnrollmentRequest(ModelBase):
     :param Reference candidate: The subject to be enrolled
     :param Reference coverage: Insurance information
     """
+
+    resourceType: str = "EnrollmentRequest"
     id: str = None
     
     meta: "Meta" = None

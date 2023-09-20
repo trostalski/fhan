@@ -1,15 +1,15 @@
 """
 Generated class for Bundle. 
-Time: 2023-09-20 20:29:43
+Time: 2023-09-20 20:39:03
 """
 from dataclasses import dataclass
-from fhan.models.R4.BackboneElement import *
 from fhan.models.R4.Meta import *
-from fhan.models.R4.Element import *
-from fhan.models.R4.Extension import *
+from fhan.models.R4.Resource import *
+from fhan.models.R4.BackboneElement import *
 from fhan.models.R4.Signature import *
 from fhan.models.R4.Identifier import *
-from fhan.models.R4.Resource import *
+from fhan.models.R4.Element import *
+from fhan.models.R4.Extension import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -109,6 +109,7 @@ class Response(Element):
     lastModified: str = None
     outcome: "Resource" = None
     
+
   
     
     
@@ -133,6 +134,7 @@ class Entry(Element):
     request: "Request" = None
     response: "Response" = None
     
+
 @dataclass
 class Bundle(ModelBase):
     """ A container for a collection of resources.
@@ -148,6 +150,8 @@ class Bundle(ModelBase):
     :param Entry entry: Entry in the bundle - will have a resource or information
     :param Signature signature: Digital Signature
     """
+
+    resourceType: str = "Bundle"
     id: str = None
     
     meta: "Meta" = None

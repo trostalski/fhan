@@ -1,17 +1,17 @@
 """
 Generated class for GraphDefinition. 
-Time: 2023-09-20 20:29:43
+Time: 2023-09-20 20:39:03
 """
 from dataclasses import dataclass
 from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Element import *
-from fhan.models.R4.Extension import *
 from fhan.models.R4.ContactDetail import *
 from fhan.models.R4.UsageContext import *
-from fhan.models.R4.Narrative import *
+from fhan.models.R4.Meta import *
 from fhan.models.R4.Resource import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Element import *
+from fhan.models.R4.Extension import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -45,6 +45,7 @@ class Compartment(Element):
     
     description: str = None
     
+
   
     
     
@@ -69,6 +70,7 @@ class Target(Element):
     profile: str = None
     compartment: list[Compartment] = None
     
+
   
     
     
@@ -99,6 +101,7 @@ class Link(Element):
     description: str = None
     target: list[Target] = None
     
+
 @dataclass
 class GraphDefinition(ModelBase):
     """ A formal computable definition of a graph of resources - that is, a coherent set of resources that form a graph by following references. The Graph Definition resource defines a set and makes rules about the set.
@@ -126,6 +129,8 @@ class GraphDefinition(ModelBase):
     :param str profile: Profile on base resource
     :param Link link: Links this graph makes rules about
     """
+
+    resourceType: str = "GraphDefinition"
     id: str = None
     
     meta: "Meta" = None

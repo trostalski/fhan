@@ -1,20 +1,20 @@
 """
 Generated class for Consent. 
-Time: 2023-09-20 20:29:43
+Time: 2023-09-20 20:39:03
 """
 from dataclasses import dataclass
 from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Meta import *
+from fhan.models.R4.Resource import *
 from fhan.models.R4.Attachment import *
+from fhan.models.R4.Reference import *
 from fhan.models.R4.BackboneElement import *
 from fhan.models.R4.Coding import *
-from fhan.models.R4.Element import *
-from fhan.models.R4.Extension import *
+from fhan.models.R4.Narrative import *
 from fhan.models.R4.Period import *
 from fhan.models.R4.Identifier import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.Reference import *
-from fhan.models.R4.Resource import *
+from fhan.models.R4.Element import *
+from fhan.models.R4.Extension import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -97,6 +97,7 @@ class Data(Element):
     meaning: str = None
     reference: "Reference" = None
     
+
   
     
     
@@ -131,6 +132,7 @@ class Provision(Element):
     dataPeriod: "Period" = None
     data: list[Data] = None
     
+
 @dataclass
 class Consent(ModelBase):
     """ A record of a healthcare consumer’s  choices, which permits or denies identified recipient(s) or recipient role(s) to perform one or more actions within a given policy context, for specific purposes and periods of time.
@@ -155,6 +157,8 @@ class Consent(ModelBase):
     :param Verification verification: Consent Verified by patient or family
     :param Provision provision: Constraints to the base Consent.policyRule
     """
+
+    resourceType: str = "Consent"
     id: str = None
     
     meta: "Meta" = None

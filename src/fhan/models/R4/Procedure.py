@@ -1,21 +1,21 @@
 """
 Generated class for Procedure. 
-Time: 2023-09-20 20:29:43
+Time: 2023-09-20 20:39:03
 """
 from dataclasses import dataclass
 from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Meta import *
+from fhan.models.R4.Age import *
 from fhan.models.R4.Range import *
+from fhan.models.R4.Meta import *
+from fhan.models.R4.Resource import *
+from fhan.models.R4.Reference import *
 from fhan.models.R4.BackboneElement import *
 from fhan.models.R4.Annotation import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Period import *
+from fhan.models.R4.Identifier import *
 from fhan.models.R4.Element import *
 from fhan.models.R4.Extension import *
-from fhan.models.R4.Period import *
-from fhan.models.R4.Age import *
-from fhan.models.R4.Identifier import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.Reference import *
-from fhan.models.R4.Resource import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -53,6 +53,7 @@ class FocalDevice(Element):
     action: "CodeableConcept" = None
     manipulated: "Reference" = None
     
+
 @dataclass
 class Procedure(ModelBase):
     """ An action that is or was performed on or for a patient. This can be a physical intervention like an operation, or less invasive like long term services, counseling, or hypnotherapy.
@@ -93,6 +94,8 @@ class Procedure(ModelBase):
     :param Reference usedReference: Items used during procedure
     :param CodeableConcept usedCode: Coded items used during the procedure
     """
+
+    resourceType: str = "Procedure"
     id: str = None
     
     meta: "Meta" = None

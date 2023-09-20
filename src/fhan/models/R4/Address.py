@@ -1,11 +1,12 @@
 """
 Generated class for Address. 
-Time: 2023-09-20 20:29:43
+Time: 2023-09-20 20:39:03
 """
 from dataclasses import dataclass
-from fhan.models.R4.Extension import *
 from fhan.models.R4.Period import *
+from fhan.models.R4.Extension import *
 from fhan.models.R4.Element import *
+
 
 @dataclass
 class Address(Element):
@@ -23,6 +24,8 @@ class Address(Element):
     :param str country: Country (e.g. can be ISO 3166 2 or 3 letter code)
     :param Period period: Time period when address was/is in use
     """
+
+    resourceType: str = "Address"
     id: str = None
     
     extension: list["Extension"] = None

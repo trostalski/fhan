@@ -1,18 +1,18 @@
 """
 Generated class for MessageHeader. 
-Time: 2023-09-20 20:29:43
+Time: 2023-09-20 20:39:03
 """
 from dataclasses import dataclass
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Meta import *
 from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Meta import *
+from fhan.models.R4.Resource import *
+from fhan.models.R4.Reference import *
+from fhan.models.R4.BackboneElement import *
 from fhan.models.R4.Coding import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.ContactPoint import *
 from fhan.models.R4.Element import *
 from fhan.models.R4.Extension import *
-from fhan.models.R4.ContactPoint import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.Reference import *
-from fhan.models.R4.Resource import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -85,6 +85,7 @@ class Response(Element):
     code: str = None
     details: "Reference" = None
     
+
 @dataclass
 class MessageHeader(ModelBase):
     """ The header for a message exchange that is either requesting or responding to an action.  The reference(s) that are the subject of the action as well as other information related to the action are typically transmitted in a bundle in which the MessageHeader resource instance is the first resource in the bundle.
@@ -108,6 +109,8 @@ class MessageHeader(ModelBase):
     :param Reference focus: The actual content of the message
     :param str definition: Link to the definition for this message
     """
+
+    resourceType: str = "MessageHeader"
     id: str = None
     
     meta: "Meta" = None

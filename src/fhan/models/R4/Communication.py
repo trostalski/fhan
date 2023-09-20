@@ -1,19 +1,19 @@
 """
 Generated class for Communication. 
-Time: 2023-09-20 20:29:43
+Time: 2023-09-20 20:39:03
 """
 from dataclasses import dataclass
 from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Meta import *
-from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Resource import *
 from fhan.models.R4.Attachment import *
+from fhan.models.R4.Reference import *
+from fhan.models.R4.BackboneElement import *
 from fhan.models.R4.Annotation import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Identifier import *
 from fhan.models.R4.Element import *
 from fhan.models.R4.Extension import *
-from fhan.models.R4.Identifier import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.Reference import *
-from fhan.models.R4.Resource import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -31,6 +31,7 @@ class Payload(Element):
     
     contentString: str = None
     
+
 @dataclass
 class Communication(ModelBase):
     """ An occurrence of information being transmitted; e.g. an alert that was sent to a responsible provider, a public health agency that was notified about a reportable condition.
@@ -66,6 +67,8 @@ class Communication(ModelBase):
     :param Payload payload: Message payload
     :param Annotation note: Comments made about the communication
     """
+
+    resourceType: str = "Communication"
     id: str = None
     
     meta: "Meta" = None

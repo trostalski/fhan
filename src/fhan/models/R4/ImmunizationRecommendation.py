@@ -1,17 +1,17 @@
 """
 Generated class for ImmunizationRecommendation. 
-Time: 2023-09-20 20:29:43
+Time: 2023-09-20 20:39:03
 """
 from dataclasses import dataclass
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Meta import *
 from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Meta import *
+from fhan.models.R4.Resource import *
+from fhan.models.R4.Reference import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Identifier import *
 from fhan.models.R4.Element import *
 from fhan.models.R4.Extension import *
-from fhan.models.R4.Identifier import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.Reference import *
-from fhan.models.R4.Resource import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -33,6 +33,7 @@ class DateCriterion(Element):
     
     value: str = None
     
+
   
     
     
@@ -74,6 +75,7 @@ class Recommendation(Element):
     supportingImmunization: list[Reference] = None
     supportingPatientInformation: list[Reference] = None
     
+
 @dataclass
 class ImmunizationRecommendation(ModelBase):
     """ A patient's point-in-time set of recommendations (i.e. forecasting) according to a published schedule with optional supporting justification.
@@ -91,6 +93,8 @@ class ImmunizationRecommendation(ModelBase):
     :param Reference authority: Who is responsible for protocol
     :param Recommendation recommendation: Vaccine administration recommendations
     """
+
+    resourceType: str = "ImmunizationRecommendation"
     id: str = None
     
     meta: "Meta" = None

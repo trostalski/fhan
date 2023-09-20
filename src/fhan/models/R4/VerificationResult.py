@@ -1,18 +1,18 @@
 """
 Generated class for VerificationResult. 
-Time: 2023-09-20 20:29:43
+Time: 2023-09-20 20:39:03
 """
 from dataclasses import dataclass
 from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Meta import *
+from fhan.models.R4.Resource import *
+from fhan.models.R4.Timing import *
+from fhan.models.R4.Reference import *
 from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Signature import *
 from fhan.models.R4.Element import *
 from fhan.models.R4.Extension import *
-from fhan.models.R4.Signature import *
-from fhan.models.R4.Timing import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.Reference import *
-from fhan.models.R4.Resource import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -94,6 +94,7 @@ class Validator(Element):
     identityCertificate: str = None
     attestationSignature: "Signature" = None
     
+
 @dataclass
 class VerificationResult(ModelBase):
     """ Describes validation requirements, source(s), status and dates for one or more elements.
@@ -120,6 +121,8 @@ class VerificationResult(ModelBase):
     :param Attestation attestation: Information about the entity attesting to information
     :param Validator validator: Information about the entity validating information
     """
+
+    resourceType: str = "VerificationResult"
     id: str = None
     
     meta: "Meta" = None

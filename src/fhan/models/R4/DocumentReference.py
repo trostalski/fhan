@@ -1,20 +1,20 @@
 """
 Generated class for DocumentReference. 
-Time: 2023-09-20 20:29:43
+Time: 2023-09-20 20:39:03
 """
 from dataclasses import dataclass
 from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Meta import *
-from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Resource import *
 from fhan.models.R4.Attachment import *
+from fhan.models.R4.Reference import *
+from fhan.models.R4.BackboneElement import *
 from fhan.models.R4.Coding import *
-from fhan.models.R4.Element import *
-from fhan.models.R4.Extension import *
+from fhan.models.R4.Narrative import *
 from fhan.models.R4.Period import *
 from fhan.models.R4.Identifier import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.Reference import *
-from fhan.models.R4.Resource import *
+from fhan.models.R4.Element import *
+from fhan.models.R4.Extension import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -78,6 +78,7 @@ class Context(Element):
     sourcePatientInfo: "Reference" = None
     related: list[Reference] = None
     
+
 @dataclass
 class DocumentReference(ModelBase):
     """ A reference to a document of any kind for any purpose. Provides metadata about the document so that the document can be discovered and managed. The scope of a document is any seralized object with a mime-type, so includes formal patient centric documents (CDA), cliical notes, scanned paper, and non-patient specific documents like policy text.
@@ -106,6 +107,8 @@ class DocumentReference(ModelBase):
     :param Content content: Document referenced
     :param Context context: Clinical context of document
     """
+
+    resourceType: str = "DocumentReference"
     id: str = None
     
     meta: "Meta" = None

@@ -1,18 +1,18 @@
 """
 Generated class for ExampleScenario. 
-Time: 2023-09-20 20:29:43
+Time: 2023-09-20 20:39:03
 """
 from dataclasses import dataclass
 from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Element import *
-from fhan.models.R4.Extension import *
-from fhan.models.R4.Identifier import *
 from fhan.models.R4.ContactDetail import *
 from fhan.models.R4.UsageContext import *
-from fhan.models.R4.Narrative import *
+from fhan.models.R4.Meta import *
 from fhan.models.R4.Resource import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.Element import *
+from fhan.models.R4.Extension import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -79,6 +79,7 @@ class ContainedInstance(Element):
     
     versionId: str = None
     
+
   
     
     
@@ -168,6 +169,7 @@ class Alternative(Element):
     
     description: str = None
     
+
   
     
     
@@ -188,6 +190,7 @@ class Step(Element):
     operation: "Operation" = None
     alternative: list[Alternative] = None
     
+
   
     
     
@@ -215,6 +218,7 @@ class Process(Element):
     postConditions: str = None
     step: list[Step] = None
     
+
 @dataclass
 class ExampleScenario(ModelBase):
     """ Example of workflow instance.
@@ -244,6 +248,8 @@ class ExampleScenario(ModelBase):
     :param Process process: Each major process - a group of operations
     :param str workflow: Another nested workflow
     """
+
+    resourceType: str = "ExampleScenario"
     id: str = None
     
     meta: "Meta" = None

@@ -1,19 +1,19 @@
 """
 Generated class for ValueSet. 
-Time: 2023-09-20 20:29:43
+Time: 2023-09-20 20:39:03
 """
 from dataclasses import dataclass
 from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Coding import *
-from fhan.models.R4.Element import *
-from fhan.models.R4.Extension import *
-from fhan.models.R4.Identifier import *
 from fhan.models.R4.ContactDetail import *
 from fhan.models.R4.UsageContext import *
-from fhan.models.R4.Narrative import *
+from fhan.models.R4.Meta import *
 from fhan.models.R4.Resource import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Coding import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.Element import *
+from fhan.models.R4.Extension import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -42,6 +42,7 @@ class Designation(Element):
     
     value: str = None
     
+
   
     
     
@@ -85,6 +86,7 @@ class Filter(Element):
     
     value: str = None
     
+
   
     
     
@@ -111,6 +113,7 @@ class Include(Element):
     
     valueSet: str = None
     
+
   
     
     
@@ -184,6 +187,7 @@ class Contains(Element):
     
     display: str = None
     
+
   
     
     
@@ -213,6 +217,7 @@ class Expansion(Element):
     parameter: list[Parameter] = None
     contains: list[Contains] = None
     
+
 @dataclass
 class ValueSet(ModelBase):
     """ A ValueSet resource instance specifies a set of codes drawn from one or more code systems, intended for use in a particular context. Value sets link between [[[CodeSystem]]] definitions and their use in [coded elements](terminologies.html).
@@ -243,6 +248,8 @@ class ValueSet(ModelBase):
     :param Compose compose: Content logical definition of the value set (CLD)
     :param Expansion expansion: Used when the value set is "expanded"
     """
+
+    resourceType: str = "ValueSet"
     id: str = None
     
     meta: "Meta" = None

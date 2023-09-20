@@ -1,23 +1,23 @@
 """
 Generated class for Questionnaire. 
-Time: 2023-09-20 20:29:43
+Time: 2023-09-20 20:39:03
 """
 from dataclasses import dataclass
 from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Attachment import *
-from fhan.models.R4.Coding import *
-from fhan.models.R4.Element import *
-from fhan.models.R4.Extension import *
-from fhan.models.R4.Quantity import *
-from fhan.models.R4.Identifier import *
 from fhan.models.R4.ContactDetail import *
 from fhan.models.R4.UsageContext import *
+from fhan.models.R4.Element import *
+from fhan.models.R4.Meta import *
+from fhan.models.R4.Resource import *
+from fhan.models.R4.Attachment import *
 from fhan.models.R4.Reference import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Coding import *
 from fhan.models.R4.Narrative import *
 from fhan.models.R4.Period import *
-from fhan.models.R4.Resource import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.Quantity import *
+from fhan.models.R4.Extension import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -78,6 +78,7 @@ class Initial(Element):
     
     valueBoolean: bool = None
     
+
   
     
     
@@ -132,6 +133,7 @@ class Item(Element):
     answerOption: list[AnswerOption] = None
     initial: list[Initial] = None
     
+
 @dataclass
 class Questionnaire(ModelBase):
     """ A structured set of questions intended to guide the collection of answers from end-users. Questionnaires provide detailed control over order, presentation, phraseology and grouping to allow coherent, consistent data collection.
@@ -166,6 +168,8 @@ class Questionnaire(ModelBase):
     :param Coding code: Concept that represents the overall questionnaire
     :param Item item: Questions and sections within the Questionnaire
     """
+
+    resourceType: str = "Questionnaire"
     id: str = None
     
     meta: "Meta" = None

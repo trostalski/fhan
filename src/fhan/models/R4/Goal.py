@@ -1,22 +1,22 @@
 """
 Generated class for Goal. 
-Time: 2023-09-20 20:29:43
+Time: 2023-09-20 20:39:03
 """
 from dataclasses import dataclass
 from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.BackboneElement import *
 from fhan.models.R4.Range import *
-from fhan.models.R4.Ratio import *
-from fhan.models.R4.Annotation import *
 from fhan.models.R4.Element import *
-from fhan.models.R4.Extension import *
-from fhan.models.R4.Quantity import *
-from fhan.models.R4.Identifier import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.Reference import *
-from fhan.models.R4.Duration import *
+from fhan.models.R4.Ratio import *
+from fhan.models.R4.Meta import *
 from fhan.models.R4.Resource import *
+from fhan.models.R4.Reference import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Annotation import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.Duration import *
+from fhan.models.R4.Quantity import *
+from fhan.models.R4.Extension import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -38,6 +38,7 @@ class Target(Element):
     
     dueDate: str = None
     
+
 @dataclass
 class Goal(ModelBase):
     """ Describes the intended objective(s) for a patient, group or organization care, for example, weight loss, restoring an activity of daily living, obtaining herd immunity via immunization, meeting a process improvement objective, etc.
@@ -66,6 +67,8 @@ class Goal(ModelBase):
     :param CodeableConcept outcomeCode: What result was achieved regarding the goal?
     :param Reference outcomeReference: Observation that resulted from goal
     """
+
+    resourceType: str = "Goal"
     id: str = None
     
     meta: "Meta" = None

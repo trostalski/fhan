@@ -1,20 +1,20 @@
 """
 Generated class for Coverage. 
-Time: 2023-09-20 20:29:43
+Time: 2023-09-20 20:39:03
 """
 from dataclasses import dataclass
 from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Money import *
 from fhan.models.R4.Element import *
-from fhan.models.R4.Extension import *
-from fhan.models.R4.Period import *
-from fhan.models.R4.Quantity import *
-from fhan.models.R4.Identifier import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.Reference import *
+from fhan.models.R4.Meta import *
 from fhan.models.R4.Resource import *
+from fhan.models.R4.Reference import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Period import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.Money import *
+from fhan.models.R4.Quantity import *
+from fhan.models.R4.Extension import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -56,6 +56,7 @@ class Exception(Element):
     type: "CodeableConcept" = None
     period: "Period" = None
     
+
   
     
     
@@ -75,6 +76,7 @@ class CostToBeneficiary(Element):
     valueQuantity: "Quantity" = None
     exception: list[Exception] = None
     
+
 @dataclass
 class Coverage(ModelBase):
     """ Financial instrument which may be used to reimburse or pay for health care products and services. Includes both insurance and self-payment.
@@ -104,6 +106,8 @@ class Coverage(ModelBase):
     :param bool subrogation: Reimbursement to insurer
     :param Reference contract: Contract details
     """
+
+    resourceType: str = "Coverage"
     id: str = None
     
     meta: "Meta" = None

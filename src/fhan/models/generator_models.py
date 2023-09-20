@@ -26,7 +26,13 @@ class ModelBase:
 
     def __init__(self, **kwargs):
         for key, value in kwargs.items():
-            setattr(self, key, value)
+            # Dynamically import the class based on the key (assuming key is the module/class name)
+            module_name, class_name = key.rsplit(".", 1)
+            module = __import__(module_name, fromlist=[class_name])
+            cls = getattr(module, class_name)
+
+            # Initialize an instance of the class with the value as an argument
+            setattr(self, key, cls(value))
 
 
 class GeneratorElement:

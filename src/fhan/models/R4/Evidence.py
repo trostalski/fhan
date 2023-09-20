@@ -1,21 +1,22 @@
 """
 Generated class for Evidence. 
-Time: 2023-09-20 20:29:43
+Time: 2023-09-20 20:39:03
 """
 from dataclasses import dataclass
 from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Annotation import *
-from fhan.models.R4.Extension import *
-from fhan.models.R4.RelatedArtifact import *
-from fhan.models.R4.Identifier import *
 from fhan.models.R4.ContactDetail import *
 from fhan.models.R4.UsageContext import *
+from fhan.models.R4.Meta import *
+from fhan.models.R4.Resource import *
 from fhan.models.R4.Reference import *
+from fhan.models.R4.Annotation import *
 from fhan.models.R4.Narrative import *
 from fhan.models.R4.Period import *
-from fhan.models.R4.Resource import *
+from fhan.models.R4.RelatedArtifact import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.Extension import *
 from fhan.models.generator_models import ModelBase
+
 @dataclass
 class Evidence(ModelBase):
     """ Explanation of what this profile contains/is for.
@@ -56,6 +57,8 @@ class Evidence(ModelBase):
     :param Reference exposureVariant: What exposure?
     :param Reference outcome: What outcome?
     """
+
+    resourceType: str = "Evidence"
     id: str = None
     
     meta: "Meta" = None

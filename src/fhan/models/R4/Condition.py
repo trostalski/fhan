@@ -1,21 +1,21 @@
 """
 Generated class for Condition. 
-Time: 2023-09-20 20:29:43
+Time: 2023-09-20 20:39:03
 """
 from dataclasses import dataclass
 from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Meta import *
+from fhan.models.R4.Age import *
 from fhan.models.R4.Range import *
+from fhan.models.R4.Meta import *
+from fhan.models.R4.Resource import *
+from fhan.models.R4.Reference import *
 from fhan.models.R4.BackboneElement import *
 from fhan.models.R4.Annotation import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Period import *
+from fhan.models.R4.Identifier import *
 from fhan.models.R4.Element import *
 from fhan.models.R4.Extension import *
-from fhan.models.R4.Period import *
-from fhan.models.R4.Age import *
-from fhan.models.R4.Identifier import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.Reference import *
-from fhan.models.R4.Resource import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -53,6 +53,7 @@ class Evidence(Element):
     code: list[CodeableConcept] = None
     detail: list[Reference] = None
     
+
 @dataclass
 class Condition(ModelBase):
     """ A clinical condition, problem, diagnosis, or other event, situation, issue, or clinical concept that has risen to a level of concern.
@@ -82,6 +83,8 @@ class Condition(ModelBase):
     :param Evidence evidence: Supporting evidence
     :param Annotation note: Additional information about the Condition
     """
+
+    resourceType: str = "Condition"
     id: str = None
     
     meta: "Meta" = None

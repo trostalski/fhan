@@ -1,18 +1,18 @@
 """
 Generated class for Account. 
-Time: 2023-09-20 20:29:43
+Time: 2023-09-20 20:39:03
 """
 from dataclasses import dataclass
 from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Meta import *
+from fhan.models.R4.Resource import *
+from fhan.models.R4.Reference import *
 from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Element import *
-from fhan.models.R4.Extension import *
+from fhan.models.R4.Narrative import *
 from fhan.models.R4.Period import *
 from fhan.models.R4.Identifier import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.Reference import *
-from fhan.models.R4.Resource import *
+from fhan.models.R4.Element import *
+from fhan.models.R4.Extension import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -52,6 +52,7 @@ class Guarantor(Element):
     onHold: bool = None
     period: "Period" = None
     
+
 @dataclass
 class Account(ModelBase):
     """ A financial tool for tracking value accrued for a particular purpose.  In the healthcare field, used to track charges for a patient, cost centers, etc.
@@ -75,6 +76,8 @@ class Account(ModelBase):
     :param Guarantor guarantor: The parties ultimately responsible for balancing the Account
     :param Reference partOf: Reference to a parent Account
     """
+
+    resourceType: str = "Account"
     id: str = None
     
     meta: "Meta" = None

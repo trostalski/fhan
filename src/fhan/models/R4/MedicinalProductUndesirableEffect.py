@@ -1,16 +1,17 @@
 """
 Generated class for MedicinalProductUndesirableEffect. 
-Time: 2023-09-20 20:29:43
+Time: 2023-09-20 20:39:03
 """
 from dataclasses import dataclass
 from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Meta import *
+from fhan.models.R4.Resource import *
+from fhan.models.R4.Reference import *
+from fhan.models.R4.Narrative import *
 from fhan.models.R4.Extension import *
 from fhan.models.R4.Population import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.Reference import *
-from fhan.models.R4.Resource import *
 from fhan.models.generator_models import ModelBase
+
 @dataclass
 class MedicinalProductUndesirableEffect(ModelBase):
     """ Describe the undesirable effects of the medicinal product.
@@ -28,6 +29,8 @@ class MedicinalProductUndesirableEffect(ModelBase):
     :param CodeableConcept frequencyOfOccurrence: The frequency of occurrence of the effect
     :param Population population: The population group to which this applies
     """
+
+    resourceType: str = "MedicinalProductUndesirableEffect"
     id: str = None
     
     meta: "Meta" = None

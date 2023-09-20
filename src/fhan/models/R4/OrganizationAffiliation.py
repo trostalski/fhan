@@ -1,18 +1,19 @@
 """
 Generated class for OrganizationAffiliation. 
-Time: 2023-09-20 20:29:43
+Time: 2023-09-20 20:39:03
 """
 from dataclasses import dataclass
 from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Meta import *
-from fhan.models.R4.Extension import *
-from fhan.models.R4.ContactPoint import *
-from fhan.models.R4.Identifier import *
+from fhan.models.R4.Resource import *
 from fhan.models.R4.Reference import *
 from fhan.models.R4.Narrative import *
 from fhan.models.R4.Period import *
-from fhan.models.R4.Resource import *
+from fhan.models.R4.ContactPoint import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.Extension import *
 from fhan.models.generator_models import ModelBase
+
 @dataclass
 class OrganizationAffiliation(ModelBase):
     """ Defines an affiliation/assotiation/relationship between 2 distinct oganizations, that is not a part-of relationship/sub-division relationship.
@@ -37,6 +38,8 @@ class OrganizationAffiliation(ModelBase):
     :param ContactPoint telecom: Contact details at the participatingOrganization relevant to this Affiliation
     :param Reference endpoint: Technical endpoints providing access to services operated for this role
     """
+
+    resourceType: str = "OrganizationAffiliation"
     id: str = None
     
     meta: "Meta" = None

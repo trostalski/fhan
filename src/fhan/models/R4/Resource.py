@@ -1,10 +1,11 @@
 """
 Generated class for Resource. 
-Time: 2023-09-20 20:29:43
+Time: 2023-09-20 20:39:03
 """
 from dataclasses import dataclass
 from fhan.models.R4.Meta import *
 from fhan.models.generator_models import ModelBase
+
 @dataclass
 class Resource(ModelBase):
     """ This is the base resource type for everything.
@@ -13,6 +14,8 @@ class Resource(ModelBase):
     :param str implicitRules: A set of rules under which this content was created
     :param str language: Language of the resource content
     """
+
+    resourceType: str = "Resource"
     id: str = None
     
     meta: "Meta" = None

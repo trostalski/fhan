@@ -1,19 +1,20 @@
 """
 Generated class for Media. 
-Time: 2023-09-20 20:29:43
+Time: 2023-09-20 20:39:03
 """
 from dataclasses import dataclass
 from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Meta import *
+from fhan.models.R4.Resource import *
 from fhan.models.R4.Attachment import *
+from fhan.models.R4.Reference import *
 from fhan.models.R4.Annotation import *
-from fhan.models.R4.Extension import *
+from fhan.models.R4.Narrative import *
 from fhan.models.R4.Period import *
 from fhan.models.R4.Identifier import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.Reference import *
-from fhan.models.R4.Resource import *
+from fhan.models.R4.Extension import *
 from fhan.models.generator_models import ModelBase
+
 @dataclass
 class Media(ModelBase):
     """ A photo, video, or audio recording acquired or used in healthcare. The actual content may be inline or provided by direct reference.
@@ -48,6 +49,8 @@ class Media(ModelBase):
     :param Attachment content: Actual Media - reference or data
     :param Annotation note: Comments made about the media
     """
+
+    resourceType: str = "Media"
     id: str = None
     
     meta: "Meta" = None

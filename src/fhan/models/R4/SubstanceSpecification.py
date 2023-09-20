@@ -1,21 +1,21 @@
 """
 Generated class for SubstanceSpecification. 
-Time: 2023-09-20 20:29:43
+Time: 2023-09-20 20:39:03
 """
 from dataclasses import dataclass
 from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Attachment import *
 from fhan.models.R4.Range import *
-from fhan.models.R4.Ratio import *
 from fhan.models.R4.Element import *
-from fhan.models.R4.Extension import *
-from fhan.models.R4.Quantity import *
-from fhan.models.R4.Identifier import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.Reference import *
+from fhan.models.R4.Ratio import *
+from fhan.models.R4.Meta import *
 from fhan.models.R4.Resource import *
+from fhan.models.R4.Attachment import *
+from fhan.models.R4.Reference import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.Quantity import *
+from fhan.models.R4.Extension import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -93,6 +93,7 @@ class MolecularWeight(Element):
     type: "CodeableConcept" = None
     amount: "Quantity" = None
     
+
   
     
     
@@ -136,6 +137,7 @@ class Representation(Element):
     representation: str = None
     attachment: "Attachment" = None
     
+
   
     
     
@@ -212,6 +214,7 @@ class Official(Element):
     
     date: str = None
     
+
   
     
     
@@ -273,6 +276,7 @@ class Relationship(Element):
     amountType: "CodeableConcept" = None
     source: list[Reference] = None
     
+
 @dataclass
 class SubstanceSpecification(ModelBase):
     """ The detailed description of a substance, typically at a level beyond what is used for prescribing.
@@ -303,6 +307,8 @@ class SubstanceSpecification(ModelBase):
     :param Reference protein: Data items specific to proteins
     :param Reference sourceMaterial: Material or taxonomic/anatomical source for the substance
     """
+
+    resourceType: str = "SubstanceSpecification"
     id: str = None
     
     meta: "Meta" = None

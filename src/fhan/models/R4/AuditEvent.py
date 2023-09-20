@@ -1,18 +1,18 @@
 """
 Generated class for AuditEvent. 
-Time: 2023-09-20 20:29:43
+Time: 2023-09-20 20:39:03
 """
 from dataclasses import dataclass
 from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Meta import *
+from fhan.models.R4.Resource import *
+from fhan.models.R4.Reference import *
 from fhan.models.R4.BackboneElement import *
 from fhan.models.R4.Coding import *
-from fhan.models.R4.Element import *
-from fhan.models.R4.Extension import *
-from fhan.models.R4.Reference import *
 from fhan.models.R4.Narrative import *
 from fhan.models.R4.Period import *
-from fhan.models.R4.Resource import *
+from fhan.models.R4.Element import *
+from fhan.models.R4.Extension import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -35,6 +35,7 @@ class Network(Element):
     
     type: str = None
     
+
   
     
     
@@ -115,6 +116,7 @@ class Detail(Element):
     
     valueString: str = None
     
+
   
     
     
@@ -149,6 +151,7 @@ class Entity(Element):
     query: str = None
     detail: list[Detail] = None
     
+
 @dataclass
 class AuditEvent(ModelBase):
     """ Defines the elements to be supported within the AuditEvent resource in order to conform with the Electronic Health Record System Functional Model Record Lifecycle Event standard
@@ -172,6 +175,8 @@ class AuditEvent(ModelBase):
     :param Source source: Audit Event Reporter
     :param Entity entity: Data or objects used
     """
+
+    resourceType: str = "AuditEvent"
     id: str = None
     
     meta: "Meta" = None

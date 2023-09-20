@@ -61,6 +61,8 @@ class ModelGenerator:
 
     def generate_model_classes(self):
         """Create the python classes for the FHIR package."""
+        logger.info("Generating model classes for %s", self._version)
+        logger.info("Output dir: %s", self._output_dir)
         self._generate_structure_definition_classes()
 
     def _generate_structure_definition_classes(self):
@@ -105,11 +107,10 @@ def get_full_path_to_dir(dir: str):
     return full_path
 
 
-def main():
-    generator = ModelGenerator(version="R4")
-    generator._generate_structure_definition_classes()
-
-
 if __name__ == "__main__":
-    logging.basicConfig(level=logging.INFO)
-    main()
+    logging.basicConfig(
+        level=logging.INFO,
+        format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
+    )
+    generator = ModelGenerator(version="R4")
+    generator.generate_model_classes()

@@ -24,21 +24,8 @@ class ModelBase:
     """Base class for all generated models."""
 
     def __init__(self, **kwargs):
-        self._attributes = kwargs
         for key, value in kwargs.items():
             setattr(self, key, value)
-
-    def __repr__(self):
-        return f"{self.__class__.__name__}({self._attributes})"
-
-    def __str__(self):
-        return str(self._attributes)
-
-    def to_dict(self):
-        return self._attributes
-
-    def to_json(self):
-        return json.dumps(self._attributes)
 
 
 class GeneratorElement:
@@ -47,16 +34,27 @@ class GeneratorElement:
     def __init__(self, element_definition: dict, name: str, type: str):
         self._element = element_definition
         self.type = type
-        self.name = _escape_keyword(name) if name in PYTHON_KEYWORDS else name
         self.path = element_definition["path"]
-        self.min = element_definition.get("min", None)
-        self.max = element_definition.get("max", None)
+        self.name = _escape_keyword(name) if name in PYTHON_KEYWORDS else name
+        self.min, self.max = self._get_cardinalities()
         self.is_primitive = is_primitive_type(self.type)
+        self.description = element_definition.get("definition", "")
+        self.short = element_definition.get("short", "")
         self.python_type = (
             get_python_type_for_primitive(self.type) if self.is_primitive else None
         )
-        self.description = element_definition.get("definition", "")
-        self.short = element_definition.get("short", "")
+
+    @property
+    def is_array(self):
+        return self.max > 1
+
+    def _get_cardinalities(self) -> tuple[float, float]:
+        """Returns the min and max cardinality of the ElementDefinition."""
+        min = self._element.get("min", None)
+        max = self._element.get("max", None)
+        if max == "*":
+            max = float("inf")
+        return float(min), float(max)
 
 
 class GeneratorStructureDefinition:

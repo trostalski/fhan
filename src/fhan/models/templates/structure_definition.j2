@@ -32,6 +32,6 @@ class {{structure_definition.type}}{% if structure_definition.base_class %}({{st
     {% if element.is_primitive %}
     {{element.name}}: {{element.python_type.__name__}} = None
     {% else %}
-    {{element.name}}: "{{element.type}}" = None
+    {{element.name}}: {%if element.is_array%}{%raw%}list[{%endraw%}{%endif%}"{{element.type}}"{%if element.is_array%}{%raw%}]{%endraw%}{%endif%} = None
     {% endif -%}
     {% endfor %}

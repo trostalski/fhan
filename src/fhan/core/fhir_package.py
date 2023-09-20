@@ -2,9 +2,6 @@ import logging
 from typing import BinaryIO, Iterator, Literal, Tuple
 import json
 import tarfile
-import io
-
-import requests
 
 logger = logging.getLogger(__name__)
 

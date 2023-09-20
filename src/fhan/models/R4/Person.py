@@ -1,47 +1,39 @@
 """
 Generated class for Person. 
-Time: 2023-09-20 10:09:03
+Time: 2023-09-20 20:29:43
 """
 from dataclasses import dataclass
-
-from fhan.models.R4.HumanName import *
-from fhan.models.R4.ContactPoint import *
-from fhan.models.R4.Attachment import *
 from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Meta import *
+from fhan.models.R4.Attachment import *
+from fhan.models.R4.Element import *
+from fhan.models.R4.HumanName import *
+from fhan.models.R4.Extension import *
+from fhan.models.R4.ContactPoint import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.Address import *
 from fhan.models.R4.Narrative import *
 from fhan.models.R4.Reference import *
-from fhan.models.R4.Extension import *
-from fhan.models.R4.Address import *
-from fhan.models.R4.Element import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Identifier import *
 from fhan.models.R4.Resource import *
 from fhan.models.generator_models import ModelBase
 
+    
+    
 @dataclass
-class link(Element):
-    """ Link to a resource that concerns the same actual person.
-    :param BackboneElement link: Link to a resource that concerns the same actual person
-    :param str id: Unique id for inter-element referencing
+class Link(Element):
+    """ Link to a resource that concerns the same actual person.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param Reference target: The resource to which this actual person is associated
     :param str assurance: level1 | level2 | level3 | level4
     """
-    link: list["BackboneElement"] = None
-    
     id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
     target: "Reference" = None
     
     assurance: str = None
     
-
-
 @dataclass
 class Person(ModelBase):
     """ Demographics and administrative information about a person independent of a specific health-related context.
@@ -62,12 +54,7 @@ class Person(ModelBase):
     :param Attachment photo: Image of the person
     :param Reference managingOrganization: The organization that is the custodian of the person record
     :param bool active: This person's record is in active use
-    :param BackboneElement link: Link to a resource that concerns the same actual person
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param Reference target: The resource to which this actual person is associated
-    :param str assurance: level1 | level2 | level3 | level4
+    :param Link link: Link to a resource that concerns the same actual person
     """
     id: str = None
     
@@ -103,15 +90,5 @@ class Person(ModelBase):
     
     active: bool = None
     
-    link: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    target: "Reference" = None
-    
-    assurance: str = None
+    link: list["Link"] = None
     

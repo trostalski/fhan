@@ -2,6 +2,7 @@ import json
 from urllib.parse import urlparse
 from enum import Enum
 import os
+from abc import ABC, abstractmethod
 
 from fhan.core.data_types import PYTHON_KEYWORDS
 from fhan.core.data_types import get_python_type_for_primitive, is_primitive_type
@@ -31,7 +32,14 @@ class ModelBase:
 class GeneratorElement:
     """Wrapper around a ElementDefinition with a parsed name and type"""
 
-    def __init__(self, element_definition: dict, name: str, type: str):
+    def __init__(
+        self,
+        element_definition: dict,
+        name: str,
+        type: str,
+        children: list["GeneratorElement"] = None,
+    ):
+        children = children or []
         self._element = element_definition
         self.type = type
         self.path: str = element_definition["path"]
@@ -43,6 +51,13 @@ class GeneratorElement:
         self.python_type = (
             get_python_type_for_primitive(self.type) if self.is_primitive else None
         )
+        self.base_class, self.base_import_string = _get_base_class(
+            kind=StructureDefinitionKinds.COMPLEX_TYPE.value, type=self.type
+        )
+        (
+            self.backbone_children,
+            self.defined_children,
+        ) = _filter_backbone_generator_elements(children)
 
     @property
     def is_array(self):
@@ -57,21 +72,6 @@ class GeneratorElement:
         return float(min), float(max)
 
 
-class GeneratorBackboneElement(GeneratorElement):
-    def __init__(
-        self,
-        element_definition: dict,
-        name: str,
-        type: str,
-        children: list[GeneratorElement],
-    ):
-        super().__init__(element_definition, name, type)
-        self.children = children
-        self.base_class, self.base_import_string = _get_base_class(
-            kind=StructureDefinitionKinds.COMPLEX_TYPE.value, type=self.type
-        )
-
-
 class GeneratorStructureDefinition:
     """Represents a FHIR StructureDefinition that is used to generate downsream objects."""
 
@@ -82,9 +82,9 @@ class GeneratorStructureDefinition:
         )
         self.generator_elements = self._initialize_elements(self._element_definitions)
         (
-            self.backbone_generator_elements,
-            self.defined_generator_elements,
-        ) = self._filter_backbone_generator_elements(self.generator_elements)
+            self.backbone_elements,
+            self.defined_elements,
+        ) = _filter_backbone_generator_elements(self.generator_elements)
         self.kind = self._structure_definition["kind"]
         self.is_primitive = self.kind == StructureDefinitionKinds.PRIMITIVE_TYPE.value
         self.id = self._structure_definition["id"]
@@ -102,8 +102,8 @@ class GeneratorStructureDefinition:
         the import statements for the generated class."""
         complex_types = [e.type for e in self.generator_elements if not e.is_primitive]
         complex_types = [t for t in complex_types if t != self.type]
-        if self.backbone_generator_elements:
-            complex_types.append(self.backbone_generator_elements[0].base_class)
+        if self.backbone_elements:
+            complex_types.append(self.backbone_elements[0].base_class)
         return list(set(complex_types))
 
     def _initialize_elements(self, element_definitions) -> list[GeneratorElement]:
@@ -126,6 +126,7 @@ class GeneratorStructureDefinition:
         result = []
         types = element_definition.get("type", [])
         element_name = get_nth_part(element_definition["id"], -1)
+        choice_element_name = None
         is_choice = is_choice_path(element_definition["path"])
 
         # Try to resolve missing types once
@@ -140,44 +141,18 @@ class GeneratorStructureDefinition:
 
             # Handle choice elements
             if is_choice:
-                element_name = replace_choice_string(element_name, type_code)
+                choice_element_name = replace_choice_string(
+                    path=element_name, replace=_capitalize_first_letter(type_code)
+                )
 
             element = GeneratorElement(
                 element_definition=element_definition,
-                name=element_name,
+                name=choice_element_name or element_name,
                 type=type_code,
             )
             result.append(element)
 
         return result
-
-    def _filter_backbone_generator_elements(
-        self, elements: list[GeneratorElement]
-    ) -> tuple[list[GeneratorBackboneElement], list[GeneratorElement]]:
-        """Filters the given elements for BackboneElements and None-BackboneElements.
-        BackboneElements are Elements that defined within a resource."""
-        backbone_generator_elements = []
-        defined_generator_elements = []
-        for element in elements:
-            if element.type == "BackboneElement":
-                children = [
-                    e
-                    for e in self.generator_elements
-                    if e.path.startswith(element.path)
-                ]
-                backbone_generator_elements.append(
-                    GeneratorBackboneElement(
-                        element_definition=element._element,
-                        name=element.name,
-                        type=element.type,
-                        children=children,
-                    )
-                )
-                # backbone element is now defined, its children are not
-                defined_generator_elements.append(element)
-            else:
-                defined_generator_elements.append(element)
-        return backbone_generator_elements, defined_generator_elements
 
     def _resolve_missing_type(self, element_definition: dict):
         """Try to find an ElementDefinition with resolved type."""
@@ -206,6 +181,41 @@ class GeneratorStructureDefinition:
             if element["id"] == id:
                 return element
         return None
+
+
+def _filter_backbone_generator_elements(
+    elements: list[GeneratorElement],
+) -> tuple[list[GeneratorElement], list[GeneratorElement]]:
+    """Filters the given elements for BackboneElements and None-BackboneElements.
+    BackboneElements are Elements that defined within a resource."""
+    backbone_generator_elements = []
+    defined_generator_elements = []
+    seen_paths = []
+    for element in elements:
+        if element.path in seen_paths:
+            continue
+        seen_paths.append(element.path)
+        if element.type == "BackboneElement":
+            children = [
+                e
+                for e in elements
+                if e.path.startswith(element.path)
+                and e.path
+                != element.path  # all children of backbone element without backbone element itself
+            ]
+            seen_paths.extend([e.path for e in children])
+            backbone_element = GeneratorElement(
+                element_definition=element._element,
+                name=element.name,
+                type=_capitalize_first_letter(element.name),
+                children=children,
+            )
+            backbone_generator_elements.append(backbone_element)
+            # backbone element is now defined, its children are not
+            defined_generator_elements.append(backbone_element)
+        else:
+            defined_generator_elements.append(element)
+    return backbone_generator_elements, defined_generator_elements
 
 
 def _get_base_class(kind: str, type: str) -> tuple[str, str]:
@@ -248,3 +258,9 @@ def _import_string_for_path(path: str):
         path = path.split(".py")[0]
     import_str = path.replace("/", ".")
     return import_str
+
+
+def _capitalize_first_letter(string: str) -> str:
+    """Capitalize the first letter of a string. Used parse
+    choice types."""
+    return string[0].upper() + string[1:]

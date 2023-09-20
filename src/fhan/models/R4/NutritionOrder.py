@@ -1,137 +1,90 @@
 """
 Generated class for NutritionOrder. 
-Time: 2023-09-20 10:09:03
+Time: 2023-09-20 20:29:43
 """
 from dataclasses import dataclass
-
 from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Meta import *
 from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.Reference import *
-from fhan.models.R4.Extension import *
-from fhan.models.R4.Quantity import *
-from fhan.models.R4.Timing import *
+from fhan.models.R4.Ratio import *
 from fhan.models.R4.Annotation import *
 from fhan.models.R4.Element import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Ratio import *
+from fhan.models.R4.Extension import *
+from fhan.models.R4.Quantity import *
 from fhan.models.R4.Identifier import *
+from fhan.models.R4.Timing import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Reference import *
 from fhan.models.R4.Resource import *
 from fhan.models.generator_models import ModelBase
 
+    
+        
+    
+    
 @dataclass
-class oralDiet(Element):
-    """ Diet given orally in contrast to enteral (tube) feeding.
-    :param BackboneElement oralDiet: Oral diet components
-    :param str id: Unique id for inter-element referencing
+class Nutrient(Element):
+    """ Class that defines the quantity and type of nutrient modifications (for example carbohydrate, fiber or sodium) required for the oral diet.:param str id: Unique id for inter-element referencing
+    :param Extension extension: Additional content defined by implementations
+    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param CodeableConcept modifier: Type of nutrient that is being modified
+    :param Quantity amount: Quantity of the specified nutrient
+    """
+    id: str = None
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
+    modifier: "CodeableConcept" = None
+    amount: "Quantity" = None
+    
+
+    
+    
+@dataclass
+class Texture(Element):
+    """ Class that describes any texture modifications required for the patient to safely consume various types of solid foods.:param str id: Unique id for inter-element referencing
+    :param Extension extension: Additional content defined by implementations
+    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param CodeableConcept modifier: Code to indicate how to alter the texture of the foods, e.g. pureed
+    :param CodeableConcept foodType: Concepts that are used to identify an entity that is ingested for nutritional purposes
+    """
+    id: str = None
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
+    modifier: "CodeableConcept" = None
+    foodType: "CodeableConcept" = None
+    
+  
+    
+    
+@dataclass
+class OralDiet(Element):
+    """ Diet given orally in contrast to enteral (tube) feeding.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param CodeableConcept type: Type of oral diet or diet restrictions that describe what can be consumed orally
     :param Timing schedule: Scheduled frequency of diet
-    :param BackboneElement nutrient: Required  nutrient modifications
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param CodeableConcept modifier: Type of nutrient that is being modified
-    :param Quantity amount: Quantity of the specified nutrient
-    :param BackboneElement texture: Required  texture modifications
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param CodeableConcept modifier: Code to indicate how to alter the texture of the foods, e.g. pureed
-    :param CodeableConcept foodType: Concepts that are used to identify an entity that is ingested for nutritional purposes
+    :param Nutrient nutrient: Required  nutrient modifications
+    :param Texture texture: Required  texture modifications
     :param CodeableConcept fluidConsistencyType: The required consistency of fluids and liquids provided to the patient
     :param str instruction: Instructions or additional information about the oral diet
     """
-    oralDiet: "BackboneElement" = None
-    
     id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    type: list["CodeableConcept"] = None
-    
-    schedule: list["Timing"] = None
-    
-    nutrient: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    modifier: "CodeableConcept" = None
-    
-    amount: "Quantity" = None
-    
-    texture: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    modifier: "CodeableConcept" = None
-    
-    foodType: "CodeableConcept" = None
-    
-    fluidConsistencyType: list["CodeableConcept"] = None
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
+    type: list[CodeableConcept] = None
+    schedule: list[Timing] = None
+    nutrient: list[Nutrient] = None
+    texture: list[Texture] = None
+    fluidConsistencyType: list[CodeableConcept] = None
     
     instruction: str = None
     
-@dataclass
-class nutrient(Element):
-    """ Class that defines the quantity and type of nutrient modifications (for example carbohydrate, fiber or sodium) required for the oral diet.
-    :param BackboneElement nutrient: Required  nutrient modifications
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param CodeableConcept modifier: Type of nutrient that is being modified
-    :param Quantity amount: Quantity of the specified nutrient
-    """
-    nutrient: list["BackboneElement"] = None
+
     
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    modifier: "CodeableConcept" = None
-    
-    amount: "Quantity" = None
     
 @dataclass
-class texture(Element):
-    """ Class that describes any texture modifications required for the patient to safely consume various types of solid foods.
-    :param BackboneElement texture: Required  texture modifications
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param CodeableConcept modifier: Code to indicate how to alter the texture of the foods, e.g. pureed
-    :param CodeableConcept foodType: Concepts that are used to identify an entity that is ingested for nutritional purposes
-    """
-    texture: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    modifier: "CodeableConcept" = None
-    
-    foodType: "CodeableConcept" = None
-    
-@dataclass
-class supplement(Element):
-    """ Oral nutritional products given in order to add further nutritional value to the patient's diet.
-    :param BackboneElement supplement: Supplement components
-    :param str id: Unique id for inter-element referencing
+class Supplement(Element):
+    """ Oral nutritional products given in order to add further nutritional value to the patient's diet.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param CodeableConcept type: Type of supplement product requested
@@ -140,29 +93,47 @@ class supplement(Element):
     :param Quantity quantity: Amount of the nutritional supplement
     :param str instruction: Instructions or additional information about the oral supplement
     """
-    supplement: list["BackboneElement"] = None
-    
     id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
     type: "CodeableConcept" = None
     
     productName: str = None
-    
-    schedule: list["Timing"] = None
-    
+    schedule: list[Timing] = None
     quantity: "Quantity" = None
     
     instruction: str = None
     
+
+    
+        
+    
+    
 @dataclass
-class enteralFormula(Element):
-    """ Feeding provided through the gastrointestinal tract via a tube, catheter, or stoma that delivers nutrition distal to the oral cavity.
-    :param BackboneElement enteralFormula: Enteral formula components
-    :param str id: Unique id for inter-element referencing
+class Administration(Element):
+    """ Formula administration instructions as structured data.  This repeating structure allows for changing the administration rate or volume over time for both bolus and continuous feeding.  An example of this would be an instruction to increase the rate of continuous feeding every 2 hours.:param str id: Unique id for inter-element referencing
+    :param Extension extension: Additional content defined by implementations
+    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param Timing schedule: Scheduled frequency of enteral feeding
+    :param Quantity quantity: The volume of formula to provide
+    :param Quantity rateQuantity: Speed with which the formula is provided per period of time
+    :param str administrationInstruction: Formula feeding instructions expressed as text
+    """
+    id: str = None
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
+    schedule: "Timing" = None
+    quantity: "Quantity" = None
+    rateQuantity: "Quantity" = None
+    
+    administrationInstruction: str = None
+    
+  
+    
+    
+@dataclass
+class EnteralFormula(Element):
+    """ Feeding provided through the gastrointestinal tract via a tube, catheter, or stoma that delivers nutrition distal to the oral cavity.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param CodeableConcept baseFormulaType: Type of enteral or infant formula
@@ -171,90 +142,23 @@ class enteralFormula(Element):
     :param str additiveProductName: Product or brand name of the modular additive
     :param Quantity caloricDensity: Amount of energy per specified volume that is required
     :param CodeableConcept routeofAdministration: How the formula should enter the patient's gastrointestinal tract
-    :param BackboneElement administration: Formula feeding instruction as structured data
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param Timing schedule: Scheduled frequency of enteral feeding
-    :param Quantity quantity: The volume of formula to provide
-    :param Quantity rateQuantity: Speed with which the formula is provided per period of time
-    :param Ratio rateQuantity: Speed with which the formula is provided per period of time
+    :param Administration administration: Formula feeding instruction as structured data
     :param Quantity maxVolumeToDeliver: Upper limit on formula volume per unit of time
-    :param str administrationInstruction: Formula feeding instructions expressed as text
     """
-    enteralFormula: "BackboneElement" = None
-    
     id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
     baseFormulaType: "CodeableConcept" = None
     
     baseFormulaProductName: str = None
-    
     additiveType: "CodeableConcept" = None
     
     additiveProductName: str = None
-    
     caloricDensity: "Quantity" = None
-    
     routeofAdministration: "CodeableConcept" = None
-    
-    administration: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    schedule: "Timing" = None
-    
-    quantity: "Quantity" = None
-    
-    rateQuantity: "Quantity" = None
-    
-    rateQuantity: "Ratio" = None
-    
+    administration: list[Administration] = None
     maxVolumeToDeliver: "Quantity" = None
     
-    administrationInstruction: str = None
-    
-@dataclass
-class administration(Element):
-    """ Formula administration instructions as structured data.  This repeating structure allows for changing the administration rate or volume over time for both bolus and continuous feeding.  An example of this would be an instruction to increase the rate of continuous feeding every 2 hours.
-    :param BackboneElement administration: Formula feeding instruction as structured data
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param Timing schedule: Scheduled frequency of enteral feeding
-    :param Quantity quantity: The volume of formula to provide
-    :param Quantity rateQuantity: Speed with which the formula is provided per period of time
-    :param Ratio rateQuantity: Speed with which the formula is provided per period of time
-    :param str administrationInstruction: Formula feeding instructions expressed as text
-    """
-    administration: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    schedule: "Timing" = None
-    
-    quantity: "Quantity" = None
-    
-    rateQuantity: "Quantity" = None
-    
-    rateQuantity: "Ratio" = None
-    
-    administrationInstruction: str = None
-    
-
-
 @dataclass
 class NutritionOrder(ModelBase):
     """ A request to supply a diet, formula feeding (enteral) or oral nutritional supplement to a patient/resident.
@@ -279,55 +183,9 @@ class NutritionOrder(ModelBase):
     :param Reference allergyIntolerance: List of the patient's food and nutrition-related allergies and intolerances
     :param CodeableConcept foodPreferenceModifier: Order-specific modifier about the type of food that should be given
     :param CodeableConcept excludeFoodModifier: Order-specific modifier about the type of food that should not be given
-    :param BackboneElement oralDiet: Oral diet components
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param CodeableConcept type: Type of oral diet or diet restrictions that describe what can be consumed orally
-    :param Timing schedule: Scheduled frequency of diet
-    :param BackboneElement nutrient: Required  nutrient modifications
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param CodeableConcept modifier: Type of nutrient that is being modified
-    :param Quantity amount: Quantity of the specified nutrient
-    :param BackboneElement texture: Required  texture modifications
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param CodeableConcept modifier: Code to indicate how to alter the texture of the foods, e.g. pureed
-    :param CodeableConcept foodType: Concepts that are used to identify an entity that is ingested for nutritional purposes
-    :param CodeableConcept fluidConsistencyType: The required consistency of fluids and liquids provided to the patient
-    :param str instruction: Instructions or additional information about the oral diet
-    :param BackboneElement supplement: Supplement components
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param CodeableConcept type: Type of supplement product requested
-    :param str productName: Product or brand name of the nutritional supplement
-    :param Timing schedule: Scheduled frequency of supplement
-    :param Quantity quantity: Amount of the nutritional supplement
-    :param str instruction: Instructions or additional information about the oral supplement
-    :param BackboneElement enteralFormula: Enteral formula components
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param CodeableConcept baseFormulaType: Type of enteral or infant formula
-    :param str baseFormulaProductName: Product or brand name of the enteral or infant formula
-    :param CodeableConcept additiveType: Type of modular component to add to the feeding
-    :param str additiveProductName: Product or brand name of the modular additive
-    :param Quantity caloricDensity: Amount of energy per specified volume that is required
-    :param CodeableConcept routeofAdministration: How the formula should enter the patient's gastrointestinal tract
-    :param BackboneElement administration: Formula feeding instruction as structured data
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param Timing schedule: Scheduled frequency of enteral feeding
-    :param Quantity quantity: The volume of formula to provide
-    :param Quantity rateQuantity: Speed with which the formula is provided per period of time
-    :param Ratio rateQuantity: Speed with which the formula is provided per period of time
-    :param Quantity maxVolumeToDeliver: Upper limit on formula volume per unit of time
-    :param str administrationInstruction: Formula feeding instructions expressed as text
+    :param OralDiet oralDiet: Oral diet components
+    :param Supplement supplement: Supplement components
+    :param EnteralFormula enteralFormula: Enteral formula components
     :param Annotation note: Comments
     """
     id: str = None
@@ -372,103 +230,11 @@ class NutritionOrder(ModelBase):
     
     excludeFoodModifier: list["CodeableConcept"] = None
     
-    oralDiet: "BackboneElement" = None
+    oralDiet: "OralDiet" = None
     
-    id: str = None
+    supplement: list["Supplement"] = None
     
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    type: list["CodeableConcept"] = None
-    
-    schedule: list["Timing"] = None
-    
-    nutrient: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    modifier: "CodeableConcept" = None
-    
-    amount: "Quantity" = None
-    
-    texture: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    modifier: "CodeableConcept" = None
-    
-    foodType: "CodeableConcept" = None
-    
-    fluidConsistencyType: list["CodeableConcept"] = None
-    
-    instruction: str = None
-    
-    supplement: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    type: "CodeableConcept" = None
-    
-    productName: str = None
-    
-    schedule: list["Timing"] = None
-    
-    quantity: "Quantity" = None
-    
-    instruction: str = None
-    
-    enteralFormula: "BackboneElement" = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    baseFormulaType: "CodeableConcept" = None
-    
-    baseFormulaProductName: str = None
-    
-    additiveType: "CodeableConcept" = None
-    
-    additiveProductName: str = None
-    
-    caloricDensity: "Quantity" = None
-    
-    routeofAdministration: "CodeableConcept" = None
-    
-    administration: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    schedule: "Timing" = None
-    
-    quantity: "Quantity" = None
-    
-    rateQuantity: "Quantity" = None
-    
-    rateQuantity: "Ratio" = None
-    
-    maxVolumeToDeliver: "Quantity" = None
-    
-    administrationInstruction: str = None
+    enteralFormula: "EnteralFormula" = None
     
     note: list["Annotation"] = None
     

@@ -1,26 +1,22 @@
 """
 Generated class for ServiceRequest. 
-Time: 2023-09-20 10:09:03
+Time: 2023-09-20 20:29:43
 """
 from dataclasses import dataclass
-
 from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Range import *
-from fhan.models.R4.Period import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.Reference import *
-from fhan.models.R4.Extension import *
-from fhan.models.R4.Quantity import *
-from fhan.models.R4.Timing import *
-from fhan.models.R4.Annotation import *
 from fhan.models.R4.Meta import *
 from fhan.models.R4.Ratio import *
+from fhan.models.R4.Range import *
+from fhan.models.R4.Annotation import *
+from fhan.models.R4.Extension import *
+from fhan.models.R4.Quantity import *
+from fhan.models.R4.Period import *
 from fhan.models.R4.Identifier import *
+from fhan.models.R4.Timing import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Reference import *
 from fhan.models.R4.Resource import *
 from fhan.models.generator_models import ModelBase
-
-
-
 @dataclass
 class ServiceRequest(ModelBase):
     """ A record of a request for service such as diagnostic investigations, treatments, or operations to be performed.
@@ -46,15 +42,10 @@ class ServiceRequest(ModelBase):
     :param CodeableConcept code: What is being requested/ordered
     :param CodeableConcept orderDetail: Additional order information
     :param Quantity quantityQuantity: Service amount
-    :param Ratio quantityQuantity: Service amount
-    :param Range quantityQuantity: Service amount
     :param Reference subject: Individual or Entity the service is ordered for
     :param Reference encounter: Encounter in which the request was created
-    :param str occurrencedateTime: When service should occur
-    :param Period occurrencedateTime: When service should occur
-    :param Timing occurrencedateTime: When service should occur
-    :param bool asNeededboolean: Preconditions for service
-    :param CodeableConcept asNeededboolean: Preconditions for service
+    :param str occurrenceDateTime: When service should occur
+    :param bool asNeededBoolean: Preconditions for service
     :param str authoredOn: Date request signed
     :param Reference requester: Who/what is requesting service
     :param CodeableConcept performerType: Performer role
@@ -115,23 +106,13 @@ class ServiceRequest(ModelBase):
     
     quantityQuantity: "Quantity" = None
     
-    quantityQuantity: "Ratio" = None
-    
-    quantityQuantity: "Range" = None
-    
     subject: "Reference" = None
     
     encounter: "Reference" = None
     
-    occurrencedateTime: str = None
+    occurrenceDateTime: str = None
     
-    occurrencedateTime: "Period" = None
-    
-    occurrencedateTime: "Timing" = None
-    
-    asNeededboolean: bool = None
-    
-    asNeededboolean: "CodeableConcept" = None
+    asNeededBoolean: bool = None
     
     authoredOn: str = None
     

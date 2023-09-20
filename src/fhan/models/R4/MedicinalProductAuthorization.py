@@ -1,26 +1,25 @@
 """
 Generated class for MedicinalProductAuthorization. 
-Time: 2023-09-20 10:09:03
+Time: 2023-09-20 20:29:43
 """
 from dataclasses import dataclass
-
 from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Period import *
+from fhan.models.R4.Meta import *
 from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Element import *
+from fhan.models.R4.Extension import *
+from fhan.models.R4.Period import *
+from fhan.models.R4.Identifier import *
 from fhan.models.R4.Narrative import *
 from fhan.models.R4.Reference import *
-from fhan.models.R4.Extension import *
-from fhan.models.R4.Element import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Identifier import *
 from fhan.models.R4.Resource import *
 from fhan.models.generator_models import ModelBase
 
+    
+    
 @dataclass
-class jurisdictionalAuthorization(Element):
-    """ Authorization in areas within a country.
-    :param BackboneElement jurisdictionalAuthorization: Authorization in areas within a country
-    :param str id: Unique id for inter-element referencing
+class JurisdictionalAuthorization(Element):
+    """ Authorization in areas within a country.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param Identifier identifier: The assigned number for the marketing authorization
@@ -29,88 +28,34 @@ class jurisdictionalAuthorization(Element):
     :param CodeableConcept legalStatusOfSupply: The legal status of supply in a jurisdiction or region
     :param Period validityPeriod: The start and expected end date of the authorization
     """
-    jurisdictionalAuthorization: list["BackboneElement"] = None
-    
     id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    identifier: list["Identifier"] = None
-    
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
+    identifier: list[Identifier] = None
     country: "CodeableConcept" = None
-    
-    jurisdiction: list["CodeableConcept"] = None
-    
+    jurisdiction: list[CodeableConcept] = None
     legalStatusOfSupply: "CodeableConcept" = None
-    
     validityPeriod: "Period" = None
     
+
+    
+    
 @dataclass
-class procedure(Element):
-    """ The regulatory procedure for granting or amending a marketing authorization.
-    :param BackboneElement procedure: The regulatory procedure for granting or amending a marketing authorization
-    :param str id: Unique id for inter-element referencing
+class Procedure(Element):
+    """ The regulatory procedure for granting or amending a marketing authorization.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param Identifier identifier: Identifier for this procedure
     :param CodeableConcept type: Type of procedure
     :param Period datePeriod: Date of procedure
-    :param str datePeriod: Date of procedure
-    :param BackboneElement application: The regulatory procedure for granting or amending a marketing authorization
     """
-    procedure: "BackboneElement" = None
-    
     id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
     identifier: "Identifier" = None
-    
     type: "CodeableConcept" = None
-    
     datePeriod: "Period" = None
     
-    datePeriod: str = None
-    
-    application: "BackboneElement" = None
-    
-@dataclass
-class application(Element):
-    """ The regulatory procedure for granting or amending a marketing authorization.
-    :param BackboneElement procedure: The regulatory procedure for granting or amending a marketing authorization
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param Identifier identifier: Identifier for this procedure
-    :param CodeableConcept type: Type of procedure
-    :param Period datePeriod: Date of procedure
-    :param str datePeriod: Date of procedure
-    :param BackboneElement application: The regulatory procedure for granting or amending a marketing authorization
-    """
-    procedure: "BackboneElement" = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    identifier: "Identifier" = None
-    
-    type: "CodeableConcept" = None
-    
-    datePeriod: "Period" = None
-    
-    datePeriod: str = None
-    
-    application: "BackboneElement" = None
-    
-
-
 @dataclass
 class MedicinalProductAuthorization(ModelBase):
     """ The regulatory authorization of a medicinal product.
@@ -134,26 +79,10 @@ class MedicinalProductAuthorization(ModelBase):
     :param str dateOfFirstAuthorization: The date when the first authorization was granted by a Medicines Regulatory Agency
     :param str internationalBirthDate: Date of first marketing authorization for a company's new medicinal product in any country in the World
     :param CodeableConcept legalBasis: The legal framework against which this authorization is granted
-    :param BackboneElement jurisdictionalAuthorization: Authorization in areas within a country
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param Identifier identifier: The assigned number for the marketing authorization
-    :param CodeableConcept country: Country of authorization
-    :param CodeableConcept jurisdiction: Jurisdiction within a country
-    :param CodeableConcept legalStatusOfSupply: The legal status of supply in a jurisdiction or region
-    :param Period validityPeriod: The start and expected end date of the authorization
+    :param JurisdictionalAuthorization jurisdictionalAuthorization: Authorization in areas within a country
     :param Reference holder: Marketing Authorization Holder
     :param Reference regulator: Medicines Regulatory Agency
-    :param BackboneElement procedure: The regulatory procedure for granting or amending a marketing authorization
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param Identifier identifier: Identifier for this procedure
-    :param CodeableConcept type: Type of procedure
-    :param Period datePeriod: Date of procedure
-    :param str datePeriod: Date of procedure
-    :param BackboneElement application: The regulatory procedure for granting or amending a marketing authorization
+    :param Procedure procedure: The regulatory procedure for granting or amending a marketing authorization
     """
     id: str = None
     
@@ -195,43 +124,11 @@ class MedicinalProductAuthorization(ModelBase):
     
     legalBasis: "CodeableConcept" = None
     
-    jurisdictionalAuthorization: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    identifier: list["Identifier"] = None
-    
-    country: "CodeableConcept" = None
-    
-    jurisdiction: list["CodeableConcept"] = None
-    
-    legalStatusOfSupply: "CodeableConcept" = None
-    
-    validityPeriod: "Period" = None
+    jurisdictionalAuthorization: list["JurisdictionalAuthorization"] = None
     
     holder: "Reference" = None
     
     regulator: "Reference" = None
     
-    procedure: "BackboneElement" = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    identifier: "Identifier" = None
-    
-    type: "CodeableConcept" = None
-    
-    datePeriod: "Period" = None
-    
-    datePeriod: str = None
-    
-    application: "BackboneElement" = None
+    procedure: "Procedure" = None
     

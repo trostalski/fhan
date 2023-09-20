@@ -1,32 +1,31 @@
 """
 Generated class for Observation. 
-Time: 2023-09-20 10:09:03
+Time: 2023-09-20 20:29:43
 """
 from dataclasses import dataclass
-
 from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Period import *
+from fhan.models.R4.Meta import *
 from fhan.models.R4.Range import *
+from fhan.models.R4.Ratio import *
+from fhan.models.R4.Coding import *
 from fhan.models.R4.BackboneElement import *
 from fhan.models.R4.SampledData import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.Reference import *
-from fhan.models.R4.Extension import *
-from fhan.models.R4.Quantity import *
 from fhan.models.R4.Annotation import *
 from fhan.models.R4.Element import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Ratio import *
+from fhan.models.R4.Extension import *
+from fhan.models.R4.Period import *
+from fhan.models.R4.Quantity import *
 from fhan.models.R4.Identifier import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Reference import *
 from fhan.models.R4.Resource import *
-from fhan.models.R4.Coding import *
 from fhan.models.generator_models import ModelBase
 
+    
+    
 @dataclass
-class referenceRange(Element):
-    """ Guidance on how to interpret the value by comparison to a normal or recommended range.  Multiple reference ranges are interpreted as an "OR".   In other words, to represent two distinct target populations, two `referenceRange` elements would be used.
-    :param BackboneElement referenceRange: Provides guide for interpretation
-    :param str id: Unique id for inter-element referencing
+class ReferenceRange(Element):
+    """ Guidance on how to interpret the value by comparison to a normal or recommended range.  Multiple reference ranges are interpreted as an "OR".   In other words, to represent two distinct target populations, two `referenceRange` elements would be used.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param Quantity low: Low Range, if relevant
@@ -35,127 +34,39 @@ class referenceRange(Element):
     :param CodeableConcept appliesTo: Reference range population
     :param Range age: Applicable age range, if relevant
     :param str text: Text based reference range in an observation
-    :param BackboneElement referenceRange: Provides guide for interpretation
     """
-    referenceRange: list["BackboneElement"] = None
-    
     id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
     low: "Quantity" = None
-    
     high: "Quantity" = None
-    
     type: "CodeableConcept" = None
-    
-    appliesTo: list["CodeableConcept"] = None
-    
+    appliesTo: list[CodeableConcept] = None
     age: "Range" = None
     
     text: str = None
     
-    referenceRange: list["BackboneElement"] = None
+
+    
     
 @dataclass
-class component(Element):
-    """ Used when reporting systolic and diastolic blood pressure.
-    :param BackboneElement component: Used when reporting systolic and diastolic blood pressure.
-    :param str id: Unique id for inter-element referencing
+class Component(Element):
+    """ Used when reporting systolic and diastolic blood pressure.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param CodeableConcept code: Type of component observation (code / type)
     :param Quantity valueQuantity: Vital Sign Value recorded with UCUM
-    :param CodeableConcept valueQuantity: Vital Sign Value recorded with UCUM
-    :param str valueQuantity: Vital Sign Value recorded with UCUM
-    :param bool valueQuantity: Vital Sign Value recorded with UCUM
-    :param int valueQuantity: Vital Sign Value recorded with UCUM
-    :param Range valueQuantity: Vital Sign Value recorded with UCUM
-    :param Ratio valueQuantity: Vital Sign Value recorded with UCUM
-    :param SampledData valueQuantity: Vital Sign Value recorded with UCUM
-    :param str valueQuantity: Vital Sign Value recorded with UCUM
-    :param str valueQuantity: Vital Sign Value recorded with UCUM
-    :param Period valueQuantity: Vital Sign Value recorded with UCUM
     :param CodeableConcept dataAbsentReason: Why the component result is missing
     :param CodeableConcept interpretation: High, low, normal, etc.
     """
-    component: list["BackboneElement"] = None
-    
     id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
     code: "CodeableConcept" = None
-    
     valueQuantity: "Quantity" = None
-    
-    valueQuantity: "CodeableConcept" = None
-    
-    valueQuantity: str = None
-    
-    valueQuantity: bool = None
-    
-    valueQuantity: int = None
-    
-    valueQuantity: "Range" = None
-    
-    valueQuantity: "Ratio" = None
-    
-    valueQuantity: "SampledData" = None
-    
-    valueQuantity: str = None
-    
-    valueQuantity: str = None
-    
-    valueQuantity: "Period" = None
-    
     dataAbsentReason: "CodeableConcept" = None
+    interpretation: list[CodeableConcept] = None
     
-    interpretation: list["CodeableConcept"] = None
-    
-@dataclass
-class referenceRange(Element):
-    """ Guidance on how to interpret the value by comparison to a normal or recommended range.  Multiple reference ranges are interpreted as an "OR".   In other words, to represent two distinct target populations, two `referenceRange` elements would be used.
-    :param BackboneElement referenceRange: Provides guide for interpretation
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param Quantity low: Low Range, if relevant
-    :param Quantity high: High Range, if relevant
-    :param CodeableConcept type: Reference range qualifier
-    :param CodeableConcept appliesTo: Reference range population
-    :param Range age: Applicable age range, if relevant
-    :param str text: Text based reference range in an observation
-    :param BackboneElement referenceRange: Provides guide for interpretation
-    """
-    referenceRange: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    low: "Quantity" = None
-    
-    high: "Quantity" = None
-    
-    type: "CodeableConcept" = None
-    
-    appliesTo: list["CodeableConcept"] = None
-    
-    age: "Range" = None
-    
-    text: str = None
-    
-    referenceRange: list["BackboneElement"] = None
-    
-
-
 @dataclass
 class Observation(ModelBase):
     """ FHIR Vital Signs Panel Profile
@@ -172,7 +83,6 @@ class Observation(ModelBase):
     :param Reference partOf: Part of referenced event
     :param str status: registered | preliminary | final | amended +
     :param CodeableConcept category: Classification of  type of observation
-    :param CodeableConcept category:VSCat: Classification of  type of observation
     :param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Coding coding: Code defined by a terminology system
@@ -188,7 +98,6 @@ class Observation(ModelBase):
     :param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Coding coding: Code defined by a terminology system
-    :param Coding coding:VitalsPanelCode: Code defined by a terminology system
     :param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param str system: Identity of the terminology system
@@ -200,21 +109,10 @@ class Observation(ModelBase):
     :param Reference subject: Who and/or what the observation is about
     :param Reference focus: What the observation is about, when it is not about the subject of record
     :param Reference encounter: Healthcare event during which this observation is made
-    :param str effectivedateTime: Often just a dateTime for Vital Signs
-    :param Period effectivedateTime: Often just a dateTime for Vital Signs
+    :param str effectiveDateTime: Often just a dateTime for Vital Signs
     :param str issued: Date/Time this version was made available
     :param Reference performer: Who is responsible for the observation
     :param Quantity valueQuantity: Vital Signs value are recorded using the Quantity data type. For supporting observations such as Cuff size could use other datatypes such as CodeableConcept.
-    :param CodeableConcept valueQuantity: Vital Signs value are recorded using the Quantity data type. For supporting observations such as Cuff size could use other datatypes such as CodeableConcept.
-    :param str valueQuantity: Vital Signs value are recorded using the Quantity data type. For supporting observations such as Cuff size could use other datatypes such as CodeableConcept.
-    :param bool valueQuantity: Vital Signs value are recorded using the Quantity data type. For supporting observations such as Cuff size could use other datatypes such as CodeableConcept.
-    :param int valueQuantity: Vital Signs value are recorded using the Quantity data type. For supporting observations such as Cuff size could use other datatypes such as CodeableConcept.
-    :param Range valueQuantity: Vital Signs value are recorded using the Quantity data type. For supporting observations such as Cuff size could use other datatypes such as CodeableConcept.
-    :param Ratio valueQuantity: Vital Signs value are recorded using the Quantity data type. For supporting observations such as Cuff size could use other datatypes such as CodeableConcept.
-    :param SampledData valueQuantity: Vital Signs value are recorded using the Quantity data type. For supporting observations such as Cuff size could use other datatypes such as CodeableConcept.
-    :param str valueQuantity: Vital Signs value are recorded using the Quantity data type. For supporting observations such as Cuff size could use other datatypes such as CodeableConcept.
-    :param str valueQuantity: Vital Signs value are recorded using the Quantity data type. For supporting observations such as Cuff size could use other datatypes such as CodeableConcept.
-    :param Period valueQuantity: Vital Signs value are recorded using the Quantity data type. For supporting observations such as Cuff size could use other datatypes such as CodeableConcept.
     :param CodeableConcept dataAbsentReason: Why the result is missing
     :param CodeableConcept interpretation: High, low, normal, etc.
     :param Annotation note: Comments about the observation
@@ -222,37 +120,10 @@ class Observation(ModelBase):
     :param CodeableConcept method: How it was done
     :param Reference specimen: Specimen used for this observation
     :param Reference device: (Measurement) Device
-    :param BackboneElement referenceRange: Provides guide for interpretation
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param Quantity low: Low Range, if relevant
-    :param Quantity high: High Range, if relevant
-    :param CodeableConcept type: Reference range qualifier
-    :param CodeableConcept appliesTo: Reference range population
-    :param Range age: Applicable age range, if relevant
-    :param str text: Text based reference range in an observation
+    :param ReferenceRange referenceRange: Provides guide for interpretation
     :param Reference hasMember: Used when reporting vital signs panel components
     :param Reference derivedFrom: Related measurements the observation is made from
-    :param BackboneElement component: Used when reporting systolic and diastolic blood pressure.
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param CodeableConcept code: Type of component observation (code / type)
-    :param Quantity valueQuantity: Vital Sign Value recorded with UCUM
-    :param CodeableConcept valueQuantity: Vital Sign Value recorded with UCUM
-    :param str valueQuantity: Vital Sign Value recorded with UCUM
-    :param bool valueQuantity: Vital Sign Value recorded with UCUM
-    :param int valueQuantity: Vital Sign Value recorded with UCUM
-    :param Range valueQuantity: Vital Sign Value recorded with UCUM
-    :param Ratio valueQuantity: Vital Sign Value recorded with UCUM
-    :param SampledData valueQuantity: Vital Sign Value recorded with UCUM
-    :param str valueQuantity: Vital Sign Value recorded with UCUM
-    :param str valueQuantity: Vital Sign Value recorded with UCUM
-    :param Period valueQuantity: Vital Sign Value recorded with UCUM
-    :param CodeableConcept dataAbsentReason: Why the component result is missing
-    :param CodeableConcept interpretation: High, low, normal, etc.
-    :param BackboneElement referenceRange: Provides guide for interpretation
+    :param Component component: Used when reporting systolic and diastolic blood pressure.
     """
     id: str = None
     
@@ -280,8 +151,6 @@ class Observation(ModelBase):
     
     category: list["CodeableConcept"] = None
     
-    category:VSCat: "CodeableConcept" = None
-    
     id: str = None
     
     extension: list["Extension"] = None
@@ -311,8 +180,6 @@ class Observation(ModelBase):
     extension: list["Extension"] = None
     
     coding: list["Coding"] = None
-    
-    coding:VitalsPanelCode: list["Coding"] = None
     
     id: str = None
     
@@ -336,35 +203,13 @@ class Observation(ModelBase):
     
     encounter: "Reference" = None
     
-    effectivedateTime: str = None
-    
-    effectivedateTime: "Period" = None
+    effectiveDateTime: str = None
     
     issued: str = None
     
     performer: list["Reference"] = None
     
     valueQuantity: "Quantity" = None
-    
-    valueQuantity: "CodeableConcept" = None
-    
-    valueQuantity: str = None
-    
-    valueQuantity: bool = None
-    
-    valueQuantity: int = None
-    
-    valueQuantity: "Range" = None
-    
-    valueQuantity: "Ratio" = None
-    
-    valueQuantity: "SampledData" = None
-    
-    valueQuantity: str = None
-    
-    valueQuantity: str = None
-    
-    valueQuantity: "Period" = None
     
     dataAbsentReason: "CodeableConcept" = None
     
@@ -380,65 +225,11 @@ class Observation(ModelBase):
     
     device: "Reference" = None
     
-    referenceRange: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    low: "Quantity" = None
-    
-    high: "Quantity" = None
-    
-    type: "CodeableConcept" = None
-    
-    appliesTo: list["CodeableConcept"] = None
-    
-    age: "Range" = None
-    
-    text: str = None
+    referenceRange: list["ReferenceRange"] = None
     
     hasMember: list["Reference"] = None
     
     derivedFrom: list["Reference"] = None
     
-    component: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    code: "CodeableConcept" = None
-    
-    valueQuantity: "Quantity" = None
-    
-    valueQuantity: "CodeableConcept" = None
-    
-    valueQuantity: str = None
-    
-    valueQuantity: bool = None
-    
-    valueQuantity: int = None
-    
-    valueQuantity: "Range" = None
-    
-    valueQuantity: "Ratio" = None
-    
-    valueQuantity: "SampledData" = None
-    
-    valueQuantity: str = None
-    
-    valueQuantity: str = None
-    
-    valueQuantity: "Period" = None
-    
-    dataAbsentReason: "CodeableConcept" = None
-    
-    interpretation: list["CodeableConcept"] = None
-    
-    referenceRange: list["BackboneElement"] = None
+    component: list["Component"] = None
     

@@ -1,57 +1,104 @@
 """
 Generated class for ConceptMap. 
-Time: 2023-09-20 10:09:03
+Time: 2023-09-20 20:29:43
 """
 from dataclasses import dataclass
-
 from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.UsageContext import *
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.ContactDetail import *
-from fhan.models.R4.Extension import *
-from fhan.models.R4.Element import *
 from fhan.models.R4.Meta import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Element import *
+from fhan.models.R4.Extension import *
 from fhan.models.R4.Identifier import *
+from fhan.models.R4.ContactDetail import *
+from fhan.models.R4.UsageContext import *
+from fhan.models.R4.Narrative import *
 from fhan.models.R4.Resource import *
 from fhan.models.generator_models import ModelBase
 
+    
+        
+    
+        
+    
+        
+    
+    
 @dataclass
-class group(Element):
-    """ A group of mappings that all have the same source and target system.
-    :param BackboneElement group: Same source and target systems
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str source: Source system where concepts to be mapped are defined
-    :param str sourceVersion: Specific version of the  code system
-    :param str target: Target system that the concepts are to be mapped to
-    :param str targetVersion: Specific version of the  code system
-    :param BackboneElement element: Mappings for a concept from the source set
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str code: Identifies element being mapped
-    :param str display: Display for the code
-    :param BackboneElement target: Concept in target system for element
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str code: Code that identifies the target element
-    :param str display: Display for the code
-    :param str equivalence: relatedto | equivalent | equal | wider | subsumes | narrower | specializes | inexact | unmatched | disjoint
-    :param str comment: Description of status/issues in mapping
-    :param BackboneElement dependsOn: Other elements required for this mapping (from context)
-    :param str id: Unique id for inter-element referencing
+class DependsOn(Element):
+    """ A set of additional dependencies for this mapping to hold. This mapping is only applicable if the specified element can be resolved, and it has the specified value.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str property: Reference to property mapping depends on
     :param str system: Code System (if necessary)
     :param str value: Value of the referenced element
     :param str display: Display for the code (if value is a code)
-    :param BackboneElement product: Other elements required for this mapping (from context)
-    :param BackboneElement unmapped: What to do when there is no mapping for the source concept
-    :param str id: Unique id for inter-element referencing
+    """
+    id: str = None
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
+    
+    property: str = None
+    
+    system: str = None
+    
+    value: str = None
+    
+    display: str = None
+    
+  
+    
+    
+@dataclass
+class Target(Element):
+    """ A concept from the target value set that this concept maps to.:param str id: Unique id for inter-element referencing
+    :param Extension extension: Additional content defined by implementations
+    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param str code: Code that identifies the target element
+    :param str display: Display for the code
+    :param str equivalence: relatedto | equivalent | equal | wider | subsumes | narrower | specializes | inexact | unmatched | disjoint
+    :param str comment: Description of status/issues in mapping
+    :param DependsOn dependsOn: Other elements required for this mapping (from context)
+    """
+    id: str = None
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
+    
+    code: str = None
+    
+    display: str = None
+    
+    equivalence: str = None
+    
+    comment: str = None
+    dependsOn: list[DependsOn] = None
+    
+  
+    
+    
+@dataclass
+class Element(None):
+    """ Mappings for an individual concept in the source to one or more concepts in the target.:param str id: Unique id for inter-element referencing
+    :param Extension extension: Additional content defined by implementations
+    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param str code: Identifies element being mapped
+    :param str display: Display for the code
+    :param Target target: Concept in target system for element
+    """
+    id: str = None
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
+    
+    code: str = None
+    
+    display: str = None
+    target: list[Target] = None
+    
+
+    
+    
+@dataclass
+class Unmapped(Element):
+    """ What to do when there is no mapping for the source concept. "Unmapped" does not include codes that are unmatched, and the unmapped element is ignored in a code is specified to have equivalence = unmatched.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str mode: provided | fixed | other-map
@@ -59,13 +106,36 @@ class group(Element):
     :param str display: Display for the code
     :param str url: canonical reference to an additional ConceptMap to use for mapping if the source concept is unmapped
     """
-    group: list["BackboneElement"] = None
-    
     id: str = None
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
     
-    extension: list["Extension"] = None
+    mode: str = None
     
-    modifierExtension: list["Extension"] = None
+    code: str = None
+    
+    display: str = None
+    
+    url: str = None
+    
+  
+    
+    
+@dataclass
+class Group(Element):
+    """ A group of mappings that all have the same source and target system.:param str id: Unique id for inter-element referencing
+    :param Extension extension: Additional content defined by implementations
+    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param str source: Source system where concepts to be mapped are defined
+    :param str sourceVersion: Specific version of the  code system
+    :param str target: Target system that the concepts are to be mapped to
+    :param str targetVersion: Specific version of the  code system
+    :param Element element: Mappings for a concept from the source set
+    :param Unmapped unmapped: What to do when there is no mapping for the source concept
+    """
+    id: str = None
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
     
     source: str = None
     
@@ -74,289 +144,9 @@ class group(Element):
     target: str = None
     
     targetVersion: str = None
+    element: list[Element] = None
+    unmapped: "Unmapped" = None
     
-    element: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    code: str = None
-    
-    display: str = None
-    
-    target: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    code: str = None
-    
-    display: str = None
-    
-    equivalence: str = None
-    
-    comment: str = None
-    
-    dependsOn: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    property: str = None
-    
-    system: str = None
-    
-    value: str = None
-    
-    display: str = None
-    
-    product: list["BackboneElement"] = None
-    
-    unmapped: "BackboneElement" = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    mode: str = None
-    
-    code: str = None
-    
-    display: str = None
-    
-    url: str = None
-    
-@dataclass
-class element(Element):
-    """ Mappings for an individual concept in the source to one or more concepts in the target.
-    :param BackboneElement element: Mappings for a concept from the source set
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str code: Identifies element being mapped
-    :param str display: Display for the code
-    :param BackboneElement target: Concept in target system for element
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str code: Code that identifies the target element
-    :param str display: Display for the code
-    :param str equivalence: relatedto | equivalent | equal | wider | subsumes | narrower | specializes | inexact | unmatched | disjoint
-    :param str comment: Description of status/issues in mapping
-    :param BackboneElement dependsOn: Other elements required for this mapping (from context)
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str property: Reference to property mapping depends on
-    :param str system: Code System (if necessary)
-    :param str value: Value of the referenced element
-    :param str display: Display for the code (if value is a code)
-    :param BackboneElement product: Other elements required for this mapping (from context)
-    """
-    element: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    code: str = None
-    
-    display: str = None
-    
-    target: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    code: str = None
-    
-    display: str = None
-    
-    equivalence: str = None
-    
-    comment: str = None
-    
-    dependsOn: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    property: str = None
-    
-    system: str = None
-    
-    value: str = None
-    
-    display: str = None
-    
-    product: list["BackboneElement"] = None
-    
-@dataclass
-class target(Element):
-    """ A concept from the target value set that this concept maps to.
-    :param BackboneElement target: Concept in target system for element
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str code: Code that identifies the target element
-    :param str display: Display for the code
-    :param str equivalence: relatedto | equivalent | equal | wider | subsumes | narrower | specializes | inexact | unmatched | disjoint
-    :param str comment: Description of status/issues in mapping
-    :param BackboneElement dependsOn: Other elements required for this mapping (from context)
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str property: Reference to property mapping depends on
-    :param str system: Code System (if necessary)
-    :param str value: Value of the referenced element
-    :param str display: Display for the code (if value is a code)
-    :param BackboneElement product: Other elements required for this mapping (from context)
-    """
-    target: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    code: str = None
-    
-    display: str = None
-    
-    equivalence: str = None
-    
-    comment: str = None
-    
-    dependsOn: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    property: str = None
-    
-    system: str = None
-    
-    value: str = None
-    
-    display: str = None
-    
-    product: list["BackboneElement"] = None
-    
-@dataclass
-class dependsOn(Element):
-    """ A set of additional dependencies for this mapping to hold. This mapping is only applicable if the specified element can be resolved, and it has the specified value.
-    :param BackboneElement dependsOn: Other elements required for this mapping (from context)
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str property: Reference to property mapping depends on
-    :param str system: Code System (if necessary)
-    :param str value: Value of the referenced element
-    :param str display: Display for the code (if value is a code)
-    :param BackboneElement product: Other elements required for this mapping (from context)
-    """
-    dependsOn: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    property: str = None
-    
-    system: str = None
-    
-    value: str = None
-    
-    display: str = None
-    
-    product: list["BackboneElement"] = None
-    
-@dataclass
-class product(Element):
-    """ A set of additional dependencies for this mapping to hold. This mapping is only applicable if the specified element can be resolved, and it has the specified value.
-    :param BackboneElement dependsOn: Other elements required for this mapping (from context)
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str property: Reference to property mapping depends on
-    :param str system: Code System (if necessary)
-    :param str value: Value of the referenced element
-    :param str display: Display for the code (if value is a code)
-    :param BackboneElement product: Other elements required for this mapping (from context)
-    """
-    dependsOn: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    property: str = None
-    
-    system: str = None
-    
-    value: str = None
-    
-    display: str = None
-    
-    product: list["BackboneElement"] = None
-    
-@dataclass
-class unmapped(Element):
-    """ What to do when there is no mapping for the source concept. "Unmapped" does not include codes that are unmatched, and the unmapped element is ignored in a code is specified to have equivalence = unmatched.
-    :param BackboneElement unmapped: What to do when there is no mapping for the source concept
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str mode: provided | fixed | other-map
-    :param str code: Fixed code when mode = fixed
-    :param str display: Display for the code
-    :param str url: canonical reference to an additional ConceptMap to use for mapping if the source concept is unmapped
-    """
-    unmapped: "BackboneElement" = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    mode: str = None
-    
-    code: str = None
-    
-    display: str = None
-    
-    url: str = None
-    
-
-
 @dataclass
 class ConceptMap(ModelBase):
     """ A statement of relationships from one set of concepts to one or more other concepts - either concepts in code systems, or data element/data element concepts, or classes in class models.
@@ -383,49 +173,9 @@ class ConceptMap(ModelBase):
     :param CodeableConcept jurisdiction: Intended jurisdiction for concept map (if applicable)
     :param str purpose: Why this concept map is defined
     :param str copyright: Use and/or publishing restrictions
-    :param str sourceuri: The source value set that contains the concepts that are being mapped
-    :param str sourceuri: The source value set that contains the concepts that are being mapped
-    :param str targeturi: The target value set which provides context for the mappings
-    :param str targeturi: The target value set which provides context for the mappings
-    :param BackboneElement group: Same source and target systems
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str source: Source system where concepts to be mapped are defined
-    :param str sourceVersion: Specific version of the  code system
-    :param str target: Target system that the concepts are to be mapped to
-    :param str targetVersion: Specific version of the  code system
-    :param BackboneElement element: Mappings for a concept from the source set
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str code: Identifies element being mapped
-    :param str display: Display for the code
-    :param BackboneElement target: Concept in target system for element
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str code: Code that identifies the target element
-    :param str display: Display for the code
-    :param str equivalence: relatedto | equivalent | equal | wider | subsumes | narrower | specializes | inexact | unmatched | disjoint
-    :param str comment: Description of status/issues in mapping
-    :param BackboneElement dependsOn: Other elements required for this mapping (from context)
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str property: Reference to property mapping depends on
-    :param str system: Code System (if necessary)
-    :param str value: Value of the referenced element
-    :param str display: Display for the code (if value is a code)
-    :param BackboneElement product: Other elements required for this mapping (from context)
-    :param BackboneElement unmapped: What to do when there is no mapping for the source concept
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str mode: provided | fixed | other-map
-    :param str code: Fixed code when mode = fixed
-    :param str display: Display for the code
-    :param str url: canonical reference to an additional ConceptMap to use for mapping if the source concept is unmapped
+    :param str sourceUri: The source value set that contains the concepts that are being mapped
+    :param str targetUri: The target value set which provides context for the mappings
+    :param Group group: Same source and target systems
     """
     id: str = None
     
@@ -473,89 +223,9 @@ class ConceptMap(ModelBase):
     
     copyright: str = None
     
-    sourceuri: str = None
+    sourceUri: str = None
     
-    sourceuri: str = None
+    targetUri: str = None
     
-    targeturi: str = None
-    
-    targeturi: str = None
-    
-    group: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    source: str = None
-    
-    sourceVersion: str = None
-    
-    target: str = None
-    
-    targetVersion: str = None
-    
-    element: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    code: str = None
-    
-    display: str = None
-    
-    target: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    code: str = None
-    
-    display: str = None
-    
-    equivalence: str = None
-    
-    comment: str = None
-    
-    dependsOn: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    property: str = None
-    
-    system: str = None
-    
-    value: str = None
-    
-    display: str = None
-    
-    product: list["BackboneElement"] = None
-    
-    unmapped: "BackboneElement" = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    mode: str = None
-    
-    code: str = None
-    
-    display: str = None
-    
-    url: str = None
+    group: list["Group"] = None
     

@@ -1,27 +1,26 @@
 """
 Generated class for MessageDefinition. 
-Time: 2023-09-20 10:09:03
+Time: 2023-09-20 20:29:43
 """
 from dataclasses import dataclass
-
 from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.UsageContext import *
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.ContactDetail import *
-from fhan.models.R4.Extension import *
-from fhan.models.R4.Element import *
 from fhan.models.R4.Meta import *
-from fhan.models.R4.Identifier import *
-from fhan.models.R4.Resource import *
+from fhan.models.R4.BackboneElement import *
 from fhan.models.R4.Coding import *
+from fhan.models.R4.Element import *
+from fhan.models.R4.Extension import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.ContactDetail import *
+from fhan.models.R4.UsageContext import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Resource import *
 from fhan.models.generator_models import ModelBase
 
+    
+    
 @dataclass
-class focus(Element):
-    """ Identifies the resource (or resources) that are being addressed by the event.  For example, the Encounter for an admit message or two Account records for a merge.
-    :param BackboneElement focus: Resource(s) that are the subject of the event
-    :param str id: Unique id for inter-element referencing
+class Focus(Element):
+    """ Identifies the resource (or resources) that are being addressed by the event.  For example, the Encounter for an admit message or two Account records for a merge.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str code: Type of resource
@@ -29,13 +28,9 @@ class focus(Element):
     :param int min: Minimum number of focuses of this type
     :param str max: Maximum number of focuses of this type
     """
-    focus: list["BackboneElement"] = None
-    
     id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
     
     code: str = None
     
@@ -45,30 +40,25 @@ class focus(Element):
     
     max: str = None
     
+
+    
+    
 @dataclass
-class allowedResponse(Element):
-    """ Indicates what types of messages may be sent as an application-level response to this message.
-    :param BackboneElement allowedResponse: Responses to this message
-    :param str id: Unique id for inter-element referencing
+class AllowedResponse(Element):
+    """ Indicates what types of messages may be sent as an application-level response to this message.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str message: Reference to allowed message definition response
     :param str situation: When should this response be used
     """
-    allowedResponse: list["BackboneElement"] = None
-    
     id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
     
     message: str = None
     
     situation: str = None
     
-
-
 @dataclass
 class MessageDefinition(ModelBase):
     """ Defines the characteristics of a message that can be shared between systems, including the type of event that initiates the message, the content to be transmitted and what response(s), if any, are permitted.
@@ -99,23 +89,10 @@ class MessageDefinition(ModelBase):
     :param str base: Definition this one is based on
     :param str parent: Protocol/workflow this is part of
     :param Coding eventCoding: Event code  or link to the EventDefinition
-    :param str eventCoding: Event code  or link to the EventDefinition
     :param str category: consequence | currency | notification
-    :param BackboneElement focus: Resource(s) that are the subject of the event
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str code: Type of resource
-    :param str profile: Profile that must be adhered to by focus
-    :param int min: Minimum number of focuses of this type
-    :param str max: Maximum number of focuses of this type
+    :param Focus focus: Resource(s) that are the subject of the event
     :param str responseRequired: always | on-error | never | on-success
-    :param BackboneElement allowedResponse: Responses to this message
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str message: Reference to allowed message definition response
-    :param str situation: When should this response be used
+    :param AllowedResponse allowedResponse: Responses to this message
     :param str graph: Canonical reference to a GraphDefinition
     """
     id: str = None
@@ -172,39 +149,13 @@ class MessageDefinition(ModelBase):
     
     eventCoding: "Coding" = None
     
-    eventCoding: str = None
-    
     category: str = None
     
-    focus: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    code: str = None
-    
-    profile: str = None
-    
-    min: int = None
-    
-    max: str = None
+    focus: list["Focus"] = None
     
     responseRequired: str = None
     
-    allowedResponse: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    message: str = None
-    
-    situation: str = None
+    allowedResponse: list["AllowedResponse"] = None
     
     graph: str = None
     

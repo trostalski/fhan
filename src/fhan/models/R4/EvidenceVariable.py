@@ -1,93 +1,59 @@
 """
 Generated class for EvidenceVariable. 
-Time: 2023-09-20 10:09:03
+Time: 2023-09-20 20:29:43
 """
 from dataclasses import dataclass
-
-from fhan.models.R4.UsageContext import *
-from fhan.models.R4.Extension import *
-from fhan.models.R4.Annotation import *
-from fhan.models.R4.Resource import *
-from fhan.models.R4.DataRequirement import *
-from fhan.models.R4.TriggerDefinition import *
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.ContactDetail import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Element import *
-from fhan.models.R4.Identifier import *
-from fhan.models.R4.Period import *
-from fhan.models.R4.Reference import *
+from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.RelatedArtifact import *
 from fhan.models.R4.Expression import *
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Duration import *
-from fhan.models.R4.Narrative import *
 from fhan.models.R4.Timing import *
+from fhan.models.R4.Period import *
+from fhan.models.R4.Resource import *
+from fhan.models.R4.Meta import *
+from fhan.models.R4.TriggerDefinition import *
+from fhan.models.R4.Element import *
+from fhan.models.R4.Duration import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Annotation import *
+from fhan.models.R4.DataRequirement import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.UsageContext import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Extension import *
+from fhan.models.R4.ContactDetail import *
+from fhan.models.R4.Reference import *
 from fhan.models.generator_models import ModelBase
 
+    
+    
 @dataclass
-class characteristic(Element):
-    """ A characteristic that defines the members of the evidence element. Multiple characteristics are applied with "and" semantics.
-    :param BackboneElement characteristic: What defines the members of the evidence element
-    :param str id: Unique id for inter-element referencing
+class Characteristic(Element):
+    """ A characteristic that defines the members of the evidence element. Multiple characteristics are applied with "and" semantics.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str description: Natural language description of the characteristic
     :param Reference definitionReference: What code or expression defines members?
-    :param str definitionReference: What code or expression defines members?
-    :param CodeableConcept definitionReference: What code or expression defines members?
-    :param Expression definitionReference: What code or expression defines members?
-    :param DataRequirement definitionReference: What code or expression defines members?
-    :param TriggerDefinition definitionReference: What code or expression defines members?
     :param UsageContext usageContext: What code/value pairs define members?
     :param bool exclude: Whether the characteristic includes or excludes members
-    :param str participantEffectivedateTime: What time period do participants cover
-    :param Period participantEffectivedateTime: What time period do participants cover
-    :param Duration participantEffectivedateTime: What time period do participants cover
-    :param Timing participantEffectivedateTime: What time period do participants cover
+    :param str participantEffectiveDateTime: What time period do participants cover
     :param Duration timeFromStart: Observation time from study start
     :param str groupMeasure: mean | median | mean-of-mean | mean-of-median | median-of-mean | median-of-median
     """
-    characteristic: list["BackboneElement"] = None
-    
     id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
     
     description: str = None
-    
     definitionReference: "Reference" = None
-    
-    definitionReference: str = None
-    
-    definitionReference: "CodeableConcept" = None
-    
-    definitionReference: "Expression" = None
-    
-    definitionReference: "DataRequirement" = None
-    
-    definitionReference: "TriggerDefinition" = None
-    
-    usageContext: list["UsageContext"] = None
+    usageContext: list[UsageContext] = None
     
     exclude: bool = None
     
-    participantEffectivedateTime: str = None
-    
-    participantEffectivedateTime: "Period" = None
-    
-    participantEffectivedateTime: "Duration" = None
-    
-    participantEffectivedateTime: "Timing" = None
-    
+    participantEffectiveDateTime: str = None
     timeFromStart: "Duration" = None
     
     groupMeasure: str = None
     
-
-
 @dataclass
 class EvidenceVariable(ModelBase):
     """ Explanation of what this profile contains/is for.
@@ -125,25 +91,7 @@ class EvidenceVariable(ModelBase):
     :param ContactDetail endorser: Who endorsed the content
     :param RelatedArtifact relatedArtifact: Additional documentation, citations, etc.
     :param str type: dichotomous | continuous | descriptive
-    :param BackboneElement characteristic: What defines the members of the evidence element
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str description: Natural language description of the characteristic
-    :param Reference definitionReference: What code or expression defines members?
-    :param str definitionReference: What code or expression defines members?
-    :param CodeableConcept definitionReference: What code or expression defines members?
-    :param Expression definitionReference: What code or expression defines members?
-    :param DataRequirement definitionReference: What code or expression defines members?
-    :param TriggerDefinition definitionReference: What code or expression defines members?
-    :param UsageContext usageContext: What code/value pairs define members?
-    :param bool exclude: Whether the characteristic includes or excludes members
-    :param str participantEffectivedateTime: What time period do participants cover
-    :param Period participantEffectivedateTime: What time period do participants cover
-    :param Duration participantEffectivedateTime: What time period do participants cover
-    :param Timing participantEffectivedateTime: What time period do participants cover
-    :param Duration timeFromStart: Observation time from study start
-    :param str groupMeasure: mean | median | mean-of-mean | mean-of-median | median-of-mean | median-of-median
+    :param Characteristic characteristic: What defines the members of the evidence element
     """
     id: str = None
     
@@ -213,41 +161,5 @@ class EvidenceVariable(ModelBase):
     
     type: str = None
     
-    characteristic: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    description: str = None
-    
-    definitionReference: "Reference" = None
-    
-    definitionReference: str = None
-    
-    definitionReference: "CodeableConcept" = None
-    
-    definitionReference: "Expression" = None
-    
-    definitionReference: "DataRequirement" = None
-    
-    definitionReference: "TriggerDefinition" = None
-    
-    usageContext: list["UsageContext"] = None
-    
-    exclude: bool = None
-    
-    participantEffectivedateTime: str = None
-    
-    participantEffectivedateTime: "Period" = None
-    
-    participantEffectivedateTime: "Duration" = None
-    
-    participantEffectivedateTime: "Timing" = None
-    
-    timeFromStart: "Duration" = None
-    
-    groupMeasure: str = None
+    characteristic: list["Characteristic"] = None
     

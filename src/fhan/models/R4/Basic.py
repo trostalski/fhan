@@ -1,20 +1,16 @@
 """
 Generated class for Basic. 
-Time: 2023-09-20 10:09:03
+Time: 2023-09-20 20:29:43
 """
 from dataclasses import dataclass
-
 from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Meta import *
+from fhan.models.R4.Extension import *
+from fhan.models.R4.Identifier import *
 from fhan.models.R4.Narrative import *
 from fhan.models.R4.Reference import *
-from fhan.models.R4.Extension import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Identifier import *
 from fhan.models.R4.Resource import *
 from fhan.models.generator_models import ModelBase
-
-
-
 @dataclass
 class Basic(ModelBase):
     """ Basic is used for handling concepts not yet defined in FHIR, narrative-only resources that don't map to an existing resource, and custom resources not appropriate for inclusion in the FHIR specification.

@@ -1,23 +1,19 @@
 """
 Generated class for MedicationStatement. 
-Time: 2023-09-20 10:09:03
+Time: 2023-09-20 20:29:43
 """
 from dataclasses import dataclass
-
 from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Period import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.Dosage import *
-from fhan.models.R4.Reference import *
-from fhan.models.R4.Extension import *
-from fhan.models.R4.Annotation import *
 from fhan.models.R4.Meta import *
+from fhan.models.R4.Annotation import *
+from fhan.models.R4.Extension import *
+from fhan.models.R4.Period import *
+from fhan.models.R4.Dosage import *
 from fhan.models.R4.Identifier import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Reference import *
 from fhan.models.R4.Resource import *
 from fhan.models.generator_models import ModelBase
-
-
-
 @dataclass
 class MedicationStatement(ModelBase):
     """ A record of a medication that is being consumed by a patient.   A MedicationStatement may indicate that the patient may be taking the medication now or has taken the medication in the past or will be taking the medication in the future.  The source of this information can be the patient, significant other (such as a family member or spouse), or a clinician.  A common scenario where this information is captured is during the history taking process during a patient visit or stay.   The medication information may come from sources such as the patient's memory, from a prescription bottle,  or from a list of medications the patient, clinician or other party maintains. 
@@ -38,11 +34,9 @@ The primary difference between a medication statement and a medication administr
     :param CodeableConcept statusReason: Reason for current status
     :param CodeableConcept category: Type of medication usage
     :param CodeableConcept medicationCodeableConcept: What medication was taken
-    :param Reference medicationCodeableConcept: What medication was taken
     :param Reference subject: Who is/was taking  the medication
     :param Reference context: Encounter / Episode associated with MedicationStatement
-    :param str effectivedateTime: The date/time or interval when the medication is/was/will be taken
-    :param Period effectivedateTime: The date/time or interval when the medication is/was/will be taken
+    :param str effectiveDateTime: The date/time or interval when the medication is/was/will be taken
     :param str dateAsserted: When the statement was asserted?
     :param Reference informationSource: Person or organization that provided the information about the taking of this medication
     :param Reference derivedFrom: Additional supporting information
@@ -81,15 +75,11 @@ The primary difference between a medication statement and a medication administr
     
     medicationCodeableConcept: "CodeableConcept" = None
     
-    medicationCodeableConcept: "Reference" = None
-    
     subject: "Reference" = None
     
     context: "Reference" = None
     
-    effectivedateTime: str = None
-    
-    effectivedateTime: "Period" = None
+    effectiveDateTime: str = None
     
     dateAsserted: str = None
     

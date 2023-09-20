@@ -1,39 +1,34 @@
 """
 Generated class for DeviceMetric. 
-Time: 2023-09-20 10:09:03
+Time: 2023-09-20 20:29:43
 """
 from dataclasses import dataclass
-
 from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Meta import *
 from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Element import *
+from fhan.models.R4.Extension import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.Timing import *
 from fhan.models.R4.Narrative import *
 from fhan.models.R4.Reference import *
-from fhan.models.R4.Extension import *
-from fhan.models.R4.Timing import *
-from fhan.models.R4.Element import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Identifier import *
 from fhan.models.R4.Resource import *
 from fhan.models.generator_models import ModelBase
 
+    
+    
 @dataclass
-class calibration(Element):
-    """ Describes the calibrations that have been performed or that are required to be performed.
-    :param BackboneElement calibration: Describes the calibrations that have been performed or that are required to be performed
-    :param str id: Unique id for inter-element referencing
+class Calibration(Element):
+    """ Describes the calibrations that have been performed or that are required to be performed.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str type: unspecified | offset | gain | two-point
     :param str state: not-calibrated | calibration-required | calibrated | unspecified
     :param str time: Describes the time last calibration has been performed
     """
-    calibration: list["BackboneElement"] = None
-    
     id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
     
     type: str = None
     
@@ -41,8 +36,6 @@ class calibration(Element):
     
     time: str = None
     
-
-
 @dataclass
 class DeviceMetric(ModelBase):
     """ Describes a measurement, calculation or setting capability of a medical device.
@@ -63,13 +56,7 @@ class DeviceMetric(ModelBase):
     :param str color: black | red | green | yellow | blue | magenta | cyan | white
     :param str category: measurement | setting | calculation | unspecified
     :param Timing measurementPeriod: Describes the measurement repetition time
-    :param BackboneElement calibration: Describes the calibrations that have been performed or that are required to be performed
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str type: unspecified | offset | gain | two-point
-    :param str state: not-calibrated | calibration-required | calibrated | unspecified
-    :param str time: Describes the time last calibration has been performed
+    :param Calibration calibration: Describes the calibrations that have been performed or that are required to be performed
     """
     id: str = None
     
@@ -105,17 +92,5 @@ class DeviceMetric(ModelBase):
     
     measurementPeriod: "Timing" = None
     
-    calibration: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    type: str = None
-    
-    state: str = None
-    
-    time: str = None
+    calibration: list["Calibration"] = None
     

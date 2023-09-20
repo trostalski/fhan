@@ -1,74 +1,57 @@
 """
 Generated class for Substance. 
-Time: 2023-09-20 10:09:03
+Time: 2023-09-20 20:29:43
 """
 from dataclasses import dataclass
-
 from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Meta import *
 from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.Reference import *
+from fhan.models.R4.Ratio import *
+from fhan.models.R4.Element import *
 from fhan.models.R4.Extension import *
 from fhan.models.R4.Quantity import *
-from fhan.models.R4.Element import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Ratio import *
 from fhan.models.R4.Identifier import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Reference import *
 from fhan.models.R4.Resource import *
 from fhan.models.generator_models import ModelBase
 
+    
+    
 @dataclass
-class instance(Element):
-    """ Substance may be used to describe a kind of substance, or a specific package/container of the substance: an instance.
-    :param BackboneElement instance: If this describes a specific package/container of the substance
-    :param str id: Unique id for inter-element referencing
+class Instance(Element):
+    """ Substance may be used to describe a kind of substance, or a specific package/container of the substance: an instance.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param Identifier identifier: Identifier of the package/container
     :param str expiry: When no longer valid to use
     :param Quantity quantity: Amount of substance in the package
     """
-    instance: list["BackboneElement"] = None
-    
     id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
     identifier: "Identifier" = None
     
     expiry: str = None
-    
     quantity: "Quantity" = None
     
+
+    
+    
 @dataclass
-class ingredient(Element):
-    """ A substance can be composed of other substances.
-    :param BackboneElement ingredient: Composition information about the substance
-    :param str id: Unique id for inter-element referencing
+class Ingredient(Element):
+    """ A substance can be composed of other substances.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param Ratio quantity: Optional amount (concentration)
     :param CodeableConcept substanceCodeableConcept: A component of the substance
-    :param Reference substanceCodeableConcept: A component of the substance
     """
-    ingredient: list["BackboneElement"] = None
-    
     id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
     quantity: "Ratio" = None
-    
     substanceCodeableConcept: "CodeableConcept" = None
     
-    substanceCodeableConcept: "Reference" = None
-    
-
-
 @dataclass
 class Substance(ModelBase):
     """ A homogeneous material with a definite composition.
@@ -85,20 +68,8 @@ class Substance(ModelBase):
     :param CodeableConcept category: What class/type of substance this is
     :param CodeableConcept code: What substance this is
     :param str description: Textual description of the substance, comments
-    :param BackboneElement instance: If this describes a specific package/container of the substance
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param Identifier identifier: Identifier of the package/container
-    :param str expiry: When no longer valid to use
-    :param Quantity quantity: Amount of substance in the package
-    :param BackboneElement ingredient: Composition information about the substance
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param Ratio quantity: Optional amount (concentration)
-    :param CodeableConcept substanceCodeableConcept: A component of the substance
-    :param Reference substanceCodeableConcept: A component of the substance
+    :param Instance instance: If this describes a specific package/container of the substance
+    :param Ingredient ingredient: Composition information about the substance
     """
     id: str = None
     
@@ -126,31 +97,7 @@ class Substance(ModelBase):
     
     description: str = None
     
-    instance: list["BackboneElement"] = None
+    instance: list["Instance"] = None
     
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    identifier: "Identifier" = None
-    
-    expiry: str = None
-    
-    quantity: "Quantity" = None
-    
-    ingredient: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    quantity: "Ratio" = None
-    
-    substanceCodeableConcept: "CodeableConcept" = None
-    
-    substanceCodeableConcept: "Reference" = None
+    ingredient: list["Ingredient"] = None
     

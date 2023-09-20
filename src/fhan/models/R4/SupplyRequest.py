@@ -1,57 +1,39 @@
 """
 Generated class for SupplyRequest. 
-Time: 2023-09-20 10:09:03
+Time: 2023-09-20 20:29:43
 """
 from dataclasses import dataclass
-
 from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Range import *
-from fhan.models.R4.Period import *
+from fhan.models.R4.Meta import *
 from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.Reference import *
+from fhan.models.R4.Range import *
+from fhan.models.R4.Element import *
 from fhan.models.R4.Extension import *
 from fhan.models.R4.Quantity import *
-from fhan.models.R4.Timing import *
-from fhan.models.R4.Element import *
-from fhan.models.R4.Meta import *
+from fhan.models.R4.Period import *
 from fhan.models.R4.Identifier import *
+from fhan.models.R4.Timing import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Reference import *
 from fhan.models.R4.Resource import *
 from fhan.models.generator_models import ModelBase
 
+    
+    
 @dataclass
-class parameter(Element):
-    """ Specific parameters for the ordered item.  For example, the size of the indicated item.
-    :param BackboneElement parameter: Ordered item details
-    :param str id: Unique id for inter-element referencing
+class Parameter(Element):
+    """ Specific parameters for the ordered item.  For example, the size of the indicated item.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param CodeableConcept code: Item detail
     :param CodeableConcept valueCodeableConcept: Value of detail
-    :param Quantity valueCodeableConcept: Value of detail
-    :param Range valueCodeableConcept: Value of detail
-    :param bool valueCodeableConcept: Value of detail
     """
-    parameter: list["BackboneElement"] = None
-    
     id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
     code: "CodeableConcept" = None
-    
     valueCodeableConcept: "CodeableConcept" = None
     
-    valueCodeableConcept: "Quantity" = None
-    
-    valueCodeableConcept: "Range" = None
-    
-    valueCodeableConcept: bool = None
-    
-
-
 @dataclass
 class SupplyRequest(ModelBase):
     """ A record of a request for a medication, substance or device used in the healthcare setting.
@@ -68,20 +50,9 @@ class SupplyRequest(ModelBase):
     :param CodeableConcept category: The kind of supply (central, non-stock, etc.)
     :param str priority: routine | urgent | asap | stat
     :param CodeableConcept itemCodeableConcept: Medication, Substance, or Device requested to be supplied
-    :param Reference itemCodeableConcept: Medication, Substance, or Device requested to be supplied
     :param Quantity quantity: The requested amount of the item indicated
-    :param BackboneElement parameter: Ordered item details
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param CodeableConcept code: Item detail
-    :param CodeableConcept valueCodeableConcept: Value of detail
-    :param Quantity valueCodeableConcept: Value of detail
-    :param Range valueCodeableConcept: Value of detail
-    :param bool valueCodeableConcept: Value of detail
-    :param str occurrencedateTime: When the request should be fulfilled
-    :param Period occurrencedateTime: When the request should be fulfilled
-    :param Timing occurrencedateTime: When the request should be fulfilled
+    :param Parameter parameter: Ordered item details
+    :param str occurrenceDateTime: When the request should be fulfilled
     :param str authoredOn: When the request was made
     :param Reference requester: Individual making the request
     :param Reference supplier: Who is intended to fulfill the request
@@ -116,33 +87,11 @@ class SupplyRequest(ModelBase):
     
     itemCodeableConcept: "CodeableConcept" = None
     
-    itemCodeableConcept: "Reference" = None
-    
     quantity: "Quantity" = None
     
-    parameter: list["BackboneElement"] = None
+    parameter: list["Parameter"] = None
     
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    code: "CodeableConcept" = None
-    
-    valueCodeableConcept: "CodeableConcept" = None
-    
-    valueCodeableConcept: "Quantity" = None
-    
-    valueCodeableConcept: "Range" = None
-    
-    valueCodeableConcept: bool = None
-    
-    occurrencedateTime: str = None
-    
-    occurrencedateTime: "Period" = None
-    
-    occurrencedateTime: "Timing" = None
+    occurrenceDateTime: str = None
     
     authoredOn: str = None
     

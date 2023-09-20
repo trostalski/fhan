@@ -1,27 +1,23 @@
 """
 Generated class for Library. 
-Time: 2023-09-20 10:09:03
+Time: 2023-09-20 20:29:43
 """
 from dataclasses import dataclass
-
 from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.UsageContext import *
-from fhan.models.R4.Period import *
+from fhan.models.R4.Meta import *
 from fhan.models.R4.Attachment import *
+from fhan.models.R4.ParameterDefinition import *
+from fhan.models.R4.Extension import *
+from fhan.models.R4.Period import *
+from fhan.models.R4.RelatedArtifact import *
+from fhan.models.R4.DataRequirement import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.ContactDetail import *
+from fhan.models.R4.UsageContext import *
 from fhan.models.R4.Narrative import *
 from fhan.models.R4.Reference import *
-from fhan.models.R4.ParameterDefinition import *
-from fhan.models.R4.RelatedArtifact import *
-from fhan.models.R4.ContactDetail import *
-from fhan.models.R4.Extension import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Identifier import *
 from fhan.models.R4.Resource import *
-from fhan.models.R4.DataRequirement import *
 from fhan.models.generator_models import ModelBase
-
-
-
 @dataclass
 class Library(ModelBase):
     """ Enforces the minimum information set for the library metadata required by HL7 and other organizations that share and publish libraries
@@ -43,7 +39,6 @@ class Library(ModelBase):
     :param bool experimental: For testing purposes, not real usage
     :param CodeableConcept type: logic-library | model-definition | asset-collection | module-definition
     :param CodeableConcept subjectCodeableConcept: Type of individual the library content is focused on
-    :param Reference subjectCodeableConcept: Type of individual the library content is focused on
     :param str date: Date last changed
     :param str publisher: Name of the publisher (organization or individual)
     :param ContactDetail contact: Contact details for the publisher
@@ -101,8 +96,6 @@ class Library(ModelBase):
     type: "CodeableConcept" = None
     
     subjectCodeableConcept: "CodeableConcept" = None
-    
-    subjectCodeableConcept: "Reference" = None
     
     date: str = None
     

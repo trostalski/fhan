@@ -1,72 +1,62 @@
 """
 Generated class for DocumentReference. 
-Time: 2023-09-20 10:09:03
+Time: 2023-09-20 20:29:43
 """
 from dataclasses import dataclass
-
 from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Attachment import *
-from fhan.models.R4.Period import *
+from fhan.models.R4.Meta import *
 from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Attachment import *
+from fhan.models.R4.Coding import *
+from fhan.models.R4.Element import *
+from fhan.models.R4.Extension import *
+from fhan.models.R4.Period import *
+from fhan.models.R4.Identifier import *
 from fhan.models.R4.Narrative import *
 from fhan.models.R4.Reference import *
-from fhan.models.R4.Extension import *
-from fhan.models.R4.Element import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Identifier import *
 from fhan.models.R4.Resource import *
-from fhan.models.R4.Coding import *
 from fhan.models.generator_models import ModelBase
 
+    
+    
 @dataclass
-class relatesTo(Element):
-    """ Relationships that this document has with other document references that already exist.
-    :param BackboneElement relatesTo: Relationships to other documents
-    :param str id: Unique id for inter-element referencing
+class RelatesTo(Element):
+    """ Relationships that this document has with other document references that already exist.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str code: replaces | transforms | signs | appends
     :param Reference target: Target of the relationship
     """
-    relatesTo: list["BackboneElement"] = None
-    
     id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
     
     code: str = None
-    
     target: "Reference" = None
     
+
+    
+    
 @dataclass
-class content(Element):
-    """ The document and format referenced. There may be multiple content element repetitions, each with a different format.
-    :param BackboneElement content: Document referenced
-    :param str id: Unique id for inter-element referencing
+class Content(Element):
+    """ The document and format referenced. There may be multiple content element repetitions, each with a different format.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param Attachment attachment: Where to access the document
     :param Coding format: Format/content rules for the document
     """
-    content: list["BackboneElement"] = None
-    
     id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
     attachment: "Attachment" = None
-    
     format: "Coding" = None
     
+
+    
+    
 @dataclass
-class context(Element):
-    """ The clinical context in which the document was prepared.
-    :param BackboneElement context: Clinical context of document
-    :param str id: Unique id for inter-element referencing
+class Context(Element):
+    """ The clinical context in which the document was prepared.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param Reference encounter: Context of the document  content
@@ -77,30 +67,17 @@ class context(Element):
     :param Reference sourcePatientInfo: Patient demographics from source
     :param Reference related: Related identifiers or resources
     """
-    context: "BackboneElement" = None
-    
     id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    encounter: list["Reference"] = None
-    
-    event: list["CodeableConcept"] = None
-    
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
+    encounter: list[Reference] = None
+    event: list[CodeableConcept] = None
     period: "Period" = None
-    
     facilityType: "CodeableConcept" = None
-    
     practiceSetting: "CodeableConcept" = None
-    
     sourcePatientInfo: "Reference" = None
+    related: list[Reference] = None
     
-    related: list["Reference"] = None
-    
-
-
 @dataclass
 class DocumentReference(ModelBase):
     """ A reference to a document of any kind for any purpose. Provides metadata about the document so that the document can be discovered and managed. The scope of a document is any seralized object with a mime-type, so includes formal patient centric documents (CDA), cliical notes, scanned paper, and non-patient specific documents like policy text.
@@ -123,31 +100,11 @@ class DocumentReference(ModelBase):
     :param Reference author: Who and/or what authored the document
     :param Reference authenticator: Who/what authenticated the document
     :param Reference custodian: Organization which maintains the document
-    :param BackboneElement relatesTo: Relationships to other documents
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str code: replaces | transforms | signs | appends
-    :param Reference target: Target of the relationship
+    :param RelatesTo relatesTo: Relationships to other documents
     :param str description: Human-readable description
     :param CodeableConcept securityLabel: Document security-tags
-    :param BackboneElement content: Document referenced
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param Attachment attachment: Where to access the document
-    :param Coding format: Format/content rules for the document
-    :param BackboneElement context: Clinical context of document
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param Reference encounter: Context of the document  content
-    :param CodeableConcept event: Main clinical acts documented
-    :param Period period: Time of service that is being documented
-    :param CodeableConcept facilityType: Kind of facility where patient was seen
-    :param CodeableConcept practiceSetting: Additional details about where the content was created (e.g. clinical specialty)
-    :param Reference sourcePatientInfo: Patient demographics from source
-    :param Reference related: Related identifiers or resources
+    :param Content content: Document referenced
+    :param Context context: Clinical context of document
     """
     id: str = None
     
@@ -187,53 +144,13 @@ class DocumentReference(ModelBase):
     
     custodian: "Reference" = None
     
-    relatesTo: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    code: str = None
-    
-    target: "Reference" = None
+    relatesTo: list["RelatesTo"] = None
     
     description: str = None
     
     securityLabel: list["CodeableConcept"] = None
     
-    content: list["BackboneElement"] = None
+    content: list["Content"] = None
     
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    attachment: "Attachment" = None
-    
-    format: "Coding" = None
-    
-    context: "BackboneElement" = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    encounter: list["Reference"] = None
-    
-    event: list["CodeableConcept"] = None
-    
-    period: "Period" = None
-    
-    facilityType: "CodeableConcept" = None
-    
-    practiceSetting: "CodeableConcept" = None
-    
-    sourcePatientInfo: "Reference" = None
-    
-    related: list["Reference"] = None
+    context: "Context" = None
     

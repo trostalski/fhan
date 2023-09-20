@@ -1,23 +1,19 @@
 """
 Generated class for Media. 
-Time: 2023-09-20 10:09:03
+Time: 2023-09-20 20:29:43
 """
 from dataclasses import dataclass
-
 from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Period import *
+from fhan.models.R4.Meta import *
 from fhan.models.R4.Attachment import *
+from fhan.models.R4.Annotation import *
+from fhan.models.R4.Extension import *
+from fhan.models.R4.Period import *
+from fhan.models.R4.Identifier import *
 from fhan.models.R4.Narrative import *
 from fhan.models.R4.Reference import *
-from fhan.models.R4.Extension import *
-from fhan.models.R4.Annotation import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Identifier import *
 from fhan.models.R4.Resource import *
 from fhan.models.generator_models import ModelBase
-
-
-
 @dataclass
 class Media(ModelBase):
     """ A photo, video, or audio recording acquired or used in healthcare. The actual content may be inline or provided by direct reference.
@@ -38,8 +34,7 @@ class Media(ModelBase):
     :param CodeableConcept view: Imaging view, e.g. Lateral or Antero-posterior
     :param Reference subject: Who/What this Media is a record of
     :param Reference encounter: Encounter associated with media
-    :param str createddateTime: When Media was collected
-    :param Period createddateTime: When Media was collected
+    :param str createdDateTime: When Media was collected
     :param str issued: Date/Time this version was made available
     :param Reference operator: The person who generated the image
     :param CodeableConcept reasonCode: Why was event performed?
@@ -87,9 +82,7 @@ class Media(ModelBase):
     
     encounter: "Reference" = None
     
-    createddateTime: str = None
-    
-    createddateTime: "Period" = None
+    createdDateTime: str = None
     
     issued: str = None
     

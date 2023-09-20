@@ -1,20 +1,16 @@
 """
 Generated class for Event. 
-Time: 2023-09-20 10:09:03
+Time: 2023-09-20 20:29:43
 """
 from dataclasses import dataclass
-
 from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Period import *
-from fhan.models.R4.Reference import *
 from fhan.models.R4.Annotation import *
-from fhan.models.R4.Timing import *
 from fhan.models.R4.Element import *
 from fhan.models.R4.Identifier import *
+from fhan.models.R4.Timing import *
+from fhan.models.R4.Reference import *
+from fhan.models.R4.Period import *
 from fhan.models.generator_models import ModelBase
-
-
-
 @dataclass
 class Event(ModelBase):
     """ Logical Model: A pattern to be followed by resources that represent the performance of some activity, possibly in accordance with a request or service definition.
@@ -29,12 +25,9 @@ class Event(ModelBase):
     :param CodeableConcept code: What was done
     :param Reference subject: Individual service was done for/to
     :param Reference encounter: Encounter created as part of
-    :param str occurrencedateTime: When {{title}} occurred/is occurring
-    :param Period occurrencedateTime: When {{title}} occurred/is occurring
-    :param Timing occurrencedateTime: When {{title}} occurred/is occurring
+    :param str occurrenceDateTime: When {{title}} occurred/is occurring
     :param str recorded: When {{title}} was first captured in the subject's record
-    :param bool reportedboolean: Reported rather than primary record
-    :param Reference reportedboolean: Reported rather than primary record
+    :param bool reportedBoolean: Reported rather than primary record
     :param Element performer: Who performed {{title}} and what they did
     :param CodeableConcept function: Type of performance
     :param Reference actor: Who performed {{title}}
@@ -65,17 +58,11 @@ class Event(ModelBase):
     
     encounter: "Reference" = None
     
-    occurrencedateTime: str = None
-    
-    occurrencedateTime: "Period" = None
-    
-    occurrencedateTime: "Timing" = None
+    occurrenceDateTime: str = None
     
     recorded: str = None
     
-    reportedboolean: bool = None
-    
-    reportedboolean: "Reference" = None
+    reportedBoolean: bool = None
     
     performer: list["Element"] = None
     

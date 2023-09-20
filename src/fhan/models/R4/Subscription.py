@@ -1,23 +1,22 @@
 """
 Generated class for Subscription. 
-Time: 2023-09-20 10:09:03
+Time: 2023-09-20 20:29:43
 """
 from dataclasses import dataclass
-
-from fhan.models.R4.ContactPoint import *
 from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.Extension import *
 from fhan.models.R4.Meta import *
 from fhan.models.R4.Element import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Extension import *
+from fhan.models.R4.ContactPoint import *
 from fhan.models.R4.Resource import *
 from fhan.models.generator_models import ModelBase
 
+    
+    
 @dataclass
-class channel(Element):
-    """ Details where to send notifications when resources are received that meet the criteria.
-    :param BackboneElement channel: The channel on which to report matches to the criteria
-    :param str id: Unique id for inter-element referencing
+class Channel(Element):
+    """ Details where to send notifications when resources are received that meet the criteria.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str type: rest-hook | websocket | email | sms | message
@@ -25,13 +24,9 @@ class channel(Element):
     :param str payload: MIME type to send, or omit for no payload
     :param str header: Usage depends on the channel type
     """
-    channel: "BackboneElement" = None
-    
     id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
     
     type: str = None
     
@@ -41,8 +36,6 @@ class channel(Element):
     
     header: str = None
     
-
-
 @dataclass
 class Subscription(ModelBase):
     """ The subscription resource is used to define a push-based subscription from a server to another system. Once a subscription is registered with the server, the server checks every resource that is created or updated, and if the resource matches the given criteria, it sends a message on the defined "channel" so that another system can take an appropriate action.
@@ -60,14 +53,7 @@ class Subscription(ModelBase):
     :param str reason: Description of why this subscription was created
     :param str criteria: Rule for server push
     :param str error: Latest error note
-    :param BackboneElement channel: The channel on which to report matches to the criteria
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str type: rest-hook | websocket | email | sms | message
-    :param str endpoint: Where the channel points to
-    :param str payload: MIME type to send, or omit for no payload
-    :param str header: Usage depends on the channel type
+    :param Channel channel: The channel on which to report matches to the criteria
     """
     id: str = None
     
@@ -97,19 +83,5 @@ class Subscription(ModelBase):
     
     error: str = None
     
-    channel: "BackboneElement" = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    type: str = None
-    
-    endpoint: str = None
-    
-    payload: str = None
-    
-    header: str = None
+    channel: "Channel" = None
     

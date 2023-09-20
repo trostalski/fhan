@@ -1,37 +1,57 @@
 """
 Generated class for PlanDefinition. 
-Time: 2023-09-20 10:09:03
+Time: 2023-09-20 20:29:43
 """
 from dataclasses import dataclass
-
-from fhan.models.R4.UsageContext import *
-from fhan.models.R4.Extension import *
-from fhan.models.R4.Resource import *
-from fhan.models.R4.DataRequirement import *
-from fhan.models.R4.TriggerDefinition import *
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.ContactDetail import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Identifier import *
-from fhan.models.R4.Element import *
-from fhan.models.R4.Period import *
-from fhan.models.R4.Range import *
-from fhan.models.R4.Reference import *
-from fhan.models.R4.RelatedArtifact import *
-from fhan.models.R4.Quantity import *
-from fhan.models.R4.Expression import *
 from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Duration import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.Age import *
+from fhan.models.R4.RelatedArtifact import *
+from fhan.models.R4.Expression import *
 from fhan.models.R4.Timing import *
+from fhan.models.R4.Period import *
+from fhan.models.R4.Resource import *
+from fhan.models.R4.Meta import *
+from fhan.models.R4.Range import *
+from fhan.models.R4.TriggerDefinition import *
+from fhan.models.R4.Element import *
+from fhan.models.R4.Quantity import *
+from fhan.models.R4.Age import *
+from fhan.models.R4.Duration import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.DataRequirement import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.UsageContext import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Extension import *
+from fhan.models.R4.ContactDetail import *
+from fhan.models.R4.Reference import *
 from fhan.models.generator_models import ModelBase
 
+    
+        
+    
+    
 @dataclass
-class goal(Element):
-    """ Goals that describe what the activities within the plan are intended to achieve. For example, weight loss, restoring an activity of daily living, obtaining herd immunity via immunization, meeting a process improvement objective, etc.
-    :param BackboneElement goal: What the plan is trying to accomplish
-    :param str id: Unique id for inter-element referencing
+class Target(Element):
+    """ Indicates what should be done and within what timeframe.:param str id: Unique id for inter-element referencing
+    :param Extension extension: Additional content defined by implementations
+    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param CodeableConcept measure: The parameter whose value is to be tracked
+    :param Quantity detailQuantity: The target value to be achieved
+    :param Duration due: Reach goal within
+    """
+    id: str = None
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
+    measure: "CodeableConcept" = None
+    detailQuantity: "Quantity" = None
+    due: "Duration" = None
+    
+  
+    
+    
+@dataclass
+class Goal(Element):
+    """ Goals that describe what the activities within the plan are intended to achieve. For example, weight loss, restoring an activity of daily living, obtaining herd immunity via immunization, meeting a process improvement objective, etc.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param CodeableConcept category: E.g. Treatment, dietary, behavioral
@@ -40,90 +60,102 @@ class goal(Element):
     :param CodeableConcept start: When goal pursuit begins
     :param CodeableConcept addresses: What does the goal address
     :param RelatedArtifact documentation: Supporting documentation for the goal
-    :param BackboneElement target: Target outcome for the goal
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param CodeableConcept measure: The parameter whose value is to be tracked
-    :param Quantity detailQuantity: The target value to be achieved
-    :param Range detailQuantity: The target value to be achieved
-    :param CodeableConcept detailQuantity: The target value to be achieved
-    :param Duration due: Reach goal within
+    :param Target target: Target outcome for the goal
     """
-    goal: list["BackboneElement"] = None
-    
     id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
     category: "CodeableConcept" = None
-    
     description: "CodeableConcept" = None
-    
     priority: "CodeableConcept" = None
-    
     start: "CodeableConcept" = None
+    addresses: list[CodeableConcept] = None
+    documentation: list[RelatedArtifact] = None
+    target: list[Target] = None
     
-    addresses: list["CodeableConcept"] = None
+
     
-    documentation: list["RelatedArtifact"] = None
+        
     
-    target: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    measure: "CodeableConcept" = None
-    
-    detailQuantity: "Quantity" = None
-    
-    detailQuantity: "Range" = None
-    
-    detailQuantity: "CodeableConcept" = None
-    
-    due: "Duration" = None
     
 @dataclass
-class target(Element):
-    """ Indicates what should be done and within what timeframe.
-    :param BackboneElement target: Target outcome for the goal
-    :param str id: Unique id for inter-element referencing
+class Condition(Element):
+    """ An expression that describes applicability criteria or start/stop conditions for the action.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param CodeableConcept measure: The parameter whose value is to be tracked
-    :param Quantity detailQuantity: The target value to be achieved
-    :param Range detailQuantity: The target value to be achieved
-    :param CodeableConcept detailQuantity: The target value to be achieved
-    :param Duration due: Reach goal within
+    :param str kind: applicability | start | stop
+    :param Expression expression: Boolean-valued expression
     """
-    target: list["BackboneElement"] = None
-    
     id: str = None
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
     
-    extension: list["Extension"] = None
+    kind: str = None
+    expression: "Expression" = None
     
-    modifierExtension: list["Extension"] = None
+
     
-    measure: "CodeableConcept" = None
-    
-    detailQuantity: "Quantity" = None
-    
-    detailQuantity: "Range" = None
-    
-    detailQuantity: "CodeableConcept" = None
-    
-    due: "Duration" = None
     
 @dataclass
-class action(Element):
-    """ An action or group of actions to be taken as part of the plan.
-    :param BackboneElement action: Action defined by the plan
-    :param str id: Unique id for inter-element referencing
+class RelatedAction(Element):
+    """ A relationship to another action such as "before" or "30-60 minutes after start of".:param str id: Unique id for inter-element referencing
+    :param Extension extension: Additional content defined by implementations
+    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param str actionId: What action is this related to
+    :param str relationship: before-start | before | before-end | concurrent-with-start | concurrent | concurrent-with-end | after-start | after | after-end
+    :param Duration offsetDuration: Time offset for the relationship
+    """
+    id: str = None
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
+    
+    actionId: str = None
+    
+    relationship: str = None
+    offsetDuration: "Duration" = None
+    
+
+    
+    
+@dataclass
+class Participant(Element):
+    """ Indicates who should participate in performing the action described.:param str id: Unique id for inter-element referencing
+    :param Extension extension: Additional content defined by implementations
+    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param str type: patient | practitioner | related-person | device
+    :param CodeableConcept role: E.g. Nurse, Surgeon, Parent
+    """
+    id: str = None
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
+    
+    type: str = None
+    role: "CodeableConcept" = None
+    
+
+    
+    
+@dataclass
+class DynamicValue(Element):
+    """ Customizations that should be applied to the statically defined resource. For example, if the dosage of a medication must be computed based on the patient's weight, a customization would be used to specify an expression that calculated the weight, and the path on the resource that would contain the result.:param str id: Unique id for inter-element referencing
+    :param Extension extension: Additional content defined by implementations
+    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param str path: The path to the element to be set dynamically
+    :param Expression expression: An expression that provides the dynamic value for the customization
+    """
+    id: str = None
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
+    
+    path: str = None
+    expression: "Expression" = None
+    
+  
+    
+    
+@dataclass
+class Action(Element):
+    """ An action or group of actions to be taken as part of the plan.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str prefix: User-visible prefix for the action (e.g. 1. or A.)
@@ -136,60 +168,26 @@ class action(Element):
     :param RelatedArtifact documentation: Supporting documentation for the intended performer of the action
     :param str goalId: What goals this action supports
     :param CodeableConcept subjectCodeableConcept: Type of individual the action is focused on
-    :param Reference subjectCodeableConcept: Type of individual the action is focused on
     :param TriggerDefinition trigger: When the action should be triggered
-    :param BackboneElement condition: Whether or not the action is applicable
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str kind: applicability | start | stop
-    :param Expression expression: Boolean-valued expression
+    :param Condition condition: Whether or not the action is applicable
     :param DataRequirement input: Input data requirements
     :param DataRequirement output: Output data definition
-    :param BackboneElement relatedAction: Relationship to another action
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str actionId: What action is this related to
-    :param str relationship: before-start | before | before-end | concurrent-with-start | concurrent | concurrent-with-end | after-start | after | after-end
-    :param Duration offsetDuration: Time offset for the relationship
-    :param Range offsetDuration: Time offset for the relationship
-    :param str timingdateTime: When the action should take place
-    :param Age timingdateTime: When the action should take place
-    :param Period timingdateTime: When the action should take place
-    :param Duration timingdateTime: When the action should take place
-    :param Range timingdateTime: When the action should take place
-    :param Timing timingdateTime: When the action should take place
-    :param BackboneElement participant: Who should participate in the action
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str type: patient | practitioner | related-person | device
-    :param CodeableConcept role: E.g. Nurse, Surgeon, Parent
+    :param RelatedAction relatedAction: Relationship to another action
+    :param str timingDateTime: When the action should take place
+    :param Participant participant: Who should participate in the action
     :param CodeableConcept type: create | update | remove | fire-event
     :param str groupingBehavior: visual-group | logical-group | sentence-group
     :param str selectionBehavior: any | all | all-or-none | exactly-one | at-most-one | one-or-more
     :param str requiredBehavior: must | could | must-unless-documented
     :param str precheckBehavior: yes | no
     :param str cardinalityBehavior: single | multiple
-    :param str definitioncanonical: Description of the activity to be performed
-    :param str definitioncanonical: Description of the activity to be performed
+    :param str definitionCanonical: Description of the activity to be performed
     :param str transform: Transform to apply the template
-    :param BackboneElement dynamicValue: Dynamic aspects of the definition
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str path: The path to the element to be set dynamically
-    :param Expression expression: An expression that provides the dynamic value for the customization
-    :param BackboneElement action: Action defined by the plan
+    :param DynamicValue dynamicValue: Dynamic aspects of the definition
     """
-    action: list["BackboneElement"] = None
-    
     id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
     
     prefix: str = None
     
@@ -200,77 +198,20 @@ class action(Element):
     textEquivalent: str = None
     
     priority: str = None
-    
-    code: list["CodeableConcept"] = None
-    
-    reason: list["CodeableConcept"] = None
-    
-    documentation: list["RelatedArtifact"] = None
+    code: list[CodeableConcept] = None
+    reason: list[CodeableConcept] = None
+    documentation: list[RelatedArtifact] = None
     
     goalId: str = None
-    
     subjectCodeableConcept: "CodeableConcept" = None
+    trigger: list[TriggerDefinition] = None
+    condition: list[Condition] = None
+    input: list[DataRequirement] = None
+    output: list[DataRequirement] = None
+    relatedAction: list[RelatedAction] = None
     
-    subjectCodeableConcept: "Reference" = None
-    
-    trigger: list["TriggerDefinition"] = None
-    
-    condition: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    kind: str = None
-    
-    expression: "Expression" = None
-    
-    input: list["DataRequirement"] = None
-    
-    output: list["DataRequirement"] = None
-    
-    relatedAction: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    actionId: str = None
-    
-    relationship: str = None
-    
-    offsetDuration: "Duration" = None
-    
-    offsetDuration: "Range" = None
-    
-    timingdateTime: str = None
-    
-    timingdateTime: "Age" = None
-    
-    timingdateTime: "Period" = None
-    
-    timingdateTime: "Duration" = None
-    
-    timingdateTime: "Range" = None
-    
-    timingdateTime: "Timing" = None
-    
-    participant: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    type: str = None
-    
-    role: "CodeableConcept" = None
-    
+    timingDateTime: str = None
+    participant: list[Participant] = None
     type: "CodeableConcept" = None
     
     groupingBehavior: str = None
@@ -283,306 +224,11 @@ class action(Element):
     
     cardinalityBehavior: str = None
     
-    definitioncanonical: str = None
-    
-    definitioncanonical: str = None
+    definitionCanonical: str = None
     
     transform: str = None
+    dynamicValue: list[DynamicValue] = None
     
-    dynamicValue: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    path: str = None
-    
-    expression: "Expression" = None
-    
-    action: list["BackboneElement"] = None
-    
-@dataclass
-class condition(Element):
-    """ An expression that describes applicability criteria or start/stop conditions for the action.
-    :param BackboneElement condition: Whether or not the action is applicable
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str kind: applicability | start | stop
-    :param Expression expression: Boolean-valued expression
-    """
-    condition: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    kind: str = None
-    
-    expression: "Expression" = None
-    
-@dataclass
-class relatedAction(Element):
-    """ A relationship to another action such as "before" or "30-60 minutes after start of".
-    :param BackboneElement relatedAction: Relationship to another action
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str actionId: What action is this related to
-    :param str relationship: before-start | before | before-end | concurrent-with-start | concurrent | concurrent-with-end | after-start | after | after-end
-    :param Duration offsetDuration: Time offset for the relationship
-    :param Range offsetDuration: Time offset for the relationship
-    """
-    relatedAction: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    actionId: str = None
-    
-    relationship: str = None
-    
-    offsetDuration: "Duration" = None
-    
-    offsetDuration: "Range" = None
-    
-@dataclass
-class participant(Element):
-    """ Indicates who should participate in performing the action described.
-    :param BackboneElement participant: Who should participate in the action
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str type: patient | practitioner | related-person | device
-    :param CodeableConcept role: E.g. Nurse, Surgeon, Parent
-    """
-    participant: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    type: str = None
-    
-    role: "CodeableConcept" = None
-    
-@dataclass
-class dynamicValue(Element):
-    """ Customizations that should be applied to the statically defined resource. For example, if the dosage of a medication must be computed based on the patient's weight, a customization would be used to specify an expression that calculated the weight, and the path on the resource that would contain the result.
-    :param BackboneElement dynamicValue: Dynamic aspects of the definition
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str path: The path to the element to be set dynamically
-    :param Expression expression: An expression that provides the dynamic value for the customization
-    """
-    dynamicValue: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    path: str = None
-    
-    expression: "Expression" = None
-    
-@dataclass
-class action(Element):
-    """ An action or group of actions to be taken as part of the plan.
-    :param BackboneElement action: Action defined by the plan
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str prefix: User-visible prefix for the action (e.g. 1. or A.)
-    :param str title: User-visible title
-    :param str description: Brief description of the action
-    :param str textEquivalent: Static text equivalent of the action, used if the dynamic aspects cannot be interpreted by the receiving system
-    :param str priority: routine | urgent | asap | stat
-    :param CodeableConcept code: Code representing the meaning of the action or sub-actions
-    :param CodeableConcept reason: Why the action should be performed
-    :param RelatedArtifact documentation: Supporting documentation for the intended performer of the action
-    :param str goalId: What goals this action supports
-    :param CodeableConcept subjectCodeableConcept: Type of individual the action is focused on
-    :param Reference subjectCodeableConcept: Type of individual the action is focused on
-    :param TriggerDefinition trigger: When the action should be triggered
-    :param BackboneElement condition: Whether or not the action is applicable
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str kind: applicability | start | stop
-    :param Expression expression: Boolean-valued expression
-    :param DataRequirement input: Input data requirements
-    :param DataRequirement output: Output data definition
-    :param BackboneElement relatedAction: Relationship to another action
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str actionId: What action is this related to
-    :param str relationship: before-start | before | before-end | concurrent-with-start | concurrent | concurrent-with-end | after-start | after | after-end
-    :param Duration offsetDuration: Time offset for the relationship
-    :param Range offsetDuration: Time offset for the relationship
-    :param str timingdateTime: When the action should take place
-    :param Age timingdateTime: When the action should take place
-    :param Period timingdateTime: When the action should take place
-    :param Duration timingdateTime: When the action should take place
-    :param Range timingdateTime: When the action should take place
-    :param Timing timingdateTime: When the action should take place
-    :param BackboneElement participant: Who should participate in the action
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str type: patient | practitioner | related-person | device
-    :param CodeableConcept role: E.g. Nurse, Surgeon, Parent
-    :param CodeableConcept type: create | update | remove | fire-event
-    :param str groupingBehavior: visual-group | logical-group | sentence-group
-    :param str selectionBehavior: any | all | all-or-none | exactly-one | at-most-one | one-or-more
-    :param str requiredBehavior: must | could | must-unless-documented
-    :param str precheckBehavior: yes | no
-    :param str cardinalityBehavior: single | multiple
-    :param str definitioncanonical: Description of the activity to be performed
-    :param str definitioncanonical: Description of the activity to be performed
-    :param str transform: Transform to apply the template
-    :param BackboneElement dynamicValue: Dynamic aspects of the definition
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str path: The path to the element to be set dynamically
-    :param Expression expression: An expression that provides the dynamic value for the customization
-    :param BackboneElement action: Action defined by the plan
-    """
-    action: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    prefix: str = None
-    
-    title: str = None
-    
-    description: str = None
-    
-    textEquivalent: str = None
-    
-    priority: str = None
-    
-    code: list["CodeableConcept"] = None
-    
-    reason: list["CodeableConcept"] = None
-    
-    documentation: list["RelatedArtifact"] = None
-    
-    goalId: str = None
-    
-    subjectCodeableConcept: "CodeableConcept" = None
-    
-    subjectCodeableConcept: "Reference" = None
-    
-    trigger: list["TriggerDefinition"] = None
-    
-    condition: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    kind: str = None
-    
-    expression: "Expression" = None
-    
-    input: list["DataRequirement"] = None
-    
-    output: list["DataRequirement"] = None
-    
-    relatedAction: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    actionId: str = None
-    
-    relationship: str = None
-    
-    offsetDuration: "Duration" = None
-    
-    offsetDuration: "Range" = None
-    
-    timingdateTime: str = None
-    
-    timingdateTime: "Age" = None
-    
-    timingdateTime: "Period" = None
-    
-    timingdateTime: "Duration" = None
-    
-    timingdateTime: "Range" = None
-    
-    timingdateTime: "Timing" = None
-    
-    participant: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    type: str = None
-    
-    role: "CodeableConcept" = None
-    
-    type: "CodeableConcept" = None
-    
-    groupingBehavior: str = None
-    
-    selectionBehavior: str = None
-    
-    requiredBehavior: str = None
-    
-    precheckBehavior: str = None
-    
-    cardinalityBehavior: str = None
-    
-    definitioncanonical: str = None
-    
-    definitioncanonical: str = None
-    
-    transform: str = None
-    
-    dynamicValue: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    path: str = None
-    
-    expression: "Expression" = None
-    
-    action: list["BackboneElement"] = None
-    
-
-
 @dataclass
 class PlanDefinition(ModelBase):
     """ Enforces the minimum information set for the plan definition metadata required by HL7 and other organizations that share and publish plan definitions
@@ -604,7 +250,6 @@ class PlanDefinition(ModelBase):
     :param str status: draft | active | retired | unknown
     :param bool experimental: For testing purposes, not real usage
     :param CodeableConcept subjectCodeableConcept: Type of individual the plan definition is focused on
-    :param Reference subjectCodeableConcept: Type of individual the plan definition is focused on
     :param str date: Date last changed
     :param str publisher: Name of the publisher (organization or individual)
     :param ContactDetail contact: Contact details for the publisher
@@ -624,85 +269,8 @@ class PlanDefinition(ModelBase):
     :param ContactDetail endorser: Who endorsed the content
     :param RelatedArtifact relatedArtifact: Additional documentation, citations
     :param str library: Logic used by the plan definition
-    :param BackboneElement goal: What the plan is trying to accomplish
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param CodeableConcept category: E.g. Treatment, dietary, behavioral
-    :param CodeableConcept description: Code or text describing the goal
-    :param CodeableConcept priority: high-priority | medium-priority | low-priority
-    :param CodeableConcept start: When goal pursuit begins
-    :param CodeableConcept addresses: What does the goal address
-    :param RelatedArtifact documentation: Supporting documentation for the goal
-    :param BackboneElement target: Target outcome for the goal
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param CodeableConcept measure: The parameter whose value is to be tracked
-    :param Quantity detailQuantity: The target value to be achieved
-    :param Range detailQuantity: The target value to be achieved
-    :param CodeableConcept detailQuantity: The target value to be achieved
-    :param Duration due: Reach goal within
-    :param BackboneElement action: Action defined by the plan
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str prefix: User-visible prefix for the action (e.g. 1. or A.)
-    :param str title: User-visible title
-    :param str description: Brief description of the action
-    :param str textEquivalent: Static text equivalent of the action, used if the dynamic aspects cannot be interpreted by the receiving system
-    :param str priority: routine | urgent | asap | stat
-    :param CodeableConcept code: Code representing the meaning of the action or sub-actions
-    :param CodeableConcept reason: Why the action should be performed
-    :param RelatedArtifact documentation: Supporting documentation for the intended performer of the action
-    :param str goalId: What goals this action supports
-    :param CodeableConcept subjectCodeableConcept: Type of individual the action is focused on
-    :param Reference subjectCodeableConcept: Type of individual the action is focused on
-    :param TriggerDefinition trigger: When the action should be triggered
-    :param BackboneElement condition: Whether or not the action is applicable
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str kind: applicability | start | stop
-    :param Expression expression: Boolean-valued expression
-    :param DataRequirement input: Input data requirements
-    :param DataRequirement output: Output data definition
-    :param BackboneElement relatedAction: Relationship to another action
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str actionId: What action is this related to
-    :param str relationship: before-start | before | before-end | concurrent-with-start | concurrent | concurrent-with-end | after-start | after | after-end
-    :param Duration offsetDuration: Time offset for the relationship
-    :param Range offsetDuration: Time offset for the relationship
-    :param str timingdateTime: When the action should take place
-    :param Age timingdateTime: When the action should take place
-    :param Period timingdateTime: When the action should take place
-    :param Duration timingdateTime: When the action should take place
-    :param Range timingdateTime: When the action should take place
-    :param Timing timingdateTime: When the action should take place
-    :param BackboneElement participant: Who should participate in the action
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str type: patient | practitioner | related-person | device
-    :param CodeableConcept role: E.g. Nurse, Surgeon, Parent
-    :param CodeableConcept type: create | update | remove | fire-event
-    :param str groupingBehavior: visual-group | logical-group | sentence-group
-    :param str selectionBehavior: any | all | all-or-none | exactly-one | at-most-one | one-or-more
-    :param str requiredBehavior: must | could | must-unless-documented
-    :param str precheckBehavior: yes | no
-    :param str cardinalityBehavior: single | multiple
-    :param str definitioncanonical: Description of the activity to be performed
-    :param str definitioncanonical: Description of the activity to be performed
-    :param str transform: Transform to apply the template
-    :param BackboneElement dynamicValue: Dynamic aspects of the definition
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str path: The path to the element to be set dynamically
-    :param Expression expression: An expression that provides the dynamic value for the customization
-    :param BackboneElement action: Action defined by the plan
+    :param Goal goal: What the plan is trying to accomplish
+    :param Action action: Action defined by the plan
     """
     id: str = None
     
@@ -739,8 +307,6 @@ class PlanDefinition(ModelBase):
     experimental: bool = None
     
     subjectCodeableConcept: "CodeableConcept" = None
-    
-    subjectCodeableConcept: "Reference" = None
     
     date: str = None
     
@@ -780,161 +346,7 @@ class PlanDefinition(ModelBase):
     
     library: str = None
     
-    goal: list["BackboneElement"] = None
+    goal: list["Goal"] = None
     
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    category: "CodeableConcept" = None
-    
-    description: "CodeableConcept" = None
-    
-    priority: "CodeableConcept" = None
-    
-    start: "CodeableConcept" = None
-    
-    addresses: list["CodeableConcept"] = None
-    
-    documentation: list["RelatedArtifact"] = None
-    
-    target: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    measure: "CodeableConcept" = None
-    
-    detailQuantity: "Quantity" = None
-    
-    detailQuantity: "Range" = None
-    
-    detailQuantity: "CodeableConcept" = None
-    
-    due: "Duration" = None
-    
-    action: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    prefix: str = None
-    
-    title: str = None
-    
-    description: str = None
-    
-    textEquivalent: str = None
-    
-    priority: str = None
-    
-    code: list["CodeableConcept"] = None
-    
-    reason: list["CodeableConcept"] = None
-    
-    documentation: list["RelatedArtifact"] = None
-    
-    goalId: str = None
-    
-    subjectCodeableConcept: "CodeableConcept" = None
-    
-    subjectCodeableConcept: "Reference" = None
-    
-    trigger: list["TriggerDefinition"] = None
-    
-    condition: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    kind: str = None
-    
-    expression: "Expression" = None
-    
-    input: list["DataRequirement"] = None
-    
-    output: list["DataRequirement"] = None
-    
-    relatedAction: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    actionId: str = None
-    
-    relationship: str = None
-    
-    offsetDuration: "Duration" = None
-    
-    offsetDuration: "Range" = None
-    
-    timingdateTime: str = None
-    
-    timingdateTime: "Age" = None
-    
-    timingdateTime: "Period" = None
-    
-    timingdateTime: "Duration" = None
-    
-    timingdateTime: "Range" = None
-    
-    timingdateTime: "Timing" = None
-    
-    participant: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    type: str = None
-    
-    role: "CodeableConcept" = None
-    
-    type: "CodeableConcept" = None
-    
-    groupingBehavior: str = None
-    
-    selectionBehavior: str = None
-    
-    requiredBehavior: str = None
-    
-    precheckBehavior: str = None
-    
-    cardinalityBehavior: str = None
-    
-    definitioncanonical: str = None
-    
-    definitioncanonical: str = None
-    
-    transform: str = None
-    
-    dynamicValue: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    path: str = None
-    
-    expression: "Expression" = None
-    
-    action: list["BackboneElement"] = None
+    action: list["Action"] = None
     

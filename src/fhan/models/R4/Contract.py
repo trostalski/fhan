@@ -1,33 +1,32 @@
 """
 Generated class for Contract. 
-Time: 2023-09-20 10:09:03
+Time: 2023-09-20 20:29:43
 """
 from dataclasses import dataclass
-
 from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Period import *
-from fhan.models.R4.Attachment import *
+from fhan.models.R4.Meta import *
 from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Attachment import *
+from fhan.models.R4.Coding import *
 from fhan.models.R4.Money import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.Signature import *
-from fhan.models.R4.Reference import *
-from fhan.models.R4.Extension import *
-from fhan.models.R4.Quantity import *
-from fhan.models.R4.Timing import *
 from fhan.models.R4.Annotation import *
 from fhan.models.R4.Element import *
-from fhan.models.R4.Meta import *
+from fhan.models.R4.Extension import *
+from fhan.models.R4.Period import *
+from fhan.models.R4.Quantity import *
+from fhan.models.R4.Signature import *
 from fhan.models.R4.Identifier import *
+from fhan.models.R4.Timing import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Reference import *
 from fhan.models.R4.Resource import *
-from fhan.models.R4.Coding import *
 from fhan.models.generator_models import ModelBase
 
+    
+    
 @dataclass
-class contentDefinition(Element):
-    """ Precusory content developed with a focus and intent of supporting the formation a Contract instance, which may be associated with and transformable into a Contract.
-    :param BackboneElement contentDefinition: Contract precursor content
-    :param str id: Unique id for inter-element referencing
+class ContentDefinition(Element):
+    """ Precusory content developed with a focus and intent of supporting the formation a Contract instance, which may be associated with and transformable into a Contract.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param CodeableConcept type: Content structure and use
@@ -37,18 +36,11 @@ class contentDefinition(Element):
     :param str publicationStatus: amended | appended | cancelled | disputed | entered-in-error | executable | executed | negotiable | offered | policy | rejected | renewed | revoked | resolved | terminated
     :param str copyright: Publication Ownership
     """
-    contentDefinition: "BackboneElement" = None
-    
     id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
     type: "CodeableConcept" = None
-    
     subType: "CodeableConcept" = None
-    
     publisher: "Reference" = None
     
     publicationDate: str = None
@@ -57,1503 +49,404 @@ class contentDefinition(Element):
     
     copyright: str = None
     
+
+    
+        
+    
+    
 @dataclass
-class term(Element):
-    """ One or more Contract Provisions, which may be related and conveyed as a group, and may contain nested groups.
-    :param BackboneElement term: Contract Term List
-    :param str id: Unique id for inter-element referencing
+class SecurityLabel(Element):
+    """ Security labels that protect the handling of information about the term and its elements, which may be specifically identified..:param str id: Unique id for inter-element referencing
+    :param Extension extension: Additional content defined by implementations
+    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param int number: Link to Security Labels
+    :param Coding classification: Confidentiality Protection
+    :param Coding category: Applicable Policy
+    :param Coding control: Handling Instructions
+    """
+    id: str = None
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
+    
+    number: int = None
+    classification: "Coding" = None
+    category: list[Coding] = None
+    control: list[Coding] = None
+    
+
+    
+        
+    
+    
+@dataclass
+class Party(Element):
+    """ Offer Recipient.:param str id: Unique id for inter-element referencing
+    :param Extension extension: Additional content defined by implementations
+    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param Reference reference: Referenced entity
+    :param CodeableConcept role: Participant engagement type
+    """
+    id: str = None
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
+    reference: list[Reference] = None
+    role: "CodeableConcept" = None
+    
+
+    
+    
+@dataclass
+class Answer(Element):
+    """ Response to offer text.:param str id: Unique id for inter-element referencing
+    :param Extension extension: Additional content defined by implementations
+    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param bool valueBoolean: The actual answer response
+    """
+    id: str = None
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
+    
+    valueBoolean: bool = None
+    
+  
+    
+    
+@dataclass
+class Offer(Element):
+    """ The matter of concern in the context of this provision of the agrement.:param str id: Unique id for inter-element referencing
+    :param Extension extension: Additional content defined by implementations
+    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param Identifier identifier: Offer business ID
+    :param Party party: Offer Recipient
+    :param Reference topic: Negotiable offer asset
+    :param CodeableConcept type: Contract Offer Type or Form
+    :param CodeableConcept decision: Accepting party choice
+    :param CodeableConcept decisionMode: How decision is conveyed
+    :param Answer answer: Response to offer text
+    :param str text: Human readable offer text
+    :param str linkId: Pointer to text
+    :param int securityLabelNumber: Offer restriction numbers
+    """
+    id: str = None
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
+    identifier: list[Identifier] = None
+    party: list[Party] = None
+    topic: "Reference" = None
+    type: "CodeableConcept" = None
+    decision: "CodeableConcept" = None
+    decisionMode: list[CodeableConcept] = None
+    answer: list[Answer] = None
+    
+    text: str = None
+    
+    linkId: str = None
+    
+    securityLabelNumber: int = None
+    
+
+    
+        
+    
+    
+@dataclass
+class Context(Element):
+    """ Circumstance of the asset.:param str id: Unique id for inter-element referencing
+    :param Extension extension: Additional content defined by implementations
+    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param Reference reference: Creator,custodian or owner
+    :param CodeableConcept code: Codeable asset context
+    :param str text: Context description
+    """
+    id: str = None
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
+    reference: "Reference" = None
+    code: list[CodeableConcept] = None
+    
+    text: str = None
+    
+
+    
+    
+@dataclass
+class ValuedItem(Element):
+    """ Contract Valued Item List.:param str id: Unique id for inter-element referencing
+    :param Extension extension: Additional content defined by implementations
+    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param CodeableConcept entityCodeableConcept: Contract Valued Item Type
+    :param Identifier identifier: Contract Valued Item Number
+    :param str effectiveTime: Contract Valued Item Effective Tiem
+    :param Quantity quantity: Count of Contract Valued Items
+    :param Money unitPrice: Contract Valued Item fee, charge, or cost
+    :param float factor: Contract Valued Item Price Scaling Factor
+    :param float points: Contract Valued Item Difficulty Scaling Factor
+    :param Money net: Total Contract Valued Item Value
+    :param str payment: Terms of valuation
+    :param str paymentDate: When payment is due
+    :param Reference responsible: Who will make payment
+    :param Reference recipient: Who will receive payment
+    :param str linkId: Pointer to specific item
+    :param int securityLabelNumber: Security Labels that define affected terms
+    """
+    id: str = None
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
+    entityCodeableConcept: "CodeableConcept" = None
+    identifier: "Identifier" = None
+    
+    effectiveTime: str = None
+    quantity: "Quantity" = None
+    unitPrice: "Money" = None
+    
+    factor: float = None
+    
+    points: float = None
+    net: "Money" = None
+    
+    payment: str = None
+    
+    paymentDate: str = None
+    responsible: "Reference" = None
+    recipient: "Reference" = None
+    
+    linkId: str = None
+    
+    securityLabelNumber: int = None
+    
+  
+    
+    
+@dataclass
+class Asset(Element):
+    """ Contract Term Asset List.:param str id: Unique id for inter-element referencing
+    :param Extension extension: Additional content defined by implementations
+    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param CodeableConcept scope: Range of asset
+    :param CodeableConcept type: Asset category
+    :param Reference typeReference: Associated entities
+    :param CodeableConcept subtype: Asset sub-category
+    :param Coding relationship: Kinship of the asset
+    :param Context context: Circumstance of the asset
+    :param str condition: Quality desctiption of asset
+    :param CodeableConcept periodType: Asset availability types
+    :param Period period: Time period of the asset
+    :param Period usePeriod: Time period
+    :param str text: Asset clause or question text
+    :param str linkId: Pointer to asset text
+    :param int securityLabelNumber: Asset restriction numbers
+    :param ValuedItem valuedItem: Contract Valued Item List
+    """
+    id: str = None
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
+    scope: "CodeableConcept" = None
+    type: list[CodeableConcept] = None
+    typeReference: list[Reference] = None
+    subtype: list[CodeableConcept] = None
+    relationship: "Coding" = None
+    context: list[Context] = None
+    
+    condition: str = None
+    periodType: list[CodeableConcept] = None
+    period: list[Period] = None
+    usePeriod: list[Period] = None
+    
+    text: str = None
+    
+    linkId: str = None
+    
+    securityLabelNumber: int = None
+    valuedItem: list[ValuedItem] = None
+    
+
+    
+        
+    
+    
+@dataclass
+class Subject(Element):
+    """ Entity of the action.:param str id: Unique id for inter-element referencing
+    :param Extension extension: Additional content defined by implementations
+    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param Reference reference: Entity of the action
+    :param CodeableConcept role: Role type of the agent
+    """
+    id: str = None
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
+    reference: list[Reference] = None
+    role: "CodeableConcept" = None
+    
+  
+    
+    
+@dataclass
+class Action(Element):
+    """ An actor taking a role in an activity for which it can be assigned some degree of responsibility for the activity taking place.:param str id: Unique id for inter-element referencing
+    :param Extension extension: Additional content defined by implementations
+    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param bool doNotPerform: True if the term prohibits the  action
+    :param CodeableConcept type: Type or form of the action
+    :param Subject subject: Entity of the action
+    :param CodeableConcept intent: Purpose for the Contract Term Action
+    :param str linkId: Pointer to specific item
+    :param CodeableConcept status: State of the action
+    :param Reference context: Episode associated with action
+    :param str contextLinkId: Pointer to specific item
+    :param str occurrenceDateTime: When action happens
+    :param Reference requester: Who asked for action
+    :param str requesterLinkId: Pointer to specific item
+    :param CodeableConcept performerType: Kind of service performer
+    :param CodeableConcept performerRole: Competency of the performer
+    :param Reference performer: Actor that wil execute (or not) the action
+    :param str performerLinkId: Pointer to specific item
+    :param CodeableConcept reasonCode: Why is action (not) needed?
+    :param Reference reasonReference: Why is action (not) needed?
+    :param str reason: Why action is to be performed
+    :param str reasonLinkId: Pointer to specific item
+    :param Annotation note: Comments about the action
+    :param int securityLabelNumber: Action restriction numbers
+    """
+    id: str = None
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
+    
+    doNotPerform: bool = None
+    type: "CodeableConcept" = None
+    subject: list[Subject] = None
+    intent: "CodeableConcept" = None
+    
+    linkId: str = None
+    status: "CodeableConcept" = None
+    context: "Reference" = None
+    
+    contextLinkId: str = None
+    
+    occurrenceDateTime: str = None
+    requester: list[Reference] = None
+    
+    requesterLinkId: str = None
+    performerType: list[CodeableConcept] = None
+    performerRole: "CodeableConcept" = None
+    performer: "Reference" = None
+    
+    performerLinkId: str = None
+    reasonCode: list[CodeableConcept] = None
+    reasonReference: list[Reference] = None
+    
+    reason: str = None
+    
+    reasonLinkId: str = None
+    note: list[Annotation] = None
+    
+    securityLabelNumber: int = None
+    
+  
+    
+    
+@dataclass
+class Term(Element):
+    """ One or more Contract Provisions, which may be related and conveyed as a group, and may contain nested groups.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param Identifier identifier: Contract Term Number
     :param str issued: Contract Term Issue Date Time
     :param Period applies: Contract Term Effective Time
     :param CodeableConcept topicCodeableConcept: Term Concern
-    :param Reference topicCodeableConcept: Term Concern
     :param CodeableConcept type: Contract Term Type or Form
     :param CodeableConcept subType: Contract Term Type specific classification
     :param str text: Term Statement
-    :param BackboneElement securityLabel: Protection for the Term
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param int number: Link to Security Labels
-    :param Coding classification: Confidentiality Protection
-    :param Coding category: Applicable Policy
-    :param Coding control: Handling Instructions
-    :param BackboneElement offer: Context of the Contract term
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param Identifier identifier: Offer business ID
-    :param BackboneElement party: Offer Recipient
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param Reference reference: Referenced entity
-    :param CodeableConcept role: Participant engagement type
-    :param Reference topic: Negotiable offer asset
-    :param CodeableConcept type: Contract Offer Type or Form
-    :param CodeableConcept decision: Accepting party choice
-    :param CodeableConcept decisionMode: How decision is conveyed
-    :param BackboneElement answer: Response to offer text
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param bool valueboolean: The actual answer response
-    :param float valueboolean: The actual answer response
-    :param int valueboolean: The actual answer response
-    :param str valueboolean: The actual answer response
-    :param str valueboolean: The actual answer response
-    :param str valueboolean: The actual answer response
-    :param str valueboolean: The actual answer response
-    :param str valueboolean: The actual answer response
-    :param Attachment valueboolean: The actual answer response
-    :param Coding valueboolean: The actual answer response
-    :param Quantity valueboolean: The actual answer response
-    :param Reference valueboolean: The actual answer response
-    :param str text: Human readable offer text
-    :param str linkId: Pointer to text
-    :param int securityLabelNumber: Offer restriction numbers
-    :param BackboneElement asset: Contract Term Asset List
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param CodeableConcept scope: Range of asset
-    :param CodeableConcept type: Asset category
-    :param Reference typeReference: Associated entities
-    :param CodeableConcept subtype: Asset sub-category
-    :param Coding relationship: Kinship of the asset
-    :param BackboneElement context: Circumstance of the asset
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param Reference reference: Creator,custodian or owner
-    :param CodeableConcept code: Codeable asset context
-    :param str text: Context description
-    :param str condition: Quality desctiption of asset
-    :param CodeableConcept periodType: Asset availability types
-    :param Period period: Time period of the asset
-    :param Period usePeriod: Time period
-    :param str text: Asset clause or question text
-    :param str linkId: Pointer to asset text
-    :param BackboneElement answer: Response to offer text
-    :param int securityLabelNumber: Asset restriction numbers
-    :param BackboneElement valuedItem: Contract Valued Item List
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param CodeableConcept entityCodeableConcept: Contract Valued Item Type
-    :param Reference entityCodeableConcept: Contract Valued Item Type
-    :param Identifier identifier: Contract Valued Item Number
-    :param str effectiveTime: Contract Valued Item Effective Tiem
-    :param Quantity quantity: Count of Contract Valued Items
-    :param Money unitPrice: Contract Valued Item fee, charge, or cost
-    :param float factor: Contract Valued Item Price Scaling Factor
-    :param float points: Contract Valued Item Difficulty Scaling Factor
-    :param Money net: Total Contract Valued Item Value
-    :param str payment: Terms of valuation
-    :param str paymentDate: When payment is due
-    :param Reference responsible: Who will make payment
-    :param Reference recipient: Who will receive payment
-    :param str linkId: Pointer to specific item
-    :param int securityLabelNumber: Security Labels that define affected terms
-    :param BackboneElement action: Entity being ascribed responsibility
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param bool doNotPerform: True if the term prohibits the  action
-    :param CodeableConcept type: Type or form of the action
-    :param BackboneElement subject: Entity of the action
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param Reference reference: Entity of the action
-    :param CodeableConcept role: Role type of the agent
-    :param CodeableConcept intent: Purpose for the Contract Term Action
-    :param str linkId: Pointer to specific item
-    :param CodeableConcept status: State of the action
-    :param Reference context: Episode associated with action
-    :param str contextLinkId: Pointer to specific item
-    :param str occurrencedateTime: When action happens
-    :param Period occurrencedateTime: When action happens
-    :param Timing occurrencedateTime: When action happens
-    :param Reference requester: Who asked for action
-    :param str requesterLinkId: Pointer to specific item
-    :param CodeableConcept performerType: Kind of service performer
-    :param CodeableConcept performerRole: Competency of the performer
-    :param Reference performer: Actor that wil execute (or not) the action
-    :param str performerLinkId: Pointer to specific item
-    :param CodeableConcept reasonCode: Why is action (not) needed?
-    :param Reference reasonReference: Why is action (not) needed?
-    :param str reason: Why action is to be performed
-    :param str reasonLinkId: Pointer to specific item
-    :param Annotation note: Comments about the action
-    :param int securityLabelNumber: Action restriction numbers
-    :param BackboneElement group: Contract Term List
+    :param SecurityLabel securityLabel: Protection for the Term
+    :param Offer offer: Context of the Contract term
+    :param Asset asset: Contract Term Asset List
+    :param Action action: Entity being ascribed responsibility
     """
-    term: list["BackboneElement"] = None
-    
     id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
     identifier: "Identifier" = None
     
     issued: str = None
-    
     applies: "Period" = None
-    
     topicCodeableConcept: "CodeableConcept" = None
-    
-    topicCodeableConcept: "Reference" = None
-    
     type: "CodeableConcept" = None
-    
     subType: "CodeableConcept" = None
     
     text: str = None
+    securityLabel: list[SecurityLabel] = None
+    offer: "Offer" = None
+    asset: list[Asset] = None
+    action: list[Action] = None
     
-    securityLabel: list["BackboneElement"] = None
+
     
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    number: int = None
-    
-    classification: "Coding" = None
-    
-    category: list["Coding"] = None
-    
-    control: list["Coding"] = None
-    
-    offer: "BackboneElement" = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    identifier: list["Identifier"] = None
-    
-    party: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    reference: list["Reference"] = None
-    
-    role: "CodeableConcept" = None
-    
-    topic: "Reference" = None
-    
-    type: "CodeableConcept" = None
-    
-    decision: "CodeableConcept" = None
-    
-    decisionMode: list["CodeableConcept"] = None
-    
-    answer: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    valueboolean: bool = None
-    
-    valueboolean: float = None
-    
-    valueboolean: int = None
-    
-    valueboolean: str = None
-    
-    valueboolean: str = None
-    
-    valueboolean: str = None
-    
-    valueboolean: str = None
-    
-    valueboolean: str = None
-    
-    valueboolean: "Attachment" = None
-    
-    valueboolean: "Coding" = None
-    
-    valueboolean: "Quantity" = None
-    
-    valueboolean: "Reference" = None
-    
-    text: str = None
-    
-    linkId: str = None
-    
-    securityLabelNumber: int = None
-    
-    asset: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    scope: "CodeableConcept" = None
-    
-    type: list["CodeableConcept"] = None
-    
-    typeReference: list["Reference"] = None
-    
-    subtype: list["CodeableConcept"] = None
-    
-    relationship: "Coding" = None
-    
-    context: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    reference: "Reference" = None
-    
-    code: list["CodeableConcept"] = None
-    
-    text: str = None
-    
-    condition: str = None
-    
-    periodType: list["CodeableConcept"] = None
-    
-    period: list["Period"] = None
-    
-    usePeriod: list["Period"] = None
-    
-    text: str = None
-    
-    linkId: str = None
-    
-    answer: list["BackboneElement"] = None
-    
-    securityLabelNumber: int = None
-    
-    valuedItem: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    entityCodeableConcept: "CodeableConcept" = None
-    
-    entityCodeableConcept: "Reference" = None
-    
-    identifier: "Identifier" = None
-    
-    effectiveTime: str = None
-    
-    quantity: "Quantity" = None
-    
-    unitPrice: "Money" = None
-    
-    factor: float = None
-    
-    points: float = None
-    
-    net: "Money" = None
-    
-    payment: str = None
-    
-    paymentDate: str = None
-    
-    responsible: "Reference" = None
-    
-    recipient: "Reference" = None
-    
-    linkId: str = None
-    
-    securityLabelNumber: int = None
-    
-    action: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    doNotPerform: bool = None
-    
-    type: "CodeableConcept" = None
-    
-    subject: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    reference: list["Reference"] = None
-    
-    role: "CodeableConcept" = None
-    
-    intent: "CodeableConcept" = None
-    
-    linkId: str = None
-    
-    status: "CodeableConcept" = None
-    
-    context: "Reference" = None
-    
-    contextLinkId: str = None
-    
-    occurrencedateTime: str = None
-    
-    occurrencedateTime: "Period" = None
-    
-    occurrencedateTime: "Timing" = None
-    
-    requester: list["Reference"] = None
-    
-    requesterLinkId: str = None
-    
-    performerType: list["CodeableConcept"] = None
-    
-    performerRole: "CodeableConcept" = None
-    
-    performer: "Reference" = None
-    
-    performerLinkId: str = None
-    
-    reasonCode: list["CodeableConcept"] = None
-    
-    reasonReference: list["Reference"] = None
-    
-    reason: str = None
-    
-    reasonLinkId: str = None
-    
-    note: list["Annotation"] = None
-    
-    securityLabelNumber: int = None
-    
-    group: list["BackboneElement"] = None
     
 @dataclass
-class securityLabel(Element):
-    """ Security labels that protect the handling of information about the term and its elements, which may be specifically identified..
-    :param BackboneElement securityLabel: Protection for the Term
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param int number: Link to Security Labels
-    :param Coding classification: Confidentiality Protection
-    :param Coding category: Applicable Policy
-    :param Coding control: Handling Instructions
-    """
-    securityLabel: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    number: int = None
-    
-    classification: "Coding" = None
-    
-    category: list["Coding"] = None
-    
-    control: list["Coding"] = None
-    
-@dataclass
-class offer(Element):
-    """ The matter of concern in the context of this provision of the agrement.
-    :param BackboneElement offer: Context of the Contract term
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param Identifier identifier: Offer business ID
-    :param BackboneElement party: Offer Recipient
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param Reference reference: Referenced entity
-    :param CodeableConcept role: Participant engagement type
-    :param Reference topic: Negotiable offer asset
-    :param CodeableConcept type: Contract Offer Type or Form
-    :param CodeableConcept decision: Accepting party choice
-    :param CodeableConcept decisionMode: How decision is conveyed
-    :param BackboneElement answer: Response to offer text
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param bool valueboolean: The actual answer response
-    :param float valueboolean: The actual answer response
-    :param int valueboolean: The actual answer response
-    :param str valueboolean: The actual answer response
-    :param str valueboolean: The actual answer response
-    :param str valueboolean: The actual answer response
-    :param str valueboolean: The actual answer response
-    :param str valueboolean: The actual answer response
-    :param Attachment valueboolean: The actual answer response
-    :param Coding valueboolean: The actual answer response
-    :param Quantity valueboolean: The actual answer response
-    :param Reference valueboolean: The actual answer response
-    :param str text: Human readable offer text
-    :param str linkId: Pointer to text
-    :param int securityLabelNumber: Offer restriction numbers
-    :param BackboneElement answer: Response to offer text
-    """
-    offer: "BackboneElement" = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    identifier: list["Identifier"] = None
-    
-    party: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    reference: list["Reference"] = None
-    
-    role: "CodeableConcept" = None
-    
-    topic: "Reference" = None
-    
-    type: "CodeableConcept" = None
-    
-    decision: "CodeableConcept" = None
-    
-    decisionMode: list["CodeableConcept"] = None
-    
-    answer: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    valueboolean: bool = None
-    
-    valueboolean: float = None
-    
-    valueboolean: int = None
-    
-    valueboolean: str = None
-    
-    valueboolean: str = None
-    
-    valueboolean: str = None
-    
-    valueboolean: str = None
-    
-    valueboolean: str = None
-    
-    valueboolean: "Attachment" = None
-    
-    valueboolean: "Coding" = None
-    
-    valueboolean: "Quantity" = None
-    
-    valueboolean: "Reference" = None
-    
-    text: str = None
-    
-    linkId: str = None
-    
-    securityLabelNumber: int = None
-    
-    answer: list["BackboneElement"] = None
-    
-@dataclass
-class party(Element):
-    """ Offer Recipient.
-    :param BackboneElement party: Offer Recipient
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param Reference reference: Referenced entity
-    :param CodeableConcept role: Participant engagement type
-    """
-    party: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    reference: list["Reference"] = None
-    
-    role: "CodeableConcept" = None
-    
-@dataclass
-class answer(Element):
-    """ Response to offer text.
-    :param BackboneElement answer: Response to offer text
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param bool valueboolean: The actual answer response
-    :param float valueboolean: The actual answer response
-    :param int valueboolean: The actual answer response
-    :param str valueboolean: The actual answer response
-    :param str valueboolean: The actual answer response
-    :param str valueboolean: The actual answer response
-    :param str valueboolean: The actual answer response
-    :param str valueboolean: The actual answer response
-    :param Attachment valueboolean: The actual answer response
-    :param Coding valueboolean: The actual answer response
-    :param Quantity valueboolean: The actual answer response
-    :param Reference valueboolean: The actual answer response
-    :param BackboneElement answer: Response to offer text
-    """
-    answer: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    valueboolean: bool = None
-    
-    valueboolean: float = None
-    
-    valueboolean: int = None
-    
-    valueboolean: str = None
-    
-    valueboolean: str = None
-    
-    valueboolean: str = None
-    
-    valueboolean: str = None
-    
-    valueboolean: str = None
-    
-    valueboolean: "Attachment" = None
-    
-    valueboolean: "Coding" = None
-    
-    valueboolean: "Quantity" = None
-    
-    valueboolean: "Reference" = None
-    
-    answer: list["BackboneElement"] = None
-    
-@dataclass
-class asset(Element):
-    """ Contract Term Asset List.
-    :param BackboneElement asset: Contract Term Asset List
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param CodeableConcept scope: Range of asset
-    :param CodeableConcept type: Asset category
-    :param Reference typeReference: Associated entities
-    :param CodeableConcept subtype: Asset sub-category
-    :param Coding relationship: Kinship of the asset
-    :param BackboneElement context: Circumstance of the asset
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param Reference reference: Creator,custodian or owner
-    :param CodeableConcept code: Codeable asset context
-    :param str text: Context description
-    :param str condition: Quality desctiption of asset
-    :param CodeableConcept periodType: Asset availability types
-    :param Period period: Time period of the asset
-    :param Period usePeriod: Time period
-    :param str text: Asset clause or question text
-    :param str linkId: Pointer to asset text
-    :param int securityLabelNumber: Asset restriction numbers
-    :param BackboneElement valuedItem: Contract Valued Item List
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param CodeableConcept entityCodeableConcept: Contract Valued Item Type
-    :param Reference entityCodeableConcept: Contract Valued Item Type
-    :param Identifier identifier: Contract Valued Item Number
-    :param str effectiveTime: Contract Valued Item Effective Tiem
-    :param Quantity quantity: Count of Contract Valued Items
-    :param Money unitPrice: Contract Valued Item fee, charge, or cost
-    :param float factor: Contract Valued Item Price Scaling Factor
-    :param float points: Contract Valued Item Difficulty Scaling Factor
-    :param Money net: Total Contract Valued Item Value
-    :param str payment: Terms of valuation
-    :param str paymentDate: When payment is due
-    :param Reference responsible: Who will make payment
-    :param Reference recipient: Who will receive payment
-    :param str linkId: Pointer to specific item
-    :param int securityLabelNumber: Security Labels that define affected terms
-    """
-    asset: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    scope: "CodeableConcept" = None
-    
-    type: list["CodeableConcept"] = None
-    
-    typeReference: list["Reference"] = None
-    
-    subtype: list["CodeableConcept"] = None
-    
-    relationship: "Coding" = None
-    
-    context: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    reference: "Reference" = None
-    
-    code: list["CodeableConcept"] = None
-    
-    text: str = None
-    
-    condition: str = None
-    
-    periodType: list["CodeableConcept"] = None
-    
-    period: list["Period"] = None
-    
-    usePeriod: list["Period"] = None
-    
-    text: str = None
-    
-    linkId: str = None
-    
-    securityLabelNumber: int = None
-    
-    valuedItem: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    entityCodeableConcept: "CodeableConcept" = None
-    
-    entityCodeableConcept: "Reference" = None
-    
-    identifier: "Identifier" = None
-    
-    effectiveTime: str = None
-    
-    quantity: "Quantity" = None
-    
-    unitPrice: "Money" = None
-    
-    factor: float = None
-    
-    points: float = None
-    
-    net: "Money" = None
-    
-    payment: str = None
-    
-    paymentDate: str = None
-    
-    responsible: "Reference" = None
-    
-    recipient: "Reference" = None
-    
-    linkId: str = None
-    
-    securityLabelNumber: int = None
-    
-@dataclass
-class context(Element):
-    """ Circumstance of the asset.
-    :param BackboneElement context: Circumstance of the asset
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param Reference reference: Creator,custodian or owner
-    :param CodeableConcept code: Codeable asset context
-    :param str text: Context description
-    """
-    context: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    reference: "Reference" = None
-    
-    code: list["CodeableConcept"] = None
-    
-    text: str = None
-    
-@dataclass
-class answer(Element):
-    """ Response to offer text.
-    :param BackboneElement answer: Response to offer text
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param bool valueboolean: The actual answer response
-    :param float valueboolean: The actual answer response
-    :param int valueboolean: The actual answer response
-    :param str valueboolean: The actual answer response
-    :param str valueboolean: The actual answer response
-    :param str valueboolean: The actual answer response
-    :param str valueboolean: The actual answer response
-    :param str valueboolean: The actual answer response
-    :param Attachment valueboolean: The actual answer response
-    :param Coding valueboolean: The actual answer response
-    :param Quantity valueboolean: The actual answer response
-    :param Reference valueboolean: The actual answer response
-    :param BackboneElement answer: Response to offer text
-    """
-    answer: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    valueboolean: bool = None
-    
-    valueboolean: float = None
-    
-    valueboolean: int = None
-    
-    valueboolean: str = None
-    
-    valueboolean: str = None
-    
-    valueboolean: str = None
-    
-    valueboolean: str = None
-    
-    valueboolean: str = None
-    
-    valueboolean: "Attachment" = None
-    
-    valueboolean: "Coding" = None
-    
-    valueboolean: "Quantity" = None
-    
-    valueboolean: "Reference" = None
-    
-    answer: list["BackboneElement"] = None
-    
-@dataclass
-class valuedItem(Element):
-    """ Contract Valued Item List.
-    :param BackboneElement valuedItem: Contract Valued Item List
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param CodeableConcept entityCodeableConcept: Contract Valued Item Type
-    :param Reference entityCodeableConcept: Contract Valued Item Type
-    :param Identifier identifier: Contract Valued Item Number
-    :param str effectiveTime: Contract Valued Item Effective Tiem
-    :param Quantity quantity: Count of Contract Valued Items
-    :param Money unitPrice: Contract Valued Item fee, charge, or cost
-    :param float factor: Contract Valued Item Price Scaling Factor
-    :param float points: Contract Valued Item Difficulty Scaling Factor
-    :param Money net: Total Contract Valued Item Value
-    :param str payment: Terms of valuation
-    :param str paymentDate: When payment is due
-    :param Reference responsible: Who will make payment
-    :param Reference recipient: Who will receive payment
-    :param str linkId: Pointer to specific item
-    :param int securityLabelNumber: Security Labels that define affected terms
-    """
-    valuedItem: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    entityCodeableConcept: "CodeableConcept" = None
-    
-    entityCodeableConcept: "Reference" = None
-    
-    identifier: "Identifier" = None
-    
-    effectiveTime: str = None
-    
-    quantity: "Quantity" = None
-    
-    unitPrice: "Money" = None
-    
-    factor: float = None
-    
-    points: float = None
-    
-    net: "Money" = None
-    
-    payment: str = None
-    
-    paymentDate: str = None
-    
-    responsible: "Reference" = None
-    
-    recipient: "Reference" = None
-    
-    linkId: str = None
-    
-    securityLabelNumber: int = None
-    
-@dataclass
-class action(Element):
-    """ An actor taking a role in an activity for which it can be assigned some degree of responsibility for the activity taking place.
-    :param BackboneElement action: Entity being ascribed responsibility
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param bool doNotPerform: True if the term prohibits the  action
-    :param CodeableConcept type: Type or form of the action
-    :param BackboneElement subject: Entity of the action
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param Reference reference: Entity of the action
-    :param CodeableConcept role: Role type of the agent
-    :param CodeableConcept intent: Purpose for the Contract Term Action
-    :param str linkId: Pointer to specific item
-    :param CodeableConcept status: State of the action
-    :param Reference context: Episode associated with action
-    :param str contextLinkId: Pointer to specific item
-    :param str occurrencedateTime: When action happens
-    :param Period occurrencedateTime: When action happens
-    :param Timing occurrencedateTime: When action happens
-    :param Reference requester: Who asked for action
-    :param str requesterLinkId: Pointer to specific item
-    :param CodeableConcept performerType: Kind of service performer
-    :param CodeableConcept performerRole: Competency of the performer
-    :param Reference performer: Actor that wil execute (or not) the action
-    :param str performerLinkId: Pointer to specific item
-    :param CodeableConcept reasonCode: Why is action (not) needed?
-    :param Reference reasonReference: Why is action (not) needed?
-    :param str reason: Why action is to be performed
-    :param str reasonLinkId: Pointer to specific item
-    :param Annotation note: Comments about the action
-    :param int securityLabelNumber: Action restriction numbers
-    """
-    action: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    doNotPerform: bool = None
-    
-    type: "CodeableConcept" = None
-    
-    subject: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    reference: list["Reference"] = None
-    
-    role: "CodeableConcept" = None
-    
-    intent: "CodeableConcept" = None
-    
-    linkId: str = None
-    
-    status: "CodeableConcept" = None
-    
-    context: "Reference" = None
-    
-    contextLinkId: str = None
-    
-    occurrencedateTime: str = None
-    
-    occurrencedateTime: "Period" = None
-    
-    occurrencedateTime: "Timing" = None
-    
-    requester: list["Reference"] = None
-    
-    requesterLinkId: str = None
-    
-    performerType: list["CodeableConcept"] = None
-    
-    performerRole: "CodeableConcept" = None
-    
-    performer: "Reference" = None
-    
-    performerLinkId: str = None
-    
-    reasonCode: list["CodeableConcept"] = None
-    
-    reasonReference: list["Reference"] = None
-    
-    reason: str = None
-    
-    reasonLinkId: str = None
-    
-    note: list["Annotation"] = None
-    
-    securityLabelNumber: int = None
-    
-@dataclass
-class subject(Element):
-    """ Entity of the action.
-    :param BackboneElement subject: Entity of the action
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param Reference reference: Entity of the action
-    :param CodeableConcept role: Role type of the agent
-    """
-    subject: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    reference: list["Reference"] = None
-    
-    role: "CodeableConcept" = None
-    
-@dataclass
-class group(Element):
-    """ One or more Contract Provisions, which may be related and conveyed as a group, and may contain nested groups.
-    :param BackboneElement term: Contract Term List
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param Identifier identifier: Contract Term Number
-    :param str issued: Contract Term Issue Date Time
-    :param Period applies: Contract Term Effective Time
-    :param CodeableConcept topicCodeableConcept: Term Concern
-    :param Reference topicCodeableConcept: Term Concern
-    :param CodeableConcept type: Contract Term Type or Form
-    :param CodeableConcept subType: Contract Term Type specific classification
-    :param str text: Term Statement
-    :param BackboneElement securityLabel: Protection for the Term
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param int number: Link to Security Labels
-    :param Coding classification: Confidentiality Protection
-    :param Coding category: Applicable Policy
-    :param Coding control: Handling Instructions
-    :param BackboneElement offer: Context of the Contract term
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param Identifier identifier: Offer business ID
-    :param BackboneElement party: Offer Recipient
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param Reference reference: Referenced entity
-    :param CodeableConcept role: Participant engagement type
-    :param Reference topic: Negotiable offer asset
-    :param CodeableConcept type: Contract Offer Type or Form
-    :param CodeableConcept decision: Accepting party choice
-    :param CodeableConcept decisionMode: How decision is conveyed
-    :param BackboneElement answer: Response to offer text
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param bool valueboolean: The actual answer response
-    :param float valueboolean: The actual answer response
-    :param int valueboolean: The actual answer response
-    :param str valueboolean: The actual answer response
-    :param str valueboolean: The actual answer response
-    :param str valueboolean: The actual answer response
-    :param str valueboolean: The actual answer response
-    :param str valueboolean: The actual answer response
-    :param Attachment valueboolean: The actual answer response
-    :param Coding valueboolean: The actual answer response
-    :param Quantity valueboolean: The actual answer response
-    :param Reference valueboolean: The actual answer response
-    :param str text: Human readable offer text
-    :param str linkId: Pointer to text
-    :param int securityLabelNumber: Offer restriction numbers
-    :param BackboneElement asset: Contract Term Asset List
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param CodeableConcept scope: Range of asset
-    :param CodeableConcept type: Asset category
-    :param Reference typeReference: Associated entities
-    :param CodeableConcept subtype: Asset sub-category
-    :param Coding relationship: Kinship of the asset
-    :param BackboneElement context: Circumstance of the asset
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param Reference reference: Creator,custodian or owner
-    :param CodeableConcept code: Codeable asset context
-    :param str text: Context description
-    :param str condition: Quality desctiption of asset
-    :param CodeableConcept periodType: Asset availability types
-    :param Period period: Time period of the asset
-    :param Period usePeriod: Time period
-    :param str text: Asset clause or question text
-    :param str linkId: Pointer to asset text
-    :param BackboneElement answer: Response to offer text
-    :param int securityLabelNumber: Asset restriction numbers
-    :param BackboneElement valuedItem: Contract Valued Item List
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param CodeableConcept entityCodeableConcept: Contract Valued Item Type
-    :param Reference entityCodeableConcept: Contract Valued Item Type
-    :param Identifier identifier: Contract Valued Item Number
-    :param str effectiveTime: Contract Valued Item Effective Tiem
-    :param Quantity quantity: Count of Contract Valued Items
-    :param Money unitPrice: Contract Valued Item fee, charge, or cost
-    :param float factor: Contract Valued Item Price Scaling Factor
-    :param float points: Contract Valued Item Difficulty Scaling Factor
-    :param Money net: Total Contract Valued Item Value
-    :param str payment: Terms of valuation
-    :param str paymentDate: When payment is due
-    :param Reference responsible: Who will make payment
-    :param Reference recipient: Who will receive payment
-    :param str linkId: Pointer to specific item
-    :param int securityLabelNumber: Security Labels that define affected terms
-    :param BackboneElement action: Entity being ascribed responsibility
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param bool doNotPerform: True if the term prohibits the  action
-    :param CodeableConcept type: Type or form of the action
-    :param BackboneElement subject: Entity of the action
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param Reference reference: Entity of the action
-    :param CodeableConcept role: Role type of the agent
-    :param CodeableConcept intent: Purpose for the Contract Term Action
-    :param str linkId: Pointer to specific item
-    :param CodeableConcept status: State of the action
-    :param Reference context: Episode associated with action
-    :param str contextLinkId: Pointer to specific item
-    :param str occurrencedateTime: When action happens
-    :param Period occurrencedateTime: When action happens
-    :param Timing occurrencedateTime: When action happens
-    :param Reference requester: Who asked for action
-    :param str requesterLinkId: Pointer to specific item
-    :param CodeableConcept performerType: Kind of service performer
-    :param CodeableConcept performerRole: Competency of the performer
-    :param Reference performer: Actor that wil execute (or not) the action
-    :param str performerLinkId: Pointer to specific item
-    :param CodeableConcept reasonCode: Why is action (not) needed?
-    :param Reference reasonReference: Why is action (not) needed?
-    :param str reason: Why action is to be performed
-    :param str reasonLinkId: Pointer to specific item
-    :param Annotation note: Comments about the action
-    :param int securityLabelNumber: Action restriction numbers
-    :param BackboneElement group: Contract Term List
-    """
-    term: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    identifier: "Identifier" = None
-    
-    issued: str = None
-    
-    applies: "Period" = None
-    
-    topicCodeableConcept: "CodeableConcept" = None
-    
-    topicCodeableConcept: "Reference" = None
-    
-    type: "CodeableConcept" = None
-    
-    subType: "CodeableConcept" = None
-    
-    text: str = None
-    
-    securityLabel: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    number: int = None
-    
-    classification: "Coding" = None
-    
-    category: list["Coding"] = None
-    
-    control: list["Coding"] = None
-    
-    offer: "BackboneElement" = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    identifier: list["Identifier"] = None
-    
-    party: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    reference: list["Reference"] = None
-    
-    role: "CodeableConcept" = None
-    
-    topic: "Reference" = None
-    
-    type: "CodeableConcept" = None
-    
-    decision: "CodeableConcept" = None
-    
-    decisionMode: list["CodeableConcept"] = None
-    
-    answer: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    valueboolean: bool = None
-    
-    valueboolean: float = None
-    
-    valueboolean: int = None
-    
-    valueboolean: str = None
-    
-    valueboolean: str = None
-    
-    valueboolean: str = None
-    
-    valueboolean: str = None
-    
-    valueboolean: str = None
-    
-    valueboolean: "Attachment" = None
-    
-    valueboolean: "Coding" = None
-    
-    valueboolean: "Quantity" = None
-    
-    valueboolean: "Reference" = None
-    
-    text: str = None
-    
-    linkId: str = None
-    
-    securityLabelNumber: int = None
-    
-    asset: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    scope: "CodeableConcept" = None
-    
-    type: list["CodeableConcept"] = None
-    
-    typeReference: list["Reference"] = None
-    
-    subtype: list["CodeableConcept"] = None
-    
-    relationship: "Coding" = None
-    
-    context: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    reference: "Reference" = None
-    
-    code: list["CodeableConcept"] = None
-    
-    text: str = None
-    
-    condition: str = None
-    
-    periodType: list["CodeableConcept"] = None
-    
-    period: list["Period"] = None
-    
-    usePeriod: list["Period"] = None
-    
-    text: str = None
-    
-    linkId: str = None
-    
-    answer: list["BackboneElement"] = None
-    
-    securityLabelNumber: int = None
-    
-    valuedItem: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    entityCodeableConcept: "CodeableConcept" = None
-    
-    entityCodeableConcept: "Reference" = None
-    
-    identifier: "Identifier" = None
-    
-    effectiveTime: str = None
-    
-    quantity: "Quantity" = None
-    
-    unitPrice: "Money" = None
-    
-    factor: float = None
-    
-    points: float = None
-    
-    net: "Money" = None
-    
-    payment: str = None
-    
-    paymentDate: str = None
-    
-    responsible: "Reference" = None
-    
-    recipient: "Reference" = None
-    
-    linkId: str = None
-    
-    securityLabelNumber: int = None
-    
-    action: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    doNotPerform: bool = None
-    
-    type: "CodeableConcept" = None
-    
-    subject: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    reference: list["Reference"] = None
-    
-    role: "CodeableConcept" = None
-    
-    intent: "CodeableConcept" = None
-    
-    linkId: str = None
-    
-    status: "CodeableConcept" = None
-    
-    context: "Reference" = None
-    
-    contextLinkId: str = None
-    
-    occurrencedateTime: str = None
-    
-    occurrencedateTime: "Period" = None
-    
-    occurrencedateTime: "Timing" = None
-    
-    requester: list["Reference"] = None
-    
-    requesterLinkId: str = None
-    
-    performerType: list["CodeableConcept"] = None
-    
-    performerRole: "CodeableConcept" = None
-    
-    performer: "Reference" = None
-    
-    performerLinkId: str = None
-    
-    reasonCode: list["CodeableConcept"] = None
-    
-    reasonReference: list["Reference"] = None
-    
-    reason: str = None
-    
-    reasonLinkId: str = None
-    
-    note: list["Annotation"] = None
-    
-    securityLabelNumber: int = None
-    
-    group: list["BackboneElement"] = None
-    
-@dataclass
-class signer(Element):
-    """ Parties with legal standing in the Contract, including the principal parties, the grantor(s) and grantee(s), which are any person or organization bound by the contract, and any ancillary parties, which facilitate the execution of the contract such as a notary or witness.
-    :param BackboneElement signer: Contract Signatory
-    :param str id: Unique id for inter-element referencing
+class Signer(Element):
+    """ Parties with legal standing in the Contract, including the principal parties, the grantor(s) and grantee(s), which are any person or organization bound by the contract, and any ancillary parties, which facilitate the execution of the contract such as a notary or witness.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param Coding type: Contract Signatory Role
     :param Reference party: Contract Signatory Party
     :param Signature signature: Contract Documentation Signature
     """
-    signer: list["BackboneElement"] = None
-    
     id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
     type: "Coding" = None
-    
     party: "Reference" = None
+    signature: list[Signature] = None
     
-    signature: list["Signature"] = None
+
+    
     
 @dataclass
-class friendly(Element):
-    """ The "patient friendly language" versionof the Contract in whole or in parts. "Patient friendly language" means the representation of the Contract and Contract Provisions in a manner that is readily accessible and understandable by a layperson in accordance with best practices for communication styles that ensure that those agreeing to or signing the Contract understand the roles, actions, obligations, responsibilities, and implication of the agreement.
-    :param BackboneElement friendly: Contract Friendly Language
-    :param str id: Unique id for inter-element referencing
+class Friendly(Element):
+    """ The "patient friendly language" versionof the Contract in whole or in parts. "Patient friendly language" means the representation of the Contract and Contract Provisions in a manner that is readily accessible and understandable by a layperson in accordance with best practices for communication styles that ensure that those agreeing to or signing the Contract understand the roles, actions, obligations, responsibilities, and implication of the agreement.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param Attachment contentAttachment: Easily comprehended representation of this Contract
-    :param Reference contentAttachment: Easily comprehended representation of this Contract
     """
-    friendly: list["BackboneElement"] = None
-    
     id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
     contentAttachment: "Attachment" = None
     
-    contentAttachment: "Reference" = None
+
+    
     
 @dataclass
-class legal(Element):
-    """ List of Legal expressions or representations of this Contract.
-    :param CodeableConcept legalState: Negotiation status
-    :param BackboneElement legal: Contract Legal Language
+class Legal(Element):
+    """ List of Legal expressions or representations of this Contract.:param CodeableConcept legalState: Negotiation status
     :param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param Attachment contentAttachment: Contract Legal Text
-    :param Reference contentAttachment: Contract Legal Text
     :param Attachment legallyBindingAttachment: Binding Contract
-    :param Reference legallyBindingAttachment: Binding Contract
-    """
-    legalState: "CodeableConcept" = None
-    
-    legal: list["BackboneElement"] = None
+    """legalState: "CodeableConcept" = None
     
     id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
     contentAttachment: "Attachment" = None
-    
-    contentAttachment: "Reference" = None
-    
     legallyBindingAttachment: "Attachment" = None
     
-    legallyBindingAttachment: "Reference" = None
+
+    
     
 @dataclass
-class rule(Element):
-    """ List of Computable Policy Rule Language Representations of this Contract.
-    :param BackboneElement rule: Computable Contract Language
-    :param str id: Unique id for inter-element referencing
+class Rule(Element):
+    """ List of Computable Policy Rule Language Representations of this Contract.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param Attachment contentAttachment: Computable Contract Rules
-    :param Reference contentAttachment: Computable Contract Rules
     """
-    rule: list["BackboneElement"] = None
-    
     id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
     contentAttachment: "Attachment" = None
     
-    contentAttachment: "Reference" = None
-    
-
-
 @dataclass
 class Contract(ModelBase):
     """ Legally enforceable, formally recorded unilateral or bilateral directive i.e., a policy or agreement.
@@ -1587,178 +480,16 @@ class Contract(ModelBase):
     :param Reference author: Source of Contract
     :param CodeableConcept scope: Range of Legal Concerns
     :param CodeableConcept topicCodeableConcept: Focus of contract interest
-    :param Reference topicCodeableConcept: Focus of contract interest
     :param CodeableConcept type: Legal instrument category
     :param CodeableConcept subType: Subtype within the context of type
-    :param BackboneElement contentDefinition: Contract precursor content
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param CodeableConcept type: Content structure and use
-    :param CodeableConcept subType: Detailed Content Type Definition
-    :param Reference publisher: Publisher Entity
-    :param str publicationDate: When published
-    :param str publicationStatus: amended | appended | cancelled | disputed | entered-in-error | executable | executed | negotiable | offered | policy | rejected | renewed | revoked | resolved | terminated
-    :param str copyright: Publication Ownership
-    :param BackboneElement term: Contract Term List
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param Identifier identifier: Contract Term Number
-    :param str issued: Contract Term Issue Date Time
-    :param Period applies: Contract Term Effective Time
-    :param CodeableConcept topicCodeableConcept: Term Concern
-    :param Reference topicCodeableConcept: Term Concern
-    :param CodeableConcept type: Contract Term Type or Form
-    :param CodeableConcept subType: Contract Term Type specific classification
-    :param str text: Term Statement
-    :param BackboneElement securityLabel: Protection for the Term
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param int number: Link to Security Labels
-    :param Coding classification: Confidentiality Protection
-    :param Coding category: Applicable Policy
-    :param Coding control: Handling Instructions
-    :param BackboneElement offer: Context of the Contract term
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param Identifier identifier: Offer business ID
-    :param BackboneElement party: Offer Recipient
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param Reference reference: Referenced entity
-    :param CodeableConcept role: Participant engagement type
-    :param Reference topic: Negotiable offer asset
-    :param CodeableConcept type: Contract Offer Type or Form
-    :param CodeableConcept decision: Accepting party choice
-    :param CodeableConcept decisionMode: How decision is conveyed
-    :param BackboneElement answer: Response to offer text
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param bool valueboolean: The actual answer response
-    :param float valueboolean: The actual answer response
-    :param int valueboolean: The actual answer response
-    :param str valueboolean: The actual answer response
-    :param str valueboolean: The actual answer response
-    :param str valueboolean: The actual answer response
-    :param str valueboolean: The actual answer response
-    :param str valueboolean: The actual answer response
-    :param Attachment valueboolean: The actual answer response
-    :param Coding valueboolean: The actual answer response
-    :param Quantity valueboolean: The actual answer response
-    :param Reference valueboolean: The actual answer response
-    :param str text: Human readable offer text
-    :param str linkId: Pointer to text
-    :param int securityLabelNumber: Offer restriction numbers
-    :param BackboneElement asset: Contract Term Asset List
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param CodeableConcept scope: Range of asset
-    :param CodeableConcept type: Asset category
-    :param Reference typeReference: Associated entities
-    :param CodeableConcept subtype: Asset sub-category
-    :param Coding relationship: Kinship of the asset
-    :param BackboneElement context: Circumstance of the asset
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param Reference reference: Creator,custodian or owner
-    :param CodeableConcept code: Codeable asset context
-    :param str text: Context description
-    :param str condition: Quality desctiption of asset
-    :param CodeableConcept periodType: Asset availability types
-    :param Period period: Time period of the asset
-    :param Period usePeriod: Time period
-    :param str text: Asset clause or question text
-    :param str linkId: Pointer to asset text
-    :param BackboneElement answer: Response to offer text
-    :param int securityLabelNumber: Asset restriction numbers
-    :param BackboneElement valuedItem: Contract Valued Item List
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param CodeableConcept entityCodeableConcept: Contract Valued Item Type
-    :param Reference entityCodeableConcept: Contract Valued Item Type
-    :param Identifier identifier: Contract Valued Item Number
-    :param str effectiveTime: Contract Valued Item Effective Tiem
-    :param Quantity quantity: Count of Contract Valued Items
-    :param Money unitPrice: Contract Valued Item fee, charge, or cost
-    :param float factor: Contract Valued Item Price Scaling Factor
-    :param float points: Contract Valued Item Difficulty Scaling Factor
-    :param Money net: Total Contract Valued Item Value
-    :param str payment: Terms of valuation
-    :param str paymentDate: When payment is due
-    :param Reference responsible: Who will make payment
-    :param Reference recipient: Who will receive payment
-    :param str linkId: Pointer to specific item
-    :param int securityLabelNumber: Security Labels that define affected terms
-    :param BackboneElement action: Entity being ascribed responsibility
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param bool doNotPerform: True if the term prohibits the  action
-    :param CodeableConcept type: Type or form of the action
-    :param BackboneElement subject: Entity of the action
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param Reference reference: Entity of the action
-    :param CodeableConcept role: Role type of the agent
-    :param CodeableConcept intent: Purpose for the Contract Term Action
-    :param str linkId: Pointer to specific item
-    :param CodeableConcept status: State of the action
-    :param Reference context: Episode associated with action
-    :param str contextLinkId: Pointer to specific item
-    :param str occurrencedateTime: When action happens
-    :param Period occurrencedateTime: When action happens
-    :param Timing occurrencedateTime: When action happens
-    :param Reference requester: Who asked for action
-    :param str requesterLinkId: Pointer to specific item
-    :param CodeableConcept performerType: Kind of service performer
-    :param CodeableConcept performerRole: Competency of the performer
-    :param Reference performer: Actor that wil execute (or not) the action
-    :param str performerLinkId: Pointer to specific item
-    :param CodeableConcept reasonCode: Why is action (not) needed?
-    :param Reference reasonReference: Why is action (not) needed?
-    :param str reason: Why action is to be performed
-    :param str reasonLinkId: Pointer to specific item
-    :param Annotation note: Comments about the action
-    :param int securityLabelNumber: Action restriction numbers
-    :param BackboneElement group: Contract Term List
+    :param ContentDefinition contentDefinition: Contract precursor content
+    :param Term term: Contract Term List
     :param Reference supportingInfo: Extra Information
     :param Reference relevantHistory: Key event in Contract History
-    :param BackboneElement signer: Contract Signatory
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param Coding type: Contract Signatory Role
-    :param Reference party: Contract Signatory Party
-    :param Signature signature: Contract Documentation Signature
-    :param BackboneElement friendly: Contract Friendly Language
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param Attachment contentAttachment: Easily comprehended representation of this Contract
-    :param Reference contentAttachment: Easily comprehended representation of this Contract
-    :param BackboneElement legal: Contract Legal Language
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param Attachment contentAttachment: Contract Legal Text
-    :param Reference contentAttachment: Contract Legal Text
-    :param BackboneElement rule: Computable Contract Language
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param Attachment contentAttachment: Computable Contract Rules
-    :param Reference contentAttachment: Computable Contract Rules
-    :param Attachment legallyBindingAttachment: Binding Contract
-    :param Reference legallyBindingAttachment: Binding Contract
+    :param Signer signer: Contract Signatory
+    :param Friendly friendly: Contract Friendly Language
+    :param Legal legal: Contract Legal Language
+    :param Rule rule: Computable Contract Language
     """
     id: str = None
     
@@ -1820,347 +551,23 @@ class Contract(ModelBase):
     
     topicCodeableConcept: "CodeableConcept" = None
     
-    topicCodeableConcept: "Reference" = None
-    
     type: "CodeableConcept" = None
     
     subType: list["CodeableConcept"] = None
     
-    contentDefinition: "BackboneElement" = None
+    contentDefinition: "ContentDefinition" = None
     
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    type: "CodeableConcept" = None
-    
-    subType: "CodeableConcept" = None
-    
-    publisher: "Reference" = None
-    
-    publicationDate: str = None
-    
-    publicationStatus: str = None
-    
-    copyright: str = None
-    
-    term: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    identifier: "Identifier" = None
-    
-    issued: str = None
-    
-    applies: "Period" = None
-    
-    topicCodeableConcept: "CodeableConcept" = None
-    
-    topicCodeableConcept: "Reference" = None
-    
-    type: "CodeableConcept" = None
-    
-    subType: "CodeableConcept" = None
-    
-    text: str = None
-    
-    securityLabel: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    number: int = None
-    
-    classification: "Coding" = None
-    
-    category: list["Coding"] = None
-    
-    control: list["Coding"] = None
-    
-    offer: "BackboneElement" = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    identifier: list["Identifier"] = None
-    
-    party: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    reference: list["Reference"] = None
-    
-    role: "CodeableConcept" = None
-    
-    topic: "Reference" = None
-    
-    type: "CodeableConcept" = None
-    
-    decision: "CodeableConcept" = None
-    
-    decisionMode: list["CodeableConcept"] = None
-    
-    answer: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    valueboolean: bool = None
-    
-    valueboolean: float = None
-    
-    valueboolean: int = None
-    
-    valueboolean: str = None
-    
-    valueboolean: str = None
-    
-    valueboolean: str = None
-    
-    valueboolean: str = None
-    
-    valueboolean: str = None
-    
-    valueboolean: "Attachment" = None
-    
-    valueboolean: "Coding" = None
-    
-    valueboolean: "Quantity" = None
-    
-    valueboolean: "Reference" = None
-    
-    text: str = None
-    
-    linkId: str = None
-    
-    securityLabelNumber: int = None
-    
-    asset: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    scope: "CodeableConcept" = None
-    
-    type: list["CodeableConcept"] = None
-    
-    typeReference: list["Reference"] = None
-    
-    subtype: list["CodeableConcept"] = None
-    
-    relationship: "Coding" = None
-    
-    context: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    reference: "Reference" = None
-    
-    code: list["CodeableConcept"] = None
-    
-    text: str = None
-    
-    condition: str = None
-    
-    periodType: list["CodeableConcept"] = None
-    
-    period: list["Period"] = None
-    
-    usePeriod: list["Period"] = None
-    
-    text: str = None
-    
-    linkId: str = None
-    
-    answer: list["BackboneElement"] = None
-    
-    securityLabelNumber: int = None
-    
-    valuedItem: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    entityCodeableConcept: "CodeableConcept" = None
-    
-    entityCodeableConcept: "Reference" = None
-    
-    identifier: "Identifier" = None
-    
-    effectiveTime: str = None
-    
-    quantity: "Quantity" = None
-    
-    unitPrice: "Money" = None
-    
-    factor: float = None
-    
-    points: float = None
-    
-    net: "Money" = None
-    
-    payment: str = None
-    
-    paymentDate: str = None
-    
-    responsible: "Reference" = None
-    
-    recipient: "Reference" = None
-    
-    linkId: str = None
-    
-    securityLabelNumber: int = None
-    
-    action: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    doNotPerform: bool = None
-    
-    type: "CodeableConcept" = None
-    
-    subject: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    reference: list["Reference"] = None
-    
-    role: "CodeableConcept" = None
-    
-    intent: "CodeableConcept" = None
-    
-    linkId: str = None
-    
-    status: "CodeableConcept" = None
-    
-    context: "Reference" = None
-    
-    contextLinkId: str = None
-    
-    occurrencedateTime: str = None
-    
-    occurrencedateTime: "Period" = None
-    
-    occurrencedateTime: "Timing" = None
-    
-    requester: list["Reference"] = None
-    
-    requesterLinkId: str = None
-    
-    performerType: list["CodeableConcept"] = None
-    
-    performerRole: "CodeableConcept" = None
-    
-    performer: "Reference" = None
-    
-    performerLinkId: str = None
-    
-    reasonCode: list["CodeableConcept"] = None
-    
-    reasonReference: list["Reference"] = None
-    
-    reason: str = None
-    
-    reasonLinkId: str = None
-    
-    note: list["Annotation"] = None
-    
-    securityLabelNumber: int = None
-    
-    group: list["BackboneElement"] = None
+    term: list["Term"] = None
     
     supportingInfo: list["Reference"] = None
     
     relevantHistory: list["Reference"] = None
     
-    signer: list["BackboneElement"] = None
+    signer: list["Signer"] = None
     
-    id: str = None
+    friendly: list["Friendly"] = None
     
-    extension: list["Extension"] = None
+    legal: list["Legal"] = None
     
-    modifierExtension: list["Extension"] = None
-    
-    type: "Coding" = None
-    
-    party: "Reference" = None
-    
-    signature: list["Signature"] = None
-    
-    friendly: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    contentAttachment: "Attachment" = None
-    
-    contentAttachment: "Reference" = None
-    
-    legal: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    contentAttachment: "Attachment" = None
-    
-    contentAttachment: "Reference" = None
-    
-    rule: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    contentAttachment: "Attachment" = None
-    
-    contentAttachment: "Reference" = None
-    
-    legallyBindingAttachment: "Attachment" = None
-    
-    legallyBindingAttachment: "Reference" = None
+    rule: list["Rule"] = None
     

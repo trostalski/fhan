@@ -1,19 +1,15 @@
 """
 Generated class for Request. 
-Time: 2023-09-20 10:09:03
+Time: 2023-09-20 20:29:43
 """
 from dataclasses import dataclass
-
 from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Period import *
-from fhan.models.R4.Reference import *
 from fhan.models.R4.Annotation import *
-from fhan.models.R4.Timing import *
 from fhan.models.R4.Identifier import *
+from fhan.models.R4.Timing import *
+from fhan.models.R4.Reference import *
+from fhan.models.R4.Period import *
 from fhan.models.generator_models import ModelBase
-
-
-
 @dataclass
 class Request(ModelBase):
     """ Logical Model: A pattern to be followed by resources that represent a specific proposal, plan and/or order for some sort of action or service.
@@ -31,13 +27,10 @@ class Request(ModelBase):
     :param CodeableConcept code: What's being requested/ordered
     :param Reference subject: Individual the service is ordered/prohibited for
     :param Reference encounter: Encounter created as part of
-    :param str occurrencedateTime: When service should (not) occur
-    :param Period occurrencedateTime: When service should (not) occur
-    :param Timing occurrencedateTime: When service should (not) occur
+    :param str occurrenceDateTime: When service should (not) occur
     :param str authoredOn: When request was created/transitioned to active
     :param Reference requester: Who/what is requesting service
-    :param bool reportedboolean: Reported rather than primary record
-    :param Reference reportedboolean: Reported rather than primary record
+    :param bool reportedBoolean: Reported rather than primary record
     :param CodeableConcept performerType: Desired kind of service performer
     :param Reference performer: Specific desired (non)performer
     :param CodeableConcept reasonCode: Why is service (not) needed?
@@ -75,19 +68,13 @@ class Request(ModelBase):
     
     encounter: "Reference" = None
     
-    occurrencedateTime: str = None
-    
-    occurrencedateTime: "Period" = None
-    
-    occurrencedateTime: "Timing" = None
+    occurrenceDateTime: str = None
     
     authoredOn: str = None
     
     requester: "Reference" = None
     
-    reportedboolean: bool = None
-    
-    reportedboolean: "Reference" = None
+    reportedBoolean: bool = None
     
     performerType: "CodeableConcept" = None
     

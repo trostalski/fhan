@@ -1,23 +1,19 @@
 """
 Generated class for Endpoint. 
-Time: 2023-09-20 10:09:03
+Time: 2023-09-20 20:29:43
 """
 from dataclasses import dataclass
-
 from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.ContactPoint import *
+from fhan.models.R4.Meta import *
+from fhan.models.R4.Coding import *
+from fhan.models.R4.Extension import *
 from fhan.models.R4.Period import *
+from fhan.models.R4.ContactPoint import *
+from fhan.models.R4.Identifier import *
 from fhan.models.R4.Narrative import *
 from fhan.models.R4.Reference import *
-from fhan.models.R4.Extension import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Identifier import *
 from fhan.models.R4.Resource import *
-from fhan.models.R4.Coding import *
 from fhan.models.generator_models import ModelBase
-
-
-
 @dataclass
 class Endpoint(ModelBase):
     """ The technical details of an endpoint that can be used for electronic services, such as for web services providing XDS.b or a REST endpoint for another FHIR server. This may include any security context information.

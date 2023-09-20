@@ -1,27 +1,47 @@
 """
 Generated class for VisionPrescription. 
-Time: 2023-09-20 10:09:03
+Time: 2023-09-20 20:29:43
 """
 from dataclasses import dataclass
-
-from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.Reference import *
-from fhan.models.R4.Extension import *
-from fhan.models.R4.Quantity import *
+from fhan.models.R4.Meta import *
+from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Annotation import *
 from fhan.models.R4.Element import *
-from fhan.models.R4.Meta import *
+from fhan.models.R4.Extension import *
+from fhan.models.R4.Quantity import *
 from fhan.models.R4.Identifier import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Reference import *
 from fhan.models.R4.Resource import *
 from fhan.models.generator_models import ModelBase
 
+    
+        
+    
+    
 @dataclass
-class lensSpecification(Element):
-    """ Contain the details of  the individual lens specifications and serves as the authorization for the fullfillment by certified professionals.
-    :param BackboneElement lensSpecification: Vision lens authorization
-    :param str id: Unique id for inter-element referencing
+class Prism(Element):
+    """ Allows for adjustment on two axis.:param str id: Unique id for inter-element referencing
+    :param Extension extension: Additional content defined by implementations
+    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param float amount: Amount of adjustment
+    :param str base: up | down | in | out
+    """
+    id: str = None
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
+    
+    amount: float = None
+    
+    base: str = None
+    
+  
+    
+    
+@dataclass
+class LensSpecification(Element):
+    """ Contain the details of  the individual lens specifications and serves as the authorization for the fullfillment by certified professionals.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param CodeableConcept product: Product to be supplied
@@ -29,12 +49,7 @@ class lensSpecification(Element):
     :param float sphere: Power of the lens
     :param float cylinder: Lens power for astigmatism
     :param int axis: Lens meridian which contain no power for astigmatism
-    :param BackboneElement prism: Eye alignment compensation
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param float amount: Amount of adjustment
-    :param str base: up | down | in | out
+    :param Prism prism: Eye alignment compensation
     :param float add: Added power for multifocal levels
     :param float power: Contact lens power
     :param float backCurve: Contact lens back curvature
@@ -44,14 +59,9 @@ class lensSpecification(Element):
     :param str brand: Brand required
     :param Annotation note: Notes for coatings
     """
-    lensSpecification: list["BackboneElement"] = None
-    
     id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
     product: "CodeableConcept" = None
     
     eye: str = None
@@ -61,18 +71,7 @@ class lensSpecification(Element):
     cylinder: float = None
     
     axis: int = None
-    
-    prism: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    amount: float = None
-    
-    base: str = None
+    prism: list[Prism] = None
     
     add: float = None
     
@@ -81,39 +80,13 @@ class lensSpecification(Element):
     backCurve: float = None
     
     diameter: float = None
-    
     duration: "Quantity" = None
     
     color: str = None
     
     brand: str = None
+    note: list[Annotation] = None
     
-    note: list["Annotation"] = None
-    
-@dataclass
-class prism(Element):
-    """ Allows for adjustment on two axis.
-    :param BackboneElement prism: Eye alignment compensation
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param float amount: Amount of adjustment
-    :param str base: up | down | in | out
-    """
-    prism: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    amount: float = None
-    
-    base: str = None
-    
-
-
 @dataclass
 class VisionPrescription(ModelBase):
     """ An authorization for the provision of glasses and/or contact lenses to a patient.
@@ -132,29 +105,7 @@ class VisionPrescription(ModelBase):
     :param Reference encounter: Created during encounter / admission / stay
     :param str dateWritten: When prescription was authorized
     :param Reference prescriber: Who authorized the vision prescription
-    :param BackboneElement lensSpecification: Vision lens authorization
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param CodeableConcept product: Product to be supplied
-    :param str eye: right | left
-    :param float sphere: Power of the lens
-    :param float cylinder: Lens power for astigmatism
-    :param int axis: Lens meridian which contain no power for astigmatism
-    :param BackboneElement prism: Eye alignment compensation
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param float amount: Amount of adjustment
-    :param str base: up | down | in | out
-    :param float add: Added power for multifocal levels
-    :param float power: Contact lens power
-    :param float backCurve: Contact lens back curvature
-    :param float diameter: Contact lens diameter
-    :param Quantity duration: Lens wear duration
-    :param str color: Color required
-    :param str brand: Brand required
-    :param Annotation note: Notes for coatings
+    :param LensSpecification lensSpecification: Vision lens authorization
     """
     id: str = None
     
@@ -186,49 +137,5 @@ class VisionPrescription(ModelBase):
     
     prescriber: "Reference" = None
     
-    lensSpecification: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    product: "CodeableConcept" = None
-    
-    eye: str = None
-    
-    sphere: float = None
-    
-    cylinder: float = None
-    
-    axis: int = None
-    
-    prism: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    amount: float = None
-    
-    base: str = None
-    
-    add: float = None
-    
-    power: float = None
-    
-    backCurve: float = None
-    
-    diameter: float = None
-    
-    duration: "Quantity" = None
-    
-    color: str = None
-    
-    brand: str = None
-    
-    note: list["Annotation"] = None
+    lensSpecification: list["LensSpecification"] = None
     

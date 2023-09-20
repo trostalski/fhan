@@ -1,44 +1,35 @@
 """
 Generated class for DocumentManifest. 
-Time: 2023-09-20 10:09:03
+Time: 2023-09-20 20:29:43
 """
 from dataclasses import dataclass
-
 from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Meta import *
 from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Element import *
+from fhan.models.R4.Extension import *
+from fhan.models.R4.Identifier import *
 from fhan.models.R4.Narrative import *
 from fhan.models.R4.Reference import *
-from fhan.models.R4.Extension import *
-from fhan.models.R4.Element import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Identifier import *
 from fhan.models.R4.Resource import *
 from fhan.models.generator_models import ModelBase
 
+    
+    
 @dataclass
-class related(Element):
-    """ Related identifiers or resources associated with the DocumentManifest.
-    :param BackboneElement related: Related things
-    :param str id: Unique id for inter-element referencing
+class Related(Element):
+    """ Related identifiers or resources associated with the DocumentManifest.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param Identifier identifier: Identifiers of things that are related
     :param Reference ref: Related Resource
     """
-    related: list["BackboneElement"] = None
-    
     id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
     identifier: "Identifier" = None
-    
     ref: "Reference" = None
     
-
-
 @dataclass
 class DocumentManifest(ModelBase):
     """ A collection of documents compiled for a purpose together with metadata that applies to the collection.
@@ -61,12 +52,7 @@ class DocumentManifest(ModelBase):
     :param str source: The source system/application/software
     :param str description: Human-readable description (title)
     :param Reference content: Items in manifest
-    :param BackboneElement related: Related things
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param Identifier identifier: Identifiers of things that are related
-    :param Reference ref: Related Resource
+    :param Related related: Related things
     """
     id: str = None
     
@@ -106,15 +92,5 @@ class DocumentManifest(ModelBase):
     
     content: list["Reference"] = None
     
-    related: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    identifier: "Identifier" = None
-    
-    ref: "Reference" = None
+    related: list["Related"] = None
     

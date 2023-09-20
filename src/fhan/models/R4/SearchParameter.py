@@ -1,44 +1,37 @@
 """
 Generated class for SearchParameter. 
-Time: 2023-09-20 10:09:03
+Time: 2023-09-20 20:29:43
 """
 from dataclasses import dataclass
-
 from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.UsageContext import *
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.ContactDetail import *
-from fhan.models.R4.Extension import *
 from fhan.models.R4.Meta import *
+from fhan.models.R4.BackboneElement import *
 from fhan.models.R4.Element import *
+from fhan.models.R4.Extension import *
+from fhan.models.R4.ContactDetail import *
+from fhan.models.R4.UsageContext import *
+from fhan.models.R4.Narrative import *
 from fhan.models.R4.Resource import *
 from fhan.models.generator_models import ModelBase
 
+    
+    
 @dataclass
-class component(Element):
-    """ Used to define the parts of a composite search parameter.
-    :param BackboneElement component: For Composite resources to define the parts
-    :param str id: Unique id for inter-element referencing
+class Component(Element):
+    """ Used to define the parts of a composite search parameter.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str definition: Defines how the part works
     :param str expression: Subexpression relative to main expression
     """
-    component: list["BackboneElement"] = None
-    
     id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
     
     definition: str = None
     
     expression: str = None
     
-
-
 @dataclass
 class SearchParameter(ModelBase):
     """ A search parameter that defines a named search item that can be used to search/filter on a resource.
@@ -75,12 +68,7 @@ class SearchParameter(ModelBase):
     :param str comparator: eq | ne | gt | lt | ge | le | sa | eb | ap
     :param str modifier: missing | exact | contains | not | text | in | not-in | below | above | type | identifier | ofType
     :param str chain: Chained names supported
-    :param BackboneElement component: For Composite resources to define the parts
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str definition: Defines how the part works
-    :param str expression: Subexpression relative to main expression
+    :param Component component: For Composite resources to define the parts
     """
     id: str = None
     
@@ -148,15 +136,5 @@ class SearchParameter(ModelBase):
     
     chain: str = None
     
-    component: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    definition: str = None
-    
-    expression: str = None
+    component: list["Component"] = None
     

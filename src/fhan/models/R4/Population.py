@@ -1,16 +1,12 @@
 """
 Generated class for Population. 
-Time: 2023-09-20 10:09:03
+Time: 2023-09-20 20:29:43
 """
 from dataclasses import dataclass
-
-from fhan.models.R4.Extension import *
 from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Range import *
+from fhan.models.R4.Extension import *
 from fhan.models.R4.Element import *
-
-
-
 
 @dataclass
 class Population(Element):
@@ -19,7 +15,6 @@ class Population(Element):
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param Range ageRange: The age of the specific population
-    :param CodeableConcept ageRange: The age of the specific population
     :param CodeableConcept gender: The gender of the specific population
     :param CodeableConcept race: Race of the specific population
     :param CodeableConcept physiologicalCondition: The existing physiological conditions of the specific population to which this applies
@@ -31,8 +26,6 @@ class Population(Element):
     modifierExtension: list["Extension"] = None
     
     ageRange: "Range" = None
-    
-    ageRange: "CodeableConcept" = None
     
     gender: "CodeableConcept" = None
     

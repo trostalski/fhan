@@ -1,93 +1,59 @@
 """
 Generated class for AdverseEvent. 
-Time: 2023-09-20 10:09:03
+Time: 2023-09-20 20:29:43
 """
 from dataclasses import dataclass
-
 from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Meta import *
 from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Element import *
+from fhan.models.R4.Extension import *
+from fhan.models.R4.Identifier import *
 from fhan.models.R4.Narrative import *
 from fhan.models.R4.Reference import *
-from fhan.models.R4.Extension import *
-from fhan.models.R4.Element import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Identifier import *
 from fhan.models.R4.Resource import *
 from fhan.models.generator_models import ModelBase
 
+    
+        
+    
+    
 @dataclass
-class suspectEntity(Element):
-    """ Describes the entity that is suspected to have caused the adverse event.
-    :param BackboneElement suspectEntity: The suspected agent causing the adverse event
-    :param str id: Unique id for inter-element referencing
+class Causality(Element):
+    """ Information on the possible cause of the event.:param str id: Unique id for inter-element referencing
+    :param Extension extension: Additional content defined by implementations
+    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param CodeableConcept assessment: Assessment of if the entity caused the event
+    :param str productRelatedness: AdverseEvent.suspectEntity.causalityProductRelatedness
+    :param Reference author: AdverseEvent.suspectEntity.causalityAuthor
+    :param CodeableConcept method: ProbabilityScale | Bayesian | Checklist
+    """
+    id: str = None
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
+    assessment: "CodeableConcept" = None
+    
+    productRelatedness: str = None
+    author: "Reference" = None
+    method: "CodeableConcept" = None
+    
+  
+    
+    
+@dataclass
+class SuspectEntity(Element):
+    """ Describes the entity that is suspected to have caused the adverse event.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param Reference instance: Refers to the specific entity that caused the adverse event
-    :param BackboneElement causality: Information on the possible cause of the event
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param CodeableConcept assessment: Assessment of if the entity caused the event
-    :param str productRelatedness: AdverseEvent.suspectEntity.causalityProductRelatedness
-    :param Reference author: AdverseEvent.suspectEntity.causalityAuthor
-    :param CodeableConcept method: ProbabilityScale | Bayesian | Checklist
+    :param Causality causality: Information on the possible cause of the event
     """
-    suspectEntity: list["BackboneElement"] = None
-    
     id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
     instance: "Reference" = None
+    causality: list[Causality] = None
     
-    causality: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    assessment: "CodeableConcept" = None
-    
-    productRelatedness: str = None
-    
-    author: "Reference" = None
-    
-    method: "CodeableConcept" = None
-    
-@dataclass
-class causality(Element):
-    """ Information on the possible cause of the event.
-    :param BackboneElement causality: Information on the possible cause of the event
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param CodeableConcept assessment: Assessment of if the entity caused the event
-    :param str productRelatedness: AdverseEvent.suspectEntity.causalityProductRelatedness
-    :param Reference author: AdverseEvent.suspectEntity.causalityAuthor
-    :param CodeableConcept method: ProbabilityScale | Bayesian | Checklist
-    """
-    causality: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    assessment: "CodeableConcept" = None
-    
-    productRelatedness: str = None
-    
-    author: "Reference" = None
-    
-    method: "CodeableConcept" = None
-    
-
-
 @dataclass
 class AdverseEvent(ModelBase):
     """ Actual or  potential/avoided event causing unintended physical injury resulting from or contributed to by medical care, a research study or other healthcare setting factors that requires additional monitoring, treatment, or hospitalization, or that results in death.
@@ -115,19 +81,7 @@ class AdverseEvent(ModelBase):
     :param CodeableConcept outcome: resolved | recovering | ongoing | resolvedWithSequelae | fatal | unknown
     :param Reference recorder: Who recorded the adverse event
     :param Reference contributor: Who  was involved in the adverse event or the potential adverse event
-    :param BackboneElement suspectEntity: The suspected agent causing the adverse event
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param Reference instance: Refers to the specific entity that caused the adverse event
-    :param BackboneElement causality: Information on the possible cause of the event
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param CodeableConcept assessment: Assessment of if the entity caused the event
-    :param str productRelatedness: AdverseEvent.suspectEntity.causalityProductRelatedness
-    :param Reference author: AdverseEvent.suspectEntity.causalityAuthor
-    :param CodeableConcept method: ProbabilityScale | Bayesian | Checklist
+    :param SuspectEntity suspectEntity: The suspected agent causing the adverse event
     :param Reference subjectMedicalHistory: AdverseEvent.subjectMedicalHistory
     :param Reference referenceDocument: AdverseEvent.referenceDocument
     :param Reference study: AdverseEvent.study
@@ -180,31 +134,7 @@ class AdverseEvent(ModelBase):
     
     contributor: list["Reference"] = None
     
-    suspectEntity: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    instance: "Reference" = None
-    
-    causality: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    assessment: "CodeableConcept" = None
-    
-    productRelatedness: str = None
-    
-    author: "Reference" = None
-    
-    method: "CodeableConcept" = None
+    suspectEntity: list["SuspectEntity"] = None
     
     subjectMedicalHistory: list["Reference"] = None
     

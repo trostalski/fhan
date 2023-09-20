@@ -1,22 +1,18 @@
 """
 Generated class for GuidanceResponse. 
-Time: 2023-09-20 10:09:03
+Time: 2023-09-20 20:29:43
 """
 from dataclasses import dataclass
-
 from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Meta import *
+from fhan.models.R4.Annotation import *
+from fhan.models.R4.Extension import *
+from fhan.models.R4.DataRequirement import *
+from fhan.models.R4.Identifier import *
 from fhan.models.R4.Narrative import *
 from fhan.models.R4.Reference import *
-from fhan.models.R4.Extension import *
-from fhan.models.R4.Annotation import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Identifier import *
 from fhan.models.R4.Resource import *
-from fhan.models.R4.DataRequirement import *
 from fhan.models.generator_models import ModelBase
-
-
-
 @dataclass
 class GuidanceResponse(ModelBase):
     """ A guidance response is the formal response to a guidance request, including any output parameters returned by the evaluation, as well as the description of any proposed actions to be taken.
@@ -30,9 +26,7 @@ class GuidanceResponse(ModelBase):
     :param Extension modifierExtension: Extensions that cannot be ignored
     :param Identifier requestIdentifier: The identifier of the request associated with this response, if any
     :param Identifier identifier: Business identifier
-    :param str moduleuri: What guidance was requested
-    :param str moduleuri: What guidance was requested
-    :param CodeableConcept moduleuri: What guidance was requested
+    :param str moduleUri: What guidance was requested
     :param str status: success | data-requested | data-required | in-progress | failure | entered-in-error
     :param Reference subject: Patient the request was performed for
     :param Reference encounter: Encounter during which the response was returned
@@ -66,11 +60,7 @@ class GuidanceResponse(ModelBase):
     
     identifier: list["Identifier"] = None
     
-    moduleuri: str = None
-    
-    moduleuri: str = None
-    
-    moduleuri: "CodeableConcept" = None
+    moduleUri: str = None
     
     status: str = None
     

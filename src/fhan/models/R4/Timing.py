@@ -1,19 +1,15 @@
 """
 Generated class for Timing. 
-Time: 2023-09-20 10:09:03
+Time: 2023-09-20 20:29:43
 """
 from dataclasses import dataclass
-
 from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Duration import *
 from fhan.models.R4.Range import *
-from fhan.models.R4.Period import *
+from fhan.models.R4.Element import *
 from fhan.models.R4.Extension import *
+from fhan.models.R4.Duration import *
+from fhan.models.R4.Period import *
 from fhan.models.R4.Element import *
-from fhan.models.R4.Element import *
-
-
-
 
 @dataclass
 class Timing(Element):
@@ -26,8 +22,6 @@ class Timing(Element):
     :param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Duration boundsDuration: Length/Range of lengths, or (Start and/or end) limits
-    :param Range boundsDuration: Length/Range of lengths, or (Start and/or end) limits
-    :param Period boundsDuration: Length/Range of lengths, or (Start and/or end) limits
     :param int count: Number of times to repeat
     :param int countMax: Maximum number of times to repeat
     :param float duration: How long when it happens
@@ -59,10 +53,6 @@ class Timing(Element):
     extension: list["Extension"] = None
     
     boundsDuration: "Duration" = None
-    
-    boundsDuration: "Range" = None
-    
-    boundsDuration: "Period" = None
     
     count: int = None
     

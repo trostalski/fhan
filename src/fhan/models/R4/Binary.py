@@ -1,15 +1,11 @@
 """
 Generated class for Binary. 
-Time: 2023-09-20 10:09:03
+Time: 2023-09-20 20:29:43
 """
 from dataclasses import dataclass
-
 from fhan.models.R4.Meta import *
 from fhan.models.R4.Reference import *
 from fhan.models.generator_models import ModelBase
-
-
-
 @dataclass
 class Binary(ModelBase):
     """ A resource that represents the data of a single raw artifact as digital content accessible in its native format.  A Binary resource can contain any content, whether text, image, pdf, zip archive, etc.

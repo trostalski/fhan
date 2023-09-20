@@ -1,45 +1,37 @@
 """
 Generated class for CatalogEntry. 
-Time: 2023-09-20 10:09:03
+Time: 2023-09-20 20:29:43
 """
 from dataclasses import dataclass
-
 from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Period import *
+from fhan.models.R4.Meta import *
 from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Element import *
+from fhan.models.R4.Extension import *
+from fhan.models.R4.Period import *
+from fhan.models.R4.Identifier import *
 from fhan.models.R4.Narrative import *
 from fhan.models.R4.Reference import *
-from fhan.models.R4.Extension import *
-from fhan.models.R4.Element import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Identifier import *
 from fhan.models.R4.Resource import *
 from fhan.models.generator_models import ModelBase
 
+    
+    
 @dataclass
-class relatedEntry(Element):
-    """ Used for example, to point to a substance, or to a device used to administer a medication.
-    :param BackboneElement relatedEntry: An item that this catalog entry is related to
-    :param str id: Unique id for inter-element referencing
+class RelatedEntry(Element):
+    """ Used for example, to point to a substance, or to a device used to administer a medication.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str relationtype: triggers | is-replaced-by
     :param Reference item: The reference to the related item
     """
-    relatedEntry: list["BackboneElement"] = None
-    
     id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
     
     relationtype: str = None
-    
     item: "Reference" = None
     
-
-
 @dataclass
 class CatalogEntry(ModelBase):
     """ Catalog entries are wrappers that contextualize items included in a catalog.
@@ -63,12 +55,7 @@ class CatalogEntry(ModelBase):
     :param str lastUpdated: When was this catalog last updated
     :param CodeableConcept additionalCharacteristic: Additional characteristics of the catalog entry
     :param CodeableConcept additionalClassification: Additional classification of the catalog entry
-    :param BackboneElement relatedEntry: An item that this catalog entry is related to
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str relationtype: triggers | is-replaced-by
-    :param Reference item: The reference to the related item
+    :param RelatedEntry relatedEntry: An item that this catalog entry is related to
     """
     id: str = None
     
@@ -110,15 +97,5 @@ class CatalogEntry(ModelBase):
     
     additionalClassification: list["CodeableConcept"] = None
     
-    relatedEntry: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    relationtype: str = None
-    
-    item: "Reference" = None
+    relatedEntry: list["RelatedEntry"] = None
     

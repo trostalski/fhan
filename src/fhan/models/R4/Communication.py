@@ -1,49 +1,36 @@
 """
 Generated class for Communication. 
-Time: 2023-09-20 10:09:03
+Time: 2023-09-20 20:29:43
 """
 from dataclasses import dataclass
-
 from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Attachment import *
+from fhan.models.R4.Meta import *
 from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.Reference import *
-from fhan.models.R4.Extension import *
+from fhan.models.R4.Attachment import *
 from fhan.models.R4.Annotation import *
 from fhan.models.R4.Element import *
-from fhan.models.R4.Meta import *
+from fhan.models.R4.Extension import *
 from fhan.models.R4.Identifier import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Reference import *
 from fhan.models.R4.Resource import *
 from fhan.models.generator_models import ModelBase
 
+    
+    
 @dataclass
-class payload(Element):
-    """ Text, attachment(s), or resource(s) that was communicated to the recipient.
-    :param BackboneElement payload: Message payload
-    :param str id: Unique id for inter-element referencing
+class Payload(Element):
+    """ Text, attachment(s), or resource(s) that was communicated to the recipient.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str contentstring: Message part content
-    :param Attachment contentstring: Message part content
-    :param Reference contentstring: Message part content
+    :param str contentString: Message part content
     """
-    payload: list["BackboneElement"] = None
-    
     id: str = None
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
     
-    extension: list["Extension"] = None
+    contentString: str = None
     
-    modifierExtension: list["Extension"] = None
-    
-    contentstring: str = None
-    
-    contentstring: "Attachment" = None
-    
-    contentstring: "Reference" = None
-    
-
-
 @dataclass
 class Communication(ModelBase):
     """ An occurrence of information being transmitted; e.g. an alert that was sent to a responsible provider, a public health agency that was notified about a reportable condition.
@@ -76,13 +63,7 @@ class Communication(ModelBase):
     :param Reference sender: Message sender
     :param CodeableConcept reasonCode: Indication for message
     :param Reference reasonReference: Why was communication done?
-    :param BackboneElement payload: Message payload
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str contentstring: Message part content
-    :param Attachment contentstring: Message part content
-    :param Reference contentstring: Message part content
+    :param Payload payload: Message payload
     :param Annotation note: Comments made about the communication
     """
     id: str = None
@@ -143,19 +124,7 @@ class Communication(ModelBase):
     
     reasonReference: list["Reference"] = None
     
-    payload: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    contentstring: str = None
-    
-    contentstring: "Attachment" = None
-    
-    contentstring: "Reference" = None
+    payload: list["Payload"] = None
     
     note: list["Annotation"] = None
     

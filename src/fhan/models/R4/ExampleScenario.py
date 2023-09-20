@@ -1,26 +1,25 @@
 """
 Generated class for ExampleScenario. 
-Time: 2023-09-20 10:09:03
+Time: 2023-09-20 20:29:43
 """
 from dataclasses import dataclass
-
 from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.UsageContext import *
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.ContactDetail import *
-from fhan.models.R4.Extension import *
-from fhan.models.R4.Element import *
 from fhan.models.R4.Meta import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Element import *
+from fhan.models.R4.Extension import *
 from fhan.models.R4.Identifier import *
+from fhan.models.R4.ContactDetail import *
+from fhan.models.R4.UsageContext import *
+from fhan.models.R4.Narrative import *
 from fhan.models.R4.Resource import *
 from fhan.models.generator_models import ModelBase
 
+    
+    
 @dataclass
-class actor(Element):
-    """ Actor participating in the resource.
-    :param BackboneElement actor: Actor participating in the resource
-    :param str id: Unique id for inter-element referencing
+class Actor(Element):
+    """ Actor participating in the resource.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str actorId: ID or acronym of the actor
@@ -28,13 +27,9 @@ class actor(Element):
     :param str name: The name of the actor as shown in the page
     :param str description: The description of the actor
     """
-    actor: list["BackboneElement"] = None
-    
     id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
     
     actorId: str = None
     
@@ -44,39 +39,64 @@ class actor(Element):
     
     description: str = None
     
+
+    
+        
+    
+    
 @dataclass
-class instance(Element):
-    """ Each resource and each version that is present in the workflow.
-    :param BackboneElement instance: Each resource and each version that is present in the workflow
-    :param str id: Unique id for inter-element referencing
+class Version(Element):
+    """ A specific version of the resource.:param str id: Unique id for inter-element referencing
+    :param Extension extension: Additional content defined by implementations
+    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param str versionId: The identifier of a specific version of a resource
+    :param str description: The description of the resource version
+    """
+    id: str = None
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
+    
+    versionId: str = None
+    
+    description: str = None
+    
+
+    
+    
+@dataclass
+class ContainedInstance(Element):
+    """ Resources contained in the instance (e.g. the observations contained in a bundle).:param str id: Unique id for inter-element referencing
+    :param Extension extension: Additional content defined by implementations
+    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param str resourceId: Each resource contained in the instance
+    :param str versionId: A specific version of a resource contained in the instance
+    """
+    id: str = None
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
+    
+    resourceId: str = None
+    
+    versionId: str = None
+    
+  
+    
+    
+@dataclass
+class Instance(Element):
+    """ Each resource and each version that is present in the workflow.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str resourceId: The id of the resource for referencing
     :param str resourceType: The type of the resource
     :param str name: A short name for the resource instance
     :param str description: Human-friendly description of the resource instance
-    :param BackboneElement version: A specific version of the resource
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str versionId: The identifier of a specific version of a resource
-    :param str description: The description of the resource version
-    :param BackboneElement containedInstance: Resources contained in the instance
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str resourceId: Each resource contained in the instance
-    :param str versionId: A specific version of a resource contained in the instance
-    :param BackboneElement request: Resources contained in the instance
-    :param BackboneElement response: Resources contained in the instance
+    :param Version version: A specific version of the resource
+    :param ContainedInstance containedInstance: Resources contained in the instance
     """
-    instance: list["BackboneElement"] = None
-    
     id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
     
     resourceId: str = None
     
@@ -85,104 +105,19 @@ class instance(Element):
     name: str = None
     
     description: str = None
+    version: list[Version] = None
+    containedInstance: list[ContainedInstance] = None
     
-    version: list["BackboneElement"] = None
+
     
-    id: str = None
+        
     
-    extension: list["Extension"] = None
+        
     
-    modifierExtension: list["Extension"] = None
-    
-    versionId: str = None
-    
-    description: str = None
-    
-    containedInstance: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    resourceId: str = None
-    
-    versionId: str = None
-    
-    request: list["BackboneElement"] = None
-    
-    response: list["BackboneElement"] = None
     
 @dataclass
-class version(Element):
-    """ A specific version of the resource.
-    :param BackboneElement version: A specific version of the resource
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str versionId: The identifier of a specific version of a resource
-    :param str description: The description of the resource version
-    """
-    version: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    versionId: str = None
-    
-    description: str = None
-    
-@dataclass
-class containedInstance(Element):
-    """ Resources contained in the instance (e.g. the observations contained in a bundle).
-    :param BackboneElement containedInstance: Resources contained in the instance
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str resourceId: Each resource contained in the instance
-    :param str versionId: A specific version of a resource contained in the instance
-    :param BackboneElement request: Resources contained in the instance
-    :param BackboneElement response: Resources contained in the instance
-    """
-    containedInstance: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    resourceId: str = None
-    
-    versionId: str = None
-    
-    request: list["BackboneElement"] = None
-    
-    response: list["BackboneElement"] = None
-    
-@dataclass
-class process(Element):
-    """ Each major process - a group of operations.
-    :param BackboneElement process: Each major process - a group of operations
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str title: The diagram title of the group of operations
-    :param str description: A longer description of the group of operations
-    :param str preConditions: Description of initial status before the process starts
-    :param str postConditions: Description of final status after the process ends
-    :param BackboneElement step: Each step of the process
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param BackboneElement process: Each major process - a group of operations
-    :param bool pause: If there is a pause in the flow
-    :param BackboneElement operation: Each interaction or action
-    :param str id: Unique id for inter-element referencing
+class Operation(Element):
+    """ Each interaction or action.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str number: The sequential number of the interaction
@@ -193,21 +128,83 @@ class process(Element):
     :param str description: A comment to be inserted in the diagram
     :param bool initiatorActive: Whether the initiator is deactivated right after the transaction
     :param bool receiverActive: Whether the receiver is deactivated right after the transaction
-    :param BackboneElement alternative: Alternate non-typical step action
-    :param str id: Unique id for inter-element referencing
+    """
+    id: str = None
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
+    
+    number: str = None
+    
+    type: str = None
+    
+    name: str = None
+    
+    initiator: str = None
+    
+    receiver: str = None
+    
+    description: str = None
+    
+    initiatorActive: bool = None
+    
+    receiverActive: bool = None
+    
+
+    
+    
+@dataclass
+class Alternative(Element):
+    """ Indicates an alternative step that can be taken instead of the operations on the base step in exceptional/atypical circumstances.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str title: Label for alternative
     :param str description: A human-readable description of each option
-    :param BackboneElement step: Each step of the process
     """
-    process: list["BackboneElement"] = None
-    
     id: str = None
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
     
-    extension: list["Extension"] = None
+    title: str = None
     
-    modifierExtension: list["Extension"] = None
+    description: str = None
+    
+  
+    
+    
+@dataclass
+class Step(Element):
+    """ Each step of the process.:param str id: Unique id for inter-element referencing
+    :param Extension extension: Additional content defined by implementations
+    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param bool pause: If there is a pause in the flow
+    :param Operation operation: Each interaction or action
+    :param Alternative alternative: Alternate non-typical step action
+    """
+    id: str = None
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
+    
+    pause: bool = None
+    operation: "Operation" = None
+    alternative: list[Alternative] = None
+    
+  
+    
+    
+@dataclass
+class Process(Element):
+    """ Each major process - a group of operations.:param str id: Unique id for inter-element referencing
+    :param Extension extension: Additional content defined by implementations
+    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param str title: The diagram title of the group of operations
+    :param str description: A longer description of the group of operations
+    :param str preConditions: Description of initial status before the process starts
+    :param str postConditions: Description of final status after the process ends
+    :param Step step: Each step of the process
+    """
+    id: str = None
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
     
     title: str = None
     
@@ -216,432 +213,8 @@ class process(Element):
     preConditions: str = None
     
     postConditions: str = None
+    step: list[Step] = None
     
-    step: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    process: list["BackboneElement"] = None
-    
-    pause: bool = None
-    
-    operation: "BackboneElement" = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    number: str = None
-    
-    type: str = None
-    
-    name: str = None
-    
-    initiator: str = None
-    
-    receiver: str = None
-    
-    description: str = None
-    
-    initiatorActive: bool = None
-    
-    receiverActive: bool = None
-    
-    alternative: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    title: str = None
-    
-    description: str = None
-    
-    step: list["BackboneElement"] = None
-    
-@dataclass
-class step(Element):
-    """ Each step of the process.
-    :param BackboneElement step: Each step of the process
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param bool pause: If there is a pause in the flow
-    :param BackboneElement operation: Each interaction or action
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str number: The sequential number of the interaction
-    :param str type: The type of operation - CRUD
-    :param str name: The human-friendly name of the interaction
-    :param str initiator: Who starts the transaction
-    :param str receiver: Who receives the transaction
-    :param str description: A comment to be inserted in the diagram
-    :param bool initiatorActive: Whether the initiator is deactivated right after the transaction
-    :param bool receiverActive: Whether the receiver is deactivated right after the transaction
-    :param BackboneElement alternative: Alternate non-typical step action
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str title: Label for alternative
-    :param str description: A human-readable description of each option
-    :param BackboneElement step: Each step of the process
-    """
-    step: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    pause: bool = None
-    
-    operation: "BackboneElement" = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    number: str = None
-    
-    type: str = None
-    
-    name: str = None
-    
-    initiator: str = None
-    
-    receiver: str = None
-    
-    description: str = None
-    
-    initiatorActive: bool = None
-    
-    receiverActive: bool = None
-    
-    alternative: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    title: str = None
-    
-    description: str = None
-    
-    step: list["BackboneElement"] = None
-    
-@dataclass
-class process(Element):
-    """ Each major process - a group of operations.
-    :param BackboneElement process: Each major process - a group of operations
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str title: The diagram title of the group of operations
-    :param str description: A longer description of the group of operations
-    :param str preConditions: Description of initial status before the process starts
-    :param str postConditions: Description of final status after the process ends
-    :param BackboneElement step: Each step of the process
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param BackboneElement process: Each major process - a group of operations
-    :param bool pause: If there is a pause in the flow
-    :param BackboneElement operation: Each interaction or action
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str number: The sequential number of the interaction
-    :param str type: The type of operation - CRUD
-    :param str name: The human-friendly name of the interaction
-    :param str initiator: Who starts the transaction
-    :param str receiver: Who receives the transaction
-    :param str description: A comment to be inserted in the diagram
-    :param bool initiatorActive: Whether the initiator is deactivated right after the transaction
-    :param bool receiverActive: Whether the receiver is deactivated right after the transaction
-    :param BackboneElement alternative: Alternate non-typical step action
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str title: Label for alternative
-    :param str description: A human-readable description of each option
-    :param BackboneElement step: Each step of the process
-    """
-    process: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    title: str = None
-    
-    description: str = None
-    
-    preConditions: str = None
-    
-    postConditions: str = None
-    
-    step: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    process: list["BackboneElement"] = None
-    
-    pause: bool = None
-    
-    operation: "BackboneElement" = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    number: str = None
-    
-    type: str = None
-    
-    name: str = None
-    
-    initiator: str = None
-    
-    receiver: str = None
-    
-    description: str = None
-    
-    initiatorActive: bool = None
-    
-    receiverActive: bool = None
-    
-    alternative: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    title: str = None
-    
-    description: str = None
-    
-    step: list["BackboneElement"] = None
-    
-@dataclass
-class operation(Element):
-    """ Each interaction or action.
-    :param BackboneElement operation: Each interaction or action
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str number: The sequential number of the interaction
-    :param str type: The type of operation - CRUD
-    :param str name: The human-friendly name of the interaction
-    :param str initiator: Who starts the transaction
-    :param str receiver: Who receives the transaction
-    :param str description: A comment to be inserted in the diagram
-    :param bool initiatorActive: Whether the initiator is deactivated right after the transaction
-    :param bool receiverActive: Whether the receiver is deactivated right after the transaction
-    """
-    operation: "BackboneElement" = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    number: str = None
-    
-    type: str = None
-    
-    name: str = None
-    
-    initiator: str = None
-    
-    receiver: str = None
-    
-    description: str = None
-    
-    initiatorActive: bool = None
-    
-    receiverActive: bool = None
-    
-@dataclass
-class request(Element):
-    """ Resources contained in the instance (e.g. the observations contained in a bundle).
-    :param BackboneElement containedInstance: Resources contained in the instance
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str resourceId: Each resource contained in the instance
-    :param str versionId: A specific version of a resource contained in the instance
-    :param BackboneElement request: Resources contained in the instance
-    :param BackboneElement response: Resources contained in the instance
-    """
-    containedInstance: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    resourceId: str = None
-    
-    versionId: str = None
-    
-    request: list["BackboneElement"] = None
-    
-    response: list["BackboneElement"] = None
-    
-@dataclass
-class response(Element):
-    """ Resources contained in the instance (e.g. the observations contained in a bundle).
-    :param BackboneElement containedInstance: Resources contained in the instance
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str resourceId: Each resource contained in the instance
-    :param str versionId: A specific version of a resource contained in the instance
-    :param BackboneElement request: Resources contained in the instance
-    :param BackboneElement response: Resources contained in the instance
-    """
-    containedInstance: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    resourceId: str = None
-    
-    versionId: str = None
-    
-    request: list["BackboneElement"] = None
-    
-    response: list["BackboneElement"] = None
-    
-@dataclass
-class alternative(Element):
-    """ Indicates an alternative step that can be taken instead of the operations on the base step in exceptional/atypical circumstances.
-    :param BackboneElement alternative: Alternate non-typical step action
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str title: Label for alternative
-    :param str description: A human-readable description of each option
-    """
-    alternative: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    title: str = None
-    
-    description: str = None
-    
-@dataclass
-class step(Element):
-    """ Each step of the process.
-    :param BackboneElement step: Each step of the process
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param bool pause: If there is a pause in the flow
-    :param BackboneElement operation: Each interaction or action
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str number: The sequential number of the interaction
-    :param str type: The type of operation - CRUD
-    :param str name: The human-friendly name of the interaction
-    :param str initiator: Who starts the transaction
-    :param str receiver: Who receives the transaction
-    :param str description: A comment to be inserted in the diagram
-    :param bool initiatorActive: Whether the initiator is deactivated right after the transaction
-    :param bool receiverActive: Whether the receiver is deactivated right after the transaction
-    :param BackboneElement alternative: Alternate non-typical step action
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str title: Label for alternative
-    :param str description: A human-readable description of each option
-    :param BackboneElement step: Each step of the process
-    """
-    step: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    pause: bool = None
-    
-    operation: "BackboneElement" = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    number: str = None
-    
-    type: str = None
-    
-    name: str = None
-    
-    initiator: str = None
-    
-    receiver: str = None
-    
-    description: str = None
-    
-    initiatorActive: bool = None
-    
-    receiverActive: bool = None
-    
-    alternative: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    title: str = None
-    
-    description: str = None
-    
-    step: list["BackboneElement"] = None
-    
-
-
 @dataclass
 class ExampleScenario(ModelBase):
     """ Example of workflow instance.
@@ -666,69 +239,9 @@ class ExampleScenario(ModelBase):
     :param CodeableConcept jurisdiction: Intended jurisdiction for example scenario (if applicable)
     :param str copyright: Use and/or publishing restrictions
     :param str purpose: The purpose of the example, e.g. to illustrate a scenario
-    :param BackboneElement actor: Actor participating in the resource
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str actorId: ID or acronym of the actor
-    :param str type: person | entity
-    :param str name: The name of the actor as shown in the page
-    :param str description: The description of the actor
-    :param BackboneElement instance: Each resource and each version that is present in the workflow
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str resourceId: The id of the resource for referencing
-    :param str resourceType: The type of the resource
-    :param str name: A short name for the resource instance
-    :param str description: Human-friendly description of the resource instance
-    :param BackboneElement version: A specific version of the resource
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str versionId: The identifier of a specific version of a resource
-    :param str description: The description of the resource version
-    :param BackboneElement containedInstance: Resources contained in the instance
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str resourceId: Each resource contained in the instance
-    :param str versionId: A specific version of a resource contained in the instance
-    :param BackboneElement process: Each major process - a group of operations
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str title: The diagram title of the group of operations
-    :param str description: A longer description of the group of operations
-    :param str preConditions: Description of initial status before the process starts
-    :param str postConditions: Description of final status after the process ends
-    :param BackboneElement step: Each step of the process
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param BackboneElement process: Each major process - a group of operations
-    :param bool pause: If there is a pause in the flow
-    :param BackboneElement operation: Each interaction or action
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str number: The sequential number of the interaction
-    :param str type: The type of operation - CRUD
-    :param str name: The human-friendly name of the interaction
-    :param str initiator: Who starts the transaction
-    :param str receiver: Who receives the transaction
-    :param str description: A comment to be inserted in the diagram
-    :param bool initiatorActive: Whether the initiator is deactivated right after the transaction
-    :param bool receiverActive: Whether the receiver is deactivated right after the transaction
-    :param BackboneElement request: Resources contained in the instance
-    :param BackboneElement response: Resources contained in the instance
-    :param BackboneElement alternative: Alternate non-typical step action
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str title: Label for alternative
-    :param str description: A human-readable description of each option
-    :param BackboneElement step: Each step of the process
+    :param Actor actor: Actor participating in the resource
+    :param Instance instance: Each resource and each version that is present in the workflow
+    :param Process process: Each major process - a group of operations
     :param str workflow: Another nested workflow
     """
     id: str = None
@@ -773,131 +286,11 @@ class ExampleScenario(ModelBase):
     
     purpose: str = None
     
-    actor: list["BackboneElement"] = None
+    actor: list["Actor"] = None
     
-    id: str = None
+    instance: list["Instance"] = None
     
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    actorId: str = None
-    
-    type: str = None
-    
-    name: str = None
-    
-    description: str = None
-    
-    instance: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    resourceId: str = None
-    
-    resourceType: str = None
-    
-    name: str = None
-    
-    description: str = None
-    
-    version: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    versionId: str = None
-    
-    description: str = None
-    
-    containedInstance: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    resourceId: str = None
-    
-    versionId: str = None
-    
-    process: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    title: str = None
-    
-    description: str = None
-    
-    preConditions: str = None
-    
-    postConditions: str = None
-    
-    step: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    process: list["BackboneElement"] = None
-    
-    pause: bool = None
-    
-    operation: "BackboneElement" = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    number: str = None
-    
-    type: str = None
-    
-    name: str = None
-    
-    initiator: str = None
-    
-    receiver: str = None
-    
-    description: str = None
-    
-    initiatorActive: bool = None
-    
-    receiverActive: bool = None
-    
-    request: list["BackboneElement"] = None
-    
-    response: list["BackboneElement"] = None
-    
-    alternative: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    title: str = None
-    
-    description: str = None
-    
-    step: list["BackboneElement"] = None
+    process: list["Process"] = None
     
     workflow: str = None
     

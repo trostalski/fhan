@@ -9,24 +9,19 @@ import requests
 from jinja2 import Environment, FileSystemLoader
 
 from fhan.core.fhir_package import FhirPackage
+from fhan.core.settings import GeneratorSettings
 from fhan.models.generator_models import GeneratorStructureDefinition
 
 logger = logging.getLogger(__name__)
 
-# TODO move to config
-TEMLPATE_DIR = "./templates"
-OUTPUT_DIR = "./"
-TEMPLATE_NAMES = ["structure_definition.j2"]
+TEMLPATE_DIR = GeneratorSettings.template_dir
+OUTPUT_DIR = GeneratorSettings.output_dir
+TEMPLATE_NAMES = GeneratorSettings.template_names
+SUPPORTED_FHIR_VERSIONS = GeneratorSettings.supported_fhir_versions
 
 
 class ModelGenerator:
     """Generates model classes from FHIR Packages."""
-
-    version_urls = {
-        "R4": "https://hl7.org/fhir/R4/hl7.fhir.r4.core.tgz",
-        "R4B": "https://hl7.org/fhir/R4B/hl7.fhir.r4b.core.tgz",
-        "R5": "https://hl7.org/fhir/hl7.fhir.r5.core.tgz",
-    }
 
     def __init__(
         self,
@@ -36,15 +31,18 @@ class ModelGenerator:
         template_names: list[str] = None,
     ):
         self._version = version
-        if version not in self.version_urls:
+        self._version_urls = GeneratorSettings.fhir_version_package_urls
+        if version not in self._version_urls:
             raise ValueError(
-                f"Unsupported version: {version}. Supported versions: {self.version_urls.keys()}"
+                f"Unsupported version: {version}. Supported versions: {self._version_urls.keys()}"
             )
 
+        # specify output dir for generated model classes
         self._output_dir = output_dir or OUTPUT_DIR
         self._output_dir = get_full_path_to_dir(os.path.join(self._output_dir, version))
         open(os.path.join(self._output_dir, "__init__.py"), "a").close()
 
+        # specify template dir for jinja2 templates
         self._template_dir = template_dir or TEMLPATE_DIR
         self._template_dir = get_full_path_to_dir(self._template_dir)
 
@@ -55,7 +53,7 @@ class ModelGenerator:
     def _load_package(self):
         """Load the FHIR package from the given URL and store in
         FhirPackage instance."""
-        url = ModelGenerator.version_urls[self._version]
+        url = self._version_urls[self._version]
         package = _load_npm_package(url)
         return package
 

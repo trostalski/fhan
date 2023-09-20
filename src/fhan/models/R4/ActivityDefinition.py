@@ -1,77 +1,65 @@
 """
 Generated class for ActivityDefinition. 
-Time: 2023-09-20 10:09:03
+Time: 2023-09-20 20:29:43
 """
 from dataclasses import dataclass
-
-from fhan.models.R4.UsageContext import *
-from fhan.models.R4.Extension import *
-from fhan.models.R4.Resource import *
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Dosage import *
-from fhan.models.R4.ContactDetail import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Identifier import *
-from fhan.models.R4.Element import *
-from fhan.models.R4.Period import *
-from fhan.models.R4.Range import *
-from fhan.models.R4.Reference import *
-from fhan.models.R4.RelatedArtifact import *
-from fhan.models.R4.Quantity import *
-from fhan.models.R4.Expression import *
 from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Duration import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.Age import *
+from fhan.models.R4.RelatedArtifact import *
+from fhan.models.R4.Expression import *
 from fhan.models.R4.Timing import *
+from fhan.models.R4.Period import *
+from fhan.models.R4.Resource import *
+from fhan.models.R4.Meta import *
+from fhan.models.R4.Range import *
+from fhan.models.R4.Element import *
+from fhan.models.R4.Quantity import *
+from fhan.models.R4.Age import *
+from fhan.models.R4.Dosage import *
+from fhan.models.R4.Duration import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.UsageContext import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Extension import *
+from fhan.models.R4.ContactDetail import *
+from fhan.models.R4.Reference import *
 from fhan.models.generator_models import ModelBase
 
+    
+    
 @dataclass
-class participant(Element):
-    """ Indicates who should participate in performing the action described.
-    :param BackboneElement participant: Who should participate in the action
-    :param str id: Unique id for inter-element referencing
+class Participant(Element):
+    """ Indicates who should participate in performing the action described.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str type: patient | practitioner | related-person | device
     :param CodeableConcept role: E.g. Nurse, Surgeon, Parent, etc.
     """
-    participant: list["BackboneElement"] = None
-    
     id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
     
     type: str = None
-    
     role: "CodeableConcept" = None
     
+
+    
+    
 @dataclass
-class dynamicValue(Element):
-    """ Dynamic values that will be evaluated to produce values for elements of the resulting resource. For example, if the dosage of a medication must be computed based on the patient's weight, a dynamic value would be used to specify an expression that calculated the weight, and the path on the request resource that would contain the result.
-    :param BackboneElement dynamicValue: Dynamic aspects of the definition
-    :param str id: Unique id for inter-element referencing
+class DynamicValue(Element):
+    """ Dynamic values that will be evaluated to produce values for elements of the resulting resource. For example, if the dosage of a medication must be computed based on the patient's weight, a dynamic value would be used to specify an expression that calculated the weight, and the path on the request resource that would contain the result.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str path: The path to the element to be set dynamically
     :param Expression expression: An expression that provides the dynamic value for the customization
     """
-    dynamicValue: list["BackboneElement"] = None
-    
     id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
     
     path: str = None
-    
     expression: "Expression" = None
     
-
-
 @dataclass
 class ActivityDefinition(ModelBase):
     """ Enforces the minimum information set for the activity definition metadata required by HL7 and other organizations that share and publish activity definitions
@@ -92,7 +80,6 @@ class ActivityDefinition(ModelBase):
     :param str status: draft | active | retired | unknown
     :param bool experimental: For testing purposes, not real usage
     :param CodeableConcept subjectCodeableConcept: Type of individual the activity definition is intended for
-    :param Reference subjectCodeableConcept: Type of individual the activity definition is intended for
     :param str date: Date last changed
     :param str publisher: Name of the publisher (organization or individual)
     :param ContactDetail contact: Contact details for the publisher
@@ -119,20 +106,9 @@ class ActivityDefinition(ModelBase):
     :param str priority: routine | urgent | asap | stat
     :param bool doNotPerform: True if the activity should not be performed
     :param Timing timingTiming: When activity is to occur
-    :param str timingTiming: When activity is to occur
-    :param Age timingTiming: When activity is to occur
-    :param Period timingTiming: When activity is to occur
-    :param Range timingTiming: When activity is to occur
-    :param Duration timingTiming: When activity is to occur
     :param Reference location: Where it should happen
-    :param BackboneElement participant: Who should participate in the action
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str type: patient | practitioner | related-person | device
-    :param CodeableConcept role: E.g. Nurse, Surgeon, Parent, etc.
+    :param Participant participant: Who should participate in the action
     :param Reference productReference: What's administered/supplied
-    :param CodeableConcept productReference: What's administered/supplied
     :param Quantity quantity: How much is administered/consumed/supplied
     :param Dosage dosage: Detailed dosage instructions
     :param CodeableConcept bodySite: What part of body to perform on
@@ -140,12 +116,7 @@ class ActivityDefinition(ModelBase):
     :param Reference observationRequirement: What observations are required to perform this action
     :param Reference observationResultRequirement: What observations must be produced by this action
     :param str transform: Transform to apply the template
-    :param BackboneElement dynamicValue: Dynamic aspects of the definition
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str path: The path to the element to be set dynamically
-    :param Expression expression: An expression that provides the dynamic value for the customization
+    :param DynamicValue dynamicValue: Dynamic aspects of the definition
     """
     id: str = None
     
@@ -180,8 +151,6 @@ class ActivityDefinition(ModelBase):
     experimental: bool = None
     
     subjectCodeableConcept: "CodeableConcept" = None
-    
-    subjectCodeableConcept: "Reference" = None
     
     date: str = None
     
@@ -235,33 +204,11 @@ class ActivityDefinition(ModelBase):
     
     timingTiming: "Timing" = None
     
-    timingTiming: str = None
-    
-    timingTiming: "Age" = None
-    
-    timingTiming: "Period" = None
-    
-    timingTiming: "Range" = None
-    
-    timingTiming: "Duration" = None
-    
     location: "Reference" = None
     
-    participant: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    type: str = None
-    
-    role: "CodeableConcept" = None
+    participant: list["Participant"] = None
     
     productReference: "Reference" = None
-    
-    productReference: "CodeableConcept" = None
     
     quantity: "Quantity" = None
     
@@ -277,15 +224,5 @@ class ActivityDefinition(ModelBase):
     
     transform: str = None
     
-    dynamicValue: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    path: str = None
-    
-    expression: "Expression" = None
+    dynamicValue: list["DynamicValue"] = None
     

@@ -1,17 +1,13 @@
 """
 Generated class for DomainResource. 
-Time: 2023-09-20 10:09:03
+Time: 2023-09-20 20:29:43
 """
 from dataclasses import dataclass
-
 from fhan.models.R4.Meta import *
-from fhan.models.R4.Extension import *
 from fhan.models.R4.Narrative import *
+from fhan.models.R4.Extension import *
 from fhan.models.R4.Resource import *
 from fhan.models.R4.Resource import *
-
-
-
 
 @dataclass
 class DomainResource(Resource):

@@ -1,37 +1,32 @@
 """
 Generated class for CompartmentDefinition. 
-Time: 2023-09-20 10:09:03
+Time: 2023-09-20 20:29:43
 """
 from dataclasses import dataclass
-
-from fhan.models.R4.UsageContext import *
 from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.ContactDetail import *
-from fhan.models.R4.Extension import *
 from fhan.models.R4.Meta import *
 from fhan.models.R4.Element import *
+from fhan.models.R4.Extension import *
+from fhan.models.R4.ContactDetail import *
+from fhan.models.R4.UsageContext import *
+from fhan.models.R4.Narrative import *
 from fhan.models.R4.Resource import *
 from fhan.models.generator_models import ModelBase
 
+    
+    
 @dataclass
-class resource(Element):
-    """ Information about how a resource is related to the compartment.
-    :param BackboneElement resource: How a resource is related to the compartment
-    :param str id: Unique id for inter-element referencing
+class Resource(Element):
+    """ Information about how a resource is related to the compartment.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str code: Name of resource type
     :param str param: Search Parameter Name, or chained parameters
     :param str documentation: Additional documentation about the resource and compartment
     """
-    resource: list["BackboneElement"] = None
-    
     id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
     
     code: str = None
     
@@ -39,8 +34,6 @@ class resource(Element):
     
     documentation: str = None
     
-
-
 @dataclass
 class CompartmentDefinition(ModelBase):
     """ A compartment definition that defines how resources are accessed on a server.
@@ -65,13 +58,7 @@ class CompartmentDefinition(ModelBase):
     :param str purpose: Why this compartment definition is defined
     :param str code: Patient | Encounter | RelatedPerson | Practitioner | Device
     :param bool search: Whether the search syntax is supported
-    :param BackboneElement resource: How a resource is related to the compartment
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str code: Name of resource type
-    :param str param: Search Parameter Name, or chained parameters
-    :param str documentation: Additional documentation about the resource and compartment
+    :param Resource resource: How a resource is related to the compartment
     """
     id: str = None
     
@@ -115,17 +102,5 @@ class CompartmentDefinition(ModelBase):
     
     search: bool = None
     
-    resource: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    code: str = None
-    
-    param: str = None
-    
-    documentation: str = None
+    resource: list["Resource"] = None
     

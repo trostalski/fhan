@@ -1,43 +1,38 @@
 """
 Generated class for EffectEvidenceSynthesis. 
-Time: 2023-09-20 10:09:03
+Time: 2023-09-20 20:29:43
 """
 from dataclasses import dataclass
-
 from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.UsageContext import *
-from fhan.models.R4.Period import *
+from fhan.models.R4.Meta import *
 from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.Reference import *
-from fhan.models.R4.RelatedArtifact import *
-from fhan.models.R4.ContactDetail import *
-from fhan.models.R4.Extension import *
 from fhan.models.R4.Annotation import *
 from fhan.models.R4.Element import *
-from fhan.models.R4.Meta import *
+from fhan.models.R4.Extension import *
+from fhan.models.R4.RelatedArtifact import *
 from fhan.models.R4.Identifier import *
+from fhan.models.R4.ContactDetail import *
+from fhan.models.R4.UsageContext import *
+from fhan.models.R4.Reference import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Period import *
 from fhan.models.R4.Resource import *
 from fhan.models.generator_models import ModelBase
 
+    
+    
 @dataclass
-class sampleSize(Element):
-    """ A description of the size of the sample involved in the synthesis.
-    :param BackboneElement sampleSize: What sample size was involved?
-    :param str id: Unique id for inter-element referencing
+class SampleSize(Element):
+    """ A description of the size of the sample involved in the synthesis.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str description: Description of sample size
     :param int numberOfStudies: How many studies?
     :param int numberOfParticipants: How many participants?
     """
-    sampleSize: "BackboneElement" = None
-    
     id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
     
     description: str = None
     
@@ -45,11 +40,12 @@ class sampleSize(Element):
     
     numberOfParticipants: int = None
     
+
+    
+    
 @dataclass
-class resultsByExposure(Element):
-    """ A description of the results for each exposure considered in the effect estimate.
-    :param BackboneElement resultsByExposure: What was the result per exposure?
-    :param str id: Unique id for inter-element referencing
+class ResultsByExposure(Element):
+    """ A description of the results for each exposure considered in the effect estimate.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str description: Description of results by exposure
@@ -57,27 +53,48 @@ class resultsByExposure(Element):
     :param CodeableConcept variantState: Variant exposure states
     :param Reference riskEvidenceSynthesis: Risk evidence synthesis
     """
-    resultsByExposure: list["BackboneElement"] = None
-    
     id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
     
     description: str = None
     
     exposureState: str = None
-    
     variantState: "CodeableConcept" = None
-    
     riskEvidenceSynthesis: "Reference" = None
     
+
+    
+        
+    
+    
 @dataclass
-class effectEstimate(Element):
-    """ The estimated effect of the exposure variant.
-    :param BackboneElement effectEstimate: What was the estimated effect
-    :param str id: Unique id for inter-element referencing
+class PrecisionEstimate(Element):
+    """ A description of the precision of the estimate for the effect.:param str id: Unique id for inter-element referencing
+    :param Extension extension: Additional content defined by implementations
+    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param CodeableConcept type: Type of precision estimate
+    :param float level: Level of confidence interval
+    :param float _from: Lower bound
+    :param float to: Upper bound
+    """
+    id: str = None
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
+    type: "CodeableConcept" = None
+    
+    level: float = None
+    
+    _from: float = None
+    
+    to: float = None
+    
+  
+    
+    
+@dataclass
+class EffectEstimate(Element):
+    """ The estimated effect of the exposure variant.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str description: Description of effect estimate
@@ -85,147 +102,60 @@ class effectEstimate(Element):
     :param CodeableConcept variantState: Variant exposure states
     :param float value: Point estimate
     :param CodeableConcept unitOfMeasure: What unit is the outcome described in?
-    :param BackboneElement precisionEstimate: How precise the estimate is
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param CodeableConcept type: Type of precision estimate
-    :param float level: Level of confidence interval
-    :param float _from: Lower bound
-    :param float to: Upper bound
+    :param PrecisionEstimate precisionEstimate: How precise the estimate is
     """
-    effectEstimate: list["BackboneElement"] = None
-    
     id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
     
     description: str = None
-    
     type: "CodeableConcept" = None
-    
     variantState: "CodeableConcept" = None
     
     value: float = None
-    
     unitOfMeasure: "CodeableConcept" = None
+    precisionEstimate: list[PrecisionEstimate] = None
     
-    precisionEstimate: list["BackboneElement"] = None
+
     
-    id: str = None
+        
     
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    type: "CodeableConcept" = None
-    
-    level: float = None
-    
-    _from: float = None
-    
-    to: float = None
     
 @dataclass
-class precisionEstimate(Element):
-    """ A description of the precision of the estimate for the effect.
-    :param BackboneElement precisionEstimate: How precise the estimate is
-    :param str id: Unique id for inter-element referencing
+class CertaintySubcomponent(Element):
+    """ A description of a component of the overall certainty.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param CodeableConcept type: Type of precision estimate
-    :param float level: Level of confidence interval
-    :param float _from: Lower bound
-    :param float to: Upper bound
+    :param CodeableConcept type: Type of subcomponent of certainty rating
+    :param CodeableConcept rating: Subcomponent certainty rating
+    :param Annotation note: Used for footnotes or explanatory notes
     """
-    precisionEstimate: list["BackboneElement"] = None
-    
     id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
     type: "CodeableConcept" = None
+    rating: list[CodeableConcept] = None
+    note: list[Annotation] = None
     
-    level: float = None
+  
     
-    _from: float = None
-    
-    to: float = None
     
 @dataclass
-class certainty(Element):
-    """ A description of the certainty of the effect estimate.
-    :param BackboneElement certainty: How certain is the effect
-    :param str id: Unique id for inter-element referencing
+class Certainty(Element):
+    """ A description of the certainty of the effect estimate.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param CodeableConcept rating: Certainty rating
     :param Annotation note: Used for footnotes or explanatory notes
-    :param BackboneElement certaintySubcomponent: A component that contributes to the overall certainty
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param CodeableConcept type: Type of subcomponent of certainty rating
-    :param CodeableConcept rating: Subcomponent certainty rating
-    :param Annotation note: Used for footnotes or explanatory notes
+    :param CertaintySubcomponent certaintySubcomponent: A component that contributes to the overall certainty
     """
-    certainty: list["BackboneElement"] = None
-    
     id: str = None
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
+    rating: list[CodeableConcept] = None
+    note: list[Annotation] = None
+    certaintySubcomponent: list[CertaintySubcomponent] = None
     
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    rating: list["CodeableConcept"] = None
-    
-    note: list["Annotation"] = None
-    
-    certaintySubcomponent: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    type: "CodeableConcept" = None
-    
-    rating: list["CodeableConcept"] = None
-    
-    note: list["Annotation"] = None
-    
-@dataclass
-class certaintySubcomponent(Element):
-    """ A description of a component of the overall certainty.
-    :param BackboneElement certaintySubcomponent: A component that contributes to the overall certainty
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param CodeableConcept type: Type of subcomponent of certainty rating
-    :param CodeableConcept rating: Subcomponent certainty rating
-    :param Annotation note: Used for footnotes or explanatory notes
-    """
-    certaintySubcomponent: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    type: "CodeableConcept" = None
-    
-    rating: list["CodeableConcept"] = None
-    
-    note: list["Annotation"] = None
-    
-
-
 @dataclass
 class EffectEvidenceSynthesis(ModelBase):
     """ The EffectEvidenceSynthesis resource describes the difference in an outcome between exposures states in a population where the effect estimate is derived from a combination of research studies.
@@ -266,51 +196,10 @@ class EffectEvidenceSynthesis(ModelBase):
     :param Reference exposure: What exposure?
     :param Reference exposureAlternative: What comparison exposure?
     :param Reference outcome: What outcome?
-    :param BackboneElement sampleSize: What sample size was involved?
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str description: Description of sample size
-    :param int numberOfStudies: How many studies?
-    :param int numberOfParticipants: How many participants?
-    :param BackboneElement resultsByExposure: What was the result per exposure?
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str description: Description of results by exposure
-    :param str exposureState: exposure | exposure-alternative
-    :param CodeableConcept variantState: Variant exposure states
-    :param Reference riskEvidenceSynthesis: Risk evidence synthesis
-    :param BackboneElement effectEstimate: What was the estimated effect
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str description: Description of effect estimate
-    :param CodeableConcept type: Type of efffect estimate
-    :param CodeableConcept variantState: Variant exposure states
-    :param float value: Point estimate
-    :param CodeableConcept unitOfMeasure: What unit is the outcome described in?
-    :param BackboneElement precisionEstimate: How precise the estimate is
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param CodeableConcept type: Type of precision estimate
-    :param float level: Level of confidence interval
-    :param float _from: Lower bound
-    :param float to: Upper bound
-    :param BackboneElement certainty: How certain is the effect
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param CodeableConcept rating: Certainty rating
-    :param Annotation note: Used for footnotes or explanatory notes
-    :param BackboneElement certaintySubcomponent: A component that contributes to the overall certainty
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param CodeableConcept type: Type of subcomponent of certainty rating
-    :param CodeableConcept rating: Subcomponent certainty rating
-    :param Annotation note: Used for footnotes or explanatory notes
+    :param SampleSize sampleSize: What sample size was involved?
+    :param ResultsByExposure resultsByExposure: What was the result per exposure?
+    :param EffectEstimate effectEstimate: What was the estimated effect
+    :param Certainty certainty: How certain is the effect
     """
     id: str = None
     
@@ -386,93 +275,11 @@ class EffectEvidenceSynthesis(ModelBase):
     
     outcome: "Reference" = None
     
-    sampleSize: "BackboneElement" = None
+    sampleSize: "SampleSize" = None
     
-    id: str = None
+    resultsByExposure: list["ResultsByExposure"] = None
     
-    extension: list["Extension"] = None
+    effectEstimate: list["EffectEstimate"] = None
     
-    modifierExtension: list["Extension"] = None
-    
-    description: str = None
-    
-    numberOfStudies: int = None
-    
-    numberOfParticipants: int = None
-    
-    resultsByExposure: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    description: str = None
-    
-    exposureState: str = None
-    
-    variantState: "CodeableConcept" = None
-    
-    riskEvidenceSynthesis: "Reference" = None
-    
-    effectEstimate: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    description: str = None
-    
-    type: "CodeableConcept" = None
-    
-    variantState: "CodeableConcept" = None
-    
-    value: float = None
-    
-    unitOfMeasure: "CodeableConcept" = None
-    
-    precisionEstimate: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    type: "CodeableConcept" = None
-    
-    level: float = None
-    
-    _from: float = None
-    
-    to: float = None
-    
-    certainty: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    rating: list["CodeableConcept"] = None
-    
-    note: list["Annotation"] = None
-    
-    certaintySubcomponent: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    type: "CodeableConcept" = None
-    
-    rating: list["CodeableConcept"] = None
-    
-    note: list["Annotation"] = None
+    certainty: list["Certainty"] = None
     

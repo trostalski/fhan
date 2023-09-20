@@ -1,33 +1,73 @@
 """
 Generated class for RequestGroup. 
-Time: 2023-09-20 10:09:03
+Time: 2023-09-20 20:29:43
 """
 from dataclasses import dataclass
-
 from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Duration import *
-from fhan.models.R4.Range import *
+from fhan.models.R4.Meta import *
 from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Range import *
+from fhan.models.R4.Annotation import *
+from fhan.models.R4.Element import *
+from fhan.models.R4.Extension import *
 from fhan.models.R4.Period import *
+from fhan.models.R4.RelatedArtifact import *
+from fhan.models.R4.Expression import *
+from fhan.models.R4.Age import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.Timing import *
 from fhan.models.R4.Narrative import *
 from fhan.models.R4.Reference import *
-from fhan.models.R4.RelatedArtifact import *
-from fhan.models.R4.Extension import *
-from fhan.models.R4.Annotation import *
-from fhan.models.R4.Age import *
-from fhan.models.R4.Timing import *
-from fhan.models.R4.Expression import *
-from fhan.models.R4.Element import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Identifier import *
+from fhan.models.R4.Duration import *
 from fhan.models.R4.Resource import *
 from fhan.models.generator_models import ModelBase
 
+    
+        
+    
+    
 @dataclass
-class action(Element):
-    """ The actions, if any, produced by the evaluation of the artifact.
-    :param BackboneElement action: Proposed actions, if any
-    :param str id: Unique id for inter-element referencing
+class Condition(Element):
+    """ An expression that describes applicability criteria, or start/stop conditions for the action.:param str id: Unique id for inter-element referencing
+    :param Extension extension: Additional content defined by implementations
+    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param str kind: applicability | start | stop
+    :param Expression expression: Boolean-valued expression
+    """
+    id: str = None
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
+    
+    kind: str = None
+    expression: "Expression" = None
+    
+
+    
+    
+@dataclass
+class RelatedAction(Element):
+    """ A relationship to another action such as "before" or "30-60 minutes after start of".:param str id: Unique id for inter-element referencing
+    :param Extension extension: Additional content defined by implementations
+    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param str actionId: What action this is related to
+    :param str relationship: before-start | before | before-end | concurrent-with-start | concurrent | concurrent-with-end | after-start | after | after-end
+    :param Duration offsetDuration: Time offset for the relationship
+    """
+    id: str = None
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
+    
+    actionId: str = None
+    
+    relationship: str = None
+    offsetDuration: "Duration" = None
+    
+  
+    
+    
+@dataclass
+class Action(Element):
+    """ The actions, if any, produced by the evaluation of the artifact.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str prefix: User-visible prefix for the action (e.g. 1. or A.)
@@ -37,26 +77,9 @@ class action(Element):
     :param str priority: routine | urgent | asap | stat
     :param CodeableConcept code: Code representing the meaning of the action or sub-actions
     :param RelatedArtifact documentation: Supporting documentation for the intended performer of the action
-    :param BackboneElement condition: Whether or not the action is applicable
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str kind: applicability | start | stop
-    :param Expression expression: Boolean-valued expression
-    :param BackboneElement relatedAction: Relationship to another action
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str actionId: What action this is related to
-    :param str relationship: before-start | before | before-end | concurrent-with-start | concurrent | concurrent-with-end | after-start | after | after-end
-    :param Duration offsetDuration: Time offset for the relationship
-    :param Range offsetDuration: Time offset for the relationship
-    :param str timingdateTime: When the action should take place
-    :param Age timingdateTime: When the action should take place
-    :param Period timingdateTime: When the action should take place
-    :param Duration timingdateTime: When the action should take place
-    :param Range timingdateTime: When the action should take place
-    :param Timing timingdateTime: When the action should take place
+    :param Condition condition: Whether or not the action is applicable
+    :param RelatedAction relatedAction: Relationship to another action
+    :param str timingDateTime: When the action should take place
     :param Reference participant: Who should perform the action
     :param CodeableConcept type: create | update | remove | fire-event
     :param str groupingBehavior: visual-group | logical-group | sentence-group
@@ -65,15 +88,10 @@ class action(Element):
     :param str precheckBehavior: yes | no
     :param str cardinalityBehavior: single | multiple
     :param Reference resource: The target of the action
-    :param BackboneElement action: Proposed actions, if any
     """
-    action: list["BackboneElement"] = None
-    
     id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
     
     prefix: str = None
     
@@ -84,53 +102,13 @@ class action(Element):
     textEquivalent: str = None
     
     priority: str = None
+    code: list[CodeableConcept] = None
+    documentation: list[RelatedArtifact] = None
+    condition: list[Condition] = None
+    relatedAction: list[RelatedAction] = None
     
-    code: list["CodeableConcept"] = None
-    
-    documentation: list["RelatedArtifact"] = None
-    
-    condition: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    kind: str = None
-    
-    expression: "Expression" = None
-    
-    relatedAction: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    actionId: str = None
-    
-    relationship: str = None
-    
-    offsetDuration: "Duration" = None
-    
-    offsetDuration: "Range" = None
-    
-    timingdateTime: str = None
-    
-    timingdateTime: "Age" = None
-    
-    timingdateTime: "Period" = None
-    
-    timingdateTime: "Duration" = None
-    
-    timingdateTime: "Range" = None
-    
-    timingdateTime: "Timing" = None
-    
-    participant: list["Reference"] = None
-    
+    timingDateTime: str = None
+    participant: list[Reference] = None
     type: "CodeableConcept" = None
     
     groupingBehavior: str = None
@@ -142,187 +120,8 @@ class action(Element):
     precheckBehavior: str = None
     
     cardinalityBehavior: str = None
-    
     resource: "Reference" = None
     
-    action: list["BackboneElement"] = None
-    
-@dataclass
-class condition(Element):
-    """ An expression that describes applicability criteria, or start/stop conditions for the action.
-    :param BackboneElement condition: Whether or not the action is applicable
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str kind: applicability | start | stop
-    :param Expression expression: Boolean-valued expression
-    """
-    condition: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    kind: str = None
-    
-    expression: "Expression" = None
-    
-@dataclass
-class relatedAction(Element):
-    """ A relationship to another action such as "before" or "30-60 minutes after start of".
-    :param BackboneElement relatedAction: Relationship to another action
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str actionId: What action this is related to
-    :param str relationship: before-start | before | before-end | concurrent-with-start | concurrent | concurrent-with-end | after-start | after | after-end
-    :param Duration offsetDuration: Time offset for the relationship
-    :param Range offsetDuration: Time offset for the relationship
-    """
-    relatedAction: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    actionId: str = None
-    
-    relationship: str = None
-    
-    offsetDuration: "Duration" = None
-    
-    offsetDuration: "Range" = None
-    
-@dataclass
-class action(Element):
-    """ The actions, if any, produced by the evaluation of the artifact.
-    :param BackboneElement action: Proposed actions, if any
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str prefix: User-visible prefix for the action (e.g. 1. or A.)
-    :param str title: User-visible title
-    :param str description: Short description of the action
-    :param str textEquivalent: Static text equivalent of the action, used if the dynamic aspects cannot be interpreted by the receiving system
-    :param str priority: routine | urgent | asap | stat
-    :param CodeableConcept code: Code representing the meaning of the action or sub-actions
-    :param RelatedArtifact documentation: Supporting documentation for the intended performer of the action
-    :param BackboneElement condition: Whether or not the action is applicable
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str kind: applicability | start | stop
-    :param Expression expression: Boolean-valued expression
-    :param BackboneElement relatedAction: Relationship to another action
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str actionId: What action this is related to
-    :param str relationship: before-start | before | before-end | concurrent-with-start | concurrent | concurrent-with-end | after-start | after | after-end
-    :param Duration offsetDuration: Time offset for the relationship
-    :param Range offsetDuration: Time offset for the relationship
-    :param str timingdateTime: When the action should take place
-    :param Age timingdateTime: When the action should take place
-    :param Period timingdateTime: When the action should take place
-    :param Duration timingdateTime: When the action should take place
-    :param Range timingdateTime: When the action should take place
-    :param Timing timingdateTime: When the action should take place
-    :param Reference participant: Who should perform the action
-    :param CodeableConcept type: create | update | remove | fire-event
-    :param str groupingBehavior: visual-group | logical-group | sentence-group
-    :param str selectionBehavior: any | all | all-or-none | exactly-one | at-most-one | one-or-more
-    :param str requiredBehavior: must | could | must-unless-documented
-    :param str precheckBehavior: yes | no
-    :param str cardinalityBehavior: single | multiple
-    :param Reference resource: The target of the action
-    :param BackboneElement action: Proposed actions, if any
-    """
-    action: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    prefix: str = None
-    
-    title: str = None
-    
-    description: str = None
-    
-    textEquivalent: str = None
-    
-    priority: str = None
-    
-    code: list["CodeableConcept"] = None
-    
-    documentation: list["RelatedArtifact"] = None
-    
-    condition: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    kind: str = None
-    
-    expression: "Expression" = None
-    
-    relatedAction: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    actionId: str = None
-    
-    relationship: str = None
-    
-    offsetDuration: "Duration" = None
-    
-    offsetDuration: "Range" = None
-    
-    timingdateTime: str = None
-    
-    timingdateTime: "Age" = None
-    
-    timingdateTime: "Period" = None
-    
-    timingdateTime: "Duration" = None
-    
-    timingdateTime: "Range" = None
-    
-    timingdateTime: "Timing" = None
-    
-    participant: list["Reference"] = None
-    
-    type: "CodeableConcept" = None
-    
-    groupingBehavior: str = None
-    
-    selectionBehavior: str = None
-    
-    requiredBehavior: str = None
-    
-    precheckBehavior: str = None
-    
-    cardinalityBehavior: str = None
-    
-    resource: "Reference" = None
-    
-    action: list["BackboneElement"] = None
-    
-
-
 @dataclass
 class RequestGroup(ModelBase):
     """ A group of related requests that can be used to capture intended activities that have inter-dependencies such as "give this medication after that one".
@@ -351,46 +150,7 @@ class RequestGroup(ModelBase):
     :param CodeableConcept reasonCode: Why the request group is needed
     :param Reference reasonReference: Why the request group is needed
     :param Annotation note: Additional notes about the response
-    :param BackboneElement action: Proposed actions, if any
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str prefix: User-visible prefix for the action (e.g. 1. or A.)
-    :param str title: User-visible title
-    :param str description: Short description of the action
-    :param str textEquivalent: Static text equivalent of the action, used if the dynamic aspects cannot be interpreted by the receiving system
-    :param str priority: routine | urgent | asap | stat
-    :param CodeableConcept code: Code representing the meaning of the action or sub-actions
-    :param RelatedArtifact documentation: Supporting documentation for the intended performer of the action
-    :param BackboneElement condition: Whether or not the action is applicable
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str kind: applicability | start | stop
-    :param Expression expression: Boolean-valued expression
-    :param BackboneElement relatedAction: Relationship to another action
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str actionId: What action this is related to
-    :param str relationship: before-start | before | before-end | concurrent-with-start | concurrent | concurrent-with-end | after-start | after | after-end
-    :param Duration offsetDuration: Time offset for the relationship
-    :param Range offsetDuration: Time offset for the relationship
-    :param str timingdateTime: When the action should take place
-    :param Age timingdateTime: When the action should take place
-    :param Period timingdateTime: When the action should take place
-    :param Duration timingdateTime: When the action should take place
-    :param Range timingdateTime: When the action should take place
-    :param Timing timingdateTime: When the action should take place
-    :param Reference participant: Who should perform the action
-    :param CodeableConcept type: create | update | remove | fire-event
-    :param str groupingBehavior: visual-group | logical-group | sentence-group
-    :param str selectionBehavior: any | all | all-or-none | exactly-one | at-most-one | one-or-more
-    :param str requiredBehavior: must | could | must-unless-documented
-    :param str precheckBehavior: yes | no
-    :param str cardinalityBehavior: single | multiple
-    :param Reference resource: The target of the action
-    :param BackboneElement action: Proposed actions, if any
+    :param Action action: Proposed actions, if any
     """
     id: str = None
     
@@ -442,83 +202,5 @@ class RequestGroup(ModelBase):
     
     note: list["Annotation"] = None
     
-    action: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    prefix: str = None
-    
-    title: str = None
-    
-    description: str = None
-    
-    textEquivalent: str = None
-    
-    priority: str = None
-    
-    code: list["CodeableConcept"] = None
-    
-    documentation: list["RelatedArtifact"] = None
-    
-    condition: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    kind: str = None
-    
-    expression: "Expression" = None
-    
-    relatedAction: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    actionId: str = None
-    
-    relationship: str = None
-    
-    offsetDuration: "Duration" = None
-    
-    offsetDuration: "Range" = None
-    
-    timingdateTime: str = None
-    
-    timingdateTime: "Age" = None
-    
-    timingdateTime: "Period" = None
-    
-    timingdateTime: "Duration" = None
-    
-    timingdateTime: "Range" = None
-    
-    timingdateTime: "Timing" = None
-    
-    participant: list["Reference"] = None
-    
-    type: "CodeableConcept" = None
-    
-    groupingBehavior: str = None
-    
-    selectionBehavior: str = None
-    
-    requiredBehavior: str = None
-    
-    precheckBehavior: str = None
-    
-    cardinalityBehavior: str = None
-    
-    resource: "Reference" = None
-    
-    action: list["BackboneElement"] = None
+    action: list["Action"] = None
     

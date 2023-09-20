@@ -1,50 +1,45 @@
 """
 Generated class for HealthcareService. 
-Time: 2023-09-20 10:09:03
+Time: 2023-09-20 20:29:43
 """
 from dataclasses import dataclass
-
 from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.ContactPoint import *
+from fhan.models.R4.Meta import *
 from fhan.models.R4.Attachment import *
-from fhan.models.R4.Period import *
 from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Element import *
+from fhan.models.R4.Extension import *
+from fhan.models.R4.Period import *
+from fhan.models.R4.ContactPoint import *
+from fhan.models.R4.Identifier import *
 from fhan.models.R4.Narrative import *
 from fhan.models.R4.Reference import *
-from fhan.models.R4.Extension import *
-from fhan.models.R4.Element import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Identifier import *
 from fhan.models.R4.Resource import *
 from fhan.models.generator_models import ModelBase
 
+    
+    
 @dataclass
-class eligibility(Element):
-    """ Does this service have specific eligibility requirements that need to be met in order to use the service?
-    :param BackboneElement eligibility: Specific eligibility requirements required to use the service
-    :param str id: Unique id for inter-element referencing
+class Eligibility(Element):
+    """ Does this service have specific eligibility requirements that need to be met in order to use the service?:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param CodeableConcept code: Coded value for the eligibility
     :param str comment: Describes the eligibility conditions for the service
     """
-    eligibility: list["BackboneElement"] = None
-    
     id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
     code: "CodeableConcept" = None
     
     comment: str = None
     
+
+    
+    
 @dataclass
-class availableTime(Element):
-    """ A collection of times that the Service Site is available.
-    :param BackboneElement availableTime: Times the Service Site is available
-    :param str id: Unique id for inter-element referencing
+class AvailableTime(Element):
+    """ A collection of times that the Service Site is available.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str daysOfWeek: mon | tue | wed | thu | fri | sat | sun
@@ -52,13 +47,9 @@ class availableTime(Element):
     :param str availableStartTime: Opening time of day (ignored if allDay = true)
     :param str availableEndTime: Closing time of day (ignored if allDay = true)
     """
-    availableTime: list["BackboneElement"] = None
-    
     id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
     
     daysOfWeek: str = None
     
@@ -68,30 +59,24 @@ class availableTime(Element):
     
     availableEndTime: str = None
     
+
+    
+    
 @dataclass
-class notAvailable(Element):
-    """ The HealthcareService is not available during this period of time due to the provided reason.
-    :param BackboneElement notAvailable: Not available during this time due to provided reason
-    :param str id: Unique id for inter-element referencing
+class NotAvailable(Element):
+    """ The HealthcareService is not available during this period of time due to the provided reason.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str description: Reason presented to the user explaining why time not available
     :param Period during: Service not available from this date
     """
-    notAvailable: list["BackboneElement"] = None
-    
     id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
     
     description: str = None
-    
     during: "Period" = None
     
-
-
 @dataclass
 class HealthcareService(ModelBase):
     """ The details of a healthcare service available at a location.
@@ -117,31 +102,14 @@ class HealthcareService(ModelBase):
     :param ContactPoint telecom: Contacts related to the healthcare service
     :param Reference coverageArea: Location(s) service is intended for/available to
     :param CodeableConcept serviceProvisionCode: Conditions under which service is available/offered
-    :param BackboneElement eligibility: Specific eligibility requirements required to use the service
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param CodeableConcept code: Coded value for the eligibility
-    :param str comment: Describes the eligibility conditions for the service
+    :param Eligibility eligibility: Specific eligibility requirements required to use the service
     :param CodeableConcept program: Programs that this service is applicable to
     :param CodeableConcept characteristic: Collection of characteristics (attributes)
     :param CodeableConcept communication: The language that this service is offered in
     :param CodeableConcept referralMethod: Ways that the service accepts referrals
     :param bool appointmentRequired: If an appointment is required for access to this service
-    :param BackboneElement availableTime: Times the Service Site is available
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str daysOfWeek: mon | tue | wed | thu | fri | sat | sun
-    :param bool allDay: Always available? e.g. 24 hour service
-    :param str availableStartTime: Opening time of day (ignored if allDay = true)
-    :param str availableEndTime: Closing time of day (ignored if allDay = true)
-    :param BackboneElement notAvailable: Not available during this time due to provided reason
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str description: Reason presented to the user explaining why time not available
-    :param Period during: Service not available from this date
+    :param AvailableTime availableTime: Times the Service Site is available
+    :param NotAvailable notAvailable: Not available during this time due to provided reason
     :param str availabilityExceptions: Description of availability exceptions
     :param Reference endpoint: Technical endpoints providing access to electronic services operated for the healthcare service
     """
@@ -189,17 +157,7 @@ class HealthcareService(ModelBase):
     
     serviceProvisionCode: list["CodeableConcept"] = None
     
-    eligibility: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    code: "CodeableConcept" = None
-    
-    comment: str = None
+    eligibility: list["Eligibility"] = None
     
     program: list["CodeableConcept"] = None
     
@@ -211,33 +169,9 @@ class HealthcareService(ModelBase):
     
     appointmentRequired: bool = None
     
-    availableTime: list["BackboneElement"] = None
+    availableTime: list["AvailableTime"] = None
     
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    daysOfWeek: str = None
-    
-    allDay: bool = None
-    
-    availableStartTime: str = None
-    
-    availableEndTime: str = None
-    
-    notAvailable: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    description: str = None
-    
-    during: "Period" = None
+    notAvailable: list["NotAvailable"] = None
     
     availabilityExceptions: str = None
     

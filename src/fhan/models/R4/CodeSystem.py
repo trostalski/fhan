@@ -1,27 +1,26 @@
 """
 Generated class for CodeSystem. 
-Time: 2023-09-20 10:09:03
+Time: 2023-09-20 20:29:43
 """
 from dataclasses import dataclass
-
 from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.UsageContext import *
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.ContactDetail import *
-from fhan.models.R4.Extension import *
-from fhan.models.R4.Element import *
 from fhan.models.R4.Meta import *
-from fhan.models.R4.Identifier import *
-from fhan.models.R4.Resource import *
+from fhan.models.R4.BackboneElement import *
 from fhan.models.R4.Coding import *
+from fhan.models.R4.Element import *
+from fhan.models.R4.Extension import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.ContactDetail import *
+from fhan.models.R4.UsageContext import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Resource import *
 from fhan.models.generator_models import ModelBase
 
+    
+    
 @dataclass
-class filter(Element):
-    """ A filter that can be used in a value set compose statement when selecting concepts using a filter.
-    :param BackboneElement filter: Filter that can be used in a value set
-    :param str id: Unique id for inter-element referencing
+class Filter(Element):
+    """ A filter that can be used in a value set compose statement when selecting concepts using a filter.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str code: Code that identifies the filter
@@ -29,13 +28,9 @@ class filter(Element):
     :param str operator: = | is-a | descendent-of | is-not-a | regex | in | not-in | generalizes | exists
     :param str value: What to use for the value
     """
-    filter: list["BackboneElement"] = None
-    
     id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
     
     code: str = None
     
@@ -45,11 +40,12 @@ class filter(Element):
     
     value: str = None
     
+
+    
+    
 @dataclass
-class property(Element):
-    """ A property defines an additional slot through which additional information can be provided about a concept.
-    :param BackboneElement property: Additional information supplied about each concept
-    :param str id: Unique id for inter-element referencing
+class Property(Element):
+    """ A property defines an additional slot through which additional information can be provided about a concept.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str code: Identifies the property on the concepts, and when referred to in operations
@@ -57,13 +53,9 @@ class property(Element):
     :param str description: Why the property is defined, and/or what it conveys
     :param str type: code | Coding | string | integer | boolean | dateTime | decimal
     """
-    property: list["BackboneElement"] = None
-    
     id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
     
     code: str = None
     
@@ -73,243 +65,74 @@ class property(Element):
     
     type: str = None
     
+
+    
+        
+    
+    
 @dataclass
-class concept(Element):
-    """ Concepts that are in the code system. The concept definitions are inherently hierarchical, but the definitions must be consulted to determine what the meanings of the hierarchical relationships are.
-    :param BackboneElement concept: Concepts in the code system
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str code: Code that identifies concept
-    :param str display: Text to display to the user
-    :param str definition: Formal definition
-    :param BackboneElement designation: Additional representations for the concept
-    :param str id: Unique id for inter-element referencing
+class Designation(Element):
+    """ Additional representations for the concept - other languages, aliases, specialized purposes, used for particular purposes, etc.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str language: Human language of the designation
     :param Coding use: Details how this designation would be used
     :param str value: The text value for this designation
-    :param BackboneElement property: Property value for the concept
-    :param str id: Unique id for inter-element referencing
+    """
+    id: str = None
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
+    
+    language: str = None
+    use: "Coding" = None
+    
+    value: str = None
+    
+
+    
+    
+@dataclass
+class Property(Element):
+    """ A property value for this concept.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str code: Reference to CodeSystem.property.code
-    :param str valuecode: Value of the property for this concept
-    :param Coding valuecode: Value of the property for this concept
-    :param str valuecode: Value of the property for this concept
-    :param int valuecode: Value of the property for this concept
-    :param bool valuecode: Value of the property for this concept
-    :param str valuecode: Value of the property for this concept
-    :param float valuecode: Value of the property for this concept
-    :param BackboneElement concept: Concepts in the code system
+    :param str valueCode: Value of the property for this concept
     """
-    concept: list["BackboneElement"] = None
-    
     id: str = None
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
     
-    extension: list["Extension"] = None
+    code: str = None
     
-    modifierExtension: list["Extension"] = None
+    valueCode: str = None
+    
+  
+    
+    
+@dataclass
+class Concept(Element):
+    """ Concepts that are in the code system. The concept definitions are inherently hierarchical, but the definitions must be consulted to determine what the meanings of the hierarchical relationships are.:param str id: Unique id for inter-element referencing
+    :param Extension extension: Additional content defined by implementations
+    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param str code: Code that identifies concept
+    :param str display: Text to display to the user
+    :param str definition: Formal definition
+    :param Designation designation: Additional representations for the concept
+    :param Property property: Property value for the concept
+    """
+    id: str = None
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
     
     code: str = None
     
     display: str = None
     
     definition: str = None
+    designation: list[Designation] = None
+    property: list[Property] = None
     
-    designation: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    language: str = None
-    
-    use: "Coding" = None
-    
-    value: str = None
-    
-    property: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    code: str = None
-    
-    valuecode: str = None
-    
-    valuecode: "Coding" = None
-    
-    valuecode: str = None
-    
-    valuecode: int = None
-    
-    valuecode: bool = None
-    
-    valuecode: str = None
-    
-    valuecode: float = None
-    
-    concept: list["BackboneElement"] = None
-    
-@dataclass
-class designation(Element):
-    """ Additional representations for the concept - other languages, aliases, specialized purposes, used for particular purposes, etc.
-    :param BackboneElement designation: Additional representations for the concept
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str language: Human language of the designation
-    :param Coding use: Details how this designation would be used
-    :param str value: The text value for this designation
-    """
-    designation: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    language: str = None
-    
-    use: "Coding" = None
-    
-    value: str = None
-    
-@dataclass
-class property(Element):
-    """ A property value for this concept.
-    :param BackboneElement property: Property value for the concept
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str code: Reference to CodeSystem.property.code
-    :param str valuecode: Value of the property for this concept
-    :param Coding valuecode: Value of the property for this concept
-    :param str valuecode: Value of the property for this concept
-    :param int valuecode: Value of the property for this concept
-    :param bool valuecode: Value of the property for this concept
-    :param str valuecode: Value of the property for this concept
-    :param float valuecode: Value of the property for this concept
-    """
-    property: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    code: str = None
-    
-    valuecode: str = None
-    
-    valuecode: "Coding" = None
-    
-    valuecode: str = None
-    
-    valuecode: int = None
-    
-    valuecode: bool = None
-    
-    valuecode: str = None
-    
-    valuecode: float = None
-    
-@dataclass
-class concept(Element):
-    """ Concepts that are in the code system. The concept definitions are inherently hierarchical, but the definitions must be consulted to determine what the meanings of the hierarchical relationships are.
-    :param BackboneElement concept: Concepts in the code system
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str code: Code that identifies concept
-    :param str display: Text to display to the user
-    :param str definition: Formal definition
-    :param BackboneElement designation: Additional representations for the concept
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str language: Human language of the designation
-    :param Coding use: Details how this designation would be used
-    :param str value: The text value for this designation
-    :param BackboneElement property: Property value for the concept
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str code: Reference to CodeSystem.property.code
-    :param str valuecode: Value of the property for this concept
-    :param Coding valuecode: Value of the property for this concept
-    :param str valuecode: Value of the property for this concept
-    :param int valuecode: Value of the property for this concept
-    :param bool valuecode: Value of the property for this concept
-    :param str valuecode: Value of the property for this concept
-    :param float valuecode: Value of the property for this concept
-    :param BackboneElement concept: Concepts in the code system
-    """
-    concept: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    code: str = None
-    
-    display: str = None
-    
-    definition: str = None
-    
-    designation: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    language: str = None
-    
-    use: "Coding" = None
-    
-    value: str = None
-    
-    property: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    code: str = None
-    
-    valuecode: str = None
-    
-    valuecode: "Coding" = None
-    
-    valuecode: str = None
-    
-    valuecode: int = None
-    
-    valuecode: bool = None
-    
-    valuecode: str = None
-    
-    valuecode: float = None
-    
-    concept: list["BackboneElement"] = None
-    
-
-
 @dataclass
 class CodeSystem(ModelBase):
     """ Enforces the minimum information set for the value set metadata required by HL7 and other organizations that share and publish value sets
@@ -344,49 +167,9 @@ class CodeSystem(ModelBase):
     :param str content: not-present | example | fragment | complete | supplement
     :param str supplements: Canonical URL of Code System this adds designations and properties to
     :param int count: Total concepts in the code system
-    :param BackboneElement filter: Filter that can be used in a value set
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str code: Code that identifies the filter
-    :param str description: How or why the filter is used
-    :param str operator: = | is-a | descendent-of | is-not-a | regex | in | not-in | generalizes | exists
-    :param str value: What to use for the value
-    :param BackboneElement property: Additional information supplied about each concept
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str code: Identifies the property on the concepts, and when referred to in operations
-    :param str uri: Formal identifier for the property
-    :param str description: Why the property is defined, and/or what it conveys
-    :param str type: code | Coding | string | integer | boolean | dateTime | decimal
-    :param BackboneElement concept: Concepts in the code system
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str code: Code that identifies concept
-    :param str display: Text to display to the user
-    :param str definition: Formal definition
-    :param BackboneElement designation: Additional representations for the concept
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str language: Human language of the designation
-    :param Coding use: Details how this designation would be used
-    :param str value: The text value for this designation
-    :param BackboneElement property: Property value for the concept
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str code: Reference to CodeSystem.property.code
-    :param str valuecode: Value of the property for this concept
-    :param Coding valuecode: Value of the property for this concept
-    :param str valuecode: Value of the property for this concept
-    :param int valuecode: Value of the property for this concept
-    :param bool valuecode: Value of the property for this concept
-    :param str valuecode: Value of the property for this concept
-    :param float valuecode: Value of the property for this concept
-    :param BackboneElement concept: Concepts in the code system
+    :param Filter filter: Filter that can be used in a value set
+    :param Property property: Additional information supplied about each concept
+    :param Concept concept: Concepts in the code system
     """
     id: str = None
     
@@ -450,89 +233,9 @@ class CodeSystem(ModelBase):
     
     count: int = None
     
-    filter: list["BackboneElement"] = None
+    filter: list["Filter"] = None
     
-    id: str = None
+    property: list["Property"] = None
     
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    code: str = None
-    
-    description: str = None
-    
-    operator: str = None
-    
-    value: str = None
-    
-    property: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    code: str = None
-    
-    uri: str = None
-    
-    description: str = None
-    
-    type: str = None
-    
-    concept: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    code: str = None
-    
-    display: str = None
-    
-    definition: str = None
-    
-    designation: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    language: str = None
-    
-    use: "Coding" = None
-    
-    value: str = None
-    
-    property: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    code: str = None
-    
-    valuecode: str = None
-    
-    valuecode: "Coding" = None
-    
-    valuecode: str = None
-    
-    valuecode: int = None
-    
-    valuecode: bool = None
-    
-    valuecode: str = None
-    
-    valuecode: float = None
-    
-    concept: list["BackboneElement"] = None
+    concept: list["Concept"] = None
     

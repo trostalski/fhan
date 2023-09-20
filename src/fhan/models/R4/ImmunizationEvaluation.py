@@ -1,20 +1,16 @@
 """
 Generated class for ImmunizationEvaluation. 
-Time: 2023-09-20 10:09:03
+Time: 2023-09-20 20:29:43
 """
 from dataclasses import dataclass
-
 from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Meta import *
+from fhan.models.R4.Extension import *
+from fhan.models.R4.Identifier import *
 from fhan.models.R4.Narrative import *
 from fhan.models.R4.Reference import *
-from fhan.models.R4.Extension import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Identifier import *
 from fhan.models.R4.Resource import *
 from fhan.models.generator_models import ModelBase
-
-
-
 @dataclass
 class ImmunizationEvaluation(ModelBase):
     """ Describes a comparison of an immunization event against published recommendations to determine if the administration is "valid" in relation to those  recommendations.
@@ -37,10 +33,8 @@ class ImmunizationEvaluation(ModelBase):
     :param CodeableConcept doseStatusReason: Reason for the dose status
     :param str description: Evaluation notes
     :param str series: Name of vaccine series
-    :param int doseNumberpositiveInt: Dose number within series
-    :param str doseNumberpositiveInt: Dose number within series
-    :param int seriesDosespositiveInt: Recommended number of doses for immunity
-    :param str seriesDosespositiveInt: Recommended number of doses for immunity
+    :param int doseNumberPositiveInt: Dose number within series
+    :param int seriesDosesPositiveInt: Recommended number of doses for immunity
     """
     id: str = None
     
@@ -80,11 +74,7 @@ class ImmunizationEvaluation(ModelBase):
     
     series: str = None
     
-    doseNumberpositiveInt: int = None
+    doseNumberPositiveInt: int = None
     
-    doseNumberpositiveInt: str = None
-    
-    seriesDosespositiveInt: int = None
-    
-    seriesDosespositiveInt: str = None
+    seriesDosesPositiveInt: int = None
     

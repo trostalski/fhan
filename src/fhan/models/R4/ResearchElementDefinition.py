@@ -1,109 +1,70 @@
 """
 Generated class for ResearchElementDefinition. 
-Time: 2023-09-20 10:09:03
+Time: 2023-09-20 20:29:43
 """
 from dataclasses import dataclass
-
 from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.UsageContext import *
-from fhan.models.R4.Period import *
+from fhan.models.R4.Meta import *
 from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Duration import *
+from fhan.models.R4.Element import *
+from fhan.models.R4.Extension import *
+from fhan.models.R4.Period import *
+from fhan.models.R4.RelatedArtifact import *
+from fhan.models.R4.Expression import *
+from fhan.models.R4.DataRequirement import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.ContactDetail import *
+from fhan.models.R4.UsageContext import *
+from fhan.models.R4.Timing import *
 from fhan.models.R4.Narrative import *
 from fhan.models.R4.Reference import *
-from fhan.models.R4.RelatedArtifact import *
-from fhan.models.R4.ContactDetail import *
-from fhan.models.R4.Extension import *
-from fhan.models.R4.Timing import *
-from fhan.models.R4.Expression import *
-from fhan.models.R4.Element import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Identifier import *
+from fhan.models.R4.Duration import *
 from fhan.models.R4.Resource import *
-from fhan.models.R4.DataRequirement import *
 from fhan.models.generator_models import ModelBase
 
+    
+    
 @dataclass
-class characteristic(Element):
-    """ A characteristic that defines the members of the research element. Multiple characteristics are applied with "and" semantics.
-    :param BackboneElement characteristic: What defines the members of the research element
-    :param str id: Unique id for inter-element referencing
+class Characteristic(Element):
+    """ A characteristic that defines the members of the research element. Multiple characteristics are applied with "and" semantics.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param CodeableConcept definitionCodeableConcept: What code or expression defines members?
-    :param str definitionCodeableConcept: What code or expression defines members?
-    :param Expression definitionCodeableConcept: What code or expression defines members?
-    :param DataRequirement definitionCodeableConcept: What code or expression defines members?
     :param UsageContext usageContext: What code/value pairs define members?
     :param bool exclude: Whether the characteristic includes or excludes members
     :param CodeableConcept unitOfMeasure: What unit is the outcome described in?
     :param str studyEffectiveDescription: What time period does the study cover
-    :param str studyEffectivedateTime: What time period does the study cover
-    :param Period studyEffectivedateTime: What time period does the study cover
-    :param Duration studyEffectivedateTime: What time period does the study cover
-    :param Timing studyEffectivedateTime: What time period does the study cover
+    :param str studyEffectiveDateTime: What time period does the study cover
     :param Duration studyEffectiveTimeFromStart: Observation time from study start
     :param str studyEffectiveGroupMeasure: mean | median | mean-of-mean | mean-of-median | median-of-mean | median-of-median
     :param str participantEffectiveDescription: What time period do participants cover
-    :param str participantEffectivedateTime: What time period do participants cover
-    :param Period participantEffectivedateTime: What time period do participants cover
-    :param Duration participantEffectivedateTime: What time period do participants cover
-    :param Timing participantEffectivedateTime: What time period do participants cover
+    :param str participantEffectiveDateTime: What time period do participants cover
     :param Duration participantEffectiveTimeFromStart: Observation time from study start
     :param str participantEffectiveGroupMeasure: mean | median | mean-of-mean | mean-of-median | median-of-mean | median-of-median
     """
-    characteristic: list["BackboneElement"] = None
-    
     id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
     definitionCodeableConcept: "CodeableConcept" = None
-    
-    definitionCodeableConcept: str = None
-    
-    definitionCodeableConcept: "Expression" = None
-    
-    definitionCodeableConcept: "DataRequirement" = None
-    
-    usageContext: list["UsageContext"] = None
+    usageContext: list[UsageContext] = None
     
     exclude: bool = None
-    
     unitOfMeasure: "CodeableConcept" = None
     
     studyEffectiveDescription: str = None
     
-    studyEffectivedateTime: str = None
-    
-    studyEffectivedateTime: "Period" = None
-    
-    studyEffectivedateTime: "Duration" = None
-    
-    studyEffectivedateTime: "Timing" = None
-    
+    studyEffectiveDateTime: str = None
     studyEffectiveTimeFromStart: "Duration" = None
     
     studyEffectiveGroupMeasure: str = None
     
     participantEffectiveDescription: str = None
     
-    participantEffectivedateTime: str = None
-    
-    participantEffectivedateTime: "Period" = None
-    
-    participantEffectivedateTime: "Duration" = None
-    
-    participantEffectivedateTime: "Timing" = None
-    
+    participantEffectiveDateTime: str = None
     participantEffectiveTimeFromStart: "Duration" = None
     
     participantEffectiveGroupMeasure: str = None
     
-
-
 @dataclass
 class ResearchElementDefinition(ModelBase):
     """ The ResearchElementDefinition resource describes a "PICO" element that knowledge (evidence, assertion, recommendation) is about.
@@ -125,7 +86,6 @@ class ResearchElementDefinition(ModelBase):
     :param str status: draft | active | retired | unknown
     :param bool experimental: For testing purposes, not real usage
     :param CodeableConcept subjectCodeableConcept: E.g. Patient, Practitioner, RelatedPerson, Organization, Location, Device
-    :param Reference subjectCodeableConcept: E.g. Patient, Practitioner, RelatedPerson, Organization, Location, Device
     :param str date: Date last changed
     :param str publisher: Name of the publisher (organization or individual)
     :param ContactDetail contact: Contact details for the publisher
@@ -148,31 +108,7 @@ class ResearchElementDefinition(ModelBase):
     :param str library: Logic used by the ResearchElementDefinition
     :param str type: population | exposure | outcome
     :param str variableType: dichotomous | continuous | descriptive
-    :param BackboneElement characteristic: What defines the members of the research element
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param CodeableConcept definitionCodeableConcept: What code or expression defines members?
-    :param str definitionCodeableConcept: What code or expression defines members?
-    :param Expression definitionCodeableConcept: What code or expression defines members?
-    :param DataRequirement definitionCodeableConcept: What code or expression defines members?
-    :param UsageContext usageContext: What code/value pairs define members?
-    :param bool exclude: Whether the characteristic includes or excludes members
-    :param CodeableConcept unitOfMeasure: What unit is the outcome described in?
-    :param str studyEffectiveDescription: What time period does the study cover
-    :param str studyEffectivedateTime: What time period does the study cover
-    :param Period studyEffectivedateTime: What time period does the study cover
-    :param Duration studyEffectivedateTime: What time period does the study cover
-    :param Timing studyEffectivedateTime: What time period does the study cover
-    :param Duration studyEffectiveTimeFromStart: Observation time from study start
-    :param str studyEffectiveGroupMeasure: mean | median | mean-of-mean | mean-of-median | median-of-mean | median-of-median
-    :param str participantEffectiveDescription: What time period do participants cover
-    :param str participantEffectivedateTime: What time period do participants cover
-    :param Period participantEffectivedateTime: What time period do participants cover
-    :param Duration participantEffectivedateTime: What time period do participants cover
-    :param Timing participantEffectivedateTime: What time period do participants cover
-    :param Duration participantEffectiveTimeFromStart: Observation time from study start
-    :param str participantEffectiveGroupMeasure: mean | median | mean-of-mean | mean-of-median | median-of-mean | median-of-median
+    :param Characteristic characteristic: What defines the members of the research element
     """
     id: str = None
     
@@ -209,8 +145,6 @@ class ResearchElementDefinition(ModelBase):
     experimental: bool = None
     
     subjectCodeableConcept: "CodeableConcept" = None
-    
-    subjectCodeableConcept: "Reference" = None
     
     date: str = None
     
@@ -256,53 +190,5 @@ class ResearchElementDefinition(ModelBase):
     
     variableType: str = None
     
-    characteristic: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    definitionCodeableConcept: "CodeableConcept" = None
-    
-    definitionCodeableConcept: str = None
-    
-    definitionCodeableConcept: "Expression" = None
-    
-    definitionCodeableConcept: "DataRequirement" = None
-    
-    usageContext: list["UsageContext"] = None
-    
-    exclude: bool = None
-    
-    unitOfMeasure: "CodeableConcept" = None
-    
-    studyEffectiveDescription: str = None
-    
-    studyEffectivedateTime: str = None
-    
-    studyEffectivedateTime: "Period" = None
-    
-    studyEffectivedateTime: "Duration" = None
-    
-    studyEffectivedateTime: "Timing" = None
-    
-    studyEffectiveTimeFromStart: "Duration" = None
-    
-    studyEffectiveGroupMeasure: str = None
-    
-    participantEffectiveDescription: str = None
-    
-    participantEffectivedateTime: str = None
-    
-    participantEffectivedateTime: "Period" = None
-    
-    participantEffectivedateTime: "Duration" = None
-    
-    participantEffectivedateTime: "Timing" = None
-    
-    participantEffectiveTimeFromStart: "Duration" = None
-    
-    participantEffectiveGroupMeasure: str = None
+    characteristic: list["Characteristic"] = None
     

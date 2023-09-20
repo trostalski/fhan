@@ -1,14 +1,10 @@
 """
 Generated class for ParameterDefinition. 
-Time: 2023-09-20 10:09:03
+Time: 2023-09-20 20:29:43
 """
 from dataclasses import dataclass
-
 from fhan.models.R4.Extension import *
 from fhan.models.R4.Element import *
-
-
-
 
 @dataclass
 class ParameterDefinition(Element):

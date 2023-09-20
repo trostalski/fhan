@@ -1,49 +1,41 @@
 """
 Generated class for RelatedPerson. 
-Time: 2023-09-20 10:09:03
+Time: 2023-09-20 20:29:43
 """
 from dataclasses import dataclass
-
-from fhan.models.R4.HumanName import *
 from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.ContactPoint import *
+from fhan.models.R4.Meta import *
 from fhan.models.R4.Attachment import *
-from fhan.models.R4.Period import *
 from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Element import *
+from fhan.models.R4.HumanName import *
+from fhan.models.R4.Extension import *
+from fhan.models.R4.Period import *
+from fhan.models.R4.ContactPoint import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.Address import *
 from fhan.models.R4.Narrative import *
 from fhan.models.R4.Reference import *
-from fhan.models.R4.Extension import *
-from fhan.models.R4.Address import *
-from fhan.models.R4.Element import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Identifier import *
 from fhan.models.R4.Resource import *
 from fhan.models.generator_models import ModelBase
 
+    
+    
 @dataclass
-class communication(Element):
-    """ A language which may be used to communicate with about the patient's health.
-    :param BackboneElement communication: A language which may be used to communicate with about the patient's health
-    :param str id: Unique id for inter-element referencing
+class Communication(Element):
+    """ A language which may be used to communicate with about the patient's health.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param CodeableConcept language: The language which can be used to communicate with the patient about his or her health
     :param bool preferred: Language preference indicator
     """
-    communication: list["BackboneElement"] = None
-    
     id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
     language: "CodeableConcept" = None
     
     preferred: bool = None
     
-
-
 @dataclass
 class RelatedPerson(ModelBase):
     """ Information about a person that is involved in the care for a patient, but who is not the target of healthcare, nor has a formal responsibility in the care process.
@@ -66,12 +58,7 @@ class RelatedPerson(ModelBase):
     :param Address address: Address where the related person can be contacted or visited
     :param Attachment photo: Image of the person
     :param Period period: Period of time that this relationship is considered valid
-    :param BackboneElement communication: A language which may be used to communicate with about the patient's health
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param CodeableConcept language: The language which can be used to communicate with the patient about his or her health
-    :param bool preferred: Language preference indicator
+    :param Communication communication: A language which may be used to communicate with about the patient's health
     """
     id: str = None
     
@@ -111,15 +98,5 @@ class RelatedPerson(ModelBase):
     
     period: "Period" = None
     
-    communication: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    language: "CodeableConcept" = None
-    
-    preferred: bool = None
+    communication: list["Communication"] = None
     

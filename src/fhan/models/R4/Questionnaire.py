@@ -1,31 +1,89 @@
 """
 Generated class for Questionnaire. 
-Time: 2023-09-20 10:09:03
+Time: 2023-09-20 20:29:43
 """
 from dataclasses import dataclass
-
 from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.UsageContext import *
-from fhan.models.R4.Period import *
+from fhan.models.R4.Meta import *
 from fhan.models.R4.BackboneElement import *
 from fhan.models.R4.Attachment import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.Reference import *
-from fhan.models.R4.ContactDetail import *
+from fhan.models.R4.Coding import *
+from fhan.models.R4.Element import *
 from fhan.models.R4.Extension import *
 from fhan.models.R4.Quantity import *
-from fhan.models.R4.Element import *
-from fhan.models.R4.Meta import *
 from fhan.models.R4.Identifier import *
+from fhan.models.R4.ContactDetail import *
+from fhan.models.R4.UsageContext import *
+from fhan.models.R4.Reference import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Period import *
 from fhan.models.R4.Resource import *
-from fhan.models.R4.Coding import *
 from fhan.models.generator_models import ModelBase
 
+    
+        
+    
+    
 @dataclass
-class item(Element):
-    """ A particular question, question grouping or display text that is part of the questionnaire.
-    :param BackboneElement item: Questions and sections within the Questionnaire
-    :param str id: Unique id for inter-element referencing
+class EnableWhen(Element):
+    """ A constraint indicating that this item should only be enabled (displayed/allow answers to be captured) when the specified condition is true.:param str id: Unique id for inter-element referencing
+    :param Extension extension: Additional content defined by implementations
+    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param str question: Question that determines whether item is enabled
+    :param str operator: exists | = | != | > | < | >= | <=
+    :param bool answerBoolean: Value for question comparison based on operator
+    """
+    id: str = None
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
+    
+    question: str = None
+    
+    operator: str = None
+    
+    answerBoolean: bool = None
+    
+
+    
+    
+@dataclass
+class AnswerOption(Element):
+    """ One of the permitted answers for a "choice" or "open-choice" question.:param str id: Unique id for inter-element referencing
+    :param Extension extension: Additional content defined by implementations
+    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param int valueInteger: Answer value
+    :param bool initialSelected: Whether option is selected by default
+    """
+    id: str = None
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
+    
+    valueInteger: int = None
+    
+    initialSelected: bool = None
+    
+
+    
+    
+@dataclass
+class Initial(Element):
+    """ One or more values that should be pre-populated in the answer when initially rendering the questionnaire for user input.:param str id: Unique id for inter-element referencing
+    :param Extension extension: Additional content defined by implementations
+    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param bool valueBoolean: Actual value for initializing the question
+    """
+    id: str = None
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
+    
+    valueBoolean: bool = None
+    
+  
+    
+    
+@dataclass
+class Item(Element):
+    """ A particular question, question grouping or display text that is part of the questionnaire.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str linkId: Unique id for item in questionnaire
@@ -34,108 +92,31 @@ class item(Element):
     :param str prefix: E.g. "1(a)", "2.5.3"
     :param str text: Primary text for the item
     :param str type: group | display | boolean | decimal | integer | date | dateTime +
-    :param BackboneElement enableWhen: Only allow data when
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str question: Question that determines whether item is enabled
-    :param str operator: exists | = | != | > | < | >= | <=
-    :param bool answerboolean: Value for question comparison based on operator
-    :param float answerboolean: Value for question comparison based on operator
-    :param int answerboolean: Value for question comparison based on operator
-    :param str answerboolean: Value for question comparison based on operator
-    :param str answerboolean: Value for question comparison based on operator
-    :param str answerboolean: Value for question comparison based on operator
-    :param str answerboolean: Value for question comparison based on operator
-    :param Coding answerboolean: Value for question comparison based on operator
-    :param Quantity answerboolean: Value for question comparison based on operator
-    :param Reference answerboolean: Value for question comparison based on operator
+    :param EnableWhen enableWhen: Only allow data when
     :param str enableBehavior: all | any
     :param bool required: Whether the item must be included in data results
     :param bool repeats: Whether the item may repeat
     :param bool readOnly: Don't allow human editing
     :param int maxLength: No more than this many characters
     :param str answerValueSet: Valueset containing permitted answers
-    :param BackboneElement answerOption: Permitted answer
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param int valueinteger: Answer value
-    :param str valueinteger: Answer value
-    :param str valueinteger: Answer value
-    :param str valueinteger: Answer value
-    :param Coding valueinteger: Answer value
-    :param Reference valueinteger: Answer value
-    :param bool initialSelected: Whether option is selected by default
-    :param BackboneElement initial: Initial value(s) when item is first rendered
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param bool valueboolean: Actual value for initializing the question
-    :param float valueboolean: Actual value for initializing the question
-    :param int valueboolean: Actual value for initializing the question
-    :param str valueboolean: Actual value for initializing the question
-    :param str valueboolean: Actual value for initializing the question
-    :param str valueboolean: Actual value for initializing the question
-    :param str valueboolean: Actual value for initializing the question
-    :param str valueboolean: Actual value for initializing the question
-    :param Attachment valueboolean: Actual value for initializing the question
-    :param Coding valueboolean: Actual value for initializing the question
-    :param Quantity valueboolean: Actual value for initializing the question
-    :param Reference valueboolean: Actual value for initializing the question
-    :param BackboneElement item: Questions and sections within the Questionnaire
+    :param AnswerOption answerOption: Permitted answer
+    :param Initial initial: Initial value(s) when item is first rendered
     """
-    item: list["BackboneElement"] = None
-    
     id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
     
     linkId: str = None
     
     definition: str = None
-    
-    code: list["Coding"] = None
+    code: list[Coding] = None
     
     prefix: str = None
     
     text: str = None
     
     type: str = None
-    
-    enableWhen: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    question: str = None
-    
-    operator: str = None
-    
-    answerboolean: bool = None
-    
-    answerboolean: float = None
-    
-    answerboolean: int = None
-    
-    answerboolean: str = None
-    
-    answerboolean: str = None
-    
-    answerboolean: str = None
-    
-    answerboolean: str = None
-    
-    answerboolean: "Coding" = None
-    
-    answerboolean: "Quantity" = None
-    
-    answerboolean: "Reference" = None
+    enableWhen: list[EnableWhen] = None
     
     enableBehavior: str = None
     
@@ -148,390 +129,9 @@ class item(Element):
     maxLength: int = None
     
     answerValueSet: str = None
+    answerOption: list[AnswerOption] = None
+    initial: list[Initial] = None
     
-    answerOption: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    valueinteger: int = None
-    
-    valueinteger: str = None
-    
-    valueinteger: str = None
-    
-    valueinteger: str = None
-    
-    valueinteger: "Coding" = None
-    
-    valueinteger: "Reference" = None
-    
-    initialSelected: bool = None
-    
-    initial: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    valueboolean: bool = None
-    
-    valueboolean: float = None
-    
-    valueboolean: int = None
-    
-    valueboolean: str = None
-    
-    valueboolean: str = None
-    
-    valueboolean: str = None
-    
-    valueboolean: str = None
-    
-    valueboolean: str = None
-    
-    valueboolean: "Attachment" = None
-    
-    valueboolean: "Coding" = None
-    
-    valueboolean: "Quantity" = None
-    
-    valueboolean: "Reference" = None
-    
-    item: list["BackboneElement"] = None
-    
-@dataclass
-class enableWhen(Element):
-    """ A constraint indicating that this item should only be enabled (displayed/allow answers to be captured) when the specified condition is true.
-    :param BackboneElement enableWhen: Only allow data when
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str question: Question that determines whether item is enabled
-    :param str operator: exists | = | != | > | < | >= | <=
-    :param bool answerboolean: Value for question comparison based on operator
-    :param float answerboolean: Value for question comparison based on operator
-    :param int answerboolean: Value for question comparison based on operator
-    :param str answerboolean: Value for question comparison based on operator
-    :param str answerboolean: Value for question comparison based on operator
-    :param str answerboolean: Value for question comparison based on operator
-    :param str answerboolean: Value for question comparison based on operator
-    :param Coding answerboolean: Value for question comparison based on operator
-    :param Quantity answerboolean: Value for question comparison based on operator
-    :param Reference answerboolean: Value for question comparison based on operator
-    """
-    enableWhen: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    question: str = None
-    
-    operator: str = None
-    
-    answerboolean: bool = None
-    
-    answerboolean: float = None
-    
-    answerboolean: int = None
-    
-    answerboolean: str = None
-    
-    answerboolean: str = None
-    
-    answerboolean: str = None
-    
-    answerboolean: str = None
-    
-    answerboolean: "Coding" = None
-    
-    answerboolean: "Quantity" = None
-    
-    answerboolean: "Reference" = None
-    
-@dataclass
-class answerOption(Element):
-    """ One of the permitted answers for a "choice" or "open-choice" question.
-    :param BackboneElement answerOption: Permitted answer
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param int valueinteger: Answer value
-    :param str valueinteger: Answer value
-    :param str valueinteger: Answer value
-    :param str valueinteger: Answer value
-    :param Coding valueinteger: Answer value
-    :param Reference valueinteger: Answer value
-    :param bool initialSelected: Whether option is selected by default
-    """
-    answerOption: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    valueinteger: int = None
-    
-    valueinteger: str = None
-    
-    valueinteger: str = None
-    
-    valueinteger: str = None
-    
-    valueinteger: "Coding" = None
-    
-    valueinteger: "Reference" = None
-    
-    initialSelected: bool = None
-    
-@dataclass
-class initial(Element):
-    """ One or more values that should be pre-populated in the answer when initially rendering the questionnaire for user input.
-    :param BackboneElement initial: Initial value(s) when item is first rendered
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param bool valueboolean: Actual value for initializing the question
-    :param float valueboolean: Actual value for initializing the question
-    :param int valueboolean: Actual value for initializing the question
-    :param str valueboolean: Actual value for initializing the question
-    :param str valueboolean: Actual value for initializing the question
-    :param str valueboolean: Actual value for initializing the question
-    :param str valueboolean: Actual value for initializing the question
-    :param str valueboolean: Actual value for initializing the question
-    :param Attachment valueboolean: Actual value for initializing the question
-    :param Coding valueboolean: Actual value for initializing the question
-    :param Quantity valueboolean: Actual value for initializing the question
-    :param Reference valueboolean: Actual value for initializing the question
-    """
-    initial: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    valueboolean: bool = None
-    
-    valueboolean: float = None
-    
-    valueboolean: int = None
-    
-    valueboolean: str = None
-    
-    valueboolean: str = None
-    
-    valueboolean: str = None
-    
-    valueboolean: str = None
-    
-    valueboolean: str = None
-    
-    valueboolean: "Attachment" = None
-    
-    valueboolean: "Coding" = None
-    
-    valueboolean: "Quantity" = None
-    
-    valueboolean: "Reference" = None
-    
-@dataclass
-class item(Element):
-    """ A particular question, question grouping or display text that is part of the questionnaire.
-    :param BackboneElement item: Questions and sections within the Questionnaire
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str linkId: Unique id for item in questionnaire
-    :param str definition: ElementDefinition - details for the item
-    :param Coding code: Corresponding concept for this item in a terminology
-    :param str prefix: E.g. "1(a)", "2.5.3"
-    :param str text: Primary text for the item
-    :param str type: group | display | boolean | decimal | integer | date | dateTime +
-    :param BackboneElement enableWhen: Only allow data when
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str question: Question that determines whether item is enabled
-    :param str operator: exists | = | != | > | < | >= | <=
-    :param bool answerboolean: Value for question comparison based on operator
-    :param float answerboolean: Value for question comparison based on operator
-    :param int answerboolean: Value for question comparison based on operator
-    :param str answerboolean: Value for question comparison based on operator
-    :param str answerboolean: Value for question comparison based on operator
-    :param str answerboolean: Value for question comparison based on operator
-    :param str answerboolean: Value for question comparison based on operator
-    :param Coding answerboolean: Value for question comparison based on operator
-    :param Quantity answerboolean: Value for question comparison based on operator
-    :param Reference answerboolean: Value for question comparison based on operator
-    :param str enableBehavior: all | any
-    :param bool required: Whether the item must be included in data results
-    :param bool repeats: Whether the item may repeat
-    :param bool readOnly: Don't allow human editing
-    :param int maxLength: No more than this many characters
-    :param str answerValueSet: Valueset containing permitted answers
-    :param BackboneElement answerOption: Permitted answer
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param int valueinteger: Answer value
-    :param str valueinteger: Answer value
-    :param str valueinteger: Answer value
-    :param str valueinteger: Answer value
-    :param Coding valueinteger: Answer value
-    :param Reference valueinteger: Answer value
-    :param bool initialSelected: Whether option is selected by default
-    :param BackboneElement initial: Initial value(s) when item is first rendered
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param bool valueboolean: Actual value for initializing the question
-    :param float valueboolean: Actual value for initializing the question
-    :param int valueboolean: Actual value for initializing the question
-    :param str valueboolean: Actual value for initializing the question
-    :param str valueboolean: Actual value for initializing the question
-    :param str valueboolean: Actual value for initializing the question
-    :param str valueboolean: Actual value for initializing the question
-    :param str valueboolean: Actual value for initializing the question
-    :param Attachment valueboolean: Actual value for initializing the question
-    :param Coding valueboolean: Actual value for initializing the question
-    :param Quantity valueboolean: Actual value for initializing the question
-    :param Reference valueboolean: Actual value for initializing the question
-    :param BackboneElement item: Questions and sections within the Questionnaire
-    """
-    item: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    linkId: str = None
-    
-    definition: str = None
-    
-    code: list["Coding"] = None
-    
-    prefix: str = None
-    
-    text: str = None
-    
-    type: str = None
-    
-    enableWhen: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    question: str = None
-    
-    operator: str = None
-    
-    answerboolean: bool = None
-    
-    answerboolean: float = None
-    
-    answerboolean: int = None
-    
-    answerboolean: str = None
-    
-    answerboolean: str = None
-    
-    answerboolean: str = None
-    
-    answerboolean: str = None
-    
-    answerboolean: "Coding" = None
-    
-    answerboolean: "Quantity" = None
-    
-    answerboolean: "Reference" = None
-    
-    enableBehavior: str = None
-    
-    required: bool = None
-    
-    repeats: bool = None
-    
-    readOnly: bool = None
-    
-    maxLength: int = None
-    
-    answerValueSet: str = None
-    
-    answerOption: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    valueinteger: int = None
-    
-    valueinteger: str = None
-    
-    valueinteger: str = None
-    
-    valueinteger: str = None
-    
-    valueinteger: "Coding" = None
-    
-    valueinteger: "Reference" = None
-    
-    initialSelected: bool = None
-    
-    initial: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    valueboolean: bool = None
-    
-    valueboolean: float = None
-    
-    valueboolean: int = None
-    
-    valueboolean: str = None
-    
-    valueboolean: str = None
-    
-    valueboolean: str = None
-    
-    valueboolean: str = None
-    
-    valueboolean: str = None
-    
-    valueboolean: "Attachment" = None
-    
-    valueboolean: "Coding" = None
-    
-    valueboolean: "Quantity" = None
-    
-    valueboolean: "Reference" = None
-    
-    item: list["BackboneElement"] = None
-    
-
-
 @dataclass
 class Questionnaire(ModelBase):
     """ A structured set of questions intended to guide the collection of answers from end-users. Questionnaires provide detailed control over order, presentation, phraseology and grouping to allow coherent, consistent data collection.
@@ -564,66 +164,7 @@ class Questionnaire(ModelBase):
     :param str lastReviewDate: When the questionnaire was last reviewed
     :param Period effectivePeriod: When the questionnaire is expected to be used
     :param Coding code: Concept that represents the overall questionnaire
-    :param BackboneElement item: Questions and sections within the Questionnaire
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str linkId: Unique id for item in questionnaire
-    :param str definition: ElementDefinition - details for the item
-    :param Coding code: Corresponding concept for this item in a terminology
-    :param str prefix: E.g. "1(a)", "2.5.3"
-    :param str text: Primary text for the item
-    :param str type: group | display | boolean | decimal | integer | date | dateTime +
-    :param BackboneElement enableWhen: Only allow data when
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str question: Question that determines whether item is enabled
-    :param str operator: exists | = | != | > | < | >= | <=
-    :param bool answerboolean: Value for question comparison based on operator
-    :param float answerboolean: Value for question comparison based on operator
-    :param int answerboolean: Value for question comparison based on operator
-    :param str answerboolean: Value for question comparison based on operator
-    :param str answerboolean: Value for question comparison based on operator
-    :param str answerboolean: Value for question comparison based on operator
-    :param str answerboolean: Value for question comparison based on operator
-    :param Coding answerboolean: Value for question comparison based on operator
-    :param Quantity answerboolean: Value for question comparison based on operator
-    :param Reference answerboolean: Value for question comparison based on operator
-    :param str enableBehavior: all | any
-    :param bool required: Whether the item must be included in data results
-    :param bool repeats: Whether the item may repeat
-    :param bool readOnly: Don't allow human editing
-    :param int maxLength: No more than this many characters
-    :param str answerValueSet: Valueset containing permitted answers
-    :param BackboneElement answerOption: Permitted answer
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param int valueinteger: Answer value
-    :param str valueinteger: Answer value
-    :param str valueinteger: Answer value
-    :param str valueinteger: Answer value
-    :param Coding valueinteger: Answer value
-    :param Reference valueinteger: Answer value
-    :param bool initialSelected: Whether option is selected by default
-    :param BackboneElement initial: Initial value(s) when item is first rendered
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param bool valueboolean: Actual value for initializing the question
-    :param float valueboolean: Actual value for initializing the question
-    :param int valueboolean: Actual value for initializing the question
-    :param str valueboolean: Actual value for initializing the question
-    :param str valueboolean: Actual value for initializing the question
-    :param str valueboolean: Actual value for initializing the question
-    :param str valueboolean: Actual value for initializing the question
-    :param str valueboolean: Actual value for initializing the question
-    :param Attachment valueboolean: Actual value for initializing the question
-    :param Coding valueboolean: Actual value for initializing the question
-    :param Quantity valueboolean: Actual value for initializing the question
-    :param Reference valueboolean: Actual value for initializing the question
-    :param BackboneElement item: Questions and sections within the Questionnaire
+    :param Item item: Questions and sections within the Questionnaire
     """
     id: str = None
     
@@ -683,123 +224,5 @@ class Questionnaire(ModelBase):
     
     code: list["Coding"] = None
     
-    item: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    linkId: str = None
-    
-    definition: str = None
-    
-    code: list["Coding"] = None
-    
-    prefix: str = None
-    
-    text: str = None
-    
-    type: str = None
-    
-    enableWhen: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    question: str = None
-    
-    operator: str = None
-    
-    answerboolean: bool = None
-    
-    answerboolean: float = None
-    
-    answerboolean: int = None
-    
-    answerboolean: str = None
-    
-    answerboolean: str = None
-    
-    answerboolean: str = None
-    
-    answerboolean: str = None
-    
-    answerboolean: "Coding" = None
-    
-    answerboolean: "Quantity" = None
-    
-    answerboolean: "Reference" = None
-    
-    enableBehavior: str = None
-    
-    required: bool = None
-    
-    repeats: bool = None
-    
-    readOnly: bool = None
-    
-    maxLength: int = None
-    
-    answerValueSet: str = None
-    
-    answerOption: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    valueinteger: int = None
-    
-    valueinteger: str = None
-    
-    valueinteger: str = None
-    
-    valueinteger: str = None
-    
-    valueinteger: "Coding" = None
-    
-    valueinteger: "Reference" = None
-    
-    initialSelected: bool = None
-    
-    initial: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    valueboolean: bool = None
-    
-    valueboolean: float = None
-    
-    valueboolean: int = None
-    
-    valueboolean: str = None
-    
-    valueboolean: str = None
-    
-    valueboolean: str = None
-    
-    valueboolean: str = None
-    
-    valueboolean: str = None
-    
-    valueboolean: "Attachment" = None
-    
-    valueboolean: "Coding" = None
-    
-    valueboolean: "Quantity" = None
-    
-    valueboolean: "Reference" = None
-    
-    item: list["BackboneElement"] = None
+    item: list["Item"] = None
     

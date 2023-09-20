@@ -1,132 +1,85 @@
 """
 Generated class for MedicinalProduct. 
-Time: 2023-09-20 10:09:03
+Time: 2023-09-20 20:29:43
 """
 from dataclasses import dataclass
-
 from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Meta import *
 from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Coding import *
+from fhan.models.R4.Element import *
+from fhan.models.R4.Extension import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.MarketingStatus import *
 from fhan.models.R4.Narrative import *
 from fhan.models.R4.Reference import *
-from fhan.models.R4.MarketingStatus import *
-from fhan.models.R4.Extension import *
-from fhan.models.R4.Element import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Identifier import *
 from fhan.models.R4.Resource import *
-from fhan.models.R4.Coding import *
 from fhan.models.generator_models import ModelBase
 
+    
+        
+    
+    
 @dataclass
-class name(Element):
-    """ The product's name, including full name and possibly coded parts.
-    :param BackboneElement name: The product's name, including full name and possibly coded parts
-    :param str id: Unique id for inter-element referencing
+class NamePart(Element):
+    """ Coding words or phrases of the name.:param str id: Unique id for inter-element referencing
+    :param Extension extension: Additional content defined by implementations
+    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param str part: A fragment of a product name
+    :param Coding type: Idenifying type for this part of the name (e.g. strength part)
+    """
+    id: str = None
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
+    
+    part: str = None
+    type: "Coding" = None
+    
+
+    
+    
+@dataclass
+class CountryLanguage(Element):
+    """ Country where the name applies.:param str id: Unique id for inter-element referencing
+    :param Extension extension: Additional content defined by implementations
+    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param CodeableConcept country: Country code for where this name applies
+    :param CodeableConcept jurisdiction: Jurisdiction code for where this name applies
+    :param CodeableConcept language: Language code for this name
+    """
+    id: str = None
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
+    country: "CodeableConcept" = None
+    jurisdiction: "CodeableConcept" = None
+    language: "CodeableConcept" = None
+    
+  
+    
+    
+@dataclass
+class Name(Element):
+    """ The product's name, including full name and possibly coded parts.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str productName: The full product name
-    :param BackboneElement namePart: Coding words or phrases of the name
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str part: A fragment of a product name
-    :param Coding type: Idenifying type for this part of the name (e.g. strength part)
-    :param BackboneElement countryLanguage: Country where the name applies
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param CodeableConcept country: Country code for where this name applies
-    :param CodeableConcept jurisdiction: Jurisdiction code for where this name applies
-    :param CodeableConcept language: Language code for this name
+    :param NamePart namePart: Coding words or phrases of the name
+    :param CountryLanguage countryLanguage: Country where the name applies
     """
-    name: list["BackboneElement"] = None
-    
     id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
     
     productName: str = None
+    namePart: list[NamePart] = None
+    countryLanguage: list[CountryLanguage] = None
     
-    namePart: list["BackboneElement"] = None
+
     
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    part: str = None
-    
-    type: "Coding" = None
-    
-    countryLanguage: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    country: "CodeableConcept" = None
-    
-    jurisdiction: "CodeableConcept" = None
-    
-    language: "CodeableConcept" = None
     
 @dataclass
-class namePart(Element):
-    """ Coding words or phrases of the name.
-    :param BackboneElement namePart: Coding words or phrases of the name
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str part: A fragment of a product name
-    :param Coding type: Idenifying type for this part of the name (e.g. strength part)
-    """
-    namePart: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    part: str = None
-    
-    type: "Coding" = None
-    
-@dataclass
-class countryLanguage(Element):
-    """ Country where the name applies.
-    :param BackboneElement countryLanguage: Country where the name applies
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param CodeableConcept country: Country code for where this name applies
-    :param CodeableConcept jurisdiction: Jurisdiction code for where this name applies
-    :param CodeableConcept language: Language code for this name
-    """
-    countryLanguage: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    country: "CodeableConcept" = None
-    
-    jurisdiction: "CodeableConcept" = None
-    
-    language: "CodeableConcept" = None
-    
-@dataclass
-class manufacturingBusinessOperation(Element):
-    """ An operation applied to the product, for manufacturing or adminsitrative purpose.
-    :param BackboneElement manufacturingBusinessOperation: An operation applied to the product, for manufacturing or adminsitrative purpose
-    :param str id: Unique id for inter-element referencing
+class ManufacturingBusinessOperation(Element):
+    """ An operation applied to the product, for manufacturing or adminsitrative purpose.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param CodeableConcept operationType: The type of manufacturing operation
@@ -136,68 +89,45 @@ class manufacturingBusinessOperation(Element):
     :param Reference manufacturer: The manufacturer or establishment associated with the process
     :param Reference regulator: A regulator which oversees the operation
     """
-    manufacturingBusinessOperation: list["BackboneElement"] = None
-    
     id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
     operationType: "CodeableConcept" = None
-    
     authorisationReferenceNumber: "Identifier" = None
     
     effectiveDate: str = None
-    
     confidentialityIndicator: "CodeableConcept" = None
-    
-    manufacturer: list["Reference"] = None
-    
+    manufacturer: list[Reference] = None
     regulator: "Reference" = None
     
+
+    
+    
 @dataclass
-class specialDesignation(Element):
-    """ Indicates if the medicinal product has an orphan designation for the treatment of a rare disease.
-    :param BackboneElement specialDesignation: Indicates if the medicinal product has an orphan designation for the treatment of a rare disease
-    :param str id: Unique id for inter-element referencing
+class SpecialDesignation(Element):
+    """ Indicates if the medicinal product has an orphan designation for the treatment of a rare disease.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param Identifier identifier: Identifier for the designation, or procedure number
     :param CodeableConcept type: The type of special designation, e.g. orphan drug, minor use
     :param CodeableConcept intendedUse: The intended use of the product, e.g. prevention, treatment
     :param CodeableConcept indicationCodeableConcept: Condition for which the medicinal use applies
-    :param Reference indicationCodeableConcept: Condition for which the medicinal use applies
     :param CodeableConcept status: For example granted, pending, expired or withdrawn
     :param str date: Date when the designation was granted
     :param CodeableConcept species: Animal species for which this applies
     """
-    specialDesignation: list["BackboneElement"] = None
-    
     id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    identifier: list["Identifier"] = None
-    
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
+    identifier: list[Identifier] = None
     type: "CodeableConcept" = None
-    
     intendedUse: "CodeableConcept" = None
-    
     indicationCodeableConcept: "CodeableConcept" = None
-    
-    indicationCodeableConcept: "Reference" = None
-    
     status: "CodeableConcept" = None
     
     date: str = None
-    
     species: "CodeableConcept" = None
     
-
-
 @dataclass
 class MedicinalProduct(ModelBase):
     """ Detailed definition of a medicinal product, typically for uses other than direct patient care (e.g. regulatory use).
@@ -225,47 +155,10 @@ class MedicinalProduct(ModelBase):
     :param Reference masterFile: A master file for to the medicinal product (e.g. Pharmacovigilance System Master File)
     :param Reference contact: A product specific contact, person (in a role), or an organization
     :param Reference clinicalTrial: Clinical trials or studies that this product is involved in
-    :param BackboneElement name: The product's name, including full name and possibly coded parts
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str productName: The full product name
-    :param BackboneElement namePart: Coding words or phrases of the name
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str part: A fragment of a product name
-    :param Coding type: Idenifying type for this part of the name (e.g. strength part)
-    :param BackboneElement countryLanguage: Country where the name applies
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param CodeableConcept country: Country code for where this name applies
-    :param CodeableConcept jurisdiction: Jurisdiction code for where this name applies
-    :param CodeableConcept language: Language code for this name
+    :param Name name: The product's name, including full name and possibly coded parts
     :param Identifier crossReference: Reference to another product, e.g. for linking authorised to investigational product
-    :param BackboneElement manufacturingBusinessOperation: An operation applied to the product, for manufacturing or adminsitrative purpose
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param CodeableConcept operationType: The type of manufacturing operation
-    :param Identifier authorisationReferenceNumber: Regulatory authorization reference number
-    :param str effectiveDate: Regulatory authorization date
-    :param CodeableConcept confidentialityIndicator: To indicate if this proces is commercially confidential
-    :param Reference manufacturer: The manufacturer or establishment associated with the process
-    :param Reference regulator: A regulator which oversees the operation
-    :param BackboneElement specialDesignation: Indicates if the medicinal product has an orphan designation for the treatment of a rare disease
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param Identifier identifier: Identifier for the designation, or procedure number
-    :param CodeableConcept type: The type of special designation, e.g. orphan drug, minor use
-    :param CodeableConcept intendedUse: The intended use of the product, e.g. prevention, treatment
-    :param CodeableConcept indicationCodeableConcept: Condition for which the medicinal use applies
-    :param Reference indicationCodeableConcept: Condition for which the medicinal use applies
-    :param CodeableConcept status: For example granted, pending, expired or withdrawn
-    :param str date: Date when the designation was granted
-    :param CodeableConcept species: Animal species for which this applies
+    :param ManufacturingBusinessOperation manufacturingBusinessOperation: An operation applied to the product, for manufacturing or adminsitrative purpose
+    :param SpecialDesignation specialDesignation: Indicates if the medicinal product has an orphan designation for the treatment of a rare disease
     """
     id: str = None
     
@@ -315,85 +208,11 @@ class MedicinalProduct(ModelBase):
     
     clinicalTrial: list["Reference"] = None
     
-    name: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    productName: str = None
-    
-    namePart: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    part: str = None
-    
-    type: "Coding" = None
-    
-    countryLanguage: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    country: "CodeableConcept" = None
-    
-    jurisdiction: "CodeableConcept" = None
-    
-    language: "CodeableConcept" = None
+    name: list["Name"] = None
     
     crossReference: list["Identifier"] = None
     
-    manufacturingBusinessOperation: list["BackboneElement"] = None
+    manufacturingBusinessOperation: list["ManufacturingBusinessOperation"] = None
     
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    operationType: "CodeableConcept" = None
-    
-    authorisationReferenceNumber: "Identifier" = None
-    
-    effectiveDate: str = None
-    
-    confidentialityIndicator: "CodeableConcept" = None
-    
-    manufacturer: list["Reference"] = None
-    
-    regulator: "Reference" = None
-    
-    specialDesignation: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    identifier: list["Identifier"] = None
-    
-    type: "CodeableConcept" = None
-    
-    intendedUse: "CodeableConcept" = None
-    
-    indicationCodeableConcept: "CodeableConcept" = None
-    
-    indicationCodeableConcept: "Reference" = None
-    
-    status: "CodeableConcept" = None
-    
-    date: str = None
-    
-    species: "CodeableConcept" = None
+    specialDesignation: list["SpecialDesignation"] = None
     

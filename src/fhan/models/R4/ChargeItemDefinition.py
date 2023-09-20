@@ -1,43 +1,37 @@
 """
 Generated class for ChargeItemDefinition. 
-Time: 2023-09-20 10:09:03
+Time: 2023-09-20 20:29:43
 """
 from dataclasses import dataclass
-
 from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.UsageContext import *
-from fhan.models.R4.Period import *
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.Reference import *
-from fhan.models.R4.ContactDetail import *
-from fhan.models.R4.Extension import *
-from fhan.models.R4.Element import *
 from fhan.models.R4.Meta import *
-from fhan.models.R4.Identifier import *
-from fhan.models.R4.Resource import *
+from fhan.models.R4.BackboneElement import *
 from fhan.models.R4.Money import *
+from fhan.models.R4.Element import *
+from fhan.models.R4.Extension import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.ContactDetail import *
+from fhan.models.R4.UsageContext import *
+from fhan.models.R4.Reference import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Period import *
+from fhan.models.R4.Resource import *
 from fhan.models.generator_models import ModelBase
 
+    
+    
 @dataclass
-class applicability(Element):
-    """ Expressions that describe applicability criteria for the billing code.
-    :param BackboneElement applicability: Whether or not the billing code is applicable
-    :param str id: Unique id for inter-element referencing
+class Applicability(Element):
+    """ Expressions that describe applicability criteria for the billing code.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str description: Natural language description of the condition
     :param str language: Language of the expression
     :param str expression: Boolean-valued expression
-    :param BackboneElement applicability: Whether or not the billing code is applicable
     """
-    applicability: list["BackboneElement"] = None
-    
     id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
     
     description: str = None
     
@@ -45,17 +39,14 @@ class applicability(Element):
     
     expression: str = None
     
-    applicability: list["BackboneElement"] = None
+
+    
+        
+    
     
 @dataclass
-class propertyGroup(Element):
-    """ Group of properties which are applicable under the same conditions. If no applicability rules are established for the group, then all properties always apply.
-    :param BackboneElement propertyGroup: Group of properties which are applicable under the same conditions
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param BackboneElement priceComponent: Components of total line item price
-    :param str id: Unique id for inter-element referencing
+class PriceComponent(Element):
+    """ The price for a ChargeItem may be calculated as a base price with surcharges/deductions that apply in certain conditions. A ChargeItemDefinition resource that defines the prices, factors and conditions that apply to a billing code is currently under development. The priceComponent element can be used to offer transparency to the recipient of the Invoice of how the prices have been calculated.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str type: base | surcharge | deduction | discount | tax | informational
@@ -63,88 +54,31 @@ class propertyGroup(Element):
     :param float factor: Factor used for calculating this component
     :param Money amount: Monetary amount associated with this component
     """
-    propertyGroup: list["BackboneElement"] = None
-    
     id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    priceComponent: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
     
     type: str = None
-    
     code: "CodeableConcept" = None
     
     factor: float = None
-    
     amount: "Money" = None
     
-@dataclass
-class applicability(Element):
-    """ Expressions that describe applicability criteria for the billing code.
-    :param BackboneElement applicability: Whether or not the billing code is applicable
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str description: Natural language description of the condition
-    :param str language: Language of the expression
-    :param str expression: Boolean-valued expression
-    :param BackboneElement applicability: Whether or not the billing code is applicable
-    """
-    applicability: list["BackboneElement"] = None
+  
     
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    description: str = None
-    
-    language: str = None
-    
-    expression: str = None
-    
-    applicability: list["BackboneElement"] = None
     
 @dataclass
-class priceComponent(Element):
-    """ The price for a ChargeItem may be calculated as a base price with surcharges/deductions that apply in certain conditions. A ChargeItemDefinition resource that defines the prices, factors and conditions that apply to a billing code is currently under development. The priceComponent element can be used to offer transparency to the recipient of the Invoice of how the prices have been calculated.
-    :param BackboneElement priceComponent: Components of total line item price
-    :param str id: Unique id for inter-element referencing
+class PropertyGroup(Element):
+    """ Group of properties which are applicable under the same conditions. If no applicability rules are established for the group, then all properties always apply.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str type: base | surcharge | deduction | discount | tax | informational
-    :param CodeableConcept code: Code identifying the specific component
-    :param float factor: Factor used for calculating this component
-    :param Money amount: Monetary amount associated with this component
+    :param PriceComponent priceComponent: Components of total line item price
     """
-    priceComponent: list["BackboneElement"] = None
-    
     id: str = None
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
+    priceComponent: list[PriceComponent] = None
     
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    type: str = None
-    
-    code: "CodeableConcept" = None
-    
-    factor: float = None
-    
-    amount: "Money" = None
-    
-
-
 @dataclass
 class ChargeItemDefinition(ModelBase):
     """ The ChargeItemDefinition resource provides the properties that apply to the (billing) codes necessary to calculate costs and prices. The properties may differ largely depending on type and realm, therefore this resource gives only a rough structure and requires profiling for each type of billing code system.
@@ -177,26 +111,8 @@ class ChargeItemDefinition(ModelBase):
     :param Period effectivePeriod: When the charge item definition is expected to be used
     :param CodeableConcept code: Billing codes or product types this definition applies to
     :param Reference instance: Instances this definition applies to
-    :param BackboneElement applicability: Whether or not the billing code is applicable
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str description: Natural language description of the condition
-    :param str language: Language of the expression
-    :param str expression: Boolean-valued expression
-    :param BackboneElement propertyGroup: Group of properties which are applicable under the same conditions
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param BackboneElement applicability: Whether or not the billing code is applicable
-    :param BackboneElement priceComponent: Components of total line item price
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str type: base | surcharge | deduction | discount | tax | informational
-    :param CodeableConcept code: Code identifying the specific component
-    :param float factor: Factor used for calculating this component
-    :param Money amount: Monetary amount associated with this component
+    :param Applicability applicability: Whether or not the billing code is applicable
+    :param PropertyGroup propertyGroup: Group of properties which are applicable under the same conditions
     """
     id: str = None
     
@@ -256,43 +172,7 @@ class ChargeItemDefinition(ModelBase):
     
     instance: list["Reference"] = None
     
-    applicability: list["BackboneElement"] = None
+    applicability: list["Applicability"] = None
     
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    description: str = None
-    
-    language: str = None
-    
-    expression: str = None
-    
-    propertyGroup: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    applicability: list["BackboneElement"] = None
-    
-    priceComponent: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    type: str = None
-    
-    code: "CodeableConcept" = None
-    
-    factor: float = None
-    
-    amount: "Money" = None
+    propertyGroup: list["PropertyGroup"] = None
     

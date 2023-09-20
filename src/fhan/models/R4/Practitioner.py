@@ -1,30 +1,29 @@
 """
 Generated class for Practitioner. 
-Time: 2023-09-20 10:09:03
+Time: 2023-09-20 20:29:43
 """
 from dataclasses import dataclass
-
-from fhan.models.R4.HumanName import *
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.ContactPoint import *
-from fhan.models.R4.Attachment import *
-from fhan.models.R4.Period import *
 from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.Reference import *
-from fhan.models.R4.Extension import *
-from fhan.models.R4.Address import *
-from fhan.models.R4.Element import *
 from fhan.models.R4.Meta import *
+from fhan.models.R4.Attachment import *
+from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Element import *
+from fhan.models.R4.HumanName import *
+from fhan.models.R4.Extension import *
+from fhan.models.R4.ContactPoint import *
 from fhan.models.R4.Identifier import *
+from fhan.models.R4.Reference import *
+from fhan.models.R4.Address import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Period import *
 from fhan.models.R4.Resource import *
 from fhan.models.generator_models import ModelBase
 
+    
+    
 @dataclass
-class qualification(Element):
-    """ The official certifications, training, and licenses that authorize or otherwise pertain to the provision of care by the practitioner.  For example, a medical license issued by a medical board authorizing the practitioner to practice medicine within a certian locality.
-    :param BackboneElement qualification: Certification, licenses, or training pertaining to the provision of care
-    :param str id: Unique id for inter-element referencing
+class Qualification(Element):
+    """ The official certifications, training, and licenses that authorize or otherwise pertain to the provision of care by the practitioner.  For example, a medical license issued by a medical board authorizing the practitioner to practice medicine within a certian locality.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param Identifier identifier: An identifier for this qualification for the practitioner
@@ -32,24 +31,14 @@ class qualification(Element):
     :param Period period: Period during which the qualification is valid
     :param Reference issuer: Organization that regulates and issues the qualification
     """
-    qualification: list["BackboneElement"] = None
-    
     id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    identifier: list["Identifier"] = None
-    
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
+    identifier: list[Identifier] = None
     code: "CodeableConcept" = None
-    
     period: "Period" = None
-    
     issuer: "Reference" = None
     
-
-
 @dataclass
 class Practitioner(ModelBase):
     """ A person who is directly or indirectly involved in the provisioning of healthcare.
@@ -69,14 +58,7 @@ class Practitioner(ModelBase):
     :param str gender: male | female | other | unknown
     :param str birthDate: The date  on which the practitioner was born
     :param Attachment photo: Image of the person
-    :param BackboneElement qualification: Certification, licenses, or training pertaining to the provision of care
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param Identifier identifier: An identifier for this qualification for the practitioner
-    :param CodeableConcept code: Coded representation of the qualification
-    :param Period period: Period during which the qualification is valid
-    :param Reference issuer: Organization that regulates and issues the qualification
+    :param Qualification qualification: Certification, licenses, or training pertaining to the provision of care
     :param CodeableConcept communication: A language the practitioner can use in patient communication
     """
     id: str = None
@@ -111,21 +93,7 @@ class Practitioner(ModelBase):
     
     photo: list["Attachment"] = None
     
-    qualification: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    identifier: list["Identifier"] = None
-    
-    code: "CodeableConcept" = None
-    
-    period: "Period" = None
-    
-    issuer: "Reference" = None
+    qualification: list["Qualification"] = None
     
     communication: list["CodeableConcept"] = None
     

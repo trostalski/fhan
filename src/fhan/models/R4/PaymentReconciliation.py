@@ -1,27 +1,26 @@
 """
 Generated class for PaymentReconciliation. 
-Time: 2023-09-20 10:09:03
+Time: 2023-09-20 20:29:43
 """
 from dataclasses import dataclass
-
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Period import *
 from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.Reference import *
-from fhan.models.R4.Extension import *
-from fhan.models.R4.Element import *
 from fhan.models.R4.Meta import *
-from fhan.models.R4.Identifier import *
-from fhan.models.R4.Resource import *
+from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Money import *
+from fhan.models.R4.Element import *
+from fhan.models.R4.Extension import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.Reference import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Period import *
+from fhan.models.R4.Resource import *
 from fhan.models.generator_models import ModelBase
 
+    
+    
 @dataclass
-class detail(Element):
-    """ Distribution of the payment amount for a previously acknowledged payable.
-    :param BackboneElement detail: Settlement particulars
-    :param str id: Unique id for inter-element referencing
+class Detail(Element):
+    """ Distribution of the payment amount for a previously acknowledged payable.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param Identifier identifier: Business identifier of the payment detail
@@ -35,58 +34,40 @@ class detail(Element):
     :param Reference payee: Recipient of the payment
     :param Money amount: Amount allocated to this payable
     """
-    detail: list["BackboneElement"] = None
-    
     id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
     identifier: "Identifier" = None
-    
     predecessor: "Identifier" = None
-    
     type: "CodeableConcept" = None
-    
     request: "Reference" = None
-    
     submitter: "Reference" = None
-    
     response: "Reference" = None
     
     date: str = None
-    
     responsible: "Reference" = None
-    
     payee: "Reference" = None
-    
     amount: "Money" = None
     
+
+    
+    
 @dataclass
-class processNote(Element):
-    """ A note that describes or explains the processing in a human readable form.
-    :param BackboneElement processNote: Note concerning processing
-    :param str id: Unique id for inter-element referencing
+class ProcessNote(Element):
+    """ A note that describes or explains the processing in a human readable form.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str type: display | print | printoper
     :param str text: Note explanatory text
     """
-    processNote: list["BackboneElement"] = None
-    
     id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
     
     type: str = None
     
     text: str = None
     
-
-
 @dataclass
 class PaymentReconciliation(ModelBase):
     """ This resource provides the details including amount of a payment and allocates the payment items being paid.
@@ -110,27 +91,9 @@ class PaymentReconciliation(ModelBase):
     :param str paymentDate: When payment issued
     :param Money paymentAmount: Total amount of Payment
     :param Identifier paymentIdentifier: Business identifier for the payment
-    :param BackboneElement detail: Settlement particulars
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param Identifier identifier: Business identifier of the payment detail
-    :param Identifier predecessor: Business identifier of the prior payment detail
-    :param CodeableConcept type: Category of payment
-    :param Reference request: Request giving rise to the payment
-    :param Reference submitter: Submitter of the request
-    :param Reference response: Response committing to a payment
-    :param str date: Date of commitment to pay
-    :param Reference responsible: Contact for the response
-    :param Reference payee: Recipient of the payment
-    :param Money amount: Amount allocated to this payable
+    :param Detail detail: Settlement particulars
     :param CodeableConcept formCode: Printed form identifier
-    :param BackboneElement processNote: Note concerning processing
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str type: display | print | printoper
-    :param str text: Note explanatory text
+    :param ProcessNote processNote: Note concerning processing
     """
     id: str = None
     
@@ -172,45 +135,9 @@ class PaymentReconciliation(ModelBase):
     
     paymentIdentifier: "Identifier" = None
     
-    detail: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    identifier: "Identifier" = None
-    
-    predecessor: "Identifier" = None
-    
-    type: "CodeableConcept" = None
-    
-    request: "Reference" = None
-    
-    submitter: "Reference" = None
-    
-    response: "Reference" = None
-    
-    date: str = None
-    
-    responsible: "Reference" = None
-    
-    payee: "Reference" = None
-    
-    amount: "Money" = None
+    detail: list["Detail"] = None
     
     formCode: "CodeableConcept" = None
     
-    processNote: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    type: str = None
-    
-    text: str = None
+    processNote: list["ProcessNote"] = None
     

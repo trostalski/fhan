@@ -1,41 +1,28 @@
 """
 Generated class for GraphDefinition. 
-Time: 2023-09-20 10:09:03
+Time: 2023-09-20 20:29:43
 """
 from dataclasses import dataclass
-
 from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.UsageContext import *
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.ContactDetail import *
-from fhan.models.R4.Extension import *
 from fhan.models.R4.Meta import *
+from fhan.models.R4.BackboneElement import *
 from fhan.models.R4.Element import *
+from fhan.models.R4.Extension import *
+from fhan.models.R4.ContactDetail import *
+from fhan.models.R4.UsageContext import *
+from fhan.models.R4.Narrative import *
 from fhan.models.R4.Resource import *
 from fhan.models.generator_models import ModelBase
 
+    
+        
+    
+        
+    
+    
 @dataclass
-class link(Element):
-    """ Links this graph makes rules about.
-    :param BackboneElement link: Links this graph makes rules about
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str path: Path in the resource that contains the link
-    :param str sliceName: Which slice (if profiled)
-    :param int min: Minimum occurrences for this link
-    :param str max: Maximum occurrences for this link
-    :param str description: Why this link is specified
-    :param BackboneElement target: Potential target for the link
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str type: Type of resource this link refers to
-    :param str params: Criteria for reverse lookup
-    :param str profile: Profile for the target resource
-    :param BackboneElement compartment: Compartment Consistency Rules
-    :param str id: Unique id for inter-element referencing
+class Compartment(Element):
+    """ Compartment Consistency Rules.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str use: condition | requirement
@@ -43,15 +30,63 @@ class link(Element):
     :param str rule: identical | matching | different | custom
     :param str expression: Custom rule, as a FHIRPath expression
     :param str description: Documentation for FHIRPath expression
-    :param BackboneElement link: Links this graph makes rules about
     """
-    link: list["BackboneElement"] = None
-    
     id: str = None
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
     
-    extension: list["Extension"] = None
+    use: str = None
     
-    modifierExtension: list["Extension"] = None
+    code: str = None
+    
+    rule: str = None
+    
+    expression: str = None
+    
+    description: str = None
+    
+  
+    
+    
+@dataclass
+class Target(Element):
+    """ Potential target for the link.:param str id: Unique id for inter-element referencing
+    :param Extension extension: Additional content defined by implementations
+    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param str type: Type of resource this link refers to
+    :param str params: Criteria for reverse lookup
+    :param str profile: Profile for the target resource
+    :param Compartment compartment: Compartment Consistency Rules
+    """
+    id: str = None
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
+    
+    type: str = None
+    
+    params: str = None
+    
+    profile: str = None
+    compartment: list[Compartment] = None
+    
+  
+    
+    
+@dataclass
+class Link(Element):
+    """ Links this graph makes rules about.:param str id: Unique id for inter-element referencing
+    :param Extension extension: Additional content defined by implementations
+    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param str path: Path in the resource that contains the link
+    :param str sliceName: Which slice (if profiled)
+    :param int min: Minimum occurrences for this link
+    :param str max: Maximum occurrences for this link
+    :param str description: Why this link is specified
+    :param Target target: Potential target for the link
+    """
+    id: str = None
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
     
     path: str = None
     
@@ -62,208 +97,8 @@ class link(Element):
     max: str = None
     
     description: str = None
+    target: list[Target] = None
     
-    target: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    type: str = None
-    
-    params: str = None
-    
-    profile: str = None
-    
-    compartment: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    use: str = None
-    
-    code: str = None
-    
-    rule: str = None
-    
-    expression: str = None
-    
-    description: str = None
-    
-    link: list["BackboneElement"] = None
-    
-@dataclass
-class target(Element):
-    """ Potential target for the link.
-    :param BackboneElement target: Potential target for the link
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str type: Type of resource this link refers to
-    :param str params: Criteria for reverse lookup
-    :param str profile: Profile for the target resource
-    :param BackboneElement compartment: Compartment Consistency Rules
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str use: condition | requirement
-    :param str code: Patient | Encounter | RelatedPerson | Practitioner | Device
-    :param str rule: identical | matching | different | custom
-    :param str expression: Custom rule, as a FHIRPath expression
-    :param str description: Documentation for FHIRPath expression
-    """
-    target: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    type: str = None
-    
-    params: str = None
-    
-    profile: str = None
-    
-    compartment: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    use: str = None
-    
-    code: str = None
-    
-    rule: str = None
-    
-    expression: str = None
-    
-    description: str = None
-    
-@dataclass
-class compartment(Element):
-    """ Compartment Consistency Rules.
-    :param BackboneElement compartment: Compartment Consistency Rules
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str use: condition | requirement
-    :param str code: Patient | Encounter | RelatedPerson | Practitioner | Device
-    :param str rule: identical | matching | different | custom
-    :param str expression: Custom rule, as a FHIRPath expression
-    :param str description: Documentation for FHIRPath expression
-    """
-    compartment: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    use: str = None
-    
-    code: str = None
-    
-    rule: str = None
-    
-    expression: str = None
-    
-    description: str = None
-    
-@dataclass
-class link(Element):
-    """ Links this graph makes rules about.
-    :param BackboneElement link: Links this graph makes rules about
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str path: Path in the resource that contains the link
-    :param str sliceName: Which slice (if profiled)
-    :param int min: Minimum occurrences for this link
-    :param str max: Maximum occurrences for this link
-    :param str description: Why this link is specified
-    :param BackboneElement target: Potential target for the link
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str type: Type of resource this link refers to
-    :param str params: Criteria for reverse lookup
-    :param str profile: Profile for the target resource
-    :param BackboneElement compartment: Compartment Consistency Rules
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str use: condition | requirement
-    :param str code: Patient | Encounter | RelatedPerson | Practitioner | Device
-    :param str rule: identical | matching | different | custom
-    :param str expression: Custom rule, as a FHIRPath expression
-    :param str description: Documentation for FHIRPath expression
-    :param BackboneElement link: Links this graph makes rules about
-    """
-    link: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    path: str = None
-    
-    sliceName: str = None
-    
-    min: int = None
-    
-    max: str = None
-    
-    description: str = None
-    
-    target: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    type: str = None
-    
-    params: str = None
-    
-    profile: str = None
-    
-    compartment: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    use: str = None
-    
-    code: str = None
-    
-    rule: str = None
-    
-    expression: str = None
-    
-    description: str = None
-    
-    link: list["BackboneElement"] = None
-    
-
-
 @dataclass
 class GraphDefinition(ModelBase):
     """ A formal computable definition of a graph of resources - that is, a coherent set of resources that form a graph by following references. The Graph Definition resource defines a set and makes rules about the set.
@@ -289,32 +124,7 @@ class GraphDefinition(ModelBase):
     :param str purpose: Why this graph definition is defined
     :param str start: Type of resource at which the graph starts
     :param str profile: Profile on base resource
-    :param BackboneElement link: Links this graph makes rules about
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str path: Path in the resource that contains the link
-    :param str sliceName: Which slice (if profiled)
-    :param int min: Minimum occurrences for this link
-    :param str max: Maximum occurrences for this link
-    :param str description: Why this link is specified
-    :param BackboneElement target: Potential target for the link
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str type: Type of resource this link refers to
-    :param str params: Criteria for reverse lookup
-    :param str profile: Profile for the target resource
-    :param BackboneElement compartment: Compartment Consistency Rules
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str use: condition | requirement
-    :param str code: Patient | Encounter | RelatedPerson | Practitioner | Device
-    :param str rule: identical | matching | different | custom
-    :param str expression: Custom rule, as a FHIRPath expression
-    :param str description: Documentation for FHIRPath expression
-    :param BackboneElement link: Links this graph makes rules about
+    :param Link link: Links this graph makes rules about
     """
     id: str = None
     
@@ -360,55 +170,5 @@ class GraphDefinition(ModelBase):
     
     profile: str = None
     
-    link: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    path: str = None
-    
-    sliceName: str = None
-    
-    min: int = None
-    
-    max: str = None
-    
-    description: str = None
-    
-    target: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    type: str = None
-    
-    params: str = None
-    
-    profile: str = None
-    
-    compartment: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    use: str = None
-    
-    code: str = None
-    
-    rule: str = None
-    
-    expression: str = None
-    
-    description: str = None
-    
-    link: list["BackboneElement"] = None
+    link: list["Link"] = None
     

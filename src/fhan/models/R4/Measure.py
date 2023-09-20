@@ -1,211 +1,117 @@
 """
 Generated class for Measure. 
-Time: 2023-09-20 10:09:03
+Time: 2023-09-20 20:29:43
 """
 from dataclasses import dataclass
-
 from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.UsageContext import *
-from fhan.models.R4.Period import *
+from fhan.models.R4.Meta import *
 from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Element import *
+from fhan.models.R4.Extension import *
+from fhan.models.R4.Period import *
+from fhan.models.R4.RelatedArtifact import *
+from fhan.models.R4.Expression import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.ContactDetail import *
+from fhan.models.R4.UsageContext import *
 from fhan.models.R4.Narrative import *
 from fhan.models.R4.Reference import *
-from fhan.models.R4.RelatedArtifact import *
-from fhan.models.R4.ContactDetail import *
-from fhan.models.R4.Extension import *
-from fhan.models.R4.Expression import *
-from fhan.models.R4.Element import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Identifier import *
 from fhan.models.R4.Resource import *
 from fhan.models.generator_models import ModelBase
 
+    
+        
+    
+    
 @dataclass
-class group(Element):
-    """ A group of population criteria for the measure.
-    :param BackboneElement group: Population criteria group
-    :param str id: Unique id for inter-element referencing
+class Population(Element):
+    """ A population criteria for the measure.:param str id: Unique id for inter-element referencing
+    :param Extension extension: Additional content defined by implementations
+    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param CodeableConcept code: initial-population | numerator | numerator-exclusion | denominator | denominator-exclusion | denominator-exception | measure-population | measure-population-exclusion | measure-observation
+    :param str description: The human readable description of this population criteria
+    :param Expression criteria: The criteria that defines this population
+    """
+    id: str = None
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
+    code: "CodeableConcept" = None
+    
+    description: str = None
+    criteria: "Expression" = None
+    
+
+    
+        
+    
+    
+@dataclass
+class Component(Element):
+    """ A component of the stratifier criteria for the measure report, specified as either the name of a valid CQL expression defined within a referenced library or a valid FHIR Resource Path.:param str id: Unique id for inter-element referencing
+    :param Extension extension: Additional content defined by implementations
+    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param CodeableConcept code: Meaning of the stratifier component
+    :param str description: The human readable description of this stratifier component
+    :param Expression criteria: Component of how the measure should be stratified
+    """
+    id: str = None
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
+    code: "CodeableConcept" = None
+    
+    description: str = None
+    criteria: "Expression" = None
+    
+  
+    
+    
+@dataclass
+class Stratifier(Element):
+    """ The stratifier criteria for the measure report, specified as either the name of a valid CQL expression defined within a referenced library or a valid FHIR Resource Path.:param str id: Unique id for inter-element referencing
+    :param Extension extension: Additional content defined by implementations
+    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param CodeableConcept code: Meaning of the stratifier
+    :param str description: The human readable description of this stratifier
+    :param Expression criteria: How the measure should be stratified
+    :param Component component: Stratifier criteria component for the measure
+    """
+    id: str = None
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
+    code: "CodeableConcept" = None
+    
+    description: str = None
+    criteria: "Expression" = None
+    component: list[Component] = None
+    
+  
+    
+    
+@dataclass
+class Group(Element):
+    """ A group of population criteria for the measure.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param CodeableConcept code: Meaning of the group
     :param str description: Summary description
-    :param BackboneElement population: Population criteria
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param CodeableConcept code: initial-population | numerator | numerator-exclusion | denominator | denominator-exclusion | denominator-exception | measure-population | measure-population-exclusion | measure-observation
-    :param str description: The human readable description of this population criteria
-    :param Expression criteria: The criteria that defines this population
-    :param BackboneElement stratifier: Stratifier criteria for the measure
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param CodeableConcept code: Meaning of the stratifier
-    :param str description: The human readable description of this stratifier
-    :param Expression criteria: How the measure should be stratified
-    :param BackboneElement component: Stratifier criteria component for the measure
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param CodeableConcept code: Meaning of the stratifier component
-    :param str description: The human readable description of this stratifier component
-    :param Expression criteria: Component of how the measure should be stratified
+    :param Population population: Population criteria
+    :param Stratifier stratifier: Stratifier criteria for the measure
     """
-    group: list["BackboneElement"] = None
-    
     id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
     code: "CodeableConcept" = None
     
     description: str = None
+    population: list[Population] = None
+    stratifier: list[Stratifier] = None
     
-    population: list["BackboneElement"] = None
+
     
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    code: "CodeableConcept" = None
-    
-    description: str = None
-    
-    criteria: "Expression" = None
-    
-    stratifier: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    code: "CodeableConcept" = None
-    
-    description: str = None
-    
-    criteria: "Expression" = None
-    
-    component: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    code: "CodeableConcept" = None
-    
-    description: str = None
-    
-    criteria: "Expression" = None
     
 @dataclass
-class population(Element):
-    """ A population criteria for the measure.
-    :param BackboneElement population: Population criteria
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param CodeableConcept code: initial-population | numerator | numerator-exclusion | denominator | denominator-exclusion | denominator-exception | measure-population | measure-population-exclusion | measure-observation
-    :param str description: The human readable description of this population criteria
-    :param Expression criteria: The criteria that defines this population
-    """
-    population: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    code: "CodeableConcept" = None
-    
-    description: str = None
-    
-    criteria: "Expression" = None
-    
-@dataclass
-class stratifier(Element):
-    """ The stratifier criteria for the measure report, specified as either the name of a valid CQL expression defined within a referenced library or a valid FHIR Resource Path.
-    :param BackboneElement stratifier: Stratifier criteria for the measure
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param CodeableConcept code: Meaning of the stratifier
-    :param str description: The human readable description of this stratifier
-    :param Expression criteria: How the measure should be stratified
-    :param BackboneElement component: Stratifier criteria component for the measure
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param CodeableConcept code: Meaning of the stratifier component
-    :param str description: The human readable description of this stratifier component
-    :param Expression criteria: Component of how the measure should be stratified
-    """
-    stratifier: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    code: "CodeableConcept" = None
-    
-    description: str = None
-    
-    criteria: "Expression" = None
-    
-    component: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    code: "CodeableConcept" = None
-    
-    description: str = None
-    
-    criteria: "Expression" = None
-    
-@dataclass
-class component(Element):
-    """ A component of the stratifier criteria for the measure report, specified as either the name of a valid CQL expression defined within a referenced library or a valid FHIR Resource Path.
-    :param BackboneElement component: Stratifier criteria component for the measure
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param CodeableConcept code: Meaning of the stratifier component
-    :param str description: The human readable description of this stratifier component
-    :param Expression criteria: Component of how the measure should be stratified
-    """
-    component: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    code: "CodeableConcept" = None
-    
-    description: str = None
-    
-    criteria: "Expression" = None
-    
-@dataclass
-class supplementalData(Element):
-    """ The supplemental data criteria for the measure report, specified as either the name of a valid CQL expression within a referenced library, or a valid FHIR Resource Path.
-    :param BackboneElement supplementalData: What other data should be reported with the measure
-    :param str id: Unique id for inter-element referencing
+class SupplementalData(Element):
+    """ The supplemental data criteria for the measure report, specified as either the name of a valid CQL expression within a referenced library, or a valid FHIR Resource Path.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param CodeableConcept code: Meaning of the supplemental data
@@ -213,24 +119,15 @@ class supplementalData(Element):
     :param str description: The human readable description of this supplemental data
     :param Expression criteria: Expression describing additional data to be reported
     """
-    supplementalData: list["BackboneElement"] = None
-    
     id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
     code: "CodeableConcept" = None
-    
-    usage: list["CodeableConcept"] = None
+    usage: list[CodeableConcept] = None
     
     description: str = None
-    
     criteria: "Expression" = None
     
-
-
 @dataclass
 class Measure(ModelBase):
     """ Enforces the minimum information set for the measure metadata required by HL7 and other organizations that share and publish measures
@@ -251,7 +148,6 @@ class Measure(ModelBase):
     :param str status: draft | active | retired | unknown
     :param bool experimental: For testing purposes, not real usage
     :param CodeableConcept subjectCodeableConcept: E.g. Patient, Practitioner, RelatedPerson, Organization, Location, Device
-    :param Reference subjectCodeableConcept: E.g. Patient, Practitioner, RelatedPerson, Organization, Location, Device
     :param str date: Date last changed
     :param str publisher: Name of the publisher (organization or individual)
     :param ContactDetail contact: Contact details for the publisher
@@ -282,41 +178,8 @@ class Measure(ModelBase):
     :param CodeableConcept improvementNotation: increase | decrease
     :param str definition: Defined terms used in the measure documentation
     :param str guidance: Additional guidance for implementers
-    :param BackboneElement group: Population criteria group
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param CodeableConcept code: Meaning of the group
-    :param str description: Summary description
-    :param BackboneElement population: Population criteria
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param CodeableConcept code: initial-population | numerator | numerator-exclusion | denominator | denominator-exclusion | denominator-exception | measure-population | measure-population-exclusion | measure-observation
-    :param str description: The human readable description of this population criteria
-    :param Expression criteria: The criteria that defines this population
-    :param BackboneElement stratifier: Stratifier criteria for the measure
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param CodeableConcept code: Meaning of the stratifier
-    :param str description: The human readable description of this stratifier
-    :param Expression criteria: How the measure should be stratified
-    :param BackboneElement component: Stratifier criteria component for the measure
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param CodeableConcept code: Meaning of the stratifier component
-    :param str description: The human readable description of this stratifier component
-    :param Expression criteria: Component of how the measure should be stratified
-    :param BackboneElement supplementalData: What other data should be reported with the measure
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param CodeableConcept code: Meaning of the supplemental data
-    :param CodeableConcept usage: supplemental-data | risk-adjustment-factor
-    :param str description: The human readable description of this supplemental data
-    :param Expression criteria: Expression describing additional data to be reported
+    :param Group group: Population criteria group
+    :param SupplementalData supplementalData: What other data should be reported with the measure
     """
     id: str = None
     
@@ -351,8 +214,6 @@ class Measure(ModelBase):
     experimental: bool = None
     
     subjectCodeableConcept: "CodeableConcept" = None
-    
-    subjectCodeableConcept: "Reference" = None
     
     date: str = None
     
@@ -414,73 +275,7 @@ class Measure(ModelBase):
     
     guidance: str = None
     
-    group: list["BackboneElement"] = None
+    group: list["Group"] = None
     
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    code: "CodeableConcept" = None
-    
-    description: str = None
-    
-    population: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    code: "CodeableConcept" = None
-    
-    description: str = None
-    
-    criteria: "Expression" = None
-    
-    stratifier: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    code: "CodeableConcept" = None
-    
-    description: str = None
-    
-    criteria: "Expression" = None
-    
-    component: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    code: "CodeableConcept" = None
-    
-    description: str = None
-    
-    criteria: "Expression" = None
-    
-    supplementalData: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    code: "CodeableConcept" = None
-    
-    usage: list["CodeableConcept"] = None
-    
-    description: str = None
-    
-    criteria: "Expression" = None
+    supplementalData: list["SupplementalData"] = None
     

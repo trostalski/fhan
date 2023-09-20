@@ -1,70 +1,57 @@
 """
 Generated class for EpisodeOfCare. 
-Time: 2023-09-20 10:09:03
+Time: 2023-09-20 20:29:43
 """
 from dataclasses import dataclass
-
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Period import *
 from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.Reference import *
-from fhan.models.R4.Extension import *
-from fhan.models.R4.Element import *
 from fhan.models.R4.Meta import *
+from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Element import *
+from fhan.models.R4.Extension import *
 from fhan.models.R4.Identifier import *
+from fhan.models.R4.Reference import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Period import *
 from fhan.models.R4.Resource import *
 from fhan.models.generator_models import ModelBase
 
+    
+    
 @dataclass
-class statusHistory(Element):
-    """ The history of statuses that the EpisodeOfCare has been through (without requiring processing the history of the resource).
-    :param BackboneElement statusHistory: Past list of status codes (the current status may be included to cover the start date of the status)
-    :param str id: Unique id for inter-element referencing
+class StatusHistory(Element):
+    """ The history of statuses that the EpisodeOfCare has been through (without requiring processing the history of the resource).:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str status: planned | waitlist | active | onhold | finished | cancelled | entered-in-error
     :param Period period: Duration the EpisodeOfCare was in the specified status
     """
-    statusHistory: list["BackboneElement"] = None
-    
     id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
     
     status: str = None
-    
     period: "Period" = None
     
+
+    
+    
 @dataclass
-class diagnosis(Element):
-    """ The list of diagnosis relevant to this episode of care.
-    :param BackboneElement diagnosis: The list of diagnosis relevant to this episode of care
-    :param str id: Unique id for inter-element referencing
+class Diagnosis(Element):
+    """ The list of diagnosis relevant to this episode of care.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param Reference condition: Conditions/problems/diagnoses this episode of care is for
     :param CodeableConcept role: Role that this diagnosis has within the episode of care (e.g. admission, billing, discharge …)
     :param int rank: Ranking of the diagnosis (for each role type)
     """
-    diagnosis: list["BackboneElement"] = None
-    
     id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
     condition: "Reference" = None
-    
     role: "CodeableConcept" = None
     
     rank: int = None
     
-
-
 @dataclass
 class EpisodeOfCare(ModelBase):
     """ An association between a patient and an organization / healthcare provider(s) during which time encounters may occur. The managing organization assumes a level of responsibility for the patient during this time.
@@ -78,20 +65,9 @@ class EpisodeOfCare(ModelBase):
     :param Extension modifierExtension: Extensions that cannot be ignored
     :param Identifier identifier: Business Identifier(s) relevant for this EpisodeOfCare
     :param str status: planned | waitlist | active | onhold | finished | cancelled | entered-in-error
-    :param BackboneElement statusHistory: Past list of status codes (the current status may be included to cover the start date of the status)
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str status: planned | waitlist | active | onhold | finished | cancelled | entered-in-error
-    :param Period period: Duration the EpisodeOfCare was in the specified status
+    :param StatusHistory statusHistory: Past list of status codes (the current status may be included to cover the start date of the status)
     :param CodeableConcept type: Type/class  - e.g. specialist referral, disease management
-    :param BackboneElement diagnosis: The list of diagnosis relevant to this episode of care
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param Reference condition: Conditions/problems/diagnoses this episode of care is for
-    :param CodeableConcept role: Role that this diagnosis has within the episode of care (e.g. admission, billing, discharge …)
-    :param int rank: Ranking of the diagnosis (for each role type)
+    :param Diagnosis diagnosis: The list of diagnosis relevant to this episode of care
     :param Reference patient: The patient who is the focus of this episode of care
     :param Reference managingOrganization: Organization that assumes care
     :param Period period: Interval during responsibility is assumed
@@ -120,33 +96,11 @@ class EpisodeOfCare(ModelBase):
     
     status: str = None
     
-    statusHistory: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    status: str = None
-    
-    period: "Period" = None
+    statusHistory: list["StatusHistory"] = None
     
     type: list["CodeableConcept"] = None
     
-    diagnosis: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    condition: "Reference" = None
-    
-    role: "CodeableConcept" = None
-    
-    rank: int = None
+    diagnosis: list["Diagnosis"] = None
     
     patient: "Reference" = None
     

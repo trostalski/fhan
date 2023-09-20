@@ -1,38 +1,51 @@
 """
 Generated class for MedicationRequest. 
-Time: 2023-09-20 10:09:03
+Time: 2023-09-20 20:29:43
 """
 from dataclasses import dataclass
-
 from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Duration import *
-from fhan.models.R4.Period import *
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.Dosage import *
-from fhan.models.R4.Reference import *
-from fhan.models.R4.Extension import *
-from fhan.models.R4.Annotation import *
-from fhan.models.R4.Quantity import *
-from fhan.models.R4.Element import *
 from fhan.models.R4.Meta import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Annotation import *
+from fhan.models.R4.Element import *
+from fhan.models.R4.Extension import *
+from fhan.models.R4.Quantity import *
+from fhan.models.R4.Period import *
+from fhan.models.R4.Dosage import *
 from fhan.models.R4.Identifier import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Reference import *
+from fhan.models.R4.Duration import *
 from fhan.models.R4.Resource import *
 from fhan.models.generator_models import ModelBase
 
+    
+        
+    
+    
 @dataclass
-class dispenseRequest(Element):
-    """ Indicates the specific details for the dispense or medication supply part of a medication request (also known as a Medication Prescription or Medication Order).  Note that this information is not always sent with the order.  There may be in some settings (e.g. hospitals) institutional or system support for completing the dispense details in the pharmacy department.
-    :param BackboneElement dispenseRequest: Medication supply authorization
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param BackboneElement initialFill: First fill details
-    :param str id: Unique id for inter-element referencing
+class InitialFill(Element):
+    """ Indicates the quantity or duration for the first dispense of the medication.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param Quantity quantity: First fill quantity
     :param Duration duration: First fill duration
+    """
+    id: str = None
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
+    quantity: "Quantity" = None
+    duration: "Duration" = None
+    
+  
+    
+    
+@dataclass
+class DispenseRequest(Element):
+    """ Indicates the specific details for the dispense or medication supply part of a medication request (also known as a Medication Prescription or Medication Order).  Note that this information is not always sent with the order.  There may be in some settings (e.g. hospitals) institutional or system support for completing the dispense details in the pharmacy department.:param str id: Unique id for inter-element referencing
+    :param Extension extension: Additional content defined by implementations
+    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param InitialFill initialFill: First fill details
     :param Duration dispenseInterval: Minimum period of time between dispenses
     :param Period validityPeriod: Time period supply is authorized for
     :param int numberOfRepeatsAllowed: Number of refills authorized
@@ -40,87 +53,36 @@ class dispenseRequest(Element):
     :param Duration expectedSupplyDuration: Number of days supply per dispense
     :param Reference performer: Intended dispenser
     """
-    dispenseRequest: "BackboneElement" = None
-    
     id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    initialFill: "BackboneElement" = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    quantity: "Quantity" = None
-    
-    duration: "Duration" = None
-    
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
+    initialFill: "InitialFill" = None
     dispenseInterval: "Duration" = None
-    
     validityPeriod: "Period" = None
     
     numberOfRepeatsAllowed: int = None
-    
     quantity: "Quantity" = None
-    
     expectedSupplyDuration: "Duration" = None
-    
     performer: "Reference" = None
     
-@dataclass
-class initialFill(Element):
-    """ Indicates the quantity or duration for the first dispense of the medication.
-    :param BackboneElement initialFill: First fill details
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param Quantity quantity: First fill quantity
-    :param Duration duration: First fill duration
-    """
-    initialFill: "BackboneElement" = None
+
     
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    quantity: "Quantity" = None
-    
-    duration: "Duration" = None
     
 @dataclass
-class substitution(Element):
-    """ Indicates whether or not substitution can or should be part of the dispense. In some cases, substitution must happen, in other cases substitution must not happen. This block explains the prescriber's intent. If nothing is specified substitution may be done.
-    :param BackboneElement substitution: Any restrictions on medication substitution
-    :param str id: Unique id for inter-element referencing
+class Substitution(Element):
+    """ Indicates whether or not substitution can or should be part of the dispense. In some cases, substitution must happen, in other cases substitution must not happen. This block explains the prescriber's intent. If nothing is specified substitution may be done.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param bool allowedboolean: Whether substitution is allowed or not
-    :param CodeableConcept allowedboolean: Whether substitution is allowed or not
+    :param bool allowedBoolean: Whether substitution is allowed or not
     :param CodeableConcept reason: Why should (not) substitution be made
     """
-    substitution: "BackboneElement" = None
-    
     id: str = None
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
     
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    allowedboolean: bool = None
-    
-    allowedboolean: "CodeableConcept" = None
-    
+    allowedBoolean: bool = None
     reason: "CodeableConcept" = None
     
-
-
 @dataclass
 class MedicationRequest(ModelBase):
     """ An order or request for both supply of the medication and the instructions for administration of the medication to a patient. The resource is called "MedicationRequest" rather than "MedicationPrescription" or "MedicationOrder" to generalize the use across inpatient and outpatient settings, including care plans, etc., and to harmonize with workflow patterns.
@@ -139,10 +101,8 @@ class MedicationRequest(ModelBase):
     :param CodeableConcept category: Type of medication usage
     :param str priority: routine | urgent | asap | stat
     :param bool doNotPerform: True if request is prohibiting action
-    :param bool reportedboolean: Reported rather than primary record
-    :param Reference reportedboolean: Reported rather than primary record
+    :param bool reportedBoolean: Reported rather than primary record
     :param CodeableConcept medicationCodeableConcept: Medication to be taken
-    :param Reference medicationCodeableConcept: Medication to be taken
     :param Reference subject: Who or group medication request is for
     :param Reference encounter: Encounter created as part of encounter/admission/stay
     :param Reference supportingInformation: Information to support ordering of the medication
@@ -161,29 +121,8 @@ class MedicationRequest(ModelBase):
     :param Reference insurance: Associated insurance coverage
     :param Annotation note: Information about the prescription
     :param Dosage dosageInstruction: How the medication should be taken
-    :param BackboneElement dispenseRequest: Medication supply authorization
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param BackboneElement initialFill: First fill details
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param Quantity quantity: First fill quantity
-    :param Duration duration: First fill duration
-    :param Duration dispenseInterval: Minimum period of time between dispenses
-    :param Period validityPeriod: Time period supply is authorized for
-    :param int numberOfRepeatsAllowed: Number of refills authorized
-    :param Quantity quantity: Amount of medication to supply per dispense
-    :param Duration expectedSupplyDuration: Number of days supply per dispense
-    :param Reference performer: Intended dispenser
-    :param BackboneElement substitution: Any restrictions on medication substitution
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param bool allowedboolean: Whether substitution is allowed or not
-    :param CodeableConcept allowedboolean: Whether substitution is allowed or not
-    :param CodeableConcept reason: Why should (not) substitution be made
+    :param DispenseRequest dispenseRequest: Medication supply authorization
+    :param Substitution substitution: Any restrictions on medication substitution
     :param Reference priorPrescription: An order/prescription that is being replaced
     :param Reference detectedIssue: Clinical Issue with action
     :param Reference eventHistory: A list of events of interest in the lifecycle
@@ -218,13 +157,9 @@ class MedicationRequest(ModelBase):
     
     doNotPerform: bool = None
     
-    reportedboolean: bool = None
-    
-    reportedboolean: "Reference" = None
+    reportedBoolean: bool = None
     
     medicationCodeableConcept: "CodeableConcept" = None
-    
-    medicationCodeableConcept: "Reference" = None
     
     subject: "Reference" = None
     
@@ -262,51 +197,9 @@ class MedicationRequest(ModelBase):
     
     dosageInstruction: list["Dosage"] = None
     
-    dispenseRequest: "BackboneElement" = None
+    dispenseRequest: "DispenseRequest" = None
     
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    initialFill: "BackboneElement" = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    quantity: "Quantity" = None
-    
-    duration: "Duration" = None
-    
-    dispenseInterval: "Duration" = None
-    
-    validityPeriod: "Period" = None
-    
-    numberOfRepeatsAllowed: int = None
-    
-    quantity: "Quantity" = None
-    
-    expectedSupplyDuration: "Duration" = None
-    
-    performer: "Reference" = None
-    
-    substitution: "BackboneElement" = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    allowedboolean: bool = None
-    
-    allowedboolean: "CodeableConcept" = None
-    
-    reason: "CodeableConcept" = None
+    substitution: "Substitution" = None
     
     priorPrescription: "Reference" = None
     

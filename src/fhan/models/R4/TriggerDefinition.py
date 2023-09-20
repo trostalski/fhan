@@ -1,18 +1,14 @@
 """
 Generated class for TriggerDefinition. 
-Time: 2023-09-20 10:09:03
+Time: 2023-09-20 20:29:43
 """
 from dataclasses import dataclass
-
-from fhan.models.R4.Reference import *
 from fhan.models.R4.Extension import *
-from fhan.models.R4.Timing import *
 from fhan.models.R4.Expression import *
 from fhan.models.R4.DataRequirement import *
+from fhan.models.R4.Timing import *
+from fhan.models.R4.Reference import *
 from fhan.models.R4.Element import *
-
-
-
 
 @dataclass
 class TriggerDefinition(Element):
@@ -22,9 +18,6 @@ class TriggerDefinition(Element):
     :param str type: named-event | periodic | data-changed | data-added | data-modified | data-removed | data-accessed | data-access-ended
     :param str name: Name or URI that identifies the event
     :param Timing timingTiming: Timing of the event
-    :param Reference timingTiming: Timing of the event
-    :param str timingTiming: Timing of the event
-    :param str timingTiming: Timing of the event
     :param DataRequirement data: Triggering data of the event (multiple = 'and')
     :param Expression condition: Whether the event triggers (boolean expression)
     """
@@ -37,12 +30,6 @@ class TriggerDefinition(Element):
     name: str = None
     
     timingTiming: "Timing" = None
-    
-    timingTiming: "Reference" = None
-    
-    timingTiming: str = None
-    
-    timingTiming: str = None
     
     data: list["DataRequirement"] = None
     

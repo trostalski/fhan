@@ -1,25 +1,21 @@
 """
 Generated class for EventDefinition. 
-Time: 2023-09-20 10:09:03
+Time: 2023-09-20 20:29:43
 """
 from dataclasses import dataclass
-
-from fhan.models.R4.TriggerDefinition import *
 from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.UsageContext import *
+from fhan.models.R4.Meta import *
+from fhan.models.R4.TriggerDefinition import *
+from fhan.models.R4.Extension import *
 from fhan.models.R4.Period import *
+from fhan.models.R4.RelatedArtifact import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.ContactDetail import *
+from fhan.models.R4.UsageContext import *
 from fhan.models.R4.Narrative import *
 from fhan.models.R4.Reference import *
-from fhan.models.R4.RelatedArtifact import *
-from fhan.models.R4.ContactDetail import *
-from fhan.models.R4.Extension import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Identifier import *
 from fhan.models.R4.Resource import *
 from fhan.models.generator_models import ModelBase
-
-
-
 @dataclass
 class EventDefinition(ModelBase):
     """ The EventDefinition resource provides a reusable description of when a particular event can occur.
@@ -40,7 +36,6 @@ class EventDefinition(ModelBase):
     :param str status: draft | active | retired | unknown
     :param bool experimental: For testing purposes, not real usage
     :param CodeableConcept subjectCodeableConcept: Type of individual the event definition is focused on
-    :param Reference subjectCodeableConcept: Type of individual the event definition is focused on
     :param str date: Date last changed
     :param str publisher: Name of the publisher (organization or individual)
     :param ContactDetail contact: Contact details for the publisher
@@ -94,8 +89,6 @@ class EventDefinition(ModelBase):
     experimental: bool = None
     
     subjectCodeableConcept: "CodeableConcept" = None
-    
-    subjectCodeableConcept: "Reference" = None
     
     date: str = None
     

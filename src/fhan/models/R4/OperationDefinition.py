@@ -1,25 +1,64 @@
 """
 Generated class for OperationDefinition. 
-Time: 2023-09-20 10:09:03
+Time: 2023-09-20 20:29:43
 """
 from dataclasses import dataclass
-
 from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.UsageContext import *
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.ContactDetail import *
-from fhan.models.R4.Extension import *
 from fhan.models.R4.Meta import *
+from fhan.models.R4.BackboneElement import *
 from fhan.models.R4.Element import *
+from fhan.models.R4.Extension import *
+from fhan.models.R4.ContactDetail import *
+from fhan.models.R4.UsageContext import *
+from fhan.models.R4.Narrative import *
 from fhan.models.R4.Resource import *
 from fhan.models.generator_models import ModelBase
 
+    
+        
+    
+    
 @dataclass
-class parameter(Element):
-    """ The parameters for the operation/query.
-    :param BackboneElement parameter: Parameters for the operation/query
-    :param str id: Unique id for inter-element referencing
+class Binding(Element):
+    """ Binds to a value set if this parameter is coded (code, Coding, CodeableConcept).:param str id: Unique id for inter-element referencing
+    :param Extension extension: Additional content defined by implementations
+    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param str strength: required | extensible | preferred | example
+    :param str valueSet: Source of value set
+    """
+    id: str = None
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
+    
+    strength: str = None
+    
+    valueSet: str = None
+    
+
+    
+    
+@dataclass
+class ReferencedFrom(Element):
+    """ Identifies other resource parameters within the operation invocation that are expected to resolve to this resource.:param str id: Unique id for inter-element referencing
+    :param Extension extension: Additional content defined by implementations
+    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param str source: Referencing parameter
+    :param str sourceId: Element id of reference
+    """
+    id: str = None
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
+    
+    source: str = None
+    
+    sourceId: str = None
+    
+  
+    
+    
+@dataclass
+class Parameter(Element):
+    """ The parameters for the operation/query.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str name: Name in Parameters.parameter.name or in URL
@@ -30,27 +69,12 @@ class parameter(Element):
     :param str type: What type this parameter has
     :param str targetProfile: If type is Reference | canonical, allowed targets
     :param str searchType: number | date | string | token | reference | composite | quantity | uri | special
-    :param BackboneElement binding: ValueSet details if this is coded
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str strength: required | extensible | preferred | example
-    :param str valueSet: Source of value set
-    :param BackboneElement referencedFrom: References to this parameter
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str source: Referencing parameter
-    :param str sourceId: Element id of reference
-    :param BackboneElement part: Parameters for the operation/query
+    :param Binding binding: ValueSet details if this is coded
+    :param ReferencedFrom referencedFrom: References to this parameter
     """
-    parameter: list["BackboneElement"] = None
-    
     id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
     
     name: str = None
     
@@ -67,180 +91,28 @@ class parameter(Element):
     targetProfile: str = None
     
     searchType: str = None
+    binding: "Binding" = None
+    referencedFrom: list[ReferencedFrom] = None
     
-    binding: "BackboneElement" = None
+
     
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    strength: str = None
-    
-    valueSet: str = None
-    
-    referencedFrom: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    source: str = None
-    
-    sourceId: str = None
-    
-    part: list["BackboneElement"] = None
     
 @dataclass
-class binding(Element):
-    """ Binds to a value set if this parameter is coded (code, Coding, CodeableConcept).
-    :param BackboneElement binding: ValueSet details if this is coded
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str strength: required | extensible | preferred | example
-    :param str valueSet: Source of value set
-    """
-    binding: "BackboneElement" = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    strength: str = None
-    
-    valueSet: str = None
-    
-@dataclass
-class referencedFrom(Element):
-    """ Identifies other resource parameters within the operation invocation that are expected to resolve to this resource.
-    :param BackboneElement referencedFrom: References to this parameter
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str source: Referencing parameter
-    :param str sourceId: Element id of reference
-    """
-    referencedFrom: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    source: str = None
-    
-    sourceId: str = None
-    
-@dataclass
-class part(Element):
-    """ The parameters for the operation/query.
-    :param BackboneElement parameter: Parameters for the operation/query
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str name: Name in Parameters.parameter.name or in URL
-    :param str use: in | out
-    :param int min: Minimum Cardinality
-    :param str max: Maximum Cardinality (a number or *)
-    :param str documentation: Description of meaning/use
-    :param str type: What type this parameter has
-    :param str targetProfile: If type is Reference | canonical, allowed targets
-    :param str searchType: number | date | string | token | reference | composite | quantity | uri | special
-    :param BackboneElement binding: ValueSet details if this is coded
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str strength: required | extensible | preferred | example
-    :param str valueSet: Source of value set
-    :param BackboneElement referencedFrom: References to this parameter
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str source: Referencing parameter
-    :param str sourceId: Element id of reference
-    :param BackboneElement part: Parameters for the operation/query
-    """
-    parameter: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    name: str = None
-    
-    use: str = None
-    
-    min: int = None
-    
-    max: str = None
-    
-    documentation: str = None
-    
-    type: str = None
-    
-    targetProfile: str = None
-    
-    searchType: str = None
-    
-    binding: "BackboneElement" = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    strength: str = None
-    
-    valueSet: str = None
-    
-    referencedFrom: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    source: str = None
-    
-    sourceId: str = None
-    
-    part: list["BackboneElement"] = None
-    
-@dataclass
-class overload(Element):
-    """ Defines an appropriate combination of parameters to use when invoking this operation, to help code generators when generating overloaded parameter sets for this operation.
-    :param BackboneElement overload: Define overloaded variants for when  generating code
-    :param str id: Unique id for inter-element referencing
+class Overload(Element):
+    """ Defines an appropriate combination of parameters to use when invoking this operation, to help code generators when generating overloaded parameter sets for this operation.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str parameterName: Name of parameter to include in overload
     :param str comment: Comments to go on overload
     """
-    overload: list["BackboneElement"] = None
-    
     id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
     
     parameterName: str = None
     
     comment: str = None
     
-
-
 @dataclass
 class OperationDefinition(ModelBase):
     """ A formal computable definition of an operation (on the RESTful interface) or a named query (using the search interaction).
@@ -276,37 +148,8 @@ class OperationDefinition(ModelBase):
     :param bool instance: Invoke on an instance?
     :param str inputProfile: Validation information for in parameters
     :param str outputProfile: Validation information for out parameters
-    :param BackboneElement parameter: Parameters for the operation/query
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str name: Name in Parameters.parameter.name or in URL
-    :param str use: in | out
-    :param int min: Minimum Cardinality
-    :param str max: Maximum Cardinality (a number or *)
-    :param str documentation: Description of meaning/use
-    :param str type: What type this parameter has
-    :param str targetProfile: If type is Reference | canonical, allowed targets
-    :param str searchType: number | date | string | token | reference | composite | quantity | uri | special
-    :param BackboneElement binding: ValueSet details if this is coded
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str strength: required | extensible | preferred | example
-    :param str valueSet: Source of value set
-    :param BackboneElement referencedFrom: References to this parameter
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str source: Referencing parameter
-    :param str sourceId: Element id of reference
-    :param BackboneElement part: Parameters for the operation/query
-    :param BackboneElement overload: Define overloaded variants for when  generating code
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str parameterName: Name of parameter to include in overload
-    :param str comment: Comments to go on overload
+    :param Parameter parameter: Parameters for the operation/query
+    :param Overload overload: Define overloaded variants for when  generating code
     """
     id: str = None
     
@@ -372,65 +215,7 @@ class OperationDefinition(ModelBase):
     
     outputProfile: str = None
     
-    parameter: list["BackboneElement"] = None
+    parameter: list["Parameter"] = None
     
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    name: str = None
-    
-    use: str = None
-    
-    min: int = None
-    
-    max: str = None
-    
-    documentation: str = None
-    
-    type: str = None
-    
-    targetProfile: str = None
-    
-    searchType: str = None
-    
-    binding: "BackboneElement" = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    strength: str = None
-    
-    valueSet: str = None
-    
-    referencedFrom: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    source: str = None
-    
-    sourceId: str = None
-    
-    part: list["BackboneElement"] = None
-    
-    overload: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    parameterName: str = None
-    
-    comment: str = None
+    overload: list["Overload"] = None
     

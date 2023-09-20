@@ -1,73 +1,61 @@
 """
 Generated class for ResearchStudy. 
-Time: 2023-09-20 10:09:03
+Time: 2023-09-20 20:29:43
 """
 from dataclasses import dataclass
-
 from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Period import *
+from fhan.models.R4.Meta import *
 from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.Reference import *
-from fhan.models.R4.RelatedArtifact import *
-from fhan.models.R4.ContactDetail import *
-from fhan.models.R4.Extension import *
 from fhan.models.R4.Annotation import *
 from fhan.models.R4.Element import *
-from fhan.models.R4.Meta import *
+from fhan.models.R4.Extension import *
+from fhan.models.R4.Period import *
+from fhan.models.R4.RelatedArtifact import *
 from fhan.models.R4.Identifier import *
+from fhan.models.R4.ContactDetail import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Reference import *
 from fhan.models.R4.Resource import *
 from fhan.models.generator_models import ModelBase
 
+    
+    
 @dataclass
-class arm(Element):
-    """ Describes an expected sequence of events for one of the participants of a study.  E.g. Exposure to drug A, wash-out, exposure to drug B, wash-out, follow-up.
-    :param BackboneElement arm: Defined path through the study for a subject
-    :param str id: Unique id for inter-element referencing
+class Arm(Element):
+    """ Describes an expected sequence of events for one of the participants of a study.  E.g. Exposure to drug A, wash-out, exposure to drug B, wash-out, follow-up.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str name: Label for study arm
     :param CodeableConcept type: Categorization of study arm
     :param str description: Short explanation of study path
     """
-    arm: list["BackboneElement"] = None
-    
     id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
     
     name: str = None
-    
     type: "CodeableConcept" = None
     
     description: str = None
     
+
+    
+    
 @dataclass
-class objective(Element):
-    """ A goal that the study is aiming to achieve in terms of a scientific question to be answered by the analysis of data collected during the study.
-    :param BackboneElement objective: A goal for the study
-    :param str id: Unique id for inter-element referencing
+class Objective(Element):
+    """ A goal that the study is aiming to achieve in terms of a scientific question to be answered by the analysis of data collected during the study.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str name: Label for the objective
     :param CodeableConcept type: primary | secondary | exploratory
     """
-    objective: list["BackboneElement"] = None
-    
     id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
     
     name: str = None
-    
     type: "CodeableConcept" = None
     
-
-
 @dataclass
 class ResearchStudy(ModelBase):
     """ A process where a researcher or organization plans and then executes a series of steps intended to increase the field of healthcare-related knowledge.  This includes studies of safety, efficacy, comparative effectiveness and other information about medications, devices, therapies and other interventional and investigative techniques.  A ResearchStudy involves the gathering of information about human or animal subjects.
@@ -101,19 +89,8 @@ class ResearchStudy(ModelBase):
     :param Reference site: Facility where study activities are conducted
     :param CodeableConcept reasonStopped: accrual-goal-met | closed-due-to-toxicity | closed-due-to-lack-of-study-progress | temporarily-closed-per-study-design
     :param Annotation note: Comments made about the study
-    :param BackboneElement arm: Defined path through the study for a subject
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str name: Label for study arm
-    :param CodeableConcept type: Categorization of study arm
-    :param str description: Short explanation of study path
-    :param BackboneElement objective: A goal for the study
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str name: Label for the objective
-    :param CodeableConcept type: primary | secondary | exploratory
+    :param Arm arm: Defined path through the study for a subject
+    :param Objective objective: A goal for the study
     """
     id: str = None
     
@@ -175,29 +152,7 @@ class ResearchStudy(ModelBase):
     
     note: list["Annotation"] = None
     
-    arm: list["BackboneElement"] = None
+    arm: list["Arm"] = None
     
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    name: str = None
-    
-    type: "CodeableConcept" = None
-    
-    description: str = None
-    
-    objective: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    name: str = None
-    
-    type: "CodeableConcept" = None
+    objective: list["Objective"] = None
     

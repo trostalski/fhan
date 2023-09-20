@@ -1,26 +1,25 @@
 """
 Generated class for List. 
-Time: 2023-09-20 10:09:03
+Time: 2023-09-20 20:29:43
 """
 from dataclasses import dataclass
-
 from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Meta import *
 from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.Reference import *
-from fhan.models.R4.Extension import *
 from fhan.models.R4.Annotation import *
 from fhan.models.R4.Element import *
-from fhan.models.R4.Meta import *
+from fhan.models.R4.Extension import *
 from fhan.models.R4.Identifier import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Reference import *
 from fhan.models.R4.Resource import *
 from fhan.models.generator_models import ModelBase
 
+    
+    
 @dataclass
-class entry(Element):
-    """ Entries in this list.
-    :param BackboneElement entry: Entries in the list
-    :param str id: Unique id for inter-element referencing
+class Entry(Element):
+    """ Entries in this list.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param CodeableConcept flag: Status/Workflow information about this item
@@ -28,24 +27,16 @@ class entry(Element):
     :param str date: When item added to list
     :param Reference item: Actual entry
     """
-    entry: list["BackboneElement"] = None
-    
     id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
     flag: "CodeableConcept" = None
     
     deleted: bool = None
     
     date: str = None
-    
     item: "Reference" = None
     
-
-
 @dataclass
 class List(ModelBase):
     """ A list is a curated collection of resources.
@@ -68,14 +59,7 @@ class List(ModelBase):
     :param Reference source: Who and/or what defined the list contents (aka Author)
     :param CodeableConcept orderedBy: What order the list has
     :param Annotation note: Comments about the list
-    :param BackboneElement entry: Entries in the list
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param CodeableConcept flag: Status/Workflow information about this item
-    :param bool deleted: If this item is actually marked as deleted
-    :param str date: When item added to list
-    :param Reference item: Actual entry
+    :param Entry entry: Entries in the list
     :param CodeableConcept emptyReason: Why list is empty
     """
     id: str = None
@@ -116,21 +100,7 @@ class List(ModelBase):
     
     note: list["Annotation"] = None
     
-    entry: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    flag: "CodeableConcept" = None
-    
-    deleted: bool = None
-    
-    date: str = None
-    
-    item: "Reference" = None
+    entry: list["Entry"] = None
     
     emptyReason: "CodeableConcept" = None
     

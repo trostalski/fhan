@@ -1,70 +1,57 @@
 """
 Generated class for Account. 
-Time: 2023-09-20 10:09:03
+Time: 2023-09-20 20:29:43
 """
 from dataclasses import dataclass
-
 from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Period import *
+from fhan.models.R4.Meta import *
 from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Element import *
+from fhan.models.R4.Extension import *
+from fhan.models.R4.Period import *
+from fhan.models.R4.Identifier import *
 from fhan.models.R4.Narrative import *
 from fhan.models.R4.Reference import *
-from fhan.models.R4.Extension import *
-from fhan.models.R4.Element import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Identifier import *
 from fhan.models.R4.Resource import *
 from fhan.models.generator_models import ModelBase
 
+    
+    
 @dataclass
-class coverage(Element):
-    """ The party(s) that are responsible for covering the payment of this account, and what order should they be applied to the account.
-    :param BackboneElement coverage: The party(s) that are responsible for covering the payment of this account, and what order should they be applied to the account
-    :param str id: Unique id for inter-element referencing
+class Coverage(Element):
+    """ The party(s) that are responsible for covering the payment of this account, and what order should they be applied to the account.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param Reference coverage: The party(s), such as insurances, that may contribute to the payment of this account
     :param int priority: The priority of the coverage in the context of this account
     """
-    coverage: list["BackboneElement"] = None
-    
     id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
     coverage: "Reference" = None
     
     priority: int = None
     
+
+    
+    
 @dataclass
-class guarantor(Element):
-    """ The parties responsible for balancing the account if other payment options fall short.
-    :param BackboneElement guarantor: The parties ultimately responsible for balancing the Account
-    :param str id: Unique id for inter-element referencing
+class Guarantor(Element):
+    """ The parties responsible for balancing the account if other payment options fall short.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param Reference party: Responsible entity
     :param bool onHold: Credit or other hold applied
     :param Period period: Guarantee account during
     """
-    guarantor: list["BackboneElement"] = None
-    
     id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
     party: "Reference" = None
     
     onHold: bool = None
-    
     period: "Period" = None
     
-
-
 @dataclass
 class Account(ModelBase):
     """ A financial tool for tracking value accrued for a particular purpose.  In the healthcare field, used to track charges for a patient, cost centers, etc.
@@ -82,21 +69,10 @@ class Account(ModelBase):
     :param str name: Human-readable label
     :param Reference subject: The entity that caused the expenses
     :param Period servicePeriod: Transaction window
-    :param BackboneElement coverage: The party(s) that are responsible for covering the payment of this account, and what order should they be applied to the account
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param Reference coverage: The party(s), such as insurances, that may contribute to the payment of this account
-    :param int priority: The priority of the coverage in the context of this account
+    :param Coverage coverage: The party(s) that are responsible for covering the payment of this account, and what order should they be applied to the account
     :param Reference owner: Entity managing the Account
     :param str description: Explanation of purpose/use
-    :param BackboneElement guarantor: The parties ultimately responsible for balancing the Account
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param Reference party: Responsible entity
-    :param bool onHold: Credit or other hold applied
-    :param Period period: Guarantee account during
+    :param Guarantor guarantor: The parties ultimately responsible for balancing the Account
     :param Reference partOf: Reference to a parent Account
     """
     id: str = None
@@ -127,35 +103,13 @@ class Account(ModelBase):
     
     servicePeriod: "Period" = None
     
-    coverage: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    coverage: "Reference" = None
-    
-    priority: int = None
+    coverage: list["Coverage"] = None
     
     owner: "Reference" = None
     
     description: str = None
     
-    guarantor: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    party: "Reference" = None
-    
-    onHold: bool = None
-    
-    period: "Period" = None
+    guarantor: list["Guarantor"] = None
     
     partOf: "Reference" = None
     

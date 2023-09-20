@@ -40,7 +40,8 @@ class FhirPackage:
             elif resource_type == "ValueSet":
                 value_sets.append(content_json)
             else:
-                logger.info("Skipping file: %s.", filename)
+                # logger.info("Skipping file: %s.", filename)
+                continue
 
         return cls(code_systems, search_parameters, structure_definitions, value_sets)
 
@@ -75,4 +76,5 @@ def _read_fhir_package_npm(npm_file: BinaryIO) -> Iterator[Tuple[str, str]]:
                 if content is not None:
                     yield member.name, content.read().decode("utf-8")
             else:
-                logger.info("Skipping  entry: %s.", member.name)
+                # logger.info("Skipping  entry: %s.", member.name)
+                continue

@@ -1,58 +1,40 @@
 """
 Generated class for DeviceRequest. 
-Time: 2023-09-20 10:09:03
+Time: 2023-09-20 20:29:43
 """
 from dataclasses import dataclass
-
 from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Range import *
-from fhan.models.R4.Period import *
+from fhan.models.R4.Meta import *
 from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.Reference import *
-from fhan.models.R4.Extension import *
-from fhan.models.R4.Quantity import *
-from fhan.models.R4.Timing import *
+from fhan.models.R4.Range import *
 from fhan.models.R4.Annotation import *
 from fhan.models.R4.Element import *
-from fhan.models.R4.Meta import *
+from fhan.models.R4.Extension import *
+from fhan.models.R4.Quantity import *
+from fhan.models.R4.Period import *
 from fhan.models.R4.Identifier import *
+from fhan.models.R4.Timing import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Reference import *
 from fhan.models.R4.Resource import *
 from fhan.models.generator_models import ModelBase
 
+    
+    
 @dataclass
-class parameter(Element):
-    """ Specific parameters for the ordered item.  For example, the prism value for lenses.
-    :param BackboneElement parameter: Device details
-    :param str id: Unique id for inter-element referencing
+class Parameter(Element):
+    """ Specific parameters for the ordered item.  For example, the prism value for lenses.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param CodeableConcept code: Device detail
     :param CodeableConcept valueCodeableConcept: Value of detail
-    :param Quantity valueCodeableConcept: Value of detail
-    :param Range valueCodeableConcept: Value of detail
-    :param bool valueCodeableConcept: Value of detail
     """
-    parameter: list["BackboneElement"] = None
-    
     id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
     code: "CodeableConcept" = None
-    
     valueCodeableConcept: "CodeableConcept" = None
     
-    valueCodeableConcept: "Quantity" = None
-    
-    valueCodeableConcept: "Range" = None
-    
-    valueCodeableConcept: bool = None
-    
-
-
 @dataclass
 class DeviceRequest(ModelBase):
     """ Represents a request for a patient to employ a medical device. The device may be an implantable device, or an external assistive device, such as a walker.
@@ -74,21 +56,10 @@ class DeviceRequest(ModelBase):
     :param str intent: proposal | plan | directive | order | original-order | reflex-order | filler-order | instance-order | option
     :param str priority: routine | urgent | asap | stat
     :param Reference codeReference: Device requested
-    :param CodeableConcept codeReference: Device requested
-    :param BackboneElement parameter: Device details
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param CodeableConcept code: Device detail
-    :param CodeableConcept valueCodeableConcept: Value of detail
-    :param Quantity valueCodeableConcept: Value of detail
-    :param Range valueCodeableConcept: Value of detail
-    :param bool valueCodeableConcept: Value of detail
+    :param Parameter parameter: Device details
     :param Reference subject: Focus of request
     :param Reference encounter: Encounter motivating request
-    :param str occurrencedateTime: Desired time or schedule for use
-    :param Period occurrencedateTime: Desired time or schedule for use
-    :param Timing occurrencedateTime: Desired time or schedule for use
+    :param str occurrenceDateTime: Desired time or schedule for use
     :param str authoredOn: When recorded
     :param Reference requester: Who/what is requesting diagnostics
     :param CodeableConcept performerType: Filler role
@@ -136,35 +107,13 @@ class DeviceRequest(ModelBase):
     
     codeReference: "Reference" = None
     
-    codeReference: "CodeableConcept" = None
-    
-    parameter: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    code: "CodeableConcept" = None
-    
-    valueCodeableConcept: "CodeableConcept" = None
-    
-    valueCodeableConcept: "Quantity" = None
-    
-    valueCodeableConcept: "Range" = None
-    
-    valueCodeableConcept: bool = None
+    parameter: list["Parameter"] = None
     
     subject: "Reference" = None
     
     encounter: "Reference" = None
     
-    occurrencedateTime: str = None
-    
-    occurrencedateTime: "Period" = None
-    
-    occurrencedateTime: "Timing" = None
+    occurrenceDateTime: str = None
     
     authoredOn: str = None
     

@@ -1,27 +1,69 @@
 """
 Generated class for ImagingStudy. 
-Time: 2023-09-20 10:09:03
+Time: 2023-09-20 20:29:43
 """
 from dataclasses import dataclass
-
 from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Meta import *
 from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.Reference import *
-from fhan.models.R4.Extension import *
+from fhan.models.R4.Coding import *
 from fhan.models.R4.Annotation import *
 from fhan.models.R4.Element import *
-from fhan.models.R4.Meta import *
+from fhan.models.R4.Extension import *
 from fhan.models.R4.Identifier import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Reference import *
 from fhan.models.R4.Resource import *
-from fhan.models.R4.Coding import *
 from fhan.models.generator_models import ModelBase
 
+    
+        
+    
+    
 @dataclass
-class series(Element):
-    """ Each study has one or more series of images or other content.
-    :param BackboneElement series: Each study has one or more series of instances
-    :param str id: Unique id for inter-element referencing
+class Performer(Element):
+    """ Indicates who or what performed the series and how they were involved.:param str id: Unique id for inter-element referencing
+    :param Extension extension: Additional content defined by implementations
+    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param CodeableConcept function: Type of performance
+    :param Reference actor: Who performed the series
+    """
+    id: str = None
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
+    function: "CodeableConcept" = None
+    actor: "Reference" = None
+    
+
+    
+    
+@dataclass
+class Instance(Element):
+    """ A single SOP instance within the series, e.g. an image, or presentation state.:param str id: Unique id for inter-element referencing
+    :param Extension extension: Additional content defined by implementations
+    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param str uid: DICOM SOP Instance UID
+    :param Coding sopClass: DICOM class type
+    :param int number: The number of this instance in the series
+    :param str title: Description of instance
+    """
+    id: str = None
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
+    
+    uid: str = None
+    sopClass: "Coding" = None
+    
+    number: int = None
+    
+    title: str = None
+    
+  
+    
+    
+@dataclass
+class Series(Element):
+    """ Each study has one or more series of images or other content.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str uid: DICOM Series Instance UID for the series
@@ -34,129 +76,30 @@ class series(Element):
     :param Coding laterality: Body part laterality
     :param Reference specimen: Specimen imaged
     :param str started: When the series started
-    :param BackboneElement performer: Who performed the series
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param CodeableConcept function: Type of performance
-    :param Reference actor: Who performed the series
-    :param BackboneElement instance: A single SOP instance from the series
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str uid: DICOM SOP Instance UID
-    :param Coding sopClass: DICOM class type
-    :param int number: The number of this instance in the series
-    :param str title: Description of instance
+    :param Performer performer: Who performed the series
+    :param Instance instance: A single SOP instance from the series
     """
-    series: list["BackboneElement"] = None
-    
     id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
+    extension: list[Extension] = None
+    modifierExtension: list[Extension] = None
     
     uid: str = None
     
     number: int = None
-    
     modality: "Coding" = None
     
     description: str = None
     
     numberOfInstances: int = None
-    
-    endpoint: list["Reference"] = None
-    
+    endpoint: list[Reference] = None
     bodySite: "Coding" = None
-    
     laterality: "Coding" = None
-    
-    specimen: list["Reference"] = None
+    specimen: list[Reference] = None
     
     started: str = None
+    performer: list[Performer] = None
+    instance: list[Instance] = None
     
-    performer: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    function: "CodeableConcept" = None
-    
-    actor: "Reference" = None
-    
-    instance: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    uid: str = None
-    
-    sopClass: "Coding" = None
-    
-    number: int = None
-    
-    title: str = None
-    
-@dataclass
-class performer(Element):
-    """ Indicates who or what performed the series and how they were involved.
-    :param BackboneElement performer: Who performed the series
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param CodeableConcept function: Type of performance
-    :param Reference actor: Who performed the series
-    """
-    performer: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    function: "CodeableConcept" = None
-    
-    actor: "Reference" = None
-    
-@dataclass
-class instance(Element):
-    """ A single SOP instance within the series, e.g. an image, or presentation state.
-    :param BackboneElement instance: A single SOP instance from the series
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str uid: DICOM SOP Instance UID
-    :param Coding sopClass: DICOM class type
-    :param int number: The number of this instance in the series
-    :param str title: Description of instance
-    """
-    instance: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    uid: str = None
-    
-    sopClass: "Coding" = None
-    
-    number: int = None
-    
-    title: str = None
-    
-
-
 @dataclass
 class ImagingStudy(ModelBase):
     """ Representation of the content produced in a DICOM imaging study. A study comprises a set of series, each of which includes a set of Service-Object Pair Instances (SOP Instances - images or other data) acquired or produced in a common context.  A series is of only one modality (e.g. X-ray, CT, MR, ultrasound), but a study may have multiple series of different modalities.
@@ -187,34 +130,7 @@ class ImagingStudy(ModelBase):
     :param Reference reasonReference: Why was study performed
     :param Annotation note: User-defined comments
     :param str description: Institution-generated description
-    :param BackboneElement series: Each study has one or more series of instances
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str uid: DICOM Series Instance UID for the series
-    :param int number: Numeric identifier of this series
-    :param Coding modality: The modality of the instances in the series
-    :param str description: A short human readable summary of the series
-    :param int numberOfInstances: Number of Series Related Instances
-    :param Reference endpoint: Series access endpoint
-    :param Coding bodySite: Body part examined
-    :param Coding laterality: Body part laterality
-    :param Reference specimen: Specimen imaged
-    :param str started: When the series started
-    :param BackboneElement performer: Who performed the series
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param CodeableConcept function: Type of performance
-    :param Reference actor: Who performed the series
-    :param BackboneElement instance: A single SOP instance from the series
-    :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param str uid: DICOM SOP Instance UID
-    :param Coding sopClass: DICOM class type
-    :param int number: The number of this instance in the series
-    :param str title: Description of instance
+    :param Series series: Each study has one or more series of instances
     """
     id: str = None
     
@@ -270,59 +186,5 @@ class ImagingStudy(ModelBase):
     
     description: str = None
     
-    series: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    uid: str = None
-    
-    number: int = None
-    
-    modality: "Coding" = None
-    
-    description: str = None
-    
-    numberOfInstances: int = None
-    
-    endpoint: list["Reference"] = None
-    
-    bodySite: "Coding" = None
-    
-    laterality: "Coding" = None
-    
-    specimen: list["Reference"] = None
-    
-    started: str = None
-    
-    performer: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    function: "CodeableConcept" = None
-    
-    actor: "Reference" = None
-    
-    instance: list["BackboneElement"] = None
-    
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    uid: str = None
-    
-    sopClass: "Coding" = None
-    
-    number: int = None
-    
-    title: str = None
+    series: list["Series"] = None
     

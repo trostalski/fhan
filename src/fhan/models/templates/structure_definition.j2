@@ -15,11 +15,32 @@ from fhan.models.{{dir_name}}.{{structure_definition.base_class}} import *
 {% endif -%}
 {%- endif %}
 
+{% for element in structure_definition.backbone_generator_elements -%}
+@dataclass
+class {{element.name}}({{element.base_class}}):
+    """ {{element.description}}
+    {% for child in element.children -%}
+    {%- if child.is_primitive -%}
+    :param {{child.python_type.__name__}} {{child.name}}: {{child.short}}
+    {% else -%}
+    :param {{child.type}} {{child.name}}: {{child.short}}
+    {% endif -%}
+    {% endfor -%}
+    """
+    {%- for child in element.children -%}
+    {% if child.is_primitive %}
+    {{child.name}}: {{child.python_type.__name__}} = None
+    {% else %}
+    {{child.name}}: {%if child.is_array%}{%raw%}list[{%endraw%}{%endif%}"{{child.type}}"{%if child.is_array%}{%raw%}]{%endraw%}{%endif%} = None
+    {% endif -%}
+    {% endfor %}
+{% else -%}
+{% endfor %}
 
 @dataclass
 class {{structure_definition.type}}{% if structure_definition.base_class %}({{structure_definition.base_class}}){% endif %}:
     """ {{structure_definition.description}}
-    {% for element in structure_definition.elements -%}
+    {% for element in structure_definition.defined_generator_elements -%}
     {%- if element.is_primitive -%}
     :param {{element.python_type.__name__}} {{element.name}}: {{element.short}}
     {% else -%}
@@ -28,7 +49,7 @@ class {{structure_definition.type}}{% if structure_definition.base_class %}({{st
     {% endfor -%}
     """
 
-    {%- for element in structure_definition.elements -%}
+    {%- for element in structure_definition.defined_generator_elements -%}
     {% if element.is_primitive %}
     {{element.name}}: {{element.python_type.__name__}} = None
     {% else %}

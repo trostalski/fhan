@@ -34,7 +34,7 @@ class GeneratorElement:
     def __init__(self, element_definition: dict, name: str, type: str):
         self._element = element_definition
         self.type = type
-        self.path = element_definition["path"]
+        self.path: str = element_definition["path"]
         self.name = _escape_keyword(name) if name in PYTHON_KEYWORDS else name
         self.min, self.max = self._get_cardinalities()
         self.is_primitive = is_primitive_type(self.type)
@@ -57,12 +57,34 @@ class GeneratorElement:
         return float(min), float(max)
 
 
+class GeneratorBackboneElement(GeneratorElement):
+    def __init__(
+        self,
+        element_definition: dict,
+        name: str,
+        type: str,
+        children: list[GeneratorElement],
+    ):
+        super().__init__(element_definition, name, type)
+        self.children = children
+        self.base_class, self.base_import_string = _get_base_class(
+            kind=StructureDefinitionKinds.COMPLEX_TYPE.value, type=self.type
+        )
+
+
 class GeneratorStructureDefinition:
     """Represents a FHIR StructureDefinition that is used to generate downsream objects."""
 
     def __init__(self, structure_definition: dict):
         self._structure_definition = structure_definition
-        self.elements = self._initialize_elements()
+        self._element_definitions = structure_definition.get("snapshot", {}).get(
+            "element", []
+        )
+        self.generator_elements = self._initialize_elements(self._element_definitions)
+        (
+            self.backbone_generator_elements,
+            self.defined_generator_elements,
+        ) = self._filter_backbone_generator_elements(self.generator_elements)
         self.kind = self._structure_definition["kind"]
         self.is_primitive = self.kind == StructureDefinitionKinds.PRIMITIVE_TYPE.value
         self.id = self._structure_definition["id"]
@@ -70,31 +92,34 @@ class GeneratorStructureDefinition:
         self.description = self._structure_definition.get("description", "")
         self.short = self._structure_definition.get("short", "")
         self.type = self._structure_definition["type"]
-        self.base_class, self.base_import_string = self._get_base_class(self.type)
+        self.base_class, self.base_import_string = _get_base_class(
+            kind=self.kind, type=self.type
+        )
 
     @property
     def dependencies(self):
         """Unique list of dependencies for this StructureDefinition. Used to generate
         the import statements for the generated class."""
-        complex_types = [e.type for e in self.elements if not e.is_primitive]
+        complex_types = [e.type for e in self.generator_elements if not e.is_primitive]
         complex_types = [t for t in complex_types if t != self.type]
+        if self.backbone_generator_elements:
+            complex_types.append(self.backbone_generator_elements[0].base_class)
         return list(set(complex_types))
 
-    def _initialize_elements(self) -> list[GeneratorElement]:
+    def _initialize_elements(self, element_definitions) -> list[GeneratorElement]:
         """Parse elements from the StructureDefinition to explicitly resolve
         the element name and type."""
-        elements = self._structure_definition.get("snapshot", {}).get("element", [])
         parsed_elements = []
         [
-            parsed_elements.extend(self._parse_element(element))
-            for element in elements
+            parsed_elements.extend(self._parse_element(element_definition))
+            for element_definition in element_definitions
             if not is_root_path(
-                element["id"]
+                element_definition["id"]
             )  # skip root element of StructureDefinition, they dont have a type
         ]
         return parsed_elements
 
-    def _parse_element(self, element_definition: dict):
+    def _parse_element(self, element_definition: dict) -> list[GeneratorElement]:
         """Parse name and type of a single ElementDefinition. Choice elements are
         expanded into multiple elements with the choice string '[x]' being replaced
         by the type. Elements where the type can not be resolved are skipped."""
@@ -126,6 +151,34 @@ class GeneratorStructureDefinition:
 
         return result
 
+    def _filter_backbone_generator_elements(
+        self, elements: list[GeneratorElement]
+    ) -> tuple[list[GeneratorBackboneElement], list[GeneratorElement]]:
+        """Filters the given elements for BackboneElements and None-BackboneElements.
+        BackboneElements are Elements that defined within a resource."""
+        backbone_generator_elements = []
+        defined_generator_elements = []
+        for element in elements:
+            if element.type == "BackboneElement":
+                children = [
+                    e
+                    for e in self.generator_elements
+                    if e.path.startswith(element.path)
+                ]
+                backbone_generator_elements.append(
+                    GeneratorBackboneElement(
+                        element_definition=element._element,
+                        name=element.name,
+                        type=element.type,
+                        children=children,
+                    )
+                )
+                # backbone element is now defined, its children are not
+                defined_generator_elements.append(element)
+            else:
+                defined_generator_elements.append(element)
+        return backbone_generator_elements, defined_generator_elements
+
     def _resolve_missing_type(self, element_definition: dict):
         """Try to find an ElementDefinition with resolved type."""
         if element_definition.get("contentReference"):
@@ -154,30 +207,31 @@ class GeneratorStructureDefinition:
                 return element
         return None
 
-    def _get_base_class(self, type: str) -> tuple[str, str]:
-        """Returns the base class and its import string for a StructureDefinition.
-        The base class is determined by the kind of the StructureDefinition.
-        If the base class is generated by the generator, the import string is None."""
 
-        class_str = ModelBase.__name__
-        import_str = _import_string_for_path(os.path.abspath(__file__))
+def _get_base_class(kind: str, type: str) -> tuple[str, str]:
+    """Returns the base class and its import string for a StructureDefinition.
+    The base class is determined by the kind of the StructureDefinition.
+    If the base class is generated by the generator, the import string is None."""
 
-        if self.kind == StructureDefinitionKinds.RESOURCE.value:
-            if type == "DomainResource":
-                class_str = "Resource"
-                import_str = None
-        elif (
-            self.kind == StructureDefinitionKinds.PRIMITIVE_TYPE.value
-            or self.kind == StructureDefinitionKinds.COMPLEX_TYPE.value
-        ):
-            if type == "Element":
-                class_str = None
-                import_str = None
-            else:
-                class_str = "Element"
-                import_str = None
+    class_str = ModelBase.__name__
+    import_str = _import_string_for_path(os.path.abspath(__file__))
 
-        return class_str, import_str
+    if kind == StructureDefinitionKinds.RESOURCE.value:
+        if type == "DomainResource":
+            class_str = "Resource"
+            import_str = None
+    elif (
+        kind == StructureDefinitionKinds.PRIMITIVE_TYPE.value
+        or kind == StructureDefinitionKinds.COMPLEX_TYPE.value
+    ):
+        if type == "Element":
+            class_str = None
+            import_str = None
+        else:
+            class_str = "Element"
+            import_str = None
+
+    return class_str, import_str
 
 
 def _escape_keyword(name: str) -> str:

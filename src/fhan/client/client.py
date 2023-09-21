@@ -1,4 +1,3 @@
-from typing import Any
 import requests
 import logging
 
@@ -12,6 +11,10 @@ DEFAULT_FHIR_VERSION = ClientSettings.default_fhir_version
 
 
 class MetadataParser:
+    """
+    Parses the metadata from a FHIR server.
+    """
+
     def __init__(self, metadata: dict):
         self._metadata = metadata
         self.available_resource_types = self._get_available_resource_types()
@@ -27,6 +30,10 @@ class MetadataParser:
 
 
 class Client:
+    """
+    Client for interacting with a FHIR server.
+    """
+
     def __init__(self, base_url: str, fhir_version: str = DEFAULT_FHIR_VERSION):
         self._base_url = base_url if not base_url.endswith("/") else base_url[:-1]
         self._fhir_version = fhir_version

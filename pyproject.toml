@@ -3,7 +3,13 @@ name = "fhan"
 version = "0.1.0"
 description = "Add your description here"
 authors = [{ name = "Till Rostalski", email = "tillrostalski@gmail.com" }]
-dependencies = ["requests>=2.31.0", "jinja2>=3.1.2", "click>=8.1.7"]
+dependencies = [
+    "requests>=2.31.0",
+    "jinja2>=3.1.2",
+    "click>=8.1.7",
+    "stringcase>=1.2.0",
+    "fhirpathpy>=0.2.2",
+]
 readme = "README.md"
 requires-python = ">= 3.8"
 

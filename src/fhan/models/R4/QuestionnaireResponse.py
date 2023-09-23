@@ -1,19 +1,19 @@
 """
 Generated class for QuestionnaireResponse. 
-Time: 2023-09-20 20:39:03
+Time: 2023-09-23 23:45:33
 """
 from dataclasses import dataclass
-from fhan.models.R4.Element import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Resource import *
-from fhan.models.R4.Attachment import *
 from fhan.models.R4.Reference import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.Extension import *
+from fhan.models.R4.Attachment import *
+from fhan.models.R4.Quantity import *
 from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Element import *
+from fhan.models.R4.Resource import *
 from fhan.models.R4.Coding import *
 from fhan.models.R4.Narrative import *
-from fhan.models.R4.Identifier import *
-from fhan.models.R4.Quantity import *
-from fhan.models.R4.Extension import *
+from fhan.models.R4.Meta import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -28,8 +28,8 @@ class Answer(Element):
     :param bool valueBoolean: Single-valued answer to the question
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
     
     valueBoolean: bool = None
     
@@ -48,15 +48,15 @@ class Item(Element):
     :param Answer answer: The response(s) to the question
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
     
     linkId: str = None
     
     definition: str = None
     
     text: str = None
-    answer: list[Answer] = None
+    answer: list[Answer] = Answer() 
     
 
 @dataclass
@@ -86,39 +86,39 @@ class QuestionnaireResponse(ModelBase):
     resourceType: str = "QuestionnaireResponse"
     id: str = None
     
-    meta: "Meta" = None
+    meta: "Meta" = Meta()
     
     implicitRules: str = None
     
     language: str = None
     
-    text: "Narrative" = None
+    text: "Narrative" = Narrative()
     
-    contained: list["Resource"] = None
+    contained: list[Resource] = Resource() 
     
-    extension: list["Extension"] = None
+    extension: list[Extension] = Extension() 
     
-    modifierExtension: list["Extension"] = None
+    modifierExtension: list[Extension] = Extension() 
     
-    identifier: "Identifier" = None
+    identifier: "Identifier" = Identifier()
     
-    basedOn: list["Reference"] = None
+    basedOn: list[Reference] = Reference() 
     
-    partOf: list["Reference"] = None
+    partOf: list[Reference] = Reference() 
     
     questionnaire: str = None
     
     status: str = None
     
-    subject: "Reference" = None
+    subject: "Reference" = Reference()
     
-    encounter: "Reference" = None
+    encounter: "Reference" = Reference()
     
     authored: str = None
     
-    author: "Reference" = None
+    author: "Reference" = Reference()
     
-    source: "Reference" = None
+    source: "Reference" = Reference()
     
-    item: list["Item"] = None
+    item: list[Item] = Item() 
     

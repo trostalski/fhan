@@ -1,17 +1,17 @@
 """
 Generated class for ImmunizationRecommendation. 
-Time: 2023-09-20 20:39:03
+Time: 2023-09-23 23:45:33
 """
 from dataclasses import dataclass
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Resource import *
 from fhan.models.R4.Reference import *
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Narrative import *
 from fhan.models.R4.Identifier import *
-from fhan.models.R4.Element import *
 from fhan.models.R4.Extension import *
+from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Element import *
+from fhan.models.R4.Resource import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Meta import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -27,9 +27,9 @@ class DateCriterion(Element):
     :param str value: Recommended date
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
-    code: "CodeableConcept" = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
+    code: "CodeableConcept" = CodeableConcept()
     
     value: str = None
     
@@ -56,14 +56,14 @@ class Recommendation(Element):
     :param Reference supportingPatientInformation: Patient observations supporting recommendation
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
-    vaccineCode: list[CodeableConcept] = None
-    targetDisease: "CodeableConcept" = None
-    contraindicatedVaccineCode: list[CodeableConcept] = None
-    forecastStatus: "CodeableConcept" = None
-    forecastReason: list[CodeableConcept] = None
-    dateCriterion: list[DateCriterion] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
+    vaccineCode: list[CodeableConcept] = CodeableConcept() 
+    targetDisease: "CodeableConcept" = CodeableConcept()
+    contraindicatedVaccineCode: list[CodeableConcept] = CodeableConcept() 
+    forecastStatus: "CodeableConcept" = CodeableConcept()
+    forecastReason: list[CodeableConcept] = CodeableConcept() 
+    dateCriterion: list[DateCriterion] = DateCriterion() 
     
     description: str = None
     
@@ -72,8 +72,8 @@ class Recommendation(Element):
     doseNumberPositiveInt: int = None
     
     seriesDosesPositiveInt: int = None
-    supportingImmunization: list[Reference] = None
-    supportingPatientInformation: list[Reference] = None
+    supportingImmunization: list[Reference] = Reference() 
+    supportingPatientInformation: list[Reference] = Reference() 
     
 
 @dataclass
@@ -97,27 +97,27 @@ class ImmunizationRecommendation(ModelBase):
     resourceType: str = "ImmunizationRecommendation"
     id: str = None
     
-    meta: "Meta" = None
+    meta: "Meta" = Meta()
     
     implicitRules: str = None
     
     language: str = None
     
-    text: "Narrative" = None
+    text: "Narrative" = Narrative()
     
-    contained: list["Resource"] = None
+    contained: list[Resource] = Resource() 
     
-    extension: list["Extension"] = None
+    extension: list[Extension] = Extension() 
     
-    modifierExtension: list["Extension"] = None
+    modifierExtension: list[Extension] = Extension() 
     
-    identifier: list["Identifier"] = None
+    identifier: list[Identifier] = Identifier() 
     
-    patient: "Reference" = None
+    patient: "Reference" = Reference()
     
     date: str = None
     
-    authority: "Reference" = None
+    authority: "Reference" = Reference()
     
-    recommendation: list["Recommendation"] = None
+    recommendation: list[Recommendation] = Recommendation() 
     

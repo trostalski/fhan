@@ -1,18 +1,18 @@
 """
 Generated class for List. 
-Time: 2023-09-20 20:39:03
+Time: 2023-09-23 23:45:33
 """
 from dataclasses import dataclass
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Resource import *
-from fhan.models.R4.Reference import *
-from fhan.models.R4.BackboneElement import *
 from fhan.models.R4.Annotation import *
-from fhan.models.R4.Narrative import *
+from fhan.models.R4.Reference import *
 from fhan.models.R4.Identifier import *
-from fhan.models.R4.Element import *
 from fhan.models.R4.Extension import *
+from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Element import *
+from fhan.models.R4.Resource import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Meta import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -28,14 +28,14 @@ class Entry(Element):
     :param Reference item: Actual entry
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
-    flag: "CodeableConcept" = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
+    flag: "CodeableConcept" = CodeableConcept()
     
     deleted: bool = None
     
     date: str = None
-    item: "Reference" = None
+    item: "Reference" = Reference()
     
 
 @dataclass
@@ -67,21 +67,21 @@ class List(ModelBase):
     resourceType: str = "List"
     id: str = None
     
-    meta: "Meta" = None
+    meta: "Meta" = Meta()
     
     implicitRules: str = None
     
     language: str = None
     
-    text: "Narrative" = None
+    text: "Narrative" = Narrative()
     
-    contained: list["Resource"] = None
+    contained: list[Resource] = Resource() 
     
-    extension: list["Extension"] = None
+    extension: list[Extension] = Extension() 
     
-    modifierExtension: list["Extension"] = None
+    modifierExtension: list[Extension] = Extension() 
     
-    identifier: list["Identifier"] = None
+    identifier: list[Identifier] = Identifier() 
     
     status: str = None
     
@@ -89,21 +89,21 @@ class List(ModelBase):
     
     title: str = None
     
-    code: "CodeableConcept" = None
+    code: "CodeableConcept" = CodeableConcept()
     
-    subject: "Reference" = None
+    subject: "Reference" = Reference()
     
-    encounter: "Reference" = None
+    encounter: "Reference" = Reference()
     
     date: str = None
     
-    source: "Reference" = None
+    source: "Reference" = Reference()
     
-    orderedBy: "CodeableConcept" = None
+    orderedBy: "CodeableConcept" = CodeableConcept()
     
-    note: list["Annotation"] = None
+    note: list[Annotation] = Annotation() 
     
-    entry: list["Entry"] = None
+    entry: list[Entry] = Entry() 
     
-    emptyReason: "CodeableConcept" = None
+    emptyReason: "CodeableConcept" = CodeableConcept()
     

@@ -1,21 +1,21 @@
 """
 Generated class for CarePlan. 
-Time: 2023-09-20 20:39:03
+Time: 2023-09-23 23:45:33
 """
 from dataclasses import dataclass
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Element import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Resource import *
-from fhan.models.R4.Timing import *
-from fhan.models.R4.Reference import *
-from fhan.models.R4.BackboneElement import *
 from fhan.models.R4.Annotation import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.Period import *
+from fhan.models.R4.Reference import *
 from fhan.models.R4.Identifier import *
-from fhan.models.R4.Quantity import *
 from fhan.models.R4.Extension import *
+from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Period import *
+from fhan.models.R4.Quantity import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Timing import *
+from fhan.models.R4.Element import *
+from fhan.models.R4.Resource import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Meta import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -46,29 +46,29 @@ class Detail(Element):
     :param str description: Extra info describing activity to perform
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
     
     kind: str = None
     
     instantiatesCanonical: str = None
     
     instantiatesUri: str = None
-    code: "CodeableConcept" = None
-    reasonCode: list[CodeableConcept] = None
-    reasonReference: list[Reference] = None
-    goal: list[Reference] = None
+    code: "CodeableConcept" = CodeableConcept()
+    reasonCode: list[CodeableConcept] = CodeableConcept() 
+    reasonReference: list[Reference] = Reference() 
+    goal: list[Reference] = Reference() 
     
     status: str = None
-    statusReason: "CodeableConcept" = None
+    statusReason: "CodeableConcept" = CodeableConcept()
     
     doNotPerform: bool = None
-    scheduledTiming: "Timing" = None
-    location: "Reference" = None
-    performer: list[Reference] = None
-    productCodeableConcept: "CodeableConcept" = None
-    dailyAmount: "Quantity" = None
-    quantity: "Quantity" = None
+    scheduledTiming: "Timing" = Timing()
+    location: "Reference" = Reference()
+    performer: list[Reference] = Reference() 
+    productCodeableConcept: "CodeableConcept" = CodeableConcept()
+    dailyAmount: "Quantity" = Quantity()
+    quantity: "Quantity" = Quantity()
     
     description: str = None
     
@@ -88,13 +88,13 @@ class Activity(Element):
     :param Detail detail: In-line definition of activity
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
-    outcomeCodeableConcept: list[CodeableConcept] = None
-    outcomeReference: list[Reference] = None
-    progress: list[Annotation] = None
-    reference: "Reference" = None
-    detail: "Detail" = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
+    outcomeCodeableConcept: list[CodeableConcept] = CodeableConcept() 
+    outcomeReference: list[Reference] = Reference() 
+    progress: list[Annotation] = Annotation() 
+    reference: "Reference" = Reference()
+    detail: "Detail" = Detail()
     
 
 @dataclass
@@ -136,63 +136,63 @@ class CarePlan(ModelBase):
     resourceType: str = "CarePlan"
     id: str = None
     
-    meta: "Meta" = None
+    meta: "Meta" = Meta()
     
     implicitRules: str = None
     
     language: str = None
     
-    text: "Narrative" = None
+    text: "Narrative" = Narrative()
     
-    contained: list["Resource"] = None
+    contained: list[Resource] = Resource() 
     
-    extension: list["Extension"] = None
+    extension: list[Extension] = Extension() 
     
-    modifierExtension: list["Extension"] = None
+    modifierExtension: list[Extension] = Extension() 
     
-    identifier: list["Identifier"] = None
+    identifier: list[Identifier] = Identifier() 
     
     instantiatesCanonical: str = None
     
     instantiatesUri: str = None
     
-    basedOn: list["Reference"] = None
+    basedOn: list[Reference] = Reference() 
     
-    replaces: list["Reference"] = None
+    replaces: list[Reference] = Reference() 
     
-    partOf: list["Reference"] = None
+    partOf: list[Reference] = Reference() 
     
     status: str = None
     
     intent: str = None
     
-    category: list["CodeableConcept"] = None
+    category: list[CodeableConcept] = CodeableConcept() 
     
     title: str = None
     
     description: str = None
     
-    subject: "Reference" = None
+    subject: "Reference" = Reference()
     
-    encounter: "Reference" = None
+    encounter: "Reference" = Reference()
     
-    period: "Period" = None
+    period: "Period" = Period()
     
     created: str = None
     
-    author: "Reference" = None
+    author: "Reference" = Reference()
     
-    contributor: list["Reference"] = None
+    contributor: list[Reference] = Reference() 
     
-    careTeam: list["Reference"] = None
+    careTeam: list[Reference] = Reference() 
     
-    addresses: list["Reference"] = None
+    addresses: list[Reference] = Reference() 
     
-    supportingInfo: list["Reference"] = None
+    supportingInfo: list[Reference] = Reference() 
     
-    goal: list["Reference"] = None
+    goal: list[Reference] = Reference() 
     
-    activity: list["Activity"] = None
+    activity: list[Activity] = Activity() 
     
-    note: list["Annotation"] = None
+    note: list[Annotation] = Annotation() 
     

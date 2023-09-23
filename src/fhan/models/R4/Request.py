@@ -1,14 +1,14 @@
 """
 Generated class for Request. 
-Time: 2023-09-20 20:39:03
+Time: 2023-09-23 23:45:33
 """
 from dataclasses import dataclass
+from fhan.models.R4.Annotation import *
+from fhan.models.R4.Reference import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.Period import *
 from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Timing import *
-from fhan.models.R4.Reference import *
-from fhan.models.R4.Annotation import *
-from fhan.models.R4.Period import *
-from fhan.models.R4.Identifier import *
 from fhan.models.generator_models import ModelBase
 
 @dataclass
@@ -43,21 +43,21 @@ class Request(ModelBase):
     """
 
     resourceType: str = "Request"
-    identifier: list["Identifier"] = None
+    identifier: list[Identifier] = Identifier() 
     
     instantiatesCanonical: str = None
     
     instantiatesUri: str = None
     
-    basedOn: list["Reference"] = None
+    basedOn: list[Reference] = Reference() 
     
-    replaces: list["Reference"] = None
+    replaces: list[Reference] = Reference() 
     
-    groupIdentifier: "Identifier" = None
+    groupIdentifier: "Identifier" = Identifier()
     
     status: str = None
     
-    statusReason: "CodeableConcept" = None
+    statusReason: "CodeableConcept" = CodeableConcept()
     
     intent: str = None
     
@@ -65,33 +65,33 @@ class Request(ModelBase):
     
     doNotPerform: bool = None
     
-    code: "CodeableConcept" = None
+    code: "CodeableConcept" = CodeableConcept()
     
-    subject: "Reference" = None
+    subject: "Reference" = Reference()
     
-    encounter: "Reference" = None
+    encounter: "Reference" = Reference()
     
     occurrenceDateTime: str = None
     
     authoredOn: str = None
     
-    requester: "Reference" = None
+    requester: "Reference" = Reference()
     
     reportedBoolean: bool = None
     
-    performerType: "CodeableConcept" = None
+    performerType: "CodeableConcept" = CodeableConcept()
     
-    performer: "Reference" = None
+    performer: "Reference" = Reference()
     
-    reasonCode: list["CodeableConcept"] = None
+    reasonCode: list[CodeableConcept] = CodeableConcept() 
     
-    reasonReference: list["Reference"] = None
+    reasonReference: list[Reference] = Reference() 
     
-    insurance: list["Reference"] = None
+    insurance: list[Reference] = Reference() 
     
-    supportingInfo: list["Reference"] = None
+    supportingInfo: list[Reference] = Reference() 
     
-    note: list["Annotation"] = None
+    note: list[Annotation] = Annotation() 
     
-    relevantHistory: list["Reference"] = None
+    relevantHistory: list[Reference] = Reference() 
     

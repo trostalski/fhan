@@ -1,20 +1,20 @@
 """
 Generated class for StructureDefinition. 
-Time: 2023-09-20 20:39:03
+Time: 2023-09-23 23:45:33
 """
 from dataclasses import dataclass
-from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.ContactDetail import *
-from fhan.models.R4.UsageContext import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.Extension import *
+from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.ElementDefinition import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Resource import *
 from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Element import *
+from fhan.models.R4.UsageContext import *
+from fhan.models.R4.Resource import *
 from fhan.models.R4.Coding import *
 from fhan.models.R4.Narrative import *
-from fhan.models.R4.Identifier import *
-from fhan.models.R4.Element import *
-from fhan.models.R4.Extension import *
+from fhan.models.R4.Meta import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -30,8 +30,8 @@ class Mapping(Element):
     :param str comment: Versions, Issues, Scope limitations etc.
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
     
     identity: str = None
     
@@ -54,8 +54,8 @@ class Context(Element):
     :param str contextInvariant: FHIRPath invariants - when the extension can be used
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
     
     type: str = None
     
@@ -74,9 +74,9 @@ class Snapshot(Element):
     :param ElementDefinition element: Definition of elements in the resource (if no StructureDefinition)
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
-    element: list[ElementDefinition] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
+    element: list[ElementDefinition] = ElementDefinition() 
     
 
     
@@ -89,9 +89,9 @@ class Differential(Element):
     :param ElementDefinition element: Definition of elements in the resource (if no StructureDefinition)
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
-    element: list[ElementDefinition] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
+    element: list[ElementDefinition] = ElementDefinition() 
     
 
 @dataclass
@@ -136,23 +136,23 @@ class StructureDefinition(ModelBase):
     resourceType: str = "StructureDefinition"
     id: str = None
     
-    meta: "Meta" = None
+    meta: "Meta" = Meta()
     
     implicitRules: str = None
     
     language: str = None
     
-    text: "Narrative" = None
+    text: "Narrative" = Narrative()
     
-    contained: list["Resource"] = None
+    contained: list[Resource] = Resource() 
     
-    extension: list["Extension"] = None
+    extension: list[Extension] = Extension() 
     
-    modifierExtension: list["Extension"] = None
+    modifierExtension: list[Extension] = Extension() 
     
     url: str = None
     
-    identifier: list["Identifier"] = None
+    identifier: list[Identifier] = Identifier() 
     
     version: str = None
     
@@ -168,29 +168,29 @@ class StructureDefinition(ModelBase):
     
     publisher: str = None
     
-    contact: list["ContactDetail"] = None
+    contact: list[ContactDetail] = ContactDetail() 
     
     description: str = None
     
-    useContext: list["UsageContext"] = None
+    useContext: list[UsageContext] = UsageContext() 
     
-    jurisdiction: list["CodeableConcept"] = None
+    jurisdiction: list[CodeableConcept] = CodeableConcept() 
     
     purpose: str = None
     
     copyright: str = None
     
-    keyword: list["Coding"] = None
+    keyword: list[Coding] = Coding() 
     
     fhirVersion: str = None
     
-    mapping: list["Mapping"] = None
+    mapping: list[Mapping] = Mapping() 
     
     kind: str = None
     
     abstract: bool = None
     
-    context: list["Context"] = None
+    context: list[Context] = Context() 
     
     type: str = None
     
@@ -198,7 +198,7 @@ class StructureDefinition(ModelBase):
     
     derivation: str = None
     
-    snapshot: "Snapshot" = None
+    snapshot: "Snapshot" = Snapshot()
     
-    differential: "Differential" = None
+    differential: "Differential" = Differential()
     

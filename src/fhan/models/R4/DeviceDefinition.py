@@ -1,22 +1,22 @@
 """
 Generated class for DeviceDefinition. 
-Time: 2023-09-20 20:39:03
+Time: 2023-09-23 23:45:33
 """
 from dataclasses import dataclass
+from fhan.models.R4.Annotation import *
+from fhan.models.R4.Reference import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.Extension import *
 from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.ContactPoint import *
+from fhan.models.R4.Quantity import *
 from fhan.models.R4.ProdCharacteristic import *
+from fhan.models.R4.BackboneElement import *
 from fhan.models.R4.Element import *
-from fhan.models.R4.Meta import *
 from fhan.models.R4.Resource import *
 from fhan.models.R4.ProductShelfLife import *
-from fhan.models.R4.Reference import *
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Annotation import *
 from fhan.models.R4.Narrative import *
-from fhan.models.R4.ContactPoint import *
-from fhan.models.R4.Identifier import *
-from fhan.models.R4.Quantity import *
-from fhan.models.R4.Extension import *
+from fhan.models.R4.Meta import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -31,8 +31,8 @@ class UdiDeviceIdentifier(Element):
     :param str jurisdiction: The jurisdiction to which the deviceIdentifier applies
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
     
     deviceIdentifier: str = None
     
@@ -52,8 +52,8 @@ class DeviceName(Element):
     :param str type: udi-label-name | user-friendly-name | patient-reported-name | manufacturer-name | model-name | other
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
     
     name: str = None
     
@@ -71,8 +71,8 @@ class Specialization(Element):
     :param str version: The version of the standard that is used to operate and communicate
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
     
     systemType: str = None
     
@@ -90,10 +90,10 @@ class Capability(Element):
     :param CodeableConcept description: Description of capability
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
-    type: "CodeableConcept" = None
-    description: list[CodeableConcept] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
+    type: "CodeableConcept" = CodeableConcept()
+    description: list[CodeableConcept] = CodeableConcept() 
     
 
     
@@ -108,11 +108,11 @@ class Property(Element):
     :param CodeableConcept valueCode: Property value as a code, e.g., NTP4 (synced to NTP)
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
-    type: "CodeableConcept" = None
-    valueQuantity: list[Quantity] = None
-    valueCode: list[CodeableConcept] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
+    type: "CodeableConcept" = CodeableConcept()
+    valueQuantity: list[Quantity] = Quantity() 
+    valueCode: list[CodeableConcept] = CodeableConcept() 
     
 
     
@@ -127,9 +127,9 @@ class Material(Element):
     :param bool allergenicIndicator: Whether the substance is a known or suspected allergen
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
-    substance: "CodeableConcept" = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
+    substance: "CodeableConcept" = CodeableConcept()
     
     alternate: bool = None
     
@@ -174,61 +174,61 @@ class DeviceDefinition(ModelBase):
     resourceType: str = "DeviceDefinition"
     id: str = None
     
-    meta: "Meta" = None
+    meta: "Meta" = Meta()
     
     implicitRules: str = None
     
     language: str = None
     
-    text: "Narrative" = None
+    text: "Narrative" = Narrative()
     
-    contained: list["Resource"] = None
+    contained: list[Resource] = Resource() 
     
-    extension: list["Extension"] = None
+    extension: list[Extension] = Extension() 
     
-    modifierExtension: list["Extension"] = None
+    modifierExtension: list[Extension] = Extension() 
     
-    identifier: list["Identifier"] = None
+    identifier: list[Identifier] = Identifier() 
     
-    udiDeviceIdentifier: list["UdiDeviceIdentifier"] = None
+    udiDeviceIdentifier: list[UdiDeviceIdentifier] = UdiDeviceIdentifier() 
     
     manufacturerString: str = None
     
-    deviceName: list["DeviceName"] = None
+    deviceName: list[DeviceName] = DeviceName() 
     
     modelNumber: str = None
     
-    type: "CodeableConcept" = None
+    type: "CodeableConcept" = CodeableConcept()
     
-    specialization: list["Specialization"] = None
+    specialization: list[Specialization] = Specialization() 
     
     version: str = None
     
-    safety: list["CodeableConcept"] = None
+    safety: list[CodeableConcept] = CodeableConcept() 
     
-    shelfLifeStorage: list["ProductShelfLife"] = None
+    shelfLifeStorage: list[ProductShelfLife] = ProductShelfLife() 
     
-    physicalCharacteristics: "ProdCharacteristic" = None
+    physicalCharacteristics: "ProdCharacteristic" = ProdCharacteristic()
     
-    languageCode: list["CodeableConcept"] = None
+    languageCode: list[CodeableConcept] = CodeableConcept() 
     
-    capability: list["Capability"] = None
+    capability: list[Capability] = Capability() 
     
-    property: list["Property"] = None
+    property: list[Property] = Property() 
     
-    owner: "Reference" = None
+    owner: "Reference" = Reference()
     
-    contact: list["ContactPoint"] = None
+    contact: list[ContactPoint] = ContactPoint() 
     
     url: str = None
     
     onlineInformation: str = None
     
-    note: list["Annotation"] = None
+    note: list[Annotation] = Annotation() 
     
-    quantity: "Quantity" = None
+    quantity: "Quantity" = Quantity()
     
-    parentDevice: "Reference" = None
+    parentDevice: "Reference" = Reference()
     
-    material: list["Material"] = None
+    material: list[Material] = Material() 
     

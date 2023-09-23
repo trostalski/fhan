@@ -1,16 +1,16 @@
 """
 Generated class for SubstanceSourceMaterial. 
-Time: 2023-09-20 20:39:03
+Time: 2023-09-23 23:45:33
 """
 from dataclasses import dataclass
 from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Resource import *
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.Identifier import *
-from fhan.models.R4.Element import *
 from fhan.models.R4.Extension import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Element import *
+from fhan.models.R4.Resource import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Meta import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -24,11 +24,11 @@ class FractionDescription(Element):
     :param CodeableConcept materialType: The specific type of the material constituting the component. For Herbal preparations the particulars of the extracts (liquid/dry) is described in Specified Substance Group 1
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
     
     fraction: str = None
-    materialType: "CodeableConcept" = None
+    materialType: "CodeableConcept" = CodeableConcept()
     
 
     
@@ -44,9 +44,9 @@ class Author(Element):
     :param str authorDescription: The author of an organism species shall be specified. The author year of an organism shall also be specified when applicable; refers to the year in which the first author(s) published the infraspecific plant/animal name (of any rank)
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
-    authorType: "CodeableConcept" = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
+    authorType: "CodeableConcept" = CodeableConcept()
     
     authorDescription: str = None
     
@@ -65,8 +65,8 @@ class Hybrid(Element):
     :param CodeableConcept hybridType: The hybrid type of an organism shall be specified
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
     
     maternalOrganismId: str = None
     
@@ -75,7 +75,7 @@ class Hybrid(Element):
     paternalOrganismId: str = None
     
     paternalOrganismName: str = None
-    hybridType: "CodeableConcept" = None
+    hybridType: "CodeableConcept" = CodeableConcept()
     
 
     
@@ -91,12 +91,12 @@ class OrganismGeneral(Element):
     :param CodeableConcept order: The order of an organism shall be specified,
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
-    kingdom: "CodeableConcept" = None
-    phylum: "CodeableConcept" = None
-    _class: "CodeableConcept" = None
-    order: "CodeableConcept" = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
+    kingdom: "CodeableConcept" = CodeableConcept()
+    phylum: "CodeableConcept" = CodeableConcept()
+    _class: "CodeableConcept" = CodeableConcept()
+    order: "CodeableConcept" = CodeableConcept()
     
 
   
@@ -117,22 +117,22 @@ class Organism(Element):
     :param Author author: 4.9.13.6.1 Author type (Conditional)
     :param Hybrid hybrid: 4.9.13.8.1 Hybrid species maternal organism ID (Optional)
     :param OrganismGeneral organismGeneral: 4.9.13.7.1 Kingdom (Conditional)
-    """organismId: "Identifier" = None
+    """organismId: "Identifier" = Identifier()
     
     organismName: str = None
     
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
-    family: "CodeableConcept" = None
-    genus: "CodeableConcept" = None
-    species: "CodeableConcept" = None
-    intraspecificType: "CodeableConcept" = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
+    family: "CodeableConcept" = CodeableConcept()
+    genus: "CodeableConcept" = CodeableConcept()
+    species: "CodeableConcept" = CodeableConcept()
+    intraspecificType: "CodeableConcept" = CodeableConcept()
     
     intraspecificDescription: str = None
-    author: list[Author] = None
-    hybrid: "Hybrid" = None
-    organismGeneral: "OrganismGeneral" = None
+    author: list[Author] = Author() 
+    hybrid: "Hybrid" = Hybrid()
+    organismGeneral: "OrganismGeneral" = OrganismGeneral()
     
 
     
@@ -146,10 +146,10 @@ class PartDescription(Element):
     :param CodeableConcept partLocation: The detailed anatomic location when the part can be extracted from different anatomical locations of the organism. Multiple alternative locations may apply
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
-    part: "CodeableConcept" = None
-    partLocation: "CodeableConcept" = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
+    part: "CodeableConcept" = CodeableConcept()
+    partLocation: "CodeableConcept" = CodeableConcept()
     
 
 @dataclass
@@ -181,43 +181,43 @@ class SubstanceSourceMaterial(ModelBase):
     resourceType: str = "SubstanceSourceMaterial"
     id: str = None
     
-    meta: "Meta" = None
+    meta: "Meta" = Meta()
     
     implicitRules: str = None
     
     language: str = None
     
-    text: "Narrative" = None
+    text: "Narrative" = Narrative()
     
-    contained: list["Resource"] = None
+    contained: list[Resource] = Resource() 
     
-    extension: list["Extension"] = None
+    extension: list[Extension] = Extension() 
     
-    modifierExtension: list["Extension"] = None
+    modifierExtension: list[Extension] = Extension() 
     
-    sourceMaterialClass: "CodeableConcept" = None
+    sourceMaterialClass: "CodeableConcept" = CodeableConcept()
     
-    sourceMaterialType: "CodeableConcept" = None
+    sourceMaterialType: "CodeableConcept" = CodeableConcept()
     
-    sourceMaterialState: "CodeableConcept" = None
+    sourceMaterialState: "CodeableConcept" = CodeableConcept()
     
-    organismId: "Identifier" = None
+    organismId: "Identifier" = Identifier()
     
     organismName: str = None
     
-    parentSubstanceId: list["Identifier"] = None
+    parentSubstanceId: list[Identifier] = Identifier() 
     
     parentSubstanceName: str = None
     
-    countryOfOrigin: list["CodeableConcept"] = None
+    countryOfOrigin: list[CodeableConcept] = CodeableConcept() 
     
     geographicalLocation: str = None
     
-    developmentStage: "CodeableConcept" = None
+    developmentStage: "CodeableConcept" = CodeableConcept()
     
-    fractionDescription: list["FractionDescription"] = None
+    fractionDescription: list[FractionDescription] = FractionDescription() 
     
-    organism: "Organism" = None
+    organism: "Organism" = Organism()
     
-    partDescription: list["PartDescription"] = None
+    partDescription: list[PartDescription] = PartDescription() 
     

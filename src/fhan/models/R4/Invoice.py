@@ -1,19 +1,19 @@
 """
 Generated class for Invoice. 
-Time: 2023-09-20 20:39:03
+Time: 2023-09-23 23:45:33
 """
 from dataclasses import dataclass
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Resource import *
-from fhan.models.R4.Reference import *
-from fhan.models.R4.BackboneElement import *
 from fhan.models.R4.Annotation import *
-from fhan.models.R4.Narrative import *
+from fhan.models.R4.Reference import *
 from fhan.models.R4.Identifier import *
-from fhan.models.R4.Money import *
-from fhan.models.R4.Element import *
 from fhan.models.R4.Extension import *
+from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Element import *
+from fhan.models.R4.Money import *
+from fhan.models.R4.Resource import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Meta import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -27,10 +27,10 @@ class Participant(Element):
     :param Reference actor: Individual who was involved
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
-    role: "CodeableConcept" = None
-    actor: "Reference" = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
+    role: "CodeableConcept" = CodeableConcept()
+    actor: "Reference" = Reference()
     
 
     
@@ -48,14 +48,14 @@ class PriceComponent(Element):
     :param Money amount: Monetary amount associated with this component
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
     
     type: str = None
-    code: "CodeableConcept" = None
+    code: "CodeableConcept" = CodeableConcept()
     
     factor: float = None
-    amount: "Money" = None
+    amount: "Money" = Money()
     
 
   
@@ -71,12 +71,12 @@ class LineItem(Element):
     :param PriceComponent priceComponent: Components of total line item price
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
     
     sequence: int = None
-    chargeItemReference: "Reference" = None
-    priceComponent: list[PriceComponent] = None
+    chargeItemReference: "Reference" = Reference()
+    priceComponent: list[PriceComponent] = PriceComponent() 
     
 
 @dataclass
@@ -110,47 +110,47 @@ class Invoice(ModelBase):
     resourceType: str = "Invoice"
     id: str = None
     
-    meta: "Meta" = None
+    meta: "Meta" = Meta()
     
     implicitRules: str = None
     
     language: str = None
     
-    text: "Narrative" = None
+    text: "Narrative" = Narrative()
     
-    contained: list["Resource"] = None
+    contained: list[Resource] = Resource() 
     
-    extension: list["Extension"] = None
+    extension: list[Extension] = Extension() 
     
-    modifierExtension: list["Extension"] = None
+    modifierExtension: list[Extension] = Extension() 
     
-    identifier: list["Identifier"] = None
+    identifier: list[Identifier] = Identifier() 
     
     status: str = None
     
     cancelledReason: str = None
     
-    type: "CodeableConcept" = None
+    type: "CodeableConcept" = CodeableConcept()
     
-    subject: "Reference" = None
+    subject: "Reference" = Reference()
     
-    recipient: "Reference" = None
+    recipient: "Reference" = Reference()
     
     date: str = None
     
-    participant: list["Participant"] = None
+    participant: list[Participant] = Participant() 
     
-    issuer: "Reference" = None
+    issuer: "Reference" = Reference()
     
-    account: "Reference" = None
+    account: "Reference" = Reference()
     
-    lineItem: list["LineItem"] = None
+    lineItem: list[LineItem] = LineItem() 
     
-    totalNet: "Money" = None
+    totalNet: "Money" = Money()
     
-    totalGross: "Money" = None
+    totalGross: "Money" = Money()
     
     paymentTerms: str = None
     
-    note: list["Annotation"] = None
+    note: list[Annotation] = Annotation() 
     

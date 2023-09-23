@@ -1,18 +1,18 @@
 """
 Generated class for ObservationDefinition. 
-Time: 2023-09-20 20:39:03
+Time: 2023-09-23 23:45:33
 """
 from dataclasses import dataclass
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Range import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Resource import *
 from fhan.models.R4.Reference import *
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.Identifier import *
-from fhan.models.R4.Element import *
+from fhan.models.R4.Range import *
+from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Extension import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Element import *
+from fhan.models.R4.Resource import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Meta import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -28,10 +28,10 @@ class QuantitativeDetails(Element):
     :param int decimalPrecision: Decimal precision of observation quantitative results
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
-    customaryUnit: "CodeableConcept" = None
-    unit: "CodeableConcept" = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
+    customaryUnit: "CodeableConcept" = CodeableConcept()
+    unit: "CodeableConcept" = CodeableConcept()
     
     conversionFactor: float = None
     
@@ -55,17 +55,17 @@ class QualifiedInterval(Element):
     :param str condition: Condition associated with the reference range
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
     
     category: str = None
-    range: "Range" = None
-    context: "CodeableConcept" = None
-    appliesTo: list[CodeableConcept] = None
+    range: "Range" = Range()
+    context: "CodeableConcept" = CodeableConcept()
+    appliesTo: list[CodeableConcept] = CodeableConcept() 
     
     gender: str = None
-    age: "Range" = None
-    gestationalAge: "Range" = None
+    age: "Range" = Range()
+    gestationalAge: "Range" = Range()
     
     condition: str = None
     
@@ -99,43 +99,43 @@ class ObservationDefinition(ModelBase):
     resourceType: str = "ObservationDefinition"
     id: str = None
     
-    meta: "Meta" = None
+    meta: "Meta" = Meta()
     
     implicitRules: str = None
     
     language: str = None
     
-    text: "Narrative" = None
+    text: "Narrative" = Narrative()
     
-    contained: list["Resource"] = None
+    contained: list[Resource] = Resource() 
     
-    extension: list["Extension"] = None
+    extension: list[Extension] = Extension() 
     
-    modifierExtension: list["Extension"] = None
+    modifierExtension: list[Extension] = Extension() 
     
-    category: list["CodeableConcept"] = None
+    category: list[CodeableConcept] = CodeableConcept() 
     
-    code: "CodeableConcept" = None
+    code: "CodeableConcept" = CodeableConcept()
     
-    identifier: list["Identifier"] = None
+    identifier: list[Identifier] = Identifier() 
     
     permittedDataType: str = None
     
     multipleResultsAllowed: bool = None
     
-    method: "CodeableConcept" = None
+    method: "CodeableConcept" = CodeableConcept()
     
     preferredReportName: str = None
     
-    quantitativeDetails: "QuantitativeDetails" = None
+    quantitativeDetails: "QuantitativeDetails" = QuantitativeDetails()
     
-    qualifiedInterval: list["QualifiedInterval"] = None
+    qualifiedInterval: list[QualifiedInterval] = QualifiedInterval() 
     
-    validCodedValueSet: "Reference" = None
+    validCodedValueSet: "Reference" = Reference()
     
-    normalCodedValueSet: "Reference" = None
+    normalCodedValueSet: "Reference" = Reference()
     
-    abnormalCodedValueSet: "Reference" = None
+    abnormalCodedValueSet: "Reference" = Reference()
     
-    criticalCodedValueSet: "Reference" = None
+    criticalCodedValueSet: "Reference" = Reference()
     

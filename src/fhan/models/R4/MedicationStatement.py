@@ -1,18 +1,18 @@
 """
 Generated class for MedicationStatement. 
-Time: 2023-09-20 20:39:03
+Time: 2023-09-23 23:45:33
 """
 from dataclasses import dataclass
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Resource import *
-from fhan.models.R4.Reference import *
-from fhan.models.R4.Dosage import *
 from fhan.models.R4.Annotation import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.Period import *
+from fhan.models.R4.Reference import *
 from fhan.models.R4.Identifier import *
 from fhan.models.R4.Extension import *
+from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Period import *
+from fhan.models.R4.Dosage import *
+from fhan.models.R4.Resource import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Meta import *
 from fhan.models.generator_models import ModelBase
 
 @dataclass
@@ -50,51 +50,51 @@ The primary difference between a medication statement and a medication administr
     resourceType: str = "MedicationStatement"
     id: str = None
     
-    meta: "Meta" = None
+    meta: "Meta" = Meta()
     
     implicitRules: str = None
     
     language: str = None
     
-    text: "Narrative" = None
+    text: "Narrative" = Narrative()
     
-    contained: list["Resource"] = None
+    contained: list[Resource] = Resource() 
     
-    extension: list["Extension"] = None
+    extension: list[Extension] = Extension() 
     
-    modifierExtension: list["Extension"] = None
+    modifierExtension: list[Extension] = Extension() 
     
-    identifier: list["Identifier"] = None
+    identifier: list[Identifier] = Identifier() 
     
-    basedOn: list["Reference"] = None
+    basedOn: list[Reference] = Reference() 
     
-    partOf: list["Reference"] = None
+    partOf: list[Reference] = Reference() 
     
     status: str = None
     
-    statusReason: list["CodeableConcept"] = None
+    statusReason: list[CodeableConcept] = CodeableConcept() 
     
-    category: "CodeableConcept" = None
+    category: "CodeableConcept" = CodeableConcept()
     
-    medicationCodeableConcept: "CodeableConcept" = None
+    medicationCodeableConcept: "CodeableConcept" = CodeableConcept()
     
-    subject: "Reference" = None
+    subject: "Reference" = Reference()
     
-    context: "Reference" = None
+    context: "Reference" = Reference()
     
     effectiveDateTime: str = None
     
     dateAsserted: str = None
     
-    informationSource: "Reference" = None
+    informationSource: "Reference" = Reference()
     
-    derivedFrom: list["Reference"] = None
+    derivedFrom: list[Reference] = Reference() 
     
-    reasonCode: list["CodeableConcept"] = None
+    reasonCode: list[CodeableConcept] = CodeableConcept() 
     
-    reasonReference: list["Reference"] = None
+    reasonReference: list[Reference] = Reference() 
     
-    note: list["Annotation"] = None
+    note: list[Annotation] = Annotation() 
     
-    dosage: list["Dosage"] = None
+    dosage: list[Dosage] = Dosage() 
     

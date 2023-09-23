@@ -1,18 +1,18 @@
 """
 Generated class for EpisodeOfCare. 
-Time: 2023-09-20 20:39:03
+Time: 2023-09-23 23:45:33
 """
 from dataclasses import dataclass
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Resource import *
 from fhan.models.R4.Reference import *
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.Period import *
 from fhan.models.R4.Identifier import *
-from fhan.models.R4.Element import *
 from fhan.models.R4.Extension import *
+from fhan.models.R4.Period import *
+from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Element import *
+from fhan.models.R4.Resource import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Meta import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -26,11 +26,11 @@ class StatusHistory(Element):
     :param Period period: Duration the EpisodeOfCare was in the specified status
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
     
     status: str = None
-    period: "Period" = None
+    period: "Period" = Period()
     
 
     
@@ -45,10 +45,10 @@ class Diagnosis(Element):
     :param int rank: Ranking of the diagnosis (for each role type)
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
-    condition: "Reference" = None
-    role: "CodeableConcept" = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
+    condition: "Reference" = Reference()
+    role: "CodeableConcept" = CodeableConcept()
     
     rank: int = None
     
@@ -81,41 +81,41 @@ class EpisodeOfCare(ModelBase):
     resourceType: str = "EpisodeOfCare"
     id: str = None
     
-    meta: "Meta" = None
+    meta: "Meta" = Meta()
     
     implicitRules: str = None
     
     language: str = None
     
-    text: "Narrative" = None
+    text: "Narrative" = Narrative()
     
-    contained: list["Resource"] = None
+    contained: list[Resource] = Resource() 
     
-    extension: list["Extension"] = None
+    extension: list[Extension] = Extension() 
     
-    modifierExtension: list["Extension"] = None
+    modifierExtension: list[Extension] = Extension() 
     
-    identifier: list["Identifier"] = None
+    identifier: list[Identifier] = Identifier() 
     
     status: str = None
     
-    statusHistory: list["StatusHistory"] = None
+    statusHistory: list[StatusHistory] = StatusHistory() 
     
-    type: list["CodeableConcept"] = None
+    type: list[CodeableConcept] = CodeableConcept() 
     
-    diagnosis: list["Diagnosis"] = None
+    diagnosis: list[Diagnosis] = Diagnosis() 
     
-    patient: "Reference" = None
+    patient: "Reference" = Reference()
     
-    managingOrganization: "Reference" = None
+    managingOrganization: "Reference" = Reference()
     
-    period: "Period" = None
+    period: "Period" = Period()
     
-    referralRequest: list["Reference"] = None
+    referralRequest: list[Reference] = Reference() 
     
-    careManager: "Reference" = None
+    careManager: "Reference" = Reference()
     
-    team: list["Reference"] = None
+    team: list[Reference] = Reference() 
     
-    account: list["Reference"] = None
+    account: list[Reference] = Reference() 
     

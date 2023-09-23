@@ -1,18 +1,18 @@
 """
 Generated class for DeviceUseStatement. 
-Time: 2023-09-20 20:39:03
+Time: 2023-09-23 23:45:33
 """
 from dataclasses import dataclass
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Resource import *
-from fhan.models.R4.Timing import *
-from fhan.models.R4.Reference import *
 from fhan.models.R4.Annotation import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.Period import *
+from fhan.models.R4.Reference import *
 from fhan.models.R4.Identifier import *
 from fhan.models.R4.Extension import *
+from fhan.models.R4.Period import *
+from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Timing import *
+from fhan.models.R4.Resource import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Meta import *
 from fhan.models.generator_models import ModelBase
 
 @dataclass
@@ -44,43 +44,43 @@ class DeviceUseStatement(ModelBase):
     resourceType: str = "DeviceUseStatement"
     id: str = None
     
-    meta: "Meta" = None
+    meta: "Meta" = Meta()
     
     implicitRules: str = None
     
     language: str = None
     
-    text: "Narrative" = None
+    text: "Narrative" = Narrative()
     
-    contained: list["Resource"] = None
+    contained: list[Resource] = Resource() 
     
-    extension: list["Extension"] = None
+    extension: list[Extension] = Extension() 
     
-    modifierExtension: list["Extension"] = None
+    modifierExtension: list[Extension] = Extension() 
     
-    identifier: list["Identifier"] = None
+    identifier: list[Identifier] = Identifier() 
     
-    basedOn: list["Reference"] = None
+    basedOn: list[Reference] = Reference() 
     
     status: str = None
     
-    subject: "Reference" = None
+    subject: "Reference" = Reference()
     
-    derivedFrom: list["Reference"] = None
+    derivedFrom: list[Reference] = Reference() 
     
-    timingTiming: "Timing" = None
+    timingTiming: "Timing" = Timing()
     
     recordedOn: str = None
     
-    source: "Reference" = None
+    source: "Reference" = Reference()
     
-    device: "Reference" = None
+    device: "Reference" = Reference()
     
-    reasonCode: list["CodeableConcept"] = None
+    reasonCode: list[CodeableConcept] = CodeableConcept() 
     
-    reasonReference: list["Reference"] = None
+    reasonReference: list[Reference] = Reference() 
     
-    bodySite: "CodeableConcept" = None
+    bodySite: "CodeableConcept" = CodeableConcept()
     
-    note: list["Annotation"] = None
+    note: list[Annotation] = Annotation() 
     

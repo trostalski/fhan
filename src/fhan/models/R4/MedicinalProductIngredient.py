@@ -1,18 +1,18 @@
 """
 Generated class for MedicinalProductIngredient. 
-Time: 2023-09-20 20:39:03
+Time: 2023-09-23 23:45:33
 """
 from dataclasses import dataclass
+from fhan.models.R4.Reference import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.Extension import *
 from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Ratio import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Resource import *
-from fhan.models.R4.Reference import *
 from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.Identifier import *
 from fhan.models.R4.Element import *
-from fhan.models.R4.Extension import *
+from fhan.models.R4.Resource import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Meta import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -33,14 +33,14 @@ class ReferenceStrength(Element):
     :param CodeableConcept country: The country or countries for which the strength range applies
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
-    substance: "CodeableConcept" = None
-    strength: "Ratio" = None
-    strengthLowLimit: "Ratio" = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
+    substance: "CodeableConcept" = CodeableConcept()
+    strength: "Ratio" = Ratio()
+    strengthLowLimit: "Ratio" = Ratio()
     
     measurementPoint: str = None
-    country: list[CodeableConcept] = None
+    country: list[CodeableConcept] = CodeableConcept() 
     
 
   
@@ -60,16 +60,16 @@ class Strength(Element):
     :param ReferenceStrength referenceStrength: Strength expressed in terms of a reference substance
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
-    presentation: "Ratio" = None
-    presentationLowLimit: "Ratio" = None
-    concentration: "Ratio" = None
-    concentrationLowLimit: "Ratio" = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
+    presentation: "Ratio" = Ratio()
+    presentationLowLimit: "Ratio" = Ratio()
+    concentration: "Ratio" = Ratio()
+    concentrationLowLimit: "Ratio" = Ratio()
     
     measurementPoint: str = None
-    country: list[CodeableConcept] = None
-    referenceStrength: list[ReferenceStrength] = None
+    country: list[CodeableConcept] = CodeableConcept() 
+    referenceStrength: list[ReferenceStrength] = ReferenceStrength() 
     
 
   
@@ -86,12 +86,12 @@ class SpecifiedSubstance(Element):
     :param Strength strength: Quantity of the substance or specified substance present in the manufactured item or pharmaceutical product
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
-    code: "CodeableConcept" = None
-    group: "CodeableConcept" = None
-    confidentiality: "CodeableConcept" = None
-    strength: list[Strength] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
+    code: "CodeableConcept" = CodeableConcept()
+    group: "CodeableConcept" = CodeableConcept()
+    confidentiality: "CodeableConcept" = CodeableConcept()
+    strength: list[Strength] = Strength() 
     
 
     
@@ -104,9 +104,9 @@ class Substance(Element):
     :param CodeableConcept code: The ingredient substance
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
-    code: "CodeableConcept" = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
+    code: "CodeableConcept" = CodeableConcept()
     
 
 @dataclass
@@ -131,29 +131,29 @@ class MedicinalProductIngredient(ModelBase):
     resourceType: str = "MedicinalProductIngredient"
     id: str = None
     
-    meta: "Meta" = None
+    meta: "Meta" = Meta()
     
     implicitRules: str = None
     
     language: str = None
     
-    text: "Narrative" = None
+    text: "Narrative" = Narrative()
     
-    contained: list["Resource"] = None
+    contained: list[Resource] = Resource() 
     
-    extension: list["Extension"] = None
+    extension: list[Extension] = Extension() 
     
-    modifierExtension: list["Extension"] = None
+    modifierExtension: list[Extension] = Extension() 
     
-    identifier: "Identifier" = None
+    identifier: "Identifier" = Identifier()
     
-    role: "CodeableConcept" = None
+    role: "CodeableConcept" = CodeableConcept()
     
     allergenicIndicator: bool = None
     
-    manufacturer: list["Reference"] = None
+    manufacturer: list[Reference] = Reference() 
     
-    specifiedSubstance: list["SpecifiedSubstance"] = None
+    specifiedSubstance: list[SpecifiedSubstance] = SpecifiedSubstance() 
     
-    substance: "Substance" = None
+    substance: "Substance" = Substance()
     

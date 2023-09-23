@@ -1,21 +1,21 @@
 """
 Generated class for FamilyMemberHistory. 
-Time: 2023-09-20 20:39:03
+Time: 2023-09-23 23:45:33
 """
 from dataclasses import dataclass
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Age import *
-from fhan.models.R4.Range import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Resource import *
-from fhan.models.R4.Reference import *
-from fhan.models.R4.BackboneElement import *
 from fhan.models.R4.Annotation import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.Period import *
+from fhan.models.R4.Reference import *
+from fhan.models.R4.Range import *
 from fhan.models.R4.Identifier import *
-from fhan.models.R4.Element import *
 from fhan.models.R4.Extension import *
+from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Period import *
+from fhan.models.R4.Age import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Element import *
+from fhan.models.R4.Resource import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Meta import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -32,14 +32,14 @@ class Condition(Element):
     :param Annotation note: Extra information about condition
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
-    code: "CodeableConcept" = None
-    outcome: "CodeableConcept" = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
+    code: "CodeableConcept" = CodeableConcept()
+    outcome: "CodeableConcept" = CodeableConcept()
     
     contributedToDeath: bool = None
-    onsetAge: "Age" = None
-    note: list[Annotation] = None
+    onsetAge: "Age" = Age()
+    note: list[Annotation] = Annotation() 
     
 
 @dataclass
@@ -76,21 +76,21 @@ class FamilyMemberHistory(ModelBase):
     resourceType: str = "FamilyMemberHistory"
     id: str = None
     
-    meta: "Meta" = None
+    meta: "Meta" = Meta()
     
     implicitRules: str = None
     
     language: str = None
     
-    text: "Narrative" = None
+    text: "Narrative" = Narrative()
     
-    contained: list["Resource"] = None
+    contained: list[Resource] = Resource() 
     
-    extension: list["Extension"] = None
+    extension: list[Extension] = Extension() 
     
-    modifierExtension: list["Extension"] = None
+    modifierExtension: list[Extension] = Extension() 
     
-    identifier: list["Identifier"] = None
+    identifier: list[Identifier] = Identifier() 
     
     instantiatesCanonical: str = None
     
@@ -98,31 +98,31 @@ class FamilyMemberHistory(ModelBase):
     
     status: str = None
     
-    dataAbsentReason: "CodeableConcept" = None
+    dataAbsentReason: "CodeableConcept" = CodeableConcept()
     
-    patient: "Reference" = None
+    patient: "Reference" = Reference()
     
     date: str = None
     
     name: str = None
     
-    relationship: "CodeableConcept" = None
+    relationship: "CodeableConcept" = CodeableConcept()
     
-    sex: "CodeableConcept" = None
+    sex: "CodeableConcept" = CodeableConcept()
     
-    bornPeriod: "Period" = None
+    bornPeriod: "Period" = Period()
     
-    ageAge: "Age" = None
+    ageAge: "Age" = Age()
     
     estimatedAge: bool = None
     
     deceasedBoolean: bool = None
     
-    reasonCode: list["CodeableConcept"] = None
+    reasonCode: list[CodeableConcept] = CodeableConcept() 
     
-    reasonReference: list["Reference"] = None
+    reasonReference: list[Reference] = Reference() 
     
-    note: list["Annotation"] = None
+    note: list[Annotation] = Annotation() 
     
-    condition: list["Condition"] = None
+    condition: list[Condition] = Condition() 
     

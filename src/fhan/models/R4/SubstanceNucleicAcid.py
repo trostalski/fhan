@@ -1,17 +1,17 @@
 """
 Generated class for SubstanceNucleicAcid. 
-Time: 2023-09-20 20:39:03
+Time: 2023-09-23 23:45:33
 """
 from dataclasses import dataclass
 from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Resource import *
+from fhan.models.R4.Extension import *
+from fhan.models.R4.Identifier import *
 from fhan.models.R4.Attachment import *
 from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.Identifier import *
 from fhan.models.R4.Element import *
-from fhan.models.R4.Extension import *
+from fhan.models.R4.Resource import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Meta import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -29,11 +29,11 @@ class Linkage(Element):
     :param str residueSite: Residues shall be captured as described in 5.3.6.8.3
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
     
     connectivity: str = None
-    identifier: "Identifier" = None
+    identifier: "Identifier" = Identifier()
     
     name: str = None
     
@@ -52,9 +52,9 @@ class Sugar(Element):
     :param str residueSite: The residues that contain a given sugar will be captured. The order of given residues will be captured in the 5‘-3‘direction consistent with the base sequences listed above
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
-    identifier: "Identifier" = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
+    identifier: "Identifier" = Identifier()
     
     name: str = None
     
@@ -79,19 +79,19 @@ class Subunit(Element):
     :param Sugar sugar: 5.3.6.8.1 Sugar ID (Mandatory)
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
     
     subunit: int = None
     
     sequence: str = None
     
     length: int = None
-    sequenceAttachment: "Attachment" = None
-    fivePrime: "CodeableConcept" = None
-    threePrime: "CodeableConcept" = None
-    linkage: list[Linkage] = None
-    sugar: list[Sugar] = None
+    sequenceAttachment: "Attachment" = Attachment()
+    fivePrime: "CodeableConcept" = CodeableConcept()
+    threePrime: "CodeableConcept" = CodeableConcept()
+    linkage: list[Linkage] = Linkage() 
+    sugar: list[Sugar] = Sugar() 
     
 
 @dataclass
@@ -115,27 +115,27 @@ class SubstanceNucleicAcid(ModelBase):
     resourceType: str = "SubstanceNucleicAcid"
     id: str = None
     
-    meta: "Meta" = None
+    meta: "Meta" = Meta()
     
     implicitRules: str = None
     
     language: str = None
     
-    text: "Narrative" = None
+    text: "Narrative" = Narrative()
     
-    contained: list["Resource"] = None
+    contained: list[Resource] = Resource() 
     
-    extension: list["Extension"] = None
+    extension: list[Extension] = Extension() 
     
-    modifierExtension: list["Extension"] = None
+    modifierExtension: list[Extension] = Extension() 
     
-    sequenceType: "CodeableConcept" = None
+    sequenceType: "CodeableConcept" = CodeableConcept()
     
     numberOfSubunits: int = None
     
     areaOfHybridisation: str = None
     
-    oligoNucleotideType: "CodeableConcept" = None
+    oligoNucleotideType: "CodeableConcept" = CodeableConcept()
     
-    subunit: list["Subunit"] = None
+    subunit: list[Subunit] = Subunit() 
     

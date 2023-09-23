@@ -1,18 +1,18 @@
 """
 Generated class for VerificationResult. 
-Time: 2023-09-20 20:39:03
+Time: 2023-09-23 23:45:33
 """
 from dataclasses import dataclass
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Resource import *
-from fhan.models.R4.Timing import *
 from fhan.models.R4.Reference import *
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.Signature import *
-from fhan.models.R4.Element import *
+from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Extension import *
+from fhan.models.R4.Signature import *
+from fhan.models.R4.Timing import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Element import *
+from fhan.models.R4.Resource import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Meta import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -31,16 +31,16 @@ class PrimarySource(Element):
     :param CodeableConcept pushTypeAvailable: specific | any | source
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
-    who: "Reference" = None
-    type: list[CodeableConcept] = None
-    communicationMethod: list[CodeableConcept] = None
-    validationStatus: "CodeableConcept" = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
+    who: "Reference" = Reference()
+    type: list[CodeableConcept] = CodeableConcept() 
+    communicationMethod: list[CodeableConcept] = CodeableConcept() 
+    validationStatus: "CodeableConcept" = CodeableConcept()
     
     validationDate: str = None
-    canPushUpdates: "CodeableConcept" = None
-    pushTypeAvailable: list[CodeableConcept] = None
+    canPushUpdates: "CodeableConcept" = CodeableConcept()
+    pushTypeAvailable: list[CodeableConcept] = CodeableConcept() 
     
 
     
@@ -60,19 +60,19 @@ class Attestation(Element):
     :param Signature sourceSignature: Attester signature
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
-    who: "Reference" = None
-    onBehalfOf: "Reference" = None
-    communicationMethod: "CodeableConcept" = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
+    who: "Reference" = Reference()
+    onBehalfOf: "Reference" = Reference()
+    communicationMethod: "CodeableConcept" = CodeableConcept()
     
     date: str = None
     
     sourceIdentityCertificate: str = None
     
     proxyIdentityCertificate: str = None
-    proxySignature: "Signature" = None
-    sourceSignature: "Signature" = None
+    proxySignature: "Signature" = Signature()
+    sourceSignature: "Signature" = Signature()
     
 
     
@@ -87,12 +87,12 @@ class Validator(Element):
     :param Signature attestationSignature: Validator signature
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
-    organization: "Reference" = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
+    organization: "Reference" = Reference()
     
     identityCertificate: str = None
-    attestationSignature: "Signature" = None
+    attestationSignature: "Signature" = Signature()
     
 
 @dataclass
@@ -125,45 +125,45 @@ class VerificationResult(ModelBase):
     resourceType: str = "VerificationResult"
     id: str = None
     
-    meta: "Meta" = None
+    meta: "Meta" = Meta()
     
     implicitRules: str = None
     
     language: str = None
     
-    text: "Narrative" = None
+    text: "Narrative" = Narrative()
     
-    contained: list["Resource"] = None
+    contained: list[Resource] = Resource() 
     
-    extension: list["Extension"] = None
+    extension: list[Extension] = Extension() 
     
-    modifierExtension: list["Extension"] = None
+    modifierExtension: list[Extension] = Extension() 
     
-    target: list["Reference"] = None
+    target: list[Reference] = Reference() 
     
     targetLocation: str = None
     
-    need: "CodeableConcept" = None
+    need: "CodeableConcept" = CodeableConcept()
     
     status: str = None
     
     statusDate: str = None
     
-    validationType: "CodeableConcept" = None
+    validationType: "CodeableConcept" = CodeableConcept()
     
-    validationProcess: list["CodeableConcept"] = None
+    validationProcess: list[CodeableConcept] = CodeableConcept() 
     
-    frequency: "Timing" = None
+    frequency: "Timing" = Timing()
     
     lastPerformed: str = None
     
     nextScheduled: str = None
     
-    failureAction: "CodeableConcept" = None
+    failureAction: "CodeableConcept" = CodeableConcept()
     
-    primarySource: list["PrimarySource"] = None
+    primarySource: list[PrimarySource] = PrimarySource() 
     
-    attestation: "Attestation" = None
+    attestation: "Attestation" = Attestation()
     
-    validator: list["Validator"] = None
+    validator: list[Validator] = Validator() 
     

@@ -1,20 +1,20 @@
 """
 Generated class for CareTeam. 
-Time: 2023-09-20 20:39:03
+Time: 2023-09-23 23:45:33
 """
 from dataclasses import dataclass
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Resource import *
-from fhan.models.R4.Reference import *
-from fhan.models.R4.BackboneElement import *
 from fhan.models.R4.Annotation import *
-from fhan.models.R4.Narrative import *
+from fhan.models.R4.Reference import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.Extension import *
+from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Period import *
 from fhan.models.R4.ContactPoint import *
-from fhan.models.R4.Identifier import *
+from fhan.models.R4.BackboneElement import *
 from fhan.models.R4.Element import *
-from fhan.models.R4.Extension import *
+from fhan.models.R4.Resource import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Meta import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -30,12 +30,12 @@ class Participant(Element):
     :param Period period: Time period of participant
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
-    role: list[CodeableConcept] = None
-    member: "Reference" = None
-    onBehalfOf: "Reference" = None
-    period: "Period" = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
+    role: list[CodeableConcept] = CodeableConcept() 
+    member: "Reference" = Reference()
+    onBehalfOf: "Reference" = Reference()
+    period: "Period" = Period()
     
 
 @dataclass
@@ -67,43 +67,43 @@ class CareTeam(ModelBase):
     resourceType: str = "CareTeam"
     id: str = None
     
-    meta: "Meta" = None
+    meta: "Meta" = Meta()
     
     implicitRules: str = None
     
     language: str = None
     
-    text: "Narrative" = None
+    text: "Narrative" = Narrative()
     
-    contained: list["Resource"] = None
+    contained: list[Resource] = Resource() 
     
-    extension: list["Extension"] = None
+    extension: list[Extension] = Extension() 
     
-    modifierExtension: list["Extension"] = None
+    modifierExtension: list[Extension] = Extension() 
     
-    identifier: list["Identifier"] = None
+    identifier: list[Identifier] = Identifier() 
     
     status: str = None
     
-    category: list["CodeableConcept"] = None
+    category: list[CodeableConcept] = CodeableConcept() 
     
     name: str = None
     
-    subject: "Reference" = None
+    subject: "Reference" = Reference()
     
-    encounter: "Reference" = None
+    encounter: "Reference" = Reference()
     
-    period: "Period" = None
+    period: "Period" = Period()
     
-    participant: list["Participant"] = None
+    participant: list[Participant] = Participant() 
     
-    reasonCode: list["CodeableConcept"] = None
+    reasonCode: list[CodeableConcept] = CodeableConcept() 
     
-    reasonReference: list["Reference"] = None
+    reasonReference: list[Reference] = Reference() 
     
-    managingOrganization: list["Reference"] = None
+    managingOrganization: list[Reference] = Reference() 
     
-    telecom: list["ContactPoint"] = None
+    telecom: list[ContactPoint] = ContactPoint() 
     
-    note: list["Annotation"] = None
+    note: list[Annotation] = Annotation() 
     

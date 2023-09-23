@@ -1,28 +1,28 @@
 """
 Generated class for ActivityDefinition. 
-Time: 2023-09-20 20:39:03
+Time: 2023-09-23 23:45:33
 """
 from dataclasses import dataclass
-from fhan.models.R4.Age import *
-from fhan.models.R4.Resource import *
-from fhan.models.R4.Dosage import *
-from fhan.models.R4.Identifier import *
+from fhan.models.R4.Range import *
 from fhan.models.R4.Quantity import *
+from fhan.models.R4.Timing import *
+from fhan.models.R4.ContactDetail import *
+from fhan.models.R4.Identifier import *
 from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Period import *
+from fhan.models.R4.RelatedArtifact import *
+from fhan.models.R4.Expression import *
+from fhan.models.R4.Element import *
+from fhan.models.R4.Dosage import *
+from fhan.models.R4.Resource import *
+from fhan.models.R4.Reference import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Duration import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Age import *
+from fhan.models.R4.Extension import *
 from fhan.models.R4.UsageContext import *
 from fhan.models.R4.Meta import *
-from fhan.models.R4.Timing import *
-from fhan.models.R4.Reference import *
-from fhan.models.R4.Period import *
-from fhan.models.R4.Expression import *
-from fhan.models.R4.ContactDetail import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.Duration import *
-from fhan.models.R4.Element import *
-from fhan.models.R4.Range import *
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.RelatedArtifact import *
-from fhan.models.R4.Extension import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -36,11 +36,11 @@ class Participant(Element):
     :param CodeableConcept role: E.g. Nurse, Surgeon, Parent, etc.
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
     
     type: str = None
-    role: "CodeableConcept" = None
+    role: "CodeableConcept" = CodeableConcept()
     
 
     
@@ -54,11 +54,11 @@ class DynamicValue(Element):
     :param Expression expression: An expression that provides the dynamic value for the customization
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
     
     path: str = None
-    expression: "Expression" = None
+    expression: "Expression" = Expression()
     
 
 @dataclass
@@ -123,23 +123,23 @@ class ActivityDefinition(ModelBase):
     resourceType: str = "ActivityDefinition"
     id: str = None
     
-    meta: "Meta" = None
+    meta: "Meta" = Meta()
     
     implicitRules: str = None
     
     language: str = None
     
-    text: "Narrative" = None
+    text: "Narrative" = Narrative()
     
-    contained: list["Resource"] = None
+    contained: list[Resource] = Resource() 
     
-    extension: list["Extension"] = None
+    extension: list[Extension] = Extension() 
     
-    modifierExtension: list["Extension"] = None
+    modifierExtension: list[Extension] = Extension() 
     
     url: str = None
     
-    identifier: list["Identifier"] = None
+    identifier: list[Identifier] = Identifier() 
     
     version: str = None
     
@@ -153,19 +153,19 @@ class ActivityDefinition(ModelBase):
     
     experimental: bool = None
     
-    subjectCodeableConcept: "CodeableConcept" = None
+    subjectCodeableConcept: "CodeableConcept" = CodeableConcept()
     
     date: str = None
     
     publisher: str = None
     
-    contact: list["ContactDetail"] = None
+    contact: list[ContactDetail] = ContactDetail() 
     
     description: str = None
     
-    useContext: list["UsageContext"] = None
+    useContext: list[UsageContext] = UsageContext() 
     
-    jurisdiction: list["CodeableConcept"] = None
+    jurisdiction: list[CodeableConcept] = CodeableConcept() 
     
     purpose: str = None
     
@@ -177,19 +177,19 @@ class ActivityDefinition(ModelBase):
     
     lastReviewDate: str = None
     
-    effectivePeriod: "Period" = None
+    effectivePeriod: "Period" = Period()
     
-    topic: list["CodeableConcept"] = None
+    topic: list[CodeableConcept] = CodeableConcept() 
     
-    author: list["ContactDetail"] = None
+    author: list[ContactDetail] = ContactDetail() 
     
-    editor: list["ContactDetail"] = None
+    editor: list[ContactDetail] = ContactDetail() 
     
-    reviewer: list["ContactDetail"] = None
+    reviewer: list[ContactDetail] = ContactDetail() 
     
-    endorser: list["ContactDetail"] = None
+    endorser: list[ContactDetail] = ContactDetail() 
     
-    relatedArtifact: list["RelatedArtifact"] = None
+    relatedArtifact: list[RelatedArtifact] = RelatedArtifact() 
     
     library: str = None
     
@@ -197,7 +197,7 @@ class ActivityDefinition(ModelBase):
     
     profile: str = None
     
-    code: "CodeableConcept" = None
+    code: "CodeableConcept" = CodeableConcept()
     
     intent: str = None
     
@@ -205,27 +205,27 @@ class ActivityDefinition(ModelBase):
     
     doNotPerform: bool = None
     
-    timingTiming: "Timing" = None
+    timingTiming: "Timing" = Timing()
     
-    location: "Reference" = None
+    location: "Reference" = Reference()
     
-    participant: list["Participant"] = None
+    participant: list[Participant] = Participant() 
     
-    productReference: "Reference" = None
+    productReference: "Reference" = Reference()
     
-    quantity: "Quantity" = None
+    quantity: "Quantity" = Quantity()
     
-    dosage: list["Dosage"] = None
+    dosage: list[Dosage] = Dosage() 
     
-    bodySite: list["CodeableConcept"] = None
+    bodySite: list[CodeableConcept] = CodeableConcept() 
     
-    specimenRequirement: list["Reference"] = None
+    specimenRequirement: list[Reference] = Reference() 
     
-    observationRequirement: list["Reference"] = None
+    observationRequirement: list[Reference] = Reference() 
     
-    observationResultRequirement: list["Reference"] = None
+    observationResultRequirement: list[Reference] = Reference() 
     
     transform: str = None
     
-    dynamicValue: list["DynamicValue"] = None
+    dynamicValue: list[DynamicValue] = DynamicValue() 
     

@@ -1,20 +1,20 @@
 """
 Generated class for DocumentReference. 
-Time: 2023-09-20 20:39:03
+Time: 2023-09-23 23:45:33
 """
 from dataclasses import dataclass
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Resource import *
-from fhan.models.R4.Attachment import *
 from fhan.models.R4.Reference import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.Extension import *
+from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Period import *
+from fhan.models.R4.Attachment import *
 from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Element import *
+from fhan.models.R4.Resource import *
 from fhan.models.R4.Coding import *
 from fhan.models.R4.Narrative import *
-from fhan.models.R4.Period import *
-from fhan.models.R4.Identifier import *
-from fhan.models.R4.Element import *
-from fhan.models.R4.Extension import *
+from fhan.models.R4.Meta import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -28,11 +28,11 @@ class RelatesTo(Element):
     :param Reference target: Target of the relationship
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
     
     code: str = None
-    target: "Reference" = None
+    target: "Reference" = Reference()
     
 
     
@@ -46,10 +46,10 @@ class Content(Element):
     :param Coding format: Format/content rules for the document
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
-    attachment: "Attachment" = None
-    format: "Coding" = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
+    attachment: "Attachment" = Attachment()
+    format: "Coding" = Coding()
     
 
     
@@ -68,15 +68,15 @@ class Context(Element):
     :param Reference related: Related identifiers or resources
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
-    encounter: list[Reference] = None
-    event: list[CodeableConcept] = None
-    period: "Period" = None
-    facilityType: "CodeableConcept" = None
-    practiceSetting: "CodeableConcept" = None
-    sourcePatientInfo: "Reference" = None
-    related: list[Reference] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
+    encounter: list[Reference] = Reference() 
+    event: list[CodeableConcept] = CodeableConcept() 
+    period: "Period" = Period()
+    facilityType: "CodeableConcept" = CodeableConcept()
+    practiceSetting: "CodeableConcept" = CodeableConcept()
+    sourcePatientInfo: "Reference" = Reference()
+    related: list[Reference] = Reference() 
     
 
 @dataclass
@@ -111,49 +111,49 @@ class DocumentReference(ModelBase):
     resourceType: str = "DocumentReference"
     id: str = None
     
-    meta: "Meta" = None
+    meta: "Meta" = Meta()
     
     implicitRules: str = None
     
     language: str = None
     
-    text: "Narrative" = None
+    text: "Narrative" = Narrative()
     
-    contained: list["Resource"] = None
+    contained: list[Resource] = Resource() 
     
-    extension: list["Extension"] = None
+    extension: list[Extension] = Extension() 
     
-    modifierExtension: list["Extension"] = None
+    modifierExtension: list[Extension] = Extension() 
     
-    masterIdentifier: "Identifier" = None
+    masterIdentifier: "Identifier" = Identifier()
     
-    identifier: list["Identifier"] = None
+    identifier: list[Identifier] = Identifier() 
     
     status: str = None
     
     docStatus: str = None
     
-    type: "CodeableConcept" = None
+    type: "CodeableConcept" = CodeableConcept()
     
-    category: list["CodeableConcept"] = None
+    category: list[CodeableConcept] = CodeableConcept() 
     
-    subject: "Reference" = None
+    subject: "Reference" = Reference()
     
     date: str = None
     
-    author: list["Reference"] = None
+    author: list[Reference] = Reference() 
     
-    authenticator: "Reference" = None
+    authenticator: "Reference" = Reference()
     
-    custodian: "Reference" = None
+    custodian: "Reference" = Reference()
     
-    relatesTo: list["RelatesTo"] = None
+    relatesTo: list[RelatesTo] = RelatesTo() 
     
     description: str = None
     
-    securityLabel: list["CodeableConcept"] = None
+    securityLabel: list[CodeableConcept] = CodeableConcept() 
     
-    content: list["Content"] = None
+    content: list[Content] = Content() 
     
-    context: "Context" = None
+    context: "Context" = Context()
     

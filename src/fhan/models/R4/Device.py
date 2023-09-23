@@ -1,20 +1,20 @@
 """
 Generated class for Device. 
-Time: 2023-09-20 20:39:03
+Time: 2023-09-23 23:45:33
 """
 from dataclasses import dataclass
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Element import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Resource import *
-from fhan.models.R4.Reference import *
-from fhan.models.R4.BackboneElement import *
 from fhan.models.R4.Annotation import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.ContactPoint import *
+from fhan.models.R4.Reference import *
 from fhan.models.R4.Identifier import *
-from fhan.models.R4.Quantity import *
 from fhan.models.R4.Extension import *
+from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.ContactPoint import *
+from fhan.models.R4.Quantity import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Element import *
+from fhan.models.R4.Resource import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Meta import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -32,8 +32,8 @@ class UdiCarrier(Element):
     :param str entryType: barcode | rfid | manual +
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
     
     deviceIdentifier: str = None
     
@@ -59,8 +59,8 @@ class DeviceName(Element):
     :param str type: udi-label-name | user-friendly-name | patient-reported-name | manufacturer-name | model-name | other
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
     
     name: str = None
     
@@ -78,9 +78,9 @@ class Specialization(Element):
     :param str version: The version of the standard that is used to operate and communicate
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
-    systemType: "CodeableConcept" = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
+    systemType: "CodeableConcept" = CodeableConcept()
     
     version: str = None
     
@@ -97,10 +97,10 @@ class Version(Element):
     :param str value: The version text
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
-    type: "CodeableConcept" = None
-    component: "Identifier" = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
+    type: "CodeableConcept" = CodeableConcept()
+    component: "Identifier" = Identifier()
     
     value: str = None
     
@@ -117,11 +117,11 @@ class Property(Element):
     :param CodeableConcept valueCode: Property value as a code, e.g., NTP4 (synced to NTP)
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
-    type: "CodeableConcept" = None
-    valueQuantity: list[Quantity] = None
-    valueCode: list[CodeableConcept] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
+    type: "CodeableConcept" = CodeableConcept()
+    valueQuantity: list[Quantity] = Quantity() 
+    valueCode: list[CodeableConcept] = CodeableConcept() 
     
 
 @dataclass
@@ -166,29 +166,29 @@ class Device(ModelBase):
     resourceType: str = "Device"
     id: str = None
     
-    meta: "Meta" = None
+    meta: "Meta" = Meta()
     
     implicitRules: str = None
     
     language: str = None
     
-    text: "Narrative" = None
+    text: "Narrative" = Narrative()
     
-    contained: list["Resource"] = None
+    contained: list[Resource] = Resource() 
     
-    extension: list["Extension"] = None
+    extension: list[Extension] = Extension() 
     
-    modifierExtension: list["Extension"] = None
+    modifierExtension: list[Extension] = Extension() 
     
-    identifier: list["Identifier"] = None
+    identifier: list[Identifier] = Identifier() 
     
-    definition: "Reference" = None
+    definition: "Reference" = Reference()
     
-    udiCarrier: list["UdiCarrier"] = None
+    udiCarrier: list[UdiCarrier] = UdiCarrier() 
     
     status: str = None
     
-    statusReason: list["CodeableConcept"] = None
+    statusReason: list[CodeableConcept] = CodeableConcept() 
     
     distinctIdentifier: str = None
     
@@ -202,33 +202,33 @@ class Device(ModelBase):
     
     serialNumber: str = None
     
-    deviceName: list["DeviceName"] = None
+    deviceName: list[DeviceName] = DeviceName() 
     
     modelNumber: str = None
     
     partNumber: str = None
     
-    type: "CodeableConcept" = None
+    type: "CodeableConcept" = CodeableConcept()
     
-    specialization: list["Specialization"] = None
+    specialization: list[Specialization] = Specialization() 
     
-    version: list["Version"] = None
+    version: list[Version] = Version() 
     
-    property: list["Property"] = None
+    property: list[Property] = Property() 
     
-    patient: "Reference" = None
+    patient: "Reference" = Reference()
     
-    owner: "Reference" = None
+    owner: "Reference" = Reference()
     
-    contact: list["ContactPoint"] = None
+    contact: list[ContactPoint] = ContactPoint() 
     
-    location: "Reference" = None
+    location: "Reference" = Reference()
     
     url: str = None
     
-    note: list["Annotation"] = None
+    note: list[Annotation] = Annotation() 
     
-    safety: list["CodeableConcept"] = None
+    safety: list[CodeableConcept] = CodeableConcept() 
     
-    parent: "Reference" = None
+    parent: "Reference" = Reference()
     

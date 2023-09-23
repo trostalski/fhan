@@ -1,18 +1,18 @@
 """
 Generated class for AuditEvent. 
-Time: 2023-09-20 20:39:03
+Time: 2023-09-23 23:45:33
 """
 from dataclasses import dataclass
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Resource import *
 from fhan.models.R4.Reference import *
+from fhan.models.R4.Period import *
+from fhan.models.R4.Extension import *
+from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Element import *
+from fhan.models.R4.Resource import *
 from fhan.models.R4.Coding import *
 from fhan.models.R4.Narrative import *
-from fhan.models.R4.Period import *
-from fhan.models.R4.Element import *
-from fhan.models.R4.Extension import *
+from fhan.models.R4.Meta import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -28,8 +28,8 @@ class Network(Element):
     :param str type: The type of network access point
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
     
     address: str = None
     
@@ -57,23 +57,23 @@ class Agent(Element):
     :param CodeableConcept purposeOfUse: Reason given for this user
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
-    type: "CodeableConcept" = None
-    role: list[CodeableConcept] = None
-    who: "Reference" = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
+    type: "CodeableConcept" = CodeableConcept()
+    role: list[CodeableConcept] = CodeableConcept() 
+    who: "Reference" = Reference()
     
     altId: str = None
     
     name: str = None
     
     requestor: bool = None
-    location: "Reference" = None
+    location: "Reference" = Reference()
     
     policy: str = None
-    media: "Coding" = None
-    network: "Network" = None
-    purposeOfUse: list[CodeableConcept] = None
+    media: "Coding" = Coding()
+    network: "Network" = Network()
+    purposeOfUse: list[CodeableConcept] = CodeableConcept() 
     
 
     
@@ -88,12 +88,12 @@ class Source(Element):
     :param Coding type: The type of source where event originated
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
     
     site: str = None
-    observer: "Reference" = None
-    type: list[Coding] = None
+    observer: "Reference" = Reference()
+    type: list[Coding] = Coding() 
     
 
     
@@ -109,8 +109,8 @@ class Detail(Element):
     :param str valueString: Property value
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
     
     type: str = None
     
@@ -136,20 +136,20 @@ class Entity(Element):
     :param Detail detail: Additional Information about the entity
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
-    what: "Reference" = None
-    type: "Coding" = None
-    role: "Coding" = None
-    lifecycle: "Coding" = None
-    securityLabel: list[Coding] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
+    what: "Reference" = Reference()
+    type: "Coding" = Coding()
+    role: "Coding" = Coding()
+    lifecycle: "Coding" = Coding()
+    securityLabel: list[Coding] = Coding() 
     
     name: str = None
     
     description: str = None
     
     query: str = None
-    detail: list[Detail] = None
+    detail: list[Detail] = Detail() 
     
 
 @dataclass
@@ -179,27 +179,27 @@ class AuditEvent(ModelBase):
     resourceType: str = "AuditEvent"
     id: str = None
     
-    meta: "Meta" = None
+    meta: "Meta" = Meta()
     
     implicitRules: str = None
     
     language: str = None
     
-    text: "Narrative" = None
+    text: "Narrative" = Narrative()
     
-    contained: list["Resource"] = None
+    contained: list[Resource] = Resource() 
     
-    extension: list["Extension"] = None
+    extension: list[Extension] = Extension() 
     
-    modifierExtension: list["Extension"] = None
+    modifierExtension: list[Extension] = Extension() 
     
-    type: "Coding" = None
+    type: "Coding" = Coding()
     
-    subtype: list["Coding"] = None
+    subtype: list[Coding] = Coding() 
     
     action: str = None
     
-    period: "Period" = None
+    period: "Period" = Period()
     
     recorded: str = None
     
@@ -207,11 +207,11 @@ class AuditEvent(ModelBase):
     
     outcomeDesc: str = None
     
-    purposeOfEvent: list["CodeableConcept"] = None
+    purposeOfEvent: list[CodeableConcept] = CodeableConcept() 
     
-    agent: list["Agent"] = None
+    agent: list[Agent] = Agent() 
     
-    source: "Source" = None
+    source: "Source" = Source()
     
-    entity: list["Entity"] = None
+    entity: list[Entity] = Entity() 
     

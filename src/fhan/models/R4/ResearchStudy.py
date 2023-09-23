@@ -1,21 +1,21 @@
 """
 Generated class for ResearchStudy. 
-Time: 2023-09-20 20:39:03
+Time: 2023-09-23 23:45:33
 """
 from dataclasses import dataclass
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.ContactDetail import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Resource import *
-from fhan.models.R4.Reference import *
-from fhan.models.R4.BackboneElement import *
 from fhan.models.R4.Annotation import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.Period import *
-from fhan.models.R4.RelatedArtifact import *
+from fhan.models.R4.Reference import *
+from fhan.models.R4.ContactDetail import *
 from fhan.models.R4.Identifier import *
-from fhan.models.R4.Element import *
 from fhan.models.R4.Extension import *
+from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.RelatedArtifact import *
+from fhan.models.R4.Period import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Element import *
+from fhan.models.R4.Resource import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Meta import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -30,11 +30,11 @@ class Arm(Element):
     :param str description: Short explanation of study path
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
     
     name: str = None
-    type: "CodeableConcept" = None
+    type: "CodeableConcept" = CodeableConcept()
     
     description: str = None
     
@@ -50,11 +50,11 @@ class Objective(Element):
     :param CodeableConcept type: primary | secondary | exploratory
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
     
     name: str = None
-    type: "CodeableConcept" = None
+    type: "CodeableConcept" = CodeableConcept()
     
 
 @dataclass
@@ -97,65 +97,65 @@ class ResearchStudy(ModelBase):
     resourceType: str = "ResearchStudy"
     id: str = None
     
-    meta: "Meta" = None
+    meta: "Meta" = Meta()
     
     implicitRules: str = None
     
     language: str = None
     
-    text: "Narrative" = None
+    text: "Narrative" = Narrative()
     
-    contained: list["Resource"] = None
+    contained: list[Resource] = Resource() 
     
-    extension: list["Extension"] = None
+    extension: list[Extension] = Extension() 
     
-    modifierExtension: list["Extension"] = None
+    modifierExtension: list[Extension] = Extension() 
     
-    identifier: list["Identifier"] = None
+    identifier: list[Identifier] = Identifier() 
     
     title: str = None
     
-    protocol: list["Reference"] = None
+    protocol: list[Reference] = Reference() 
     
-    partOf: list["Reference"] = None
+    partOf: list[Reference] = Reference() 
     
     status: str = None
     
-    primaryPurposeType: "CodeableConcept" = None
+    primaryPurposeType: "CodeableConcept" = CodeableConcept()
     
-    phase: "CodeableConcept" = None
+    phase: "CodeableConcept" = CodeableConcept()
     
-    category: list["CodeableConcept"] = None
+    category: list[CodeableConcept] = CodeableConcept() 
     
-    focus: list["CodeableConcept"] = None
+    focus: list[CodeableConcept] = CodeableConcept() 
     
-    condition: list["CodeableConcept"] = None
+    condition: list[CodeableConcept] = CodeableConcept() 
     
-    contact: list["ContactDetail"] = None
+    contact: list[ContactDetail] = ContactDetail() 
     
-    relatedArtifact: list["RelatedArtifact"] = None
+    relatedArtifact: list[RelatedArtifact] = RelatedArtifact() 
     
-    keyword: list["CodeableConcept"] = None
+    keyword: list[CodeableConcept] = CodeableConcept() 
     
-    location: list["CodeableConcept"] = None
+    location: list[CodeableConcept] = CodeableConcept() 
     
     description: str = None
     
-    enrollment: list["Reference"] = None
+    enrollment: list[Reference] = Reference() 
     
-    period: "Period" = None
+    period: "Period" = Period()
     
-    sponsor: "Reference" = None
+    sponsor: "Reference" = Reference()
     
-    principalInvestigator: "Reference" = None
+    principalInvestigator: "Reference" = Reference()
     
-    site: list["Reference"] = None
+    site: list[Reference] = Reference() 
     
-    reasonStopped: "CodeableConcept" = None
+    reasonStopped: "CodeableConcept" = CodeableConcept()
     
-    note: list["Annotation"] = None
+    note: list[Annotation] = Annotation() 
     
-    arm: list["Arm"] = None
+    arm: list[Arm] = Arm() 
     
-    objective: list["Objective"] = None
+    objective: list[Objective] = Objective() 
     

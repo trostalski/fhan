@@ -1,20 +1,20 @@
 """
 Generated class for Consent. 
-Time: 2023-09-20 20:39:03
+Time: 2023-09-23 23:45:33
 """
 from dataclasses import dataclass
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Resource import *
-from fhan.models.R4.Attachment import *
 from fhan.models.R4.Reference import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.Extension import *
+from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Period import *
+from fhan.models.R4.Attachment import *
 from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Element import *
+from fhan.models.R4.Resource import *
 from fhan.models.R4.Coding import *
 from fhan.models.R4.Narrative import *
-from fhan.models.R4.Period import *
-from fhan.models.R4.Identifier import *
-from fhan.models.R4.Element import *
-from fhan.models.R4.Extension import *
+from fhan.models.R4.Meta import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -29,13 +29,13 @@ class Policy(Element):
     :param CodeableConcept policyRule: Regulation that this consents to
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
     
     authority: str = None
     
     uri: str = None
-    policyRule: "CodeableConcept" = None
+    policyRule: "CodeableConcept" = CodeableConcept()
     
 
     
@@ -50,11 +50,11 @@ class Verification(Element):
     :param str verificationDate: When consent verified
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
     
     verified: bool = None
-    verifiedWith: "Reference" = None
+    verifiedWith: "Reference" = Reference()
     
     verificationDate: str = None
     
@@ -72,10 +72,10 @@ class Actor(Element):
     :param Reference reference: Resource for the actor (or group, by role)
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
-    role: "CodeableConcept" = None
-    reference: "Reference" = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
+    role: "CodeableConcept" = CodeableConcept()
+    reference: "Reference" = Reference()
     
 
     
@@ -88,14 +88,14 @@ class Data(Element):
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str meaning: instance | related | dependents | authoredby
     :param Reference reference: The actual data reference
-    """dataPeriod: "Period" = None
+    """dataPeriod: "Period" = Period()
     
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
     
     meaning: str = None
-    reference: "Reference" = None
+    reference: "Reference" = Reference()
     
 
   
@@ -118,19 +118,19 @@ class Provision(Element):
     :param Data data: Data controlled by this rule
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
     
     type: str = None
-    period: "Period" = None
-    actor: list[Actor] = None
-    action: list[CodeableConcept] = None
-    securityLabel: list[Coding] = None
-    purpose: list[Coding] = None
-    _class: list[Coding] = None
-    code: list[CodeableConcept] = None
-    dataPeriod: "Period" = None
-    data: list[Data] = None
+    period: "Period" = Period()
+    actor: list[Actor] = Actor() 
+    action: list[CodeableConcept] = CodeableConcept() 
+    securityLabel: list[Coding] = Coding() 
+    purpose: list[Coding] = Coding() 
+    _class: list[Coding] = Coding() 
+    code: list[CodeableConcept] = CodeableConcept() 
+    dataPeriod: "Period" = Period()
+    data: list[Data] = Data() 
     
 
 @dataclass
@@ -161,41 +161,41 @@ class Consent(ModelBase):
     resourceType: str = "Consent"
     id: str = None
     
-    meta: "Meta" = None
+    meta: "Meta" = Meta()
     
     implicitRules: str = None
     
     language: str = None
     
-    text: "Narrative" = None
+    text: "Narrative" = Narrative()
     
-    contained: list["Resource"] = None
+    contained: list[Resource] = Resource() 
     
-    extension: list["Extension"] = None
+    extension: list[Extension] = Extension() 
     
-    modifierExtension: list["Extension"] = None
+    modifierExtension: list[Extension] = Extension() 
     
-    identifier: list["Identifier"] = None
+    identifier: list[Identifier] = Identifier() 
     
     status: str = None
     
-    scope: "CodeableConcept" = None
+    scope: "CodeableConcept" = CodeableConcept()
     
-    category: list["CodeableConcept"] = None
+    category: list[CodeableConcept] = CodeableConcept() 
     
-    patient: "Reference" = None
+    patient: "Reference" = Reference()
     
     dateTime: str = None
     
-    performer: list["Reference"] = None
+    performer: list[Reference] = Reference() 
     
-    organization: list["Reference"] = None
+    organization: list[Reference] = Reference() 
     
-    sourceAttachment: "Attachment" = None
+    sourceAttachment: "Attachment" = Attachment()
     
-    policy: list["Policy"] = None
+    policy: list[Policy] = Policy() 
     
-    verification: list["Verification"] = None
+    verification: list[Verification] = Verification() 
     
-    provision: "Provision" = None
+    provision: "Provision" = Provision()
     

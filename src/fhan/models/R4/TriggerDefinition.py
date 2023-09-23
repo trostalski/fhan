@@ -1,13 +1,13 @@
 """
 Generated class for TriggerDefinition. 
-Time: 2023-09-20 20:39:03
+Time: 2023-09-23 23:45:33
 """
 from dataclasses import dataclass
-from fhan.models.R4.Expression import *
 from fhan.models.R4.DataRequirement import *
-from fhan.models.R4.Timing import *
 from fhan.models.R4.Reference import *
 from fhan.models.R4.Extension import *
+from fhan.models.R4.Expression import *
+from fhan.models.R4.Timing import *
 from fhan.models.R4.Element import *
 
 
@@ -26,15 +26,15 @@ class TriggerDefinition(Element):
     resourceType: str = "TriggerDefinition"
     id: str = None
     
-    extension: list["Extension"] = None
+    extension: list[Extension] = Extension() 
     
     type: str = None
     
     name: str = None
     
-    timingTiming: "Timing" = None
+    timingTiming: "Timing" = Timing()
     
-    data: list["DataRequirement"] = None
+    data: list[DataRequirement] = DataRequirement() 
     
-    condition: "Expression" = None
+    condition: "Expression" = Expression()
     

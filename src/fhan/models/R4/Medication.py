@@ -1,18 +1,18 @@
 """
 Generated class for Medication. 
-Time: 2023-09-20 20:39:03
+Time: 2023-09-23 23:45:33
 """
 from dataclasses import dataclass
+from fhan.models.R4.Reference import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.Extension import *
 from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Ratio import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Resource import *
-from fhan.models.R4.Reference import *
 from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.Identifier import *
 from fhan.models.R4.Element import *
-from fhan.models.R4.Extension import *
+from fhan.models.R4.Resource import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Meta import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -27,12 +27,12 @@ class Ingredient(Element):
     :param Ratio strength: Quantity of ingredient present
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
-    itemCodeableConcept: "CodeableConcept" = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
+    itemCodeableConcept: "CodeableConcept" = CodeableConcept()
     
     isActive: bool = None
-    strength: "Ratio" = None
+    strength: "Ratio" = Ratio()
     
 
     
@@ -46,8 +46,8 @@ class Batch(Element):
     :param str expirationDate: When batch will expire
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
     
     lotNumber: str = None
     
@@ -78,33 +78,33 @@ class Medication(ModelBase):
     resourceType: str = "Medication"
     id: str = None
     
-    meta: "Meta" = None
+    meta: "Meta" = Meta()
     
     implicitRules: str = None
     
     language: str = None
     
-    text: "Narrative" = None
+    text: "Narrative" = Narrative()
     
-    contained: list["Resource"] = None
+    contained: list[Resource] = Resource() 
     
-    extension: list["Extension"] = None
+    extension: list[Extension] = Extension() 
     
-    modifierExtension: list["Extension"] = None
+    modifierExtension: list[Extension] = Extension() 
     
-    identifier: list["Identifier"] = None
+    identifier: list[Identifier] = Identifier() 
     
-    code: "CodeableConcept" = None
+    code: "CodeableConcept" = CodeableConcept()
     
     status: str = None
     
-    manufacturer: "Reference" = None
+    manufacturer: "Reference" = Reference()
     
-    form: "CodeableConcept" = None
+    form: "CodeableConcept" = CodeableConcept()
     
-    amount: "Ratio" = None
+    amount: "Ratio" = Ratio()
     
-    ingredient: list["Ingredient"] = None
+    ingredient: list[Ingredient] = Ingredient() 
     
-    batch: "Batch" = None
+    batch: "Batch" = Batch()
     

@@ -1,21 +1,21 @@
 """
 Generated class for MedicinalProductPackaged. 
-Time: 2023-09-20 20:39:03
+Time: 2023-09-23 23:45:33
 """
 from dataclasses import dataclass
+from fhan.models.R4.Reference import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.Extension import *
 from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.MarketingStatus import *
+from fhan.models.R4.Quantity import *
 from fhan.models.R4.ProdCharacteristic import *
+from fhan.models.R4.BackboneElement import *
 from fhan.models.R4.Element import *
-from fhan.models.R4.Meta import *
 from fhan.models.R4.Resource import *
 from fhan.models.R4.ProductShelfLife import *
-from fhan.models.R4.Reference import *
-from fhan.models.R4.BackboneElement import *
 from fhan.models.R4.Narrative import *
-from fhan.models.R4.Quantity import *
-from fhan.models.R4.Identifier import *
-from fhan.models.R4.MarketingStatus import *
-from fhan.models.R4.Extension import *
+from fhan.models.R4.Meta import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -29,10 +29,10 @@ class BatchIdentifier(Element):
     :param Identifier immediatePackaging: A number appearing on the immediate packaging (and not the outer packaging)
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
-    outerPackaging: "Identifier" = None
-    immediatePackaging: "Identifier" = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
+    outerPackaging: "Identifier" = Identifier()
+    immediatePackaging: "Identifier" = Identifier()
     
 
     
@@ -55,19 +55,19 @@ class PackageItem(Element):
     :param Reference manufacturer: Manufacturer of this Package Item
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
-    identifier: list[Identifier] = None
-    type: "CodeableConcept" = None
-    quantity: "Quantity" = None
-    material: list[CodeableConcept] = None
-    alternateMaterial: list[CodeableConcept] = None
-    device: list[Reference] = None
-    manufacturedItem: list[Reference] = None
-    physicalCharacteristics: "ProdCharacteristic" = None
-    otherCharacteristics: list[CodeableConcept] = None
-    shelfLifeStorage: list[ProductShelfLife] = None
-    manufacturer: list[Reference] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
+    identifier: list[Identifier] = Identifier() 
+    type: "CodeableConcept" = CodeableConcept()
+    quantity: "Quantity" = Quantity()
+    material: list[CodeableConcept] = CodeableConcept() 
+    alternateMaterial: list[CodeableConcept] = CodeableConcept() 
+    device: list[Reference] = Reference() 
+    manufacturedItem: list[Reference] = Reference() 
+    physicalCharacteristics: "ProdCharacteristic" = ProdCharacteristic()
+    otherCharacteristics: list[CodeableConcept] = CodeableConcept() 
+    shelfLifeStorage: list[ProductShelfLife] = ProductShelfLife() 
+    manufacturer: list[Reference] = Reference() 
     
 
 @dataclass
@@ -95,35 +95,35 @@ class MedicinalProductPackaged(ModelBase):
     resourceType: str = "MedicinalProductPackaged"
     id: str = None
     
-    meta: "Meta" = None
+    meta: "Meta" = Meta()
     
     implicitRules: str = None
     
     language: str = None
     
-    text: "Narrative" = None
+    text: "Narrative" = Narrative()
     
-    contained: list["Resource"] = None
+    contained: list[Resource] = Resource() 
     
-    extension: list["Extension"] = None
+    extension: list[Extension] = Extension() 
     
-    modifierExtension: list["Extension"] = None
+    modifierExtension: list[Extension] = Extension() 
     
-    identifier: list["Identifier"] = None
+    identifier: list[Identifier] = Identifier() 
     
-    subject: list["Reference"] = None
+    subject: list[Reference] = Reference() 
     
     description: str = None
     
-    legalStatusOfSupply: "CodeableConcept" = None
+    legalStatusOfSupply: "CodeableConcept" = CodeableConcept()
     
-    marketingStatus: list["MarketingStatus"] = None
+    marketingStatus: list[MarketingStatus] = MarketingStatus() 
     
-    marketingAuthorization: "Reference" = None
+    marketingAuthorization: "Reference" = Reference()
     
-    manufacturer: list["Reference"] = None
+    manufacturer: list[Reference] = Reference() 
     
-    batchIdentifier: list["BatchIdentifier"] = None
+    batchIdentifier: list[BatchIdentifier] = BatchIdentifier() 
     
-    packageItem: list["PackageItem"] = None
+    packageItem: list[PackageItem] = PackageItem() 
     

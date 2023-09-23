@@ -1,11 +1,11 @@
 """
 Generated class for Identifier. 
-Time: 2023-09-20 20:39:03
+Time: 2023-09-23 23:45:33
 """
 from dataclasses import dataclass
 from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Period import *
 from fhan.models.R4.Extension import *
+from fhan.models.R4.Period import *
 from fhan.models.R4.Reference import *
 from fhan.models.R4.Element import *
 
@@ -26,17 +26,17 @@ class Identifier(Element):
     resourceType: str = "Identifier"
     id: str = None
     
-    extension: list["Extension"] = None
+    extension: list[Extension] = Extension() 
     
     use: str = None
     
-    type: "CodeableConcept" = None
+    type: "CodeableConcept" = CodeableConcept()
     
     system: str = None
     
     value: str = None
     
-    period: "Period" = None
+    period: "Period" = Period()
     
-    assigner: "Reference" = None
+    assigner: "Reference" = Reference()
     

@@ -1,20 +1,20 @@
 """
 Generated class for SpecimenDefinition. 
-Time: 2023-09-20 20:39:03
+Time: 2023-09-23 23:45:33
 """
 from dataclasses import dataclass
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Range import *
-from fhan.models.R4.Element import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Resource import *
 from fhan.models.R4.Reference import *
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Narrative import *
+from fhan.models.R4.Range import *
 from fhan.models.R4.Identifier import *
-from fhan.models.R4.Duration import *
-from fhan.models.R4.Quantity import *
 from fhan.models.R4.Extension import *
+from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Quantity import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Element import *
+from fhan.models.R4.Resource import *
+from fhan.models.R4.Duration import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Meta import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -31,9 +31,9 @@ class Additive(Element):
     :param CodeableConcept additiveCodeableConcept: Additive associated with container
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
-    additiveCodeableConcept: "CodeableConcept" = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
+    additiveCodeableConcept: "CodeableConcept" = CodeableConcept()
     
 
   
@@ -54,16 +54,16 @@ class Container(Element):
     :param str preparation: Specimen container preparation
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
-    material: "CodeableConcept" = None
-    type: "CodeableConcept" = None
-    cap: "CodeableConcept" = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
+    material: "CodeableConcept" = CodeableConcept()
+    type: "CodeableConcept" = CodeableConcept()
+    cap: "CodeableConcept" = CodeableConcept()
     
     description: str = None
-    capacity: "Quantity" = None
-    minimumVolumeQuantity: "Quantity" = None
-    additive: list[Additive] = None
+    capacity: "Quantity" = Quantity()
+    minimumVolumeQuantity: "Quantity" = Quantity()
+    additive: list[Additive] = Additive() 
     
     preparation: str = None
     
@@ -81,11 +81,11 @@ class Handling(Element):
     :param str instruction: Preservation instruction
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
-    temperatureQualifier: "CodeableConcept" = None
-    temperatureRange: "Range" = None
-    maxDuration: "Duration" = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
+    temperatureQualifier: "CodeableConcept" = CodeableConcept()
+    temperatureRange: "Range" = Range()
+    maxDuration: "Duration" = Duration()
     
     instruction: str = None
     
@@ -108,19 +108,19 @@ class TypeTested(Element):
     :param Handling handling: Specimen handling before testing
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
     
     isDerived: bool = None
-    type: "CodeableConcept" = None
+    type: "CodeableConcept" = CodeableConcept()
     
     preference: str = None
-    container: "Container" = None
+    container: "Container" = Container()
     
     requirement: str = None
-    retentionTime: "Duration" = None
-    rejectionCriterion: list[CodeableConcept] = None
-    handling: list[Handling] = None
+    retentionTime: "Duration" = Duration()
+    rejectionCriterion: list[CodeableConcept] = CodeableConcept() 
+    handling: list[Handling] = Handling() 
     
 
 @dataclass
@@ -145,29 +145,29 @@ class SpecimenDefinition(ModelBase):
     resourceType: str = "SpecimenDefinition"
     id: str = None
     
-    meta: "Meta" = None
+    meta: "Meta" = Meta()
     
     implicitRules: str = None
     
     language: str = None
     
-    text: "Narrative" = None
+    text: "Narrative" = Narrative()
     
-    contained: list["Resource"] = None
+    contained: list[Resource] = Resource() 
     
-    extension: list["Extension"] = None
+    extension: list[Extension] = Extension() 
     
-    modifierExtension: list["Extension"] = None
+    modifierExtension: list[Extension] = Extension() 
     
-    identifier: "Identifier" = None
+    identifier: "Identifier" = Identifier()
     
-    typeCollected: "CodeableConcept" = None
+    typeCollected: "CodeableConcept" = CodeableConcept()
     
-    patientPreparation: list["CodeableConcept"] = None
+    patientPreparation: list[CodeableConcept] = CodeableConcept() 
     
     timeAspect: str = None
     
-    collection: list["CodeableConcept"] = None
+    collection: list[CodeableConcept] = CodeableConcept() 
     
-    typeTested: list["TypeTested"] = None
+    typeTested: list[TypeTested] = TypeTested() 
     

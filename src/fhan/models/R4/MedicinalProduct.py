@@ -1,19 +1,19 @@
 """
 Generated class for MedicinalProduct. 
-Time: 2023-09-20 20:39:03
+Time: 2023-09-23 23:45:33
 """
 from dataclasses import dataclass
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Element import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Resource import *
 from fhan.models.R4.Reference import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.Extension import *
+from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.MarketingStatus import *
 from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Element import *
+from fhan.models.R4.Resource import *
 from fhan.models.R4.Coding import *
 from fhan.models.R4.Narrative import *
-from fhan.models.R4.Identifier import *
-from fhan.models.R4.MarketingStatus import *
-from fhan.models.R4.Extension import *
+from fhan.models.R4.Meta import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -29,11 +29,11 @@ class NamePart(Element):
     :param Coding type: Idenifying type for this part of the name (e.g. strength part)
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
     
     part: str = None
-    type: "Coding" = None
+    type: "Coding" = Coding()
     
 
     
@@ -48,11 +48,11 @@ class CountryLanguage(Element):
     :param CodeableConcept language: Language code for this name
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
-    country: "CodeableConcept" = None
-    jurisdiction: "CodeableConcept" = None
-    language: "CodeableConcept" = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
+    country: "CodeableConcept" = CodeableConcept()
+    jurisdiction: "CodeableConcept" = CodeableConcept()
+    language: "CodeableConcept" = CodeableConcept()
     
 
   
@@ -68,12 +68,12 @@ class Name(Element):
     :param CountryLanguage countryLanguage: Country where the name applies
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
     
     productName: str = None
-    namePart: list[NamePart] = None
-    countryLanguage: list[CountryLanguage] = None
+    namePart: list[NamePart] = NamePart() 
+    countryLanguage: list[CountryLanguage] = CountryLanguage() 
     
 
     
@@ -91,15 +91,15 @@ class ManufacturingBusinessOperation(Element):
     :param Reference regulator: A regulator which oversees the operation
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
-    operationType: "CodeableConcept" = None
-    authorisationReferenceNumber: "Identifier" = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
+    operationType: "CodeableConcept" = CodeableConcept()
+    authorisationReferenceNumber: "Identifier" = Identifier()
     
     effectiveDate: str = None
-    confidentialityIndicator: "CodeableConcept" = None
-    manufacturer: list[Reference] = None
-    regulator: "Reference" = None
+    confidentialityIndicator: "CodeableConcept" = CodeableConcept()
+    manufacturer: list[Reference] = Reference() 
+    regulator: "Reference" = Reference()
     
 
     
@@ -118,16 +118,16 @@ class SpecialDesignation(Element):
     :param CodeableConcept species: Animal species for which this applies
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
-    identifier: list[Identifier] = None
-    type: "CodeableConcept" = None
-    intendedUse: "CodeableConcept" = None
-    indicationCodeableConcept: "CodeableConcept" = None
-    status: "CodeableConcept" = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
+    identifier: list[Identifier] = Identifier() 
+    type: "CodeableConcept" = CodeableConcept()
+    intendedUse: "CodeableConcept" = CodeableConcept()
+    indicationCodeableConcept: "CodeableConcept" = CodeableConcept()
+    status: "CodeableConcept" = CodeableConcept()
     
     date: str = None
-    species: "CodeableConcept" = None
+    species: "CodeableConcept" = CodeableConcept()
     
 
 @dataclass
@@ -166,57 +166,57 @@ class MedicinalProduct(ModelBase):
     resourceType: str = "MedicinalProduct"
     id: str = None
     
-    meta: "Meta" = None
+    meta: "Meta" = Meta()
     
     implicitRules: str = None
     
     language: str = None
     
-    text: "Narrative" = None
+    text: "Narrative" = Narrative()
     
-    contained: list["Resource"] = None
+    contained: list[Resource] = Resource() 
     
-    extension: list["Extension"] = None
+    extension: list[Extension] = Extension() 
     
-    modifierExtension: list["Extension"] = None
+    modifierExtension: list[Extension] = Extension() 
     
-    identifier: list["Identifier"] = None
+    identifier: list[Identifier] = Identifier() 
     
-    type: "CodeableConcept" = None
+    type: "CodeableConcept" = CodeableConcept()
     
-    domain: "Coding" = None
+    domain: "Coding" = Coding()
     
-    combinedPharmaceuticalDoseForm: "CodeableConcept" = None
+    combinedPharmaceuticalDoseForm: "CodeableConcept" = CodeableConcept()
     
-    legalStatusOfSupply: "CodeableConcept" = None
+    legalStatusOfSupply: "CodeableConcept" = CodeableConcept()
     
-    additionalMonitoringIndicator: "CodeableConcept" = None
+    additionalMonitoringIndicator: "CodeableConcept" = CodeableConcept()
     
     specialMeasures: str = None
     
-    paediatricUseIndicator: "CodeableConcept" = None
+    paediatricUseIndicator: "CodeableConcept" = CodeableConcept()
     
-    productClassification: list["CodeableConcept"] = None
+    productClassification: list[CodeableConcept] = CodeableConcept() 
     
-    marketingStatus: list["MarketingStatus"] = None
+    marketingStatus: list[MarketingStatus] = MarketingStatus() 
     
-    pharmaceuticalProduct: list["Reference"] = None
+    pharmaceuticalProduct: list[Reference] = Reference() 
     
-    packagedMedicinalProduct: list["Reference"] = None
+    packagedMedicinalProduct: list[Reference] = Reference() 
     
-    attachedDocument: list["Reference"] = None
+    attachedDocument: list[Reference] = Reference() 
     
-    masterFile: list["Reference"] = None
+    masterFile: list[Reference] = Reference() 
     
-    contact: list["Reference"] = None
+    contact: list[Reference] = Reference() 
     
-    clinicalTrial: list["Reference"] = None
+    clinicalTrial: list[Reference] = Reference() 
     
-    name: list["Name"] = None
+    name: list[Name] = Name() 
     
-    crossReference: list["Identifier"] = None
+    crossReference: list[Identifier] = Identifier() 
     
-    manufacturingBusinessOperation: list["ManufacturingBusinessOperation"] = None
+    manufacturingBusinessOperation: list[ManufacturingBusinessOperation] = ManufacturingBusinessOperation() 
     
-    specialDesignation: list["SpecialDesignation"] = None
+    specialDesignation: list[SpecialDesignation] = SpecialDesignation() 
     

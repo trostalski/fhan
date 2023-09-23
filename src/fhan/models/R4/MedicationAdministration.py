@@ -1,21 +1,21 @@
 """
 Generated class for MedicationAdministration. 
-Time: 2023-09-20 20:39:03
+Time: 2023-09-23 23:45:33
 """
 from dataclasses import dataclass
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Element import *
-from fhan.models.R4.Ratio import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Resource import *
-from fhan.models.R4.Reference import *
-from fhan.models.R4.BackboneElement import *
 from fhan.models.R4.Annotation import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.Period import *
+from fhan.models.R4.Reference import *
 from fhan.models.R4.Identifier import *
-from fhan.models.R4.Quantity import *
 from fhan.models.R4.Extension import *
+from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Period import *
+from fhan.models.R4.Ratio import *
+from fhan.models.R4.Quantity import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Element import *
+from fhan.models.R4.Resource import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Meta import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -29,10 +29,10 @@ class Performer(Element):
     :param Reference actor: Who performed the medication administration
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
-    function: "CodeableConcept" = None
-    actor: "Reference" = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
+    function: "CodeableConcept" = CodeableConcept()
+    actor: "Reference" = Reference()
     
 
     
@@ -50,15 +50,15 @@ class Dosage(Element):
     :param Ratio rateRatio: Dose quantity per unit of time
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
     
     text: str = None
-    site: "CodeableConcept" = None
-    route: "CodeableConcept" = None
-    method: "CodeableConcept" = None
-    dose: "Quantity" = None
-    rateRatio: "Ratio" = None
+    site: "CodeableConcept" = CodeableConcept()
+    route: "CodeableConcept" = CodeableConcept()
+    method: "CodeableConcept" = CodeableConcept()
+    dose: "Quantity" = Quantity()
+    rateRatio: "Ratio" = Ratio()
     
 
 @dataclass
@@ -96,55 +96,55 @@ class MedicationAdministration(ModelBase):
     resourceType: str = "MedicationAdministration"
     id: str = None
     
-    meta: "Meta" = None
+    meta: "Meta" = Meta()
     
     implicitRules: str = None
     
     language: str = None
     
-    text: "Narrative" = None
+    text: "Narrative" = Narrative()
     
-    contained: list["Resource"] = None
+    contained: list[Resource] = Resource() 
     
-    extension: list["Extension"] = None
+    extension: list[Extension] = Extension() 
     
-    modifierExtension: list["Extension"] = None
+    modifierExtension: list[Extension] = Extension() 
     
-    identifier: list["Identifier"] = None
+    identifier: list[Identifier] = Identifier() 
     
     instantiates: str = None
     
-    partOf: list["Reference"] = None
+    partOf: list[Reference] = Reference() 
     
     status: str = None
     
-    statusReason: list["CodeableConcept"] = None
+    statusReason: list[CodeableConcept] = CodeableConcept() 
     
-    category: "CodeableConcept" = None
+    category: "CodeableConcept" = CodeableConcept()
     
-    medicationCodeableConcept: "CodeableConcept" = None
+    medicationCodeableConcept: "CodeableConcept" = CodeableConcept()
     
-    subject: "Reference" = None
+    subject: "Reference" = Reference()
     
-    context: "Reference" = None
+    context: "Reference" = Reference()
     
-    supportingInformation: list["Reference"] = None
+    supportingInformation: list[Reference] = Reference() 
     
     effectiveDateTime: str = None
     
-    performer: list["Performer"] = None
+    performer: list[Performer] = Performer() 
     
-    reasonCode: list["CodeableConcept"] = None
+    reasonCode: list[CodeableConcept] = CodeableConcept() 
     
-    reasonReference: list["Reference"] = None
+    reasonReference: list[Reference] = Reference() 
     
-    request: "Reference" = None
+    request: "Reference" = Reference()
     
-    device: list["Reference"] = None
+    device: list[Reference] = Reference() 
     
-    note: list["Annotation"] = None
+    note: list[Annotation] = Annotation() 
     
-    dosage: "Dosage" = None
+    dosage: "Dosage" = Dosage()
     
-    eventHistory: list["Reference"] = None
+    eventHistory: list[Reference] = Reference() 
     

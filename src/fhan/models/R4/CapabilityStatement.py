@@ -1,48 +1,46 @@
 """
 Generated class for CapabilityStatement. 
-Time: 2023-09-20 20:39:03
+Time: 2023-09-23 23:45:33
 """
 from dataclasses import dataclass
+from fhan.models.R4.Reference import *
 from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.ContactDetail import *
+from fhan.models.R4.Extension import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Element import *
 from fhan.models.R4.UsageContext import *
 from fhan.models.R4.Meta import *
 from fhan.models.R4.Resource import *
-from fhan.models.R4.Reference import *
-from fhan.models.R4.BackboneElement import *
 from fhan.models.R4.Coding import *
 from fhan.models.R4.Narrative import *
-from fhan.models.R4.Element import *
-from fhan.models.R4.Extension import *
+from fhan.models.R4.ContactDetail import *
 from fhan.models.generator_models import ModelBase
 
-    
-    
+
 @dataclass
 class Software(Element):
-    """ Software that is covered by this capability statement.  It is used when the capability statement describes the capabilities of a particular software version, independent of an installation.:param str id: Unique id for inter-element referencing
+    """Software that is covered by this capability statement.  It is used when the capability statement describes the capabilities of a particular software version, independent of an installation.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str name: A name the software is known by
     :param str version: Version covered by this statement
     :param str releaseDate: Date this version was released
     """
-    id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
-    
-    name: str = None
-    
-    version: str = None
-    
-    releaseDate: str = None
-    
 
-    
-    
+    id: str = None
+    extension: list[Extension] = Extension()
+    modifierExtension: list[Extension] = Extension()
+
+    name: str = None
+
+    version: str = None
+
+    releaseDate: str = None
+
+
 @dataclass
 class Implementation(Element):
-    """ Identifies a specific implementation instance that is described by the capability statement - i.e. a particular installation, rather than the capabilities of a software program.:param str id: Unique id for inter-element referencing
+    """Identifies a specific implementation instance that is described by the capability statement - i.e. a particular installation, rather than the capabilities of a software program.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str description: Describes this specific instance
@@ -50,67 +48,60 @@ class Implementation(Element):
     :param Reference custodian: Organization that manages the data
     :param str implementationGuide: Implementation guides supported
     """
-    id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
-    
-    description: str = None
-    
-    url: str = None
-    custodian: "Reference" = None
-    
-    implementationGuide: str = None
-    
 
-    
-        
-    
-    
+    id: str = None
+    extension: list[Extension] = Extension()
+    modifierExtension: list[Extension] = Extension()
+
+    description: str = None
+
+    url: str = None
+    custodian: "Reference" = Reference()
+
+    implementationGuide: str = None
+
+
 @dataclass
 class Security(Element):
-    """ Information about security implementation from an interface perspective - what a client needs to know.:param str id: Unique id for inter-element referencing
+    """Information about security implementation from an interface perspective - what a client needs to know.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param bool cors: Adds CORS Headers (http://enable-cors.org/)
     :param CodeableConcept service: OAuth | SMART-on-FHIR | NTLM | Basic | Kerberos | Certificates
     :param str description: General description of how security works
     """
-    id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
-    
-    cors: bool = None
-    service: list[CodeableConcept] = None
-    
-    description: str = None
-    
 
-    
-        
-    
-    
+    id: str = None
+    extension: list[Extension] = Extension()
+    modifierExtension: list[Extension] = Extension()
+
+    cors: bool = None
+    service: list[CodeableConcept] = CodeableConcept()
+
+    description: str = None
+
+
 @dataclass
 class Interaction(Element):
-    """ Identifies a restful operation supported by the solution.:param str id: Unique id for inter-element referencing
+    """Identifies a restful operation supported by the solution.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str code: read | vread | update | patch | delete | history-instance | history-type | create | search-type
     :param str documentation: Anything special about operation behavior
     """
-    id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
-    
-    code: str = None
-    
-    documentation: str = None
-    
 
-    
-    
+    id: str = None
+    extension: list[Extension] = Extension()
+    modifierExtension: list[Extension] = Extension()
+
+    code: str = None
+
+    documentation: str = None
+
+
 @dataclass
 class SearchParam(Element):
-    """ Search parameters for implementations to support and/or make use of - either references to ones defined in the specification, or additional ones defined for/by the implementation.:param str id: Unique id for inter-element referencing
+    """Search parameters for implementations to support and/or make use of - either references to ones defined in the specification, or additional ones defined for/by the implementation.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str name: Name of search parameter
@@ -118,47 +109,44 @@ class SearchParam(Element):
     :param str type: number | date | string | token | reference | composite | quantity | uri | special
     :param str documentation: Server-specific usage
     """
-    id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
-    
-    name: str = None
-    
-    definition: str = None
-    
-    type: str = None
-    
-    documentation: str = None
-    
 
-    
-    
+    id: str = None
+    extension: list[Extension] = Extension()
+    modifierExtension: list[Extension] = Extension()
+
+    name: str = None
+
+    definition: str = None
+
+    type: str = None
+
+    documentation: str = None
+
+
 @dataclass
 class Operation(Element):
-    """ Definition of an operation or a named query together with its parameters and their meaning and type. Consult the definition of the operation for details about how to invoke the operation, and the parameters.:param str id: Unique id for inter-element referencing
+    """Definition of an operation or a named query together with its parameters and their meaning and type. Consult the definition of the operation for details about how to invoke the operation, and the parameters.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str name: Name by which the operation/query is invoked
     :param str definition: The defined operation/query
     :param str documentation: Specific details about operation behavior
     """
-    id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
-    
-    name: str = None
-    
-    definition: str = None
-    
-    documentation: str = None
-    
 
-  
-    
-    
+    id: str = None
+    extension: list[Extension] = Extension()
+    modifierExtension: list[Extension] = Extension()
+
+    name: str = None
+
+    definition: str = None
+
+    documentation: str = None
+
+
 @dataclass
 class Resource(Element):
-    """ A specification of the restful capabilities of the solution for a specific resource type.:param str id: Unique id for inter-element referencing
+    """A specification of the restful capabilities of the solution for a specific resource type.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str type: A resource type that is supported
@@ -179,67 +167,64 @@ class Resource(Element):
     :param SearchParam searchParam: Search parameters supported by implementation
     :param Operation operation: Definition of a resource operation
     """
-    id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
-    
-    type: str = None
-    
-    profile: str = None
-    
-    supportedProfile: str = None
-    
-    documentation: str = None
-    interaction: list[Interaction] = None
-    
-    versioning: str = None
-    
-    readHistory: bool = None
-    
-    updateCreate: bool = None
-    
-    conditionalCreate: bool = None
-    
-    conditionalRead: str = None
-    
-    conditionalUpdate: bool = None
-    
-    conditionalDelete: str = None
-    
-    referencePolicy: str = None
-    
-    searchInclude: str = None
-    
-    searchRevInclude: str = None
-    searchParam: list[SearchParam] = None
-    operation: list[Operation] = None
-    
 
-    
-    
+    id: str = None
+    extension: list[Extension] = Extension()
+    modifierExtension: list[Extension] = Extension()
+
+    type: str = None
+
+    profile: str = None
+
+    supportedProfile: str = None
+
+    documentation: str = None
+    interaction: list[Interaction] = Interaction()
+
+    versioning: str = None
+
+    readHistory: bool = None
+
+    updateCreate: bool = None
+
+    conditionalCreate: bool = None
+
+    conditionalRead: str = None
+
+    conditionalUpdate: bool = None
+
+    conditionalDelete: str = None
+
+    referencePolicy: str = None
+
+    searchInclude: str = None
+
+    searchRevInclude: str = None
+    searchParam: list[SearchParam] = SearchParam()
+    operation: list[Operation] = Operation()
+
+
 @dataclass
 class Interaction(Element):
-    """ A specification of restful operations supported by the system.:param str id: Unique id for inter-element referencing
+    """A specification of restful operations supported by the system.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str code: transaction | batch | search-system | history-system
     :param str documentation: Anything special about operation behavior
     """
-    id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
-    
-    code: str = None
-    
-    documentation: str = None
-    
 
-  
-    
-    
+    id: str = None
+    extension: list[Extension] = Extension()
+    modifierExtension: list[Extension] = Extension()
+
+    code: str = None
+
+    documentation: str = None
+
+
 @dataclass
 class Rest(Element):
-    """ A definition of the restful capabilities of the solution, if any.:param str id: Unique id for inter-element referencing
+    """A definition of the restful capabilities of the solution, if any.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str mode: client | server
@@ -249,65 +234,59 @@ class Rest(Element):
     :param Interaction interaction: What operations are supported?
     :param str compartment: Compartments served/used by system
     """
-    id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
-    
-    mode: str = None
-    
-    documentation: str = None
-    security: "Security" = None
-    resource: list[Resource] = None
-    interaction: list[Interaction] = None
-    
-    compartment: str = None
-    
 
-    
-        
-    
-    
+    id: str = None
+    extension: list[Extension] = Extension()
+    modifierExtension: list[Extension] = Extension()
+
+    mode: str = None
+
+    documentation: str = None
+    security: "Security" = Security()
+    resource: list[Resource] = Resource()
+    interaction: list[Interaction] = Interaction()
+
+    compartment: str = None
+
+
 @dataclass
 class Endpoint(Element):
-    """ An endpoint (network accessible address) to which messages and/or replies are to be sent.:param str id: Unique id for inter-element referencing
+    """An endpoint (network accessible address) to which messages and/or replies are to be sent.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param Coding protocol: http | ftp | mllp +
     :param str address: Network address or identifier of the end-point
     """
-    id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
-    protocol: "Coding" = None
-    
-    address: str = None
-    
 
-    
-    
+    id: str = None
+    extension: list[Extension] = Extension()
+    modifierExtension: list[Extension] = Extension()
+    protocol: "Coding" = Coding()
+
+    address: str = None
+
+
 @dataclass
 class SupportedMessage(Element):
-    """ References to message definitions for messages this system can send or receive.:param str id: Unique id for inter-element referencing
+    """References to message definitions for messages this system can send or receive.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str mode: sender | receiver
     :param str definition: Message supported by this system
     """
-    id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
-    
-    mode: str = None
-    
-    definition: str = None
-    
 
-  
-    
-    
+    id: str = None
+    extension: list[Extension] = Extension()
+    modifierExtension: list[Extension] = Extension()
+
+    mode: str = None
+
+    definition: str = None
+
+
 @dataclass
 class Messaging(Element):
-    """ A description of the messaging capabilities of the solution.:param str id: Unique id for inter-element referencing
+    """A description of the messaging capabilities of the solution.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param Endpoint endpoint: Where messages should be sent
@@ -315,42 +294,42 @@ class Messaging(Element):
     :param str documentation: Messaging interface behavior details
     :param SupportedMessage supportedMessage: Messages supported by this system
     """
-    id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
-    endpoint: list[Endpoint] = None
-    
-    reliableCache: int = None
-    
-    documentation: str = None
-    supportedMessage: list[SupportedMessage] = None
-    
 
-    
-    
+    id: str = None
+    extension: list[Extension] = Extension()
+    modifierExtension: list[Extension] = Extension()
+    endpoint: list[Endpoint] = Endpoint()
+
+    reliableCache: int = None
+
+    documentation: str = None
+    supportedMessage: list[SupportedMessage] = SupportedMessage()
+
+
 @dataclass
 class Document(Element):
-    """ A document definition.:param str id: Unique id for inter-element referencing
+    """A document definition.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str mode: producer | consumer
     :param str documentation: Description of document support
     :param str profile: Constraint on the resources used in the document
     """
+
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
-    
+    extension: list[Extension] = Extension()
+    modifierExtension: list[Extension] = Extension()
+
     mode: str = None
-    
+
     documentation: str = None
-    
+
     profile: str = None
-    
+
 
 @dataclass
 class CapabilityStatement(ModelBase):
-    """ A Capability Statement documents a set of capabilities (behaviors) of a FHIR Server for a particular version of FHIR that may be used as a statement of actual server functionality or a statement of required or desired server implementation.
+    """A Capability Statement documents a set of capabilities (behaviors) of a FHIR Server for a particular version of FHIR that may be used as a statement of actual server functionality or a statement of required or desired server implementation.
     :param str id: Logical id of this artifact
     :param Meta meta: Metadata about the resource
     :param str implicitRules: A set of rules under which this content was created
@@ -388,68 +367,67 @@ class CapabilityStatement(ModelBase):
 
     resourceType: str = "CapabilityStatement"
     id: str = None
-    
-    meta: "Meta" = None
-    
+
+    meta: "Meta" = Meta()
+
     implicitRules: str = None
-    
+
     language: str = None
-    
-    text: "Narrative" = None
-    
-    contained: list["Resource"] = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
+
+    text: "Narrative" = Narrative()
+
+    contained: list[Resource] = Resource()
+
+    extension: list[Extension] = Extension()
+
+    modifierExtension: list[Extension] = Extension()
+
     url: str = None
-    
+
     version: str = None
-    
+
     name: str = None
-    
+
     title: str = None
-    
+
     status: str = None
-    
+
     experimental: bool = None
-    
+
     date: str = None
-    
+
     publisher: str = None
-    
-    contact: list["ContactDetail"] = None
-    
+
+    contact: list[ContactDetail] = ContactDetail()
+
     description: str = None
-    
-    useContext: list["UsageContext"] = None
-    
-    jurisdiction: list["CodeableConcept"] = None
-    
+
+    useContext: list[UsageContext] = UsageContext()
+
+    jurisdiction: list[CodeableConcept] = CodeableConcept()
+
     purpose: str = None
-    
+
     copyright: str = None
-    
+
     kind: str = None
-    
+
     instantiates: str = None
-    
+
     imports: str = None
-    
-    software: "Software" = None
-    
-    implementation: "Implementation" = None
-    
+
+    software: "Software" = Software()
+
+    implementation: "Implementation" = Implementation()
+
     fhirVersion: str = None
-    
+
     format: str = None
-    
+
     patchFormat: str = None
-    
-    rest: list["Rest"] = None
-    
-    messaging: list["Messaging"] = None
-    
-    document: list["Document"] = None
-    
+
+    rest: list[Rest] = Rest()
+
+    messaging: list[Messaging] = Messaging()
+
+    document: list[Document] = Document()

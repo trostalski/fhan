@@ -1,20 +1,20 @@
 """
 Generated class for Organization. 
-Time: 2023-09-20 20:39:03
+Time: 2023-09-23 23:45:33
 """
 from dataclasses import dataclass
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Element import *
-from fhan.models.R4.Address import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Resource import *
 from fhan.models.R4.Reference import *
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.ContactPoint import *
 from fhan.models.R4.Identifier import *
-from fhan.models.R4.HumanName import *
 from fhan.models.R4.Extension import *
+from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.HumanName import *
+from fhan.models.R4.ContactPoint import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Element import *
+from fhan.models.R4.Resource import *
+from fhan.models.R4.Address import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Meta import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -30,12 +30,12 @@ class Contact(Element):
     :param Address address: Visiting or postal addresses for the contact
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
-    purpose: "CodeableConcept" = None
-    name: "HumanName" = None
-    telecom: list[ContactPoint] = None
-    address: "Address" = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
+    purpose: "CodeableConcept" = CodeableConcept()
+    name: "HumanName" = HumanName()
+    telecom: list[ContactPoint] = ContactPoint() 
+    address: "Address" = Address()
     
 
 @dataclass
@@ -64,37 +64,37 @@ class Organization(ModelBase):
     resourceType: str = "Organization"
     id: str = None
     
-    meta: "Meta" = None
+    meta: "Meta" = Meta()
     
     implicitRules: str = None
     
     language: str = None
     
-    text: "Narrative" = None
+    text: "Narrative" = Narrative()
     
-    contained: list["Resource"] = None
+    contained: list[Resource] = Resource() 
     
-    extension: list["Extension"] = None
+    extension: list[Extension] = Extension() 
     
-    modifierExtension: list["Extension"] = None
+    modifierExtension: list[Extension] = Extension() 
     
-    identifier: list["Identifier"] = None
+    identifier: list[Identifier] = Identifier() 
     
     active: bool = None
     
-    type: list["CodeableConcept"] = None
+    type: list[CodeableConcept] = CodeableConcept() 
     
     name: str = None
     
     alias: str = None
     
-    telecom: list["ContactPoint"] = None
+    telecom: list[ContactPoint] = ContactPoint() 
     
-    address: list["Address"] = None
+    address: list[Address] = Address() 
     
-    partOf: "Reference" = None
+    partOf: "Reference" = Reference()
     
-    contact: list["Contact"] = None
+    contact: list[Contact] = Contact() 
     
-    endpoint: list["Reference"] = None
+    endpoint: list[Reference] = Reference() 
     

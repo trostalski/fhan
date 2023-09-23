@@ -1,6 +1,6 @@
 """
 Generated class for Period. 
-Time: 2023-09-20 20:39:03
+Time: 2023-09-23 23:45:33
 """
 from dataclasses import dataclass
 from fhan.models.R4.Extension import *
@@ -19,7 +19,7 @@ class Period(Element):
     resourceType: str = "Period"
     id: str = None
     
-    extension: list["Extension"] = None
+    extension: list[Extension] = Extension() 
     
     start: str = None
     

@@ -1,11 +1,11 @@
 """
 Generated class for MarketingStatus. 
-Time: 2023-09-20 20:39:03
+Time: 2023-09-23 23:45:33
 """
 from dataclasses import dataclass
 from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Period import *
 from fhan.models.R4.Extension import *
+from fhan.models.R4.Period import *
 from fhan.models.R4.Element import *
 
 
@@ -25,17 +25,17 @@ class MarketingStatus(Element):
     resourceType: str = "MarketingStatus"
     id: str = None
     
-    extension: list["Extension"] = None
+    extension: list[Extension] = Extension() 
     
-    modifierExtension: list["Extension"] = None
+    modifierExtension: list[Extension] = Extension() 
     
-    country: "CodeableConcept" = None
+    country: "CodeableConcept" = CodeableConcept()
     
-    jurisdiction: "CodeableConcept" = None
+    jurisdiction: "CodeableConcept" = CodeableConcept()
     
-    status: "CodeableConcept" = None
+    status: "CodeableConcept" = CodeableConcept()
     
-    dateRange: "Period" = None
+    dateRange: "Period" = Period()
     
     restoreDate: str = None
     

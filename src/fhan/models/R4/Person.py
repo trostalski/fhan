@@ -1,20 +1,20 @@
 """
 Generated class for Person. 
-Time: 2023-09-20 20:39:03
+Time: 2023-09-23 23:45:33
 """
 from dataclasses import dataclass
-from fhan.models.R4.Address import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Resource import *
+from fhan.models.R4.Reference import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.Extension import *
+from fhan.models.R4.HumanName import *
 from fhan.models.R4.ContactPoint import *
 from fhan.models.R4.Attachment import *
-from fhan.models.R4.Reference import *
 from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.HumanName import *
-from fhan.models.R4.Identifier import *
 from fhan.models.R4.Element import *
-from fhan.models.R4.Extension import *
+from fhan.models.R4.Resource import *
+from fhan.models.R4.Address import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Meta import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -28,9 +28,9 @@ class Link(Element):
     :param str assurance: level1 | level2 | level3 | level4
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
-    target: "Reference" = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
+    target: "Reference" = Reference()
     
     assurance: str = None
     
@@ -61,37 +61,37 @@ class Person(ModelBase):
     resourceType: str = "Person"
     id: str = None
     
-    meta: "Meta" = None
+    meta: "Meta" = Meta()
     
     implicitRules: str = None
     
     language: str = None
     
-    text: "Narrative" = None
+    text: "Narrative" = Narrative()
     
-    contained: list["Resource"] = None
+    contained: list[Resource] = Resource() 
     
-    extension: list["Extension"] = None
+    extension: list[Extension] = Extension() 
     
-    modifierExtension: list["Extension"] = None
+    modifierExtension: list[Extension] = Extension() 
     
-    identifier: list["Identifier"] = None
+    identifier: list[Identifier] = Identifier() 
     
-    name: list["HumanName"] = None
+    name: list[HumanName] = HumanName() 
     
-    telecom: list["ContactPoint"] = None
+    telecom: list[ContactPoint] = ContactPoint() 
     
     gender: str = None
     
     birthDate: str = None
     
-    address: list["Address"] = None
+    address: list[Address] = Address() 
     
-    photo: "Attachment" = None
+    photo: "Attachment" = Attachment()
     
-    managingOrganization: "Reference" = None
+    managingOrganization: "Reference" = Reference()
     
     active: bool = None
     
-    link: list["Link"] = None
+    link: list[Link] = Link() 
     

@@ -1,19 +1,19 @@
 """
 Generated class for ClinicalImpression. 
-Time: 2023-09-20 20:39:03
+Time: 2023-09-23 23:45:33
 """
 from dataclasses import dataclass
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Resource import *
-from fhan.models.R4.Reference import *
-from fhan.models.R4.BackboneElement import *
 from fhan.models.R4.Annotation import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.Period import *
+from fhan.models.R4.Reference import *
 from fhan.models.R4.Identifier import *
-from fhan.models.R4.Element import *
 from fhan.models.R4.Extension import *
+from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Period import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Element import *
+from fhan.models.R4.Resource import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Meta import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -27,10 +27,10 @@ class Investigation(Element):
     :param Reference item: Record of a specific investigation
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
-    code: "CodeableConcept" = None
-    item: list[Reference] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
+    code: "CodeableConcept" = CodeableConcept()
+    item: list[Reference] = Reference() 
     
 
     
@@ -45,10 +45,10 @@ class Finding(Element):
     :param str basis: Which investigations support finding
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
-    itemCodeableConcept: "CodeableConcept" = None
-    itemReference: "Reference" = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
+    itemCodeableConcept: "CodeableConcept" = CodeableConcept()
+    itemReference: "Reference" = Reference()
     
     basis: str = None
     
@@ -89,57 +89,57 @@ class ClinicalImpression(ModelBase):
     resourceType: str = "ClinicalImpression"
     id: str = None
     
-    meta: "Meta" = None
+    meta: "Meta" = Meta()
     
     implicitRules: str = None
     
     language: str = None
     
-    text: "Narrative" = None
+    text: "Narrative" = Narrative()
     
-    contained: list["Resource"] = None
+    contained: list[Resource] = Resource() 
     
-    extension: list["Extension"] = None
+    extension: list[Extension] = Extension() 
     
-    modifierExtension: list["Extension"] = None
+    modifierExtension: list[Extension] = Extension() 
     
-    identifier: list["Identifier"] = None
+    identifier: list[Identifier] = Identifier() 
     
     status: str = None
     
-    statusReason: "CodeableConcept" = None
+    statusReason: "CodeableConcept" = CodeableConcept()
     
-    code: "CodeableConcept" = None
+    code: "CodeableConcept" = CodeableConcept()
     
     description: str = None
     
-    subject: "Reference" = None
+    subject: "Reference" = Reference()
     
-    encounter: "Reference" = None
+    encounter: "Reference" = Reference()
     
     effectiveDateTime: str = None
     
     date: str = None
     
-    assessor: "Reference" = None
+    assessor: "Reference" = Reference()
     
-    previous: "Reference" = None
+    previous: "Reference" = Reference()
     
-    problem: list["Reference"] = None
+    problem: list[Reference] = Reference() 
     
-    investigation: list["Investigation"] = None
+    investigation: list[Investigation] = Investigation() 
     
     protocol: str = None
     
     summary: str = None
     
-    finding: list["Finding"] = None
+    finding: list[Finding] = Finding() 
     
-    prognosisCodeableConcept: list["CodeableConcept"] = None
+    prognosisCodeableConcept: list[CodeableConcept] = CodeableConcept() 
     
-    prognosisReference: list["Reference"] = None
+    prognosisReference: list[Reference] = Reference() 
     
-    supportingInfo: list["Reference"] = None
+    supportingInfo: list[Reference] = Reference() 
     
-    note: list["Annotation"] = None
+    note: list[Annotation] = Annotation() 
     

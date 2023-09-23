@@ -1,18 +1,18 @@
 """
 Generated class for Composition. 
-Time: 2023-09-20 20:39:03
+Time: 2023-09-23 23:45:33
 """
 from dataclasses import dataclass
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Resource import *
 from fhan.models.R4.Reference import *
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.Period import *
 from fhan.models.R4.Identifier import *
-from fhan.models.R4.Element import *
 from fhan.models.R4.Extension import *
+from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Period import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Element import *
+from fhan.models.R4.Resource import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Meta import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -27,13 +27,13 @@ class Attester(Element):
     :param Reference party: Who attested the composition
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
     
     mode: str = None
     
     time: str = None
-    party: "Reference" = None
+    party: "Reference" = Reference()
     
 
     
@@ -47,11 +47,11 @@ class RelatesTo(Element):
     :param Identifier targetIdentifier: Target of the relationship
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
     
     code: str = None
-    targetIdentifier: "Identifier" = None
+    targetIdentifier: "Identifier" = Identifier()
     
 
     
@@ -66,11 +66,11 @@ class Event(Element):
     :param Reference detail: The event(s) being documented
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
-    code: list[CodeableConcept] = None
-    period: "Period" = None
-    detail: list[Reference] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
+    code: list[CodeableConcept] = CodeableConcept() 
+    period: "Period" = Period()
+    detail: list[Reference] = Reference() 
     
 
     
@@ -91,19 +91,19 @@ class Section(Element):
     :param CodeableConcept emptyReason: Why the section is empty
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
     
     title: str = None
-    code: "CodeableConcept" = None
-    author: list[Reference] = None
-    focus: "Reference" = None
-    text: "Narrative" = None
+    code: "CodeableConcept" = CodeableConcept()
+    author: list[Reference] = Reference() 
+    focus: "Reference" = Reference()
+    text: "Narrative" = Narrative()
     
     mode: str = None
-    orderedBy: "CodeableConcept" = None
-    entry: list[Reference] = None
-    emptyReason: "CodeableConcept" = None
+    orderedBy: "CodeableConcept" = CodeableConcept()
+    entry: list[Reference] = Reference() 
+    emptyReason: "CodeableConcept" = CodeableConcept()
     
 
 @dataclass
@@ -137,47 +137,47 @@ class Composition(ModelBase):
     resourceType: str = "Composition"
     id: str = None
     
-    meta: "Meta" = None
+    meta: "Meta" = Meta()
     
     implicitRules: str = None
     
     language: str = None
     
-    text: "Narrative" = None
+    text: "Narrative" = Narrative()
     
-    contained: list["Resource"] = None
+    contained: list[Resource] = Resource() 
     
-    extension: list["Extension"] = None
+    extension: list[Extension] = Extension() 
     
-    modifierExtension: list["Extension"] = None
+    modifierExtension: list[Extension] = Extension() 
     
-    identifier: "Identifier" = None
+    identifier: "Identifier" = Identifier()
     
     status: str = None
     
-    type: "CodeableConcept" = None
+    type: "CodeableConcept" = CodeableConcept()
     
-    category: list["CodeableConcept"] = None
+    category: list[CodeableConcept] = CodeableConcept() 
     
-    subject: "Reference" = None
+    subject: "Reference" = Reference()
     
-    encounter: "Reference" = None
+    encounter: "Reference" = Reference()
     
     date: str = None
     
-    author: list["Reference"] = None
+    author: list[Reference] = Reference() 
     
     title: str = None
     
     confidentiality: str = None
     
-    attester: list["Attester"] = None
+    attester: list[Attester] = Attester() 
     
-    custodian: "Reference" = None
+    custodian: "Reference" = Reference()
     
-    relatesTo: list["RelatesTo"] = None
+    relatesTo: list[RelatesTo] = RelatesTo() 
     
-    event: list["Event"] = None
+    event: list[Event] = Event() 
     
-    section: list["Section"] = None
+    section: list[Section] = Section() 
     

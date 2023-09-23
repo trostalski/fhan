@@ -1,19 +1,19 @@
 """
 Generated class for Substance. 
-Time: 2023-09-20 20:39:03
+Time: 2023-09-23 23:45:33
 """
 from dataclasses import dataclass
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Element import *
-from fhan.models.R4.Ratio import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Resource import *
 from fhan.models.R4.Reference import *
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Narrative import *
 from fhan.models.R4.Identifier import *
-from fhan.models.R4.Quantity import *
 from fhan.models.R4.Extension import *
+from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Ratio import *
+from fhan.models.R4.Quantity import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Element import *
+from fhan.models.R4.Resource import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Meta import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -28,12 +28,12 @@ class Instance(Element):
     :param Quantity quantity: Amount of substance in the package
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
-    identifier: "Identifier" = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
+    identifier: "Identifier" = Identifier()
     
     expiry: str = None
-    quantity: "Quantity" = None
+    quantity: "Quantity" = Quantity()
     
 
     
@@ -47,10 +47,10 @@ class Ingredient(Element):
     :param CodeableConcept substanceCodeableConcept: A component of the substance
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
-    quantity: "Ratio" = None
-    substanceCodeableConcept: "CodeableConcept" = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
+    quantity: "Ratio" = Ratio()
+    substanceCodeableConcept: "CodeableConcept" = CodeableConcept()
     
 
 @dataclass
@@ -76,31 +76,31 @@ class Substance(ModelBase):
     resourceType: str = "Substance"
     id: str = None
     
-    meta: "Meta" = None
+    meta: "Meta" = Meta()
     
     implicitRules: str = None
     
     language: str = None
     
-    text: "Narrative" = None
+    text: "Narrative" = Narrative()
     
-    contained: list["Resource"] = None
+    contained: list[Resource] = Resource() 
     
-    extension: list["Extension"] = None
+    extension: list[Extension] = Extension() 
     
-    modifierExtension: list["Extension"] = None
+    modifierExtension: list[Extension] = Extension() 
     
-    identifier: list["Identifier"] = None
+    identifier: list[Identifier] = Identifier() 
     
     status: str = None
     
-    category: list["CodeableConcept"] = None
+    category: list[CodeableConcept] = CodeableConcept() 
     
-    code: "CodeableConcept" = None
+    code: "CodeableConcept" = CodeableConcept()
     
     description: str = None
     
-    instance: list["Instance"] = None
+    instance: list[Instance] = Instance() 
     
-    ingredient: list["Ingredient"] = None
+    ingredient: list[Ingredient] = Ingredient() 
     

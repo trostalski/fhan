@@ -1,18 +1,18 @@
 """
 Generated class for DeviceMetric. 
-Time: 2023-09-20 20:39:03
+Time: 2023-09-23 23:45:33
 """
 from dataclasses import dataclass
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Resource import *
-from fhan.models.R4.Timing import *
 from fhan.models.R4.Reference import *
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Narrative import *
 from fhan.models.R4.Identifier import *
-from fhan.models.R4.Element import *
 from fhan.models.R4.Extension import *
+from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Timing import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Element import *
+from fhan.models.R4.Resource import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Meta import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -27,8 +27,8 @@ class Calibration(Element):
     :param str time: Describes the time last calibration has been performed
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
     
     type: str = None
     
@@ -63,29 +63,29 @@ class DeviceMetric(ModelBase):
     resourceType: str = "DeviceMetric"
     id: str = None
     
-    meta: "Meta" = None
+    meta: "Meta" = Meta()
     
     implicitRules: str = None
     
     language: str = None
     
-    text: "Narrative" = None
+    text: "Narrative" = Narrative()
     
-    contained: list["Resource"] = None
+    contained: list[Resource] = Resource() 
     
-    extension: list["Extension"] = None
+    extension: list[Extension] = Extension() 
     
-    modifierExtension: list["Extension"] = None
+    modifierExtension: list[Extension] = Extension() 
     
-    identifier: list["Identifier"] = None
+    identifier: list[Identifier] = Identifier() 
     
-    type: "CodeableConcept" = None
+    type: "CodeableConcept" = CodeableConcept()
     
-    unit: "CodeableConcept" = None
+    unit: "CodeableConcept" = CodeableConcept()
     
-    source: "Reference" = None
+    source: "Reference" = Reference()
     
-    parent: "Reference" = None
+    parent: "Reference" = Reference()
     
     operationalStatus: str = None
     
@@ -93,7 +93,7 @@ class DeviceMetric(ModelBase):
     
     category: str = None
     
-    measurementPeriod: "Timing" = None
+    measurementPeriod: "Timing" = Timing()
     
-    calibration: list["Calibration"] = None
+    calibration: list[Calibration] = Calibration() 
     

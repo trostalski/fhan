@@ -1,22 +1,22 @@
 """
 Generated class for RelatedPerson. 
-Time: 2023-09-20 20:39:03
+Time: 2023-09-23 23:45:33
 """
 from dataclasses import dataclass
+from fhan.models.R4.Reference import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.Extension import *
 from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Address import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Resource import *
+from fhan.models.R4.HumanName import *
+from fhan.models.R4.Period import *
 from fhan.models.R4.ContactPoint import *
 from fhan.models.R4.Attachment import *
-from fhan.models.R4.Reference import *
 from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.Period import *
-from fhan.models.R4.HumanName import *
-from fhan.models.R4.Identifier import *
 from fhan.models.R4.Element import *
-from fhan.models.R4.Extension import *
+from fhan.models.R4.Resource import *
+from fhan.models.R4.Address import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Meta import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -30,9 +30,9 @@ class Communication(Element):
     :param bool preferred: Language preference indicator
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
-    language: "CodeableConcept" = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
+    language: "CodeableConcept" = CodeableConcept()
     
     preferred: bool = None
     
@@ -65,41 +65,41 @@ class RelatedPerson(ModelBase):
     resourceType: str = "RelatedPerson"
     id: str = None
     
-    meta: "Meta" = None
+    meta: "Meta" = Meta()
     
     implicitRules: str = None
     
     language: str = None
     
-    text: "Narrative" = None
+    text: "Narrative" = Narrative()
     
-    contained: list["Resource"] = None
+    contained: list[Resource] = Resource() 
     
-    extension: list["Extension"] = None
+    extension: list[Extension] = Extension() 
     
-    modifierExtension: list["Extension"] = None
+    modifierExtension: list[Extension] = Extension() 
     
-    identifier: list["Identifier"] = None
+    identifier: list[Identifier] = Identifier() 
     
     active: bool = None
     
-    patient: "Reference" = None
+    patient: "Reference" = Reference()
     
-    relationship: list["CodeableConcept"] = None
+    relationship: list[CodeableConcept] = CodeableConcept() 
     
-    name: list["HumanName"] = None
+    name: list[HumanName] = HumanName() 
     
-    telecom: list["ContactPoint"] = None
+    telecom: list[ContactPoint] = ContactPoint() 
     
     gender: str = None
     
     birthDate: str = None
     
-    address: list["Address"] = None
+    address: list[Address] = Address() 
     
-    photo: list["Attachment"] = None
+    photo: list[Attachment] = Attachment() 
     
-    period: "Period" = None
+    period: "Period" = Period()
     
-    communication: list["Communication"] = None
+    communication: list[Communication] = Communication() 
     

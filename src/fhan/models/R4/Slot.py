@@ -1,15 +1,15 @@
 """
 Generated class for Slot. 
-Time: 2023-09-20 20:39:03
+Time: 2023-09-23 23:45:33
 """
 from dataclasses import dataclass
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Resource import *
 from fhan.models.R4.Reference import *
-from fhan.models.R4.Narrative import *
 from fhan.models.R4.Identifier import *
 from fhan.models.R4.Extension import *
+from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Resource import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Meta import *
 from fhan.models.generator_models import ModelBase
 
 @dataclass
@@ -39,31 +39,31 @@ class Slot(ModelBase):
     resourceType: str = "Slot"
     id: str = None
     
-    meta: "Meta" = None
+    meta: "Meta" = Meta()
     
     implicitRules: str = None
     
     language: str = None
     
-    text: "Narrative" = None
+    text: "Narrative" = Narrative()
     
-    contained: list["Resource"] = None
+    contained: list[Resource] = Resource() 
     
-    extension: list["Extension"] = None
+    extension: list[Extension] = Extension() 
     
-    modifierExtension: list["Extension"] = None
+    modifierExtension: list[Extension] = Extension() 
     
-    identifier: list["Identifier"] = None
+    identifier: list[Identifier] = Identifier() 
     
-    serviceCategory: list["CodeableConcept"] = None
+    serviceCategory: list[CodeableConcept] = CodeableConcept() 
     
-    serviceType: list["CodeableConcept"] = None
+    serviceType: list[CodeableConcept] = CodeableConcept() 
     
-    specialty: list["CodeableConcept"] = None
+    specialty: list[CodeableConcept] = CodeableConcept() 
     
-    appointmentType: "CodeableConcept" = None
+    appointmentType: "CodeableConcept" = CodeableConcept()
     
-    schedule: "Reference" = None
+    schedule: "Reference" = Reference()
     
     status: str = None
     

@@ -1,20 +1,20 @@
 """
 Generated class for MedicinalProductPharmaceutical. 
-Time: 2023-09-20 20:39:03
+Time: 2023-09-23 23:45:33
 """
 from dataclasses import dataclass
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Element import *
-from fhan.models.R4.Ratio import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Resource import *
 from fhan.models.R4.Reference import *
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Narrative import *
 from fhan.models.R4.Identifier import *
-from fhan.models.R4.Duration import *
-from fhan.models.R4.Quantity import *
 from fhan.models.R4.Extension import *
+from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Ratio import *
+from fhan.models.R4.Quantity import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Element import *
+from fhan.models.R4.Resource import *
+from fhan.models.R4.Duration import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Meta import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -28,10 +28,10 @@ class Characteristics(Element):
     :param CodeableConcept status: The status of characteristic e.g. assigned or pending
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
-    code: "CodeableConcept" = None
-    status: "CodeableConcept" = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
+    code: "CodeableConcept" = CodeableConcept()
+    status: "CodeableConcept" = CodeableConcept()
     
 
     
@@ -50,10 +50,10 @@ class WithdrawalPeriod(Element):
     :param str supportingInformation: Extra information about the withdrawal period
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
-    tissue: "CodeableConcept" = None
-    value: "Quantity" = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
+    tissue: "CodeableConcept" = CodeableConcept()
+    value: "Quantity" = Quantity()
     
     supportingInformation: str = None
     
@@ -70,10 +70,10 @@ class TargetSpecies(Element):
     :param WithdrawalPeriod withdrawalPeriod: A species specific time during which consumption of animal product is not appropriate
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
-    code: "CodeableConcept" = None
-    withdrawalPeriod: list[WithdrawalPeriod] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
+    code: "CodeableConcept" = CodeableConcept()
+    withdrawalPeriod: list[WithdrawalPeriod] = WithdrawalPeriod() 
     
 
   
@@ -93,15 +93,15 @@ class RouteOfAdministration(Element):
     :param TargetSpecies targetSpecies: A species for which this route applies
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
-    code: "CodeableConcept" = None
-    firstDose: "Quantity" = None
-    maxSingleDose: "Quantity" = None
-    maxDosePerDay: "Quantity" = None
-    maxDosePerTreatmentPeriod: "Ratio" = None
-    maxTreatmentPeriod: "Duration" = None
-    targetSpecies: list[TargetSpecies] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
+    code: "CodeableConcept" = CodeableConcept()
+    firstDose: "Quantity" = Quantity()
+    maxSingleDose: "Quantity" = Quantity()
+    maxDosePerDay: "Quantity" = Quantity()
+    maxDosePerTreatmentPeriod: "Ratio" = Ratio()
+    maxTreatmentPeriod: "Duration" = Duration()
+    targetSpecies: list[TargetSpecies] = TargetSpecies() 
     
 
 @dataclass
@@ -127,31 +127,31 @@ class MedicinalProductPharmaceutical(ModelBase):
     resourceType: str = "MedicinalProductPharmaceutical"
     id: str = None
     
-    meta: "Meta" = None
+    meta: "Meta" = Meta()
     
     implicitRules: str = None
     
     language: str = None
     
-    text: "Narrative" = None
+    text: "Narrative" = Narrative()
     
-    contained: list["Resource"] = None
+    contained: list[Resource] = Resource() 
     
-    extension: list["Extension"] = None
+    extension: list[Extension] = Extension() 
     
-    modifierExtension: list["Extension"] = None
+    modifierExtension: list[Extension] = Extension() 
     
-    identifier: list["Identifier"] = None
+    identifier: list[Identifier] = Identifier() 
     
-    administrableDoseForm: "CodeableConcept" = None
+    administrableDoseForm: "CodeableConcept" = CodeableConcept()
     
-    unitOfPresentation: "CodeableConcept" = None
+    unitOfPresentation: "CodeableConcept" = CodeableConcept()
     
-    ingredient: list["Reference"] = None
+    ingredient: list[Reference] = Reference() 
     
-    device: list["Reference"] = None
+    device: list[Reference] = Reference() 
     
-    characteristics: list["Characteristics"] = None
+    characteristics: list[Characteristics] = Characteristics() 
     
-    routeOfAdministration: list["RouteOfAdministration"] = None
+    routeOfAdministration: list[RouteOfAdministration] = RouteOfAdministration() 
     

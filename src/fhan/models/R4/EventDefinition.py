@@ -1,20 +1,20 @@
 """
 Generated class for EventDefinition. 
-Time: 2023-09-20 20:39:03
+Time: 2023-09-23 23:45:33
 """
 from dataclasses import dataclass
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.ContactDetail import *
-from fhan.models.R4.UsageContext import *
-from fhan.models.R4.TriggerDefinition import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Resource import *
 from fhan.models.R4.Reference import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.Period import *
-from fhan.models.R4.RelatedArtifact import *
+from fhan.models.R4.ContactDetail import *
 from fhan.models.R4.Identifier import *
 from fhan.models.R4.Extension import *
+from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Period import *
+from fhan.models.R4.RelatedArtifact import *
+from fhan.models.R4.TriggerDefinition import *
+from fhan.models.R4.UsageContext import *
+from fhan.models.R4.Resource import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Meta import *
 from fhan.models.generator_models import ModelBase
 
 @dataclass
@@ -61,23 +61,23 @@ class EventDefinition(ModelBase):
     resourceType: str = "EventDefinition"
     id: str = None
     
-    meta: "Meta" = None
+    meta: "Meta" = Meta()
     
     implicitRules: str = None
     
     language: str = None
     
-    text: "Narrative" = None
+    text: "Narrative" = Narrative()
     
-    contained: list["Resource"] = None
+    contained: list[Resource] = Resource() 
     
-    extension: list["Extension"] = None
+    extension: list[Extension] = Extension() 
     
-    modifierExtension: list["Extension"] = None
+    modifierExtension: list[Extension] = Extension() 
     
     url: str = None
     
-    identifier: list["Identifier"] = None
+    identifier: list[Identifier] = Identifier() 
     
     version: str = None
     
@@ -91,19 +91,19 @@ class EventDefinition(ModelBase):
     
     experimental: bool = None
     
-    subjectCodeableConcept: "CodeableConcept" = None
+    subjectCodeableConcept: "CodeableConcept" = CodeableConcept()
     
     date: str = None
     
     publisher: str = None
     
-    contact: list["ContactDetail"] = None
+    contact: list[ContactDetail] = ContactDetail() 
     
     description: str = None
     
-    useContext: list["UsageContext"] = None
+    useContext: list[UsageContext] = UsageContext() 
     
-    jurisdiction: list["CodeableConcept"] = None
+    jurisdiction: list[CodeableConcept] = CodeableConcept() 
     
     purpose: str = None
     
@@ -115,19 +115,19 @@ class EventDefinition(ModelBase):
     
     lastReviewDate: str = None
     
-    effectivePeriod: "Period" = None
+    effectivePeriod: "Period" = Period()
     
-    topic: list["CodeableConcept"] = None
+    topic: list[CodeableConcept] = CodeableConcept() 
     
-    author: list["ContactDetail"] = None
+    author: list[ContactDetail] = ContactDetail() 
     
-    editor: list["ContactDetail"] = None
+    editor: list[ContactDetail] = ContactDetail() 
     
-    reviewer: list["ContactDetail"] = None
+    reviewer: list[ContactDetail] = ContactDetail() 
     
-    endorser: list["ContactDetail"] = None
+    endorser: list[ContactDetail] = ContactDetail() 
     
-    relatedArtifact: list["RelatedArtifact"] = None
+    relatedArtifact: list[RelatedArtifact] = RelatedArtifact() 
     
-    trigger: list["TriggerDefinition"] = None
+    trigger: list[TriggerDefinition] = TriggerDefinition() 
     

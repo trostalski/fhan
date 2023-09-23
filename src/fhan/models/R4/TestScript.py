@@ -1,20 +1,20 @@
 """
 Generated class for TestScript. 
-Time: 2023-09-20 20:39:03
+Time: 2023-09-23 23:45:33
 """
 from dataclasses import dataclass
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.ContactDetail import *
-from fhan.models.R4.UsageContext import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Resource import *
 from fhan.models.R4.Reference import *
+from fhan.models.R4.ContactDetail import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.Extension import *
+from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Element import *
+from fhan.models.R4.UsageContext import *
+from fhan.models.R4.Resource import *
 from fhan.models.R4.Coding import *
 from fhan.models.R4.Narrative import *
-from fhan.models.R4.Identifier import *
-from fhan.models.R4.Element import *
-from fhan.models.R4.Extension import *
+from fhan.models.R4.Meta import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -28,11 +28,11 @@ class Origin(Element):
     :param Coding profile: FHIR-Client | FHIR-SDC-FormFiller
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
     
     index: int = None
-    profile: "Coding" = None
+    profile: "Coding" = Coding()
     
 
     
@@ -46,11 +46,11 @@ class Destination(Element):
     :param Coding profile: FHIR-Server | FHIR-SDC-FormManager | FHIR-SDC-FormReceiver | FHIR-SDC-FormProcessor
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
     
     index: int = None
-    profile: "Coding" = None
+    profile: "Coding" = Coding()
     
 
     
@@ -66,8 +66,8 @@ class Link(Element):
     :param str description: Short description
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
     
     url: str = None
     
@@ -90,8 +90,8 @@ class Capability(Element):
     :param str capabilities: Required Capability Statement
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
     
     required: bool = None
     
@@ -120,10 +120,10 @@ class Metadata(Element):
     :param Capability capability: Capabilities  that are assumed to function correctly on the FHIR server being tested
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
-    link: list[Link] = None
-    capability: list[Capability] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
+    link: list[Link] = Link() 
+    capability: list[Capability] = Capability() 
     
 
     
@@ -138,13 +138,13 @@ class Fixture(Element):
     :param Reference resource: Reference of the resource
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
     
     autocreate: bool = None
     
     autodelete: bool = None
-    resource: "Reference" = None
+    resource: "Reference" = Reference()
     
 
     
@@ -164,8 +164,8 @@ class Variable(Element):
     :param str sourceId: Fixture Id of source expression or headerField within this variable
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
     
     name: str = None
     
@@ -201,8 +201,8 @@ class RequestHeader(Element):
     :param str value: HTTP headerfield value
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
     
     field: str = None
     
@@ -236,9 +236,9 @@ class Operation(Element):
     :param str url: Request URL
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
-    type: "Coding" = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
+    type: "Coding" = Coding()
     
     resource: str = None
     
@@ -259,7 +259,7 @@ class Operation(Element):
     origin: int = None
     
     params: str = None
-    requestHeader: list[RequestHeader] = None
+    requestHeader: list[RequestHeader] = RequestHeader() 
     
     requestId: str = None
     
@@ -303,8 +303,8 @@ class _assert(Element):
     :param bool warningOnly: Will this assert produce a warning only on error?
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
     
     label: str = None
     
@@ -363,10 +363,10 @@ class Action(Element):
     :param _assert _assert: The assertion to perform
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
-    operation: "Operation" = None
-    _assert: "_assert" = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
+    operation: "Operation" = Operation()
+    _assert: "_assert" = _assert()
     
 
   
@@ -380,9 +380,9 @@ class Setup(Element):
     :param Action action: A setup operation or assert to perform
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
-    action: list[Action] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
+    action: list[Action] = Action() 
     
 
     
@@ -396,8 +396,8 @@ class Action(Element):
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
     
 
   
@@ -413,13 +413,13 @@ class Test(Element):
     :param Action action: A test operation or assert to perform
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
     
     name: str = None
     
     description: str = None
-    action: list[Action] = None
+    action: list[Action] = Action() 
     
 
     
@@ -433,8 +433,8 @@ class Action(Element):
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
     
 
   
@@ -448,9 +448,9 @@ class Teardown(Element):
     :param Action action: One or more teardown operations to perform
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
-    action: list[Action] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
+    action: list[Action] = Action() 
     
 
 @dataclass
@@ -493,23 +493,23 @@ class TestScript(ModelBase):
     resourceType: str = "TestScript"
     id: str = None
     
-    meta: "Meta" = None
+    meta: "Meta" = Meta()
     
     implicitRules: str = None
     
     language: str = None
     
-    text: "Narrative" = None
+    text: "Narrative" = Narrative()
     
-    contained: list["Resource"] = None
+    contained: list[Resource] = Resource() 
     
-    extension: list["Extension"] = None
+    extension: list[Extension] = Extension() 
     
-    modifierExtension: list["Extension"] = None
+    modifierExtension: list[Extension] = Extension() 
     
     url: str = None
     
-    identifier: "Identifier" = None
+    identifier: "Identifier" = Identifier()
     
     version: str = None
     
@@ -525,33 +525,33 @@ class TestScript(ModelBase):
     
     publisher: str = None
     
-    contact: list["ContactDetail"] = None
+    contact: list[ContactDetail] = ContactDetail() 
     
     description: str = None
     
-    useContext: list["UsageContext"] = None
+    useContext: list[UsageContext] = UsageContext() 
     
-    jurisdiction: list["CodeableConcept"] = None
+    jurisdiction: list[CodeableConcept] = CodeableConcept() 
     
     purpose: str = None
     
     copyright: str = None
     
-    origin: list["Origin"] = None
+    origin: list[Origin] = Origin() 
     
-    destination: list["Destination"] = None
+    destination: list[Destination] = Destination() 
     
-    metadata: "Metadata" = None
+    metadata: "Metadata" = Metadata()
     
-    fixture: list["Fixture"] = None
+    fixture: list[Fixture] = Fixture() 
     
-    profile: list["Reference"] = None
+    profile: list[Reference] = Reference() 
     
-    variable: list["Variable"] = None
+    variable: list[Variable] = Variable() 
     
-    setup: "Setup" = None
+    setup: "Setup" = Setup()
     
-    test: list["Test"] = None
+    test: list[Test] = Test() 
     
-    teardown: "Teardown" = None
+    teardown: "Teardown" = Teardown()
     

@@ -1,22 +1,22 @@
 """
 Generated class for MedicationRequest. 
-Time: 2023-09-20 20:39:03
+Time: 2023-09-23 23:45:33
 """
 from dataclasses import dataclass
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Element import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Resource import *
-from fhan.models.R4.Reference import *
-from fhan.models.R4.Dosage import *
-from fhan.models.R4.BackboneElement import *
 from fhan.models.R4.Annotation import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.Period import *
+from fhan.models.R4.Reference import *
 from fhan.models.R4.Identifier import *
-from fhan.models.R4.Duration import *
-from fhan.models.R4.Quantity import *
 from fhan.models.R4.Extension import *
+from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Period import *
+from fhan.models.R4.Quantity import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Element import *
+from fhan.models.R4.Dosage import *
+from fhan.models.R4.Resource import *
+from fhan.models.R4.Duration import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Meta import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -32,10 +32,10 @@ class InitialFill(Element):
     :param Duration duration: First fill duration
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
-    quantity: "Quantity" = None
-    duration: "Duration" = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
+    quantity: "Quantity" = Quantity()
+    duration: "Duration" = Duration()
     
 
   
@@ -55,16 +55,16 @@ class DispenseRequest(Element):
     :param Reference performer: Intended dispenser
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
-    initialFill: "InitialFill" = None
-    dispenseInterval: "Duration" = None
-    validityPeriod: "Period" = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
+    initialFill: "InitialFill" = InitialFill()
+    dispenseInterval: "Duration" = Duration()
+    validityPeriod: "Period" = Period()
     
     numberOfRepeatsAllowed: int = None
-    quantity: "Quantity" = None
-    expectedSupplyDuration: "Duration" = None
-    performer: "Reference" = None
+    quantity: "Quantity" = Quantity()
+    expectedSupplyDuration: "Duration" = Duration()
+    performer: "Reference" = Reference()
     
 
     
@@ -78,11 +78,11 @@ class Substitution(Element):
     :param CodeableConcept reason: Why should (not) substitution be made
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
     
     allowedBoolean: bool = None
-    reason: "CodeableConcept" = None
+    reason: "CodeableConcept" = CodeableConcept()
     
 
 @dataclass
@@ -133,29 +133,29 @@ class MedicationRequest(ModelBase):
     resourceType: str = "MedicationRequest"
     id: str = None
     
-    meta: "Meta" = None
+    meta: "Meta" = Meta()
     
     implicitRules: str = None
     
     language: str = None
     
-    text: "Narrative" = None
+    text: "Narrative" = Narrative()
     
-    contained: list["Resource"] = None
+    contained: list[Resource] = Resource() 
     
-    extension: list["Extension"] = None
+    extension: list[Extension] = Extension() 
     
-    modifierExtension: list["Extension"] = None
+    modifierExtension: list[Extension] = Extension() 
     
-    identifier: list["Identifier"] = None
+    identifier: list[Identifier] = Identifier() 
     
     status: str = None
     
-    statusReason: "CodeableConcept" = None
+    statusReason: "CodeableConcept" = CodeableConcept()
     
     intent: str = None
     
-    category: list["CodeableConcept"] = None
+    category: list[CodeableConcept] = CodeableConcept() 
     
     priority: str = None
     
@@ -163,51 +163,51 @@ class MedicationRequest(ModelBase):
     
     reportedBoolean: bool = None
     
-    medicationCodeableConcept: "CodeableConcept" = None
+    medicationCodeableConcept: "CodeableConcept" = CodeableConcept()
     
-    subject: "Reference" = None
+    subject: "Reference" = Reference()
     
-    encounter: "Reference" = None
+    encounter: "Reference" = Reference()
     
-    supportingInformation: list["Reference"] = None
+    supportingInformation: list[Reference] = Reference() 
     
     authoredOn: str = None
     
-    requester: "Reference" = None
+    requester: "Reference" = Reference()
     
-    performer: "Reference" = None
+    performer: "Reference" = Reference()
     
-    performerType: "CodeableConcept" = None
+    performerType: "CodeableConcept" = CodeableConcept()
     
-    recorder: "Reference" = None
+    recorder: "Reference" = Reference()
     
-    reasonCode: list["CodeableConcept"] = None
+    reasonCode: list[CodeableConcept] = CodeableConcept() 
     
-    reasonReference: list["Reference"] = None
+    reasonReference: list[Reference] = Reference() 
     
     instantiatesCanonical: str = None
     
     instantiatesUri: str = None
     
-    basedOn: list["Reference"] = None
+    basedOn: list[Reference] = Reference() 
     
-    groupIdentifier: "Identifier" = None
+    groupIdentifier: "Identifier" = Identifier()
     
-    courseOfTherapyType: "CodeableConcept" = None
+    courseOfTherapyType: "CodeableConcept" = CodeableConcept()
     
-    insurance: list["Reference"] = None
+    insurance: list[Reference] = Reference() 
     
-    note: list["Annotation"] = None
+    note: list[Annotation] = Annotation() 
     
-    dosageInstruction: list["Dosage"] = None
+    dosageInstruction: list[Dosage] = Dosage() 
     
-    dispenseRequest: "DispenseRequest" = None
+    dispenseRequest: "DispenseRequest" = DispenseRequest()
     
-    substitution: "Substitution" = None
+    substitution: "Substitution" = Substitution()
     
-    priorPrescription: "Reference" = None
+    priorPrescription: "Reference" = Reference()
     
-    detectedIssue: list["Reference"] = None
+    detectedIssue: list[Reference] = Reference() 
     
-    eventHistory: list["Reference"] = None
+    eventHistory: list[Reference] = Reference() 
     

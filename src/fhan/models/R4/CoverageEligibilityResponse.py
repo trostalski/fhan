@@ -1,19 +1,19 @@
 """
 Generated class for CoverageEligibilityResponse. 
-Time: 2023-09-20 20:39:03
+Time: 2023-09-23 23:45:33
 """
 from dataclasses import dataclass
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Resource import *
 from fhan.models.R4.Reference import *
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.Period import *
 from fhan.models.R4.Identifier import *
-from fhan.models.R4.Money import *
-from fhan.models.R4.Element import *
 from fhan.models.R4.Extension import *
+from fhan.models.R4.Period import *
+from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Element import *
+from fhan.models.R4.Money import *
+from fhan.models.R4.Resource import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Meta import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -32,9 +32,9 @@ class Benefit(Element):
     :param int usedUnsignedInt: Benefits used
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
-    type: "CodeableConcept" = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
+    type: "CodeableConcept" = CodeableConcept()
     
     allowedUnsignedInt: int = None
     
@@ -65,25 +65,25 @@ class Item(Element):
     :param str authorizationUrl: Preauthorization requirements endpoint
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
-    category: "CodeableConcept" = None
-    productOrService: "CodeableConcept" = None
-    modifier: list[CodeableConcept] = None
-    provider: "Reference" = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
+    category: "CodeableConcept" = CodeableConcept()
+    productOrService: "CodeableConcept" = CodeableConcept()
+    modifier: list[CodeableConcept] = CodeableConcept() 
+    provider: "Reference" = Reference()
     
     excluded: bool = None
     
     name: str = None
     
     description: str = None
-    network: "CodeableConcept" = None
-    unit: "CodeableConcept" = None
-    term: "CodeableConcept" = None
-    benefit: list[Benefit] = None
+    network: "CodeableConcept" = CodeableConcept()
+    unit: "CodeableConcept" = CodeableConcept()
+    term: "CodeableConcept" = CodeableConcept()
+    benefit: list[Benefit] = Benefit() 
     
     authorizationRequired: bool = None
-    authorizationSupporting: list[CodeableConcept] = None
+    authorizationSupporting: list[CodeableConcept] = CodeableConcept() 
     
     authorizationUrl: str = None
     
@@ -102,13 +102,13 @@ class Insurance(Element):
     :param Item item: Benefits and authorization details
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
-    coverage: "Reference" = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
+    coverage: "Reference" = Reference()
     
     inforce: bool = None
-    benefitPeriod: "Period" = None
-    item: list[Item] = None
+    benefitPeriod: "Period" = Period()
+    item: list[Item] = Item() 
     
 
     
@@ -121,9 +121,9 @@ class Error(Element):
     :param CodeableConcept code: Error code detailing processing issues
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
-    code: "CodeableConcept" = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
+    code: "CodeableConcept" = CodeableConcept()
     
 
 @dataclass
@@ -157,47 +157,47 @@ class CoverageEligibilityResponse(ModelBase):
     resourceType: str = "CoverageEligibilityResponse"
     id: str = None
     
-    meta: "Meta" = None
+    meta: "Meta" = Meta()
     
     implicitRules: str = None
     
     language: str = None
     
-    text: "Narrative" = None
+    text: "Narrative" = Narrative()
     
-    contained: list["Resource"] = None
+    contained: list[Resource] = Resource() 
     
-    extension: list["Extension"] = None
+    extension: list[Extension] = Extension() 
     
-    modifierExtension: list["Extension"] = None
+    modifierExtension: list[Extension] = Extension() 
     
-    identifier: list["Identifier"] = None
+    identifier: list[Identifier] = Identifier() 
     
     status: str = None
     
     purpose: str = None
     
-    patient: "Reference" = None
+    patient: "Reference" = Reference()
     
     servicedDate: str = None
     
     created: str = None
     
-    requestor: "Reference" = None
+    requestor: "Reference" = Reference()
     
-    request: "Reference" = None
+    request: "Reference" = Reference()
     
     outcome: str = None
     
     disposition: str = None
     
-    insurer: "Reference" = None
+    insurer: "Reference" = Reference()
     
-    insurance: list["Insurance"] = None
+    insurance: list[Insurance] = Insurance() 
     
     preAuthRef: str = None
     
-    form: "CodeableConcept" = None
+    form: "CodeableConcept" = CodeableConcept()
     
-    error: list["Error"] = None
+    error: list[Error] = Error() 
     

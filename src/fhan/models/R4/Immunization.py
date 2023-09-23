@@ -1,19 +1,19 @@
 """
 Generated class for Immunization. 
-Time: 2023-09-20 20:39:03
+Time: 2023-09-23 23:45:33
 """
 from dataclasses import dataclass
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Element import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Resource import *
-from fhan.models.R4.Reference import *
-from fhan.models.R4.BackboneElement import *
 from fhan.models.R4.Annotation import *
-from fhan.models.R4.Narrative import *
+from fhan.models.R4.Reference import *
 from fhan.models.R4.Identifier import *
-from fhan.models.R4.Quantity import *
 from fhan.models.R4.Extension import *
+from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Quantity import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Element import *
+from fhan.models.R4.Resource import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Meta import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -27,10 +27,10 @@ class Performer(Element):
     :param Reference actor: Individual or organization who was performing
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
-    function: "CodeableConcept" = None
-    actor: "Reference" = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
+    function: "CodeableConcept" = CodeableConcept()
+    actor: "Reference" = Reference()
     
 
     
@@ -46,8 +46,8 @@ class Education(Element):
     :param str presentationDate: Educational material presentation date
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
     
     documentType: str = None
     
@@ -70,11 +70,11 @@ class Reaction(Element):
     :param bool reported: Indicates self-reported reaction
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
     
     date: str = None
-    detail: "Reference" = None
+    detail: "Reference" = Reference()
     
     reported: bool = None
     
@@ -93,12 +93,12 @@ class ProtocolApplied(Element):
     :param int seriesDosesPositiveInt: Recommended number of doses for immunity
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
     
     series: str = None
-    authority: "Reference" = None
-    targetDisease: list[CodeableConcept] = None
+    authority: "Reference" = Reference()
+    targetDisease: list[CodeableConcept] = CodeableConcept() 
     
     doseNumberPositiveInt: int = None
     
@@ -149,31 +149,31 @@ class Immunization(ModelBase):
     resourceType: str = "Immunization"
     id: str = None
     
-    meta: "Meta" = None
+    meta: "Meta" = Meta()
     
     implicitRules: str = None
     
     language: str = None
     
-    text: "Narrative" = None
+    text: "Narrative" = Narrative()
     
-    contained: list["Resource"] = None
+    contained: list[Resource] = Resource() 
     
-    extension: list["Extension"] = None
+    extension: list[Extension] = Extension() 
     
-    modifierExtension: list["Extension"] = None
+    modifierExtension: list[Extension] = Extension() 
     
-    identifier: list["Identifier"] = None
+    identifier: list[Identifier] = Identifier() 
     
     status: str = None
     
-    statusReason: "CodeableConcept" = None
+    statusReason: "CodeableConcept" = CodeableConcept()
     
-    vaccineCode: "CodeableConcept" = None
+    vaccineCode: "CodeableConcept" = CodeableConcept()
     
-    patient: "Reference" = None
+    patient: "Reference" = Reference()
     
-    encounter: "Reference" = None
+    encounter: "Reference" = Reference()
     
     occurrenceDateTime: str = None
     
@@ -181,41 +181,41 @@ class Immunization(ModelBase):
     
     primarySource: bool = None
     
-    reportOrigin: "CodeableConcept" = None
+    reportOrigin: "CodeableConcept" = CodeableConcept()
     
-    location: "Reference" = None
+    location: "Reference" = Reference()
     
-    manufacturer: "Reference" = None
+    manufacturer: "Reference" = Reference()
     
     lotNumber: str = None
     
     expirationDate: str = None
     
-    site: "CodeableConcept" = None
+    site: "CodeableConcept" = CodeableConcept()
     
-    route: "CodeableConcept" = None
+    route: "CodeableConcept" = CodeableConcept()
     
-    doseQuantity: "Quantity" = None
+    doseQuantity: "Quantity" = Quantity()
     
-    performer: list["Performer"] = None
+    performer: list[Performer] = Performer() 
     
-    note: list["Annotation"] = None
+    note: list[Annotation] = Annotation() 
     
-    reasonCode: list["CodeableConcept"] = None
+    reasonCode: list[CodeableConcept] = CodeableConcept() 
     
-    reasonReference: list["Reference"] = None
+    reasonReference: list[Reference] = Reference() 
     
     isSubpotent: bool = None
     
-    subpotentReason: list["CodeableConcept"] = None
+    subpotentReason: list[CodeableConcept] = CodeableConcept() 
     
-    education: list["Education"] = None
+    education: list[Education] = Education() 
     
-    programEligibility: list["CodeableConcept"] = None
+    programEligibility: list[CodeableConcept] = CodeableConcept() 
     
-    fundingSource: "CodeableConcept" = None
+    fundingSource: "CodeableConcept" = CodeableConcept()
     
-    reaction: list["Reaction"] = None
+    reaction: list[Reaction] = Reaction() 
     
-    protocolApplied: list["ProtocolApplied"] = None
+    protocolApplied: list[ProtocolApplied] = ProtocolApplied() 
     

@@ -1,6 +1,6 @@
 """
 Generated class for Resource. 
-Time: 2023-09-20 20:39:03
+Time: 2023-09-23 23:45:33
 """
 from dataclasses import dataclass
 from fhan.models.R4.Meta import *
@@ -18,7 +18,7 @@ class Resource(ModelBase):
     resourceType: str = "Resource"
     id: str = None
     
-    meta: "Meta" = None
+    meta: "Meta" = Meta()
     
     implicitRules: str = None
     

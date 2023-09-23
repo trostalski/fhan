@@ -1,19 +1,19 @@
 """
 Generated class for ImagingStudy. 
-Time: 2023-09-20 20:39:03
+Time: 2023-09-23 23:45:33
 """
 from dataclasses import dataclass
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Resource import *
-from fhan.models.R4.Reference import *
-from fhan.models.R4.BackboneElement import *
 from fhan.models.R4.Annotation import *
+from fhan.models.R4.Reference import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.Extension import *
+from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Element import *
+from fhan.models.R4.Resource import *
 from fhan.models.R4.Coding import *
 from fhan.models.R4.Narrative import *
-from fhan.models.R4.Identifier import *
-from fhan.models.R4.Element import *
-from fhan.models.R4.Extension import *
+from fhan.models.R4.Meta import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -29,10 +29,10 @@ class Performer(Element):
     :param Reference actor: Who performed the series
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
-    function: "CodeableConcept" = None
-    actor: "Reference" = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
+    function: "CodeableConcept" = CodeableConcept()
+    actor: "Reference" = Reference()
     
 
     
@@ -48,11 +48,11 @@ class Instance(Element):
     :param str title: Description of instance
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
     
     uid: str = None
-    sopClass: "Coding" = None
+    sopClass: "Coding" = Coding()
     
     number: int = None
     
@@ -81,25 +81,25 @@ class Series(Element):
     :param Instance instance: A single SOP instance from the series
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
     
     uid: str = None
     
     number: int = None
-    modality: "Coding" = None
+    modality: "Coding" = Coding()
     
     description: str = None
     
     numberOfInstances: int = None
-    endpoint: list[Reference] = None
-    bodySite: "Coding" = None
-    laterality: "Coding" = None
-    specimen: list[Reference] = None
+    endpoint: list[Reference] = Reference() 
+    bodySite: "Coding" = Coding()
+    laterality: "Coding" = Coding()
+    specimen: list[Reference] = Reference() 
     
     started: str = None
-    performer: list[Performer] = None
-    instance: list[Instance] = None
+    performer: list[Performer] = Performer() 
+    instance: list[Instance] = Instance() 
     
 
 @dataclass
@@ -138,57 +138,57 @@ class ImagingStudy(ModelBase):
     resourceType: str = "ImagingStudy"
     id: str = None
     
-    meta: "Meta" = None
+    meta: "Meta" = Meta()
     
     implicitRules: str = None
     
     language: str = None
     
-    text: "Narrative" = None
+    text: "Narrative" = Narrative()
     
-    contained: list["Resource"] = None
+    contained: list[Resource] = Resource() 
     
-    extension: list["Extension"] = None
+    extension: list[Extension] = Extension() 
     
-    modifierExtension: list["Extension"] = None
+    modifierExtension: list[Extension] = Extension() 
     
-    identifier: list["Identifier"] = None
+    identifier: list[Identifier] = Identifier() 
     
     status: str = None
     
-    modality: list["Coding"] = None
+    modality: list[Coding] = Coding() 
     
-    subject: "Reference" = None
+    subject: "Reference" = Reference()
     
-    encounter: "Reference" = None
+    encounter: "Reference" = Reference()
     
     started: str = None
     
-    basedOn: list["Reference"] = None
+    basedOn: list[Reference] = Reference() 
     
-    referrer: "Reference" = None
+    referrer: "Reference" = Reference()
     
-    interpreter: list["Reference"] = None
+    interpreter: list[Reference] = Reference() 
     
-    endpoint: list["Reference"] = None
+    endpoint: list[Reference] = Reference() 
     
     numberOfSeries: int = None
     
     numberOfInstances: int = None
     
-    procedureReference: "Reference" = None
+    procedureReference: "Reference" = Reference()
     
-    procedureCode: list["CodeableConcept"] = None
+    procedureCode: list[CodeableConcept] = CodeableConcept() 
     
-    location: "Reference" = None
+    location: "Reference" = Reference()
     
-    reasonCode: list["CodeableConcept"] = None
+    reasonCode: list[CodeableConcept] = CodeableConcept() 
     
-    reasonReference: list["Reference"] = None
+    reasonReference: list[Reference] = Reference() 
     
-    note: list["Annotation"] = None
+    note: list[Annotation] = Annotation() 
     
     description: str = None
     
-    series: list["Series"] = None
+    series: list[Series] = Series() 
     

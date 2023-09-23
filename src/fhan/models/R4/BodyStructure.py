@@ -1,16 +1,16 @@
 """
 Generated class for BodyStructure. 
-Time: 2023-09-20 20:39:03
+Time: 2023-09-23 23:45:33
 """
 from dataclasses import dataclass
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Resource import *
-from fhan.models.R4.Attachment import *
 from fhan.models.R4.Reference import *
-from fhan.models.R4.Narrative import *
 from fhan.models.R4.Identifier import *
 from fhan.models.R4.Extension import *
+from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Attachment import *
+from fhan.models.R4.Resource import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Meta import *
 from fhan.models.generator_models import ModelBase
 
 @dataclass
@@ -37,33 +37,33 @@ class BodyStructure(ModelBase):
     resourceType: str = "BodyStructure"
     id: str = None
     
-    meta: "Meta" = None
+    meta: "Meta" = Meta()
     
     implicitRules: str = None
     
     language: str = None
     
-    text: "Narrative" = None
+    text: "Narrative" = Narrative()
     
-    contained: list["Resource"] = None
+    contained: list[Resource] = Resource() 
     
-    extension: list["Extension"] = None
+    extension: list[Extension] = Extension() 
     
-    modifierExtension: list["Extension"] = None
+    modifierExtension: list[Extension] = Extension() 
     
-    identifier: list["Identifier"] = None
+    identifier: list[Identifier] = Identifier() 
     
     active: bool = None
     
-    morphology: "CodeableConcept" = None
+    morphology: "CodeableConcept" = CodeableConcept()
     
-    location: "CodeableConcept" = None
+    location: "CodeableConcept" = CodeableConcept()
     
-    locationQualifier: list["CodeableConcept"] = None
+    locationQualifier: list[CodeableConcept] = CodeableConcept() 
     
     description: str = None
     
-    image: list["Attachment"] = None
+    image: list[Attachment] = Attachment() 
     
-    patient: "Reference" = None
+    patient: "Reference" = Reference()
     

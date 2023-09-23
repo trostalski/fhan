@@ -1,16 +1,16 @@
 """
 Generated class for MedicinalProductManufactured. 
-Time: 2023-09-20 20:39:03
+Time: 2023-09-23 23:45:33
 """
 from dataclasses import dataclass
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.ProdCharacteristic import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Resource import *
 from fhan.models.R4.Reference import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.Quantity import *
+from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Extension import *
+from fhan.models.R4.Quantity import *
+from fhan.models.R4.ProdCharacteristic import *
+from fhan.models.R4.Resource import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Meta import *
 from fhan.models.generator_models import ModelBase
 
 @dataclass
@@ -36,31 +36,31 @@ class MedicinalProductManufactured(ModelBase):
     resourceType: str = "MedicinalProductManufactured"
     id: str = None
     
-    meta: "Meta" = None
+    meta: "Meta" = Meta()
     
     implicitRules: str = None
     
     language: str = None
     
-    text: "Narrative" = None
+    text: "Narrative" = Narrative()
     
-    contained: list["Resource"] = None
+    contained: list[Resource] = Resource() 
     
-    extension: list["Extension"] = None
+    extension: list[Extension] = Extension() 
     
-    modifierExtension: list["Extension"] = None
+    modifierExtension: list[Extension] = Extension() 
     
-    manufacturedDoseForm: "CodeableConcept" = None
+    manufacturedDoseForm: "CodeableConcept" = CodeableConcept()
     
-    unitOfPresentation: "CodeableConcept" = None
+    unitOfPresentation: "CodeableConcept" = CodeableConcept()
     
-    quantity: "Quantity" = None
+    quantity: "Quantity" = Quantity()
     
-    manufacturer: list["Reference"] = None
+    manufacturer: list[Reference] = Reference() 
     
-    ingredient: list["Reference"] = None
+    ingredient: list[Reference] = Reference() 
     
-    physicalCharacteristics: "ProdCharacteristic" = None
+    physicalCharacteristics: "ProdCharacteristic" = ProdCharacteristic()
     
-    otherCharacteristics: list["CodeableConcept"] = None
+    otherCharacteristics: list[CodeableConcept] = CodeableConcept() 
     

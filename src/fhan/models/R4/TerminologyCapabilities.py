@@ -1,17 +1,17 @@
 """
 Generated class for TerminologyCapabilities. 
-Time: 2023-09-20 20:39:03
+Time: 2023-09-23 23:45:33
 """
 from dataclasses import dataclass
 from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.ContactDetail import *
+from fhan.models.R4.Extension import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Element import *
 from fhan.models.R4.UsageContext import *
 from fhan.models.R4.Meta import *
 from fhan.models.R4.Resource import *
-from fhan.models.R4.BackboneElement import *
 from fhan.models.R4.Narrative import *
-from fhan.models.R4.Element import *
-from fhan.models.R4.Extension import *
+from fhan.models.R4.ContactDetail import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -25,8 +25,8 @@ class Software(Element):
     :param str version: Version covered by this statement
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
     
     name: str = None
     
@@ -44,8 +44,8 @@ class Implementation(Element):
     :param str url: Base URL for the implementation
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
     
     description: str = None
     
@@ -67,8 +67,8 @@ class Filter(Element):
     :param str op: Operations supported for the property
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
     
     code: str = None
     
@@ -91,8 +91,8 @@ class Version(Element):
     :param str property: Properties supported for $lookup
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
     
     code: str = None
     
@@ -101,7 +101,7 @@ class Version(Element):
     compositional: bool = None
     
     language: str = None
-    filter: list[Filter] = None
+    filter: list[Filter] = Filter() 
     
     property: str = None
     
@@ -119,11 +119,11 @@ class CodeSystem(Element):
     :param bool subsumption: Whether subsumption is supported
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
     
     uri: str = None
-    version: list[Version] = None
+    version: list[Version] = Version() 
     
     subsumption: bool = None
     
@@ -141,8 +141,8 @@ class Parameter(Element):
     :param str documentation: Description of support for parameter
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
     
     name: str = None
     
@@ -164,15 +164,15 @@ class Expansion(Element):
     :param str textFilter: Documentation about text searching works
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
     
     hierarchical: bool = None
     
     paging: bool = None
     
     incomplete: bool = None
-    parameter: list[Parameter] = None
+    parameter: list[Parameter] = Parameter() 
     
     textFilter: str = None
     
@@ -187,8 +187,8 @@ class ValidateCode(Element):
     :param bool translations: Whether translations are validated
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
     
     translations: bool = None
     
@@ -203,8 +203,8 @@ class Translation(Element):
     :param bool needsMap: Whether the client must identify the map
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
     
     needsMap: bool = None
     
@@ -219,8 +219,8 @@ class Closure(Element):
     :param bool translation: If cross-system closure is supported
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
     
     translation: bool = None
     
@@ -265,19 +265,19 @@ class TerminologyCapabilities(ModelBase):
     resourceType: str = "TerminologyCapabilities"
     id: str = None
     
-    meta: "Meta" = None
+    meta: "Meta" = Meta()
     
     implicitRules: str = None
     
     language: str = None
     
-    text: "Narrative" = None
+    text: "Narrative" = Narrative()
     
-    contained: list["Resource"] = None
+    contained: list[Resource] = Resource() 
     
-    extension: list["Extension"] = None
+    extension: list[Extension] = Extension() 
     
-    modifierExtension: list["Extension"] = None
+    modifierExtension: list[Extension] = Extension() 
     
     url: str = None
     
@@ -295,13 +295,13 @@ class TerminologyCapabilities(ModelBase):
     
     publisher: str = None
     
-    contact: list["ContactDetail"] = None
+    contact: list[ContactDetail] = ContactDetail() 
     
     description: str = None
     
-    useContext: list["UsageContext"] = None
+    useContext: list[UsageContext] = UsageContext() 
     
-    jurisdiction: list["CodeableConcept"] = None
+    jurisdiction: list[CodeableConcept] = CodeableConcept() 
     
     purpose: str = None
     
@@ -309,21 +309,21 @@ class TerminologyCapabilities(ModelBase):
     
     kind: str = None
     
-    software: "Software" = None
+    software: "Software" = Software()
     
-    implementation: "Implementation" = None
+    implementation: "Implementation" = Implementation()
     
     lockedDate: bool = None
     
-    codeSystem: list["CodeSystem"] = None
+    codeSystem: list[CodeSystem] = CodeSystem() 
     
-    expansion: "Expansion" = None
+    expansion: "Expansion" = Expansion()
     
     codeSearch: str = None
     
-    validateCode: "ValidateCode" = None
+    validateCode: "ValidateCode" = ValidateCode()
     
-    translation: "Translation" = None
+    translation: "Translation" = Translation()
     
-    closure: "Closure" = None
+    closure: "Closure" = Closure()
     

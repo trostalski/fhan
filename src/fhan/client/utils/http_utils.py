@@ -49,5 +49,5 @@ def build_fhir_url(
     elif search:
         if not search.startswith("?"):
             search = f"?{search}"
-        url = join_urls(url, search)
+        url += search
     return url

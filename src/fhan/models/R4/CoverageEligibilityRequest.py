@@ -1,20 +1,20 @@
 """
 Generated class for CoverageEligibilityRequest. 
-Time: 2023-09-20 20:39:03
+Time: 2023-09-23 23:45:33
 """
 from dataclasses import dataclass
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Element import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Resource import *
 from fhan.models.R4.Reference import *
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.Period import *
 from fhan.models.R4.Identifier import *
-from fhan.models.R4.Money import *
-from fhan.models.R4.Quantity import *
 from fhan.models.R4.Extension import *
+from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Period import *
+from fhan.models.R4.Quantity import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Element import *
+from fhan.models.R4.Money import *
+from fhan.models.R4.Resource import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Meta import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -29,11 +29,11 @@ class SupportingInfo(Element):
     :param bool appliesToAll: Applies to all items
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
     
     sequence: int = None
-    information: "Reference" = None
+    information: "Reference" = Reference()
     
     appliesToAll: bool = None
     
@@ -50,11 +50,11 @@ class Insurance(Element):
     :param str businessArrangement: Additional provider contract number
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
     
     focal: bool = None
-    coverage: "Reference" = None
+    coverage: "Reference" = Reference()
     
     businessArrangement: str = None
     
@@ -71,9 +71,9 @@ class Diagnosis(Element):
     :param CodeableConcept diagnosisCodeableConcept: Nature of illness or problem
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
-    diagnosisCodeableConcept: "CodeableConcept" = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
+    diagnosisCodeableConcept: "CodeableConcept" = CodeableConcept()
     
 
   
@@ -96,19 +96,19 @@ class Item(Element):
     :param Reference detail: Product or service details
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
     
     supportingInfoSequence: int = None
-    category: "CodeableConcept" = None
-    productOrService: "CodeableConcept" = None
-    modifier: list[CodeableConcept] = None
-    provider: "Reference" = None
-    quantity: "Quantity" = None
-    unitPrice: "Money" = None
-    facility: "Reference" = None
-    diagnosis: list[Diagnosis] = None
-    detail: list[Reference] = None
+    category: "CodeableConcept" = CodeableConcept()
+    productOrService: "CodeableConcept" = CodeableConcept()
+    modifier: list[CodeableConcept] = CodeableConcept() 
+    provider: "Reference" = Reference()
+    quantity: "Quantity" = Quantity()
+    unitPrice: "Money" = Money()
+    facility: "Reference" = Reference()
+    diagnosis: list[Diagnosis] = Diagnosis() 
+    detail: list[Reference] = Reference() 
     
 
 @dataclass
@@ -141,45 +141,45 @@ class CoverageEligibilityRequest(ModelBase):
     resourceType: str = "CoverageEligibilityRequest"
     id: str = None
     
-    meta: "Meta" = None
+    meta: "Meta" = Meta()
     
     implicitRules: str = None
     
     language: str = None
     
-    text: "Narrative" = None
+    text: "Narrative" = Narrative()
     
-    contained: list["Resource"] = None
+    contained: list[Resource] = Resource() 
     
-    extension: list["Extension"] = None
+    extension: list[Extension] = Extension() 
     
-    modifierExtension: list["Extension"] = None
+    modifierExtension: list[Extension] = Extension() 
     
-    identifier: list["Identifier"] = None
+    identifier: list[Identifier] = Identifier() 
     
     status: str = None
     
-    priority: "CodeableConcept" = None
+    priority: "CodeableConcept" = CodeableConcept()
     
     purpose: str = None
     
-    patient: "Reference" = None
+    patient: "Reference" = Reference()
     
     servicedDate: str = None
     
     created: str = None
     
-    enterer: "Reference" = None
+    enterer: "Reference" = Reference()
     
-    provider: "Reference" = None
+    provider: "Reference" = Reference()
     
-    insurer: "Reference" = None
+    insurer: "Reference" = Reference()
     
-    facility: "Reference" = None
+    facility: "Reference" = Reference()
     
-    supportingInfo: list["SupportingInfo"] = None
+    supportingInfo: list[SupportingInfo] = SupportingInfo() 
     
-    insurance: list["Insurance"] = None
+    insurance: list[Insurance] = Insurance() 
     
-    item: list["Item"] = None
+    item: list[Item] = Item() 
     

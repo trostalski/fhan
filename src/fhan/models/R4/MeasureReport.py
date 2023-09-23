@@ -1,19 +1,19 @@
 """
 Generated class for MeasureReport. 
-Time: 2023-09-20 20:39:03
+Time: 2023-09-23 23:45:33
 """
 from dataclasses import dataclass
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Element import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Resource import *
 from fhan.models.R4.Reference import *
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.Period import *
 from fhan.models.R4.Identifier import *
-from fhan.models.R4.Quantity import *
 from fhan.models.R4.Extension import *
+from fhan.models.R4.Period import *
+from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Quantity import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Element import *
+from fhan.models.R4.Resource import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Meta import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -30,12 +30,12 @@ class Population(Element):
     :param Reference subjectResults: For subject-list reports, the subject results in this population
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
-    code: "CodeableConcept" = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
+    code: "CodeableConcept" = CodeableConcept()
     
     count: int = None
-    subjectResults: "Reference" = None
+    subjectResults: "Reference" = Reference()
     
 
     
@@ -53,10 +53,10 @@ class Component(Element):
     :param CodeableConcept value: The stratum component value, e.g. male
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
-    code: "CodeableConcept" = None
-    value: "CodeableConcept" = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
+    code: "CodeableConcept" = CodeableConcept()
+    value: "CodeableConcept" = CodeableConcept()
     
 
     
@@ -71,12 +71,12 @@ class Population(Element):
     :param Reference subjectResults: For subject-list reports, the subject results in this population
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
-    code: "CodeableConcept" = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
+    code: "CodeableConcept" = CodeableConcept()
     
     count: int = None
-    subjectResults: "Reference" = None
+    subjectResults: "Reference" = Reference()
     
 
   
@@ -93,12 +93,12 @@ class Stratum(Element):
     :param Quantity measureScore: What score this stratum achieved
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
-    value: "CodeableConcept" = None
-    component: list[Component] = None
-    population: list[Population] = None
-    measureScore: "Quantity" = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
+    value: "CodeableConcept" = CodeableConcept()
+    component: list[Component] = Component() 
+    population: list[Population] = Population() 
+    measureScore: "Quantity" = Quantity()
     
 
   
@@ -113,10 +113,10 @@ class Stratifier(Element):
     :param Stratum stratum: Stratum results, one for each unique value, or set of values, in the stratifier, or stratifier components
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
-    code: list[CodeableConcept] = None
-    stratum: list[Stratum] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
+    code: list[CodeableConcept] = CodeableConcept() 
+    stratum: list[Stratum] = Stratum() 
     
 
   
@@ -133,12 +133,12 @@ class Group(Element):
     :param Stratifier stratifier: Stratification results
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
-    code: "CodeableConcept" = None
-    population: list[Population] = None
-    measureScore: "Quantity" = None
-    stratifier: list[Stratifier] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
+    code: "CodeableConcept" = CodeableConcept()
+    population: list[Population] = Population() 
+    measureScore: "Quantity" = Quantity()
+    stratifier: list[Stratifier] = Stratifier() 
     
 
 @dataclass
@@ -168,21 +168,21 @@ class MeasureReport(ModelBase):
     resourceType: str = "MeasureReport"
     id: str = None
     
-    meta: "Meta" = None
+    meta: "Meta" = Meta()
     
     implicitRules: str = None
     
     language: str = None
     
-    text: "Narrative" = None
+    text: "Narrative" = Narrative()
     
-    contained: list["Resource"] = None
+    contained: list[Resource] = Resource() 
     
-    extension: list["Extension"] = None
+    extension: list[Extension] = Extension() 
     
-    modifierExtension: list["Extension"] = None
+    modifierExtension: list[Extension] = Extension() 
     
-    identifier: list["Identifier"] = None
+    identifier: list[Identifier] = Identifier() 
     
     status: str = None
     
@@ -190,17 +190,17 @@ class MeasureReport(ModelBase):
     
     measure: str = None
     
-    subject: "Reference" = None
+    subject: "Reference" = Reference()
     
     date: str = None
     
-    reporter: "Reference" = None
+    reporter: "Reference" = Reference()
     
-    period: "Period" = None
+    period: "Period" = Period()
     
-    improvementNotation: "CodeableConcept" = None
+    improvementNotation: "CodeableConcept" = CodeableConcept()
     
-    group: list["Group"] = None
+    group: list[Group] = Group() 
     
-    evaluatedResource: list["Reference"] = None
+    evaluatedResource: list[Reference] = Reference() 
     

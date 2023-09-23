@@ -1,19 +1,19 @@
 """
 Generated class for DiagnosticReport. 
-Time: 2023-09-20 20:39:03
+Time: 2023-09-23 23:45:33
 """
 from dataclasses import dataclass
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Resource import *
-from fhan.models.R4.Attachment import *
 from fhan.models.R4.Reference import *
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.Period import *
 from fhan.models.R4.Identifier import *
-from fhan.models.R4.Element import *
 from fhan.models.R4.Extension import *
+from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Period import *
+from fhan.models.R4.Attachment import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Element import *
+from fhan.models.R4.Resource import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Meta import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -27,11 +27,11 @@ class Media(Element):
     :param Reference link: Reference to the image source
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
     
     comment: str = None
-    link: "Reference" = None
+    link: "Reference" = Reference()
     
 
 @dataclass
@@ -68,53 +68,53 @@ class DiagnosticReport(ModelBase):
     resourceType: str = "DiagnosticReport"
     id: str = None
     
-    meta: "Meta" = None
+    meta: "Meta" = Meta()
     
     implicitRules: str = None
     
     language: str = None
     
-    text: "Narrative" = None
+    text: "Narrative" = Narrative()
     
-    contained: list["Resource"] = None
+    contained: list[Resource] = Resource() 
     
-    extension: list["Extension"] = None
+    extension: list[Extension] = Extension() 
     
-    modifierExtension: list["Extension"] = None
+    modifierExtension: list[Extension] = Extension() 
     
-    identifier: list["Identifier"] = None
+    identifier: list[Identifier] = Identifier() 
     
-    basedOn: list["Reference"] = None
+    basedOn: list[Reference] = Reference() 
     
     status: str = None
     
-    category: list["CodeableConcept"] = None
+    category: list[CodeableConcept] = CodeableConcept() 
     
-    code: "CodeableConcept" = None
+    code: "CodeableConcept" = CodeableConcept()
     
-    subject: "Reference" = None
+    subject: "Reference" = Reference()
     
-    encounter: "Reference" = None
+    encounter: "Reference" = Reference()
     
     effectiveDateTime: str = None
     
     issued: str = None
     
-    performer: list["Reference"] = None
+    performer: list[Reference] = Reference() 
     
-    resultsInterpreter: list["Reference"] = None
+    resultsInterpreter: list[Reference] = Reference() 
     
-    specimen: list["Reference"] = None
+    specimen: list[Reference] = Reference() 
     
-    result: list["Reference"] = None
+    result: list[Reference] = Reference() 
     
-    imagingStudy: list["Reference"] = None
+    imagingStudy: list[Reference] = Reference() 
     
-    media: list["Media"] = None
+    media: list[Media] = Media() 
     
     conclusion: str = None
     
-    conclusionCode: "CodeableConcept" = None
+    conclusionCode: "CodeableConcept" = CodeableConcept()
     
-    presentedForm: list["Attachment"] = None
+    presentedForm: list[Attachment] = Attachment() 
     

@@ -1,20 +1,20 @@
 """
 Generated class for RiskAssessment. 
-Time: 2023-09-20 20:39:03
+Time: 2023-09-23 23:45:33
 """
 from dataclasses import dataclass
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Range import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Resource import *
-from fhan.models.R4.Reference import *
-from fhan.models.R4.BackboneElement import *
 from fhan.models.R4.Annotation import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.Period import *
+from fhan.models.R4.Reference import *
+from fhan.models.R4.Range import *
 from fhan.models.R4.Identifier import *
-from fhan.models.R4.Element import *
 from fhan.models.R4.Extension import *
+from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Period import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Element import *
+from fhan.models.R4.Resource import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Meta import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -32,15 +32,15 @@ class Prediction(Element):
     :param str rationale: Explanation of prediction
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
-    outcome: "CodeableConcept" = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
+    outcome: "CodeableConcept" = CodeableConcept()
     
     probabilityDecimal: float = None
-    qualitativeRisk: "CodeableConcept" = None
+    qualitativeRisk: "CodeableConcept" = CodeableConcept()
     
     relativeRisk: float = None
-    whenPeriod: "Period" = None
+    whenPeriod: "Period" = Period()
     
     rationale: str = None
     
@@ -78,51 +78,51 @@ class RiskAssessment(ModelBase):
     resourceType: str = "RiskAssessment"
     id: str = None
     
-    meta: "Meta" = None
+    meta: "Meta" = Meta()
     
     implicitRules: str = None
     
     language: str = None
     
-    text: "Narrative" = None
+    text: "Narrative" = Narrative()
     
-    contained: list["Resource"] = None
+    contained: list[Resource] = Resource() 
     
-    extension: list["Extension"] = None
+    extension: list[Extension] = Extension() 
     
-    modifierExtension: list["Extension"] = None
+    modifierExtension: list[Extension] = Extension() 
     
-    identifier: list["Identifier"] = None
+    identifier: list[Identifier] = Identifier() 
     
-    basedOn: "Reference" = None
+    basedOn: "Reference" = Reference()
     
-    parent: "Reference" = None
+    parent: "Reference" = Reference()
     
     status: str = None
     
-    method: "CodeableConcept" = None
+    method: "CodeableConcept" = CodeableConcept()
     
-    code: "CodeableConcept" = None
+    code: "CodeableConcept" = CodeableConcept()
     
-    subject: "Reference" = None
+    subject: "Reference" = Reference()
     
-    encounter: "Reference" = None
+    encounter: "Reference" = Reference()
     
     occurrenceDateTime: str = None
     
-    condition: "Reference" = None
+    condition: "Reference" = Reference()
     
-    performer: "Reference" = None
+    performer: "Reference" = Reference()
     
-    reasonCode: list["CodeableConcept"] = None
+    reasonCode: list[CodeableConcept] = CodeableConcept() 
     
-    reasonReference: list["Reference"] = None
+    reasonReference: list[Reference] = Reference() 
     
-    basis: list["Reference"] = None
+    basis: list[Reference] = Reference() 
     
-    prediction: list["Prediction"] = None
+    prediction: list[Prediction] = Prediction() 
     
     mitigation: str = None
     
-    note: list["Annotation"] = None
+    note: list[Annotation] = Annotation() 
     

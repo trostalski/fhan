@@ -1,21 +1,21 @@
 """
 Generated class for SubstanceSpecification. 
-Time: 2023-09-20 20:39:03
+Time: 2023-09-23 23:45:33
 """
 from dataclasses import dataclass
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Range import *
-from fhan.models.R4.Element import *
-from fhan.models.R4.Ratio import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Resource import *
-from fhan.models.R4.Attachment import *
 from fhan.models.R4.Reference import *
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Narrative import *
+from fhan.models.R4.Range import *
 from fhan.models.R4.Identifier import *
-from fhan.models.R4.Quantity import *
 from fhan.models.R4.Extension import *
+from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Ratio import *
+from fhan.models.R4.Quantity import *
+from fhan.models.R4.Attachment import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Element import *
+from fhan.models.R4.Resource import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Meta import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -34,17 +34,17 @@ class Moiety(Element):
     :param Quantity amountQuantity: Quantitative value for this moiety
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
-    role: "CodeableConcept" = None
-    identifier: "Identifier" = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
+    role: "CodeableConcept" = CodeableConcept()
+    identifier: "Identifier" = Identifier()
     
     name: str = None
-    stereochemistry: "CodeableConcept" = None
-    opticalActivity: "CodeableConcept" = None
+    stereochemistry: "CodeableConcept" = CodeableConcept()
+    opticalActivity: "CodeableConcept" = CodeableConcept()
     
     molecularFormula: str = None
-    amountQuantity: "Quantity" = None
+    amountQuantity: "Quantity" = Quantity()
     
 
     
@@ -61,14 +61,14 @@ class Property(Element):
     :param Quantity amountQuantity: Quantitative value for this property
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
-    category: "CodeableConcept" = None
-    code: "CodeableConcept" = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
+    category: "CodeableConcept" = CodeableConcept()
+    code: "CodeableConcept" = CodeableConcept()
     
     parameters: str = None
-    definingSubstanceReference: "Reference" = None
-    amountQuantity: "Quantity" = None
+    definingSubstanceReference: "Reference" = Reference()
+    amountQuantity: "Quantity" = Quantity()
     
 
     
@@ -87,11 +87,11 @@ class MolecularWeight(Element):
     :param Quantity amount: Used to capture quantitative values for a variety of elements. If only limits are given, the arithmetic mean would be the average. If only a single definite value for a given element is given, it would be captured in this field
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
-    method: "CodeableConcept" = None
-    type: "CodeableConcept" = None
-    amount: "Quantity" = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
+    method: "CodeableConcept" = CodeableConcept()
+    type: "CodeableConcept" = CodeableConcept()
+    amount: "Quantity" = Quantity()
     
 
   
@@ -109,13 +109,13 @@ class Isotope(Element):
     :param MolecularWeight molecularWeight: The molecular weight or weight range (for proteins, polymers or nucleic acids)
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
-    identifier: "Identifier" = None
-    name: "CodeableConcept" = None
-    substitution: "CodeableConcept" = None
-    halfLife: "Quantity" = None
-    molecularWeight: "MolecularWeight" = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
+    identifier: "Identifier" = Identifier()
+    name: "CodeableConcept" = CodeableConcept()
+    substitution: "CodeableConcept" = CodeableConcept()
+    halfLife: "Quantity" = Quantity()
+    molecularWeight: "MolecularWeight" = MolecularWeight()
     
 
     
@@ -130,12 +130,12 @@ class Representation(Element):
     :param Attachment attachment: An attached file with the structural representation
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
-    type: "CodeableConcept" = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
+    type: "CodeableConcept" = CodeableConcept()
     
     representation: str = None
-    attachment: "Attachment" = None
+    attachment: "Attachment" = Attachment()
     
 
   
@@ -155,17 +155,17 @@ class Structure(Element):
     :param Representation representation: Molecular structural representation
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
-    stereochemistry: "CodeableConcept" = None
-    opticalActivity: "CodeableConcept" = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
+    stereochemistry: "CodeableConcept" = CodeableConcept()
+    opticalActivity: "CodeableConcept" = CodeableConcept()
     
     molecularFormula: str = None
     
     molecularFormulaByMoiety: str = None
-    isotope: list[Isotope] = None
-    source: list[Reference] = None
-    representation: list[Representation] = None
+    isotope: list[Isotope] = Isotope() 
+    source: list[Reference] = Reference() 
+    representation: list[Representation] = Representation() 
     
 
     
@@ -182,15 +182,15 @@ class Code(Element):
     :param Reference source: Supporting literature
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
-    code: "CodeableConcept" = None
-    status: "CodeableConcept" = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
+    code: "CodeableConcept" = CodeableConcept()
+    status: "CodeableConcept" = CodeableConcept()
     
     statusDate: str = None
     
     comment: str = None
-    source: list[Reference] = None
+    source: list[Reference] = Reference() 
     
 
     
@@ -207,10 +207,10 @@ class Official(Element):
     :param str date: Date of official name change
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
-    authority: "CodeableConcept" = None
-    status: "CodeableConcept" = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
+    authority: "CodeableConcept" = CodeableConcept()
+    status: "CodeableConcept" = CodeableConcept()
     
     date: str = None
     
@@ -234,19 +234,19 @@ class Name(Element):
     :param Reference source: Supporting literature
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
     
     name: str = None
-    type: "CodeableConcept" = None
-    status: "CodeableConcept" = None
+    type: "CodeableConcept" = CodeableConcept()
+    status: "CodeableConcept" = CodeableConcept()
     
     preferred: bool = None
-    language: list[CodeableConcept] = None
-    domain: list[CodeableConcept] = None
-    jurisdiction: list[CodeableConcept] = None
-    official: list[Official] = None
-    source: list[Reference] = None
+    language: list[CodeableConcept] = CodeableConcept() 
+    domain: list[CodeableConcept] = CodeableConcept() 
+    jurisdiction: list[CodeableConcept] = CodeableConcept() 
+    official: list[Official] = Official() 
+    source: list[Reference] = Reference() 
     
 
     
@@ -265,16 +265,16 @@ class Relationship(Element):
     :param Reference source: Supporting literature
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
-    substanceReference: "Reference" = None
-    relationship: "CodeableConcept" = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
+    substanceReference: "Reference" = Reference()
+    relationship: "CodeableConcept" = CodeableConcept()
     
     isDefining: bool = None
-    amountQuantity: "Quantity" = None
-    amountRatioLowLimit: "Ratio" = None
-    amountType: "CodeableConcept" = None
-    source: list[Reference] = None
+    amountQuantity: "Quantity" = Quantity()
+    amountRatioLowLimit: "Ratio" = Ratio()
+    amountType: "CodeableConcept" = CodeableConcept()
+    source: list[Reference] = Reference() 
     
 
 @dataclass
@@ -311,53 +311,53 @@ class SubstanceSpecification(ModelBase):
     resourceType: str = "SubstanceSpecification"
     id: str = None
     
-    meta: "Meta" = None
+    meta: "Meta" = Meta()
     
     implicitRules: str = None
     
     language: str = None
     
-    text: "Narrative" = None
+    text: "Narrative" = Narrative()
     
-    contained: list["Resource"] = None
+    contained: list[Resource] = Resource() 
     
-    extension: list["Extension"] = None
+    extension: list[Extension] = Extension() 
     
-    modifierExtension: list["Extension"] = None
+    modifierExtension: list[Extension] = Extension() 
     
-    identifier: "Identifier" = None
+    identifier: "Identifier" = Identifier()
     
-    type: "CodeableConcept" = None
+    type: "CodeableConcept" = CodeableConcept()
     
-    status: "CodeableConcept" = None
+    status: "CodeableConcept" = CodeableConcept()
     
-    domain: "CodeableConcept" = None
+    domain: "CodeableConcept" = CodeableConcept()
     
     description: str = None
     
-    source: list["Reference"] = None
+    source: list[Reference] = Reference() 
     
     comment: str = None
     
-    moiety: list["Moiety"] = None
+    moiety: list[Moiety] = Moiety() 
     
-    property: list["Property"] = None
+    property: list[Property] = Property() 
     
-    referenceInformation: "Reference" = None
+    referenceInformation: "Reference" = Reference()
     
-    structure: "Structure" = None
+    structure: "Structure" = Structure()
     
-    code: list["Code"] = None
+    code: list[Code] = Code() 
     
-    name: list["Name"] = None
+    name: list[Name] = Name() 
     
-    relationship: list["Relationship"] = None
+    relationship: list[Relationship] = Relationship() 
     
-    nucleicAcid: "Reference" = None
+    nucleicAcid: "Reference" = Reference()
     
-    polymer: "Reference" = None
+    polymer: "Reference" = Reference()
     
-    protein: "Reference" = None
+    protein: "Reference" = Reference()
     
-    sourceMaterial: "Reference" = None
+    sourceMaterial: "Reference" = Reference()
     

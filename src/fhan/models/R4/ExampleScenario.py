@@ -1,18 +1,18 @@
 """
 Generated class for ExampleScenario. 
-Time: 2023-09-20 20:39:03
+Time: 2023-09-23 23:45:33
 """
 from dataclasses import dataclass
-from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.ContactDetail import *
-from fhan.models.R4.UsageContext import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Resource import *
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Narrative import *
 from fhan.models.R4.Identifier import *
-from fhan.models.R4.Element import *
 from fhan.models.R4.Extension import *
+from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Element import *
+from fhan.models.R4.UsageContext import *
+from fhan.models.R4.Resource import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Meta import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -28,8 +28,8 @@ class Actor(Element):
     :param str description: The description of the actor
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
     
     actorId: str = None
     
@@ -53,8 +53,8 @@ class Version(Element):
     :param str description: The description of the resource version
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
     
     versionId: str = None
     
@@ -72,8 +72,8 @@ class ContainedInstance(Element):
     :param str versionId: A specific version of a resource contained in the instance
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
     
     resourceId: str = None
     
@@ -96,8 +96,8 @@ class Instance(Element):
     :param ContainedInstance containedInstance: Resources contained in the instance
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
     
     resourceId: str = None
     
@@ -106,8 +106,8 @@ class Instance(Element):
     name: str = None
     
     description: str = None
-    version: list[Version] = None
-    containedInstance: list[ContainedInstance] = None
+    version: list[Version] = Version() 
+    containedInstance: list[ContainedInstance] = ContainedInstance() 
     
 
     
@@ -131,8 +131,8 @@ class Operation(Element):
     :param bool receiverActive: Whether the receiver is deactivated right after the transaction
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
     
     number: str = None
     
@@ -162,8 +162,8 @@ class Alternative(Element):
     :param str description: A human-readable description of each option
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
     
     title: str = None
     
@@ -183,12 +183,12 @@ class Step(Element):
     :param Alternative alternative: Alternate non-typical step action
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
     
     pause: bool = None
-    operation: "Operation" = None
-    alternative: list[Alternative] = None
+    operation: "Operation" = Operation()
+    alternative: list[Alternative] = Alternative() 
     
 
   
@@ -206,8 +206,8 @@ class Process(Element):
     :param Step step: Each step of the process
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
     
     title: str = None
     
@@ -216,7 +216,7 @@ class Process(Element):
     preConditions: str = None
     
     postConditions: str = None
-    step: list[Step] = None
+    step: list[Step] = Step() 
     
 
 @dataclass
@@ -252,23 +252,23 @@ class ExampleScenario(ModelBase):
     resourceType: str = "ExampleScenario"
     id: str = None
     
-    meta: "Meta" = None
+    meta: "Meta" = Meta()
     
     implicitRules: str = None
     
     language: str = None
     
-    text: "Narrative" = None
+    text: "Narrative" = Narrative()
     
-    contained: list["Resource"] = None
+    contained: list[Resource] = Resource() 
     
-    extension: list["Extension"] = None
+    extension: list[Extension] = Extension() 
     
-    modifierExtension: list["Extension"] = None
+    modifierExtension: list[Extension] = Extension() 
     
     url: str = None
     
-    identifier: list["Identifier"] = None
+    identifier: list[Identifier] = Identifier() 
     
     version: str = None
     
@@ -282,21 +282,21 @@ class ExampleScenario(ModelBase):
     
     publisher: str = None
     
-    contact: list["ContactDetail"] = None
+    contact: list[ContactDetail] = ContactDetail() 
     
-    useContext: list["UsageContext"] = None
+    useContext: list[UsageContext] = UsageContext() 
     
-    jurisdiction: list["CodeableConcept"] = None
+    jurisdiction: list[CodeableConcept] = CodeableConcept() 
     
     copyright: str = None
     
     purpose: str = None
     
-    actor: list["Actor"] = None
+    actor: list[Actor] = Actor() 
     
-    instance: list["Instance"] = None
+    instance: list[Instance] = Instance() 
     
-    process: list["Process"] = None
+    process: list[Process] = Process() 
     
     workflow: str = None
     

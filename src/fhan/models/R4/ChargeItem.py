@@ -1,22 +1,22 @@
 """
 Generated class for ChargeItem. 
-Time: 2023-09-20 20:39:03
+Time: 2023-09-23 23:45:33
 """
 from dataclasses import dataclass
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Element import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Resource import *
-from fhan.models.R4.Timing import *
-from fhan.models.R4.Reference import *
-from fhan.models.R4.BackboneElement import *
 from fhan.models.R4.Annotation import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.Period import *
+from fhan.models.R4.Reference import *
 from fhan.models.R4.Identifier import *
-from fhan.models.R4.Money import *
-from fhan.models.R4.Quantity import *
 from fhan.models.R4.Extension import *
+from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Period import *
+from fhan.models.R4.Quantity import *
+from fhan.models.R4.Timing import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Element import *
+from fhan.models.R4.Money import *
+from fhan.models.R4.Resource import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Meta import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -30,10 +30,10 @@ class Performer(Element):
     :param Reference actor: Individual who was performing
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
-    function: "CodeableConcept" = None
-    actor: "Reference" = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
+    function: "CodeableConcept" = CodeableConcept()
+    actor: "Reference" = Reference()
     
 
 @dataclass
@@ -78,21 +78,21 @@ class ChargeItem(ModelBase):
     resourceType: str = "ChargeItem"
     id: str = None
     
-    meta: "Meta" = None
+    meta: "Meta" = Meta()
     
     implicitRules: str = None
     
     language: str = None
     
-    text: "Narrative" = None
+    text: "Narrative" = Narrative()
     
-    contained: list["Resource"] = None
+    contained: list[Resource] = Resource() 
     
-    extension: list["Extension"] = None
+    extension: list[Extension] = Extension() 
     
-    modifierExtension: list["Extension"] = None
+    modifierExtension: list[Extension] = Extension() 
     
-    identifier: list["Identifier"] = None
+    identifier: list[Identifier] = Identifier() 
     
     definitionUri: str = None
     
@@ -100,47 +100,47 @@ class ChargeItem(ModelBase):
     
     status: str = None
     
-    partOf: list["Reference"] = None
+    partOf: list[Reference] = Reference() 
     
-    code: "CodeableConcept" = None
+    code: "CodeableConcept" = CodeableConcept()
     
-    subject: "Reference" = None
+    subject: "Reference" = Reference()
     
-    context: "Reference" = None
+    context: "Reference" = Reference()
     
     occurrenceDateTime: str = None
     
-    performer: list["Performer"] = None
+    performer: list[Performer] = Performer() 
     
-    performingOrganization: "Reference" = None
+    performingOrganization: "Reference" = Reference()
     
-    requestingOrganization: "Reference" = None
+    requestingOrganization: "Reference" = Reference()
     
-    costCenter: "Reference" = None
+    costCenter: "Reference" = Reference()
     
-    quantity: "Quantity" = None
+    quantity: "Quantity" = Quantity()
     
-    bodysite: list["CodeableConcept"] = None
+    bodysite: list[CodeableConcept] = CodeableConcept() 
     
     factorOverride: float = None
     
-    priceOverride: "Money" = None
+    priceOverride: "Money" = Money()
     
     overrideReason: str = None
     
-    enterer: "Reference" = None
+    enterer: "Reference" = Reference()
     
     enteredDate: str = None
     
-    reason: list["CodeableConcept"] = None
+    reason: list[CodeableConcept] = CodeableConcept() 
     
-    service: list["Reference"] = None
+    service: list[Reference] = Reference() 
     
-    productReference: "Reference" = None
+    productReference: "Reference" = Reference()
     
-    account: list["Reference"] = None
+    account: list[Reference] = Reference() 
     
-    note: list["Annotation"] = None
+    note: list[Annotation] = Annotation() 
     
-    supportingInformation: list["Reference"] = None
+    supportingInformation: list[Reference] = Reference() 
     

@@ -1,25 +1,25 @@
 """
 Generated class for Contract. 
-Time: 2023-09-20 20:39:03
+Time: 2023-09-23 23:45:33
 """
 from dataclasses import dataclass
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Element import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Resource import *
-from fhan.models.R4.Attachment import *
-from fhan.models.R4.Timing import *
-from fhan.models.R4.Reference import *
-from fhan.models.R4.BackboneElement import *
 from fhan.models.R4.Annotation import *
+from fhan.models.R4.Reference import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.Extension import *
+from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Period import *
+from fhan.models.R4.Attachment import *
+from fhan.models.R4.Quantity import *
+from fhan.models.R4.Signature import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Timing import *
+from fhan.models.R4.Element import *
+from fhan.models.R4.Money import *
+from fhan.models.R4.Resource import *
 from fhan.models.R4.Coding import *
 from fhan.models.R4.Narrative import *
-from fhan.models.R4.Period import *
-from fhan.models.R4.Signature import *
-from fhan.models.R4.Identifier import *
-from fhan.models.R4.Money import *
-from fhan.models.R4.Quantity import *
-from fhan.models.R4.Extension import *
+from fhan.models.R4.Meta import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -37,11 +37,11 @@ class ContentDefinition(Element):
     :param str copyright: Publication Ownership
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
-    type: "CodeableConcept" = None
-    subType: "CodeableConcept" = None
-    publisher: "Reference" = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
+    type: "CodeableConcept" = CodeableConcept()
+    subType: "CodeableConcept" = CodeableConcept()
+    publisher: "Reference" = Reference()
     
     publicationDate: str = None
     
@@ -65,13 +65,13 @@ class SecurityLabel(Element):
     :param Coding control: Handling Instructions
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
     
     number: int = None
-    classification: "Coding" = None
-    category: list[Coding] = None
-    control: list[Coding] = None
+    classification: "Coding" = Coding()
+    category: list[Coding] = Coding() 
+    control: list[Coding] = Coding() 
     
 
     
@@ -87,10 +87,10 @@ class Party(Element):
     :param CodeableConcept role: Participant engagement type
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
-    reference: list[Reference] = None
-    role: "CodeableConcept" = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
+    reference: list[Reference] = Reference() 
+    role: "CodeableConcept" = CodeableConcept()
     
 
     
@@ -103,8 +103,8 @@ class Answer(Element):
     :param bool valueBoolean: The actual answer response
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
     
     valueBoolean: bool = None
     
@@ -129,15 +129,15 @@ class Offer(Element):
     :param int securityLabelNumber: Offer restriction numbers
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
-    identifier: list[Identifier] = None
-    party: list[Party] = None
-    topic: "Reference" = None
-    type: "CodeableConcept" = None
-    decision: "CodeableConcept" = None
-    decisionMode: list[CodeableConcept] = None
-    answer: list[Answer] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
+    identifier: list[Identifier] = Identifier() 
+    party: list[Party] = Party() 
+    topic: "Reference" = Reference()
+    type: "CodeableConcept" = CodeableConcept()
+    decision: "CodeableConcept" = CodeableConcept()
+    decisionMode: list[CodeableConcept] = CodeableConcept() 
+    answer: list[Answer] = Answer() 
     
     text: str = None
     
@@ -160,10 +160,10 @@ class Context(Element):
     :param str text: Context description
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
-    reference: "Reference" = None
-    code: list[CodeableConcept] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
+    reference: "Reference" = Reference()
+    code: list[CodeableConcept] = CodeableConcept() 
     
     text: str = None
     
@@ -191,25 +191,25 @@ class ValuedItem(Element):
     :param int securityLabelNumber: Security Labels that define affected terms
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
-    entityCodeableConcept: "CodeableConcept" = None
-    identifier: "Identifier" = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
+    entityCodeableConcept: "CodeableConcept" = CodeableConcept()
+    identifier: "Identifier" = Identifier()
     
     effectiveTime: str = None
-    quantity: "Quantity" = None
-    unitPrice: "Money" = None
+    quantity: "Quantity" = Quantity()
+    unitPrice: "Money" = Money()
     
     factor: float = None
     
     points: float = None
-    net: "Money" = None
+    net: "Money" = Money()
     
     payment: str = None
     
     paymentDate: str = None
-    responsible: "Reference" = None
-    recipient: "Reference" = None
+    responsible: "Reference" = Reference()
+    recipient: "Reference" = Reference()
     
     linkId: str = None
     
@@ -240,26 +240,26 @@ class Asset(Element):
     :param ValuedItem valuedItem: Contract Valued Item List
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
-    scope: "CodeableConcept" = None
-    type: list[CodeableConcept] = None
-    typeReference: list[Reference] = None
-    subtype: list[CodeableConcept] = None
-    relationship: "Coding" = None
-    context: list[Context] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
+    scope: "CodeableConcept" = CodeableConcept()
+    type: list[CodeableConcept] = CodeableConcept() 
+    typeReference: list[Reference] = Reference() 
+    subtype: list[CodeableConcept] = CodeableConcept() 
+    relationship: "Coding" = Coding()
+    context: list[Context] = Context() 
     
     condition: str = None
-    periodType: list[CodeableConcept] = None
-    period: list[Period] = None
-    usePeriod: list[Period] = None
+    periodType: list[CodeableConcept] = CodeableConcept() 
+    period: list[Period] = Period() 
+    usePeriod: list[Period] = Period() 
     
     text: str = None
     
     linkId: str = None
     
     securityLabelNumber: int = None
-    valuedItem: list[ValuedItem] = None
+    valuedItem: list[ValuedItem] = ValuedItem() 
     
 
     
@@ -275,10 +275,10 @@ class Subject(Element):
     :param CodeableConcept role: Role type of the agent
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
-    reference: list[Reference] = None
-    role: "CodeableConcept" = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
+    reference: list[Reference] = Reference() 
+    role: "CodeableConcept" = CodeableConcept()
     
 
   
@@ -312,36 +312,36 @@ class Action(Element):
     :param int securityLabelNumber: Action restriction numbers
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
     
     doNotPerform: bool = None
-    type: "CodeableConcept" = None
-    subject: list[Subject] = None
-    intent: "CodeableConcept" = None
+    type: "CodeableConcept" = CodeableConcept()
+    subject: list[Subject] = Subject() 
+    intent: "CodeableConcept" = CodeableConcept()
     
     linkId: str = None
-    status: "CodeableConcept" = None
-    context: "Reference" = None
+    status: "CodeableConcept" = CodeableConcept()
+    context: "Reference" = Reference()
     
     contextLinkId: str = None
     
     occurrenceDateTime: str = None
-    requester: list[Reference] = None
+    requester: list[Reference] = Reference() 
     
     requesterLinkId: str = None
-    performerType: list[CodeableConcept] = None
-    performerRole: "CodeableConcept" = None
-    performer: "Reference" = None
+    performerType: list[CodeableConcept] = CodeableConcept() 
+    performerRole: "CodeableConcept" = CodeableConcept()
+    performer: "Reference" = Reference()
     
     performerLinkId: str = None
-    reasonCode: list[CodeableConcept] = None
-    reasonReference: list[Reference] = None
+    reasonCode: list[CodeableConcept] = CodeableConcept() 
+    reasonReference: list[Reference] = Reference() 
     
     reason: str = None
     
     reasonLinkId: str = None
-    note: list[Annotation] = None
+    note: list[Annotation] = Annotation() 
     
     securityLabelNumber: int = None
     
@@ -367,21 +367,21 @@ class Term(Element):
     :param Action action: Entity being ascribed responsibility
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
-    identifier: "Identifier" = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
+    identifier: "Identifier" = Identifier()
     
     issued: str = None
-    applies: "Period" = None
-    topicCodeableConcept: "CodeableConcept" = None
-    type: "CodeableConcept" = None
-    subType: "CodeableConcept" = None
+    applies: "Period" = Period()
+    topicCodeableConcept: "CodeableConcept" = CodeableConcept()
+    type: "CodeableConcept" = CodeableConcept()
+    subType: "CodeableConcept" = CodeableConcept()
     
     text: str = None
-    securityLabel: list[SecurityLabel] = None
-    offer: "Offer" = None
-    asset: list[Asset] = None
-    action: list[Action] = None
+    securityLabel: list[SecurityLabel] = SecurityLabel() 
+    offer: "Offer" = Offer()
+    asset: list[Asset] = Asset() 
+    action: list[Action] = Action() 
     
 
     
@@ -396,11 +396,11 @@ class Signer(Element):
     :param Signature signature: Contract Documentation Signature
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
-    type: "Coding" = None
-    party: "Reference" = None
-    signature: list[Signature] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
+    type: "Coding" = Coding()
+    party: "Reference" = Reference()
+    signature: list[Signature] = Signature() 
     
 
     
@@ -413,9 +413,9 @@ class Friendly(Element):
     :param Attachment contentAttachment: Easily comprehended representation of this Contract
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
-    contentAttachment: "Attachment" = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
+    contentAttachment: "Attachment" = Attachment()
     
 
     
@@ -428,13 +428,13 @@ class Legal(Element):
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param Attachment contentAttachment: Contract Legal Text
     :param Attachment legallyBindingAttachment: Binding Contract
-    """legalState: "CodeableConcept" = None
+    """legalState: "CodeableConcept" = CodeableConcept()
     
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
-    contentAttachment: "Attachment" = None
-    legallyBindingAttachment: "Attachment" = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
+    contentAttachment: "Attachment" = Attachment()
+    legallyBindingAttachment: "Attachment" = Attachment()
     
 
     
@@ -447,9 +447,9 @@ class Rule(Element):
     :param Attachment contentAttachment: Computable Contract Rules
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
-    contentAttachment: "Attachment" = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
+    contentAttachment: "Attachment" = Attachment()
     
 
 @dataclass
@@ -500,21 +500,21 @@ class Contract(ModelBase):
     resourceType: str = "Contract"
     id: str = None
     
-    meta: "Meta" = None
+    meta: "Meta" = Meta()
     
     implicitRules: str = None
     
     language: str = None
     
-    text: "Narrative" = None
+    text: "Narrative" = Narrative()
     
-    contained: list["Resource"] = None
+    contained: list[Resource] = Resource() 
     
-    extension: list["Extension"] = None
+    extension: list[Extension] = Extension() 
     
-    modifierExtension: list["Extension"] = None
+    modifierExtension: list[Extension] = Extension() 
     
-    identifier: list["Identifier"] = None
+    identifier: list[Identifier] = Identifier() 
     
     url: str = None
     
@@ -522,27 +522,27 @@ class Contract(ModelBase):
     
     status: str = None
     
-    legalState: "CodeableConcept" = None
+    legalState: "CodeableConcept" = CodeableConcept()
     
-    instantiatesCanonical: "Reference" = None
+    instantiatesCanonical: "Reference" = Reference()
     
     instantiatesUri: str = None
     
-    contentDerivative: "CodeableConcept" = None
+    contentDerivative: "CodeableConcept" = CodeableConcept()
     
     issued: str = None
     
-    applies: "Period" = None
+    applies: "Period" = Period()
     
-    expirationType: "CodeableConcept" = None
+    expirationType: "CodeableConcept" = CodeableConcept()
     
-    subject: list["Reference"] = None
+    subject: list[Reference] = Reference() 
     
-    authority: list["Reference"] = None
+    authority: list[Reference] = Reference() 
     
-    domain: list["Reference"] = None
+    domain: list[Reference] = Reference() 
     
-    site: list["Reference"] = None
+    site: list[Reference] = Reference() 
     
     name: str = None
     
@@ -552,29 +552,29 @@ class Contract(ModelBase):
     
     alias: str = None
     
-    author: "Reference" = None
+    author: "Reference" = Reference()
     
-    scope: "CodeableConcept" = None
+    scope: "CodeableConcept" = CodeableConcept()
     
-    topicCodeableConcept: "CodeableConcept" = None
+    topicCodeableConcept: "CodeableConcept" = CodeableConcept()
     
-    type: "CodeableConcept" = None
+    type: "CodeableConcept" = CodeableConcept()
     
-    subType: list["CodeableConcept"] = None
+    subType: list[CodeableConcept] = CodeableConcept() 
     
-    contentDefinition: "ContentDefinition" = None
+    contentDefinition: "ContentDefinition" = ContentDefinition()
     
-    term: list["Term"] = None
+    term: list[Term] = Term() 
     
-    supportingInfo: list["Reference"] = None
+    supportingInfo: list[Reference] = Reference() 
     
-    relevantHistory: list["Reference"] = None
+    relevantHistory: list[Reference] = Reference() 
     
-    signer: list["Signer"] = None
+    signer: list[Signer] = Signer() 
     
-    friendly: list["Friendly"] = None
+    friendly: list[Friendly] = Friendly() 
     
-    legal: list["Legal"] = None
+    legal: list[Legal] = Legal() 
     
-    rule: list["Rule"] = None
+    rule: list[Rule] = Rule() 
     

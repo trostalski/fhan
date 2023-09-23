@@ -1,19 +1,19 @@
 """
 Generated class for ValueSet. 
-Time: 2023-09-20 20:39:03
+Time: 2023-09-23 23:45:33
 """
 from dataclasses import dataclass
-from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.ContactDetail import *
-from fhan.models.R4.UsageContext import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Resource import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.Extension import *
+from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Element import *
+from fhan.models.R4.UsageContext import *
+from fhan.models.R4.Resource import *
 from fhan.models.R4.Coding import *
 from fhan.models.R4.Narrative import *
-from fhan.models.R4.Identifier import *
-from fhan.models.R4.Element import *
-from fhan.models.R4.Extension import *
+from fhan.models.R4.Meta import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -34,11 +34,11 @@ class Designation(Element):
     :param str value: The text value for this designation
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
     
     language: str = None
-    use: "Coding" = None
+    use: "Coding" = Coding()
     
     value: str = None
     
@@ -56,13 +56,13 @@ class Concept(Element):
     :param Designation designation: Additional representations for this concept
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
     
     code: str = None
     
     display: str = None
-    designation: list[Designation] = None
+    designation: list[Designation] = Designation() 
     
 
     
@@ -77,8 +77,8 @@ class Filter(Element):
     :param str value: Code from the system, or regex criteria, or boolean value for exists
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
     
     property: str = None
     
@@ -102,14 +102,14 @@ class Include(Element):
     :param str valueSet: Select the contents included in this value set
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
     
     system: str = None
     
     version: str = None
-    concept: list[Concept] = None
-    filter: list[Filter] = None
+    concept: list[Concept] = Concept() 
+    filter: list[Filter] = Filter() 
     
     valueSet: str = None
     
@@ -127,13 +127,13 @@ class Compose(Element):
     :param Include include: Include one or more codes from a code system or other value set(s)
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
     
     lockedDate: str = None
     
     inactive: bool = None
-    include: list[Include] = None
+    include: list[Include] = Include() 
     
 
     
@@ -149,8 +149,8 @@ class Parameter(Element):
     :param str valueString: Value of the named parameter
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
     
     name: str = None
     
@@ -172,8 +172,8 @@ class Contains(Element):
     :param str display: User display for the concept
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
     
     system: str = None
     
@@ -204,8 +204,8 @@ class Expansion(Element):
     :param Contains contains: Codes in the value set
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
     
     identifier: str = None
     
@@ -214,8 +214,8 @@ class Expansion(Element):
     total: int = None
     
     offset: int = None
-    parameter: list[Parameter] = None
-    contains: list[Contains] = None
+    parameter: list[Parameter] = Parameter() 
+    contains: list[Contains] = Contains() 
     
 
 @dataclass
@@ -252,23 +252,23 @@ class ValueSet(ModelBase):
     resourceType: str = "ValueSet"
     id: str = None
     
-    meta: "Meta" = None
+    meta: "Meta" = Meta()
     
     implicitRules: str = None
     
     language: str = None
     
-    text: "Narrative" = None
+    text: "Narrative" = Narrative()
     
-    contained: list["Resource"] = None
+    contained: list[Resource] = Resource() 
     
-    extension: list["Extension"] = None
+    extension: list[Extension] = Extension() 
     
-    modifierExtension: list["Extension"] = None
+    modifierExtension: list[Extension] = Extension() 
     
     url: str = None
     
-    identifier: list["Identifier"] = None
+    identifier: list[Identifier] = Identifier() 
     
     version: str = None
     
@@ -284,13 +284,13 @@ class ValueSet(ModelBase):
     
     publisher: str = None
     
-    contact: list["ContactDetail"] = None
+    contact: list[ContactDetail] = ContactDetail() 
     
     description: str = None
     
-    useContext: list["UsageContext"] = None
+    useContext: list[UsageContext] = UsageContext() 
     
-    jurisdiction: list["CodeableConcept"] = None
+    jurisdiction: list[CodeableConcept] = CodeableConcept() 
     
     immutable: bool = None
     
@@ -298,7 +298,7 @@ class ValueSet(ModelBase):
     
     copyright: str = None
     
-    compose: "Compose" = None
+    compose: "Compose" = Compose()
     
-    expansion: "Expansion" = None
+    expansion: "Expansion" = Expansion()
     

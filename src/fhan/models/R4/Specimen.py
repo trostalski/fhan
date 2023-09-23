@@ -1,21 +1,21 @@
 """
 Generated class for Specimen. 
-Time: 2023-09-20 20:39:03
+Time: 2023-09-23 23:45:33
 """
 from dataclasses import dataclass
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Element import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Resource import *
-from fhan.models.R4.Reference import *
-from fhan.models.R4.BackboneElement import *
 from fhan.models.R4.Annotation import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.Period import *
+from fhan.models.R4.Reference import *
 from fhan.models.R4.Identifier import *
-from fhan.models.R4.Duration import *
-from fhan.models.R4.Quantity import *
 from fhan.models.R4.Extension import *
+from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Period import *
+from fhan.models.R4.Quantity import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Element import *
+from fhan.models.R4.Resource import *
+from fhan.models.R4.Duration import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Meta import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -34,16 +34,16 @@ class Collection(Element):
     :param CodeableConcept fastingStatusCodeableConcept: Whether or how long patient abstained from food and/or drink
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
-    collector: "Reference" = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
+    collector: "Reference" = Reference()
     
     collectedDateTime: str = None
-    duration: "Duration" = None
-    quantity: "Quantity" = None
-    method: "CodeableConcept" = None
-    bodySite: "CodeableConcept" = None
-    fastingStatusCodeableConcept: "CodeableConcept" = None
+    duration: "Duration" = Duration()
+    quantity: "Quantity" = Quantity()
+    method: "CodeableConcept" = CodeableConcept()
+    bodySite: "CodeableConcept" = CodeableConcept()
+    fastingStatusCodeableConcept: "CodeableConcept" = CodeableConcept()
     
 
     
@@ -59,12 +59,12 @@ class Processing(Element):
     :param str timeDateTime: Date and time of specimen processing
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
     
     description: str = None
-    procedure: "CodeableConcept" = None
-    additive: list[Reference] = None
+    procedure: "CodeableConcept" = CodeableConcept()
+    additive: list[Reference] = Reference() 
     
     timeDateTime: str = None
     
@@ -84,15 +84,15 @@ class Container(Element):
     :param CodeableConcept additiveCodeableConcept: Additive associated with container
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
-    identifier: list[Identifier] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
+    identifier: list[Identifier] = Identifier() 
     
     description: str = None
-    type: "CodeableConcept" = None
-    capacity: "Quantity" = None
-    specimenQuantity: "Quantity" = None
-    additiveCodeableConcept: "CodeableConcept" = None
+    type: "CodeableConcept" = CodeableConcept()
+    capacity: "Quantity" = Quantity()
+    specimenQuantity: "Quantity" = Quantity()
+    additiveCodeableConcept: "CodeableConcept" = CodeableConcept()
     
 
 @dataclass
@@ -124,43 +124,43 @@ class Specimen(ModelBase):
     resourceType: str = "Specimen"
     id: str = None
     
-    meta: "Meta" = None
+    meta: "Meta" = Meta()
     
     implicitRules: str = None
     
     language: str = None
     
-    text: "Narrative" = None
+    text: "Narrative" = Narrative()
     
-    contained: list["Resource"] = None
+    contained: list[Resource] = Resource() 
     
-    extension: list["Extension"] = None
+    extension: list[Extension] = Extension() 
     
-    modifierExtension: list["Extension"] = None
+    modifierExtension: list[Extension] = Extension() 
     
-    identifier: list["Identifier"] = None
+    identifier: list[Identifier] = Identifier() 
     
-    accessionIdentifier: "Identifier" = None
+    accessionIdentifier: "Identifier" = Identifier()
     
     status: str = None
     
-    type: "CodeableConcept" = None
+    type: "CodeableConcept" = CodeableConcept()
     
-    subject: "Reference" = None
+    subject: "Reference" = Reference()
     
     receivedTime: str = None
     
-    parent: list["Reference"] = None
+    parent: list[Reference] = Reference() 
     
-    request: list["Reference"] = None
+    request: list[Reference] = Reference() 
     
-    collection: "Collection" = None
+    collection: "Collection" = Collection()
     
-    processing: list["Processing"] = None
+    processing: list[Processing] = Processing() 
     
-    container: list["Container"] = None
+    container: list[Container] = Container() 
     
-    condition: list["CodeableConcept"] = None
+    condition: list[CodeableConcept] = CodeableConcept() 
     
-    note: list["Annotation"] = None
+    note: list[Annotation] = Annotation() 
     

@@ -1,19 +1,19 @@
 """
 Generated class for VisionPrescription. 
-Time: 2023-09-20 20:39:03
+Time: 2023-09-23 23:45:33
 """
 from dataclasses import dataclass
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Element import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Resource import *
-from fhan.models.R4.Reference import *
-from fhan.models.R4.BackboneElement import *
 from fhan.models.R4.Annotation import *
-from fhan.models.R4.Narrative import *
+from fhan.models.R4.Reference import *
 from fhan.models.R4.Identifier import *
-from fhan.models.R4.Quantity import *
 from fhan.models.R4.Extension import *
+from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Quantity import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Element import *
+from fhan.models.R4.Resource import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Meta import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -29,8 +29,8 @@ class Prism(Element):
     :param str base: up | down | in | out
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
     
     amount: float = None
     
@@ -61,9 +61,9 @@ class LensSpecification(Element):
     :param Annotation note: Notes for coatings
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
-    product: "CodeableConcept" = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
+    product: "CodeableConcept" = CodeableConcept()
     
     eye: str = None
     
@@ -72,7 +72,7 @@ class LensSpecification(Element):
     cylinder: float = None
     
     axis: int = None
-    prism: list[Prism] = None
+    prism: list[Prism] = Prism() 
     
     add: float = None
     
@@ -81,12 +81,12 @@ class LensSpecification(Element):
     backCurve: float = None
     
     diameter: float = None
-    duration: "Quantity" = None
+    duration: "Quantity" = Quantity()
     
     color: str = None
     
     brand: str = None
-    note: list[Annotation] = None
+    note: list[Annotation] = Annotation() 
     
 
 @dataclass
@@ -113,33 +113,33 @@ class VisionPrescription(ModelBase):
     resourceType: str = "VisionPrescription"
     id: str = None
     
-    meta: "Meta" = None
+    meta: "Meta" = Meta()
     
     implicitRules: str = None
     
     language: str = None
     
-    text: "Narrative" = None
+    text: "Narrative" = Narrative()
     
-    contained: list["Resource"] = None
+    contained: list[Resource] = Resource() 
     
-    extension: list["Extension"] = None
+    extension: list[Extension] = Extension() 
     
-    modifierExtension: list["Extension"] = None
+    modifierExtension: list[Extension] = Extension() 
     
-    identifier: list["Identifier"] = None
+    identifier: list[Identifier] = Identifier() 
     
     status: str = None
     
     created: str = None
     
-    patient: "Reference" = None
+    patient: "Reference" = Reference()
     
-    encounter: "Reference" = None
+    encounter: "Reference" = Reference()
     
     dateWritten: str = None
     
-    prescriber: "Reference" = None
+    prescriber: "Reference" = Reference()
     
-    lensSpecification: list["LensSpecification"] = None
+    lensSpecification: list[LensSpecification] = LensSpecification() 
     

@@ -1,17 +1,17 @@
 """
 Generated class for GraphDefinition. 
-Time: 2023-09-20 20:39:03
+Time: 2023-09-23 23:45:33
 """
 from dataclasses import dataclass
 from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.ContactDetail import *
+from fhan.models.R4.Extension import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Element import *
 from fhan.models.R4.UsageContext import *
 from fhan.models.R4.Meta import *
 from fhan.models.R4.Resource import *
-from fhan.models.R4.BackboneElement import *
 from fhan.models.R4.Narrative import *
-from fhan.models.R4.Element import *
-from fhan.models.R4.Extension import *
+from fhan.models.R4.ContactDetail import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -32,8 +32,8 @@ class Compartment(Element):
     :param str description: Documentation for FHIRPath expression
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
     
     use: str = None
     
@@ -60,15 +60,15 @@ class Target(Element):
     :param Compartment compartment: Compartment Consistency Rules
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
     
     type: str = None
     
     params: str = None
     
     profile: str = None
-    compartment: list[Compartment] = None
+    compartment: list[Compartment] = Compartment() 
     
 
   
@@ -87,8 +87,8 @@ class Link(Element):
     :param Target target: Potential target for the link
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
     
     path: str = None
     
@@ -99,7 +99,7 @@ class Link(Element):
     max: str = None
     
     description: str = None
-    target: list[Target] = None
+    target: list[Target] = Target() 
     
 
 @dataclass
@@ -133,19 +133,19 @@ class GraphDefinition(ModelBase):
     resourceType: str = "GraphDefinition"
     id: str = None
     
-    meta: "Meta" = None
+    meta: "Meta" = Meta()
     
     implicitRules: str = None
     
     language: str = None
     
-    text: "Narrative" = None
+    text: "Narrative" = Narrative()
     
-    contained: list["Resource"] = None
+    contained: list[Resource] = Resource() 
     
-    extension: list["Extension"] = None
+    extension: list[Extension] = Extension() 
     
-    modifierExtension: list["Extension"] = None
+    modifierExtension: list[Extension] = Extension() 
     
     url: str = None
     
@@ -161,13 +161,13 @@ class GraphDefinition(ModelBase):
     
     publisher: str = None
     
-    contact: list["ContactDetail"] = None
+    contact: list[ContactDetail] = ContactDetail() 
     
     description: str = None
     
-    useContext: list["UsageContext"] = None
+    useContext: list[UsageContext] = UsageContext() 
     
-    jurisdiction: list["CodeableConcept"] = None
+    jurisdiction: list[CodeableConcept] = CodeableConcept() 
     
     purpose: str = None
     
@@ -175,5 +175,5 @@ class GraphDefinition(ModelBase):
     
     profile: str = None
     
-    link: list["Link"] = None
+    link: list[Link] = Link() 
     

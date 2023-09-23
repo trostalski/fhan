@@ -1,19 +1,19 @@
 """
 Generated class for PaymentReconciliation. 
-Time: 2023-09-20 20:39:03
+Time: 2023-09-23 23:45:33
 """
 from dataclasses import dataclass
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Resource import *
 from fhan.models.R4.Reference import *
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.Period import *
 from fhan.models.R4.Identifier import *
-from fhan.models.R4.Money import *
-from fhan.models.R4.Element import *
 from fhan.models.R4.Extension import *
+from fhan.models.R4.Period import *
+from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Element import *
+from fhan.models.R4.Money import *
+from fhan.models.R4.Resource import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Meta import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -35,19 +35,19 @@ class Detail(Element):
     :param Money amount: Amount allocated to this payable
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
-    identifier: "Identifier" = None
-    predecessor: "Identifier" = None
-    type: "CodeableConcept" = None
-    request: "Reference" = None
-    submitter: "Reference" = None
-    response: "Reference" = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
+    identifier: "Identifier" = Identifier()
+    predecessor: "Identifier" = Identifier()
+    type: "CodeableConcept" = CodeableConcept()
+    request: "Reference" = Reference()
+    submitter: "Reference" = Reference()
+    response: "Reference" = Reference()
     
     date: str = None
-    responsible: "Reference" = None
-    payee: "Reference" = None
-    amount: "Money" = None
+    responsible: "Reference" = Reference()
+    payee: "Reference" = Reference()
+    amount: "Money" = Money()
     
 
     
@@ -61,8 +61,8 @@ class ProcessNote(Element):
     :param str text: Note explanatory text
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
     
     type: str = None
     
@@ -100,33 +100,33 @@ class PaymentReconciliation(ModelBase):
     resourceType: str = "PaymentReconciliation"
     id: str = None
     
-    meta: "Meta" = None
+    meta: "Meta" = Meta()
     
     implicitRules: str = None
     
     language: str = None
     
-    text: "Narrative" = None
+    text: "Narrative" = Narrative()
     
-    contained: list["Resource"] = None
+    contained: list[Resource] = Resource() 
     
-    extension: list["Extension"] = None
+    extension: list[Extension] = Extension() 
     
-    modifierExtension: list["Extension"] = None
+    modifierExtension: list[Extension] = Extension() 
     
-    identifier: list["Identifier"] = None
+    identifier: list[Identifier] = Identifier() 
     
     status: str = None
     
-    period: "Period" = None
+    period: "Period" = Period()
     
     created: str = None
     
-    paymentIssuer: "Reference" = None
+    paymentIssuer: "Reference" = Reference()
     
-    request: "Reference" = None
+    request: "Reference" = Reference()
     
-    requestor: "Reference" = None
+    requestor: "Reference" = Reference()
     
     outcome: str = None
     
@@ -134,13 +134,13 @@ class PaymentReconciliation(ModelBase):
     
     paymentDate: str = None
     
-    paymentAmount: "Money" = None
+    paymentAmount: "Money" = Money()
     
-    paymentIdentifier: "Identifier" = None
+    paymentIdentifier: "Identifier" = Identifier()
     
-    detail: list["Detail"] = None
+    detail: list[Detail] = Detail() 
     
-    formCode: "CodeableConcept" = None
+    formCode: "CodeableConcept" = CodeableConcept()
     
-    processNote: list["ProcessNote"] = None
+    processNote: list[ProcessNote] = ProcessNote() 
     

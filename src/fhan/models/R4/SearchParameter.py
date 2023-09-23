@@ -1,17 +1,17 @@
 """
 Generated class for SearchParameter. 
-Time: 2023-09-20 20:39:03
+Time: 2023-09-23 23:45:33
 """
 from dataclasses import dataclass
 from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.ContactDetail import *
+from fhan.models.R4.Extension import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Element import *
 from fhan.models.R4.UsageContext import *
 from fhan.models.R4.Meta import *
 from fhan.models.R4.Resource import *
-from fhan.models.R4.BackboneElement import *
 from fhan.models.R4.Narrative import *
-from fhan.models.R4.Element import *
-from fhan.models.R4.Extension import *
+from fhan.models.R4.ContactDetail import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -25,8 +25,8 @@ class Component(Element):
     :param str expression: Subexpression relative to main expression
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
     
     definition: str = None
     
@@ -75,19 +75,19 @@ class SearchParameter(ModelBase):
     resourceType: str = "SearchParameter"
     id: str = None
     
-    meta: "Meta" = None
+    meta: "Meta" = Meta()
     
     implicitRules: str = None
     
     language: str = None
     
-    text: "Narrative" = None
+    text: "Narrative" = Narrative()
     
-    contained: list["Resource"] = None
+    contained: list[Resource] = Resource() 
     
-    extension: list["Extension"] = None
+    extension: list[Extension] = Extension() 
     
-    modifierExtension: list["Extension"] = None
+    modifierExtension: list[Extension] = Extension() 
     
     url: str = None
     
@@ -105,13 +105,13 @@ class SearchParameter(ModelBase):
     
     publisher: str = None
     
-    contact: list["ContactDetail"] = None
+    contact: list[ContactDetail] = ContactDetail() 
     
     description: str = None
     
-    useContext: list["UsageContext"] = None
+    useContext: list[UsageContext] = UsageContext() 
     
-    jurisdiction: list["CodeableConcept"] = None
+    jurisdiction: list[CodeableConcept] = CodeableConcept() 
     
     purpose: str = None
     
@@ -139,5 +139,5 @@ class SearchParameter(ModelBase):
     
     chain: str = None
     
-    component: list["Component"] = None
+    component: list[Component] = Component() 
     

@@ -1,6 +1,6 @@
 """
 Generated class for ContactPoint. 
-Time: 2023-09-20 20:39:03
+Time: 2023-09-23 23:45:33
 """
 from dataclasses import dataclass
 from fhan.models.R4.Period import *
@@ -23,7 +23,7 @@ class ContactPoint(Element):
     resourceType: str = "ContactPoint"
     id: str = None
     
-    extension: list["Extension"] = None
+    extension: list[Extension] = Extension() 
     
     system: str = None
     
@@ -33,5 +33,5 @@ class ContactPoint(Element):
     
     rank: int = None
     
-    period: "Period" = None
+    period: "Period" = Period()
     

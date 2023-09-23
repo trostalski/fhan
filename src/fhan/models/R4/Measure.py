@@ -1,22 +1,22 @@
 """
 Generated class for Measure. 
-Time: 2023-09-20 20:39:03
+Time: 2023-09-23 23:45:33
 """
 from dataclasses import dataclass
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Expression import *
-from fhan.models.R4.ContactDetail import *
-from fhan.models.R4.UsageContext import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Resource import *
 from fhan.models.R4.Reference import *
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Narrative import *
+from fhan.models.R4.ContactDetail import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.Extension import *
+from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Period import *
 from fhan.models.R4.RelatedArtifact import *
-from fhan.models.R4.Identifier import *
+from fhan.models.R4.Expression import *
+from fhan.models.R4.BackboneElement import *
 from fhan.models.R4.Element import *
-from fhan.models.R4.Extension import *
+from fhan.models.R4.UsageContext import *
+from fhan.models.R4.Resource import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Meta import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -33,12 +33,12 @@ class Population(Element):
     :param Expression criteria: The criteria that defines this population
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
-    code: "CodeableConcept" = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
+    code: "CodeableConcept" = CodeableConcept()
     
     description: str = None
-    criteria: "Expression" = None
+    criteria: "Expression" = Expression()
     
 
     
@@ -55,12 +55,12 @@ class Component(Element):
     :param Expression criteria: Component of how the measure should be stratified
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
-    code: "CodeableConcept" = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
+    code: "CodeableConcept" = CodeableConcept()
     
     description: str = None
-    criteria: "Expression" = None
+    criteria: "Expression" = Expression()
     
 
   
@@ -77,13 +77,13 @@ class Stratifier(Element):
     :param Component component: Stratifier criteria component for the measure
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
-    code: "CodeableConcept" = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
+    code: "CodeableConcept" = CodeableConcept()
     
     description: str = None
-    criteria: "Expression" = None
-    component: list[Component] = None
+    criteria: "Expression" = Expression()
+    component: list[Component] = Component() 
     
 
   
@@ -100,13 +100,13 @@ class Group(Element):
     :param Stratifier stratifier: Stratifier criteria for the measure
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
-    code: "CodeableConcept" = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
+    code: "CodeableConcept" = CodeableConcept()
     
     description: str = None
-    population: list[Population] = None
-    stratifier: list[Stratifier] = None
+    population: list[Population] = Population() 
+    stratifier: list[Stratifier] = Stratifier() 
     
 
     
@@ -122,13 +122,13 @@ class SupplementalData(Element):
     :param Expression criteria: Expression describing additional data to be reported
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
-    code: "CodeableConcept" = None
-    usage: list[CodeableConcept] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
+    code: "CodeableConcept" = CodeableConcept()
+    usage: list[CodeableConcept] = CodeableConcept() 
     
     description: str = None
-    criteria: "Expression" = None
+    criteria: "Expression" = Expression()
     
 
 @dataclass
@@ -188,23 +188,23 @@ class Measure(ModelBase):
     resourceType: str = "Measure"
     id: str = None
     
-    meta: "Meta" = None
+    meta: "Meta" = Meta()
     
     implicitRules: str = None
     
     language: str = None
     
-    text: "Narrative" = None
+    text: "Narrative" = Narrative()
     
-    contained: list["Resource"] = None
+    contained: list[Resource] = Resource() 
     
-    extension: list["Extension"] = None
+    extension: list[Extension] = Extension() 
     
-    modifierExtension: list["Extension"] = None
+    modifierExtension: list[Extension] = Extension() 
     
     url: str = None
     
-    identifier: list["Identifier"] = None
+    identifier: list[Identifier] = Identifier() 
     
     version: str = None
     
@@ -218,19 +218,19 @@ class Measure(ModelBase):
     
     experimental: bool = None
     
-    subjectCodeableConcept: "CodeableConcept" = None
+    subjectCodeableConcept: "CodeableConcept" = CodeableConcept()
     
     date: str = None
     
     publisher: str = None
     
-    contact: list["ContactDetail"] = None
+    contact: list[ContactDetail] = ContactDetail() 
     
     description: str = None
     
-    useContext: list["UsageContext"] = None
+    useContext: list[UsageContext] = UsageContext() 
     
-    jurisdiction: list["CodeableConcept"] = None
+    jurisdiction: list[CodeableConcept] = CodeableConcept() 
     
     purpose: str = None
     
@@ -242,29 +242,29 @@ class Measure(ModelBase):
     
     lastReviewDate: str = None
     
-    effectivePeriod: "Period" = None
+    effectivePeriod: "Period" = Period()
     
-    topic: list["CodeableConcept"] = None
+    topic: list[CodeableConcept] = CodeableConcept() 
     
-    author: list["ContactDetail"] = None
+    author: list[ContactDetail] = ContactDetail() 
     
-    editor: list["ContactDetail"] = None
+    editor: list[ContactDetail] = ContactDetail() 
     
-    reviewer: list["ContactDetail"] = None
+    reviewer: list[ContactDetail] = ContactDetail() 
     
-    endorser: list["ContactDetail"] = None
+    endorser: list[ContactDetail] = ContactDetail() 
     
-    relatedArtifact: list["RelatedArtifact"] = None
+    relatedArtifact: list[RelatedArtifact] = RelatedArtifact() 
     
     library: str = None
     
     disclaimer: str = None
     
-    scoring: "CodeableConcept" = None
+    scoring: "CodeableConcept" = CodeableConcept()
     
-    compositeScoring: "CodeableConcept" = None
+    compositeScoring: "CodeableConcept" = CodeableConcept()
     
-    type: list["CodeableConcept"] = None
+    type: list[CodeableConcept] = CodeableConcept() 
     
     riskAdjustment: str = None
     
@@ -274,13 +274,13 @@ class Measure(ModelBase):
     
     clinicalRecommendationStatement: str = None
     
-    improvementNotation: "CodeableConcept" = None
+    improvementNotation: "CodeableConcept" = CodeableConcept()
     
     definition: str = None
     
     guidance: str = None
     
-    group: list["Group"] = None
+    group: list[Group] = Group() 
     
-    supplementalData: list["SupplementalData"] = None
+    supplementalData: list[SupplementalData] = SupplementalData() 
     

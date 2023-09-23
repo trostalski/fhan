@@ -1,18 +1,18 @@
 """
 Generated class for MessageHeader. 
-Time: 2023-09-20 20:39:03
+Time: 2023-09-23 23:45:33
 """
 from dataclasses import dataclass
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Resource import *
 from fhan.models.R4.Reference import *
+from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Extension import *
+from fhan.models.R4.ContactPoint import *
 from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Element import *
+from fhan.models.R4.Resource import *
 from fhan.models.R4.Coding import *
 from fhan.models.R4.Narrative import *
-from fhan.models.R4.ContactPoint import *
-from fhan.models.R4.Element import *
-from fhan.models.R4.Extension import *
+from fhan.models.R4.Meta import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -28,14 +28,14 @@ class Destination(Element):
     :param Reference receiver: Intended "real-world" recipient for the data
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
     
     name: str = None
-    target: "Reference" = None
+    target: "Reference" = Reference()
     
     endpoint: str = None
-    receiver: "Reference" = None
+    receiver: "Reference" = Reference()
     
 
     
@@ -52,15 +52,15 @@ class Source(Element):
     :param str endpoint: Actual message source address or id
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
     
     name: str = None
     
     software: str = None
     
     version: str = None
-    contact: "ContactPoint" = None
+    contact: "ContactPoint" = ContactPoint()
     
     endpoint: str = None
     
@@ -77,13 +77,13 @@ class Response(Element):
     :param Reference details: Specific list of hints/warnings/errors
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
     
     identifier: str = None
     
     code: str = None
-    details: "Reference" = None
+    details: "Reference" = Reference()
     
 
 @dataclass
@@ -113,39 +113,39 @@ class MessageHeader(ModelBase):
     resourceType: str = "MessageHeader"
     id: str = None
     
-    meta: "Meta" = None
+    meta: "Meta" = Meta()
     
     implicitRules: str = None
     
     language: str = None
     
-    text: "Narrative" = None
+    text: "Narrative" = Narrative()
     
-    contained: list["Resource"] = None
+    contained: list[Resource] = Resource() 
     
-    extension: list["Extension"] = None
+    extension: list[Extension] = Extension() 
     
-    modifierExtension: list["Extension"] = None
+    modifierExtension: list[Extension] = Extension() 
     
-    eventCoding: "Coding" = None
+    eventCoding: "Coding" = Coding()
     
-    destination: list["Destination"] = None
+    destination: list[Destination] = Destination() 
     
-    sender: "Reference" = None
+    sender: "Reference" = Reference()
     
-    enterer: "Reference" = None
+    enterer: "Reference" = Reference()
     
-    author: "Reference" = None
+    author: "Reference" = Reference()
     
-    source: "Source" = None
+    source: "Source" = Source()
     
-    responsible: "Reference" = None
+    responsible: "Reference" = Reference()
     
-    reason: "CodeableConcept" = None
+    reason: "CodeableConcept" = CodeableConcept()
     
-    response: "Response" = None
+    response: "Response" = Response()
     
-    focus: list["Reference"] = None
+    focus: list[Reference] = Reference() 
     
     definition: str = None
     

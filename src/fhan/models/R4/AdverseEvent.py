@@ -1,17 +1,17 @@
 """
 Generated class for AdverseEvent. 
-Time: 2023-09-20 20:39:03
+Time: 2023-09-23 23:45:33
 """
 from dataclasses import dataclass
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Resource import *
 from fhan.models.R4.Reference import *
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Narrative import *
 from fhan.models.R4.Identifier import *
-from fhan.models.R4.Element import *
 from fhan.models.R4.Extension import *
+from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Element import *
+from fhan.models.R4.Resource import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Meta import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -29,13 +29,13 @@ class Causality(Element):
     :param CodeableConcept method: ProbabilityScale | Bayesian | Checklist
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
-    assessment: "CodeableConcept" = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
+    assessment: "CodeableConcept" = CodeableConcept()
     
     productRelatedness: str = None
-    author: "Reference" = None
-    method: "CodeableConcept" = None
+    author: "Reference" = Reference()
+    method: "CodeableConcept" = CodeableConcept()
     
 
   
@@ -50,10 +50,10 @@ class SuspectEntity(Element):
     :param Causality causality: Information on the possible cause of the event
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
-    instance: "Reference" = None
-    causality: list[Causality] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
+    instance: "Reference" = Reference()
+    causality: list[Causality] = Causality() 
     
 
 @dataclass
@@ -92,31 +92,31 @@ class AdverseEvent(ModelBase):
     resourceType: str = "AdverseEvent"
     id: str = None
     
-    meta: "Meta" = None
+    meta: "Meta" = Meta()
     
     implicitRules: str = None
     
     language: str = None
     
-    text: "Narrative" = None
+    text: "Narrative" = Narrative()
     
-    contained: list["Resource"] = None
+    contained: list[Resource] = Resource() 
     
-    extension: list["Extension"] = None
+    extension: list[Extension] = Extension() 
     
-    modifierExtension: list["Extension"] = None
+    modifierExtension: list[Extension] = Extension() 
     
-    identifier: "Identifier" = None
+    identifier: "Identifier" = Identifier()
     
     actuality: str = None
     
-    category: list["CodeableConcept"] = None
+    category: list[CodeableConcept] = CodeableConcept() 
     
-    event: "CodeableConcept" = None
+    event: "CodeableConcept" = CodeableConcept()
     
-    subject: "Reference" = None
+    subject: "Reference" = Reference()
     
-    encounter: "Reference" = None
+    encounter: "Reference" = Reference()
     
     date: str = None
     
@@ -124,25 +124,25 @@ class AdverseEvent(ModelBase):
     
     recordedDate: str = None
     
-    resultingCondition: list["Reference"] = None
+    resultingCondition: list[Reference] = Reference() 
     
-    location: "Reference" = None
+    location: "Reference" = Reference()
     
-    seriousness: "CodeableConcept" = None
+    seriousness: "CodeableConcept" = CodeableConcept()
     
-    severity: "CodeableConcept" = None
+    severity: "CodeableConcept" = CodeableConcept()
     
-    outcome: "CodeableConcept" = None
+    outcome: "CodeableConcept" = CodeableConcept()
     
-    recorder: "Reference" = None
+    recorder: "Reference" = Reference()
     
-    contributor: list["Reference"] = None
+    contributor: list[Reference] = Reference() 
     
-    suspectEntity: list["SuspectEntity"] = None
+    suspectEntity: list[SuspectEntity] = SuspectEntity() 
     
-    subjectMedicalHistory: list["Reference"] = None
+    subjectMedicalHistory: list[Reference] = Reference() 
     
-    referenceDocument: list["Reference"] = None
+    referenceDocument: list[Reference] = Reference() 
     
-    study: list["Reference"] = None
+    study: list[Reference] = Reference() 
     

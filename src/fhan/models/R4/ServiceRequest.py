@@ -1,21 +1,21 @@
 """
 Generated class for ServiceRequest. 
-Time: 2023-09-20 20:39:03
+Time: 2023-09-23 23:45:33
 """
 from dataclasses import dataclass
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Range import *
-from fhan.models.R4.Ratio import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Resource import *
-from fhan.models.R4.Timing import *
-from fhan.models.R4.Reference import *
 from fhan.models.R4.Annotation import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.Period import *
+from fhan.models.R4.Reference import *
+from fhan.models.R4.Range import *
 from fhan.models.R4.Identifier import *
-from fhan.models.R4.Quantity import *
 from fhan.models.R4.Extension import *
+from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Period import *
+from fhan.models.R4.Ratio import *
+from fhan.models.R4.Quantity import *
+from fhan.models.R4.Timing import *
+from fhan.models.R4.Resource import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Meta import *
 from fhan.models.generator_models import ModelBase
 
 @dataclass
@@ -67,51 +67,51 @@ class ServiceRequest(ModelBase):
     resourceType: str = "ServiceRequest"
     id: str = None
     
-    meta: "Meta" = None
+    meta: "Meta" = Meta()
     
     implicitRules: str = None
     
     language: str = None
     
-    text: "Narrative" = None
+    text: "Narrative" = Narrative()
     
-    contained: list["Resource"] = None
+    contained: list[Resource] = Resource() 
     
-    extension: list["Extension"] = None
+    extension: list[Extension] = Extension() 
     
-    modifierExtension: list["Extension"] = None
+    modifierExtension: list[Extension] = Extension() 
     
-    identifier: list["Identifier"] = None
+    identifier: list[Identifier] = Identifier() 
     
     instantiatesCanonical: str = None
     
     instantiatesUri: str = None
     
-    basedOn: list["Reference"] = None
+    basedOn: list[Reference] = Reference() 
     
-    replaces: list["Reference"] = None
+    replaces: list[Reference] = Reference() 
     
-    requisition: "Identifier" = None
+    requisition: "Identifier" = Identifier()
     
     status: str = None
     
     intent: str = None
     
-    category: list["CodeableConcept"] = None
+    category: list[CodeableConcept] = CodeableConcept() 
     
     priority: str = None
     
     doNotPerform: bool = None
     
-    code: "CodeableConcept" = None
+    code: "CodeableConcept" = CodeableConcept()
     
-    orderDetail: list["CodeableConcept"] = None
+    orderDetail: list[CodeableConcept] = CodeableConcept() 
     
-    quantityQuantity: "Quantity" = None
+    quantityQuantity: "Quantity" = Quantity()
     
-    subject: "Reference" = None
+    subject: "Reference" = Reference()
     
-    encounter: "Reference" = None
+    encounter: "Reference" = Reference()
     
     occurrenceDateTime: str = None
     
@@ -119,31 +119,31 @@ class ServiceRequest(ModelBase):
     
     authoredOn: str = None
     
-    requester: "Reference" = None
+    requester: "Reference" = Reference()
     
-    performerType: "CodeableConcept" = None
+    performerType: "CodeableConcept" = CodeableConcept()
     
-    performer: list["Reference"] = None
+    performer: list[Reference] = Reference() 
     
-    locationCode: list["CodeableConcept"] = None
+    locationCode: list[CodeableConcept] = CodeableConcept() 
     
-    locationReference: list["Reference"] = None
+    locationReference: list[Reference] = Reference() 
     
-    reasonCode: list["CodeableConcept"] = None
+    reasonCode: list[CodeableConcept] = CodeableConcept() 
     
-    reasonReference: list["Reference"] = None
+    reasonReference: list[Reference] = Reference() 
     
-    insurance: list["Reference"] = None
+    insurance: list[Reference] = Reference() 
     
-    supportingInfo: list["Reference"] = None
+    supportingInfo: list[Reference] = Reference() 
     
-    specimen: list["Reference"] = None
+    specimen: list[Reference] = Reference() 
     
-    bodySite: list["CodeableConcept"] = None
+    bodySite: list[CodeableConcept] = CodeableConcept() 
     
-    note: list["Annotation"] = None
+    note: list[Annotation] = Annotation() 
     
     patientInstruction: str = None
     
-    relevantHistory: list["Reference"] = None
+    relevantHistory: list[Reference] = Reference() 
     

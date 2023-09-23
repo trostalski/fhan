@@ -1,19 +1,19 @@
 """
 Generated class for PractitionerRole. 
-Time: 2023-09-20 20:39:03
+Time: 2023-09-23 23:45:33
 """
 from dataclasses import dataclass
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Resource import *
 from fhan.models.R4.Reference import *
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.Period import *
-from fhan.models.R4.ContactPoint import *
 from fhan.models.R4.Identifier import *
-from fhan.models.R4.Element import *
 from fhan.models.R4.Extension import *
+from fhan.models.R4.Period import *
+from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.ContactPoint import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Element import *
+from fhan.models.R4.Resource import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Meta import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -29,8 +29,8 @@ class AvailableTime(Element):
     :param str availableEndTime: Closing time of day (ignored if allDay = true)
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
     
     daysOfWeek: str = None
     
@@ -52,11 +52,11 @@ class NotAvailable(Element):
     :param Period during: Service not available from this date
     """
     id: str = None
-    extension: list[Extension] = None
-    modifierExtension: list[Extension] = None
+    extension: list[Extension] = Extension() 
+    modifierExtension: list[Extension] = Extension() 
     
     description: str = None
-    during: "Period" = None
+    during: "Period" = Period()
     
 
 @dataclass
@@ -89,45 +89,45 @@ class PractitionerRole(ModelBase):
     resourceType: str = "PractitionerRole"
     id: str = None
     
-    meta: "Meta" = None
+    meta: "Meta" = Meta()
     
     implicitRules: str = None
     
     language: str = None
     
-    text: "Narrative" = None
+    text: "Narrative" = Narrative()
     
-    contained: list["Resource"] = None
+    contained: list[Resource] = Resource() 
     
-    extension: list["Extension"] = None
+    extension: list[Extension] = Extension() 
     
-    modifierExtension: list["Extension"] = None
+    modifierExtension: list[Extension] = Extension() 
     
-    identifier: list["Identifier"] = None
+    identifier: list[Identifier] = Identifier() 
     
     active: bool = None
     
-    period: "Period" = None
+    period: "Period" = Period()
     
-    practitioner: "Reference" = None
+    practitioner: "Reference" = Reference()
     
-    organization: "Reference" = None
+    organization: "Reference" = Reference()
     
-    code: list["CodeableConcept"] = None
+    code: list[CodeableConcept] = CodeableConcept() 
     
-    specialty: list["CodeableConcept"] = None
+    specialty: list[CodeableConcept] = CodeableConcept() 
     
-    location: list["Reference"] = None
+    location: list[Reference] = Reference() 
     
-    healthcareService: list["Reference"] = None
+    healthcareService: list[Reference] = Reference() 
     
-    telecom: list["ContactPoint"] = None
+    telecom: list[ContactPoint] = ContactPoint() 
     
-    availableTime: list["AvailableTime"] = None
+    availableTime: list[AvailableTime] = AvailableTime() 
     
-    notAvailable: list["NotAvailable"] = None
+    notAvailable: list[NotAvailable] = NotAvailable() 
     
     availabilityExceptions: str = None
     
-    endpoint: list["Reference"] = None
+    endpoint: list[Reference] = Reference() 
     

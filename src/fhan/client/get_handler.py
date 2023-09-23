@@ -13,8 +13,7 @@ class GetHandler:
 
     def __call__(self, url: str = "") -> Any:
         """Make a GET request relative from the base URL with
-        a custom url.
-        E.g.: client.get("Patient/1")"""
+        a custom url. E.g.: client.get("Patient/1")"""
 
         url = join_urls(self._base_url, url)
         response = make_get_request(url, session=self._session)

@@ -1,278 +1,219 @@
 """
 Generated class for NutritionOrder. 
-Time: 2023-09-24 20:01:56
+Time: 2023-09-24 21:52:32
 """
-from dataclasses import dataclass
-from fhan.models.R4.Extension import *
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Annotation import *
+from fhan.models.R4.Reference import *
 from fhan.models.R4.Resource import *
+from fhan.models.R4.Annotation import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Identifier import *
 from fhan.models.R4.Meta import *
 from fhan.models.R4.Quantity import *
 from fhan.models.R4.Ratio import *
-from fhan.models.R4.Reference import *
-from fhan.models.R4.Identifier import *
-from fhan.models.R4.Element import *
 from fhan.models.R4.Timing import *
-from fhan.models.R4.Narrative import *
 from fhan.models.R4.CodeableConcept import *
-from fhan.models.generator_models import ModelBase
+from fhan.models.R4.Extension import *
+from fhan.models.R4.DomainResource import *
+
 
     
         
     
     
-@dataclass
-class Nutrient(Element):
+
+class Nutrient(ModelBase):
     """ Class that defines the quantity and type of nutrient modifications (for example carbohydrate, fiber or sodium) required for the oral diet.:param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param CodeableConcept modifier: Type of nutrient that is being modified
-    :param Quantity amount: Quantity of the specified nutrient
+    :param list['Extension'] extension: Additional content defined by implementations
+    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'CodeableConcept' modifier: Type of nutrient that is being modified
+    :param 'Quantity' amount: Quantity of the specified nutrient
     """
-    id: str = None
-    
-    extension:  list["Extension"] = [Extension()]
-    
-    modifierExtension:  list["Extension"] = [Extension()]
-    
-    modifier:  "CodeableConcept" = CodeableConcept()
-    
-    amount:  "Quantity" = Quantity()
-    
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  modifier: 'CodeableConcept' = None,  amount: 'Quantity' = None, ):
+        self.id: str = id 
+        self.extension: list['Extension'] = extension or []
+        self.modifierExtension: list['Extension'] = modifierExtension or []
+        self.modifier: 'CodeableConcept' = modifier 
+        self.amount: 'Quantity' = amount 
+        
 
     
     
-@dataclass
-class Texture(Element):
+
+class Texture(ModelBase):
     """ Class that describes any texture modifications required for the patient to safely consume various types of solid foods.:param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param CodeableConcept modifier: Code to indicate how to alter the texture of the foods, e.g. pureed
-    :param CodeableConcept foodType: Concepts that are used to identify an entity that is ingested for nutritional purposes
+    :param list['Extension'] extension: Additional content defined by implementations
+    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'CodeableConcept' modifier: Code to indicate how to alter the texture of the foods, e.g. pureed
+    :param 'CodeableConcept' foodType: Concepts that are used to identify an entity that is ingested for nutritional purposes
     """
-    id: str = None
-    
-    extension:  list["Extension"] = [Extension()]
-    
-    modifierExtension:  list["Extension"] = [Extension()]
-    
-    modifier:  "CodeableConcept" = CodeableConcept()
-    
-    foodType:  "CodeableConcept" = CodeableConcept()
-    
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  modifier: 'CodeableConcept' = None,  foodType: 'CodeableConcept' = None, ):
+        self.id: str = id 
+        self.extension: list['Extension'] = extension or []
+        self.modifierExtension: list['Extension'] = modifierExtension or []
+        self.modifier: 'CodeableConcept' = modifier 
+        self.foodType: 'CodeableConcept' = foodType 
+        
 
   
     
     
-@dataclass
-class OralDiet(Element):
+
+class OralDiet(ModelBase):
     """ Diet given orally in contrast to enteral (tube) feeding.:param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param CodeableConcept type: Type of oral diet or diet restrictions that describe what can be consumed orally
-    :param Timing schedule: Scheduled frequency of diet
-    :param Nutrient nutrient: Required  nutrient modifications
-    :param Texture texture: Required  texture modifications
-    :param CodeableConcept fluidConsistencyType: The required consistency of fluids and liquids provided to the patient
+    :param list['Extension'] extension: Additional content defined by implementations
+    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param list['CodeableConcept'] type: Type of oral diet or diet restrictions that describe what can be consumed orally
+    :param list['Timing'] schedule: Scheduled frequency of diet
+    :param list['Nutrient'] nutrient: Required  nutrient modifications
+    :param list['Texture'] texture: Required  texture modifications
+    :param list['CodeableConcept'] fluidConsistencyType: The required consistency of fluids and liquids provided to the patient
     :param str instruction: Instructions or additional information about the oral diet
     """
-    id: str = None
-    
-    extension:  list["Extension"] = [Extension()]
-    
-    modifierExtension:  list["Extension"] = [Extension()]
-    
-    type:  list["CodeableConcept"] = [CodeableConcept()]
-    
-    schedule:  list["Timing"] = [Timing()]
-    
-    nutrient:  list["Nutrient"] = [Nutrient()]
-    
-    texture:  list["Texture"] = [Texture()]
-    
-    fluidConsistencyType:  list["CodeableConcept"] = [CodeableConcept()]
-    
-    instruction: str = None
-    
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  type: list['CodeableConcept'] = None,  schedule: list['Timing'] = None,  nutrient: list['Nutrient'] = None,  texture: list['Texture'] = None,  fluidConsistencyType: list['CodeableConcept'] = None,  instruction: str = None, ):
+        self.id: str = id 
+        self.extension: list['Extension'] = extension or []
+        self.modifierExtension: list['Extension'] = modifierExtension or []
+        self.type: list['CodeableConcept'] = type or []
+        self.schedule: list['Timing'] = schedule or []
+        self.nutrient: list['Nutrient'] = nutrient or []
+        self.texture: list['Texture'] = texture or []
+        self.fluidConsistencyType: list['CodeableConcept'] = fluidConsistencyType or []
+        self.instruction: str = instruction 
+        
 
     
     
-@dataclass
-class Supplement(Element):
+
+class Supplement(ModelBase):
     """ Oral nutritional products given in order to add further nutritional value to the patient's diet.:param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param CodeableConcept type: Type of supplement product requested
+    :param list['Extension'] extension: Additional content defined by implementations
+    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'CodeableConcept' type: Type of supplement product requested
     :param str productName: Product or brand name of the nutritional supplement
-    :param Timing schedule: Scheduled frequency of supplement
-    :param Quantity quantity: Amount of the nutritional supplement
+    :param list['Timing'] schedule: Scheduled frequency of supplement
+    :param 'Quantity' quantity: Amount of the nutritional supplement
     :param str instruction: Instructions or additional information about the oral supplement
     """
-    id: str = None
-    
-    extension:  list["Extension"] = [Extension()]
-    
-    modifierExtension:  list["Extension"] = [Extension()]
-    
-    type:  "CodeableConcept" = CodeableConcept()
-    
-    productName: str = None
-    
-    schedule:  list["Timing"] = [Timing()]
-    
-    quantity:  "Quantity" = Quantity()
-    
-    instruction: str = None
-    
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  type: 'CodeableConcept' = None,  productName: str = None,  schedule: list['Timing'] = None,  quantity: 'Quantity' = None,  instruction: str = None, ):
+        self.id: str = id 
+        self.extension: list['Extension'] = extension or []
+        self.modifierExtension: list['Extension'] = modifierExtension or []
+        self.type: 'CodeableConcept' = type 
+        self.productName: str = productName 
+        self.schedule: list['Timing'] = schedule or []
+        self.quantity: 'Quantity' = quantity 
+        self.instruction: str = instruction 
+        
 
     
         
     
     
-@dataclass
-class Administration(Element):
+
+class Administration(ModelBase):
     """ Formula administration instructions as structured data.  This repeating structure allows for changing the administration rate or volume over time for both bolus and continuous feeding.  An example of this would be an instruction to increase the rate of continuous feeding every 2 hours.:param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param Timing schedule: Scheduled frequency of enteral feeding
-    :param Quantity quantity: The volume of formula to provide
-    :param Quantity rateQuantity: Speed with which the formula is provided per period of time
+    :param list['Extension'] extension: Additional content defined by implementations
+    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Timing' schedule: Scheduled frequency of enteral feeding
+    :param 'Quantity' quantity: The volume of formula to provide
+    :param 'Quantity' rateQuantity: Speed with which the formula is provided per period of time
     :param str administrationInstruction: Formula feeding instructions expressed as text
     """
-    id: str = None
-    
-    extension:  list["Extension"] = [Extension()]
-    
-    modifierExtension:  list["Extension"] = [Extension()]
-    
-    schedule:  "Timing" = Timing()
-    
-    quantity:  "Quantity" = Quantity()
-    
-    rateQuantity:  "Quantity" = Quantity()
-    
-    administrationInstruction: str = None
-    
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  schedule: 'Timing' = None,  quantity: 'Quantity' = None,  rateQuantity: 'Quantity' = None,  administrationInstruction: str = None, ):
+        self.id: str = id 
+        self.extension: list['Extension'] = extension or []
+        self.modifierExtension: list['Extension'] = modifierExtension or []
+        self.schedule: 'Timing' = schedule 
+        self.quantity: 'Quantity' = quantity 
+        self.rateQuantity: 'Quantity' = rateQuantity 
+        self.administrationInstruction: str = administrationInstruction 
+        
 
   
     
     
-@dataclass
-class EnteralFormula(Element):
-    """ Feeding provided through the gastrointestinal tract via a tube, catheter, or stoma that delivers nutrition distal to the oral cavity.:param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param CodeableConcept baseFormulaType: Type of enteral or infant formula
-    :param str baseFormulaProductName: Product or brand name of the enteral or infant formula
-    :param CodeableConcept additiveType: Type of modular component to add to the feeding
-    :param str additiveProductName: Product or brand name of the modular additive
-    :param Quantity caloricDensity: Amount of energy per specified volume that is required
-    :param CodeableConcept routeofAdministration: How the formula should enter the patient's gastrointestinal tract
-    :param Administration administration: Formula feeding instruction as structured data
-    :param Quantity maxVolumeToDeliver: Upper limit on formula volume per unit of time
-    """
-    id: str = None
-    
-    extension:  list["Extension"] = [Extension()]
-    
-    modifierExtension:  list["Extension"] = [Extension()]
-    
-    baseFormulaType:  "CodeableConcept" = CodeableConcept()
-    
-    baseFormulaProductName: str = None
-    
-    additiveType:  "CodeableConcept" = CodeableConcept()
-    
-    additiveProductName: str = None
-    
-    caloricDensity:  "Quantity" = Quantity()
-    
-    routeofAdministration:  "CodeableConcept" = CodeableConcept()
-    
-    administration:  list["Administration"] = [Administration()]
-    
-    maxVolumeToDeliver:  "Quantity" = Quantity()
-    
 
-@dataclass
-class NutritionOrder(ModelBase):
+class EnteralFormula(ModelBase):
+    """ Feeding provided through the gastrointestinal tract via a tube, catheter, or stoma that delivers nutrition distal to the oral cavity.:param str id: Unique id for inter-element referencing
+    :param list['Extension'] extension: Additional content defined by implementations
+    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'CodeableConcept' baseFormulaType: Type of enteral or infant formula
+    :param str baseFormulaProductName: Product or brand name of the enteral or infant formula
+    :param 'CodeableConcept' additiveType: Type of modular component to add to the feeding
+    :param str additiveProductName: Product or brand name of the modular additive
+    :param 'Quantity' caloricDensity: Amount of energy per specified volume that is required
+    :param 'CodeableConcept' routeofAdministration: How the formula should enter the patient's gastrointestinal tract
+    :param list['Administration'] administration: Formula feeding instruction as structured data
+    :param 'Quantity' maxVolumeToDeliver: Upper limit on formula volume per unit of time
+    """
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  baseFormulaType: 'CodeableConcept' = None,  baseFormulaProductName: str = None,  additiveType: 'CodeableConcept' = None,  additiveProductName: str = None,  caloricDensity: 'Quantity' = None,  routeofAdministration: 'CodeableConcept' = None,  administration: list['Administration'] = None,  maxVolumeToDeliver: 'Quantity' = None, ):
+        self.id: str = id 
+        self.extension: list['Extension'] = extension or []
+        self.modifierExtension: list['Extension'] = modifierExtension or []
+        self.baseFormulaType: 'CodeableConcept' = baseFormulaType 
+        self.baseFormulaProductName: str = baseFormulaProductName 
+        self.additiveType: 'CodeableConcept' = additiveType 
+        self.additiveProductName: str = additiveProductName 
+        self.caloricDensity: 'Quantity' = caloricDensity 
+        self.routeofAdministration: 'CodeableConcept' = routeofAdministration 
+        self.administration: list['Administration'] = administration or []
+        self.maxVolumeToDeliver: 'Quantity' = maxVolumeToDeliver 
+        
+
+class NutritionOrder(DomainResource):
     """ A request to supply a diet, formula feeding (enteral) or oral nutritional supplement to a patient/resident.
     :param str id: Logical id of this artifact
-    :param Meta meta: Metadata about the resource
+    :param 'Meta' meta: Metadata about the resource
     :param str implicitRules: A set of rules under which this content was created
     :param str language: Language of the resource content
-    :param Narrative text: Text summary of the resource, for human interpretation
-    :param Resource contained: Contained, inline Resources
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored
-    :param Identifier identifier: Identifiers assigned to this order
+    :param 'Narrative' text: Text summary of the resource, for human interpretation
+    :param list['Resource'] contained: Contained, inline Resources
+    :param list['Extension'] extension: Additional content defined by implementations
+    :param list['Extension'] modifierExtension: Extensions that cannot be ignored
+    :param list['Identifier'] identifier: Identifiers assigned to this order
     :param str instantiatesCanonical: Instantiates FHIR protocol or definition
     :param str instantiatesUri: Instantiates external protocol or definition
     :param str instantiates: Instantiates protocol or definition
     :param str status: draft | active | on-hold | revoked | completed | entered-in-error | unknown
     :param str intent: proposal | plan | directive | order | original-order | reflex-order | filler-order | instance-order | option
-    :param Reference patient: The person who requires the diet, formula or nutritional supplement
-    :param Reference encounter: The encounter associated with this nutrition order
+    :param 'Reference' patient: The person who requires the diet, formula or nutritional supplement
+    :param 'Reference' encounter: The encounter associated with this nutrition order
     :param str dateTime: Date and time the nutrition order was requested
-    :param Reference orderer: Who ordered the diet, formula or nutritional supplement
-    :param Reference allergyIntolerance: List of the patient's food and nutrition-related allergies and intolerances
-    :param CodeableConcept foodPreferenceModifier: Order-specific modifier about the type of food that should be given
-    :param CodeableConcept excludeFoodModifier: Order-specific modifier about the type of food that should not be given
-    :param OralDiet oralDiet: Oral diet components
-    :param Supplement supplement: Supplement components
-    :param EnteralFormula enteralFormula: Enteral formula components
-    :param Annotation note: Comments
+    :param 'Reference' orderer: Who ordered the diet, formula or nutritional supplement
+    :param list['Reference'] allergyIntolerance: List of the patient's food and nutrition-related allergies and intolerances
+    :param list['CodeableConcept'] foodPreferenceModifier: Order-specific modifier about the type of food that should be given
+    :param list['CodeableConcept'] excludeFoodModifier: Order-specific modifier about the type of food that should not be given
+    :param 'OralDiet' oralDiet: Oral diet components
+    :param list['Supplement'] supplement: Supplement components
+    :param 'EnteralFormula' enteralFormula: Enteral formula components
+    :param list['Annotation'] note: Comments
     """
-
-    resourceType: str = "NutritionOrder"
-    id: str = None
-    
-    meta: "Meta" = None
-    
-    implicitRules: str = None
-    
-    language: str = None
-    
-    text: "Narrative" = None
-    
-    contained: list["Resource"] = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    identifier: list["Identifier"] = None
-    
-    instantiatesCanonical: str = None
-    
-    instantiatesUri: str = None
-    
-    instantiates: str = None
-    
-    status: str = None
-    
-    intent: str = None
-    
-    patient: "Reference" = None
-    
-    encounter: "Reference" = None
-    
-    dateTime: str = None
-    
-    orderer: "Reference" = None
-    
-    allergyIntolerance: list["Reference"] = None
-    
-    foodPreferenceModifier: list["CodeableConcept"] = None
-    
-    excludeFoodModifier: list["CodeableConcept"] = None
-    
-    oralDiet: "OralDiet" = None
-    
-    supplement: list["Supplement"] = None
-    
-    enteralFormula: "EnteralFormula" = None
-    
-    note: list["Annotation"] = None
-    
+    def __init__(self, resourceType: str = "NutritionOrder",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  identifier: list['Identifier'] = None,  instantiatesCanonical: str = None,  instantiatesUri: str = None,  instantiates: str = None,  status: str = None,  intent: str = None,  patient: 'Reference' = None,  encounter: 'Reference' = None,  dateTime: str = None,  orderer: 'Reference' = None,  allergyIntolerance: list['Reference'] = None,  foodPreferenceModifier: list['CodeableConcept'] = None,  excludeFoodModifier: list['CodeableConcept'] = None,  oralDiet: 'OralDiet' = None,  supplement: list['Supplement'] = None,  enteralFormula: 'EnteralFormula' = None,  note: list['Annotation'] = None, ):
+        self.resourceType: str = resourceType or "NutritionOrder"
+        self.id: str = id 
+        self.meta: 'Meta' = meta 
+        self.implicitRules: str = implicitRules 
+        self.language: str = language 
+        self.text: 'Narrative' = text 
+        self.contained: list['Resource'] = contained or []
+        self.extension: list['Extension'] = extension or []
+        self.modifierExtension: list['Extension'] = modifierExtension or []
+        self.identifier: list['Identifier'] = identifier or []
+        self.instantiatesCanonical: str = instantiatesCanonical or []
+        self.instantiatesUri: str = instantiatesUri or []
+        self.instantiates: str = instantiates or []
+        self.status: str = status 
+        self.intent: str = intent 
+        self.patient: 'Reference' = patient 
+        self.encounter: 'Reference' = encounter 
+        self.dateTime: str = dateTime 
+        self.orderer: 'Reference' = orderer 
+        self.allergyIntolerance: list['Reference'] = allergyIntolerance or []
+        self.foodPreferenceModifier: list['CodeableConcept'] = foodPreferenceModifier or []
+        self.excludeFoodModifier: list['CodeableConcept'] = excludeFoodModifier or []
+        self.oralDiet: 'OralDiet' = oralDiet 
+        self.supplement: list['Supplement'] = supplement or []
+        self.enteralFormula: 'EnteralFormula' = enteralFormula 
+        self.note: list['Annotation'] = note or []
+        

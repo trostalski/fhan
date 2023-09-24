@@ -1,166 +1,141 @@
 """
 Generated class for CodeSystem. 
-Time: 2023-09-24 20:01:56
+Time: 2023-09-24 21:52:32
 """
-from dataclasses import dataclass
 from fhan.models.R4.UsageContext import *
-from fhan.models.R4.Extension import *
-from fhan.models.R4.BackboneElement import *
 from fhan.models.R4.Resource import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Identifier import *
-from fhan.models.R4.Coding import *
-from fhan.models.R4.Element import *
 from fhan.models.R4.ContactDetail import *
 from fhan.models.R4.Narrative import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.Meta import *
+from fhan.models.R4.Coding import *
 from fhan.models.R4.CodeableConcept import *
-from fhan.models.generator_models import ModelBase
+from fhan.models.R4.Extension import *
+from fhan.models.R4.DomainResource import *
+
 
     
     
-@dataclass
-class Filter(Element):
+
+class Filter(ModelBase):
     """ A filter that can be used in a value set compose statement when selecting concepts using a filter.:param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param list['Extension'] extension: Additional content defined by implementations
+    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str code: Code that identifies the filter
     :param str description: How or why the filter is used
     :param str operator: = | is-a | descendent-of | is-not-a | regex | in | not-in | generalizes | exists
     :param str value: What to use for the value
     """
-    id: str = None
-    
-    extension:  list["Extension"] = [Extension()]
-    
-    modifierExtension:  list["Extension"] = [Extension()]
-    
-    code: str = None
-    
-    description: str = None
-    
-    operator: str = None
-    
-    value: str = None
-    
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  code: str = None,  description: str = None,  operator: str = None,  value: str = None, ):
+        self.id: str = id 
+        self.extension: list['Extension'] = extension or []
+        self.modifierExtension: list['Extension'] = modifierExtension or []
+        self.code: str = code 
+        self.description: str = description 
+        self.operator: str = operator or []
+        self.value: str = value 
+        
 
     
     
-@dataclass
-class Property(Element):
+
+class Property(ModelBase):
     """ A property defines an additional slot through which additional information can be provided about a concept.:param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param list['Extension'] extension: Additional content defined by implementations
+    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str code: Identifies the property on the concepts, and when referred to in operations
     :param str uri: Formal identifier for the property
     :param str description: Why the property is defined, and/or what it conveys
     :param str type: code | Coding | string | integer | boolean | dateTime | decimal
     """
-    id: str = None
-    
-    extension:  list["Extension"] = [Extension()]
-    
-    modifierExtension:  list["Extension"] = [Extension()]
-    
-    code: str = None
-    
-    uri: str = None
-    
-    description: str = None
-    
-    type: str = None
-    
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  code: str = None,  uri: str = None,  description: str = None,  type: str = None, ):
+        self.id: str = id 
+        self.extension: list['Extension'] = extension or []
+        self.modifierExtension: list['Extension'] = modifierExtension or []
+        self.code: str = code 
+        self.uri: str = uri 
+        self.description: str = description 
+        self.type: str = type 
+        
 
     
         
     
     
-@dataclass
-class Designation(Element):
+
+class Designation(ModelBase):
     """ Additional representations for the concept - other languages, aliases, specialized purposes, used for particular purposes, etc.:param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param list['Extension'] extension: Additional content defined by implementations
+    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str language: Human language of the designation
-    :param Coding use: Details how this designation would be used
+    :param 'Coding' use: Details how this designation would be used
     :param str value: The text value for this designation
     """
-    id: str = None
-    
-    extension:  list["Extension"] = [Extension()]
-    
-    modifierExtension:  list["Extension"] = [Extension()]
-    
-    language: str = None
-    
-    use:  "Coding" = Coding()
-    
-    value: str = None
-    
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  language: str = None,  use: 'Coding' = None,  value: str = None, ):
+        self.id: str = id 
+        self.extension: list['Extension'] = extension or []
+        self.modifierExtension: list['Extension'] = modifierExtension or []
+        self.language: str = language 
+        self.use: 'Coding' = use 
+        self.value: str = value 
+        
 
     
     
-@dataclass
-class Property(Element):
+
+class Property(ModelBase):
     """ A property value for this concept.:param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param list['Extension'] extension: Additional content defined by implementations
+    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str code: Reference to CodeSystem.property.code
     :param str valueCode: Value of the property for this concept
     """
-    id: str = None
-    
-    extension:  list["Extension"] = [Extension()]
-    
-    modifierExtension:  list["Extension"] = [Extension()]
-    
-    code: str = None
-    
-    valueCode: str = None
-    
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  code: str = None,  valueCode: str = None, ):
+        self.id: str = id 
+        self.extension: list['Extension'] = extension or []
+        self.modifierExtension: list['Extension'] = modifierExtension or []
+        self.code: str = code 
+        self.valueCode: str = valueCode 
+        
 
   
     
     
-@dataclass
-class Concept(Element):
+
+class Concept(ModelBase):
     """ Concepts that are in the code system. The concept definitions are inherently hierarchical, but the definitions must be consulted to determine what the meanings of the hierarchical relationships are.:param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param list['Extension'] extension: Additional content defined by implementations
+    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str code: Code that identifies concept
     :param str display: Text to display to the user
     :param str definition: Formal definition
-    :param Designation designation: Additional representations for the concept
-    :param Property property: Property value for the concept
+    :param list['Designation'] designation: Additional representations for the concept
+    :param list['Property'] property: Property value for the concept
     """
-    id: str = None
-    
-    extension:  list["Extension"] = [Extension()]
-    
-    modifierExtension:  list["Extension"] = [Extension()]
-    
-    code: str = None
-    
-    display: str = None
-    
-    definition: str = None
-    
-    designation:  list["Designation"] = [Designation()]
-    
-    property:  list["Property"] = [Property()]
-    
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  code: str = None,  display: str = None,  definition: str = None,  designation: list['Designation'] = None,  property: list['Property'] = None, ):
+        self.id: str = id 
+        self.extension: list['Extension'] = extension or []
+        self.modifierExtension: list['Extension'] = modifierExtension or []
+        self.code: str = code 
+        self.display: str = display 
+        self.definition: str = definition 
+        self.designation: list['Designation'] = designation or []
+        self.property: list['Property'] = property or []
+        
 
-@dataclass
-class CodeSystem(ModelBase):
+class CodeSystem(DomainResource):
     """ Enforces the minimum information set for the value set metadata required by HL7 and other organizations that share and publish value sets
     :param str id: Logical id of this artifact
-    :param Meta meta: Metadata about the resource
+    :param 'Meta' meta: Metadata about the resource
     :param str implicitRules: A set of rules under which this content was created
     :param str language: Language of the resource content
-    :param Narrative text: Text summary of the resource, for human interpretation
-    :param Resource contained: Contained, inline Resources
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored
+    :param 'Narrative' text: Text summary of the resource, for human interpretation
+    :param list['Resource'] contained: Contained, inline Resources
+    :param list['Extension'] extension: Additional content defined by implementations
+    :param list['Extension'] modifierExtension: Extensions that cannot be ignored
     :param str url: Canonical identifier for this code system, represented as a URI (globally unique) (Coding.system)
-    :param Identifier identifier: Additional identifier for the code system (business identifier)
+    :param list['Identifier'] identifier: Additional identifier for the code system (business identifier)
     :param str version: Business version of the code system (Coding.version)
     :param str name: Name for this code system (computer friendly)
     :param str title: Name for this code system (human friendly)
@@ -168,10 +143,10 @@ class CodeSystem(ModelBase):
     :param bool experimental: For testing purposes, not real usage
     :param str date: Date last changed
     :param str publisher: Name of the publisher (organization or individual)
-    :param ContactDetail contact: Contact details for the publisher
+    :param list['ContactDetail'] contact: Contact details for the publisher
     :param str description: Natural language description of the code system
-    :param UsageContext useContext: The context that the content is intended to support
-    :param CodeableConcept jurisdiction: Intended jurisdiction for code system (if applicable)
+    :param list['UsageContext'] useContext: The context that the content is intended to support
+    :param list['CodeableConcept'] jurisdiction: Intended jurisdiction for code system (if applicable)
     :param str purpose: Why this code system is defined
     :param str copyright: Use and/or publishing restrictions
     :param bool caseSensitive: If code comparison is case sensitive
@@ -182,77 +157,44 @@ class CodeSystem(ModelBase):
     :param str content: not-present | example | fragment | complete | supplement
     :param str supplements: Canonical URL of Code System this adds designations and properties to
     :param int count: Total concepts in the code system
-    :param Filter filter: Filter that can be used in a value set
-    :param Property property: Additional information supplied about each concept
-    :param Concept concept: Concepts in the code system
+    :param list['Filter'] filter: Filter that can be used in a value set
+    :param list['Property'] property: Additional information supplied about each concept
+    :param list['Concept'] concept: Concepts in the code system
     """
-
-    resourceType: str = "CodeSystem"
-    id: str = None
-    
-    meta: "Meta" = None
-    
-    implicitRules: str = None
-    
-    language: str = None
-    
-    text: "Narrative" = None
-    
-    contained: list["Resource"] = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    url: str = None
-    
-    identifier: list["Identifier"] = None
-    
-    version: str = None
-    
-    name: str = None
-    
-    title: str = None
-    
-    status: str = None
-    
-    experimental: bool = None
-    
-    date: str = None
-    
-    publisher: str = None
-    
-    contact: list["ContactDetail"] = None
-    
-    description: str = None
-    
-    useContext: list["UsageContext"] = None
-    
-    jurisdiction: list["CodeableConcept"] = None
-    
-    purpose: str = None
-    
-    copyright: str = None
-    
-    caseSensitive: bool = None
-    
-    valueSet: str = None
-    
-    hierarchyMeaning: str = None
-    
-    compositional: bool = None
-    
-    versionNeeded: bool = None
-    
-    content: str = None
-    
-    supplements: str = None
-    
-    count: int = None
-    
-    filter: list["Filter"] = None
-    
-    property: list["Property"] = None
-    
-    concept: list["Concept"] = None
-    
+    def __init__(self, resourceType: str = "CodeSystem",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  url: str = None,  identifier: list['Identifier'] = None,  version: str = None,  name: str = None,  title: str = None,  status: str = None,  experimental: bool = None,  date: str = None,  publisher: str = None,  contact: list['ContactDetail'] = None,  description: str = None,  useContext: list['UsageContext'] = None,  jurisdiction: list['CodeableConcept'] = None,  purpose: str = None,  copyright: str = None,  caseSensitive: bool = None,  valueSet: str = None,  hierarchyMeaning: str = None,  compositional: bool = None,  versionNeeded: bool = None,  content: str = None,  supplements: str = None,  count: int = None,  filter: list['Filter'] = None,  property: list['Property'] = None,  concept: list['Concept'] = None, ):
+        self.resourceType: str = resourceType or "CodeSystem"
+        self.id: str = id 
+        self.meta: 'Meta' = meta 
+        self.implicitRules: str = implicitRules 
+        self.language: str = language 
+        self.text: 'Narrative' = text 
+        self.contained: list['Resource'] = contained or []
+        self.extension: list['Extension'] = extension or []
+        self.modifierExtension: list['Extension'] = modifierExtension or []
+        self.url: str = url 
+        self.identifier: list['Identifier'] = identifier or []
+        self.version: str = version 
+        self.name: str = name 
+        self.title: str = title 
+        self.status: str = status 
+        self.experimental: bool = experimental 
+        self.date: str = date 
+        self.publisher: str = publisher 
+        self.contact: list['ContactDetail'] = contact or []
+        self.description: str = description 
+        self.useContext: list['UsageContext'] = useContext or []
+        self.jurisdiction: list['CodeableConcept'] = jurisdiction or []
+        self.purpose: str = purpose 
+        self.copyright: str = copyright 
+        self.caseSensitive: bool = caseSensitive 
+        self.valueSet: str = valueSet 
+        self.hierarchyMeaning: str = hierarchyMeaning 
+        self.compositional: bool = compositional 
+        self.versionNeeded: bool = versionNeeded 
+        self.content: str = content 
+        self.supplements: str = supplements 
+        self.count: int = count 
+        self.filter: list['Filter'] = filter or []
+        self.property: list['Property'] = property or []
+        self.concept: list['Concept'] = concept or []
+        

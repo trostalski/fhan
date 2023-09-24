@@ -1,17 +1,14 @@
 """
 Generated class for Attachment. 
-Time: 2023-09-24 20:01:56
+Time: 2023-09-24 21:52:32
 """
-from dataclasses import dataclass
 from fhan.models.R4.Extension import *
-from fhan.models.R4.Element import *
+from fhan.models.generator_models import ModelBase
 
-
-@dataclass
-class Attachment(Element):
+class Attachment(ModelBase):
     """ Base StructureDefinition for Attachment Type: For referring to data content defined in other formats.
     :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
+    :param list['Extension'] extension: Additional content defined by implementations
     :param str contentType: Mime type of the content, with charset etc.
     :param str language: Human language of the content (BCP-47)
     :param str data: Data inline, base64ed
@@ -21,25 +18,16 @@ class Attachment(Element):
     :param str title: Label to display in place of the data
     :param str creation: Date attachment was first created
     """
-
-    resourceType: str = "Attachment"
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    contentType: str = None
-    
-    language: str = None
-    
-    data: str = None
-    
-    url: str = None
-    
-    size: int = None
-    
-    hash: str = None
-    
-    title: str = None
-    
-    creation: str = None
-    
+    def __init__(self, resourceType: str = "Attachment",  id: str = None,  extension: list['Extension'] = None,  contentType: str = None,  language: str = None,  data: str = None,  url: str = None,  size: int = None,  hash: str = None,  title: str = None,  creation: str = None, ):
+        self.resourceType: str = resourceType or "Attachment"
+        self.id: str = id 
+        self.extension: list['Extension'] = extension or []
+        self.contentType: str = contentType 
+        self.language: str = language 
+        self.data: str = data 
+        self.url: str = url 
+        self.size: int = size 
+        self.hash: str = hash 
+        self.title: str = title 
+        self.creation: str = creation 
+        

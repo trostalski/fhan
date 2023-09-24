@@ -1,177 +1,138 @@
 """
 Generated class for Patient. 
-Time: 2023-09-24 20:01:56
+Time: 2023-09-24 21:52:32
 """
-from dataclasses import dataclass
-from fhan.models.R4.Address import *
-from fhan.models.R4.Extension import *
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.HumanName import *
-from fhan.models.R4.Resource import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Reference import *
 from fhan.models.R4.Period import *
-from fhan.models.R4.Identifier import *
-from fhan.models.R4.ContactPoint import *
-from fhan.models.R4.Element import *
+from fhan.models.R4.Reference import *
+from fhan.models.R4.Address import *
+from fhan.models.R4.Resource import *
 from fhan.models.R4.Attachment import *
 from fhan.models.R4.Narrative import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.Meta import *
+from fhan.models.R4.ContactPoint import *
 from fhan.models.R4.CodeableConcept import *
-from fhan.models.generator_models import ModelBase
+from fhan.models.R4.Extension import *
+from fhan.models.R4.HumanName import *
+from fhan.models.R4.DomainResource import *
+
 
     
     
-@dataclass
-class Contact(Element):
+
+class Contact(ModelBase):
     """ A contact party (e.g. guardian, partner, friend) for the patient.:param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param CodeableConcept relationship: The kind of relationship
-    :param HumanName name: A name associated with the contact person
-    :param ContactPoint telecom: A contact detail for the person
-    :param Address address: Address for the contact person
+    :param list['Extension'] extension: Additional content defined by implementations
+    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param list['CodeableConcept'] relationship: The kind of relationship
+    :param 'HumanName' name: A name associated with the contact person
+    :param list['ContactPoint'] telecom: A contact detail for the person
+    :param 'Address' address: Address for the contact person
     :param str gender: male | female | other | unknown
-    :param Reference organization: Organization that is associated with the contact
-    :param Period period: The period during which this contact person or organization is valid to be contacted relating to this patient
+    :param 'Reference' organization: Organization that is associated with the contact
+    :param 'Period' period: The period during which this contact person or organization is valid to be contacted relating to this patient
     """
-    id: str = None
-    
-    extension:  list["Extension"] = [Extension()]
-    
-    modifierExtension:  list["Extension"] = [Extension()]
-    
-    relationship:  list["CodeableConcept"] = [CodeableConcept()]
-    
-    name:  "HumanName" = HumanName()
-    
-    telecom:  list["ContactPoint"] = [ContactPoint()]
-    
-    address:  "Address" = Address()
-    
-    gender: str = None
-    
-    organization:  "Reference" = Reference()
-    
-    period:  "Period" = Period()
-    
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  relationship: list['CodeableConcept'] = None,  name: 'HumanName' = None,  telecom: list['ContactPoint'] = None,  address: 'Address' = None,  gender: str = None,  organization: 'Reference' = None,  period: 'Period' = None, ):
+        self.id: str = id 
+        self.extension: list['Extension'] = extension or []
+        self.modifierExtension: list['Extension'] = modifierExtension or []
+        self.relationship: list['CodeableConcept'] = relationship or []
+        self.name: 'HumanName' = name 
+        self.telecom: list['ContactPoint'] = telecom or []
+        self.address: 'Address' = address 
+        self.gender: str = gender 
+        self.organization: 'Reference' = organization 
+        self.period: 'Period' = period 
+        
 
     
     
-@dataclass
-class Communication(Element):
+
+class Communication(ModelBase):
     """ A language which may be used to communicate with the patient about his or her health.:param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param CodeableConcept language: The language which can be used to communicate with the patient about his or her health
+    :param list['Extension'] extension: Additional content defined by implementations
+    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'CodeableConcept' language: The language which can be used to communicate with the patient about his or her health
     :param bool preferred: Language preference indicator
     """
-    id: str = None
-    
-    extension:  list["Extension"] = [Extension()]
-    
-    modifierExtension:  list["Extension"] = [Extension()]
-    
-    language:  "CodeableConcept" = CodeableConcept()
-    
-    preferred: bool = None
-    
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  language: 'CodeableConcept' = None,  preferred: bool = None, ):
+        self.id: str = id 
+        self.extension: list['Extension'] = extension or []
+        self.modifierExtension: list['Extension'] = modifierExtension or []
+        self.language: 'CodeableConcept' = language 
+        self.preferred: bool = preferred 
+        
 
     
     
-@dataclass
-class Link(Element):
+
+class Link(ModelBase):
     """ Link to another patient resource that concerns the same actual patient.:param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param Reference other: The other patient or related person resource that the link refers to
+    :param list['Extension'] extension: Additional content defined by implementations
+    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Reference' other: The other patient or related person resource that the link refers to
     :param str type: replaced-by | replaces | refer | seealso
     """
-    id: str = None
-    
-    extension:  list["Extension"] = [Extension()]
-    
-    modifierExtension:  list["Extension"] = [Extension()]
-    
-    other:  "Reference" = Reference()
-    
-    type: str = None
-    
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  other: 'Reference' = None,  type: str = None, ):
+        self.id: str = id 
+        self.extension: list['Extension'] = extension or []
+        self.modifierExtension: list['Extension'] = modifierExtension or []
+        self.other: 'Reference' = other 
+        self.type: str = type 
+        
 
-@dataclass
-class Patient(ModelBase):
+class Patient(DomainResource):
     """ Demographics and other administrative information about an individual or animal receiving care or other health-related services.
     :param str id: Logical id of this artifact
-    :param Meta meta: Metadata about the resource
+    :param 'Meta' meta: Metadata about the resource
     :param str implicitRules: A set of rules under which this content was created
     :param str language: Language of the resource content
-    :param Narrative text: Text summary of the resource, for human interpretation
-    :param Resource contained: Contained, inline Resources
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored
-    :param Identifier identifier: An identifier for this patient
+    :param 'Narrative' text: Text summary of the resource, for human interpretation
+    :param list['Resource'] contained: Contained, inline Resources
+    :param list['Extension'] extension: Additional content defined by implementations
+    :param list['Extension'] modifierExtension: Extensions that cannot be ignored
+    :param list['Identifier'] identifier: An identifier for this patient
     :param bool active: Whether this patient's record is in active use
-    :param HumanName name: A name associated with the patient
-    :param ContactPoint telecom: A contact detail for the individual
+    :param list['HumanName'] name: A name associated with the patient
+    :param list['ContactPoint'] telecom: A contact detail for the individual
     :param str gender: male | female | other | unknown
     :param str birthDate: The date of birth for the individual
     :param bool deceasedBoolean: Indicates if the individual is deceased or not
-    :param Address address: An address for the individual
-    :param CodeableConcept maritalStatus: Marital (civil) status of a patient
+    :param list['Address'] address: An address for the individual
+    :param 'CodeableConcept' maritalStatus: Marital (civil) status of a patient
     :param bool multipleBirthBoolean: Whether patient is part of a multiple birth
-    :param Attachment photo: Image of the patient
-    :param Contact contact: A contact party (e.g. guardian, partner, friend) for the patient
-    :param Communication communication: A language which may be used to communicate with the patient about his or her health
-    :param Reference generalPractitioner: Patient's nominated primary care provider
-    :param Reference managingOrganization: Organization that is the custodian of the patient record
-    :param Link link: Link to another patient resource that concerns the same actual person
+    :param list['Attachment'] photo: Image of the patient
+    :param list['Contact'] contact: A contact party (e.g. guardian, partner, friend) for the patient
+    :param list['Communication'] communication: A language which may be used to communicate with the patient about his or her health
+    :param list['Reference'] generalPractitioner: Patient's nominated primary care provider
+    :param 'Reference' managingOrganization: Organization that is the custodian of the patient record
+    :param list['Link'] link: Link to another patient resource that concerns the same actual person
     """
-
-    resourceType: str = "Patient"
-    id: str = None
-    
-    meta: "Meta" = None
-    
-    implicitRules: str = None
-    
-    language: str = None
-    
-    text: "Narrative" = None
-    
-    contained: list["Resource"] = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    identifier: list["Identifier"] = None
-    
-    active: bool = None
-    
-    name: list["HumanName"] = None
-    
-    telecom: list["ContactPoint"] = None
-    
-    gender: str = None
-    
-    birthDate: str = None
-    
-    deceasedBoolean: bool = None
-    
-    address: list["Address"] = None
-    
-    maritalStatus: "CodeableConcept" = None
-    
-    multipleBirthBoolean: bool = None
-    
-    photo: list["Attachment"] = None
-    
-    contact: list["Contact"] = None
-    
-    communication: list["Communication"] = None
-    
-    generalPractitioner: list["Reference"] = None
-    
-    managingOrganization: "Reference" = None
-    
-    link: list["Link"] = None
-    
+    def __init__(self, resourceType: str = "Patient",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  identifier: list['Identifier'] = None,  active: bool = None,  name: list['HumanName'] = None,  telecom: list['ContactPoint'] = None,  gender: str = None,  birthDate: str = None,  deceasedBoolean: bool = None,  address: list['Address'] = None,  maritalStatus: 'CodeableConcept' = None,  multipleBirthBoolean: bool = None,  photo: list['Attachment'] = None,  contact: list['Contact'] = None,  communication: list['Communication'] = None,  generalPractitioner: list['Reference'] = None,  managingOrganization: 'Reference' = None,  link: list['Link'] = None, ):
+        self.resourceType: str = resourceType or "Patient"
+        self.id: str = id 
+        self.meta: 'Meta' = meta 
+        self.implicitRules: str = implicitRules 
+        self.language: str = language 
+        self.text: 'Narrative' = text 
+        self.contained: list['Resource'] = contained or []
+        self.extension: list['Extension'] = extension or []
+        self.modifierExtension: list['Extension'] = modifierExtension or []
+        self.identifier: list['Identifier'] = identifier or []
+        self.active: bool = active 
+        self.name: list['HumanName'] = name or []
+        self.telecom: list['ContactPoint'] = telecom or []
+        self.gender: str = gender 
+        self.birthDate: str = birthDate 
+        self.deceasedBoolean: bool = deceasedBoolean 
+        self.address: list['Address'] = address or []
+        self.maritalStatus: 'CodeableConcept' = maritalStatus 
+        self.multipleBirthBoolean: bool = multipleBirthBoolean 
+        self.photo: list['Attachment'] = photo or []
+        self.contact: list['Contact'] = contact or []
+        self.communication: list['Communication'] = communication or []
+        self.generalPractitioner: list['Reference'] = generalPractitioner or []
+        self.managingOrganization: 'Reference' = managingOrganization 
+        self.link: list['Link'] = link or []
+        

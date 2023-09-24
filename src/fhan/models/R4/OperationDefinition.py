@@ -1,71 +1,64 @@
 """
 Generated class for OperationDefinition. 
-Time: 2023-09-24 20:01:56
+Time: 2023-09-24 21:52:32
 """
-from dataclasses import dataclass
 from fhan.models.R4.UsageContext import *
-from fhan.models.R4.Extension import *
-from fhan.models.R4.BackboneElement import *
 from fhan.models.R4.Resource import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Element import *
 from fhan.models.R4.ContactDetail import *
 from fhan.models.R4.Narrative import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Meta import *
 from fhan.models.R4.CodeableConcept import *
-from fhan.models.generator_models import ModelBase
+from fhan.models.R4.Extension import *
+from fhan.models.R4.DomainResource import *
+
 
     
         
     
     
-@dataclass
-class Binding(Element):
+
+class Binding(ModelBase):
     """ Binds to a value set if this parameter is coded (code, Coding, CodeableConcept).:param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param list['Extension'] extension: Additional content defined by implementations
+    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str strength: required | extensible | preferred | example
     :param str valueSet: Source of value set
     """
-    id: str = None
-    
-    extension:  list["Extension"] = [Extension()]
-    
-    modifierExtension:  list["Extension"] = [Extension()]
-    
-    strength: str = None
-    
-    valueSet: str = None
-    
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  strength: str = None,  valueSet: str = None, ):
+        self.id: str = id 
+        self.extension: list['Extension'] = extension or []
+        self.modifierExtension: list['Extension'] = modifierExtension or []
+        self.strength: str = strength 
+        self.valueSet: str = valueSet 
+        
 
     
     
-@dataclass
-class ReferencedFrom(Element):
+
+class ReferencedFrom(ModelBase):
     """ Identifies other resource parameters within the operation invocation that are expected to resolve to this resource.:param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param list['Extension'] extension: Additional content defined by implementations
+    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str source: Referencing parameter
     :param str sourceId: Element id of reference
     """
-    id: str = None
-    
-    extension:  list["Extension"] = [Extension()]
-    
-    modifierExtension:  list["Extension"] = [Extension()]
-    
-    source: str = None
-    
-    sourceId: str = None
-    
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  source: str = None,  sourceId: str = None, ):
+        self.id: str = id 
+        self.extension: list['Extension'] = extension or []
+        self.modifierExtension: list['Extension'] = modifierExtension or []
+        self.source: str = source 
+        self.sourceId: str = sourceId 
+        
 
   
     
     
-@dataclass
-class Parameter(Element):
+
+class Parameter(ModelBase):
     """ The parameters for the operation/query.:param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param list['Extension'] extension: Additional content defined by implementations
+    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str name: Name in Parameters.parameter.name or in URL
     :param str use: in | out
     :param int min: Minimum Cardinality
@@ -74,68 +67,53 @@ class Parameter(Element):
     :param str type: What type this parameter has
     :param str targetProfile: If type is Reference | canonical, allowed targets
     :param str searchType: number | date | string | token | reference | composite | quantity | uri | special
-    :param Binding binding: ValueSet details if this is coded
-    :param ReferencedFrom referencedFrom: References to this parameter
+    :param 'Binding' binding: ValueSet details if this is coded
+    :param list['ReferencedFrom'] referencedFrom: References to this parameter
     """
-    id: str = None
-    
-    extension:  list["Extension"] = [Extension()]
-    
-    modifierExtension:  list["Extension"] = [Extension()]
-    
-    name: str = None
-    
-    use: str = None
-    
-    min: int = None
-    
-    max: str = None
-    
-    documentation: str = None
-    
-    type: str = None
-    
-    targetProfile: str = None
-    
-    searchType: str = None
-    
-    binding:  "Binding" = Binding()
-    
-    referencedFrom:  list["ReferencedFrom"] = [ReferencedFrom()]
-    
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  name: str = None,  use: str = None,  min: int = None,  max: str = None,  documentation: str = None,  type: str = None,  targetProfile: str = None,  searchType: str = None,  binding: 'Binding' = None,  referencedFrom: list['ReferencedFrom'] = None, ):
+        self.id: str = id 
+        self.extension: list['Extension'] = extension or []
+        self.modifierExtension: list['Extension'] = modifierExtension or []
+        self.name: str = name 
+        self.use: str = use 
+        self.min: int = min 
+        self.max: str = max 
+        self.documentation: str = documentation 
+        self.type: str = type 
+        self.targetProfile: str = targetProfile or []
+        self.searchType: str = searchType 
+        self.binding: 'Binding' = binding 
+        self.referencedFrom: list['ReferencedFrom'] = referencedFrom or []
+        
 
     
     
-@dataclass
-class Overload(Element):
+
+class Overload(ModelBase):
     """ Defines an appropriate combination of parameters to use when invoking this operation, to help code generators when generating overloaded parameter sets for this operation.:param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param list['Extension'] extension: Additional content defined by implementations
+    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str parameterName: Name of parameter to include in overload
     :param str comment: Comments to go on overload
     """
-    id: str = None
-    
-    extension:  list["Extension"] = [Extension()]
-    
-    modifierExtension:  list["Extension"] = [Extension()]
-    
-    parameterName: str = None
-    
-    comment: str = None
-    
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  parameterName: str = None,  comment: str = None, ):
+        self.id: str = id 
+        self.extension: list['Extension'] = extension or []
+        self.modifierExtension: list['Extension'] = modifierExtension or []
+        self.parameterName: str = parameterName or []
+        self.comment: str = comment 
+        
 
-@dataclass
-class OperationDefinition(ModelBase):
+class OperationDefinition(DomainResource):
     """ A formal computable definition of an operation (on the RESTful interface) or a named query (using the search interaction).
     :param str id: Logical id of this artifact
-    :param Meta meta: Metadata about the resource
+    :param 'Meta' meta: Metadata about the resource
     :param str implicitRules: A set of rules under which this content was created
     :param str language: Language of the resource content
-    :param Narrative text: Text summary of the resource, for human interpretation
-    :param Resource contained: Contained, inline Resources
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored
+    :param 'Narrative' text: Text summary of the resource, for human interpretation
+    :param list['Resource'] contained: Contained, inline Resources
+    :param list['Extension'] extension: Additional content defined by implementations
+    :param list['Extension'] modifierExtension: Extensions that cannot be ignored
     :param str url: Canonical identifier for this operation definition, represented as a URI (globally unique)
     :param str version: Business version of the operation definition
     :param str name: Name for this operation definition (computer friendly)
@@ -145,10 +123,10 @@ class OperationDefinition(ModelBase):
     :param bool experimental: For testing purposes, not real usage
     :param str date: Date last changed
     :param str publisher: Name of the publisher (organization or individual)
-    :param ContactDetail contact: Contact details for the publisher
+    :param list['ContactDetail'] contact: Contact details for the publisher
     :param str description: Natural language description of the operation definition
-    :param UsageContext useContext: The context that the content is intended to support
-    :param CodeableConcept jurisdiction: Intended jurisdiction for operation definition (if applicable)
+    :param list['UsageContext'] useContext: The context that the content is intended to support
+    :param list['CodeableConcept'] jurisdiction: Intended jurisdiction for operation definition (if applicable)
     :param str purpose: Why this operation definition is defined
     :param bool affectsState: Whether content is changed by the operation
     :param str code: Name used to invoke the operation
@@ -160,76 +138,43 @@ class OperationDefinition(ModelBase):
     :param bool instance: Invoke on an instance?
     :param str inputProfile: Validation information for in parameters
     :param str outputProfile: Validation information for out parameters
-    :param Parameter parameter: Parameters for the operation/query
-    :param Overload overload: Define overloaded variants for when  generating code
+    :param list['Parameter'] parameter: Parameters for the operation/query
+    :param list['Overload'] overload: Define overloaded variants for when  generating code
     """
-
-    resourceType: str = "OperationDefinition"
-    id: str = None
-    
-    meta: "Meta" = None
-    
-    implicitRules: str = None
-    
-    language: str = None
-    
-    text: "Narrative" = None
-    
-    contained: list["Resource"] = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    url: str = None
-    
-    version: str = None
-    
-    name: str = None
-    
-    title: str = None
-    
-    status: str = None
-    
-    kind: str = None
-    
-    experimental: bool = None
-    
-    date: str = None
-    
-    publisher: str = None
-    
-    contact: list["ContactDetail"] = None
-    
-    description: str = None
-    
-    useContext: list["UsageContext"] = None
-    
-    jurisdiction: list["CodeableConcept"] = None
-    
-    purpose: str = None
-    
-    affectsState: bool = None
-    
-    code: str = None
-    
-    comment: str = None
-    
-    base: str = None
-    
-    resource: str = None
-    
-    system: bool = None
-    
-    type: bool = None
-    
-    instance: bool = None
-    
-    inputProfile: str = None
-    
-    outputProfile: str = None
-    
-    parameter: list["Parameter"] = None
-    
-    overload: list["Overload"] = None
-    
+    def __init__(self, resourceType: str = "OperationDefinition",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  url: str = None,  version: str = None,  name: str = None,  title: str = None,  status: str = None,  kind: str = None,  experimental: bool = None,  date: str = None,  publisher: str = None,  contact: list['ContactDetail'] = None,  description: str = None,  useContext: list['UsageContext'] = None,  jurisdiction: list['CodeableConcept'] = None,  purpose: str = None,  affectsState: bool = None,  code: str = None,  comment: str = None,  base: str = None,  resource: str = None,  system: bool = None,  type: bool = None,  instance: bool = None,  inputProfile: str = None,  outputProfile: str = None,  parameter: list['Parameter'] = None,  overload: list['Overload'] = None, ):
+        self.resourceType: str = resourceType or "OperationDefinition"
+        self.id: str = id 
+        self.meta: 'Meta' = meta 
+        self.implicitRules: str = implicitRules 
+        self.language: str = language 
+        self.text: 'Narrative' = text 
+        self.contained: list['Resource'] = contained or []
+        self.extension: list['Extension'] = extension or []
+        self.modifierExtension: list['Extension'] = modifierExtension or []
+        self.url: str = url 
+        self.version: str = version 
+        self.name: str = name 
+        self.title: str = title 
+        self.status: str = status 
+        self.kind: str = kind 
+        self.experimental: bool = experimental 
+        self.date: str = date 
+        self.publisher: str = publisher 
+        self.contact: list['ContactDetail'] = contact or []
+        self.description: str = description 
+        self.useContext: list['UsageContext'] = useContext or []
+        self.jurisdiction: list['CodeableConcept'] = jurisdiction or []
+        self.purpose: str = purpose 
+        self.affectsState: bool = affectsState 
+        self.code: str = code 
+        self.comment: str = comment 
+        self.base: str = base 
+        self.resource: str = resource or []
+        self.system: bool = system 
+        self.type: bool = type 
+        self.instance: bool = instance 
+        self.inputProfile: str = inputProfile 
+        self.outputProfile: str = outputProfile 
+        self.parameter: list['Parameter'] = parameter or []
+        self.overload: list['Overload'] = overload or []
+        

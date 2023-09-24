@@ -1,91 +1,68 @@
 """
 Generated class for GuidanceResponse. 
-Time: 2023-09-24 20:01:56
+Time: 2023-09-24 21:52:32
 """
-from dataclasses import dataclass
-from fhan.models.R4.Extension import *
-from fhan.models.R4.Annotation import *
-from fhan.models.R4.Resource import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.DataRequirement import *
 from fhan.models.R4.Reference import *
-from fhan.models.R4.Identifier import *
+from fhan.models.R4.DataRequirement import *
+from fhan.models.R4.Resource import *
+from fhan.models.R4.Annotation import *
 from fhan.models.R4.Narrative import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.Meta import *
 from fhan.models.R4.CodeableConcept import *
-from fhan.models.generator_models import ModelBase
+from fhan.models.R4.Extension import *
+from fhan.models.R4.DomainResource import *
 
-@dataclass
-class GuidanceResponse(ModelBase):
+
+class GuidanceResponse(DomainResource):
     """ A guidance response is the formal response to a guidance request, including any output parameters returned by the evaluation, as well as the description of any proposed actions to be taken.
     :param str id: Logical id of this artifact
-    :param Meta meta: Metadata about the resource
+    :param 'Meta' meta: Metadata about the resource
     :param str implicitRules: A set of rules under which this content was created
     :param str language: Language of the resource content
-    :param Narrative text: Text summary of the resource, for human interpretation
-    :param Resource contained: Contained, inline Resources
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored
-    :param Identifier requestIdentifier: The identifier of the request associated with this response, if any
-    :param Identifier identifier: Business identifier
+    :param 'Narrative' text: Text summary of the resource, for human interpretation
+    :param list['Resource'] contained: Contained, inline Resources
+    :param list['Extension'] extension: Additional content defined by implementations
+    :param list['Extension'] modifierExtension: Extensions that cannot be ignored
+    :param 'Identifier' requestIdentifier: The identifier of the request associated with this response, if any
+    :param list['Identifier'] identifier: Business identifier
     :param str moduleUri: What guidance was requested
     :param str status: success | data-requested | data-required | in-progress | failure | entered-in-error
-    :param Reference subject: Patient the request was performed for
-    :param Reference encounter: Encounter during which the response was returned
+    :param 'Reference' subject: Patient the request was performed for
+    :param 'Reference' encounter: Encounter during which the response was returned
     :param str occurrenceDateTime: When the guidance response was processed
-    :param Reference performer: Device returning the guidance
-    :param CodeableConcept reasonCode: Why guidance is needed
-    :param Reference reasonReference: Why guidance is needed
-    :param Annotation note: Additional notes about the response
-    :param Reference evaluationMessage: Messages resulting from the evaluation of the artifact or artifacts
-    :param Reference outputParameters: The output parameters of the evaluation, if any
-    :param Reference result: Proposed actions, if any
-    :param DataRequirement dataRequirement: Additional required data
+    :param 'Reference' performer: Device returning the guidance
+    :param list['CodeableConcept'] reasonCode: Why guidance is needed
+    :param list['Reference'] reasonReference: Why guidance is needed
+    :param list['Annotation'] note: Additional notes about the response
+    :param list['Reference'] evaluationMessage: Messages resulting from the evaluation of the artifact or artifacts
+    :param 'Reference' outputParameters: The output parameters of the evaluation, if any
+    :param 'Reference' result: Proposed actions, if any
+    :param list['DataRequirement'] dataRequirement: Additional required data
     """
-
-    resourceType: str = "GuidanceResponse"
-    id: str = None
-    
-    meta: "Meta" = None
-    
-    implicitRules: str = None
-    
-    language: str = None
-    
-    text: "Narrative" = None
-    
-    contained: list["Resource"] = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    requestIdentifier: "Identifier" = None
-    
-    identifier: list["Identifier"] = None
-    
-    moduleUri: str = None
-    
-    status: str = None
-    
-    subject: "Reference" = None
-    
-    encounter: "Reference" = None
-    
-    occurrenceDateTime: str = None
-    
-    performer: "Reference" = None
-    
-    reasonCode: list["CodeableConcept"] = None
-    
-    reasonReference: list["Reference"] = None
-    
-    note: list["Annotation"] = None
-    
-    evaluationMessage: list["Reference"] = None
-    
-    outputParameters: "Reference" = None
-    
-    result: "Reference" = None
-    
-    dataRequirement: list["DataRequirement"] = None
-    
+    def __init__(self, resourceType: str = "GuidanceResponse",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  requestIdentifier: 'Identifier' = None,  identifier: list['Identifier'] = None,  moduleUri: str = None,  status: str = None,  subject: 'Reference' = None,  encounter: 'Reference' = None,  occurrenceDateTime: str = None,  performer: 'Reference' = None,  reasonCode: list['CodeableConcept'] = None,  reasonReference: list['Reference'] = None,  note: list['Annotation'] = None,  evaluationMessage: list['Reference'] = None,  outputParameters: 'Reference' = None,  result: 'Reference' = None,  dataRequirement: list['DataRequirement'] = None, ):
+        self.resourceType: str = resourceType or "GuidanceResponse"
+        self.id: str = id 
+        self.meta: 'Meta' = meta 
+        self.implicitRules: str = implicitRules 
+        self.language: str = language 
+        self.text: 'Narrative' = text 
+        self.contained: list['Resource'] = contained or []
+        self.extension: list['Extension'] = extension or []
+        self.modifierExtension: list['Extension'] = modifierExtension or []
+        self.requestIdentifier: 'Identifier' = requestIdentifier 
+        self.identifier: list['Identifier'] = identifier or []
+        self.moduleUri: str = moduleUri 
+        self.status: str = status 
+        self.subject: 'Reference' = subject 
+        self.encounter: 'Reference' = encounter 
+        self.occurrenceDateTime: str = occurrenceDateTime 
+        self.performer: 'Reference' = performer 
+        self.reasonCode: list['CodeableConcept'] = reasonCode or []
+        self.reasonReference: list['Reference'] = reasonReference or []
+        self.note: list['Annotation'] = note or []
+        self.evaluationMessage: list['Reference'] = evaluationMessage or []
+        self.outputParameters: 'Reference' = outputParameters 
+        self.result: 'Reference' = result 
+        self.dataRequirement: list['DataRequirement'] = dataRequirement or []
+        

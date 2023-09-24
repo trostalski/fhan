@@ -2,7 +2,6 @@
 Generated class for {{structure_definition.type}}. 
 Time: {{time}}
 """
-from dataclasses import dataclass
 {% for dependency in structure_definition.dependencies -%}
 from fhan.models.{{dir_name}}.{{dependency}} import *
 {% endfor %}
@@ -15,28 +14,20 @@ from fhan.models.{{dir_name}}.{{structure_definition.base_class}} import *
 {% endif %}
 
 {%- macro render_backbone_element(element) %}
-@dataclass
+
 class {{ element.type }}({{ element.base_class }}):
     """ {{ element.description }}
     {%- for child in element.defined_children -%}
-    {%- if child.is_primitive -%}
-    :param {{ child.python_type.__name__ }} {{ child.name }}: {{ child.short }}
-    {% else -%}
-    :param {{ child.type }} {{ child.name }}: {{ child.short }}
-    {% endif -%}
+    :param {{ child.type_string }} {{ child.name }}: {{ child.short }}
     {% endfor -%}
     """
-
-    {%- for child in element.defined_children -%}
-    {%- if child.is_primitive %}
-    {{ child.name }}: {{ child.python_type.__name__ }} = None
-    {% else %}
-    {{ child.name }}: {%if child.type == element.type%} list[{{child.type}}] = None
-    {% elif child.is_array %} list["{{child.type}}"] = [{{child.type}}()]
-    {% else %} "{{child.type}}" = {{child.type}}()
-    {% endif -%}
-    {% endif -%}
-    {% endfor -%}
+    def __init__(self, {% for child in element.defined_children %} {{ child.name }}: {{ child.type_string }} = None, {% endfor %}):
+        {% for child in element.defined_children %}
+        {%- if child.is_array -%}
+        self.{{child.name}}: {{child.type_string}} = {{child.name}} or []
+        {%- else -%}
+        self.{{child.name}}: {{child.type_string}} = {{child.name}} {% endif %}
+        {% endfor -%}
 {% endmacro -%}
 
 {%- macro render_backbone_elements(elements) %}
@@ -49,24 +40,18 @@ class {{ element.type }}({{ element.base_class }}):
 {% endmacro -%}
 
 {{ render_backbone_elements(structure_definition.backbone_elements) -}}
-@dataclass
+
 class {{structure_definition.type}}{% if structure_definition.base_class %}({{structure_definition.base_class}}){% endif %}:
     """ {{structure_definition.description}}
     {% for element in structure_definition.defined_elements -%}
-    {%- if element.is_primitive -%}
-    :param {{element.python_type.__name__}} {{element.name}}: {{element.short}}
-    {% else -%}
-    :param {{element.type}} {{element.name}}: {{element.short}}
-    {% endif -%}
+    :param {{element.type_string}} {{element.name}}: {{element.short}}
     {% endfor -%}
     """
-
-    resourceType: str = "{{structure_definition.type}}"
-
-    {%- for element in structure_definition.defined_elements -%}
-    {% if element.is_primitive %}
-    {{element.name}}: {{element.python_type.__name__}} = None
-    {% else %}
-    {{element.name}}: {%if element.is_array%}{%raw%}list[{%endraw%}{%endif%}"{{element.type}}"{%if element.is_array%}{%raw%}]{%endraw%}{%endif%} = None
-    {% endif -%}
-    {% endfor %}
+    def __init__(self, resourceType: str = "{{structure_definition.type}}", {% for element in structure_definition.defined_elements %} {{element.name}}: {{element.type_string}} = None, {% endfor %}):
+        self.resourceType: str = resourceType or "{{structure_definition.type}}"
+        {% for element in structure_definition.defined_elements %}
+        {%- if element.is_array -%}
+        self.{{element.name}}: {{element.type_string}} = {{element.name}} or []
+        {%- else -%}
+        self.{{element.name}}: {{element.type_string}} = {{element.name}} {% endif %}
+        {% endfor -%}

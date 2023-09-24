@@ -1,46 +1,41 @@
 """
 Generated class for MeasureReport. 
-Time: 2023-09-24 20:01:56
+Time: 2023-09-24 21:52:32
 """
-from dataclasses import dataclass
-from fhan.models.R4.Extension import *
-from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Reference import *
+from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Resource import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Identifier import *
 from fhan.models.R4.Meta import *
 from fhan.models.R4.Quantity import *
-from fhan.models.R4.Reference import *
 from fhan.models.R4.Period import *
-from fhan.models.R4.Identifier import *
-from fhan.models.R4.Element import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.generator_models import ModelBase
+from fhan.models.R4.Extension import *
+from fhan.models.R4.DomainResource import *
+
 
     
         
     
     
-@dataclass
-class Population(Element):
+
+class Population(ModelBase):
     """ The populations that make up the population group, one for each type of population appropriate for the measure.:param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param CodeableConcept code: initial-population | numerator | numerator-exclusion | denominator | denominator-exclusion | denominator-exception | measure-population | measure-population-exclusion | measure-observation
+    :param list['Extension'] extension: Additional content defined by implementations
+    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'CodeableConcept' code: initial-population | numerator | numerator-exclusion | denominator | denominator-exclusion | denominator-exception | measure-population | measure-population-exclusion | measure-observation
     :param int count: Size of the population
-    :param Reference subjectResults: For subject-list reports, the subject results in this population
+    :param 'Reference' subjectResults: For subject-list reports, the subject results in this population
     """
-    id: str = None
-    
-    extension:  list["Extension"] = [Extension()]
-    
-    modifierExtension:  list["Extension"] = [Extension()]
-    
-    code:  "CodeableConcept" = CodeableConcept()
-    
-    count: int = None
-    
-    subjectResults:  "Reference" = Reference()
-    
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  code: 'CodeableConcept' = None,  count: int = None,  subjectResults: 'Reference' = None, ):
+        self.id: str = id 
+        self.extension: list['Extension'] = extension or []
+        self.modifierExtension: list['Extension'] = modifierExtension or []
+        self.code: 'CodeableConcept' = code 
+        self.count: int = count 
+        self.subjectResults: 'Reference' = subjectResults 
+        
 
     
         
@@ -48,187 +43,148 @@ class Population(Element):
         
     
     
-@dataclass
-class Component(Element):
+
+class Component(ModelBase):
     """ A stratifier component value.:param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param CodeableConcept code: What stratifier component of the group
-    :param CodeableConcept value: The stratum component value, e.g. male
+    :param list['Extension'] extension: Additional content defined by implementations
+    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'CodeableConcept' code: What stratifier component of the group
+    :param 'CodeableConcept' value: The stratum component value, e.g. male
     """
-    id: str = None
-    
-    extension:  list["Extension"] = [Extension()]
-    
-    modifierExtension:  list["Extension"] = [Extension()]
-    
-    code:  "CodeableConcept" = CodeableConcept()
-    
-    value:  "CodeableConcept" = CodeableConcept()
-    
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  code: 'CodeableConcept' = None,  value: 'CodeableConcept' = None, ):
+        self.id: str = id 
+        self.extension: list['Extension'] = extension or []
+        self.modifierExtension: list['Extension'] = modifierExtension or []
+        self.code: 'CodeableConcept' = code 
+        self.value: 'CodeableConcept' = value 
+        
 
     
     
-@dataclass
-class Population(Element):
+
+class Population(ModelBase):
     """ The populations that make up the stratum, one for each type of population appropriate to the measure.:param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param CodeableConcept code: initial-population | numerator | numerator-exclusion | denominator | denominator-exclusion | denominator-exception | measure-population | measure-population-exclusion | measure-observation
+    :param list['Extension'] extension: Additional content defined by implementations
+    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'CodeableConcept' code: initial-population | numerator | numerator-exclusion | denominator | denominator-exclusion | denominator-exception | measure-population | measure-population-exclusion | measure-observation
     :param int count: Size of the population
-    :param Reference subjectResults: For subject-list reports, the subject results in this population
+    :param 'Reference' subjectResults: For subject-list reports, the subject results in this population
     """
-    id: str = None
-    
-    extension:  list["Extension"] = [Extension()]
-    
-    modifierExtension:  list["Extension"] = [Extension()]
-    
-    code:  "CodeableConcept" = CodeableConcept()
-    
-    count: int = None
-    
-    subjectResults:  "Reference" = Reference()
-    
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  code: 'CodeableConcept' = None,  count: int = None,  subjectResults: 'Reference' = None, ):
+        self.id: str = id 
+        self.extension: list['Extension'] = extension or []
+        self.modifierExtension: list['Extension'] = modifierExtension or []
+        self.code: 'CodeableConcept' = code 
+        self.count: int = count 
+        self.subjectResults: 'Reference' = subjectResults 
+        
 
   
     
     
-@dataclass
-class Stratum(Element):
+
+class Stratum(ModelBase):
     """ This element contains the results for a single stratum within the stratifier. For example, when stratifying on administrative gender, there will be four strata, one for each possible gender value.:param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param CodeableConcept value: The stratum value, e.g. male
-    :param Component component: Stratifier component values
-    :param Population population: Population results in this stratum
-    :param Quantity measureScore: What score this stratum achieved
+    :param list['Extension'] extension: Additional content defined by implementations
+    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'CodeableConcept' value: The stratum value, e.g. male
+    :param list['Component'] component: Stratifier component values
+    :param list['Population'] population: Population results in this stratum
+    :param 'Quantity' measureScore: What score this stratum achieved
     """
-    id: str = None
-    
-    extension:  list["Extension"] = [Extension()]
-    
-    modifierExtension:  list["Extension"] = [Extension()]
-    
-    value:  "CodeableConcept" = CodeableConcept()
-    
-    component:  list["Component"] = [Component()]
-    
-    population:  list["Population"] = [Population()]
-    
-    measureScore:  "Quantity" = Quantity()
-    
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  value: 'CodeableConcept' = None,  component: list['Component'] = None,  population: list['Population'] = None,  measureScore: 'Quantity' = None, ):
+        self.id: str = id 
+        self.extension: list['Extension'] = extension or []
+        self.modifierExtension: list['Extension'] = modifierExtension or []
+        self.value: 'CodeableConcept' = value 
+        self.component: list['Component'] = component or []
+        self.population: list['Population'] = population or []
+        self.measureScore: 'Quantity' = measureScore 
+        
 
   
     
     
-@dataclass
-class Stratifier(Element):
+
+class Stratifier(ModelBase):
     """ When a measure includes multiple stratifiers, there will be a stratifier group for each stratifier defined by the measure.:param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param CodeableConcept code: What stratifier of the group
-    :param Stratum stratum: Stratum results, one for each unique value, or set of values, in the stratifier, or stratifier components
+    :param list['Extension'] extension: Additional content defined by implementations
+    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param list['CodeableConcept'] code: What stratifier of the group
+    :param list['Stratum'] stratum: Stratum results, one for each unique value, or set of values, in the stratifier, or stratifier components
     """
-    id: str = None
-    
-    extension:  list["Extension"] = [Extension()]
-    
-    modifierExtension:  list["Extension"] = [Extension()]
-    
-    code:  list["CodeableConcept"] = [CodeableConcept()]
-    
-    stratum:  list["Stratum"] = [Stratum()]
-    
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  code: list['CodeableConcept'] = None,  stratum: list['Stratum'] = None, ):
+        self.id: str = id 
+        self.extension: list['Extension'] = extension or []
+        self.modifierExtension: list['Extension'] = modifierExtension or []
+        self.code: list['CodeableConcept'] = code or []
+        self.stratum: list['Stratum'] = stratum or []
+        
 
   
     
     
-@dataclass
-class Group(Element):
-    """ The results of the calculation, one for each population group in the measure.:param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param CodeableConcept code: Meaning of the group
-    :param Population population: The populations in the group
-    :param Quantity measureScore: What score this group achieved
-    :param Stratifier stratifier: Stratification results
-    """
-    id: str = None
-    
-    extension:  list["Extension"] = [Extension()]
-    
-    modifierExtension:  list["Extension"] = [Extension()]
-    
-    code:  "CodeableConcept" = CodeableConcept()
-    
-    population:  list["Population"] = [Population()]
-    
-    measureScore:  "Quantity" = Quantity()
-    
-    stratifier:  list["Stratifier"] = [Stratifier()]
-    
 
-@dataclass
-class MeasureReport(ModelBase):
+class Group(ModelBase):
+    """ The results of the calculation, one for each population group in the measure.:param str id: Unique id for inter-element referencing
+    :param list['Extension'] extension: Additional content defined by implementations
+    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'CodeableConcept' code: Meaning of the group
+    :param list['Population'] population: The populations in the group
+    :param 'Quantity' measureScore: What score this group achieved
+    :param list['Stratifier'] stratifier: Stratification results
+    """
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  code: 'CodeableConcept' = None,  population: list['Population'] = None,  measureScore: 'Quantity' = None,  stratifier: list['Stratifier'] = None, ):
+        self.id: str = id 
+        self.extension: list['Extension'] = extension or []
+        self.modifierExtension: list['Extension'] = modifierExtension or []
+        self.code: 'CodeableConcept' = code 
+        self.population: list['Population'] = population or []
+        self.measureScore: 'Quantity' = measureScore 
+        self.stratifier: list['Stratifier'] = stratifier or []
+        
+
+class MeasureReport(DomainResource):
     """ The MeasureReport resource contains the results of the calculation of a measure; and optionally a reference to the resources involved in that calculation.
     :param str id: Logical id of this artifact
-    :param Meta meta: Metadata about the resource
+    :param 'Meta' meta: Metadata about the resource
     :param str implicitRules: A set of rules under which this content was created
     :param str language: Language of the resource content
-    :param Narrative text: Text summary of the resource, for human interpretation
-    :param Resource contained: Contained, inline Resources
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored
-    :param Identifier identifier: Additional identifier for the MeasureReport
+    :param 'Narrative' text: Text summary of the resource, for human interpretation
+    :param list['Resource'] contained: Contained, inline Resources
+    :param list['Extension'] extension: Additional content defined by implementations
+    :param list['Extension'] modifierExtension: Extensions that cannot be ignored
+    :param list['Identifier'] identifier: Additional identifier for the MeasureReport
     :param str status: complete | pending | error
     :param str type: individual | subject-list | summary | data-collection
     :param str measure: What measure was calculated
-    :param Reference subject: What individual(s) the report is for
+    :param 'Reference' subject: What individual(s) the report is for
     :param str date: When the report was generated
-    :param Reference reporter: Who is reporting the data
-    :param Period period: What period the report covers
-    :param CodeableConcept improvementNotation: increase | decrease
-    :param Group group: Measure results for each group
-    :param Reference evaluatedResource: What data was used to calculate the measure score
+    :param 'Reference' reporter: Who is reporting the data
+    :param 'Period' period: What period the report covers
+    :param 'CodeableConcept' improvementNotation: increase | decrease
+    :param list['Group'] group: Measure results for each group
+    :param list['Reference'] evaluatedResource: What data was used to calculate the measure score
     """
-
-    resourceType: str = "MeasureReport"
-    id: str = None
-    
-    meta: "Meta" = None
-    
-    implicitRules: str = None
-    
-    language: str = None
-    
-    text: "Narrative" = None
-    
-    contained: list["Resource"] = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    identifier: list["Identifier"] = None
-    
-    status: str = None
-    
-    type: str = None
-    
-    measure: str = None
-    
-    subject: "Reference" = None
-    
-    date: str = None
-    
-    reporter: "Reference" = None
-    
-    period: "Period" = None
-    
-    improvementNotation: "CodeableConcept" = None
-    
-    group: list["Group"] = None
-    
-    evaluatedResource: list["Reference"] = None
-    
+    def __init__(self, resourceType: str = "MeasureReport",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  identifier: list['Identifier'] = None,  status: str = None,  type: str = None,  measure: str = None,  subject: 'Reference' = None,  date: str = None,  reporter: 'Reference' = None,  period: 'Period' = None,  improvementNotation: 'CodeableConcept' = None,  group: list['Group'] = None,  evaluatedResource: list['Reference'] = None, ):
+        self.resourceType: str = resourceType or "MeasureReport"
+        self.id: str = id 
+        self.meta: 'Meta' = meta 
+        self.implicitRules: str = implicitRules 
+        self.language: str = language 
+        self.text: 'Narrative' = text 
+        self.contained: list['Resource'] = contained or []
+        self.extension: list['Extension'] = extension or []
+        self.modifierExtension: list['Extension'] = modifierExtension or []
+        self.identifier: list['Identifier'] = identifier or []
+        self.status: str = status 
+        self.type: str = type 
+        self.measure: str = measure 
+        self.subject: 'Reference' = subject 
+        self.date: str = date 
+        self.reporter: 'Reference' = reporter 
+        self.period: 'Period' = period 
+        self.improvementNotation: 'CodeableConcept' = improvementNotation 
+        self.group: list['Group'] = group or []
+        self.evaluatedResource: list['Reference'] = evaluatedResource or []
+        

@@ -24,3 +24,7 @@ def get_path_length(path: str):
 
 def is_root_path(path: str):
     return "." not in path
+
+
+def join_paths(*paths: str):
+    return ".".join(paths)

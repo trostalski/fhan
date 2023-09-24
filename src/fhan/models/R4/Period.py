@@ -1,27 +1,21 @@
 """
 Generated class for Period. 
-Time: 2023-09-24 20:01:56
+Time: 2023-09-24 21:52:32
 """
-from dataclasses import dataclass
 from fhan.models.R4.Extension import *
-from fhan.models.R4.Element import *
+from fhan.models.generator_models import ModelBase
 
-
-@dataclass
-class Period(Element):
+class Period(ModelBase):
     """ Base StructureDefinition for Period Type: A time period defined by a start and end date and optionally time.
     :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
+    :param list['Extension'] extension: Additional content defined by implementations
     :param str start: Starting time with inclusive boundary
     :param str end: End time with inclusive boundary, if not ongoing
     """
-
-    resourceType: str = "Period"
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
-    start: str = None
-    
-    end: str = None
-    
+    def __init__(self, resourceType: str = "Period",  id: str = None,  extension: list['Extension'] = None,  start: str = None,  end: str = None, ):
+        self.resourceType: str = resourceType or "Period"
+        self.id: str = id 
+        self.extension: list['Extension'] = extension or []
+        self.start: str = start 
+        self.end: str = end 
+        

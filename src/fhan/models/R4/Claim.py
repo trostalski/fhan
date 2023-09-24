@@ -1,251 +1,206 @@
 """
 Generated class for Claim. 
-Time: 2023-09-24 20:01:56
+Time: 2023-09-24 21:52:32
 """
-from dataclasses import dataclass
+from fhan.models.R4.Period import *
+from fhan.models.R4.Reference import *
 from fhan.models.R4.Address import *
-from fhan.models.R4.Extension import *
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Money import *
 from fhan.models.R4.Resource import *
+from fhan.models.R4.Attachment import *
+from fhan.models.R4.Money import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Identifier import *
 from fhan.models.R4.Meta import *
 from fhan.models.R4.Quantity import *
-from fhan.models.R4.Reference import *
-from fhan.models.R4.Period import *
-from fhan.models.R4.Identifier import *
-from fhan.models.R4.Element import *
-from fhan.models.R4.Attachment import *
-from fhan.models.R4.Narrative import *
 from fhan.models.R4.CodeableConcept import *
-from fhan.models.generator_models import ModelBase
+from fhan.models.R4.Extension import *
+from fhan.models.R4.DomainResource import *
+
 
     
     
-@dataclass
-class Related(Element):
+
+class Related(ModelBase):
     """ Other claims which are related to this claim such as prior submissions or claims for related services or for the same event.:param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param Reference claim: Reference to the related claim
-    :param CodeableConcept relationship: How the reference claim is related
-    :param Identifier reference: File or case reference
+    :param list['Extension'] extension: Additional content defined by implementations
+    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Reference' claim: Reference to the related claim
+    :param 'CodeableConcept' relationship: How the reference claim is related
+    :param 'Identifier' reference: File or case reference
     """
-    id: str = None
-    
-    extension:  list["Extension"] = [Extension()]
-    
-    modifierExtension:  list["Extension"] = [Extension()]
-    
-    claim:  "Reference" = Reference()
-    
-    relationship:  "CodeableConcept" = CodeableConcept()
-    
-    reference:  "Identifier" = Identifier()
-    
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  claim: 'Reference' = None,  relationship: 'CodeableConcept' = None,  reference: 'Identifier' = None, ):
+        self.id: str = id 
+        self.extension: list['Extension'] = extension or []
+        self.modifierExtension: list['Extension'] = modifierExtension or []
+        self.claim: 'Reference' = claim 
+        self.relationship: 'CodeableConcept' = relationship 
+        self.reference: 'Identifier' = reference 
+        
 
     
     
-@dataclass
-class Payee(Element):
+
+class Payee(ModelBase):
     """ The party to be reimbursed for cost of the products and services according to the terms of the policy.:param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param CodeableConcept type: Category of recipient
-    :param Reference party: Recipient reference
+    :param list['Extension'] extension: Additional content defined by implementations
+    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'CodeableConcept' type: Category of recipient
+    :param 'Reference' party: Recipient reference
     """
-    id: str = None
-    
-    extension:  list["Extension"] = [Extension()]
-    
-    modifierExtension:  list["Extension"] = [Extension()]
-    
-    type:  "CodeableConcept" = CodeableConcept()
-    
-    party:  "Reference" = Reference()
-    
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  type: 'CodeableConcept' = None,  party: 'Reference' = None, ):
+        self.id: str = id 
+        self.extension: list['Extension'] = extension or []
+        self.modifierExtension: list['Extension'] = modifierExtension or []
+        self.type: 'CodeableConcept' = type 
+        self.party: 'Reference' = party 
+        
 
     
     
-@dataclass
-class CareTeam(Element):
+
+class CareTeam(ModelBase):
     """ The members of the team who provided the products and services.:param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param list['Extension'] extension: Additional content defined by implementations
+    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param int sequence: Order of care team
-    :param Reference provider: Practitioner or organization
+    :param 'Reference' provider: Practitioner or organization
     :param bool responsible: Indicator of the lead practitioner
-    :param CodeableConcept role: Function within the team
-    :param CodeableConcept qualification: Practitioner credential or specialization
+    :param 'CodeableConcept' role: Function within the team
+    :param 'CodeableConcept' qualification: Practitioner credential or specialization
     """
-    id: str = None
-    
-    extension:  list["Extension"] = [Extension()]
-    
-    modifierExtension:  list["Extension"] = [Extension()]
-    
-    sequence: int = None
-    
-    provider:  "Reference" = Reference()
-    
-    responsible: bool = None
-    
-    role:  "CodeableConcept" = CodeableConcept()
-    
-    qualification:  "CodeableConcept" = CodeableConcept()
-    
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  sequence: int = None,  provider: 'Reference' = None,  responsible: bool = None,  role: 'CodeableConcept' = None,  qualification: 'CodeableConcept' = None, ):
+        self.id: str = id 
+        self.extension: list['Extension'] = extension or []
+        self.modifierExtension: list['Extension'] = modifierExtension or []
+        self.sequence: int = sequence 
+        self.provider: 'Reference' = provider 
+        self.responsible: bool = responsible 
+        self.role: 'CodeableConcept' = role 
+        self.qualification: 'CodeableConcept' = qualification 
+        
 
     
     
-@dataclass
-class SupportingInfo(Element):
+
+class SupportingInfo(ModelBase):
     """ Additional information codes regarding exceptions, special considerations, the condition, situation, prior or concurrent issues.:param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param list['Extension'] extension: Additional content defined by implementations
+    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param int sequence: Information instance identifier
-    :param CodeableConcept category: Classification of the supplied information
-    :param CodeableConcept code: Type of information
+    :param 'CodeableConcept' category: Classification of the supplied information
+    :param 'CodeableConcept' code: Type of information
     :param str timingDate: When it occurred
     :param bool valueBoolean: Data to be provided
-    :param CodeableConcept reason: Explanation for the information
+    :param 'CodeableConcept' reason: Explanation for the information
     """
-    id: str = None
-    
-    extension:  list["Extension"] = [Extension()]
-    
-    modifierExtension:  list["Extension"] = [Extension()]
-    
-    sequence: int = None
-    
-    category:  "CodeableConcept" = CodeableConcept()
-    
-    code:  "CodeableConcept" = CodeableConcept()
-    
-    timingDate: str = None
-    
-    valueBoolean: bool = None
-    
-    reason:  "CodeableConcept" = CodeableConcept()
-    
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  sequence: int = None,  category: 'CodeableConcept' = None,  code: 'CodeableConcept' = None,  timingDate: str = None,  valueBoolean: bool = None,  reason: 'CodeableConcept' = None, ):
+        self.id: str = id 
+        self.extension: list['Extension'] = extension or []
+        self.modifierExtension: list['Extension'] = modifierExtension or []
+        self.sequence: int = sequence 
+        self.category: 'CodeableConcept' = category 
+        self.code: 'CodeableConcept' = code 
+        self.timingDate: str = timingDate 
+        self.valueBoolean: bool = valueBoolean 
+        self.reason: 'CodeableConcept' = reason 
+        
 
     
     
-@dataclass
-class Diagnosis(Element):
+
+class Diagnosis(ModelBase):
     """ Information about diagnoses relevant to the claim items.:param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param list['Extension'] extension: Additional content defined by implementations
+    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param int sequence: Diagnosis instance identifier
-    :param CodeableConcept diagnosisCodeableConcept: Nature of illness or problem
-    :param CodeableConcept type: Timing or nature of the diagnosis
-    :param CodeableConcept onAdmission: Present on admission
-    :param CodeableConcept packageCode: Package billing code
+    :param 'CodeableConcept' diagnosisCodeableConcept: Nature of illness or problem
+    :param list['CodeableConcept'] type: Timing or nature of the diagnosis
+    :param 'CodeableConcept' onAdmission: Present on admission
+    :param 'CodeableConcept' packageCode: Package billing code
     """
-    id: str = None
-    
-    extension:  list["Extension"] = [Extension()]
-    
-    modifierExtension:  list["Extension"] = [Extension()]
-    
-    sequence: int = None
-    
-    diagnosisCodeableConcept:  "CodeableConcept" = CodeableConcept()
-    
-    type:  list["CodeableConcept"] = [CodeableConcept()]
-    
-    onAdmission:  "CodeableConcept" = CodeableConcept()
-    
-    packageCode:  "CodeableConcept" = CodeableConcept()
-    
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  sequence: int = None,  diagnosisCodeableConcept: 'CodeableConcept' = None,  type: list['CodeableConcept'] = None,  onAdmission: 'CodeableConcept' = None,  packageCode: 'CodeableConcept' = None, ):
+        self.id: str = id 
+        self.extension: list['Extension'] = extension or []
+        self.modifierExtension: list['Extension'] = modifierExtension or []
+        self.sequence: int = sequence 
+        self.diagnosisCodeableConcept: 'CodeableConcept' = diagnosisCodeableConcept 
+        self.type: list['CodeableConcept'] = type or []
+        self.onAdmission: 'CodeableConcept' = onAdmission 
+        self.packageCode: 'CodeableConcept' = packageCode 
+        
 
     
     
-@dataclass
-class Procedure(Element):
+
+class Procedure(ModelBase):
     """ Procedures performed on the patient relevant to the billing items with the claim.:param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param list['Extension'] extension: Additional content defined by implementations
+    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param int sequence: Procedure instance identifier
-    :param CodeableConcept type: Category of Procedure
+    :param list['CodeableConcept'] type: Category of Procedure
     :param str date: When the procedure was performed
-    :param CodeableConcept procedureCodeableConcept: Specific clinical procedure
-    :param Reference udi: Unique device identifier
+    :param 'CodeableConcept' procedureCodeableConcept: Specific clinical procedure
+    :param list['Reference'] udi: Unique device identifier
     """
-    id: str = None
-    
-    extension:  list["Extension"] = [Extension()]
-    
-    modifierExtension:  list["Extension"] = [Extension()]
-    
-    sequence: int = None
-    
-    type:  list["CodeableConcept"] = [CodeableConcept()]
-    
-    date: str = None
-    
-    procedureCodeableConcept:  "CodeableConcept" = CodeableConcept()
-    
-    udi:  list["Reference"] = [Reference()]
-    
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  sequence: int = None,  type: list['CodeableConcept'] = None,  date: str = None,  procedureCodeableConcept: 'CodeableConcept' = None,  udi: list['Reference'] = None, ):
+        self.id: str = id 
+        self.extension: list['Extension'] = extension or []
+        self.modifierExtension: list['Extension'] = modifierExtension or []
+        self.sequence: int = sequence 
+        self.type: list['CodeableConcept'] = type or []
+        self.date: str = date 
+        self.procedureCodeableConcept: 'CodeableConcept' = procedureCodeableConcept 
+        self.udi: list['Reference'] = udi or []
+        
 
     
     
-@dataclass
-class Insurance(Element):
+
+class Insurance(ModelBase):
     """ Financial instruments for reimbursement for the health care products and services specified on the claim.:param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param list['Extension'] extension: Additional content defined by implementations
+    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param int sequence: Insurance instance identifier
     :param bool focal: Coverage to be used for adjudication
-    :param Identifier identifier: Pre-assigned Claim number
-    :param Reference coverage: Insurance information
+    :param 'Identifier' identifier: Pre-assigned Claim number
+    :param 'Reference' coverage: Insurance information
     :param str businessArrangement: Additional provider contract number
     :param str preAuthRef: Prior authorization reference number
-    :param Reference claimResponse: Adjudication results
+    :param 'Reference' claimResponse: Adjudication results
     """
-    id: str = None
-    
-    extension:  list["Extension"] = [Extension()]
-    
-    modifierExtension:  list["Extension"] = [Extension()]
-    
-    sequence: int = None
-    
-    focal: bool = None
-    
-    identifier:  "Identifier" = Identifier()
-    
-    coverage:  "Reference" = Reference()
-    
-    businessArrangement: str = None
-    
-    preAuthRef: str = None
-    
-    claimResponse:  "Reference" = Reference()
-    
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  sequence: int = None,  focal: bool = None,  identifier: 'Identifier' = None,  coverage: 'Reference' = None,  businessArrangement: str = None,  preAuthRef: str = None,  claimResponse: 'Reference' = None, ):
+        self.id: str = id 
+        self.extension: list['Extension'] = extension or []
+        self.modifierExtension: list['Extension'] = modifierExtension or []
+        self.sequence: int = sequence 
+        self.focal: bool = focal 
+        self.identifier: 'Identifier' = identifier 
+        self.coverage: 'Reference' = coverage 
+        self.businessArrangement: str = businessArrangement 
+        self.preAuthRef: str = preAuthRef or []
+        self.claimResponse: 'Reference' = claimResponse 
+        
 
     
     
-@dataclass
-class Accident(Element):
+
+class Accident(ModelBase):
     """ Details of an accident which resulted in injuries which required the products and services listed in the claim.:param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param list['Extension'] extension: Additional content defined by implementations
+    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str date: When the incident occurred
-    :param CodeableConcept type: The nature of the accident
-    :param Address locationAddress: Where the event occurred
+    :param 'CodeableConcept' type: The nature of the accident
+    :param 'Address' locationAddress: Where the event occurred
     """
-    id: str = None
-    
-    extension:  list["Extension"] = [Extension()]
-    
-    modifierExtension:  list["Extension"] = [Extension()]
-    
-    date: str = None
-    
-    type:  "CodeableConcept" = CodeableConcept()
-    
-    locationAddress:  "Address" = Address()
-    
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  date: str = None,  type: 'CodeableConcept' = None,  locationAddress: 'Address' = None, ):
+        self.id: str = id 
+        self.extension: list['Extension'] = extension or []
+        self.modifierExtension: list['Extension'] = modifierExtension or []
+        self.date: str = date 
+        self.type: 'CodeableConcept' = type 
+        self.locationAddress: 'Address' = locationAddress 
+        
 
     
         
@@ -253,291 +208,209 @@ class Accident(Element):
         
     
     
-@dataclass
-class SubDetail(Element):
+
+class SubDetail(ModelBase):
     """ A claim detail line. Either a simple (a product or service) or a 'group' of sub-details which are simple items.:param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param list['Extension'] extension: Additional content defined by implementations
+    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param int sequence: Item instance identifier
-    :param CodeableConcept revenue: Revenue or cost center code
-    :param CodeableConcept category: Benefit classification
-    :param CodeableConcept productOrService: Billing, service, product, or drug code
-    :param CodeableConcept modifier: Service/Product billing modifiers
-    :param CodeableConcept programCode: Program the product or service is provided under
-    :param Quantity quantity: Count of products or services
-    :param Money unitPrice: Fee, charge or cost per item
+    :param 'CodeableConcept' revenue: Revenue or cost center code
+    :param 'CodeableConcept' category: Benefit classification
+    :param 'CodeableConcept' productOrService: Billing, service, product, or drug code
+    :param list['CodeableConcept'] modifier: Service/Product billing modifiers
+    :param list['CodeableConcept'] programCode: Program the product or service is provided under
+    :param 'Quantity' quantity: Count of products or services
+    :param 'Money' unitPrice: Fee, charge or cost per item
     :param float factor: Price scaling factor
-    :param Money net: Total item cost
-    :param Reference udi: Unique device identifier
+    :param 'Money' net: Total item cost
+    :param list['Reference'] udi: Unique device identifier
     """
-    id: str = None
-    
-    extension:  list["Extension"] = [Extension()]
-    
-    modifierExtension:  list["Extension"] = [Extension()]
-    
-    sequence: int = None
-    
-    revenue:  "CodeableConcept" = CodeableConcept()
-    
-    category:  "CodeableConcept" = CodeableConcept()
-    
-    productOrService:  "CodeableConcept" = CodeableConcept()
-    
-    modifier:  list["CodeableConcept"] = [CodeableConcept()]
-    
-    programCode:  list["CodeableConcept"] = [CodeableConcept()]
-    
-    quantity:  "Quantity" = Quantity()
-    
-    unitPrice:  "Money" = Money()
-    
-    factor: float = None
-    
-    net:  "Money" = Money()
-    
-    udi:  list["Reference"] = [Reference()]
-    
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  sequence: int = None,  revenue: 'CodeableConcept' = None,  category: 'CodeableConcept' = None,  productOrService: 'CodeableConcept' = None,  modifier: list['CodeableConcept'] = None,  programCode: list['CodeableConcept'] = None,  quantity: 'Quantity' = None,  unitPrice: 'Money' = None,  factor: float = None,  net: 'Money' = None,  udi: list['Reference'] = None, ):
+        self.id: str = id 
+        self.extension: list['Extension'] = extension or []
+        self.modifierExtension: list['Extension'] = modifierExtension or []
+        self.sequence: int = sequence 
+        self.revenue: 'CodeableConcept' = revenue 
+        self.category: 'CodeableConcept' = category 
+        self.productOrService: 'CodeableConcept' = productOrService 
+        self.modifier: list['CodeableConcept'] = modifier or []
+        self.programCode: list['CodeableConcept'] = programCode or []
+        self.quantity: 'Quantity' = quantity 
+        self.unitPrice: 'Money' = unitPrice 
+        self.factor: float = factor 
+        self.net: 'Money' = net 
+        self.udi: list['Reference'] = udi or []
+        
 
   
     
     
-@dataclass
-class Detail(Element):
+
+class Detail(ModelBase):
     """ A claim detail line. Either a simple (a product or service) or a 'group' of sub-details which are simple items.:param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param list['Extension'] extension: Additional content defined by implementations
+    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param int sequence: Item instance identifier
-    :param CodeableConcept revenue: Revenue or cost center code
-    :param CodeableConcept category: Benefit classification
-    :param CodeableConcept productOrService: Billing, service, product, or drug code
-    :param CodeableConcept modifier: Service/Product billing modifiers
-    :param CodeableConcept programCode: Program the product or service is provided under
-    :param Quantity quantity: Count of products or services
-    :param Money unitPrice: Fee, charge or cost per item
+    :param 'CodeableConcept' revenue: Revenue or cost center code
+    :param 'CodeableConcept' category: Benefit classification
+    :param 'CodeableConcept' productOrService: Billing, service, product, or drug code
+    :param list['CodeableConcept'] modifier: Service/Product billing modifiers
+    :param list['CodeableConcept'] programCode: Program the product or service is provided under
+    :param 'Quantity' quantity: Count of products or services
+    :param 'Money' unitPrice: Fee, charge or cost per item
     :param float factor: Price scaling factor
-    :param Money net: Total item cost
-    :param Reference udi: Unique device identifier
-    :param SubDetail subDetail: Product or service provided
+    :param 'Money' net: Total item cost
+    :param list['Reference'] udi: Unique device identifier
+    :param list['SubDetail'] subDetail: Product or service provided
     """
-    id: str = None
-    
-    extension:  list["Extension"] = [Extension()]
-    
-    modifierExtension:  list["Extension"] = [Extension()]
-    
-    sequence: int = None
-    
-    revenue:  "CodeableConcept" = CodeableConcept()
-    
-    category:  "CodeableConcept" = CodeableConcept()
-    
-    productOrService:  "CodeableConcept" = CodeableConcept()
-    
-    modifier:  list["CodeableConcept"] = [CodeableConcept()]
-    
-    programCode:  list["CodeableConcept"] = [CodeableConcept()]
-    
-    quantity:  "Quantity" = Quantity()
-    
-    unitPrice:  "Money" = Money()
-    
-    factor: float = None
-    
-    net:  "Money" = Money()
-    
-    udi:  list["Reference"] = [Reference()]
-    
-    subDetail:  list["SubDetail"] = [SubDetail()]
-    
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  sequence: int = None,  revenue: 'CodeableConcept' = None,  category: 'CodeableConcept' = None,  productOrService: 'CodeableConcept' = None,  modifier: list['CodeableConcept'] = None,  programCode: list['CodeableConcept'] = None,  quantity: 'Quantity' = None,  unitPrice: 'Money' = None,  factor: float = None,  net: 'Money' = None,  udi: list['Reference'] = None,  subDetail: list['SubDetail'] = None, ):
+        self.id: str = id 
+        self.extension: list['Extension'] = extension or []
+        self.modifierExtension: list['Extension'] = modifierExtension or []
+        self.sequence: int = sequence 
+        self.revenue: 'CodeableConcept' = revenue 
+        self.category: 'CodeableConcept' = category 
+        self.productOrService: 'CodeableConcept' = productOrService 
+        self.modifier: list['CodeableConcept'] = modifier or []
+        self.programCode: list['CodeableConcept'] = programCode or []
+        self.quantity: 'Quantity' = quantity 
+        self.unitPrice: 'Money' = unitPrice 
+        self.factor: float = factor 
+        self.net: 'Money' = net 
+        self.udi: list['Reference'] = udi or []
+        self.subDetail: list['SubDetail'] = subDetail or []
+        
 
   
     
     
-@dataclass
-class Item(Element):
+
+class Item(ModelBase):
     """ A claim line. Either a simple  product or service or a 'group' of details which can each be a simple items or groups of sub-details.:param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param list['Extension'] extension: Additional content defined by implementations
+    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param int sequence: Item instance identifier
     :param int careTeamSequence: Applicable careTeam members
     :param int diagnosisSequence: Applicable diagnoses
     :param int procedureSequence: Applicable procedures
     :param int informationSequence: Applicable exception and supporting information
-    :param CodeableConcept revenue: Revenue or cost center code
-    :param CodeableConcept category: Benefit classification
-    :param CodeableConcept productOrService: Billing, service, product, or drug code
-    :param CodeableConcept modifier: Product or service billing modifiers
-    :param CodeableConcept programCode: Program the product or service is provided under
+    :param 'CodeableConcept' revenue: Revenue or cost center code
+    :param 'CodeableConcept' category: Benefit classification
+    :param 'CodeableConcept' productOrService: Billing, service, product, or drug code
+    :param list['CodeableConcept'] modifier: Product or service billing modifiers
+    :param list['CodeableConcept'] programCode: Program the product or service is provided under
     :param str servicedDate: Date or dates of service or product delivery
-    :param CodeableConcept locationCodeableConcept: Place of service or where product was supplied
-    :param Quantity quantity: Count of products or services
-    :param Money unitPrice: Fee, charge or cost per item
+    :param 'CodeableConcept' locationCodeableConcept: Place of service or where product was supplied
+    :param 'Quantity' quantity: Count of products or services
+    :param 'Money' unitPrice: Fee, charge or cost per item
     :param float factor: Price scaling factor
-    :param Money net: Total item cost
-    :param Reference udi: Unique device identifier
-    :param CodeableConcept bodySite: Anatomical location
-    :param CodeableConcept subSite: Anatomical sub-location
-    :param Reference encounter: Encounters related to this billed item
-    :param Detail detail: Product or service provided
+    :param 'Money' net: Total item cost
+    :param list['Reference'] udi: Unique device identifier
+    :param 'CodeableConcept' bodySite: Anatomical location
+    :param list['CodeableConcept'] subSite: Anatomical sub-location
+    :param list['Reference'] encounter: Encounters related to this billed item
+    :param list['Detail'] detail: Product or service provided
     """
-    id: str = None
-    
-    extension:  list["Extension"] = [Extension()]
-    
-    modifierExtension:  list["Extension"] = [Extension()]
-    
-    sequence: int = None
-    
-    careTeamSequence: int = None
-    
-    diagnosisSequence: int = None
-    
-    procedureSequence: int = None
-    
-    informationSequence: int = None
-    
-    revenue:  "CodeableConcept" = CodeableConcept()
-    
-    category:  "CodeableConcept" = CodeableConcept()
-    
-    productOrService:  "CodeableConcept" = CodeableConcept()
-    
-    modifier:  list["CodeableConcept"] = [CodeableConcept()]
-    
-    programCode:  list["CodeableConcept"] = [CodeableConcept()]
-    
-    servicedDate: str = None
-    
-    locationCodeableConcept:  "CodeableConcept" = CodeableConcept()
-    
-    quantity:  "Quantity" = Quantity()
-    
-    unitPrice:  "Money" = Money()
-    
-    factor: float = None
-    
-    net:  "Money" = Money()
-    
-    udi:  list["Reference"] = [Reference()]
-    
-    bodySite:  "CodeableConcept" = CodeableConcept()
-    
-    subSite:  list["CodeableConcept"] = [CodeableConcept()]
-    
-    encounter:  list["Reference"] = [Reference()]
-    
-    detail:  list["Detail"] = [Detail()]
-    
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  sequence: int = None,  careTeamSequence: int = None,  diagnosisSequence: int = None,  procedureSequence: int = None,  informationSequence: int = None,  revenue: 'CodeableConcept' = None,  category: 'CodeableConcept' = None,  productOrService: 'CodeableConcept' = None,  modifier: list['CodeableConcept'] = None,  programCode: list['CodeableConcept'] = None,  servicedDate: str = None,  locationCodeableConcept: 'CodeableConcept' = None,  quantity: 'Quantity' = None,  unitPrice: 'Money' = None,  factor: float = None,  net: 'Money' = None,  udi: list['Reference'] = None,  bodySite: 'CodeableConcept' = None,  subSite: list['CodeableConcept'] = None,  encounter: list['Reference'] = None,  detail: list['Detail'] = None, ):
+        self.id: str = id 
+        self.extension: list['Extension'] = extension or []
+        self.modifierExtension: list['Extension'] = modifierExtension or []
+        self.sequence: int = sequence 
+        self.careTeamSequence: int = careTeamSequence or []
+        self.diagnosisSequence: int = diagnosisSequence or []
+        self.procedureSequence: int = procedureSequence or []
+        self.informationSequence: int = informationSequence or []
+        self.revenue: 'CodeableConcept' = revenue 
+        self.category: 'CodeableConcept' = category 
+        self.productOrService: 'CodeableConcept' = productOrService 
+        self.modifier: list['CodeableConcept'] = modifier or []
+        self.programCode: list['CodeableConcept'] = programCode or []
+        self.servicedDate: str = servicedDate 
+        self.locationCodeableConcept: 'CodeableConcept' = locationCodeableConcept 
+        self.quantity: 'Quantity' = quantity 
+        self.unitPrice: 'Money' = unitPrice 
+        self.factor: float = factor 
+        self.net: 'Money' = net 
+        self.udi: list['Reference'] = udi or []
+        self.bodySite: 'CodeableConcept' = bodySite 
+        self.subSite: list['CodeableConcept'] = subSite or []
+        self.encounter: list['Reference'] = encounter or []
+        self.detail: list['Detail'] = detail or []
+        
 
-@dataclass
-class Claim(ModelBase):
+class Claim(DomainResource):
     """ A provider issued list of professional services and products which have been provided, or are to be provided, to a patient which is sent to an insurer for reimbursement.
     :param str id: Logical id of this artifact
-    :param Meta meta: Metadata about the resource
+    :param 'Meta' meta: Metadata about the resource
     :param str implicitRules: A set of rules under which this content was created
     :param str language: Language of the resource content
-    :param Narrative text: Text summary of the resource, for human interpretation
-    :param Resource contained: Contained, inline Resources
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored
-    :param Identifier identifier: Business Identifier for claim
+    :param 'Narrative' text: Text summary of the resource, for human interpretation
+    :param list['Resource'] contained: Contained, inline Resources
+    :param list['Extension'] extension: Additional content defined by implementations
+    :param list['Extension'] modifierExtension: Extensions that cannot be ignored
+    :param list['Identifier'] identifier: Business Identifier for claim
     :param str status: active | cancelled | draft | entered-in-error
-    :param CodeableConcept type: Category or discipline
-    :param CodeableConcept subType: More granular claim type
+    :param 'CodeableConcept' type: Category or discipline
+    :param 'CodeableConcept' subType: More granular claim type
     :param str use: claim | preauthorization | predetermination
-    :param Reference patient: The recipient of the products and services
-    :param Period billablePeriod: Relevant time frame for the claim
+    :param 'Reference' patient: The recipient of the products and services
+    :param 'Period' billablePeriod: Relevant time frame for the claim
     :param str created: Resource creation date
-    :param Reference enterer: Author of the claim
-    :param Reference insurer: Target
-    :param Reference provider: Party responsible for the claim
-    :param CodeableConcept priority: Desired processing ugency
-    :param CodeableConcept fundsReserve: For whom to reserve funds
-    :param Related related: Prior or corollary claims
-    :param Reference prescription: Prescription authorizing services and products
-    :param Reference originalPrescription: Original prescription if superseded by fulfiller
-    :param Payee payee: Recipient of benefits payable
-    :param Reference referral: Treatment referral
-    :param Reference facility: Servicing facility
-    :param CareTeam careTeam: Members of the care team
-    :param SupportingInfo supportingInfo: Supporting information
-    :param Diagnosis diagnosis: Pertinent diagnosis information
-    :param Procedure procedure: Clinical procedures performed
-    :param Insurance insurance: Patient insurance information
-    :param Accident accident: Details of the event
-    :param Item item: Product or service provided
-    :param Money total: Total claim cost
+    :param 'Reference' enterer: Author of the claim
+    :param 'Reference' insurer: Target
+    :param 'Reference' provider: Party responsible for the claim
+    :param 'CodeableConcept' priority: Desired processing ugency
+    :param 'CodeableConcept' fundsReserve: For whom to reserve funds
+    :param list['Related'] related: Prior or corollary claims
+    :param 'Reference' prescription: Prescription authorizing services and products
+    :param 'Reference' originalPrescription: Original prescription if superseded by fulfiller
+    :param 'Payee' payee: Recipient of benefits payable
+    :param 'Reference' referral: Treatment referral
+    :param 'Reference' facility: Servicing facility
+    :param list['CareTeam'] careTeam: Members of the care team
+    :param list['SupportingInfo'] supportingInfo: Supporting information
+    :param list['Diagnosis'] diagnosis: Pertinent diagnosis information
+    :param list['Procedure'] procedure: Clinical procedures performed
+    :param list['Insurance'] insurance: Patient insurance information
+    :param 'Accident' accident: Details of the event
+    :param list['Item'] item: Product or service provided
+    :param 'Money' total: Total claim cost
     """
-
-    resourceType: str = "Claim"
-    id: str = None
-    
-    meta: "Meta" = None
-    
-    implicitRules: str = None
-    
-    language: str = None
-    
-    text: "Narrative" = None
-    
-    contained: list["Resource"] = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    identifier: list["Identifier"] = None
-    
-    status: str = None
-    
-    type: "CodeableConcept" = None
-    
-    subType: "CodeableConcept" = None
-    
-    use: str = None
-    
-    patient: "Reference" = None
-    
-    billablePeriod: "Period" = None
-    
-    created: str = None
-    
-    enterer: "Reference" = None
-    
-    insurer: "Reference" = None
-    
-    provider: "Reference" = None
-    
-    priority: "CodeableConcept" = None
-    
-    fundsReserve: "CodeableConcept" = None
-    
-    related: list["Related"] = None
-    
-    prescription: "Reference" = None
-    
-    originalPrescription: "Reference" = None
-    
-    payee: "Payee" = None
-    
-    referral: "Reference" = None
-    
-    facility: "Reference" = None
-    
-    careTeam: list["CareTeam"] = None
-    
-    supportingInfo: list["SupportingInfo"] = None
-    
-    diagnosis: list["Diagnosis"] = None
-    
-    procedure: list["Procedure"] = None
-    
-    insurance: list["Insurance"] = None
-    
-    accident: "Accident" = None
-    
-    item: list["Item"] = None
-    
-    total: "Money" = None
-    
+    def __init__(self, resourceType: str = "Claim",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  identifier: list['Identifier'] = None,  status: str = None,  type: 'CodeableConcept' = None,  subType: 'CodeableConcept' = None,  use: str = None,  patient: 'Reference' = None,  billablePeriod: 'Period' = None,  created: str = None,  enterer: 'Reference' = None,  insurer: 'Reference' = None,  provider: 'Reference' = None,  priority: 'CodeableConcept' = None,  fundsReserve: 'CodeableConcept' = None,  related: list['Related'] = None,  prescription: 'Reference' = None,  originalPrescription: 'Reference' = None,  payee: 'Payee' = None,  referral: 'Reference' = None,  facility: 'Reference' = None,  careTeam: list['CareTeam'] = None,  supportingInfo: list['SupportingInfo'] = None,  diagnosis: list['Diagnosis'] = None,  procedure: list['Procedure'] = None,  insurance: list['Insurance'] = None,  accident: 'Accident' = None,  item: list['Item'] = None,  total: 'Money' = None, ):
+        self.resourceType: str = resourceType or "Claim"
+        self.id: str = id 
+        self.meta: 'Meta' = meta 
+        self.implicitRules: str = implicitRules 
+        self.language: str = language 
+        self.text: 'Narrative' = text 
+        self.contained: list['Resource'] = contained or []
+        self.extension: list['Extension'] = extension or []
+        self.modifierExtension: list['Extension'] = modifierExtension or []
+        self.identifier: list['Identifier'] = identifier or []
+        self.status: str = status 
+        self.type: 'CodeableConcept' = type 
+        self.subType: 'CodeableConcept' = subType 
+        self.use: str = use 
+        self.patient: 'Reference' = patient 
+        self.billablePeriod: 'Period' = billablePeriod 
+        self.created: str = created 
+        self.enterer: 'Reference' = enterer 
+        self.insurer: 'Reference' = insurer 
+        self.provider: 'Reference' = provider 
+        self.priority: 'CodeableConcept' = priority 
+        self.fundsReserve: 'CodeableConcept' = fundsReserve 
+        self.related: list['Related'] = related or []
+        self.prescription: 'Reference' = prescription 
+        self.originalPrescription: 'Reference' = originalPrescription 
+        self.payee: 'Payee' = payee 
+        self.referral: 'Reference' = referral 
+        self.facility: 'Reference' = facility 
+        self.careTeam: list['CareTeam'] = careTeam or []
+        self.supportingInfo: list['SupportingInfo'] = supportingInfo or []
+        self.diagnosis: list['Diagnosis'] = diagnosis or []
+        self.procedure: list['Procedure'] = procedure or []
+        self.insurance: list['Insurance'] = insurance or []
+        self.accident: 'Accident' = accident 
+        self.item: list['Item'] = item or []
+        self.total: 'Money' = total 
+        

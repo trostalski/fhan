@@ -1,185 +1,143 @@
 """
 Generated class for Specimen. 
-Time: 2023-09-24 20:01:56
+Time: 2023-09-24 21:52:32
 """
-from dataclasses import dataclass
-from fhan.models.R4.Extension import *
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Annotation import *
+from fhan.models.R4.Period import *
+from fhan.models.R4.Reference import *
 from fhan.models.R4.Resource import *
+from fhan.models.R4.Annotation import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Identifier import *
 from fhan.models.R4.Meta import *
 from fhan.models.R4.Quantity import *
-from fhan.models.R4.Reference import *
-from fhan.models.R4.Period import *
-from fhan.models.R4.Identifier import *
-from fhan.models.R4.Element import *
-from fhan.models.R4.Duration import *
-from fhan.models.R4.Narrative import *
 from fhan.models.R4.CodeableConcept import *
-from fhan.models.generator_models import ModelBase
+from fhan.models.R4.Duration import *
+from fhan.models.R4.Extension import *
+from fhan.models.R4.DomainResource import *
+
 
     
     
-@dataclass
-class Collection(Element):
+
+class Collection(ModelBase):
     """ Details concerning the specimen collection.:param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param Reference collector: Who collected the specimen
+    :param list['Extension'] extension: Additional content defined by implementations
+    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Reference' collector: Who collected the specimen
     :param str collectedDateTime: Collection time
-    :param Duration duration: How long it took to collect specimen
-    :param Quantity quantity: The quantity of specimen collected
-    :param CodeableConcept method: Technique used to perform collection
-    :param CodeableConcept bodySite: Anatomical collection site
-    :param CodeableConcept fastingStatusCodeableConcept: Whether or how long patient abstained from food and/or drink
+    :param 'Duration' duration: How long it took to collect specimen
+    :param 'Quantity' quantity: The quantity of specimen collected
+    :param 'CodeableConcept' method: Technique used to perform collection
+    :param 'CodeableConcept' bodySite: Anatomical collection site
+    :param 'CodeableConcept' fastingStatusCodeableConcept: Whether or how long patient abstained from food and/or drink
     """
-    id: str = None
-    
-    extension:  list["Extension"] = [Extension()]
-    
-    modifierExtension:  list["Extension"] = [Extension()]
-    
-    collector:  "Reference" = Reference()
-    
-    collectedDateTime: str = None
-    
-    duration:  "Duration" = Duration()
-    
-    quantity:  "Quantity" = Quantity()
-    
-    method:  "CodeableConcept" = CodeableConcept()
-    
-    bodySite:  "CodeableConcept" = CodeableConcept()
-    
-    fastingStatusCodeableConcept:  "CodeableConcept" = CodeableConcept()
-    
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  collector: 'Reference' = None,  collectedDateTime: str = None,  duration: 'Duration' = None,  quantity: 'Quantity' = None,  method: 'CodeableConcept' = None,  bodySite: 'CodeableConcept' = None,  fastingStatusCodeableConcept: 'CodeableConcept' = None, ):
+        self.id: str = id 
+        self.extension: list['Extension'] = extension or []
+        self.modifierExtension: list['Extension'] = modifierExtension or []
+        self.collector: 'Reference' = collector 
+        self.collectedDateTime: str = collectedDateTime 
+        self.duration: 'Duration' = duration 
+        self.quantity: 'Quantity' = quantity 
+        self.method: 'CodeableConcept' = method 
+        self.bodySite: 'CodeableConcept' = bodySite 
+        self.fastingStatusCodeableConcept: 'CodeableConcept' = fastingStatusCodeableConcept 
+        
 
     
     
-@dataclass
-class Processing(Element):
+
+class Processing(ModelBase):
     """ Details concerning processing and processing steps for the specimen.:param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param list['Extension'] extension: Additional content defined by implementations
+    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str description: Textual description of procedure
-    :param CodeableConcept procedure: Indicates the treatment step  applied to the specimen
-    :param Reference additive: Material used in the processing step
+    :param 'CodeableConcept' procedure: Indicates the treatment step  applied to the specimen
+    :param list['Reference'] additive: Material used in the processing step
     :param str timeDateTime: Date and time of specimen processing
     """
-    id: str = None
-    
-    extension:  list["Extension"] = [Extension()]
-    
-    modifierExtension:  list["Extension"] = [Extension()]
-    
-    description: str = None
-    
-    procedure:  "CodeableConcept" = CodeableConcept()
-    
-    additive:  list["Reference"] = [Reference()]
-    
-    timeDateTime: str = None
-    
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  description: str = None,  procedure: 'CodeableConcept' = None,  additive: list['Reference'] = None,  timeDateTime: str = None, ):
+        self.id: str = id 
+        self.extension: list['Extension'] = extension or []
+        self.modifierExtension: list['Extension'] = modifierExtension or []
+        self.description: str = description 
+        self.procedure: 'CodeableConcept' = procedure 
+        self.additive: list['Reference'] = additive or []
+        self.timeDateTime: str = timeDateTime 
+        
 
     
     
-@dataclass
-class Container(Element):
+
+class Container(ModelBase):
     """ The container holding the specimen.  The recursive nature of containers; i.e. blood in tube in tray in rack is not addressed here.:param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param Identifier identifier: Id for the container
+    :param list['Extension'] extension: Additional content defined by implementations
+    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param list['Identifier'] identifier: Id for the container
     :param str description: Textual description of the container
-    :param CodeableConcept type: Kind of container directly associated with specimen
-    :param Quantity capacity: Container volume or size
-    :param Quantity specimenQuantity: Quantity of specimen within container
-    :param CodeableConcept additiveCodeableConcept: Additive associated with container
+    :param 'CodeableConcept' type: Kind of container directly associated with specimen
+    :param 'Quantity' capacity: Container volume or size
+    :param 'Quantity' specimenQuantity: Quantity of specimen within container
+    :param 'CodeableConcept' additiveCodeableConcept: Additive associated with container
     """
-    id: str = None
-    
-    extension:  list["Extension"] = [Extension()]
-    
-    modifierExtension:  list["Extension"] = [Extension()]
-    
-    identifier:  list["Identifier"] = [Identifier()]
-    
-    description: str = None
-    
-    type:  "CodeableConcept" = CodeableConcept()
-    
-    capacity:  "Quantity" = Quantity()
-    
-    specimenQuantity:  "Quantity" = Quantity()
-    
-    additiveCodeableConcept:  "CodeableConcept" = CodeableConcept()
-    
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  identifier: list['Identifier'] = None,  description: str = None,  type: 'CodeableConcept' = None,  capacity: 'Quantity' = None,  specimenQuantity: 'Quantity' = None,  additiveCodeableConcept: 'CodeableConcept' = None, ):
+        self.id: str = id 
+        self.extension: list['Extension'] = extension or []
+        self.modifierExtension: list['Extension'] = modifierExtension or []
+        self.identifier: list['Identifier'] = identifier or []
+        self.description: str = description 
+        self.type: 'CodeableConcept' = type 
+        self.capacity: 'Quantity' = capacity 
+        self.specimenQuantity: 'Quantity' = specimenQuantity 
+        self.additiveCodeableConcept: 'CodeableConcept' = additiveCodeableConcept 
+        
 
-@dataclass
-class Specimen(ModelBase):
+class Specimen(DomainResource):
     """ A sample to be used for analysis.
     :param str id: Logical id of this artifact
-    :param Meta meta: Metadata about the resource
+    :param 'Meta' meta: Metadata about the resource
     :param str implicitRules: A set of rules under which this content was created
     :param str language: Language of the resource content
-    :param Narrative text: Text summary of the resource, for human interpretation
-    :param Resource contained: Contained, inline Resources
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored
-    :param Identifier identifier: External Identifier
-    :param Identifier accessionIdentifier: Identifier assigned by the lab
+    :param 'Narrative' text: Text summary of the resource, for human interpretation
+    :param list['Resource'] contained: Contained, inline Resources
+    :param list['Extension'] extension: Additional content defined by implementations
+    :param list['Extension'] modifierExtension: Extensions that cannot be ignored
+    :param list['Identifier'] identifier: External Identifier
+    :param 'Identifier' accessionIdentifier: Identifier assigned by the lab
     :param str status: available | unavailable | unsatisfactory | entered-in-error
-    :param CodeableConcept type: Kind of material that forms the specimen
-    :param Reference subject: Where the specimen came from. This may be from patient(s), from a location (e.g., the source of an environmental sample), or a sampling of a substance or a device
+    :param 'CodeableConcept' type: Kind of material that forms the specimen
+    :param 'Reference' subject: Where the specimen came from. This may be from patient(s), from a location (e.g., the source of an environmental sample), or a sampling of a substance or a device
     :param str receivedTime: The time when specimen was received for processing
-    :param Reference parent: Specimen from which this specimen originated
-    :param Reference request: Why the specimen was collected
-    :param Collection collection: Collection details
-    :param Processing processing: Processing and processing step details
-    :param Container container: Direct container of specimen (tube/slide, etc.)
-    :param CodeableConcept condition: State of the specimen
-    :param Annotation note: Comments
+    :param list['Reference'] parent: Specimen from which this specimen originated
+    :param list['Reference'] request: Why the specimen was collected
+    :param 'Collection' collection: Collection details
+    :param list['Processing'] processing: Processing and processing step details
+    :param list['Container'] container: Direct container of specimen (tube/slide, etc.)
+    :param list['CodeableConcept'] condition: State of the specimen
+    :param list['Annotation'] note: Comments
     """
-
-    resourceType: str = "Specimen"
-    id: str = None
-    
-    meta: "Meta" = None
-    
-    implicitRules: str = None
-    
-    language: str = None
-    
-    text: "Narrative" = None
-    
-    contained: list["Resource"] = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    identifier: list["Identifier"] = None
-    
-    accessionIdentifier: "Identifier" = None
-    
-    status: str = None
-    
-    type: "CodeableConcept" = None
-    
-    subject: "Reference" = None
-    
-    receivedTime: str = None
-    
-    parent: list["Reference"] = None
-    
-    request: list["Reference"] = None
-    
-    collection: "Collection" = None
-    
-    processing: list["Processing"] = None
-    
-    container: list["Container"] = None
-    
-    condition: list["CodeableConcept"] = None
-    
-    note: list["Annotation"] = None
-    
+    def __init__(self, resourceType: str = "Specimen",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  identifier: list['Identifier'] = None,  accessionIdentifier: 'Identifier' = None,  status: str = None,  type: 'CodeableConcept' = None,  subject: 'Reference' = None,  receivedTime: str = None,  parent: list['Reference'] = None,  request: list['Reference'] = None,  collection: 'Collection' = None,  processing: list['Processing'] = None,  container: list['Container'] = None,  condition: list['CodeableConcept'] = None,  note: list['Annotation'] = None, ):
+        self.resourceType: str = resourceType or "Specimen"
+        self.id: str = id 
+        self.meta: 'Meta' = meta 
+        self.implicitRules: str = implicitRules 
+        self.language: str = language 
+        self.text: 'Narrative' = text 
+        self.contained: list['Resource'] = contained or []
+        self.extension: list['Extension'] = extension or []
+        self.modifierExtension: list['Extension'] = modifierExtension or []
+        self.identifier: list['Identifier'] = identifier or []
+        self.accessionIdentifier: 'Identifier' = accessionIdentifier 
+        self.status: str = status 
+        self.type: 'CodeableConcept' = type 
+        self.subject: 'Reference' = subject 
+        self.receivedTime: str = receivedTime 
+        self.parent: list['Reference'] = parent or []
+        self.request: list['Reference'] = request or []
+        self.collection: 'Collection' = collection 
+        self.processing: list['Processing'] = processing or []
+        self.container: list['Container'] = container or []
+        self.condition: list['CodeableConcept'] = condition or []
+        self.note: list['Annotation'] = note or []
+        

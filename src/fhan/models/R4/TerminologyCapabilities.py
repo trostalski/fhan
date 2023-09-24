@@ -1,60 +1,53 @@
 """
 Generated class for TerminologyCapabilities. 
-Time: 2023-09-24 20:01:56
+Time: 2023-09-24 21:52:32
 """
-from dataclasses import dataclass
 from fhan.models.R4.UsageContext import *
-from fhan.models.R4.Extension import *
-from fhan.models.R4.BackboneElement import *
 from fhan.models.R4.Resource import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Element import *
 from fhan.models.R4.ContactDetail import *
 from fhan.models.R4.Narrative import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Meta import *
 from fhan.models.R4.CodeableConcept import *
-from fhan.models.generator_models import ModelBase
+from fhan.models.R4.Extension import *
+from fhan.models.R4.DomainResource import *
+
 
     
     
-@dataclass
-class Software(Element):
+
+class Software(ModelBase):
     """ Software that is covered by this terminology capability statement.  It is used when the statement describes the capabilities of a particular software version, independent of an installation.:param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param list['Extension'] extension: Additional content defined by implementations
+    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str name: A name the software is known by
     :param str version: Version covered by this statement
     """
-    id: str = None
-    
-    extension:  list["Extension"] = [Extension()]
-    
-    modifierExtension:  list["Extension"] = [Extension()]
-    
-    name: str = None
-    
-    version: str = None
-    
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  name: str = None,  version: str = None, ):
+        self.id: str = id 
+        self.extension: list['Extension'] = extension or []
+        self.modifierExtension: list['Extension'] = modifierExtension or []
+        self.name: str = name 
+        self.version: str = version 
+        
 
     
     
-@dataclass
-class Implementation(Element):
+
+class Implementation(ModelBase):
     """ Identifies a specific implementation instance that is described by the terminology capability statement - i.e. a particular installation, rather than the capabilities of a software program.:param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param list['Extension'] extension: Additional content defined by implementations
+    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str description: Describes this specific instance
     :param str url: Base URL for the implementation
     """
-    id: str = None
-    
-    extension:  list["Extension"] = [Extension()]
-    
-    modifierExtension:  list["Extension"] = [Extension()]
-    
-    description: str = None
-    
-    url: str = None
-    
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  description: str = None,  url: str = None, ):
+        self.id: str = id 
+        self.extension: list['Extension'] = extension or []
+        self.modifierExtension: list['Extension'] = modifierExtension or []
+        self.description: str = description 
+        self.url: str = url 
+        
 
     
         
@@ -62,203 +55,173 @@ class Implementation(Element):
         
     
     
-@dataclass
-class Filter(Element):
+
+class Filter(ModelBase):
     """ Filter Properties supported.:param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param list['Extension'] extension: Additional content defined by implementations
+    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str code: Code of the property supported
     :param str op: Operations supported for the property
     """
-    id: str = None
-    
-    extension:  list["Extension"] = [Extension()]
-    
-    modifierExtension:  list["Extension"] = [Extension()]
-    
-    code: str = None
-    
-    op: str = None
-    
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  code: str = None,  op: str = None, ):
+        self.id: str = id 
+        self.extension: list['Extension'] = extension or []
+        self.modifierExtension: list['Extension'] = modifierExtension or []
+        self.code: str = code 
+        self.op: str = op or []
+        
 
   
     
     
-@dataclass
-class Version(Element):
+
+class Version(ModelBase):
     """ For the code system, a list of versions that are supported by the server.:param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param list['Extension'] extension: Additional content defined by implementations
+    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str code: Version identifier for this version
     :param bool isDefault: If this is the default version for this code system
     :param bool compositional: If compositional grammar is supported
     :param str language: Language Displays supported
-    :param Filter filter: Filter Properties supported
+    :param list['Filter'] filter: Filter Properties supported
     :param str property: Properties supported for $lookup
     """
-    id: str = None
-    
-    extension:  list["Extension"] = [Extension()]
-    
-    modifierExtension:  list["Extension"] = [Extension()]
-    
-    code: str = None
-    
-    isDefault: bool = None
-    
-    compositional: bool = None
-    
-    language: str = None
-    
-    filter:  list["Filter"] = [Filter()]
-    
-    property: str = None
-    
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  code: str = None,  isDefault: bool = None,  compositional: bool = None,  language: str = None,  filter: list['Filter'] = None,  property: str = None, ):
+        self.id: str = id 
+        self.extension: list['Extension'] = extension or []
+        self.modifierExtension: list['Extension'] = modifierExtension or []
+        self.code: str = code 
+        self.isDefault: bool = isDefault 
+        self.compositional: bool = compositional 
+        self.language: str = language or []
+        self.filter: list['Filter'] = filter or []
+        self.property: str = property or []
+        
 
   
     
     
-@dataclass
-class CodeSystem(Element):
+
+class CodeSystem(ModelBase):
     """ Identifies a code system that is supported by the server. If there is a no code system URL, then this declares the general assumptions a client can make about support for any CodeSystem resource.:param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param list['Extension'] extension: Additional content defined by implementations
+    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str uri: URI for the Code System
-    :param Version version: Version of Code System supported
+    :param list['Version'] version: Version of Code System supported
     :param bool subsumption: Whether subsumption is supported
     """
-    id: str = None
-    
-    extension:  list["Extension"] = [Extension()]
-    
-    modifierExtension:  list["Extension"] = [Extension()]
-    
-    uri: str = None
-    
-    version:  list["Version"] = [Version()]
-    
-    subsumption: bool = None
-    
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  uri: str = None,  version: list['Version'] = None,  subsumption: bool = None, ):
+        self.id: str = id 
+        self.extension: list['Extension'] = extension or []
+        self.modifierExtension: list['Extension'] = modifierExtension or []
+        self.uri: str = uri 
+        self.version: list['Version'] = version or []
+        self.subsumption: bool = subsumption 
+        
 
     
         
     
     
-@dataclass
-class Parameter(Element):
+
+class Parameter(ModelBase):
     """ Supported expansion parameter.:param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param list['Extension'] extension: Additional content defined by implementations
+    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str name: Expansion Parameter name
     :param str documentation: Description of support for parameter
     """
-    id: str = None
-    
-    extension:  list["Extension"] = [Extension()]
-    
-    modifierExtension:  list["Extension"] = [Extension()]
-    
-    name: str = None
-    
-    documentation: str = None
-    
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  name: str = None,  documentation: str = None, ):
+        self.id: str = id 
+        self.extension: list['Extension'] = extension or []
+        self.modifierExtension: list['Extension'] = modifierExtension or []
+        self.name: str = name 
+        self.documentation: str = documentation 
+        
 
   
     
     
-@dataclass
-class Expansion(Element):
+
+class Expansion(ModelBase):
     """ Information about the [ValueSet/$expand](valueset-operation-expand.html) operation.:param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param list['Extension'] extension: Additional content defined by implementations
+    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param bool hierarchical: Whether the server can return nested value sets
     :param bool paging: Whether the server supports paging on expansion
     :param bool incomplete: Allow request for incomplete expansions?
-    :param Parameter parameter: Supported expansion parameter
+    :param list['Parameter'] parameter: Supported expansion parameter
     :param str textFilter: Documentation about text searching works
     """
-    id: str = None
-    
-    extension:  list["Extension"] = [Extension()]
-    
-    modifierExtension:  list["Extension"] = [Extension()]
-    
-    hierarchical: bool = None
-    
-    paging: bool = None
-    
-    incomplete: bool = None
-    
-    parameter:  list["Parameter"] = [Parameter()]
-    
-    textFilter: str = None
-    
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  hierarchical: bool = None,  paging: bool = None,  incomplete: bool = None,  parameter: list['Parameter'] = None,  textFilter: str = None, ):
+        self.id: str = id 
+        self.extension: list['Extension'] = extension or []
+        self.modifierExtension: list['Extension'] = modifierExtension or []
+        self.hierarchical: bool = hierarchical 
+        self.paging: bool = paging 
+        self.incomplete: bool = incomplete 
+        self.parameter: list['Parameter'] = parameter or []
+        self.textFilter: str = textFilter 
+        
 
     
     
-@dataclass
-class ValidateCode(Element):
+
+class ValidateCode(ModelBase):
     """ Information about the [ValueSet/$validate-code](valueset-operation-validate-code.html) operation.:param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param list['Extension'] extension: Additional content defined by implementations
+    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param bool translations: Whether translations are validated
     """
-    id: str = None
-    
-    extension:  list["Extension"] = [Extension()]
-    
-    modifierExtension:  list["Extension"] = [Extension()]
-    
-    translations: bool = None
-    
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  translations: bool = None, ):
+        self.id: str = id 
+        self.extension: list['Extension'] = extension or []
+        self.modifierExtension: list['Extension'] = modifierExtension or []
+        self.translations: bool = translations 
+        
 
     
     
-@dataclass
-class Translation(Element):
+
+class Translation(ModelBase):
     """ Information about the [ConceptMap/$translate](conceptmap-operation-translate.html) operation.:param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param list['Extension'] extension: Additional content defined by implementations
+    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param bool needsMap: Whether the client must identify the map
     """
-    id: str = None
-    
-    extension:  list["Extension"] = [Extension()]
-    
-    modifierExtension:  list["Extension"] = [Extension()]
-    
-    needsMap: bool = None
-    
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  needsMap: bool = None, ):
+        self.id: str = id 
+        self.extension: list['Extension'] = extension or []
+        self.modifierExtension: list['Extension'] = modifierExtension or []
+        self.needsMap: bool = needsMap 
+        
 
     
     
-@dataclass
-class Closure(Element):
+
+class Closure(ModelBase):
     """ Whether the $closure operation is supported.:param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param list['Extension'] extension: Additional content defined by implementations
+    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param bool translation: If cross-system closure is supported
     """
-    id: str = None
-    
-    extension:  list["Extension"] = [Extension()]
-    
-    modifierExtension:  list["Extension"] = [Extension()]
-    
-    translation: bool = None
-    
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  translation: bool = None, ):
+        self.id: str = id 
+        self.extension: list['Extension'] = extension or []
+        self.modifierExtension: list['Extension'] = modifierExtension or []
+        self.translation: bool = translation 
+        
 
-@dataclass
-class TerminologyCapabilities(ModelBase):
+class TerminologyCapabilities(DomainResource):
     """ A TerminologyCapabilities resource documents a set of capabilities (behaviors) of a FHIR Terminology Server that may be used as a statement of actual server functionality or a statement of required or desired server implementation.
     :param str id: Logical id of this artifact
-    :param Meta meta: Metadata about the resource
+    :param 'Meta' meta: Metadata about the resource
     :param str implicitRules: A set of rules under which this content was created
     :param str language: Language of the resource content
-    :param Narrative text: Text summary of the resource, for human interpretation
-    :param Resource contained: Contained, inline Resources
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored
+    :param 'Narrative' text: Text summary of the resource, for human interpretation
+    :param list['Resource'] contained: Contained, inline Resources
+    :param list['Extension'] extension: Additional content defined by implementations
+    :param list['Extension'] modifierExtension: Extensions that cannot be ignored
     :param str url: Canonical identifier for this terminology capabilities, represented as a URI (globally unique)
     :param str version: Business version of the terminology capabilities
     :param str name: Name for this terminology capabilities (computer friendly)
@@ -267,86 +230,55 @@ class TerminologyCapabilities(ModelBase):
     :param bool experimental: For testing purposes, not real usage
     :param str date: Date last changed
     :param str publisher: Name of the publisher (organization or individual)
-    :param ContactDetail contact: Contact details for the publisher
+    :param list['ContactDetail'] contact: Contact details for the publisher
     :param str description: Natural language description of the terminology capabilities
-    :param UsageContext useContext: The context that the content is intended to support
-    :param CodeableConcept jurisdiction: Intended jurisdiction for terminology capabilities (if applicable)
+    :param list['UsageContext'] useContext: The context that the content is intended to support
+    :param list['CodeableConcept'] jurisdiction: Intended jurisdiction for terminology capabilities (if applicable)
     :param str purpose: Why this terminology capabilities is defined
     :param str copyright: Use and/or publishing restrictions
     :param str kind: instance | capability | requirements
-    :param Software software: Software that is covered by this terminology capability statement
-    :param Implementation implementation: If this describes a specific instance
+    :param 'Software' software: Software that is covered by this terminology capability statement
+    :param 'Implementation' implementation: If this describes a specific instance
     :param bool lockedDate: Whether lockedDate is supported
-    :param CodeSystem codeSystem: A code system supported by the server
-    :param Expansion expansion: Information about the [ValueSet/$expand](valueset-operation-expand.html) operation
+    :param list['CodeSystem'] codeSystem: A code system supported by the server
+    :param 'Expansion' expansion: Information about the [ValueSet/$expand](valueset-operation-expand.html) operation
     :param str codeSearch: explicit | all
-    :param ValidateCode validateCode: Information about the [ValueSet/$validate-code](valueset-operation-validate-code.html) operation
-    :param Translation translation: Information about the [ConceptMap/$translate](conceptmap-operation-translate.html) operation
-    :param Closure closure: Information about the [ConceptMap/$closure](conceptmap-operation-closure.html) operation
+    :param 'ValidateCode' validateCode: Information about the [ValueSet/$validate-code](valueset-operation-validate-code.html) operation
+    :param 'Translation' translation: Information about the [ConceptMap/$translate](conceptmap-operation-translate.html) operation
+    :param 'Closure' closure: Information about the [ConceptMap/$closure](conceptmap-operation-closure.html) operation
     """
-
-    resourceType: str = "TerminologyCapabilities"
-    id: str = None
-    
-    meta: "Meta" = None
-    
-    implicitRules: str = None
-    
-    language: str = None
-    
-    text: "Narrative" = None
-    
-    contained: list["Resource"] = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    url: str = None
-    
-    version: str = None
-    
-    name: str = None
-    
-    title: str = None
-    
-    status: str = None
-    
-    experimental: bool = None
-    
-    date: str = None
-    
-    publisher: str = None
-    
-    contact: list["ContactDetail"] = None
-    
-    description: str = None
-    
-    useContext: list["UsageContext"] = None
-    
-    jurisdiction: list["CodeableConcept"] = None
-    
-    purpose: str = None
-    
-    copyright: str = None
-    
-    kind: str = None
-    
-    software: "Software" = None
-    
-    implementation: "Implementation" = None
-    
-    lockedDate: bool = None
-    
-    codeSystem: list["CodeSystem"] = None
-    
-    expansion: "Expansion" = None
-    
-    codeSearch: str = None
-    
-    validateCode: "ValidateCode" = None
-    
-    translation: "Translation" = None
-    
-    closure: "Closure" = None
-    
+    def __init__(self, resourceType: str = "TerminologyCapabilities",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  url: str = None,  version: str = None,  name: str = None,  title: str = None,  status: str = None,  experimental: bool = None,  date: str = None,  publisher: str = None,  contact: list['ContactDetail'] = None,  description: str = None,  useContext: list['UsageContext'] = None,  jurisdiction: list['CodeableConcept'] = None,  purpose: str = None,  copyright: str = None,  kind: str = None,  software: 'Software' = None,  implementation: 'Implementation' = None,  lockedDate: bool = None,  codeSystem: list['CodeSystem'] = None,  expansion: 'Expansion' = None,  codeSearch: str = None,  validateCode: 'ValidateCode' = None,  translation: 'Translation' = None,  closure: 'Closure' = None, ):
+        self.resourceType: str = resourceType or "TerminologyCapabilities"
+        self.id: str = id 
+        self.meta: 'Meta' = meta 
+        self.implicitRules: str = implicitRules 
+        self.language: str = language 
+        self.text: 'Narrative' = text 
+        self.contained: list['Resource'] = contained or []
+        self.extension: list['Extension'] = extension or []
+        self.modifierExtension: list['Extension'] = modifierExtension or []
+        self.url: str = url 
+        self.version: str = version 
+        self.name: str = name 
+        self.title: str = title 
+        self.status: str = status 
+        self.experimental: bool = experimental 
+        self.date: str = date 
+        self.publisher: str = publisher 
+        self.contact: list['ContactDetail'] = contact or []
+        self.description: str = description 
+        self.useContext: list['UsageContext'] = useContext or []
+        self.jurisdiction: list['CodeableConcept'] = jurisdiction or []
+        self.purpose: str = purpose 
+        self.copyright: str = copyright 
+        self.kind: str = kind 
+        self.software: 'Software' = software 
+        self.implementation: 'Implementation' = implementation 
+        self.lockedDate: bool = lockedDate 
+        self.codeSystem: list['CodeSystem'] = codeSystem or []
+        self.expansion: 'Expansion' = expansion 
+        self.codeSearch: str = codeSearch 
+        self.validateCode: 'ValidateCode' = validateCode 
+        self.translation: 'Translation' = translation 
+        self.closure: 'Closure' = closure 
+        

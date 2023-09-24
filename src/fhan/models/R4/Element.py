@@ -1,19 +1,17 @@
 """
 Generated class for Element. 
-Time: 2023-09-24 20:01:56
+Time: 2023-09-24 21:52:32
 """
-from dataclasses import dataclass
 from fhan.models.R4.Extension import *
+from fhan.models.generator_models import ModelBase
 
-@dataclass
-class Element:
+class Element(ModelBase):
     """ Base StructureDefinition for Element Type: Base definition for all elements in a resource.
     :param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
+    :param list['Extension'] extension: Additional content defined by implementations
     """
-
-    resourceType: str = "Element"
-    id: str = None
-    
-    extension: list["Extension"] = None
-    
+    def __init__(self, resourceType: str = "Element",  id: str = None,  extension: list['Extension'] = None, ):
+        self.resourceType: str = resourceType or "Element"
+        self.id: str = id 
+        self.extension: list['Extension'] = extension or []
+        

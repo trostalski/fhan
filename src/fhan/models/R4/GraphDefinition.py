@@ -1,18 +1,17 @@
 """
 Generated class for GraphDefinition. 
-Time: 2023-09-24 20:01:56
+Time: 2023-09-24 21:52:32
 """
-from dataclasses import dataclass
 from fhan.models.R4.UsageContext import *
-from fhan.models.R4.Extension import *
-from fhan.models.R4.BackboneElement import *
 from fhan.models.R4.Resource import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Element import *
 from fhan.models.R4.ContactDetail import *
 from fhan.models.R4.Narrative import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Meta import *
 from fhan.models.R4.CodeableConcept import *
-from fhan.models.generator_models import ModelBase
+from fhan.models.R4.Extension import *
+from fhan.models.R4.DomainResource import *
+
 
     
         
@@ -20,107 +19,88 @@ from fhan.models.generator_models import ModelBase
         
     
     
-@dataclass
-class Compartment(Element):
+
+class Compartment(ModelBase):
     """ Compartment Consistency Rules.:param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param list['Extension'] extension: Additional content defined by implementations
+    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str use: condition | requirement
     :param str code: Patient | Encounter | RelatedPerson | Practitioner | Device
     :param str rule: identical | matching | different | custom
     :param str expression: Custom rule, as a FHIRPath expression
     :param str description: Documentation for FHIRPath expression
     """
-    id: str = None
-    
-    extension:  list["Extension"] = [Extension()]
-    
-    modifierExtension:  list["Extension"] = [Extension()]
-    
-    use: str = None
-    
-    code: str = None
-    
-    rule: str = None
-    
-    expression: str = None
-    
-    description: str = None
-    
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  use: str = None,  code: str = None,  rule: str = None,  expression: str = None,  description: str = None, ):
+        self.id: str = id 
+        self.extension: list['Extension'] = extension or []
+        self.modifierExtension: list['Extension'] = modifierExtension or []
+        self.use: str = use 
+        self.code: str = code 
+        self.rule: str = rule 
+        self.expression: str = expression 
+        self.description: str = description 
+        
 
   
     
     
-@dataclass
-class Target(Element):
+
+class Target(ModelBase):
     """ Potential target for the link.:param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param list['Extension'] extension: Additional content defined by implementations
+    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str type: Type of resource this link refers to
     :param str params: Criteria for reverse lookup
     :param str profile: Profile for the target resource
-    :param Compartment compartment: Compartment Consistency Rules
+    :param list['Compartment'] compartment: Compartment Consistency Rules
     """
-    id: str = None
-    
-    extension:  list["Extension"] = [Extension()]
-    
-    modifierExtension:  list["Extension"] = [Extension()]
-    
-    type: str = None
-    
-    params: str = None
-    
-    profile: str = None
-    
-    compartment:  list["Compartment"] = [Compartment()]
-    
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  type: str = None,  params: str = None,  profile: str = None,  compartment: list['Compartment'] = None, ):
+        self.id: str = id 
+        self.extension: list['Extension'] = extension or []
+        self.modifierExtension: list['Extension'] = modifierExtension or []
+        self.type: str = type 
+        self.params: str = params 
+        self.profile: str = profile 
+        self.compartment: list['Compartment'] = compartment or []
+        
 
   
     
     
-@dataclass
-class Link(Element):
+
+class Link(ModelBase):
     """ Links this graph makes rules about.:param str id: Unique id for inter-element referencing
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param list['Extension'] extension: Additional content defined by implementations
+    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str path: Path in the resource that contains the link
     :param str sliceName: Which slice (if profiled)
     :param int min: Minimum occurrences for this link
     :param str max: Maximum occurrences for this link
     :param str description: Why this link is specified
-    :param Target target: Potential target for the link
+    :param list['Target'] target: Potential target for the link
     """
-    id: str = None
-    
-    extension:  list["Extension"] = [Extension()]
-    
-    modifierExtension:  list["Extension"] = [Extension()]
-    
-    path: str = None
-    
-    sliceName: str = None
-    
-    min: int = None
-    
-    max: str = None
-    
-    description: str = None
-    
-    target:  list["Target"] = [Target()]
-    
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  path: str = None,  sliceName: str = None,  min: int = None,  max: str = None,  description: str = None,  target: list['Target'] = None, ):
+        self.id: str = id 
+        self.extension: list['Extension'] = extension or []
+        self.modifierExtension: list['Extension'] = modifierExtension or []
+        self.path: str = path 
+        self.sliceName: str = sliceName 
+        self.min: int = min 
+        self.max: str = max 
+        self.description: str = description 
+        self.target: list['Target'] = target or []
+        
 
-@dataclass
-class GraphDefinition(ModelBase):
+class GraphDefinition(DomainResource):
     """ A formal computable definition of a graph of resources - that is, a coherent set of resources that form a graph by following references. The Graph Definition resource defines a set and makes rules about the set.
     :param str id: Logical id of this artifact
-    :param Meta meta: Metadata about the resource
+    :param 'Meta' meta: Metadata about the resource
     :param str implicitRules: A set of rules under which this content was created
     :param str language: Language of the resource content
-    :param Narrative text: Text summary of the resource, for human interpretation
-    :param Resource contained: Contained, inline Resources
-    :param Extension extension: Additional content defined by implementations
-    :param Extension modifierExtension: Extensions that cannot be ignored
+    :param 'Narrative' text: Text summary of the resource, for human interpretation
+    :param list['Resource'] contained: Contained, inline Resources
+    :param list['Extension'] extension: Additional content defined by implementations
+    :param list['Extension'] modifierExtension: Extensions that cannot be ignored
     :param str url: Canonical identifier for this graph definition, represented as a URI (globally unique)
     :param str version: Business version of the graph definition
     :param str name: Name for this graph definition (computer friendly)
@@ -128,60 +108,38 @@ class GraphDefinition(ModelBase):
     :param bool experimental: For testing purposes, not real usage
     :param str date: Date last changed
     :param str publisher: Name of the publisher (organization or individual)
-    :param ContactDetail contact: Contact details for the publisher
+    :param list['ContactDetail'] contact: Contact details for the publisher
     :param str description: Natural language description of the graph definition
-    :param UsageContext useContext: The context that the content is intended to support
-    :param CodeableConcept jurisdiction: Intended jurisdiction for graph definition (if applicable)
+    :param list['UsageContext'] useContext: The context that the content is intended to support
+    :param list['CodeableConcept'] jurisdiction: Intended jurisdiction for graph definition (if applicable)
     :param str purpose: Why this graph definition is defined
     :param str start: Type of resource at which the graph starts
     :param str profile: Profile on base resource
-    :param Link link: Links this graph makes rules about
+    :param list['Link'] link: Links this graph makes rules about
     """
-
-    resourceType: str = "GraphDefinition"
-    id: str = None
-    
-    meta: "Meta" = None
-    
-    implicitRules: str = None
-    
-    language: str = None
-    
-    text: "Narrative" = None
-    
-    contained: list["Resource"] = None
-    
-    extension: list["Extension"] = None
-    
-    modifierExtension: list["Extension"] = None
-    
-    url: str = None
-    
-    version: str = None
-    
-    name: str = None
-    
-    status: str = None
-    
-    experimental: bool = None
-    
-    date: str = None
-    
-    publisher: str = None
-    
-    contact: list["ContactDetail"] = None
-    
-    description: str = None
-    
-    useContext: list["UsageContext"] = None
-    
-    jurisdiction: list["CodeableConcept"] = None
-    
-    purpose: str = None
-    
-    start: str = None
-    
-    profile: str = None
-    
-    link: list["Link"] = None
-    
+    def __init__(self, resourceType: str = "GraphDefinition",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  url: str = None,  version: str = None,  name: str = None,  status: str = None,  experimental: bool = None,  date: str = None,  publisher: str = None,  contact: list['ContactDetail'] = None,  description: str = None,  useContext: list['UsageContext'] = None,  jurisdiction: list['CodeableConcept'] = None,  purpose: str = None,  start: str = None,  profile: str = None,  link: list['Link'] = None, ):
+        self.resourceType: str = resourceType or "GraphDefinition"
+        self.id: str = id 
+        self.meta: 'Meta' = meta 
+        self.implicitRules: str = implicitRules 
+        self.language: str = language 
+        self.text: 'Narrative' = text 
+        self.contained: list['Resource'] = contained or []
+        self.extension: list['Extension'] = extension or []
+        self.modifierExtension: list['Extension'] = modifierExtension or []
+        self.url: str = url 
+        self.version: str = version 
+        self.name: str = name 
+        self.status: str = status 
+        self.experimental: bool = experimental 
+        self.date: str = date 
+        self.publisher: str = publisher 
+        self.contact: list['ContactDetail'] = contact or []
+        self.description: str = description 
+        self.useContext: list['UsageContext'] = useContext or []
+        self.jurisdiction: list['CodeableConcept'] = jurisdiction or []
+        self.purpose: str = purpose 
+        self.start: str = start 
+        self.profile: str = profile 
+        self.link: list['Link'] = link or []
+        

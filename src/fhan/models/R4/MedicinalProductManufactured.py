@@ -1,16 +1,16 @@
 """
 Generated class for MedicinalProductManufactured. 
-Time: 2023-09-23 23:45:33
+Time: 2023-09-24 20:01:56
 """
 from dataclasses import dataclass
-from fhan.models.R4.Reference import *
-from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Extension import *
+from fhan.models.R4.Resource import *
+from fhan.models.R4.Meta import *
 from fhan.models.R4.Quantity import *
 from fhan.models.R4.ProdCharacteristic import *
-from fhan.models.R4.Resource import *
+from fhan.models.R4.Reference import *
 from fhan.models.R4.Narrative import *
-from fhan.models.R4.Meta import *
+from fhan.models.R4.CodeableConcept import *
 from fhan.models.generator_models import ModelBase
 
 @dataclass
@@ -36,31 +36,31 @@ class MedicinalProductManufactured(ModelBase):
     resourceType: str = "MedicinalProductManufactured"
     id: str = None
     
-    meta: "Meta" = Meta()
+    meta: "Meta" = None
     
     implicitRules: str = None
     
     language: str = None
     
-    text: "Narrative" = Narrative()
+    text: "Narrative" = None
     
-    contained: list[Resource] = Resource() 
+    contained: list["Resource"] = None
     
-    extension: list[Extension] = Extension() 
+    extension: list["Extension"] = None
     
-    modifierExtension: list[Extension] = Extension() 
+    modifierExtension: list["Extension"] = None
     
-    manufacturedDoseForm: "CodeableConcept" = CodeableConcept()
+    manufacturedDoseForm: "CodeableConcept" = None
     
-    unitOfPresentation: "CodeableConcept" = CodeableConcept()
+    unitOfPresentation: "CodeableConcept" = None
     
-    quantity: "Quantity" = Quantity()
+    quantity: "Quantity" = None
     
-    manufacturer: list[Reference] = Reference() 
+    manufacturer: list["Reference"] = None
     
-    ingredient: list[Reference] = Reference() 
+    ingredient: list["Reference"] = None
     
-    physicalCharacteristics: "ProdCharacteristic" = ProdCharacteristic()
+    physicalCharacteristics: "ProdCharacteristic" = None
     
-    otherCharacteristics: list[CodeableConcept] = CodeableConcept() 
+    otherCharacteristics: list["CodeableConcept"] = None
     

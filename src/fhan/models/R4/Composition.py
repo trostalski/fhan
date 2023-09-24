@@ -1,18 +1,18 @@
 """
 Generated class for Composition. 
-Time: 2023-09-23 23:45:33
+Time: 2023-09-24 20:01:56
 """
 from dataclasses import dataclass
-from fhan.models.R4.Reference import *
-from fhan.models.R4.Identifier import *
 from fhan.models.R4.Extension import *
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Period import *
 from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Element import *
 from fhan.models.R4.Resource import *
-from fhan.models.R4.Narrative import *
 from fhan.models.R4.Meta import *
+from fhan.models.R4.Reference import *
+from fhan.models.R4.Period import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.Element import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.CodeableConcept import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -27,13 +27,16 @@ class Attester(Element):
     :param Reference party: Who attested the composition
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
     
     mode: str = None
     
     time: str = None
-    party: "Reference" = Reference()
+    
+    party:  "Reference" = Reference()
     
 
     
@@ -47,11 +50,14 @@ class RelatesTo(Element):
     :param Identifier targetIdentifier: Target of the relationship
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
     
     code: str = None
-    targetIdentifier: "Identifier" = Identifier()
+    
+    targetIdentifier:  "Identifier" = Identifier()
     
 
     
@@ -66,11 +72,16 @@ class Event(Element):
     :param Reference detail: The event(s) being documented
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
-    code: list[CodeableConcept] = CodeableConcept() 
-    period: "Period" = Period()
-    detail: list[Reference] = Reference() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
+    
+    code:  list["CodeableConcept"] = [CodeableConcept()]
+    
+    period:  "Period" = Period()
+    
+    detail:  list["Reference"] = [Reference()]
     
 
     
@@ -91,19 +102,28 @@ class Section(Element):
     :param CodeableConcept emptyReason: Why the section is empty
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
     
     title: str = None
-    code: "CodeableConcept" = CodeableConcept()
-    author: list[Reference] = Reference() 
-    focus: "Reference" = Reference()
-    text: "Narrative" = Narrative()
+    
+    code:  "CodeableConcept" = CodeableConcept()
+    
+    author:  list["Reference"] = [Reference()]
+    
+    focus:  "Reference" = Reference()
+    
+    text:  "Narrative" = Narrative()
     
     mode: str = None
-    orderedBy: "CodeableConcept" = CodeableConcept()
-    entry: list[Reference] = Reference() 
-    emptyReason: "CodeableConcept" = CodeableConcept()
+    
+    orderedBy:  "CodeableConcept" = CodeableConcept()
+    
+    entry:  list["Reference"] = [Reference()]
+    
+    emptyReason:  "CodeableConcept" = CodeableConcept()
     
 
 @dataclass
@@ -137,47 +157,47 @@ class Composition(ModelBase):
     resourceType: str = "Composition"
     id: str = None
     
-    meta: "Meta" = Meta()
+    meta: "Meta" = None
     
     implicitRules: str = None
     
     language: str = None
     
-    text: "Narrative" = Narrative()
+    text: "Narrative" = None
     
-    contained: list[Resource] = Resource() 
+    contained: list["Resource"] = None
     
-    extension: list[Extension] = Extension() 
+    extension: list["Extension"] = None
     
-    modifierExtension: list[Extension] = Extension() 
+    modifierExtension: list["Extension"] = None
     
-    identifier: "Identifier" = Identifier()
+    identifier: "Identifier" = None
     
     status: str = None
     
-    type: "CodeableConcept" = CodeableConcept()
+    type: "CodeableConcept" = None
     
-    category: list[CodeableConcept] = CodeableConcept() 
+    category: list["CodeableConcept"] = None
     
-    subject: "Reference" = Reference()
+    subject: "Reference" = None
     
-    encounter: "Reference" = Reference()
+    encounter: "Reference" = None
     
     date: str = None
     
-    author: list[Reference] = Reference() 
+    author: list["Reference"] = None
     
     title: str = None
     
     confidentiality: str = None
     
-    attester: list[Attester] = Attester() 
+    attester: list["Attester"] = None
     
-    custodian: "Reference" = Reference()
+    custodian: "Reference" = None
     
-    relatesTo: list[RelatesTo] = RelatesTo() 
+    relatesTo: list["RelatesTo"] = None
     
-    event: list[Event] = Event() 
+    event: list["Event"] = None
     
-    section: list[Section] = Section() 
+    section: list["Section"] = None
     

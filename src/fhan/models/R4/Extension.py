@@ -1,6 +1,6 @@
 """
 Generated class for Extension. 
-Time: 2023-09-23 23:45:33
+Time: 2023-09-24 20:01:56
 """
 from dataclasses import dataclass
 from fhan.models.R4.Reference import *
@@ -19,9 +19,9 @@ class Extension(Element):
     resourceType: str = "Extension"
     id: str = None
     
-    extension: "Extension" = Extension()
+    extension: "Extension" = None
     
     url: str = None
     
-    valueReference: "Reference" = Reference()
+    valueReference: "Reference" = None
     

@@ -1,41 +1,41 @@
 """
 Generated class for ElementDefinition. 
-Time: 2023-09-23 23:45:33
+Time: 2023-09-24 20:01:56
 """
 from dataclasses import dataclass
-from fhan.models.R4.Distance import *
-from fhan.models.R4.Range import *
-from fhan.models.R4.Quantity import *
-from fhan.models.R4.Signature import *
-from fhan.models.R4.Timing import *
-from fhan.models.R4.Count import *
-from fhan.models.R4.ContactDetail import *
-from fhan.models.R4.Annotation import *
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Identifier import *
-from fhan.models.R4.Period import *
-from fhan.models.R4.Expression import *
-from fhan.models.R4.RelatedArtifact import *
-from fhan.models.R4.Element import *
-from fhan.models.R4.Dosage import *
-from fhan.models.R4.Address import *
-from fhan.models.R4.SampledData import *
-from fhan.models.R4.Contributor import *
-from fhan.models.R4.Reference import *
-from fhan.models.R4.Attachment import *
-from fhan.models.R4.Money import *
-from fhan.models.R4.Duration import *
-from fhan.models.R4.ParameterDefinition import *
-from fhan.models.R4.DataRequirement import *
-from fhan.models.R4.Age import *
 from fhan.models.R4.Extension import *
 from fhan.models.R4.HumanName import *
+from fhan.models.R4.DataRequirement import *
 from fhan.models.R4.TriggerDefinition import *
-from fhan.models.R4.ContactPoint import *
+from fhan.models.R4.Period import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.SampledData import *
+from fhan.models.R4.Age import *
+from fhan.models.R4.Contributor import *
+from fhan.models.R4.Signature import *
 from fhan.models.R4.Ratio import *
-from fhan.models.R4.UsageContext import *
-from fhan.models.R4.Coding import *
+from fhan.models.R4.Reference import *
+from fhan.models.R4.Dosage import *
+from fhan.models.R4.Count import *
+from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Address import *
+from fhan.models.R4.Money import *
+from fhan.models.R4.Annotation import *
+from fhan.models.R4.Quantity import *
+from fhan.models.R4.ParameterDefinition import *
 from fhan.models.R4.Meta import *
+from fhan.models.R4.Coding import *
+from fhan.models.R4.ContactPoint import *
+from fhan.models.R4.Distance import *
+from fhan.models.R4.Timing import *
+from fhan.models.R4.ContactDetail import *
+from fhan.models.R4.RelatedArtifact import *
+from fhan.models.R4.UsageContext import *
+from fhan.models.R4.Range import *
+from fhan.models.R4.Expression import *
+from fhan.models.R4.Attachment import *
+from fhan.models.R4.Duration import *
+from fhan.models.R4.Element import *
 from fhan.models.R4.Element import *
 
 
@@ -130,9 +130,9 @@ class ElementDefinition(Element):
     resourceType: str = "ElementDefinition"
     id: str = None
     
-    extension: list[Extension] = Extension() 
+    extension: list["Extension"] = None
     
-    modifierExtension: list[Extension] = Extension() 
+    modifierExtension: list["Extension"] = None
     
     path: str = None
     
@@ -144,19 +144,19 @@ class ElementDefinition(Element):
     
     label: str = None
     
-    code: list[Coding] = Coding() 
+    code: list["Coding"] = None
     
-    slicing: "Element" = Element()
-    
-    id: str = None
-    
-    extension: list[Extension] = Extension() 
-    
-    discriminator: list[Element] = Element() 
+    slicing: "Element" = None
     
     id: str = None
     
-    extension: list[Extension] = Extension() 
+    extension: list["Extension"] = None
+    
+    discriminator: list["Element"] = None
+    
+    id: str = None
+    
+    extension: list["Extension"] = None
     
     type: str = None
     
@@ -182,11 +182,11 @@ class ElementDefinition(Element):
     
     max: str = None
     
-    base: "Element" = Element()
+    base: "Element" = None
     
     id: str = None
     
-    extension: list[Extension] = Extension() 
+    extension: list["Extension"] = None
     
     path: str = None
     
@@ -196,11 +196,11 @@ class ElementDefinition(Element):
     
     contentReference: str = None
     
-    type: list[Element] = Element() 
+    type: list["Element"] = None
     
     id: str = None
     
-    extension: list[Extension] = Extension() 
+    extension: list["Extension"] = None
     
     code: str = None
     
@@ -222,11 +222,11 @@ class ElementDefinition(Element):
     
     patternBase64Binary: str = None
     
-    example: list[Element] = Element() 
+    example: list["Element"] = None
     
     id: str = None
     
-    extension: list[Extension] = Extension() 
+    extension: list["Extension"] = None
     
     label: str = None
     
@@ -240,11 +240,11 @@ class ElementDefinition(Element):
     
     condition: str = None
     
-    constraint: list[Element] = Element() 
+    constraint: list["Element"] = None
     
     id: str = None
     
-    extension: list[Extension] = Extension() 
+    extension: list["Extension"] = None
     
     key: str = None
     
@@ -268,11 +268,11 @@ class ElementDefinition(Element):
     
     isSummary: bool = None
     
-    binding: "Element" = Element()
+    binding: "Element" = None
     
     id: str = None
     
-    extension: list[Extension] = Extension() 
+    extension: list["Extension"] = None
     
     strength: str = None
     
@@ -280,11 +280,11 @@ class ElementDefinition(Element):
     
     valueSet: str = None
     
-    mapping: list[Element] = Element() 
+    mapping: list["Element"] = None
     
     id: str = None
     
-    extension: list[Extension] = Extension() 
+    extension: list["Extension"] = None
     
     identity: str = None
     

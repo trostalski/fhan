@@ -1,23 +1,23 @@
 """
 Generated class for InsurancePlan. 
-Time: 2023-09-23 23:45:33
+Time: 2023-09-24 20:01:56
 """
 from dataclasses import dataclass
-from fhan.models.R4.Reference import *
-from fhan.models.R4.Identifier import *
-from fhan.models.R4.Extension import *
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Period import *
-from fhan.models.R4.HumanName import *
-from fhan.models.R4.ContactPoint import *
-from fhan.models.R4.Quantity import *
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Element import *
-from fhan.models.R4.Money import *
-from fhan.models.R4.Resource import *
 from fhan.models.R4.Address import *
-from fhan.models.R4.Narrative import *
+from fhan.models.R4.Extension import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Money import *
+from fhan.models.R4.HumanName import *
+from fhan.models.R4.Resource import *
 from fhan.models.R4.Meta import *
+from fhan.models.R4.Quantity import *
+from fhan.models.R4.Reference import *
+from fhan.models.R4.Period import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.ContactPoint import *
+from fhan.models.R4.Element import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.CodeableConcept import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -33,12 +33,18 @@ class Contact(Element):
     :param Address address: Visiting or postal addresses for the contact
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
-    purpose: "CodeableConcept" = CodeableConcept()
-    name: "HumanName" = HumanName()
-    telecom: list[ContactPoint] = ContactPoint() 
-    address: "Address" = Address()
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
+    
+    purpose:  "CodeableConcept" = CodeableConcept()
+    
+    name:  "HumanName" = HumanName()
+    
+    telecom:  list["ContactPoint"] = [ContactPoint()]
+    
+    address:  "Address" = Address()
     
 
     
@@ -56,10 +62,14 @@ class Limit(Element):
     :param CodeableConcept code: Benefit limit details
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
-    value: "Quantity" = Quantity()
-    code: "CodeableConcept" = CodeableConcept()
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
+    
+    value:  "Quantity" = Quantity()
+    
+    code:  "CodeableConcept" = CodeableConcept()
     
 
   
@@ -75,12 +85,16 @@ class Benefit(Element):
     :param Limit limit: Benefit limits
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
-    type: "CodeableConcept" = CodeableConcept()
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
+    
+    type:  "CodeableConcept" = CodeableConcept()
     
     requirement: str = None
-    limit: list[Limit] = Limit() 
+    
+    limit:  list["Limit"] = [Limit()]
     
 
   
@@ -95,14 +109,20 @@ class Coverage(Element):
     :param CodeableConcept type: Type of coverage
     :param Reference network: What networks provide coverage
     :param Benefit benefit: List of benefits
-    """coverageArea: list[Reference] = Reference() 
+    """
+    coverageArea:  list["Reference"] = [Reference()]
     
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
-    type: "CodeableConcept" = CodeableConcept()
-    network: list[Reference] = Reference() 
-    benefit: list[Benefit] = Benefit() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
+    
+    type:  "CodeableConcept" = CodeableConcept()
+    
+    network:  list["Reference"] = [Reference()]
+    
+    benefit:  list["Benefit"] = [Benefit()]
     
 
     
@@ -120,12 +140,16 @@ class GeneralCost(Element):
     :param str comment: Additional cost information
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
-    type: "CodeableConcept" = CodeableConcept()
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
+    
+    type:  "CodeableConcept" = CodeableConcept()
     
     groupSize: int = None
-    cost: "Money" = Money()
+    
+    cost:  "Money" = Money()
     
     comment: str = None
     
@@ -147,12 +171,18 @@ class Cost(Element):
     :param Quantity value: The actual cost value
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
-    type: "CodeableConcept" = CodeableConcept()
-    applicability: "CodeableConcept" = CodeableConcept()
-    qualifiers: list[CodeableConcept] = CodeableConcept() 
-    value: "Quantity" = Quantity()
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
+    
+    type:  "CodeableConcept" = CodeableConcept()
+    
+    applicability:  "CodeableConcept" = CodeableConcept()
+    
+    qualifiers:  list["CodeableConcept"] = [CodeableConcept()]
+    
+    value:  "Quantity" = Quantity()
     
 
   
@@ -167,10 +197,14 @@ class Benefit(Element):
     :param Cost cost: List of the costs
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
-    type: "CodeableConcept" = CodeableConcept()
-    cost: list[Cost] = Cost() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
+    
+    type:  "CodeableConcept" = CodeableConcept()
+    
+    cost:  list["Cost"] = [Cost()]
     
 
   
@@ -185,10 +219,14 @@ class SpecificCost(Element):
     :param Benefit benefit: Benefits list
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
-    category: "CodeableConcept" = CodeableConcept()
-    benefit: list[Benefit] = Benefit() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
+    
+    category:  "CodeableConcept" = CodeableConcept()
+    
+    benefit:  list["Benefit"] = [Benefit()]
     
 
   
@@ -207,14 +245,22 @@ class Plan(Element):
     :param SpecificCost specificCost: Specific costs
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
-    identifier: list[Identifier] = Identifier() 
-    type: "CodeableConcept" = CodeableConcept()
-    coverageArea: list[Reference] = Reference() 
-    network: list[Reference] = Reference() 
-    generalCost: list[GeneralCost] = GeneralCost() 
-    specificCost: list[SpecificCost] = SpecificCost() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
+    
+    identifier:  list["Identifier"] = [Identifier()]
+    
+    type:  "CodeableConcept" = CodeableConcept()
+    
+    coverageArea:  list["Reference"] = [Reference()]
+    
+    network:  list["Reference"] = [Reference()]
+    
+    generalCost:  list["GeneralCost"] = [GeneralCost()]
+    
+    specificCost:  list["SpecificCost"] = [SpecificCost()]
     
 
 @dataclass
@@ -247,45 +293,45 @@ class InsurancePlan(ModelBase):
     resourceType: str = "InsurancePlan"
     id: str = None
     
-    meta: "Meta" = Meta()
+    meta: "Meta" = None
     
     implicitRules: str = None
     
     language: str = None
     
-    text: "Narrative" = Narrative()
+    text: "Narrative" = None
     
-    contained: list[Resource] = Resource() 
+    contained: list["Resource"] = None
     
-    extension: list[Extension] = Extension() 
+    extension: list["Extension"] = None
     
-    modifierExtension: list[Extension] = Extension() 
+    modifierExtension: list["Extension"] = None
     
-    identifier: list[Identifier] = Identifier() 
+    identifier: list["Identifier"] = None
     
     status: str = None
     
-    type: list[CodeableConcept] = CodeableConcept() 
+    type: list["CodeableConcept"] = None
     
     name: str = None
     
     alias: str = None
     
-    period: "Period" = Period()
+    period: "Period" = None
     
-    ownedBy: "Reference" = Reference()
+    ownedBy: "Reference" = None
     
-    administeredBy: "Reference" = Reference()
+    administeredBy: "Reference" = None
     
-    coverageArea: list[Reference] = Reference() 
+    coverageArea: list["Reference"] = None
     
-    contact: list[Contact] = Contact() 
+    contact: list["Contact"] = None
     
-    endpoint: list[Reference] = Reference() 
+    endpoint: list["Reference"] = None
     
-    network: list[Reference] = Reference() 
+    network: list["Reference"] = None
     
-    coverage: list[Coverage] = Coverage() 
+    coverage: list["Coverage"] = None
     
-    plan: list[Plan] = Plan() 
+    plan: list["Plan"] = None
     

@@ -1,21 +1,21 @@
 """
 Generated class for MedicationKnowledge. 
-Time: 2023-09-23 23:45:33
+Time: 2023-09-24 20:01:56
 """
 from dataclasses import dataclass
-from fhan.models.R4.Reference import *
-from fhan.models.R4.Dosage import *
-from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Extension import *
-from fhan.models.R4.Ratio import *
-from fhan.models.R4.Quantity import *
 from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Element import *
 from fhan.models.R4.Money import *
 from fhan.models.R4.Resource import *
-from fhan.models.R4.Duration import *
-from fhan.models.R4.Narrative import *
 from fhan.models.R4.Meta import *
+from fhan.models.R4.Quantity import *
+from fhan.models.R4.Ratio import *
+from fhan.models.R4.Reference import *
+from fhan.models.R4.Element import *
+from fhan.models.R4.Duration import *
+from fhan.models.R4.Dosage import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.CodeableConcept import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -29,10 +29,14 @@ class RelatedMedicationKnowledge(Element):
     :param Reference reference: Associated documentation about the associated medication knowledge
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
-    type: "CodeableConcept" = CodeableConcept()
-    reference: list[Reference] = Reference() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
+    
+    type:  "CodeableConcept" = CodeableConcept()
+    
+    reference:  list["Reference"] = [Reference()]
     
 
     
@@ -46,10 +50,14 @@ class Monograph(Element):
     :param Reference source: Associated documentation about the medication
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
-    type: "CodeableConcept" = CodeableConcept()
-    source: "Reference" = Reference()
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
+    
+    type:  "CodeableConcept" = CodeableConcept()
+    
+    source:  "Reference" = Reference()
     
 
     
@@ -64,12 +72,16 @@ class Ingredient(Element):
     :param Ratio strength: Quantity of ingredient present
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
-    itemCodeableConcept: "CodeableConcept" = CodeableConcept()
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
+    
+    itemCodeableConcept:  "CodeableConcept" = CodeableConcept()
     
     isActive: bool = None
-    strength: "Ratio" = Ratio()
+    
+    strength:  "Ratio" = Ratio()
     
 
     
@@ -84,12 +96,16 @@ class Cost(Element):
     :param Money cost: The price of the medication
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
-    type: "CodeableConcept" = CodeableConcept()
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
+    
+    type:  "CodeableConcept" = CodeableConcept()
     
     source: str = None
-    cost: "Money" = Money()
+    
+    cost:  "Money" = Money()
     
 
     
@@ -103,9 +119,12 @@ class MonitoringProgram(Element):
     :param str name: Name of the reviewing program
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
-    type: "CodeableConcept" = CodeableConcept()
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
+    
+    type:  "CodeableConcept" = CodeableConcept()
     
     name: str = None
     
@@ -123,10 +142,14 @@ class Dosage(Element):
     :param Dosage dosage: Dosage for the medication for the specific guidelines
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
-    type: "CodeableConcept" = CodeableConcept()
-    dosage: list[Dosage] = Dosage() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
+    
+    type:  "CodeableConcept" = CodeableConcept()
+    
+    dosage:  list[Dosage] = None
     
 
     
@@ -140,9 +163,12 @@ class PatientCharacteristics(Element):
     :param str value: The specific characteristic
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
-    characteristicCodeableConcept: "CodeableConcept" = CodeableConcept()
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
+    
+    characteristicCodeableConcept:  "CodeableConcept" = CodeableConcept()
     
     value: str = None
     
@@ -160,11 +186,16 @@ class AdministrationGuidelines(Element):
     :param PatientCharacteristics patientCharacteristics: Characteristics of the patient that are relevant to the administration guidelines
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
-    dosage: list[Dosage] = Dosage() 
-    indicationCodeableConcept: "CodeableConcept" = CodeableConcept()
-    patientCharacteristics: list[PatientCharacteristics] = PatientCharacteristics() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
+    
+    dosage:  list["Dosage"] = [Dosage()]
+    
+    indicationCodeableConcept:  "CodeableConcept" = CodeableConcept()
+    
+    patientCharacteristics:  list["PatientCharacteristics"] = [PatientCharacteristics()]
     
 
     
@@ -178,10 +209,14 @@ class MedicineClassification(Element):
     :param CodeableConcept classification: Specific category assigned to the medication
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
-    type: "CodeableConcept" = CodeableConcept()
-    classification: list[CodeableConcept] = CodeableConcept() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
+    
+    type:  "CodeableConcept" = CodeableConcept()
+    
+    classification:  list["CodeableConcept"] = [CodeableConcept()]
     
 
     
@@ -195,10 +230,14 @@ class Packaging(Element):
     :param Quantity quantity: The number of product units the package would contain if fully loaded
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
-    type: "CodeableConcept" = CodeableConcept()
-    quantity: "Quantity" = Quantity()
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
+    
+    type:  "CodeableConcept" = CodeableConcept()
+    
+    quantity:  "Quantity" = Quantity()
     
 
     
@@ -212,10 +251,14 @@ class DrugCharacteristic(Element):
     :param CodeableConcept valueCodeableConcept: Description of the characteristic
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
-    type: "CodeableConcept" = CodeableConcept()
-    valueCodeableConcept: "CodeableConcept" = CodeableConcept()
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
+    
+    type:  "CodeableConcept" = CodeableConcept()
+    
+    valueCodeableConcept:  "CodeableConcept" = CodeableConcept()
     
 
     
@@ -231,9 +274,12 @@ class Substitution(Element):
     :param bool allowed: Specifies if regulation allows for changes in the medication when dispensing
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
-    type: "CodeableConcept" = CodeableConcept()
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
+    
+    type:  "CodeableConcept" = CodeableConcept()
     
     allowed: bool = None
     
@@ -248,9 +294,12 @@ class Schedule(Element):
     :param CodeableConcept schedule: Specifies the specific drug schedule
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
-    schedule: "CodeableConcept" = CodeableConcept()
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
+    
+    schedule:  "CodeableConcept" = CodeableConcept()
     
 
     
@@ -264,10 +313,14 @@ class MaxDispense(Element):
     :param Duration period: The period that applies to the maximum number of units
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
-    quantity: "Quantity" = Quantity()
-    period: "Duration" = Duration()
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
+    
+    quantity:  "Quantity" = Quantity()
+    
+    period:  "Duration" = Duration()
     
 
   
@@ -284,12 +337,18 @@ class Regulatory(Element):
     :param MaxDispense maxDispense: The maximum number of units of the medication that can be dispensed in a period
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
-    regulatoryAuthority: "Reference" = Reference()
-    substitution: list[Substitution] = Substitution() 
-    schedule: list[Schedule] = Schedule() 
-    maxDispense: "MaxDispense" = MaxDispense()
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
+    
+    regulatoryAuthority:  "Reference" = Reference()
+    
+    substitution:  list["Substitution"] = [Substitution()]
+    
+    schedule:  list["Schedule"] = [Schedule()]
+    
+    maxDispense:  "MaxDispense" = MaxDispense()
     
 
     
@@ -304,11 +363,16 @@ class Kinetics(Element):
     :param Duration halfLifePeriod: Time required for concentration in the body to decrease by half
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
-    areaUnderCurve: list[Quantity] = Quantity() 
-    lethalDose50: list[Quantity] = Quantity() 
-    halfLifePeriod: "Duration" = Duration()
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
+    
+    areaUnderCurve:  list["Quantity"] = [Quantity()]
+    
+    lethalDose50:  list["Quantity"] = [Quantity()]
+    
+    halfLifePeriod:  "Duration" = Duration()
     
 
 @dataclass
@@ -349,61 +413,61 @@ class MedicationKnowledge(ModelBase):
     resourceType: str = "MedicationKnowledge"
     id: str = None
     
-    meta: "Meta" = Meta()
+    meta: "Meta" = None
     
     implicitRules: str = None
     
     language: str = None
     
-    text: "Narrative" = Narrative()
+    text: "Narrative" = None
     
-    contained: list[Resource] = Resource() 
+    contained: list["Resource"] = None
     
-    extension: list[Extension] = Extension() 
+    extension: list["Extension"] = None
     
-    modifierExtension: list[Extension] = Extension() 
+    modifierExtension: list["Extension"] = None
     
-    code: "CodeableConcept" = CodeableConcept()
+    code: "CodeableConcept" = None
     
     status: str = None
     
-    manufacturer: "Reference" = Reference()
+    manufacturer: "Reference" = None
     
-    doseForm: "CodeableConcept" = CodeableConcept()
+    doseForm: "CodeableConcept" = None
     
-    amount: "Quantity" = Quantity()
+    amount: "Quantity" = None
     
     synonym: str = None
     
-    relatedMedicationKnowledge: list[RelatedMedicationKnowledge] = RelatedMedicationKnowledge() 
+    relatedMedicationKnowledge: list["RelatedMedicationKnowledge"] = None
     
-    associatedMedication: list[Reference] = Reference() 
+    associatedMedication: list["Reference"] = None
     
-    productType: list[CodeableConcept] = CodeableConcept() 
+    productType: list["CodeableConcept"] = None
     
-    monograph: list[Monograph] = Monograph() 
+    monograph: list["Monograph"] = None
     
-    ingredient: list[Ingredient] = Ingredient() 
+    ingredient: list["Ingredient"] = None
     
     preparationInstruction: str = None
     
-    intendedRoute: list[CodeableConcept] = CodeableConcept() 
+    intendedRoute: list["CodeableConcept"] = None
     
-    cost: list[Cost] = Cost() 
+    cost: list["Cost"] = None
     
-    monitoringProgram: list[MonitoringProgram] = MonitoringProgram() 
+    monitoringProgram: list["MonitoringProgram"] = None
     
-    administrationGuidelines: list[AdministrationGuidelines] = AdministrationGuidelines() 
+    administrationGuidelines: list["AdministrationGuidelines"] = None
     
-    medicineClassification: list[MedicineClassification] = MedicineClassification() 
+    medicineClassification: list["MedicineClassification"] = None
     
-    packaging: "Packaging" = Packaging()
+    packaging: "Packaging" = None
     
-    drugCharacteristic: list[DrugCharacteristic] = DrugCharacteristic() 
+    drugCharacteristic: list["DrugCharacteristic"] = None
     
-    contraindication: list[Reference] = Reference() 
+    contraindication: list["Reference"] = None
     
-    regulatory: list[Regulatory] = Regulatory() 
+    regulatory: list["Regulatory"] = None
     
-    kinetics: list[Kinetics] = Kinetics() 
+    kinetics: list["Kinetics"] = None
     

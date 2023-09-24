@@ -1,18 +1,18 @@
 """
 Generated class for DetectedIssue. 
-Time: 2023-09-23 23:45:33
+Time: 2023-09-24 20:01:56
 """
 from dataclasses import dataclass
-from fhan.models.R4.Reference import *
-from fhan.models.R4.Identifier import *
 from fhan.models.R4.Extension import *
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Period import *
 from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Element import *
 from fhan.models.R4.Resource import *
-from fhan.models.R4.Narrative import *
 from fhan.models.R4.Meta import *
+from fhan.models.R4.Reference import *
+from fhan.models.R4.Period import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.Element import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.CodeableConcept import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -26,10 +26,14 @@ class Evidence(Element):
     :param Reference detail: Supporting information
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
-    code: list[CodeableConcept] = CodeableConcept() 
-    detail: list[Reference] = Reference() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
+    
+    code:  list["CodeableConcept"] = [CodeableConcept()]
+    
+    detail:  list["Reference"] = [Reference()]
     
 
     
@@ -44,12 +48,16 @@ class Mitigation(Element):
     :param Reference author: Who is committing?
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
-    action: "CodeableConcept" = CodeableConcept()
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
+    
+    action:  "CodeableConcept" = CodeableConcept()
     
     date: str = None
-    author: "Reference" = Reference()
+    
+    author:  "Reference" = Reference()
     
 
 @dataclass
@@ -80,41 +88,41 @@ class DetectedIssue(ModelBase):
     resourceType: str = "DetectedIssue"
     id: str = None
     
-    meta: "Meta" = Meta()
+    meta: "Meta" = None
     
     implicitRules: str = None
     
     language: str = None
     
-    text: "Narrative" = Narrative()
+    text: "Narrative" = None
     
-    contained: list[Resource] = Resource() 
+    contained: list["Resource"] = None
     
-    extension: list[Extension] = Extension() 
+    extension: list["Extension"] = None
     
-    modifierExtension: list[Extension] = Extension() 
+    modifierExtension: list["Extension"] = None
     
-    identifier: list[Identifier] = Identifier() 
+    identifier: list["Identifier"] = None
     
     status: str = None
     
-    code: "CodeableConcept" = CodeableConcept()
+    code: "CodeableConcept" = None
     
     severity: str = None
     
-    patient: "Reference" = Reference()
+    patient: "Reference" = None
     
     identifiedDateTime: str = None
     
-    author: "Reference" = Reference()
+    author: "Reference" = None
     
-    implicated: list[Reference] = Reference() 
+    implicated: list["Reference"] = None
     
-    evidence: list[Evidence] = Evidence() 
+    evidence: list["Evidence"] = None
     
     detail: str = None
     
     reference: str = None
     
-    mitigation: list[Mitigation] = Mitigation() 
+    mitigation: list["Mitigation"] = None
     

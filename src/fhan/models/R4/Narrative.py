@@ -1,6 +1,6 @@
 """
 Generated class for Narrative. 
-Time: 2023-09-23 23:45:33
+Time: 2023-09-24 20:01:56
 """
 from dataclasses import dataclass
 from fhan.models.R4.Extension import *
@@ -19,7 +19,7 @@ class Narrative(Element):
     resourceType: str = "Narrative"
     id: str = None
     
-    extension: list[Extension] = Extension() 
+    extension: list["Extension"] = None
     
     status: str = None
     

@@ -1,17 +1,17 @@
 """
 Generated class for SubstanceProtein. 
-Time: 2023-09-23 23:45:33
+Time: 2023-09-24 20:01:56
 """
 from dataclasses import dataclass
-from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Extension import *
-from fhan.models.R4.Identifier import *
-from fhan.models.R4.Attachment import *
 from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Element import *
 from fhan.models.R4.Resource import *
-from fhan.models.R4.Narrative import *
 from fhan.models.R4.Meta import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.Element import *
+from fhan.models.R4.Attachment import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.CodeableConcept import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -31,19 +31,24 @@ class Subunit(Element):
     :param str cTerminalModification: The modification at the C-terminal shall be specified
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
     
     subunit: int = None
     
     sequence: str = None
     
     length: int = None
-    sequenceAttachment: "Attachment" = Attachment()
-    nTerminalModificationId: "Identifier" = Identifier()
+    
+    sequenceAttachment:  "Attachment" = Attachment()
+    
+    nTerminalModificationId:  "Identifier" = Identifier()
     
     nTerminalModification: str = None
-    cTerminalModificationId: "Identifier" = Identifier()
+    
+    cTerminalModificationId:  "Identifier" = Identifier()
     
     cTerminalModification: str = None
     
@@ -68,25 +73,25 @@ class SubstanceProtein(ModelBase):
     resourceType: str = "SubstanceProtein"
     id: str = None
     
-    meta: "Meta" = Meta()
+    meta: "Meta" = None
     
     implicitRules: str = None
     
     language: str = None
     
-    text: "Narrative" = Narrative()
+    text: "Narrative" = None
     
-    contained: list[Resource] = Resource() 
+    contained: list["Resource"] = None
     
-    extension: list[Extension] = Extension() 
+    extension: list["Extension"] = None
     
-    modifierExtension: list[Extension] = Extension() 
+    modifierExtension: list["Extension"] = None
     
-    sequenceType: "CodeableConcept" = CodeableConcept()
+    sequenceType: "CodeableConcept" = None
     
     numberOfSubunits: int = None
     
     disulfideLinkage: str = None
     
-    subunit: list[Subunit] = Subunit() 
+    subunit: list["Subunit"] = None
     

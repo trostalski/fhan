@@ -1,21 +1,21 @@
 """
 Generated class for AllergyIntolerance. 
-Time: 2023-09-23 23:45:33
+Time: 2023-09-24 20:01:56
 """
 from dataclasses import dataclass
-from fhan.models.R4.Annotation import *
-from fhan.models.R4.Reference import *
-from fhan.models.R4.Range import *
-from fhan.models.R4.Identifier import *
 from fhan.models.R4.Extension import *
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Age import *
-from fhan.models.R4.Period import *
 from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Element import *
+from fhan.models.R4.Annotation import *
 from fhan.models.R4.Resource import *
-from fhan.models.R4.Narrative import *
 from fhan.models.R4.Meta import *
+from fhan.models.R4.Reference import *
+from fhan.models.R4.Period import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.Age import *
+from fhan.models.R4.Range import *
+from fhan.models.R4.Element import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.CodeableConcept import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -34,18 +34,24 @@ class Reaction(Element):
     :param Annotation note: Text about event not captured in other fields
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
-    substance: "CodeableConcept" = CodeableConcept()
-    manifestation: list[CodeableConcept] = CodeableConcept() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
+    
+    substance:  "CodeableConcept" = CodeableConcept()
+    
+    manifestation:  list["CodeableConcept"] = [CodeableConcept()]
     
     description: str = None
     
     onset: str = None
     
     severity: str = None
-    exposureRoute: "CodeableConcept" = CodeableConcept()
-    note: list[Annotation] = Annotation() 
+    
+    exposureRoute:  "CodeableConcept" = CodeableConcept()
+    
+    note:  list["Annotation"] = [Annotation()]
     
 
 @dataclass
@@ -80,25 +86,25 @@ class AllergyIntolerance(ModelBase):
     resourceType: str = "AllergyIntolerance"
     id: str = None
     
-    meta: "Meta" = Meta()
+    meta: "Meta" = None
     
     implicitRules: str = None
     
     language: str = None
     
-    text: "Narrative" = Narrative()
+    text: "Narrative" = None
     
-    contained: list[Resource] = Resource() 
+    contained: list["Resource"] = None
     
-    extension: list[Extension] = Extension() 
+    extension: list["Extension"] = None
     
-    modifierExtension: list[Extension] = Extension() 
+    modifierExtension: list["Extension"] = None
     
-    identifier: list[Identifier] = Identifier() 
+    identifier: list["Identifier"] = None
     
-    clinicalStatus: "CodeableConcept" = CodeableConcept()
+    clinicalStatus: "CodeableConcept" = None
     
-    verificationStatus: "CodeableConcept" = CodeableConcept()
+    verificationStatus: "CodeableConcept" = None
     
     type: str = None
     
@@ -106,23 +112,23 @@ class AllergyIntolerance(ModelBase):
     
     criticality: str = None
     
-    code: "CodeableConcept" = CodeableConcept()
+    code: "CodeableConcept" = None
     
-    patient: "Reference" = Reference()
+    patient: "Reference" = None
     
-    encounter: "Reference" = Reference()
+    encounter: "Reference" = None
     
     onsetDateTime: str = None
     
     recordedDate: str = None
     
-    recorder: "Reference" = Reference()
+    recorder: "Reference" = None
     
-    asserter: "Reference" = Reference()
+    asserter: "Reference" = None
     
     lastOccurrence: str = None
     
-    note: list[Annotation] = Annotation() 
+    note: list["Annotation"] = None
     
-    reaction: list[Reaction] = Reaction() 
+    reaction: list["Reaction"] = None
     

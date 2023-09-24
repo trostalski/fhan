@@ -1,10 +1,10 @@
 """
 Generated class for Signature. 
-Time: 2023-09-23 23:45:33
+Time: 2023-09-24 20:01:56
 """
 from dataclasses import dataclass
-from fhan.models.R4.Reference import *
 from fhan.models.R4.Extension import *
+from fhan.models.R4.Reference import *
 from fhan.models.R4.Coding import *
 from fhan.models.R4.Element import *
 
@@ -26,15 +26,15 @@ class Signature(Element):
     resourceType: str = "Signature"
     id: str = None
     
-    extension: list[Extension] = Extension() 
+    extension: list["Extension"] = None
     
-    type: list[Coding] = Coding() 
+    type: list["Coding"] = None
     
     when: str = None
     
-    who: "Reference" = Reference()
+    who: "Reference" = None
     
-    onBehalfOf: "Reference" = Reference()
+    onBehalfOf: "Reference" = None
     
     targetFormat: str = None
     

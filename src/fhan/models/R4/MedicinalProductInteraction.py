@@ -1,16 +1,16 @@
 """
 Generated class for MedicinalProductInteraction. 
-Time: 2023-09-23 23:45:33
+Time: 2023-09-24 20:01:56
 """
 from dataclasses import dataclass
-from fhan.models.R4.Reference import *
-from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Extension import *
 from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Element import *
 from fhan.models.R4.Resource import *
-from fhan.models.R4.Narrative import *
 from fhan.models.R4.Meta import *
+from fhan.models.R4.Reference import *
+from fhan.models.R4.Element import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.CodeableConcept import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -23,9 +23,12 @@ class Interactant(Element):
     :param Reference itemReference: The specific medication, food or laboratory test that interacts
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
-    itemReference: "Reference" = Reference()
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
+    
+    itemReference:  "Reference" = Reference()
     
 
 @dataclass
@@ -51,31 +54,31 @@ class MedicinalProductInteraction(ModelBase):
     resourceType: str = "MedicinalProductInteraction"
     id: str = None
     
-    meta: "Meta" = Meta()
+    meta: "Meta" = None
     
     implicitRules: str = None
     
     language: str = None
     
-    text: "Narrative" = Narrative()
+    text: "Narrative" = None
     
-    contained: list[Resource] = Resource() 
+    contained: list["Resource"] = None
     
-    extension: list[Extension] = Extension() 
+    extension: list["Extension"] = None
     
-    modifierExtension: list[Extension] = Extension() 
+    modifierExtension: list["Extension"] = None
     
-    subject: list[Reference] = Reference() 
+    subject: list["Reference"] = None
     
     description: str = None
     
-    interactant: list[Interactant] = Interactant() 
+    interactant: list["Interactant"] = None
     
-    type: "CodeableConcept" = CodeableConcept()
+    type: "CodeableConcept" = None
     
-    effect: "CodeableConcept" = CodeableConcept()
+    effect: "CodeableConcept" = None
     
-    incidence: "CodeableConcept" = CodeableConcept()
+    incidence: "CodeableConcept" = None
     
-    management: "CodeableConcept" = CodeableConcept()
+    management: "CodeableConcept" = None
     

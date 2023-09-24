@@ -1,29 +1,29 @@
 """
 Generated class for PlanDefinition. 
-Time: 2023-09-23 23:45:33
+Time: 2023-09-24 20:01:56
 """
 from dataclasses import dataclass
-from fhan.models.R4.Range import *
-from fhan.models.R4.Quantity import *
-from fhan.models.R4.Timing import *
-from fhan.models.R4.ContactDetail import *
-from fhan.models.R4.Identifier import *
-from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Extension import *
+from fhan.models.R4.DataRequirement import *
+from fhan.models.R4.TriggerDefinition import *
 from fhan.models.R4.Period import *
-from fhan.models.R4.RelatedArtifact import *
-from fhan.models.R4.Expression import *
-from fhan.models.R4.Element import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.Age import *
+from fhan.models.R4.BackboneElement import *
 from fhan.models.R4.Resource import *
 from fhan.models.R4.Reference import *
-from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Quantity import *
+from fhan.models.R4.Meta import *
+from fhan.models.R4.Timing import *
+from fhan.models.R4.ContactDetail import *
+from fhan.models.R4.UsageContext import *
+from fhan.models.R4.RelatedArtifact import *
+from fhan.models.R4.Range import *
+from fhan.models.R4.Expression import *
 from fhan.models.R4.Duration import *
 from fhan.models.R4.Narrative import *
-from fhan.models.R4.DataRequirement import *
-from fhan.models.R4.Age import *
-from fhan.models.R4.Extension import *
-from fhan.models.R4.TriggerDefinition import *
-from fhan.models.R4.UsageContext import *
-from fhan.models.R4.Meta import *
+from fhan.models.R4.Element import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -40,11 +40,16 @@ class Target(Element):
     :param Duration due: Reach goal within
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
-    measure: "CodeableConcept" = CodeableConcept()
-    detailQuantity: "Quantity" = Quantity()
-    due: "Duration" = Duration()
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
+    
+    measure:  "CodeableConcept" = CodeableConcept()
+    
+    detailQuantity:  "Quantity" = Quantity()
+    
+    due:  "Duration" = Duration()
     
 
   
@@ -64,15 +69,24 @@ class Goal(Element):
     :param Target target: Target outcome for the goal
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
-    category: "CodeableConcept" = CodeableConcept()
-    description: "CodeableConcept" = CodeableConcept()
-    priority: "CodeableConcept" = CodeableConcept()
-    start: "CodeableConcept" = CodeableConcept()
-    addresses: list[CodeableConcept] = CodeableConcept() 
-    documentation: list[RelatedArtifact] = RelatedArtifact() 
-    target: list[Target] = Target() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
+    
+    category:  "CodeableConcept" = CodeableConcept()
+    
+    description:  "CodeableConcept" = CodeableConcept()
+    
+    priority:  "CodeableConcept" = CodeableConcept()
+    
+    start:  "CodeableConcept" = CodeableConcept()
+    
+    addresses:  list["CodeableConcept"] = [CodeableConcept()]
+    
+    documentation:  list["RelatedArtifact"] = [RelatedArtifact()]
+    
+    target:  list["Target"] = [Target()]
     
 
     
@@ -88,11 +102,14 @@ class Condition(Element):
     :param Expression expression: Boolean-valued expression
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
     
     kind: str = None
-    expression: "Expression" = Expression()
+    
+    expression:  "Expression" = Expression()
     
 
     
@@ -107,13 +124,16 @@ class RelatedAction(Element):
     :param Duration offsetDuration: Time offset for the relationship
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
     
     actionId: str = None
     
     relationship: str = None
-    offsetDuration: "Duration" = Duration()
+    
+    offsetDuration:  "Duration" = Duration()
     
 
     
@@ -127,11 +147,14 @@ class Participant(Element):
     :param CodeableConcept role: E.g. Nurse, Surgeon, Parent
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
     
     type: str = None
-    role: "CodeableConcept" = CodeableConcept()
+    
+    role:  "CodeableConcept" = CodeableConcept()
     
 
     
@@ -145,11 +168,14 @@ class DynamicValue(Element):
     :param Expression expression: An expression that provides the dynamic value for the customization
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
     
     path: str = None
-    expression: "Expression" = Expression()
+    
+    expression:  "Expression" = Expression()
     
 
   
@@ -188,8 +214,10 @@ class Action(Element):
     :param DynamicValue dynamicValue: Dynamic aspects of the definition
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
     
     prefix: str = None
     
@@ -200,21 +228,32 @@ class Action(Element):
     textEquivalent: str = None
     
     priority: str = None
-    code: list[CodeableConcept] = CodeableConcept() 
-    reason: list[CodeableConcept] = CodeableConcept() 
-    documentation: list[RelatedArtifact] = RelatedArtifact() 
+    
+    code:  list["CodeableConcept"] = [CodeableConcept()]
+    
+    reason:  list["CodeableConcept"] = [CodeableConcept()]
+    
+    documentation:  list["RelatedArtifact"] = [RelatedArtifact()]
     
     goalId: str = None
-    subjectCodeableConcept: "CodeableConcept" = CodeableConcept()
-    trigger: list[TriggerDefinition] = TriggerDefinition() 
-    condition: list[Condition] = Condition() 
-    input: list[DataRequirement] = DataRequirement() 
-    output: list[DataRequirement] = DataRequirement() 
-    relatedAction: list[RelatedAction] = RelatedAction() 
+    
+    subjectCodeableConcept:  "CodeableConcept" = CodeableConcept()
+    
+    trigger:  list["TriggerDefinition"] = [TriggerDefinition()]
+    
+    condition:  list["Condition"] = [Condition()]
+    
+    input:  list["DataRequirement"] = [DataRequirement()]
+    
+    output:  list["DataRequirement"] = [DataRequirement()]
+    
+    relatedAction:  list["RelatedAction"] = [RelatedAction()]
     
     timingDateTime: str = None
-    participant: list[Participant] = Participant() 
-    type: "CodeableConcept" = CodeableConcept()
+    
+    participant:  list["Participant"] = [Participant()]
+    
+    type:  "CodeableConcept" = CodeableConcept()
     
     groupingBehavior: str = None
     
@@ -229,7 +268,8 @@ class Action(Element):
     definitionCanonical: str = None
     
     transform: str = None
-    dynamicValue: list[DynamicValue] = DynamicValue() 
+    
+    dynamicValue:  list["DynamicValue"] = [DynamicValue()]
     
 
 @dataclass
@@ -279,23 +319,23 @@ class PlanDefinition(ModelBase):
     resourceType: str = "PlanDefinition"
     id: str = None
     
-    meta: "Meta" = Meta()
+    meta: "Meta" = None
     
     implicitRules: str = None
     
     language: str = None
     
-    text: "Narrative" = Narrative()
+    text: "Narrative" = None
     
-    contained: list[Resource] = Resource() 
+    contained: list["Resource"] = None
     
-    extension: list[Extension] = Extension() 
+    extension: list["Extension"] = None
     
-    modifierExtension: list[Extension] = Extension() 
+    modifierExtension: list["Extension"] = None
     
     url: str = None
     
-    identifier: list[Identifier] = Identifier() 
+    identifier: list["Identifier"] = None
     
     version: str = None
     
@@ -305,25 +345,25 @@ class PlanDefinition(ModelBase):
     
     subtitle: str = None
     
-    type: "CodeableConcept" = CodeableConcept()
+    type: "CodeableConcept" = None
     
     status: str = None
     
     experimental: bool = None
     
-    subjectCodeableConcept: "CodeableConcept" = CodeableConcept()
+    subjectCodeableConcept: "CodeableConcept" = None
     
     date: str = None
     
     publisher: str = None
     
-    contact: list[ContactDetail] = ContactDetail() 
+    contact: list["ContactDetail"] = None
     
     description: str = None
     
-    useContext: list[UsageContext] = UsageContext() 
+    useContext: list["UsageContext"] = None
     
-    jurisdiction: list[CodeableConcept] = CodeableConcept() 
+    jurisdiction: list["CodeableConcept"] = None
     
     purpose: str = None
     
@@ -335,23 +375,23 @@ class PlanDefinition(ModelBase):
     
     lastReviewDate: str = None
     
-    effectivePeriod: "Period" = Period()
+    effectivePeriod: "Period" = None
     
-    topic: list[CodeableConcept] = CodeableConcept() 
+    topic: list["CodeableConcept"] = None
     
-    author: list[ContactDetail] = ContactDetail() 
+    author: list["ContactDetail"] = None
     
-    editor: list[ContactDetail] = ContactDetail() 
+    editor: list["ContactDetail"] = None
     
-    reviewer: list[ContactDetail] = ContactDetail() 
+    reviewer: list["ContactDetail"] = None
     
-    endorser: list[ContactDetail] = ContactDetail() 
+    endorser: list["ContactDetail"] = None
     
-    relatedArtifact: list[RelatedArtifact] = RelatedArtifact() 
+    relatedArtifact: list["RelatedArtifact"] = None
     
     library: str = None
     
-    goal: list[Goal] = Goal() 
+    goal: list["Goal"] = None
     
-    action: list[Action] = Action() 
+    action: list["Action"] = None
     

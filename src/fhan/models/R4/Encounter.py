@@ -1,20 +1,20 @@
 """
 Generated class for Encounter. 
-Time: 2023-09-23 23:45:33
+Time: 2023-09-24 20:01:56
 """
 from dataclasses import dataclass
-from fhan.models.R4.Reference import *
-from fhan.models.R4.Identifier import *
 from fhan.models.R4.Extension import *
-from fhan.models.R4.Period import *
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Duration import *
 from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Element import *
 from fhan.models.R4.Resource import *
-from fhan.models.R4.Coding import *
-from fhan.models.R4.Narrative import *
 from fhan.models.R4.Meta import *
+from fhan.models.R4.Reference import *
+from fhan.models.R4.Period import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.Coding import *
+from fhan.models.R4.Element import *
+from fhan.models.R4.Duration import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.CodeableConcept import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -28,11 +28,14 @@ class StatusHistory(Element):
     :param Period period: The time that the episode was in the specified status
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
     
     status: str = None
-    period: "Period" = Period()
+    
+    period:  "Period" = Period()
     
 
     
@@ -46,10 +49,14 @@ class ClassHistory(Element):
     :param Period period: The time that the episode was in the specified class
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
-    _class: "Coding" = Coding()
-    period: "Period" = Period()
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
+    
+    _class:  "Coding" = Coding()
+    
+    period:  "Period" = Period()
     
 
     
@@ -64,11 +71,16 @@ class Participant(Element):
     :param Reference individual: Persons involved in the encounter other than the patient
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
-    type: list[CodeableConcept] = CodeableConcept() 
-    period: "Period" = Period()
-    individual: "Reference" = Reference()
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
+    
+    type:  list["CodeableConcept"] = [CodeableConcept()]
+    
+    period:  "Period" = Period()
+    
+    individual:  "Reference" = Reference()
     
 
     
@@ -83,10 +95,14 @@ class Diagnosis(Element):
     :param int rank: Ranking of the diagnosis (for each role type)
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
-    condition: "Reference" = Reference()
-    use: "CodeableConcept" = CodeableConcept()
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
+    
+    condition:  "Reference" = Reference()
+    
+    use:  "CodeableConcept" = CodeableConcept()
     
     rank: int = None
     
@@ -109,17 +125,28 @@ class Hospitalization(Element):
     :param CodeableConcept dischargeDisposition: Category or kind of location after discharge
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
-    preAdmissionIdentifier: "Identifier" = Identifier()
-    origin: "Reference" = Reference()
-    admitSource: "CodeableConcept" = CodeableConcept()
-    reAdmission: "CodeableConcept" = CodeableConcept()
-    dietPreference: list[CodeableConcept] = CodeableConcept() 
-    specialCourtesy: list[CodeableConcept] = CodeableConcept() 
-    specialArrangement: list[CodeableConcept] = CodeableConcept() 
-    destination: "Reference" = Reference()
-    dischargeDisposition: "CodeableConcept" = CodeableConcept()
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
+    
+    preAdmissionIdentifier:  "Identifier" = Identifier()
+    
+    origin:  "Reference" = Reference()
+    
+    admitSource:  "CodeableConcept" = CodeableConcept()
+    
+    reAdmission:  "CodeableConcept" = CodeableConcept()
+    
+    dietPreference:  list["CodeableConcept"] = [CodeableConcept()]
+    
+    specialCourtesy:  list["CodeableConcept"] = [CodeableConcept()]
+    
+    specialArrangement:  list["CodeableConcept"] = [CodeableConcept()]
+    
+    destination:  "Reference" = Reference()
+    
+    dischargeDisposition:  "CodeableConcept" = CodeableConcept()
     
 
     
@@ -135,13 +162,18 @@ class Location(Element):
     :param Period period: Time period during which the patient was present at the location
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
-    location: "Reference" = Reference()
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
+    
+    location:  "Reference" = Reference()
     
     status: str = None
-    physicalType: "CodeableConcept" = CodeableConcept()
-    period: "Period" = Period()
+    
+    physicalType:  "CodeableConcept" = CodeableConcept()
+    
+    period:  "Period" = Period()
     
 
 @dataclass
@@ -183,63 +215,63 @@ class Encounter(ModelBase):
     resourceType: str = "Encounter"
     id: str = None
     
-    meta: "Meta" = Meta()
+    meta: "Meta" = None
     
     implicitRules: str = None
     
     language: str = None
     
-    text: "Narrative" = Narrative()
+    text: "Narrative" = None
     
-    contained: list[Resource] = Resource() 
+    contained: list["Resource"] = None
     
-    extension: list[Extension] = Extension() 
+    extension: list["Extension"] = None
     
-    modifierExtension: list[Extension] = Extension() 
+    modifierExtension: list["Extension"] = None
     
-    identifier: list[Identifier] = Identifier() 
+    identifier: list["Identifier"] = None
     
     status: str = None
     
-    statusHistory: list[StatusHistory] = StatusHistory() 
+    statusHistory: list["StatusHistory"] = None
     
-    _class: "Coding" = Coding()
+    _class: "Coding" = None
     
-    classHistory: list[ClassHistory] = ClassHistory() 
+    classHistory: list["ClassHistory"] = None
     
-    type: list[CodeableConcept] = CodeableConcept() 
+    type: list["CodeableConcept"] = None
     
-    serviceType: "CodeableConcept" = CodeableConcept()
+    serviceType: "CodeableConcept" = None
     
-    priority: "CodeableConcept" = CodeableConcept()
+    priority: "CodeableConcept" = None
     
-    subject: "Reference" = Reference()
+    subject: "Reference" = None
     
-    episodeOfCare: list[Reference] = Reference() 
+    episodeOfCare: list["Reference"] = None
     
-    basedOn: list[Reference] = Reference() 
+    basedOn: list["Reference"] = None
     
-    participant: list[Participant] = Participant() 
+    participant: list["Participant"] = None
     
-    appointment: list[Reference] = Reference() 
+    appointment: list["Reference"] = None
     
-    period: "Period" = Period()
+    period: "Period" = None
     
-    length: "Duration" = Duration()
+    length: "Duration" = None
     
-    reasonCode: list[CodeableConcept] = CodeableConcept() 
+    reasonCode: list["CodeableConcept"] = None
     
-    reasonReference: list[Reference] = Reference() 
+    reasonReference: list["Reference"] = None
     
-    diagnosis: list[Diagnosis] = Diagnosis() 
+    diagnosis: list["Diagnosis"] = None
     
-    account: list[Reference] = Reference() 
+    account: list["Reference"] = None
     
-    hospitalization: "Hospitalization" = Hospitalization()
+    hospitalization: "Hospitalization" = None
     
-    location: list[Location] = Location() 
+    location: list["Location"] = None
     
-    serviceProvider: "Reference" = Reference()
+    serviceProvider: "Reference" = None
     
-    partOf: "Reference" = Reference()
+    partOf: "Reference" = None
     

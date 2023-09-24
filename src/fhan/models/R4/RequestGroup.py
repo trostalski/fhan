@@ -1,25 +1,25 @@
 """
 Generated class for RequestGroup. 
-Time: 2023-09-23 23:45:33
+Time: 2023-09-24 20:01:56
 """
 from dataclasses import dataclass
-from fhan.models.R4.Annotation import *
-from fhan.models.R4.Reference import *
-from fhan.models.R4.Range import *
-from fhan.models.R4.Identifier import *
-from fhan.models.R4.Extension import *
-from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.RelatedArtifact import *
-from fhan.models.R4.Expression import *
-from fhan.models.R4.Age import *
-from fhan.models.R4.Period import *
+from fhan.models.R4.Extension import *
 from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Annotation import *
+from fhan.models.R4.Resource import *
+from fhan.models.R4.Meta import *
+from fhan.models.R4.Reference import *
+from fhan.models.R4.Period import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.Range import *
+from fhan.models.R4.Age import *
+from fhan.models.R4.Expression import *
 from fhan.models.R4.Timing import *
 from fhan.models.R4.Element import *
-from fhan.models.R4.Resource import *
 from fhan.models.R4.Duration import *
 from fhan.models.R4.Narrative import *
-from fhan.models.R4.Meta import *
+from fhan.models.R4.CodeableConcept import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -35,11 +35,14 @@ class Condition(Element):
     :param Expression expression: Boolean-valued expression
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
     
     kind: str = None
-    expression: "Expression" = Expression()
+    
+    expression:  "Expression" = Expression()
     
 
     
@@ -54,13 +57,16 @@ class RelatedAction(Element):
     :param Duration offsetDuration: Time offset for the relationship
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
     
     actionId: str = None
     
     relationship: str = None
-    offsetDuration: "Duration" = Duration()
+    
+    offsetDuration:  "Duration" = Duration()
     
 
   
@@ -91,8 +97,10 @@ class Action(Element):
     :param Reference resource: The target of the action
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
     
     prefix: str = None
     
@@ -103,14 +111,20 @@ class Action(Element):
     textEquivalent: str = None
     
     priority: str = None
-    code: list[CodeableConcept] = CodeableConcept() 
-    documentation: list[RelatedArtifact] = RelatedArtifact() 
-    condition: list[Condition] = Condition() 
-    relatedAction: list[RelatedAction] = RelatedAction() 
+    
+    code:  list["CodeableConcept"] = [CodeableConcept()]
+    
+    documentation:  list["RelatedArtifact"] = [RelatedArtifact()]
+    
+    condition:  list["Condition"] = [Condition()]
+    
+    relatedAction:  list["RelatedAction"] = [RelatedAction()]
     
     timingDateTime: str = None
-    participant: list[Reference] = Reference() 
-    type: "CodeableConcept" = CodeableConcept()
+    
+    participant:  list["Reference"] = [Reference()]
+    
+    type:  "CodeableConcept" = CodeableConcept()
     
     groupingBehavior: str = None
     
@@ -121,7 +135,8 @@ class Action(Element):
     precheckBehavior: str = None
     
     cardinalityBehavior: str = None
-    resource: "Reference" = Reference()
+    
+    resource:  "Reference" = Reference()
     
 
 @dataclass
@@ -158,31 +173,31 @@ class RequestGroup(ModelBase):
     resourceType: str = "RequestGroup"
     id: str = None
     
-    meta: "Meta" = Meta()
+    meta: "Meta" = None
     
     implicitRules: str = None
     
     language: str = None
     
-    text: "Narrative" = Narrative()
+    text: "Narrative" = None
     
-    contained: list[Resource] = Resource() 
+    contained: list["Resource"] = None
     
-    extension: list[Extension] = Extension() 
+    extension: list["Extension"] = None
     
-    modifierExtension: list[Extension] = Extension() 
+    modifierExtension: list["Extension"] = None
     
-    identifier: list[Identifier] = Identifier() 
+    identifier: list["Identifier"] = None
     
     instantiatesCanonical: str = None
     
     instantiatesUri: str = None
     
-    basedOn: list[Reference] = Reference() 
+    basedOn: list["Reference"] = None
     
-    replaces: list[Reference] = Reference() 
+    replaces: list["Reference"] = None
     
-    groupIdentifier: "Identifier" = Identifier()
+    groupIdentifier: "Identifier" = None
     
     status: str = None
     
@@ -190,21 +205,21 @@ class RequestGroup(ModelBase):
     
     priority: str = None
     
-    code: "CodeableConcept" = CodeableConcept()
+    code: "CodeableConcept" = None
     
-    subject: "Reference" = Reference()
+    subject: "Reference" = None
     
-    encounter: "Reference" = Reference()
+    encounter: "Reference" = None
     
     authoredOn: str = None
     
-    author: "Reference" = Reference()
+    author: "Reference" = None
     
-    reasonCode: list[CodeableConcept] = CodeableConcept() 
+    reasonCode: list["CodeableConcept"] = None
     
-    reasonReference: list[Reference] = Reference() 
+    reasonReference: list["Reference"] = None
     
-    note: list[Annotation] = Annotation() 
+    note: list["Annotation"] = None
     
-    action: list[Action] = Action() 
+    action: list["Action"] = None
     

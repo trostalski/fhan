@@ -30,8 +30,11 @@ class {{ element.type }}({{ element.base_class }}):
     {%- for child in element.defined_children -%}
     {%- if child.is_primitive %}
     {{ child.name }}: {{ child.python_type.__name__ }} = None
-    {% else -%}
-    {{ child.name }}: {% if child.is_array %}list[{{ child.type }}] = {{child.type}}() {% else %}"{{ child.type }}" = {{child.type}}(){% endif %}
+    {% else %}
+    {{ child.name }}: {%if child.type == element.type%} list[{{child.type}}] = None
+    {% elif child.is_array %} list["{{child.type}}"] = [{{child.type}}()]
+    {% else %} "{{child.type}}" = {{child.type}}()
+    {% endif -%}
     {% endif -%}
     {% endfor -%}
 {% endmacro -%}
@@ -64,6 +67,6 @@ class {{structure_definition.type}}{% if structure_definition.base_class %}({{st
     {% if element.is_primitive %}
     {{element.name}}: {{element.python_type.__name__}} = None
     {% else %}
-    {{element.name}}: {%if element.is_array%}list[{{ element.type }}] = {{element.type}}() {%else%}"{{element.type}}" = {{element.type}}(){% endif %}
+    {{element.name}}: {%if element.is_array%}{%raw%}list[{%endraw%}{%endif%}"{{element.type}}"{%if element.is_array%}{%raw%}]{%endraw%}{%endif%} = None
     {% endif -%}
     {% endfor %}

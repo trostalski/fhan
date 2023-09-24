@@ -1,16 +1,16 @@
 """
 Generated class for TestReport. 
-Time: 2023-09-23 23:45:33
+Time: 2023-09-24 20:01:56
 """
 from dataclasses import dataclass
-from fhan.models.R4.Reference import *
-from fhan.models.R4.Identifier import *
 from fhan.models.R4.Extension import *
 from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Element import *
 from fhan.models.R4.Resource import *
-from fhan.models.R4.Narrative import *
 from fhan.models.R4.Meta import *
+from fhan.models.R4.Reference import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Element import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -25,8 +25,10 @@ class Participant(Element):
     :param str display: The display name of the participant
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
     
     type: str = None
     
@@ -51,8 +53,10 @@ class Operation(Element):
     :param str detail: A link to further details on the result
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
     
     result: str = None
     
@@ -73,8 +77,10 @@ class _assert(Element):
     :param str detail: A link to further details on the result
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
     
     result: str = None
     
@@ -95,10 +101,14 @@ class Action(Element):
     :param _assert _assert: The assertion to perform
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
-    operation: "Operation" = Operation()
-    _assert: "_assert" = _assert()
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
+    
+    operation:  "Operation" = Operation()
+    
+    _assert:  "_assert" = _assert()
     
 
   
@@ -112,9 +122,12 @@ class Setup(Element):
     :param Action action: A setup operation or assert that was executed
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
-    action: list[Action] = Action() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
+    
+    action:  list["Action"] = [Action()]
     
 
     
@@ -128,8 +141,10 @@ class Action(Element):
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
     
 
   
@@ -145,18 +160,22 @@ class Test(Element):
     :param str name: Tracking/logging name of this test
     :param str description: Tracking/reporting short description of the test
     :param Action action: A test operation or assert that was performed
-    """testScript: "Reference" = Reference()
+    """
+    testScript:  "Reference" = Reference()
     
     tester: str = None
     
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
     
     name: str = None
     
     description: str = None
-    action: list[Action] = Action() 
+    
+    action:  list["Action"] = [Action()]
     
 
     
@@ -170,8 +189,10 @@ class Action(Element):
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
     
 
   
@@ -185,9 +206,12 @@ class Teardown(Element):
     :param Action action: One or more teardown operations performed
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
-    action: list[Action] = Action() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
+    
+    action:  list["Action"] = [Action()]
     
 
 @dataclass
@@ -218,27 +242,27 @@ class TestReport(ModelBase):
     resourceType: str = "TestReport"
     id: str = None
     
-    meta: "Meta" = Meta()
+    meta: "Meta" = None
     
     implicitRules: str = None
     
     language: str = None
     
-    text: "Narrative" = Narrative()
+    text: "Narrative" = None
     
-    contained: list[Resource] = Resource() 
+    contained: list["Resource"] = None
     
-    extension: list[Extension] = Extension() 
+    extension: list["Extension"] = None
     
-    modifierExtension: list[Extension] = Extension() 
+    modifierExtension: list["Extension"] = None
     
-    identifier: "Identifier" = Identifier()
+    identifier: "Identifier" = None
     
     name: str = None
     
     status: str = None
     
-    testScript: "Reference" = Reference()
+    testScript: "Reference" = None
     
     result: str = None
     
@@ -248,11 +272,11 @@ class TestReport(ModelBase):
     
     issued: str = None
     
-    participant: list[Participant] = Participant() 
+    participant: list["Participant"] = None
     
-    setup: "Setup" = Setup()
+    setup: "Setup" = None
     
-    test: list[Test] = Test() 
+    test: list["Test"] = None
     
-    teardown: "Teardown" = Teardown()
+    teardown: "Teardown" = None
     

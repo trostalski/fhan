@@ -1,22 +1,22 @@
 """
 Generated class for Claim. 
-Time: 2023-09-23 23:45:33
+Time: 2023-09-24 20:01:56
 """
 from dataclasses import dataclass
-from fhan.models.R4.Reference import *
-from fhan.models.R4.Identifier import *
+from fhan.models.R4.Address import *
 from fhan.models.R4.Extension import *
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Period import *
-from fhan.models.R4.Quantity import *
-from fhan.models.R4.Attachment import *
 from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Element import *
 from fhan.models.R4.Money import *
 from fhan.models.R4.Resource import *
-from fhan.models.R4.Address import *
-from fhan.models.R4.Narrative import *
 from fhan.models.R4.Meta import *
+from fhan.models.R4.Quantity import *
+from fhan.models.R4.Reference import *
+from fhan.models.R4.Period import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.Element import *
+from fhan.models.R4.Attachment import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.CodeableConcept import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -31,11 +31,16 @@ class Related(Element):
     :param Identifier reference: File or case reference
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
-    claim: "Reference" = Reference()
-    relationship: "CodeableConcept" = CodeableConcept()
-    reference: "Identifier" = Identifier()
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
+    
+    claim:  "Reference" = Reference()
+    
+    relationship:  "CodeableConcept" = CodeableConcept()
+    
+    reference:  "Identifier" = Identifier()
     
 
     
@@ -49,10 +54,14 @@ class Payee(Element):
     :param Reference party: Recipient reference
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
-    type: "CodeableConcept" = CodeableConcept()
-    party: "Reference" = Reference()
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
+    
+    type:  "CodeableConcept" = CodeableConcept()
+    
+    party:  "Reference" = Reference()
     
 
     
@@ -69,15 +78,20 @@ class CareTeam(Element):
     :param CodeableConcept qualification: Practitioner credential or specialization
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
     
     sequence: int = None
-    provider: "Reference" = Reference()
+    
+    provider:  "Reference" = Reference()
     
     responsible: bool = None
-    role: "CodeableConcept" = CodeableConcept()
-    qualification: "CodeableConcept" = CodeableConcept()
+    
+    role:  "CodeableConcept" = CodeableConcept()
+    
+    qualification:  "CodeableConcept" = CodeableConcept()
     
 
     
@@ -95,17 +109,22 @@ class SupportingInfo(Element):
     :param CodeableConcept reason: Explanation for the information
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
     
     sequence: int = None
-    category: "CodeableConcept" = CodeableConcept()
-    code: "CodeableConcept" = CodeableConcept()
+    
+    category:  "CodeableConcept" = CodeableConcept()
+    
+    code:  "CodeableConcept" = CodeableConcept()
     
     timingDate: str = None
     
     valueBoolean: bool = None
-    reason: "CodeableConcept" = CodeableConcept()
+    
+    reason:  "CodeableConcept" = CodeableConcept()
     
 
     
@@ -122,14 +141,20 @@ class Diagnosis(Element):
     :param CodeableConcept packageCode: Package billing code
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
     
     sequence: int = None
-    diagnosisCodeableConcept: "CodeableConcept" = CodeableConcept()
-    type: list[CodeableConcept] = CodeableConcept() 
-    onAdmission: "CodeableConcept" = CodeableConcept()
-    packageCode: "CodeableConcept" = CodeableConcept()
+    
+    diagnosisCodeableConcept:  "CodeableConcept" = CodeableConcept()
+    
+    type:  list["CodeableConcept"] = [CodeableConcept()]
+    
+    onAdmission:  "CodeableConcept" = CodeableConcept()
+    
+    packageCode:  "CodeableConcept" = CodeableConcept()
     
 
     
@@ -146,15 +171,20 @@ class Procedure(Element):
     :param Reference udi: Unique device identifier
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
     
     sequence: int = None
-    type: list[CodeableConcept] = CodeableConcept() 
+    
+    type:  list["CodeableConcept"] = [CodeableConcept()]
     
     date: str = None
-    procedureCodeableConcept: "CodeableConcept" = CodeableConcept()
-    udi: list[Reference] = Reference() 
+    
+    procedureCodeableConcept:  "CodeableConcept" = CodeableConcept()
+    
+    udi:  list["Reference"] = [Reference()]
     
 
     
@@ -173,19 +203,24 @@ class Insurance(Element):
     :param Reference claimResponse: Adjudication results
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
     
     sequence: int = None
     
     focal: bool = None
-    identifier: "Identifier" = Identifier()
-    coverage: "Reference" = Reference()
+    
+    identifier:  "Identifier" = Identifier()
+    
+    coverage:  "Reference" = Reference()
     
     businessArrangement: str = None
     
     preAuthRef: str = None
-    claimResponse: "Reference" = Reference()
+    
+    claimResponse:  "Reference" = Reference()
     
 
     
@@ -200,12 +235,16 @@ class Accident(Element):
     :param Address locationAddress: Where the event occurred
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
     
     date: str = None
-    type: "CodeableConcept" = CodeableConcept()
-    locationAddress: "Address" = Address()
+    
+    type:  "CodeableConcept" = CodeableConcept()
+    
+    locationAddress:  "Address" = Address()
     
 
     
@@ -232,21 +271,32 @@ class SubDetail(Element):
     :param Reference udi: Unique device identifier
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
     
     sequence: int = None
-    revenue: "CodeableConcept" = CodeableConcept()
-    category: "CodeableConcept" = CodeableConcept()
-    productOrService: "CodeableConcept" = CodeableConcept()
-    modifier: list[CodeableConcept] = CodeableConcept() 
-    programCode: list[CodeableConcept] = CodeableConcept() 
-    quantity: "Quantity" = Quantity()
-    unitPrice: "Money" = Money()
+    
+    revenue:  "CodeableConcept" = CodeableConcept()
+    
+    category:  "CodeableConcept" = CodeableConcept()
+    
+    productOrService:  "CodeableConcept" = CodeableConcept()
+    
+    modifier:  list["CodeableConcept"] = [CodeableConcept()]
+    
+    programCode:  list["CodeableConcept"] = [CodeableConcept()]
+    
+    quantity:  "Quantity" = Quantity()
+    
+    unitPrice:  "Money" = Money()
     
     factor: float = None
-    net: "Money" = Money()
-    udi: list[Reference] = Reference() 
+    
+    net:  "Money" = Money()
+    
+    udi:  list["Reference"] = [Reference()]
     
 
   
@@ -271,22 +321,34 @@ class Detail(Element):
     :param SubDetail subDetail: Product or service provided
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
     
     sequence: int = None
-    revenue: "CodeableConcept" = CodeableConcept()
-    category: "CodeableConcept" = CodeableConcept()
-    productOrService: "CodeableConcept" = CodeableConcept()
-    modifier: list[CodeableConcept] = CodeableConcept() 
-    programCode: list[CodeableConcept] = CodeableConcept() 
-    quantity: "Quantity" = Quantity()
-    unitPrice: "Money" = Money()
+    
+    revenue:  "CodeableConcept" = CodeableConcept()
+    
+    category:  "CodeableConcept" = CodeableConcept()
+    
+    productOrService:  "CodeableConcept" = CodeableConcept()
+    
+    modifier:  list["CodeableConcept"] = [CodeableConcept()]
+    
+    programCode:  list["CodeableConcept"] = [CodeableConcept()]
+    
+    quantity:  "Quantity" = Quantity()
+    
+    unitPrice:  "Money" = Money()
     
     factor: float = None
-    net: "Money" = Money()
-    udi: list[Reference] = Reference() 
-    subDetail: list[SubDetail] = SubDetail() 
+    
+    net:  "Money" = Money()
+    
+    udi:  list["Reference"] = [Reference()]
+    
+    subDetail:  list["SubDetail"] = [SubDetail()]
     
 
   
@@ -320,8 +382,10 @@ class Item(Element):
     :param Detail detail: Product or service provided
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
     
     sequence: int = None
     
@@ -332,24 +396,38 @@ class Item(Element):
     procedureSequence: int = None
     
     informationSequence: int = None
-    revenue: "CodeableConcept" = CodeableConcept()
-    category: "CodeableConcept" = CodeableConcept()
-    productOrService: "CodeableConcept" = CodeableConcept()
-    modifier: list[CodeableConcept] = CodeableConcept() 
-    programCode: list[CodeableConcept] = CodeableConcept() 
+    
+    revenue:  "CodeableConcept" = CodeableConcept()
+    
+    category:  "CodeableConcept" = CodeableConcept()
+    
+    productOrService:  "CodeableConcept" = CodeableConcept()
+    
+    modifier:  list["CodeableConcept"] = [CodeableConcept()]
+    
+    programCode:  list["CodeableConcept"] = [CodeableConcept()]
     
     servicedDate: str = None
-    locationCodeableConcept: "CodeableConcept" = CodeableConcept()
-    quantity: "Quantity" = Quantity()
-    unitPrice: "Money" = Money()
+    
+    locationCodeableConcept:  "CodeableConcept" = CodeableConcept()
+    
+    quantity:  "Quantity" = Quantity()
+    
+    unitPrice:  "Money" = Money()
     
     factor: float = None
-    net: "Money" = Money()
-    udi: list[Reference] = Reference() 
-    bodySite: "CodeableConcept" = CodeableConcept()
-    subSite: list[CodeableConcept] = CodeableConcept() 
-    encounter: list[Reference] = Reference() 
-    detail: list[Detail] = Detail() 
+    
+    net:  "Money" = Money()
+    
+    udi:  list["Reference"] = [Reference()]
+    
+    bodySite:  "CodeableConcept" = CodeableConcept()
+    
+    subSite:  list["CodeableConcept"] = [CodeableConcept()]
+    
+    encounter:  list["Reference"] = [Reference()]
+    
+    detail:  list["Detail"] = [Detail()]
     
 
 @dataclass
@@ -395,71 +473,71 @@ class Claim(ModelBase):
     resourceType: str = "Claim"
     id: str = None
     
-    meta: "Meta" = Meta()
+    meta: "Meta" = None
     
     implicitRules: str = None
     
     language: str = None
     
-    text: "Narrative" = Narrative()
+    text: "Narrative" = None
     
-    contained: list[Resource] = Resource() 
+    contained: list["Resource"] = None
     
-    extension: list[Extension] = Extension() 
+    extension: list["Extension"] = None
     
-    modifierExtension: list[Extension] = Extension() 
+    modifierExtension: list["Extension"] = None
     
-    identifier: list[Identifier] = Identifier() 
+    identifier: list["Identifier"] = None
     
     status: str = None
     
-    type: "CodeableConcept" = CodeableConcept()
+    type: "CodeableConcept" = None
     
-    subType: "CodeableConcept" = CodeableConcept()
+    subType: "CodeableConcept" = None
     
     use: str = None
     
-    patient: "Reference" = Reference()
+    patient: "Reference" = None
     
-    billablePeriod: "Period" = Period()
+    billablePeriod: "Period" = None
     
     created: str = None
     
-    enterer: "Reference" = Reference()
+    enterer: "Reference" = None
     
-    insurer: "Reference" = Reference()
+    insurer: "Reference" = None
     
-    provider: "Reference" = Reference()
+    provider: "Reference" = None
     
-    priority: "CodeableConcept" = CodeableConcept()
+    priority: "CodeableConcept" = None
     
-    fundsReserve: "CodeableConcept" = CodeableConcept()
+    fundsReserve: "CodeableConcept" = None
     
-    related: list[Related] = Related() 
+    related: list["Related"] = None
     
-    prescription: "Reference" = Reference()
+    prescription: "Reference" = None
     
-    originalPrescription: "Reference" = Reference()
+    originalPrescription: "Reference" = None
     
-    payee: "Payee" = Payee()
+    payee: "Payee" = None
     
-    referral: "Reference" = Reference()
+    referral: "Reference" = None
     
-    facility: "Reference" = Reference()
+    facility: "Reference" = None
     
-    careTeam: list[CareTeam] = CareTeam() 
+    careTeam: list["CareTeam"] = None
     
-    supportingInfo: list[SupportingInfo] = SupportingInfo() 
+    supportingInfo: list["SupportingInfo"] = None
     
-    diagnosis: list[Diagnosis] = Diagnosis() 
+    diagnosis: list["Diagnosis"] = None
     
-    procedure: list[Procedure] = Procedure() 
+    procedure: list["Procedure"] = None
     
-    insurance: list[Insurance] = Insurance() 
+    insurance: list["Insurance"] = None
     
-    accident: "Accident" = Accident()
+    accident: "Accident" = None
     
-    item: list[Item] = Item() 
+    item: list["Item"] = None
     
-    total: "Money" = Money()
+    total: "Money" = None
     

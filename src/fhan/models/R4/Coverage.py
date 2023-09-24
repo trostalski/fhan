@@ -1,20 +1,20 @@
 """
 Generated class for Coverage. 
-Time: 2023-09-23 23:45:33
+Time: 2023-09-24 20:01:56
 """
 from dataclasses import dataclass
-from fhan.models.R4.Reference import *
-from fhan.models.R4.Identifier import *
 from fhan.models.R4.Extension import *
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Period import *
-from fhan.models.R4.Quantity import *
 from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Element import *
 from fhan.models.R4.Money import *
 from fhan.models.R4.Resource import *
-from fhan.models.R4.Narrative import *
 from fhan.models.R4.Meta import *
+from fhan.models.R4.Quantity import *
+from fhan.models.R4.Reference import *
+from fhan.models.R4.Period import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.Element import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.CodeableConcept import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -29,9 +29,12 @@ class _class(Element):
     :param str name: Human readable description of the type and value
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
-    type: "CodeableConcept" = CodeableConcept()
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
+    
+    type:  "CodeableConcept" = CodeableConcept()
     
     value: str = None
     
@@ -51,10 +54,14 @@ class Exception(Element):
     :param Period period: The effective period of the exception
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
-    type: "CodeableConcept" = CodeableConcept()
-    period: "Period" = Period()
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
+    
+    type:  "CodeableConcept" = CodeableConcept()
+    
+    period:  "Period" = Period()
     
 
   
@@ -70,11 +77,16 @@ class CostToBeneficiary(Element):
     :param Exception exception: Exceptions for patient payments
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
-    type: "CodeableConcept" = CodeableConcept()
-    valueQuantity: "Quantity" = Quantity()
-    exception: list[Exception] = Exception() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
+    
+    type:  "CodeableConcept" = CodeableConcept()
+    
+    valueQuantity:  "Quantity" = Quantity()
+    
+    exception:  list["Exception"] = [Exception()]
     
 
 @dataclass
@@ -110,51 +122,51 @@ class Coverage(ModelBase):
     resourceType: str = "Coverage"
     id: str = None
     
-    meta: "Meta" = Meta()
+    meta: "Meta" = None
     
     implicitRules: str = None
     
     language: str = None
     
-    text: "Narrative" = Narrative()
+    text: "Narrative" = None
     
-    contained: list[Resource] = Resource() 
+    contained: list["Resource"] = None
     
-    extension: list[Extension] = Extension() 
+    extension: list["Extension"] = None
     
-    modifierExtension: list[Extension] = Extension() 
+    modifierExtension: list["Extension"] = None
     
-    identifier: list[Identifier] = Identifier() 
+    identifier: list["Identifier"] = None
     
     status: str = None
     
-    type: "CodeableConcept" = CodeableConcept()
+    type: "CodeableConcept" = None
     
-    policyHolder: "Reference" = Reference()
+    policyHolder: "Reference" = None
     
-    subscriber: "Reference" = Reference()
+    subscriber: "Reference" = None
     
     subscriberId: str = None
     
-    beneficiary: "Reference" = Reference()
+    beneficiary: "Reference" = None
     
     dependent: str = None
     
-    relationship: "CodeableConcept" = CodeableConcept()
+    relationship: "CodeableConcept" = None
     
-    period: "Period" = Period()
+    period: "Period" = None
     
-    payor: list[Reference] = Reference() 
+    payor: list["Reference"] = None
     
-    _class: list[_class] = _class() 
+    _class: list["_class"] = None
     
     order: int = None
     
     network: str = None
     
-    costToBeneficiary: list[CostToBeneficiary] = CostToBeneficiary() 
+    costToBeneficiary: list["CostToBeneficiary"] = None
     
     subrogation: bool = None
     
-    contract: list[Reference] = Reference() 
+    contract: list["Reference"] = None
     

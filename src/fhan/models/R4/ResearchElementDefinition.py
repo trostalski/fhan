@@ -1,25 +1,25 @@
 """
 Generated class for ResearchElementDefinition. 
-Time: 2023-09-23 23:45:33
+Time: 2023-09-24 20:01:56
 """
 from dataclasses import dataclass
+from fhan.models.R4.UsageContext import *
+from fhan.models.R4.Extension import *
+from fhan.models.R4.RelatedArtifact import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Resource import *
+from fhan.models.R4.Meta import *
 from fhan.models.R4.DataRequirement import *
 from fhan.models.R4.Reference import *
-from fhan.models.R4.ContactDetail import *
-from fhan.models.R4.Identifier import *
-from fhan.models.R4.Extension import *
-from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Period import *
-from fhan.models.R4.RelatedArtifact import *
+from fhan.models.R4.Identifier import *
 from fhan.models.R4.Expression import *
-from fhan.models.R4.BackboneElement import *
 from fhan.models.R4.Timing import *
 from fhan.models.R4.Element import *
-from fhan.models.R4.UsageContext import *
-from fhan.models.R4.Resource import *
 from fhan.models.R4.Duration import *
+from fhan.models.R4.ContactDetail import *
 from fhan.models.R4.Narrative import *
-from fhan.models.R4.Meta import *
+from fhan.models.R4.CodeableConcept import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -43,25 +43,32 @@ class Characteristic(Element):
     :param str participantEffectiveGroupMeasure: mean | median | mean-of-mean | mean-of-median | median-of-mean | median-of-median
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
-    definitionCodeableConcept: "CodeableConcept" = CodeableConcept()
-    usageContext: list[UsageContext] = UsageContext() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
+    
+    definitionCodeableConcept:  "CodeableConcept" = CodeableConcept()
+    
+    usageContext:  list["UsageContext"] = [UsageContext()]
     
     exclude: bool = None
-    unitOfMeasure: "CodeableConcept" = CodeableConcept()
+    
+    unitOfMeasure:  "CodeableConcept" = CodeableConcept()
     
     studyEffectiveDescription: str = None
     
     studyEffectiveDateTime: str = None
-    studyEffectiveTimeFromStart: "Duration" = Duration()
+    
+    studyEffectiveTimeFromStart:  "Duration" = Duration()
     
     studyEffectiveGroupMeasure: str = None
     
     participantEffectiveDescription: str = None
     
     participantEffectiveDateTime: str = None
-    participantEffectiveTimeFromStart: "Duration" = Duration()
+    
+    participantEffectiveTimeFromStart:  "Duration" = Duration()
     
     participantEffectiveGroupMeasure: str = None
     
@@ -115,23 +122,23 @@ class ResearchElementDefinition(ModelBase):
     resourceType: str = "ResearchElementDefinition"
     id: str = None
     
-    meta: "Meta" = Meta()
+    meta: "Meta" = None
     
     implicitRules: str = None
     
     language: str = None
     
-    text: "Narrative" = Narrative()
+    text: "Narrative" = None
     
-    contained: list[Resource] = Resource() 
+    contained: list["Resource"] = None
     
-    extension: list[Extension] = Extension() 
+    extension: list["Extension"] = None
     
-    modifierExtension: list[Extension] = Extension() 
+    modifierExtension: list["Extension"] = None
     
     url: str = None
     
-    identifier: list[Identifier] = Identifier() 
+    identifier: list["Identifier"] = None
     
     version: str = None
     
@@ -147,21 +154,21 @@ class ResearchElementDefinition(ModelBase):
     
     experimental: bool = None
     
-    subjectCodeableConcept: "CodeableConcept" = CodeableConcept()
+    subjectCodeableConcept: "CodeableConcept" = None
     
     date: str = None
     
     publisher: str = None
     
-    contact: list[ContactDetail] = ContactDetail() 
+    contact: list["ContactDetail"] = None
     
     description: str = None
     
     comment: str = None
     
-    useContext: list[UsageContext] = UsageContext() 
+    useContext: list["UsageContext"] = None
     
-    jurisdiction: list[CodeableConcept] = CodeableConcept() 
+    jurisdiction: list["CodeableConcept"] = None
     
     purpose: str = None
     
@@ -173,19 +180,19 @@ class ResearchElementDefinition(ModelBase):
     
     lastReviewDate: str = None
     
-    effectivePeriod: "Period" = Period()
+    effectivePeriod: "Period" = None
     
-    topic: list[CodeableConcept] = CodeableConcept() 
+    topic: list["CodeableConcept"] = None
     
-    author: list[ContactDetail] = ContactDetail() 
+    author: list["ContactDetail"] = None
     
-    editor: list[ContactDetail] = ContactDetail() 
+    editor: list["ContactDetail"] = None
     
-    reviewer: list[ContactDetail] = ContactDetail() 
+    reviewer: list["ContactDetail"] = None
     
-    endorser: list[ContactDetail] = ContactDetail() 
+    endorser: list["ContactDetail"] = None
     
-    relatedArtifact: list[RelatedArtifact] = RelatedArtifact() 
+    relatedArtifact: list["RelatedArtifact"] = None
     
     library: str = None
     
@@ -193,5 +200,5 @@ class ResearchElementDefinition(ModelBase):
     
     variableType: str = None
     
-    characteristic: list[Characteristic] = Characteristic() 
+    characteristic: list["Characteristic"] = None
     

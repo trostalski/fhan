@@ -127,7 +127,6 @@ class View:
         execution_result = {
             alias: select_result[i] for i, alias in enumerate(self._select_aliases)
         }  # returns a dict with the aliases as keys and lists of values as values
-        print(execution_result)
         view_result = ViewResult(execution_result)
         self._view_result = view_result
         return view_result
@@ -139,7 +138,9 @@ class View:
         `None` or [] is considered `True` for now.
         """
         for constraint_fn in self._constraint_fns:
-            self._resource_collection.filter_resources(constraint_fn)
+            self._resource_collection.filter_resources(
+                lambda x: _unnest_fp_result(constraint_fn(x))
+            )
 
     def _apply_selects(self) -> list[list[list]]:
         """
@@ -152,28 +153,10 @@ class View:
             fn_results = []
             for resource in self._resource_collection:
                 fn_result = select_fn(resource)  # fp always returns a list
-                fn_result = self._unnest_fn_result(fn_result)
+                fn_result = _unnest_fp_result(fn_result)
                 fn_results.append(fn_result)
             select_results.append(fn_results)
         return select_results
-
-    def _unnest_fn_result(self, fn_result: list) -> Any:
-        """
-        Unnest the result from the select function. If the result is a list of length 0,
-        it is considered `None`. If the result is a list of length 1, the first element
-        is returned. If the result is a list of length > 1, a warning is logged and the
-        list is returned.
-        """
-        if len(fn_result) == 0:
-            fn_result = None
-        elif len(fn_result) == 1:
-            fn_result = fn_result[0]
-        elif len(fn_result) > 1:
-            logger.warning(
-                f"Select function returned more than one result: {fn_result}. "
-                "Keeping list."
-            )
-        return fn_result
 
     def _get_constraint_fns(self) -> list:
         """
@@ -232,3 +215,22 @@ def _validate_view_definition_structure(view_definition: dict):
                 )
     if errors:
         raise ValueError("\n".join(errors))
+
+
+def _unnest_fp_result(fp_result: list) -> Any:
+    """
+    Unnest the result from the select function. If the result is a list of length 0,
+    it is considered `None`. If the result is a list of length 1, the first element
+    is returned. If the result is a list of length > 1, a warning is logged and the
+    list is returned.
+    """
+    if len(fp_result) == 0:
+        fp_result = None
+    elif len(fp_result) == 1:
+        fp_result = fp_result[0]
+    elif len(fp_result) > 1:
+        logger.warning(
+            f"Select function returned more than one result: {fp_result}. "
+            "Keeping list."
+        )
+    return fp_result

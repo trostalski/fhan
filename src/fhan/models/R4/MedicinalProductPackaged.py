@@ -1,21 +1,21 @@
 """
 Generated class for MedicinalProductPackaged. 
-Time: 2023-09-23 23:45:33
+Time: 2023-09-24 20:01:56
 """
 from dataclasses import dataclass
-from fhan.models.R4.Reference import *
-from fhan.models.R4.Identifier import *
 from fhan.models.R4.Extension import *
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.MarketingStatus import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.ProductShelfLife import *
+from fhan.models.R4.Resource import *
+from fhan.models.R4.Meta import *
 from fhan.models.R4.Quantity import *
 from fhan.models.R4.ProdCharacteristic import *
-from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Reference import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.MarketingStatus import *
 from fhan.models.R4.Element import *
-from fhan.models.R4.Resource import *
-from fhan.models.R4.ProductShelfLife import *
 from fhan.models.R4.Narrative import *
-from fhan.models.R4.Meta import *
+from fhan.models.R4.CodeableConcept import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -29,10 +29,14 @@ class BatchIdentifier(Element):
     :param Identifier immediatePackaging: A number appearing on the immediate packaging (and not the outer packaging)
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
-    outerPackaging: "Identifier" = Identifier()
-    immediatePackaging: "Identifier" = Identifier()
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
+    
+    outerPackaging:  "Identifier" = Identifier()
+    
+    immediatePackaging:  "Identifier" = Identifier()
     
 
     
@@ -55,19 +59,32 @@ class PackageItem(Element):
     :param Reference manufacturer: Manufacturer of this Package Item
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
-    identifier: list[Identifier] = Identifier() 
-    type: "CodeableConcept" = CodeableConcept()
-    quantity: "Quantity" = Quantity()
-    material: list[CodeableConcept] = CodeableConcept() 
-    alternateMaterial: list[CodeableConcept] = CodeableConcept() 
-    device: list[Reference] = Reference() 
-    manufacturedItem: list[Reference] = Reference() 
-    physicalCharacteristics: "ProdCharacteristic" = ProdCharacteristic()
-    otherCharacteristics: list[CodeableConcept] = CodeableConcept() 
-    shelfLifeStorage: list[ProductShelfLife] = ProductShelfLife() 
-    manufacturer: list[Reference] = Reference() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
+    
+    identifier:  list["Identifier"] = [Identifier()]
+    
+    type:  "CodeableConcept" = CodeableConcept()
+    
+    quantity:  "Quantity" = Quantity()
+    
+    material:  list["CodeableConcept"] = [CodeableConcept()]
+    
+    alternateMaterial:  list["CodeableConcept"] = [CodeableConcept()]
+    
+    device:  list["Reference"] = [Reference()]
+    
+    manufacturedItem:  list["Reference"] = [Reference()]
+    
+    physicalCharacteristics:  "ProdCharacteristic" = ProdCharacteristic()
+    
+    otherCharacteristics:  list["CodeableConcept"] = [CodeableConcept()]
+    
+    shelfLifeStorage:  list["ProductShelfLife"] = [ProductShelfLife()]
+    
+    manufacturer:  list["Reference"] = [Reference()]
     
 
 @dataclass
@@ -95,35 +112,35 @@ class MedicinalProductPackaged(ModelBase):
     resourceType: str = "MedicinalProductPackaged"
     id: str = None
     
-    meta: "Meta" = Meta()
+    meta: "Meta" = None
     
     implicitRules: str = None
     
     language: str = None
     
-    text: "Narrative" = Narrative()
+    text: "Narrative" = None
     
-    contained: list[Resource] = Resource() 
+    contained: list["Resource"] = None
     
-    extension: list[Extension] = Extension() 
+    extension: list["Extension"] = None
     
-    modifierExtension: list[Extension] = Extension() 
+    modifierExtension: list["Extension"] = None
     
-    identifier: list[Identifier] = Identifier() 
+    identifier: list["Identifier"] = None
     
-    subject: list[Reference] = Reference() 
+    subject: list["Reference"] = None
     
     description: str = None
     
-    legalStatusOfSupply: "CodeableConcept" = CodeableConcept()
+    legalStatusOfSupply: "CodeableConcept" = None
     
-    marketingStatus: list[MarketingStatus] = MarketingStatus() 
+    marketingStatus: list["MarketingStatus"] = None
     
-    marketingAuthorization: "Reference" = Reference()
+    marketingAuthorization: "Reference" = None
     
-    manufacturer: list[Reference] = Reference() 
+    manufacturer: list["Reference"] = None
     
-    batchIdentifier: list[BatchIdentifier] = BatchIdentifier() 
+    batchIdentifier: list["BatchIdentifier"] = None
     
-    packageItem: list[PackageItem] = PackageItem() 
+    packageItem: list["PackageItem"] = None
     

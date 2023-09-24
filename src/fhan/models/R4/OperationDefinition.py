@@ -1,17 +1,17 @@
 """
 Generated class for OperationDefinition. 
-Time: 2023-09-23 23:45:33
+Time: 2023-09-24 20:01:56
 """
 from dataclasses import dataclass
-from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.UsageContext import *
 from fhan.models.R4.Extension import *
 from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Element import *
-from fhan.models.R4.UsageContext import *
-from fhan.models.R4.Meta import *
 from fhan.models.R4.Resource import *
-from fhan.models.R4.Narrative import *
+from fhan.models.R4.Meta import *
+from fhan.models.R4.Element import *
 from fhan.models.R4.ContactDetail import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.CodeableConcept import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -27,8 +27,10 @@ class Binding(Element):
     :param str valueSet: Source of value set
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
     
     strength: str = None
     
@@ -46,8 +48,10 @@ class ReferencedFrom(Element):
     :param str sourceId: Element id of reference
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
     
     source: str = None
     
@@ -74,8 +78,10 @@ class Parameter(Element):
     :param ReferencedFrom referencedFrom: References to this parameter
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
     
     name: str = None
     
@@ -92,8 +98,10 @@ class Parameter(Element):
     targetProfile: str = None
     
     searchType: str = None
-    binding: "Binding" = Binding()
-    referencedFrom: list[ReferencedFrom] = ReferencedFrom() 
+    
+    binding:  "Binding" = Binding()
+    
+    referencedFrom:  list["ReferencedFrom"] = [ReferencedFrom()]
     
 
     
@@ -107,8 +115,10 @@ class Overload(Element):
     :param str comment: Comments to go on overload
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
     
     parameterName: str = None
     
@@ -157,19 +167,19 @@ class OperationDefinition(ModelBase):
     resourceType: str = "OperationDefinition"
     id: str = None
     
-    meta: "Meta" = Meta()
+    meta: "Meta" = None
     
     implicitRules: str = None
     
     language: str = None
     
-    text: "Narrative" = Narrative()
+    text: "Narrative" = None
     
-    contained: list[Resource] = Resource() 
+    contained: list["Resource"] = None
     
-    extension: list[Extension] = Extension() 
+    extension: list["Extension"] = None
     
-    modifierExtension: list[Extension] = Extension() 
+    modifierExtension: list["Extension"] = None
     
     url: str = None
     
@@ -189,13 +199,13 @@ class OperationDefinition(ModelBase):
     
     publisher: str = None
     
-    contact: list[ContactDetail] = ContactDetail() 
+    contact: list["ContactDetail"] = None
     
     description: str = None
     
-    useContext: list[UsageContext] = UsageContext() 
+    useContext: list["UsageContext"] = None
     
-    jurisdiction: list[CodeableConcept] = CodeableConcept() 
+    jurisdiction: list["CodeableConcept"] = None
     
     purpose: str = None
     
@@ -219,7 +229,7 @@ class OperationDefinition(ModelBase):
     
     outputProfile: str = None
     
-    parameter: list[Parameter] = Parameter() 
+    parameter: list["Parameter"] = None
     
-    overload: list[Overload] = Overload() 
+    overload: list["Overload"] = None
     

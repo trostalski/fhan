@@ -1,17 +1,17 @@
 """
 Generated class for SubstancePolymer. 
-Time: 2023-09-23 23:45:33
+Time: 2023-09-24 20:01:56
 """
 from dataclasses import dataclass
-from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Extension import *
-from fhan.models.R4.SubstanceAmount import *
-from fhan.models.R4.Attachment import *
 from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Element import *
+from fhan.models.R4.SubstanceAmount import *
 from fhan.models.R4.Resource import *
-from fhan.models.R4.Narrative import *
 from fhan.models.R4.Meta import *
+from fhan.models.R4.Element import *
+from fhan.models.R4.Attachment import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.CodeableConcept import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -29,13 +29,18 @@ class StartingMaterial(Element):
     :param SubstanceAmount amount: Todo
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
-    material: "CodeableConcept" = CodeableConcept()
-    type: "CodeableConcept" = CodeableConcept()
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
+    
+    material:  "CodeableConcept" = CodeableConcept()
+    
+    type:  "CodeableConcept" = CodeableConcept()
     
     isDefining: bool = None
-    amount: "SubstanceAmount" = SubstanceAmount()
+    
+    amount:  "SubstanceAmount" = SubstanceAmount()
     
 
   
@@ -50,10 +55,14 @@ class MonomerSet(Element):
     :param StartingMaterial startingMaterial: Todo
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
-    ratioType: "CodeableConcept" = CodeableConcept()
-    startingMaterial: list[StartingMaterial] = StartingMaterial() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
+    
+    ratioType:  "CodeableConcept" = CodeableConcept()
+    
+    startingMaterial:  list["StartingMaterial"] = [StartingMaterial()]
     
 
     
@@ -71,10 +80,14 @@ class DegreeOfPolymerisation(Element):
     :param SubstanceAmount amount: Todo
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
-    degree: "CodeableConcept" = CodeableConcept()
-    amount: "SubstanceAmount" = SubstanceAmount()
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
+    
+    degree:  "CodeableConcept" = CodeableConcept()
+    
+    amount:  "SubstanceAmount" = SubstanceAmount()
     
 
     
@@ -89,12 +102,16 @@ class StructuralRepresentation(Element):
     :param Attachment attachment: Todo
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
-    type: "CodeableConcept" = CodeableConcept()
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
+    
+    type:  "CodeableConcept" = CodeableConcept()
     
     representation: str = None
-    attachment: "Attachment" = Attachment()
+    
+    attachment:  "Attachment" = Attachment()
     
 
   
@@ -111,17 +128,24 @@ class RepeatUnit(Element):
     :param SubstanceAmount amount: Todo
     :param DegreeOfPolymerisation degreeOfPolymerisation: Todo
     :param StructuralRepresentation structuralRepresentation: Todo
-    """repeatUnitAmountType: "CodeableConcept" = CodeableConcept()
+    """
+    repeatUnitAmountType:  "CodeableConcept" = CodeableConcept()
     
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
-    orientationOfPolymerisation: "CodeableConcept" = CodeableConcept()
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
+    
+    orientationOfPolymerisation:  "CodeableConcept" = CodeableConcept()
     
     repeatUnit: str = None
-    amount: "SubstanceAmount" = SubstanceAmount()
-    degreeOfPolymerisation: list[DegreeOfPolymerisation] = DegreeOfPolymerisation() 
-    structuralRepresentation: list[StructuralRepresentation] = StructuralRepresentation() 
+    
+    amount:  "SubstanceAmount" = SubstanceAmount()
+    
+    degreeOfPolymerisation:  list["DegreeOfPolymerisation"] = [DegreeOfPolymerisation()]
+    
+    structuralRepresentation:  list["StructuralRepresentation"] = [StructuralRepresentation()]
     
 
   
@@ -138,14 +162,18 @@ class Repeat(Element):
     :param RepeatUnit repeatUnit: Todo
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
     
     numberOfUnits: int = None
     
     averageMolecularFormula: str = None
-    repeatUnitAmountType: "CodeableConcept" = CodeableConcept()
-    repeatUnit: list[RepeatUnit] = RepeatUnit() 
+    
+    repeatUnitAmountType:  "CodeableConcept" = CodeableConcept()
+    
+    repeatUnit:  list["RepeatUnit"] = [RepeatUnit()]
     
 
 @dataclass
@@ -170,29 +198,29 @@ class SubstancePolymer(ModelBase):
     resourceType: str = "SubstancePolymer"
     id: str = None
     
-    meta: "Meta" = Meta()
+    meta: "Meta" = None
     
     implicitRules: str = None
     
     language: str = None
     
-    text: "Narrative" = Narrative()
+    text: "Narrative" = None
     
-    contained: list[Resource] = Resource() 
+    contained: list["Resource"] = None
     
-    extension: list[Extension] = Extension() 
+    extension: list["Extension"] = None
     
-    modifierExtension: list[Extension] = Extension() 
+    modifierExtension: list["Extension"] = None
     
-    _class: "CodeableConcept" = CodeableConcept()
+    _class: "CodeableConcept" = None
     
-    geometry: "CodeableConcept" = CodeableConcept()
+    geometry: "CodeableConcept" = None
     
-    copolymerConnectivity: list[CodeableConcept] = CodeableConcept() 
+    copolymerConnectivity: list["CodeableConcept"] = None
     
     modification: str = None
     
-    monomerSet: list[MonomerSet] = MonomerSet() 
+    monomerSet: list["MonomerSet"] = None
     
-    repeat: list[Repeat] = Repeat() 
+    repeat: list["Repeat"] = None
     

@@ -1,14 +1,14 @@
 """
 Generated class for Definition. 
-Time: 2023-09-23 23:45:33
+Time: 2023-09-24 20:01:56
 """
 from dataclasses import dataclass
-from fhan.models.R4.Reference import *
-from fhan.models.R4.Identifier import *
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Period import *
 from fhan.models.R4.UsageContext import *
+from fhan.models.R4.Reference import *
+from fhan.models.R4.Period import *
+from fhan.models.R4.Identifier import *
 from fhan.models.R4.ContactDetail import *
+from fhan.models.R4.CodeableConcept import *
 from fhan.models.generator_models import ModelBase
 
 @dataclass
@@ -42,7 +42,7 @@ class Definition(ModelBase):
     resourceType: str = "Definition"
     url: str = None
     
-    identifier: "Identifier" = Identifier()
+    identifier: "Identifier" = None
     
     version: str = None
     
@@ -60,19 +60,19 @@ class Definition(ModelBase):
     
     experimental: bool = None
     
-    subjectCodeableConcept: "CodeableConcept" = CodeableConcept()
+    subjectCodeableConcept: "CodeableConcept" = None
     
     date: str = None
     
-    publisher: "Reference" = Reference()
+    publisher: "Reference" = None
     
-    contact: list[ContactDetail] = ContactDetail() 
+    contact: list["ContactDetail"] = None
     
     description: str = None
     
-    useContext: list[UsageContext] = UsageContext() 
+    useContext: list["UsageContext"] = None
     
-    jurisdiction: list[CodeableConcept] = CodeableConcept() 
+    jurisdiction: list["CodeableConcept"] = None
     
     purpose: str = None
     
@@ -82,7 +82,7 @@ class Definition(ModelBase):
     
     lastReviewDate: str = None
     
-    effectivePeriod: "Period" = Period()
+    effectivePeriod: "Period" = None
     
-    performerType: "CodeableConcept" = CodeableConcept()
+    performerType: "CodeableConcept" = None
     

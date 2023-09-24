@@ -1,22 +1,22 @@
 """
 Generated class for Patient. 
-Time: 2023-09-23 23:45:33
+Time: 2023-09-24 20:01:56
 """
 from dataclasses import dataclass
-from fhan.models.R4.Reference import *
-from fhan.models.R4.Identifier import *
-from fhan.models.R4.Extension import *
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.HumanName import *
-from fhan.models.R4.Period import *
-from fhan.models.R4.ContactPoint import *
-from fhan.models.R4.Attachment import *
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Element import *
-from fhan.models.R4.Resource import *
 from fhan.models.R4.Address import *
-from fhan.models.R4.Narrative import *
+from fhan.models.R4.Extension import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.HumanName import *
+from fhan.models.R4.Resource import *
 from fhan.models.R4.Meta import *
+from fhan.models.R4.Reference import *
+from fhan.models.R4.Period import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.ContactPoint import *
+from fhan.models.R4.Element import *
+from fhan.models.R4.Attachment import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.CodeableConcept import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -35,16 +35,24 @@ class Contact(Element):
     :param Period period: The period during which this contact person or organization is valid to be contacted relating to this patient
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
-    relationship: list[CodeableConcept] = CodeableConcept() 
-    name: "HumanName" = HumanName()
-    telecom: list[ContactPoint] = ContactPoint() 
-    address: "Address" = Address()
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
+    
+    relationship:  list["CodeableConcept"] = [CodeableConcept()]
+    
+    name:  "HumanName" = HumanName()
+    
+    telecom:  list["ContactPoint"] = [ContactPoint()]
+    
+    address:  "Address" = Address()
     
     gender: str = None
-    organization: "Reference" = Reference()
-    period: "Period" = Period()
+    
+    organization:  "Reference" = Reference()
+    
+    period:  "Period" = Period()
     
 
     
@@ -58,9 +66,12 @@ class Communication(Element):
     :param bool preferred: Language preference indicator
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
-    language: "CodeableConcept" = CodeableConcept()
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
+    
+    language:  "CodeableConcept" = CodeableConcept()
     
     preferred: bool = None
     
@@ -76,9 +87,12 @@ class Link(Element):
     :param str type: replaced-by | replaces | refer | seealso
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
-    other: "Reference" = Reference()
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
+    
+    other:  "Reference" = Reference()
     
     type: str = None
     
@@ -115,27 +129,27 @@ class Patient(ModelBase):
     resourceType: str = "Patient"
     id: str = None
     
-    meta: "Meta" = Meta()
+    meta: "Meta" = None
     
     implicitRules: str = None
     
     language: str = None
     
-    text: "Narrative" = Narrative()
+    text: "Narrative" = None
     
-    contained: list[Resource] = Resource() 
+    contained: list["Resource"] = None
     
-    extension: list[Extension] = Extension() 
+    extension: list["Extension"] = None
     
-    modifierExtension: list[Extension] = Extension() 
+    modifierExtension: list["Extension"] = None
     
-    identifier: list[Identifier] = Identifier() 
+    identifier: list["Identifier"] = None
     
     active: bool = None
     
-    name: list[HumanName] = HumanName() 
+    name: list["HumanName"] = None
     
-    telecom: list[ContactPoint] = ContactPoint() 
+    telecom: list["ContactPoint"] = None
     
     gender: str = None
     
@@ -143,21 +157,21 @@ class Patient(ModelBase):
     
     deceasedBoolean: bool = None
     
-    address: list[Address] = Address() 
+    address: list["Address"] = None
     
-    maritalStatus: "CodeableConcept" = CodeableConcept()
+    maritalStatus: "CodeableConcept" = None
     
     multipleBirthBoolean: bool = None
     
-    photo: list[Attachment] = Attachment() 
+    photo: list["Attachment"] = None
     
-    contact: list[Contact] = Contact() 
+    contact: list["Contact"] = None
     
-    communication: list[Communication] = Communication() 
+    communication: list["Communication"] = None
     
-    generalPractitioner: list[Reference] = Reference() 
+    generalPractitioner: list["Reference"] = None
     
-    managingOrganization: "Reference" = Reference()
+    managingOrganization: "Reference" = None
     
-    link: list[Link] = Link() 
+    link: list["Link"] = None
     

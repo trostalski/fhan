@@ -1,18 +1,18 @@
 """
 Generated class for Endpoint. 
-Time: 2023-09-23 23:45:33
+Time: 2023-09-24 20:01:56
 """
 from dataclasses import dataclass
-from fhan.models.R4.Reference import *
-from fhan.models.R4.Identifier import *
 from fhan.models.R4.Extension import *
-from fhan.models.R4.Period import *
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.ContactPoint import *
 from fhan.models.R4.Resource import *
-from fhan.models.R4.Coding import *
-from fhan.models.R4.Narrative import *
 from fhan.models.R4.Meta import *
+from fhan.models.R4.Reference import *
+from fhan.models.R4.Period import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.Coding import *
+from fhan.models.R4.ContactPoint import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.CodeableConcept import *
 from fhan.models.generator_models import ModelBase
 
 @dataclass
@@ -42,35 +42,35 @@ class Endpoint(ModelBase):
     resourceType: str = "Endpoint"
     id: str = None
     
-    meta: "Meta" = Meta()
+    meta: "Meta" = None
     
     implicitRules: str = None
     
     language: str = None
     
-    text: "Narrative" = Narrative()
+    text: "Narrative" = None
     
-    contained: list[Resource] = Resource() 
+    contained: list["Resource"] = None
     
-    extension: list[Extension] = Extension() 
+    extension: list["Extension"] = None
     
-    modifierExtension: list[Extension] = Extension() 
+    modifierExtension: list["Extension"] = None
     
-    identifier: list[Identifier] = Identifier() 
+    identifier: list["Identifier"] = None
     
     status: str = None
     
-    connectionType: "Coding" = Coding()
+    connectionType: "Coding" = None
     
     name: str = None
     
-    managingOrganization: "Reference" = Reference()
+    managingOrganization: "Reference" = None
     
-    contact: list[ContactPoint] = ContactPoint() 
+    contact: list["ContactPoint"] = None
     
-    period: "Period" = Period()
+    period: "Period" = None
     
-    payloadType: list[CodeableConcept] = CodeableConcept() 
+    payloadType: list["CodeableConcept"] = None
     
     payloadMimeType: str = None
     

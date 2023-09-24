@@ -1,24 +1,24 @@
 """
 Generated class for Observation. 
-Time: 2023-09-23 23:45:33
+Time: 2023-09-24 20:01:56
 """
 from dataclasses import dataclass
-from fhan.models.R4.SampledData import *
-from fhan.models.R4.Reference import *
-from fhan.models.R4.Annotation import *
-from fhan.models.R4.Range import *
-from fhan.models.R4.Identifier import *
 from fhan.models.R4.Extension import *
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Period import *
-from fhan.models.R4.Ratio import *
-from fhan.models.R4.Quantity import *
 from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Element import *
+from fhan.models.R4.Annotation import *
 from fhan.models.R4.Resource import *
-from fhan.models.R4.Coding import *
-from fhan.models.R4.Narrative import *
 from fhan.models.R4.Meta import *
+from fhan.models.R4.Quantity import *
+from fhan.models.R4.Ratio import *
+from fhan.models.R4.Reference import *
+from fhan.models.R4.Period import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.Coding import *
+from fhan.models.R4.SampledData import *
+from fhan.models.R4.Range import *
+from fhan.models.R4.Element import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.CodeableConcept import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -36,13 +36,20 @@ class ReferenceRange(Element):
     :param str text: Text based reference range in an observation
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
-    low: "Quantity" = Quantity()
-    high: "Quantity" = Quantity()
-    type: "CodeableConcept" = CodeableConcept()
-    appliesTo: list[CodeableConcept] = CodeableConcept() 
-    age: "Range" = Range()
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
+    
+    low:  "Quantity" = Quantity()
+    
+    high:  "Quantity" = Quantity()
+    
+    type:  "CodeableConcept" = CodeableConcept()
+    
+    appliesTo:  list["CodeableConcept"] = [CodeableConcept()]
+    
+    age:  "Range" = Range()
     
     text: str = None
     
@@ -60,12 +67,18 @@ class Component(Element):
     :param CodeableConcept interpretation: High, low, normal, etc.
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
-    code: "CodeableConcept" = CodeableConcept()
-    valueQuantity: "Quantity" = Quantity()
-    dataAbsentReason: "CodeableConcept" = CodeableConcept()
-    interpretation: list[CodeableConcept] = CodeableConcept() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
+    
+    code:  "CodeableConcept" = CodeableConcept()
+    
+    valueQuantity:  "Quantity" = Quantity()
+    
+    dataAbsentReason:  "CodeableConcept" = CodeableConcept()
+    
+    interpretation:  list["CodeableConcept"] = [CodeableConcept()]
     
 
 @dataclass
@@ -130,39 +143,39 @@ class Observation(ModelBase):
     resourceType: str = "Observation"
     id: str = None
     
-    meta: "Meta" = Meta()
+    meta: "Meta" = None
     
     implicitRules: str = None
     
     language: str = None
     
-    text: "Narrative" = Narrative()
+    text: "Narrative" = None
     
-    contained: list[Resource] = Resource() 
+    contained: list["Resource"] = None
     
-    extension: list[Extension] = Extension() 
+    extension: list["Extension"] = None
     
-    modifierExtension: list[Extension] = Extension() 
+    modifierExtension: list["Extension"] = None
     
-    identifier: list[Identifier] = Identifier() 
+    identifier: list["Identifier"] = None
     
-    basedOn: list[Reference] = Reference() 
+    basedOn: list["Reference"] = None
     
-    partOf: list[Reference] = Reference() 
+    partOf: list["Reference"] = None
     
     status: str = None
     
-    category: list[CodeableConcept] = CodeableConcept() 
+    category: list["CodeableConcept"] = None
     
     id: str = None
     
-    extension: list[Extension] = Extension() 
+    extension: list["Extension"] = None
     
-    coding: list[Coding] = Coding() 
+    coding: list["Coding"] = None
     
     id: str = None
     
-    extension: list[Extension] = Extension() 
+    extension: list["Extension"] = None
     
     system: str = None
     
@@ -176,17 +189,17 @@ class Observation(ModelBase):
     
     text: str = None
     
-    code: "CodeableConcept" = CodeableConcept()
+    code: "CodeableConcept" = None
     
     id: str = None
     
-    extension: list[Extension] = Extension() 
+    extension: list["Extension"] = None
     
-    coding: list[Coding] = Coding() 
+    coding: list["Coding"] = None
     
     id: str = None
     
-    extension: list[Extension] = Extension() 
+    extension: list["Extension"] = None
     
     system: str = None
     
@@ -200,39 +213,39 @@ class Observation(ModelBase):
     
     text: str = None
     
-    subject: "Reference" = Reference()
+    subject: "Reference" = None
     
-    focus: list[Reference] = Reference() 
+    focus: list["Reference"] = None
     
-    encounter: "Reference" = Reference()
+    encounter: "Reference" = None
     
     effectiveDateTime: str = None
     
     issued: str = None
     
-    performer: list[Reference] = Reference() 
+    performer: list["Reference"] = None
     
-    valueQuantity: "Quantity" = Quantity()
+    valueQuantity: "Quantity" = None
     
-    dataAbsentReason: "CodeableConcept" = CodeableConcept()
+    dataAbsentReason: "CodeableConcept" = None
     
-    interpretation: list[CodeableConcept] = CodeableConcept() 
+    interpretation: list["CodeableConcept"] = None
     
-    note: list[Annotation] = Annotation() 
+    note: list["Annotation"] = None
     
-    bodySite: "CodeableConcept" = CodeableConcept()
+    bodySite: "CodeableConcept" = None
     
-    method: "CodeableConcept" = CodeableConcept()
+    method: "CodeableConcept" = None
     
-    specimen: "Reference" = Reference()
+    specimen: "Reference" = None
     
-    device: "Reference" = Reference()
+    device: "Reference" = None
     
-    referenceRange: list[ReferenceRange] = ReferenceRange() 
+    referenceRange: list["ReferenceRange"] = None
     
-    hasMember: list[Reference] = Reference() 
+    hasMember: list["Reference"] = None
     
-    derivedFrom: list[Reference] = Reference() 
+    derivedFrom: list["Reference"] = None
     
-    component: list[Component] = Component() 
+    component: list["Component"] = None
     

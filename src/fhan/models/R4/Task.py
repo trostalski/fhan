@@ -1,44 +1,44 @@
 """
 Generated class for Task. 
-Time: 2023-09-23 23:45:33
+Time: 2023-09-24 20:01:56
 """
 from dataclasses import dataclass
-from fhan.models.R4.Distance import *
-from fhan.models.R4.Range import *
-from fhan.models.R4.Quantity import *
-from fhan.models.R4.Signature import *
-from fhan.models.R4.Timing import *
-from fhan.models.R4.Count import *
-from fhan.models.R4.ContactDetail import *
-from fhan.models.R4.Annotation import *
-from fhan.models.R4.Identifier import *
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Period import *
-from fhan.models.R4.Expression import *
-from fhan.models.R4.RelatedArtifact import *
-from fhan.models.R4.Element import *
-from fhan.models.R4.Dosage import *
-from fhan.models.R4.Resource import *
-from fhan.models.R4.Address import *
-from fhan.models.R4.SampledData import *
-from fhan.models.R4.Contributor import *
-from fhan.models.R4.Reference import *
-from fhan.models.R4.Attachment import *
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Money import *
-from fhan.models.R4.Duration import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.ParameterDefinition import *
-from fhan.models.R4.DataRequirement import *
-from fhan.models.R4.Age import *
 from fhan.models.R4.Extension import *
 from fhan.models.R4.HumanName import *
+from fhan.models.R4.DataRequirement import *
 from fhan.models.R4.TriggerDefinition import *
-from fhan.models.R4.ContactPoint import *
+from fhan.models.R4.Period import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.SampledData import *
+from fhan.models.R4.Age import *
+from fhan.models.R4.Contributor import *
+from fhan.models.R4.Signature import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Resource import *
 from fhan.models.R4.Ratio import *
-from fhan.models.R4.UsageContext import *
-from fhan.models.R4.Coding import *
+from fhan.models.R4.Reference import *
+from fhan.models.R4.Dosage import *
+from fhan.models.R4.Count import *
+from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Address import *
+from fhan.models.R4.Money import *
+from fhan.models.R4.Annotation import *
+from fhan.models.R4.Quantity import *
 from fhan.models.R4.Meta import *
+from fhan.models.R4.ParameterDefinition import *
+from fhan.models.R4.Coding import *
+from fhan.models.R4.ContactPoint import *
+from fhan.models.R4.Distance import *
+from fhan.models.R4.Timing import *
+from fhan.models.R4.ContactDetail import *
+from fhan.models.R4.RelatedArtifact import *
+from fhan.models.R4.UsageContext import *
+from fhan.models.R4.Range import *
+from fhan.models.R4.Expression import *
+from fhan.models.R4.Attachment import *
+from fhan.models.R4.Duration import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Element import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -53,12 +53,16 @@ class Restriction(Element):
     :param Reference recipient: For whom is fulfillment sought?
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
     
     repetitions: int = None
-    period: "Period" = Period()
-    recipient: list[Reference] = Reference() 
+    
+    period:  "Period" = Period()
+    
+    recipient:  list["Reference"] = [Reference()]
     
 
     
@@ -72,9 +76,12 @@ class Input(Element):
     :param str valueBase64Binary: Content to use in performing the task
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
-    type: "CodeableConcept" = CodeableConcept()
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
+    
+    type:  "CodeableConcept" = CodeableConcept()
     
     valueBase64Binary: str = None
     
@@ -90,9 +97,12 @@ class Output(Element):
     :param str valueBase64Binary: Result of output
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
-    type: "CodeableConcept" = CodeableConcept()
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
+    
+    type:  "CodeableConcept" = CodeableConcept()
     
     valueBase64Binary: str = None
     
@@ -144,79 +154,79 @@ class Task(ModelBase):
     resourceType: str = "Task"
     id: str = None
     
-    meta: "Meta" = Meta()
+    meta: "Meta" = None
     
     implicitRules: str = None
     
     language: str = None
     
-    text: "Narrative" = Narrative()
+    text: "Narrative" = None
     
-    contained: list[Resource] = Resource() 
+    contained: list["Resource"] = None
     
-    extension: list[Extension] = Extension() 
+    extension: list["Extension"] = None
     
-    modifierExtension: list[Extension] = Extension() 
+    modifierExtension: list["Extension"] = None
     
-    identifier: list[Identifier] = Identifier() 
+    identifier: list["Identifier"] = None
     
     instantiatesCanonical: str = None
     
     instantiatesUri: str = None
     
-    basedOn: list[Reference] = Reference() 
+    basedOn: list["Reference"] = None
     
-    groupIdentifier: "Identifier" = Identifier()
+    groupIdentifier: "Identifier" = None
     
-    partOf: list[Reference] = Reference() 
+    partOf: list["Reference"] = None
     
     status: str = None
     
-    statusReason: "CodeableConcept" = CodeableConcept()
+    statusReason: "CodeableConcept" = None
     
-    businessStatus: "CodeableConcept" = CodeableConcept()
+    businessStatus: "CodeableConcept" = None
     
     intent: str = None
     
     priority: str = None
     
-    code: "CodeableConcept" = CodeableConcept()
+    code: "CodeableConcept" = None
     
     description: str = None
     
-    focus: "Reference" = Reference()
+    focus: "Reference" = None
     
-    _for: "Reference" = Reference()
+    _for: "Reference" = None
     
-    encounter: "Reference" = Reference()
+    encounter: "Reference" = None
     
-    executionPeriod: "Period" = Period()
+    executionPeriod: "Period" = None
     
     authoredOn: str = None
     
     lastModified: str = None
     
-    requester: "Reference" = Reference()
+    requester: "Reference" = None
     
-    performerType: list[CodeableConcept] = CodeableConcept() 
+    performerType: list["CodeableConcept"] = None
     
-    owner: "Reference" = Reference()
+    owner: "Reference" = None
     
-    location: "Reference" = Reference()
+    location: "Reference" = None
     
-    reasonCode: "CodeableConcept" = CodeableConcept()
+    reasonCode: "CodeableConcept" = None
     
-    reasonReference: "Reference" = Reference()
+    reasonReference: "Reference" = None
     
-    insurance: list[Reference] = Reference() 
+    insurance: list["Reference"] = None
     
-    note: list[Annotation] = Annotation() 
+    note: list["Annotation"] = None
     
-    relevantHistory: list[Reference] = Reference() 
+    relevantHistory: list["Reference"] = None
     
-    restriction: "Restriction" = Restriction()
+    restriction: "Restriction" = None
     
-    input: list[Input] = Input() 
+    input: list["Input"] = None
     
-    output: list[Output] = Output() 
+    output: list["Output"] = None
     

@@ -1,15 +1,15 @@
 """
 Generated class for MetadataResource. 
-Time: 2023-09-23 23:45:33
+Time: 2023-09-24 20:01:56
 """
 from dataclasses import dataclass
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Extension import *
 from fhan.models.R4.UsageContext import *
-from fhan.models.R4.Meta import *
+from fhan.models.R4.Extension import *
 from fhan.models.R4.Resource import *
-from fhan.models.R4.Narrative import *
+from fhan.models.R4.Meta import *
 from fhan.models.R4.ContactDetail import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.CodeableConcept import *
 from fhan.models.generator_models import ModelBase
 
 @dataclass
@@ -40,19 +40,19 @@ class MetadataResource(ModelBase):
     resourceType: str = "MetadataResource"
     id: str = None
     
-    meta: "Meta" = Meta()
+    meta: "Meta" = None
     
     implicitRules: str = None
     
     language: str = None
     
-    text: "Narrative" = Narrative()
+    text: "Narrative" = None
     
-    contained: list[Resource] = Resource() 
+    contained: list["Resource"] = None
     
-    extension: list[Extension] = Extension() 
+    extension: list["Extension"] = None
     
-    modifierExtension: list[Extension] = Extension() 
+    modifierExtension: list["Extension"] = None
     
     url: str = None
     
@@ -70,11 +70,11 @@ class MetadataResource(ModelBase):
     
     publisher: str = None
     
-    contact: list[ContactDetail] = ContactDetail() 
+    contact: list["ContactDetail"] = None
     
     description: str = None
     
-    useContext: list[UsageContext] = UsageContext() 
+    useContext: list["UsageContext"] = None
     
-    jurisdiction: list[CodeableConcept] = CodeableConcept() 
+    jurisdiction: list["CodeableConcept"] = None
     

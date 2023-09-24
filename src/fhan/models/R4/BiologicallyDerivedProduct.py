@@ -1,18 +1,18 @@
 """
 Generated class for BiologicallyDerivedProduct. 
-Time: 2023-09-23 23:45:33
+Time: 2023-09-24 20:01:56
 """
 from dataclasses import dataclass
-from fhan.models.R4.Reference import *
-from fhan.models.R4.Identifier import *
 from fhan.models.R4.Extension import *
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Period import *
 from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Element import *
 from fhan.models.R4.Resource import *
-from fhan.models.R4.Narrative import *
 from fhan.models.R4.Meta import *
+from fhan.models.R4.Reference import *
+from fhan.models.R4.Period import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.Element import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.CodeableConcept import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -27,10 +27,14 @@ class Collection(Element):
     :param str collectedDateTime: Time of product collection
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
-    collector: "Reference" = Reference()
-    source: "Reference" = Reference()
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
+    
+    collector:  "Reference" = Reference()
+    
+    source:  "Reference" = Reference()
     
     collectedDateTime: str = None
     
@@ -48,12 +52,16 @@ class Processing(Element):
     :param str timeDateTime: Time of processing
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
     
     description: str = None
-    procedure: "CodeableConcept" = CodeableConcept()
-    additive: "Reference" = Reference()
+    
+    procedure:  "CodeableConcept" = CodeableConcept()
+    
+    additive:  "Reference" = Reference()
     
     timeDateTime: str = None
     
@@ -69,8 +77,10 @@ class Manipulation(Element):
     :param str timeDateTime: Time of manipulation
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
     
     description: str = None
     
@@ -90,15 +100,18 @@ class Storage(Element):
     :param Period duration: Storage timeperiod
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
     
     description: str = None
     
     temperature: float = None
     
     scale: str = None
-    duration: "Period" = Period()
+    
+    duration:  "Period" = Period()
     
 
 @dataclass
@@ -129,39 +142,39 @@ into another (possibly the same) biological entity.
     resourceType: str = "BiologicallyDerivedProduct"
     id: str = None
     
-    meta: "Meta" = Meta()
+    meta: "Meta" = None
     
     implicitRules: str = None
     
     language: str = None
     
-    text: "Narrative" = Narrative()
+    text: "Narrative" = None
     
-    contained: list[Resource] = Resource() 
+    contained: list["Resource"] = None
     
-    extension: list[Extension] = Extension() 
+    extension: list["Extension"] = None
     
-    modifierExtension: list[Extension] = Extension() 
+    modifierExtension: list["Extension"] = None
     
-    identifier: list[Identifier] = Identifier() 
+    identifier: list["Identifier"] = None
     
     productCategory: str = None
     
-    productCode: "CodeableConcept" = CodeableConcept()
+    productCode: "CodeableConcept" = None
     
     status: str = None
     
-    request: list[Reference] = Reference() 
+    request: list["Reference"] = None
     
     quantity: int = None
     
-    parent: list[Reference] = Reference() 
+    parent: list["Reference"] = None
     
-    collection: "Collection" = Collection()
+    collection: "Collection" = None
     
-    processing: list[Processing] = Processing() 
+    processing: list["Processing"] = None
     
-    manipulation: "Manipulation" = Manipulation()
+    manipulation: "Manipulation" = None
     
-    storage: list[Storage] = Storage() 
+    storage: list["Storage"] = None
     

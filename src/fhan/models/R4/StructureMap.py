@@ -1,44 +1,44 @@
 """
 Generated class for StructureMap. 
-Time: 2023-09-23 23:45:33
+Time: 2023-09-24 20:01:56
 """
 from dataclasses import dataclass
-from fhan.models.R4.Distance import *
-from fhan.models.R4.Range import *
-from fhan.models.R4.Quantity import *
-from fhan.models.R4.Signature import *
-from fhan.models.R4.Timing import *
-from fhan.models.R4.Count import *
-from fhan.models.R4.ContactDetail import *
-from fhan.models.R4.Annotation import *
-from fhan.models.R4.Identifier import *
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Period import *
-from fhan.models.R4.Expression import *
-from fhan.models.R4.RelatedArtifact import *
-from fhan.models.R4.Element import *
-from fhan.models.R4.Dosage import *
-from fhan.models.R4.Resource import *
-from fhan.models.R4.Address import *
-from fhan.models.R4.SampledData import *
-from fhan.models.R4.Contributor import *
-from fhan.models.R4.Reference import *
-from fhan.models.R4.Attachment import *
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Money import *
-from fhan.models.R4.Duration import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.ParameterDefinition import *
-from fhan.models.R4.DataRequirement import *
-from fhan.models.R4.Age import *
 from fhan.models.R4.Extension import *
 from fhan.models.R4.HumanName import *
+from fhan.models.R4.DataRequirement import *
 from fhan.models.R4.TriggerDefinition import *
-from fhan.models.R4.ContactPoint import *
+from fhan.models.R4.Period import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.SampledData import *
+from fhan.models.R4.Age import *
+from fhan.models.R4.Contributor import *
+from fhan.models.R4.Signature import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Resource import *
 from fhan.models.R4.Ratio import *
-from fhan.models.R4.UsageContext import *
-from fhan.models.R4.Coding import *
+from fhan.models.R4.Reference import *
+from fhan.models.R4.Dosage import *
+from fhan.models.R4.Count import *
+from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Address import *
+from fhan.models.R4.Money import *
+from fhan.models.R4.Annotation import *
+from fhan.models.R4.Quantity import *
 from fhan.models.R4.Meta import *
+from fhan.models.R4.ParameterDefinition import *
+from fhan.models.R4.Coding import *
+from fhan.models.R4.ContactPoint import *
+from fhan.models.R4.Distance import *
+from fhan.models.R4.Timing import *
+from fhan.models.R4.ContactDetail import *
+from fhan.models.R4.UsageContext import *
+from fhan.models.R4.RelatedArtifact import *
+from fhan.models.R4.Range import *
+from fhan.models.R4.Expression import *
+from fhan.models.R4.Attachment import *
+from fhan.models.R4.Duration import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Element import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -54,8 +54,10 @@ class Structure(Element):
     :param str documentation: Documentation on use of structure
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
     
     url: str = None
     
@@ -81,8 +83,10 @@ class Input(Element):
     :param str documentation: Documentation for this instance of data
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
     
     name: str = None
     
@@ -115,8 +119,10 @@ class Source(Element):
     :param str logMessage: Message to put in log if source exists (FHIRPath)
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
     
     context: str = None
     
@@ -153,8 +159,10 @@ class Parameter(Element):
     :param str valueId: Parameter value - variable or literal
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
     
     valueId: str = None
     
@@ -177,8 +185,10 @@ class Target(Element):
     :param Parameter parameter: Parameters to the transform
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
     
     context: str = None
     
@@ -193,7 +203,8 @@ class Target(Element):
     listRuleId: str = None
     
     transform: str = None
-    parameter: list[Parameter] = Parameter() 
+    
+    parameter:  list["Parameter"] = [Parameter()]
     
 
     
@@ -207,8 +218,10 @@ class Dependent(Element):
     :param str variable: Variable to pass to the rule or group
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
     
     name: str = None
     
@@ -230,13 +243,18 @@ class Rule(Element):
     :param str documentation: Documentation for this instance of data
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
     
     name: str = None
-    source: list[Source] = Source() 
-    target: list[Target] = Target() 
-    dependent: list[Dependent] = Dependent() 
+    
+    source:  list["Source"] = [Source()]
+    
+    target:  list["Target"] = [Target()]
+    
+    dependent:  list["Dependent"] = [Dependent()]
     
     documentation: str = None
     
@@ -257,8 +275,10 @@ class Group(Element):
     :param Rule rule: Transform Rule from source to target
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
     
     name: str = None
     
@@ -267,8 +287,10 @@ class Group(Element):
     typeMode: str = None
     
     documentation: str = None
-    input: list[Input] = Input() 
-    rule: list[Rule] = Rule() 
+    
+    input:  list["Input"] = [Input()]
+    
+    rule:  list["Rule"] = [Rule()]
     
 
 @dataclass
@@ -305,23 +327,23 @@ class StructureMap(ModelBase):
     resourceType: str = "StructureMap"
     id: str = None
     
-    meta: "Meta" = Meta()
+    meta: "Meta" = None
     
     implicitRules: str = None
     
     language: str = None
     
-    text: "Narrative" = Narrative()
+    text: "Narrative" = None
     
-    contained: list[Resource] = Resource() 
+    contained: list["Resource"] = None
     
-    extension: list[Extension] = Extension() 
+    extension: list["Extension"] = None
     
-    modifierExtension: list[Extension] = Extension() 
+    modifierExtension: list["Extension"] = None
     
     url: str = None
     
-    identifier: list[Identifier] = Identifier() 
+    identifier: list["Identifier"] = None
     
     version: str = None
     
@@ -337,21 +359,21 @@ class StructureMap(ModelBase):
     
     publisher: str = None
     
-    contact: list[ContactDetail] = ContactDetail() 
+    contact: list["ContactDetail"] = None
     
     description: str = None
     
-    useContext: list[UsageContext] = UsageContext() 
+    useContext: list["UsageContext"] = None
     
-    jurisdiction: list[CodeableConcept] = CodeableConcept() 
+    jurisdiction: list["CodeableConcept"] = None
     
     purpose: str = None
     
     copyright: str = None
     
-    structure: list[Structure] = Structure() 
+    structure: list["Structure"] = None
     
     _import: str = None
     
-    group: list[Group] = Group() 
+    group: list["Group"] = None
     

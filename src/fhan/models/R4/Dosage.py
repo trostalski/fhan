@@ -1,13 +1,13 @@
 """
 Generated class for Dosage. 
-Time: 2023-09-23 23:45:33
+Time: 2023-09-24 20:01:56
 """
 from dataclasses import dataclass
-from fhan.models.R4.Range import *
-from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Extension import *
-from fhan.models.R4.Ratio import *
 from fhan.models.R4.Quantity import *
+from fhan.models.R4.Ratio import *
+from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Range import *
 from fhan.models.R4.Timing import *
 from fhan.models.R4.Element import *
 from fhan.models.R4.Element import *
@@ -42,43 +42,43 @@ class Dosage(Element):
     resourceType: str = "Dosage"
     id: str = None
     
-    extension: list[Extension] = Extension() 
+    extension: list["Extension"] = None
     
-    modifierExtension: list[Extension] = Extension() 
+    modifierExtension: list["Extension"] = None
     
     sequence: int = None
     
     text: str = None
     
-    additionalInstruction: list[CodeableConcept] = CodeableConcept() 
+    additionalInstruction: list["CodeableConcept"] = None
     
     patientInstruction: str = None
     
-    timing: "Timing" = Timing()
+    timing: "Timing" = None
     
     asNeededBoolean: bool = None
     
-    site: "CodeableConcept" = CodeableConcept()
+    site: "CodeableConcept" = None
     
-    route: "CodeableConcept" = CodeableConcept()
+    route: "CodeableConcept" = None
     
-    method: "CodeableConcept" = CodeableConcept()
+    method: "CodeableConcept" = None
     
-    doseAndRate: list[Element] = Element() 
+    doseAndRate: list["Element"] = None
     
     id: str = None
     
-    extension: list[Extension] = Extension() 
+    extension: list["Extension"] = None
     
-    type: "CodeableConcept" = CodeableConcept()
+    type: "CodeableConcept" = None
     
-    doseRange: "Range" = Range()
+    doseRange: "Range" = None
     
-    rateRatio: "Ratio" = Ratio()
+    rateRatio: "Ratio" = None
     
-    maxDosePerPeriod: "Ratio" = Ratio()
+    maxDosePerPeriod: "Ratio" = None
     
-    maxDosePerAdministration: "Quantity" = Quantity()
+    maxDosePerAdministration: "Quantity" = None
     
-    maxDosePerLifetime: "Quantity" = Quantity()
+    maxDosePerLifetime: "Quantity" = None
     

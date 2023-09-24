@@ -1,12 +1,12 @@
 """
 Generated class for ProdCharacteristic. 
-Time: 2023-09-23 23:45:33
+Time: 2023-09-24 20:01:56
 """
 from dataclasses import dataclass
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Extension import *
-from fhan.models.R4.Attachment import *
 from fhan.models.R4.Quantity import *
+from fhan.models.R4.Extension import *
+from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Attachment import *
 from fhan.models.R4.Element import *
 
 
@@ -32,21 +32,21 @@ class ProdCharacteristic(Element):
     resourceType: str = "ProdCharacteristic"
     id: str = None
     
-    extension: list[Extension] = Extension() 
+    extension: list["Extension"] = None
     
-    modifierExtension: list[Extension] = Extension() 
+    modifierExtension: list["Extension"] = None
     
-    height: "Quantity" = Quantity()
+    height: "Quantity" = None
     
-    width: "Quantity" = Quantity()
+    width: "Quantity" = None
     
-    depth: "Quantity" = Quantity()
+    depth: "Quantity" = None
     
-    weight: "Quantity" = Quantity()
+    weight: "Quantity" = None
     
-    nominalVolume: "Quantity" = Quantity()
+    nominalVolume: "Quantity" = None
     
-    externalDiameter: "Quantity" = Quantity()
+    externalDiameter: "Quantity" = None
     
     shape: str = None
     
@@ -54,7 +54,7 @@ class ProdCharacteristic(Element):
     
     imprint: str = None
     
-    image: list[Attachment] = Attachment() 
+    image: list["Attachment"] = None
     
-    scoring: "CodeableConcept" = CodeableConcept()
+    scoring: "CodeableConcept" = None
     

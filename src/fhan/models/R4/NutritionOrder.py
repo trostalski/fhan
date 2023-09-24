@@ -1,21 +1,21 @@
 """
 Generated class for NutritionOrder. 
-Time: 2023-09-23 23:45:33
+Time: 2023-09-24 20:01:56
 """
 from dataclasses import dataclass
+from fhan.models.R4.Extension import *
+from fhan.models.R4.BackboneElement import *
 from fhan.models.R4.Annotation import *
+from fhan.models.R4.Resource import *
+from fhan.models.R4.Meta import *
+from fhan.models.R4.Quantity import *
+from fhan.models.R4.Ratio import *
 from fhan.models.R4.Reference import *
 from fhan.models.R4.Identifier import *
-from fhan.models.R4.Extension import *
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Ratio import *
-from fhan.models.R4.Quantity import *
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Timing import *
 from fhan.models.R4.Element import *
-from fhan.models.R4.Resource import *
+from fhan.models.R4.Timing import *
 from fhan.models.R4.Narrative import *
-from fhan.models.R4.Meta import *
+from fhan.models.R4.CodeableConcept import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -31,10 +31,14 @@ class Nutrient(Element):
     :param Quantity amount: Quantity of the specified nutrient
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
-    modifier: "CodeableConcept" = CodeableConcept()
-    amount: "Quantity" = Quantity()
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
+    
+    modifier:  "CodeableConcept" = CodeableConcept()
+    
+    amount:  "Quantity" = Quantity()
     
 
     
@@ -48,10 +52,14 @@ class Texture(Element):
     :param CodeableConcept foodType: Concepts that are used to identify an entity that is ingested for nutritional purposes
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
-    modifier: "CodeableConcept" = CodeableConcept()
-    foodType: "CodeableConcept" = CodeableConcept()
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
+    
+    modifier:  "CodeableConcept" = CodeableConcept()
+    
+    foodType:  "CodeableConcept" = CodeableConcept()
     
 
   
@@ -70,13 +78,20 @@ class OralDiet(Element):
     :param str instruction: Instructions or additional information about the oral diet
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
-    type: list[CodeableConcept] = CodeableConcept() 
-    schedule: list[Timing] = Timing() 
-    nutrient: list[Nutrient] = Nutrient() 
-    texture: list[Texture] = Texture() 
-    fluidConsistencyType: list[CodeableConcept] = CodeableConcept() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
+    
+    type:  list["CodeableConcept"] = [CodeableConcept()]
+    
+    schedule:  list["Timing"] = [Timing()]
+    
+    nutrient:  list["Nutrient"] = [Nutrient()]
+    
+    texture:  list["Texture"] = [Texture()]
+    
+    fluidConsistencyType:  list["CodeableConcept"] = [CodeableConcept()]
     
     instruction: str = None
     
@@ -95,13 +110,18 @@ class Supplement(Element):
     :param str instruction: Instructions or additional information about the oral supplement
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
-    type: "CodeableConcept" = CodeableConcept()
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
+    
+    type:  "CodeableConcept" = CodeableConcept()
     
     productName: str = None
-    schedule: list[Timing] = Timing() 
-    quantity: "Quantity" = Quantity()
+    
+    schedule:  list["Timing"] = [Timing()]
+    
+    quantity:  "Quantity" = Quantity()
     
     instruction: str = None
     
@@ -121,11 +141,16 @@ class Administration(Element):
     :param str administrationInstruction: Formula feeding instructions expressed as text
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
-    schedule: "Timing" = Timing()
-    quantity: "Quantity" = Quantity()
-    rateQuantity: "Quantity" = Quantity()
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
+    
+    schedule:  "Timing" = Timing()
+    
+    quantity:  "Quantity" = Quantity()
+    
+    rateQuantity:  "Quantity" = Quantity()
     
     administrationInstruction: str = None
     
@@ -148,18 +173,26 @@ class EnteralFormula(Element):
     :param Quantity maxVolumeToDeliver: Upper limit on formula volume per unit of time
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
-    baseFormulaType: "CodeableConcept" = CodeableConcept()
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
+    
+    baseFormulaType:  "CodeableConcept" = CodeableConcept()
     
     baseFormulaProductName: str = None
-    additiveType: "CodeableConcept" = CodeableConcept()
+    
+    additiveType:  "CodeableConcept" = CodeableConcept()
     
     additiveProductName: str = None
-    caloricDensity: "Quantity" = Quantity()
-    routeofAdministration: "CodeableConcept" = CodeableConcept()
-    administration: list[Administration] = Administration() 
-    maxVolumeToDeliver: "Quantity" = Quantity()
+    
+    caloricDensity:  "Quantity" = Quantity()
+    
+    routeofAdministration:  "CodeableConcept" = CodeableConcept()
+    
+    administration:  list["Administration"] = [Administration()]
+    
+    maxVolumeToDeliver:  "Quantity" = Quantity()
     
 
 @dataclass
@@ -195,21 +228,21 @@ class NutritionOrder(ModelBase):
     resourceType: str = "NutritionOrder"
     id: str = None
     
-    meta: "Meta" = Meta()
+    meta: "Meta" = None
     
     implicitRules: str = None
     
     language: str = None
     
-    text: "Narrative" = Narrative()
+    text: "Narrative" = None
     
-    contained: list[Resource] = Resource() 
+    contained: list["Resource"] = None
     
-    extension: list[Extension] = Extension() 
+    extension: list["Extension"] = None
     
-    modifierExtension: list[Extension] = Extension() 
+    modifierExtension: list["Extension"] = None
     
-    identifier: list[Identifier] = Identifier() 
+    identifier: list["Identifier"] = None
     
     instantiatesCanonical: str = None
     
@@ -221,25 +254,25 @@ class NutritionOrder(ModelBase):
     
     intent: str = None
     
-    patient: "Reference" = Reference()
+    patient: "Reference" = None
     
-    encounter: "Reference" = Reference()
+    encounter: "Reference" = None
     
     dateTime: str = None
     
-    orderer: "Reference" = Reference()
+    orderer: "Reference" = None
     
-    allergyIntolerance: list[Reference] = Reference() 
+    allergyIntolerance: list["Reference"] = None
     
-    foodPreferenceModifier: list[CodeableConcept] = CodeableConcept() 
+    foodPreferenceModifier: list["CodeableConcept"] = None
     
-    excludeFoodModifier: list[CodeableConcept] = CodeableConcept() 
+    excludeFoodModifier: list["CodeableConcept"] = None
     
-    oralDiet: "OralDiet" = OralDiet()
+    oralDiet: "OralDiet" = None
     
-    supplement: list[Supplement] = Supplement() 
+    supplement: list["Supplement"] = None
     
-    enteralFormula: "EnteralFormula" = EnteralFormula()
+    enteralFormula: "EnteralFormula" = None
     
-    note: list[Annotation] = Annotation() 
+    note: list["Annotation"] = None
     

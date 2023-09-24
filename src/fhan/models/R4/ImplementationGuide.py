@@ -1,18 +1,18 @@
 """
 Generated class for ImplementationGuide. 
-Time: 2023-09-23 23:45:33
+Time: 2023-09-24 20:01:56
 """
 from dataclasses import dataclass
-from fhan.models.R4.Reference import *
-from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.UsageContext import *
 from fhan.models.R4.Extension import *
 from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Element import *
-from fhan.models.R4.UsageContext import *
-from fhan.models.R4.Meta import *
 from fhan.models.R4.Resource import *
-from fhan.models.R4.Narrative import *
+from fhan.models.R4.Meta import *
+from fhan.models.R4.Reference import *
+from fhan.models.R4.Element import *
 from fhan.models.R4.ContactDetail import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.CodeableConcept import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -27,8 +27,10 @@ class DependsOn(Element):
     :param str version: Version of the IG
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
     
     uri: str = None
     
@@ -48,8 +50,10 @@ class _global(Element):
     :param str profile: Profile that all resources must conform to
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
     
     type: str = None
     
@@ -69,8 +73,10 @@ class Grouping(Element):
     :param str description: Human readable text describing the package
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
     
     name: str = None
     
@@ -92,9 +98,12 @@ class Resource(Element):
     :param str groupingId: Grouping this is part of
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
-    reference: "Reference" = Reference()
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
+    
+    reference:  "Reference" = Reference()
     
     fhirVersion: str = None
     
@@ -119,8 +128,10 @@ class Page(Element):
     :param str generation: html | markdown | xml | generated
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
     
     nameUrl: str = None
     
@@ -140,8 +151,10 @@ class Parameter(Element):
     :param str value: Value for named type
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
     
     code: str = None
     
@@ -160,8 +173,10 @@ class Template(Element):
     :param str scope: The scope in which the template applies
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
     
     code: str = None
     
@@ -185,13 +200,20 @@ class Definition(Element):
     :param Template template: A template for building resources
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
-    grouping: list[Grouping] = Grouping() 
-    resource: list[Resource] = Resource() 
-    page: "Page" = Page()
-    parameter: list[Parameter] = Parameter() 
-    template: list[Template] = Template() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
+    
+    grouping:  list["Grouping"] = [Grouping()]
+    
+    resource:  list["Resource"] = [Resource()]
+    
+    page:  "Page" = Page()
+    
+    parameter:  list["Parameter"] = [Parameter()]
+    
+    template:  list["Template"] = [Template()]
     
 
     
@@ -208,9 +230,12 @@ class Resource(Element):
     :param str relativePath: Relative path for page in IG
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
-    reference: "Reference" = Reference()
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
+    
+    reference:  "Reference" = Reference()
     
     exampleBoolean: bool = None
     
@@ -229,8 +254,10 @@ class Page(Element):
     :param str anchor: Anchor available on the page
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
     
     name: str = None
     
@@ -254,12 +281,16 @@ class Manifest(Element):
     :param str other: Additional linkable file in IG
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
     
     rendering: str = None
-    resource: list[Resource] = Resource() 
-    page: list[Page] = Page() 
+    
+    resource:  list["Resource"] = [Resource()]
+    
+    page:  list["Page"] = [Page()]
     
     image: str = None
     
@@ -302,19 +333,19 @@ class ImplementationGuide(ModelBase):
     resourceType: str = "ImplementationGuide"
     id: str = None
     
-    meta: "Meta" = Meta()
+    meta: "Meta" = None
     
     implicitRules: str = None
     
     language: str = None
     
-    text: "Narrative" = Narrative()
+    text: "Narrative" = None
     
-    contained: list[Resource] = Resource() 
+    contained: list["Resource"] = None
     
-    extension: list[Extension] = Extension() 
+    extension: list["Extension"] = None
     
-    modifierExtension: list[Extension] = Extension() 
+    modifierExtension: list["Extension"] = None
     
     url: str = None
     
@@ -332,13 +363,13 @@ class ImplementationGuide(ModelBase):
     
     publisher: str = None
     
-    contact: list[ContactDetail] = ContactDetail() 
+    contact: list["ContactDetail"] = None
     
     description: str = None
     
-    useContext: list[UsageContext] = UsageContext() 
+    useContext: list["UsageContext"] = None
     
-    jurisdiction: list[CodeableConcept] = CodeableConcept() 
+    jurisdiction: list["CodeableConcept"] = None
     
     copyright: str = None
     
@@ -348,11 +379,11 @@ class ImplementationGuide(ModelBase):
     
     fhirVersion: str = None
     
-    dependsOn: list[DependsOn] = DependsOn() 
+    dependsOn: list["DependsOn"] = None
     
-    _global: list[_global] = _global() 
+    _global: list["_global"] = None
     
-    definition: "Definition" = Definition()
+    definition: "Definition" = None
     
-    manifest: "Manifest" = Manifest()
+    manifest: "Manifest" = None
     

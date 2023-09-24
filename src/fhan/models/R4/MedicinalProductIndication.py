@@ -1,18 +1,18 @@
 """
 Generated class for MedicinalProductIndication. 
-Time: 2023-09-23 23:45:33
+Time: 2023-09-24 20:01:56
 """
 from dataclasses import dataclass
-from fhan.models.R4.Reference import *
-from fhan.models.R4.Population import *
-from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Extension import *
-from fhan.models.R4.Quantity import *
 from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Element import *
 from fhan.models.R4.Resource import *
-from fhan.models.R4.Narrative import *
 from fhan.models.R4.Meta import *
+from fhan.models.R4.Quantity import *
+from fhan.models.R4.Reference import *
+from fhan.models.R4.Element import *
+from fhan.models.R4.Population import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.CodeableConcept import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -26,10 +26,14 @@ class OtherTherapy(Element):
     :param CodeableConcept medicationCodeableConcept: Reference to a specific medication (active substance, medicinal product or class of products) as part of an indication or contraindication
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
-    therapyRelationshipType: "CodeableConcept" = CodeableConcept()
-    medicationCodeableConcept: "CodeableConcept" = CodeableConcept()
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
+    
+    therapyRelationshipType:  "CodeableConcept" = CodeableConcept()
+    
+    medicationCodeableConcept:  "CodeableConcept" = CodeableConcept()
     
 
 @dataclass
@@ -57,35 +61,35 @@ class MedicinalProductIndication(ModelBase):
     resourceType: str = "MedicinalProductIndication"
     id: str = None
     
-    meta: "Meta" = Meta()
+    meta: "Meta" = None
     
     implicitRules: str = None
     
     language: str = None
     
-    text: "Narrative" = Narrative()
+    text: "Narrative" = None
     
-    contained: list[Resource] = Resource() 
+    contained: list["Resource"] = None
     
-    extension: list[Extension] = Extension() 
+    extension: list["Extension"] = None
     
-    modifierExtension: list[Extension] = Extension() 
+    modifierExtension: list["Extension"] = None
     
-    subject: list[Reference] = Reference() 
+    subject: list["Reference"] = None
     
-    diseaseSymptomProcedure: "CodeableConcept" = CodeableConcept()
+    diseaseSymptomProcedure: "CodeableConcept" = None
     
-    diseaseStatus: "CodeableConcept" = CodeableConcept()
+    diseaseStatus: "CodeableConcept" = None
     
-    comorbidity: list[CodeableConcept] = CodeableConcept() 
+    comorbidity: list["CodeableConcept"] = None
     
-    intendedEffect: "CodeableConcept" = CodeableConcept()
+    intendedEffect: "CodeableConcept" = None
     
-    duration: "Quantity" = Quantity()
+    duration: "Quantity" = None
     
-    otherTherapy: list[OtherTherapy] = OtherTherapy() 
+    otherTherapy: list["OtherTherapy"] = None
     
-    undesirableEffect: list[Reference] = Reference() 
+    undesirableEffect: list["Reference"] = None
     
-    population: list[Population] = Population() 
+    population: list["Population"] = None
     

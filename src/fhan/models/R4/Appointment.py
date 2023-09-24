@@ -1,18 +1,18 @@
 """
 Generated class for Appointment. 
-Time: 2023-09-23 23:45:33
+Time: 2023-09-24 20:01:56
 """
 from dataclasses import dataclass
-from fhan.models.R4.Reference import *
-from fhan.models.R4.Identifier import *
 from fhan.models.R4.Extension import *
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Period import *
 from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Element import *
 from fhan.models.R4.Resource import *
-from fhan.models.R4.Narrative import *
 from fhan.models.R4.Meta import *
+from fhan.models.R4.Reference import *
+from fhan.models.R4.Period import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.Element import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.CodeableConcept import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -29,15 +29,20 @@ class Participant(Element):
     :param Period period: Participation period of the actor
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
-    type: list[CodeableConcept] = CodeableConcept() 
-    actor: "Reference" = Reference()
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
+    
+    type:  list["CodeableConcept"] = [CodeableConcept()]
+    
+    actor:  "Reference" = Reference()
     
     required: str = None
     
     status: str = None
-    period: "Period" = Period()
+    
+    period:  "Period" = Period()
     
 
 @dataclass
@@ -78,43 +83,43 @@ class Appointment(ModelBase):
     resourceType: str = "Appointment"
     id: str = None
     
-    meta: "Meta" = Meta()
+    meta: "Meta" = None
     
     implicitRules: str = None
     
     language: str = None
     
-    text: "Narrative" = Narrative()
+    text: "Narrative" = None
     
-    contained: list[Resource] = Resource() 
+    contained: list["Resource"] = None
     
-    extension: list[Extension] = Extension() 
+    extension: list["Extension"] = None
     
-    modifierExtension: list[Extension] = Extension() 
+    modifierExtension: list["Extension"] = None
     
-    identifier: list[Identifier] = Identifier() 
+    identifier: list["Identifier"] = None
     
     status: str = None
     
-    cancelationReason: "CodeableConcept" = CodeableConcept()
+    cancelationReason: "CodeableConcept" = None
     
-    serviceCategory: list[CodeableConcept] = CodeableConcept() 
+    serviceCategory: list["CodeableConcept"] = None
     
-    serviceType: list[CodeableConcept] = CodeableConcept() 
+    serviceType: list["CodeableConcept"] = None
     
-    specialty: list[CodeableConcept] = CodeableConcept() 
+    specialty: list["CodeableConcept"] = None
     
-    appointmentType: "CodeableConcept" = CodeableConcept()
+    appointmentType: "CodeableConcept" = None
     
-    reasonCode: list[CodeableConcept] = CodeableConcept() 
+    reasonCode: list["CodeableConcept"] = None
     
-    reasonReference: list[Reference] = Reference() 
+    reasonReference: list["Reference"] = None
     
     priority: int = None
     
     description: str = None
     
-    supportingInformation: list[Reference] = Reference() 
+    supportingInformation: list["Reference"] = None
     
     start: str = None
     
@@ -122,7 +127,7 @@ class Appointment(ModelBase):
     
     minutesDuration: int = None
     
-    slot: list[Reference] = Reference() 
+    slot: list["Reference"] = None
     
     created: str = None
     
@@ -130,9 +135,9 @@ class Appointment(ModelBase):
     
     patientInstruction: str = None
     
-    basedOn: list[Reference] = Reference() 
+    basedOn: list["Reference"] = None
     
-    participant: list[Participant] = Participant() 
+    participant: list["Participant"] = None
     
-    requestedPeriod: list[Period] = Period() 
+    requestedPeriod: list["Period"] = None
     

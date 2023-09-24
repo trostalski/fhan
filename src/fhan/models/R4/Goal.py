@@ -1,22 +1,22 @@
 """
 Generated class for Goal. 
-Time: 2023-09-23 23:45:33
+Time: 2023-09-24 20:01:56
 """
 from dataclasses import dataclass
-from fhan.models.R4.Annotation import *
-from fhan.models.R4.Reference import *
-from fhan.models.R4.Range import *
-from fhan.models.R4.Identifier import *
 from fhan.models.R4.Extension import *
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Ratio import *
-from fhan.models.R4.Quantity import *
 from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Element import *
+from fhan.models.R4.Annotation import *
 from fhan.models.R4.Resource import *
+from fhan.models.R4.Meta import *
+from fhan.models.R4.Quantity import *
+from fhan.models.R4.Ratio import *
+from fhan.models.R4.Reference import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.Range import *
+from fhan.models.R4.Element import *
 from fhan.models.R4.Duration import *
 from fhan.models.R4.Narrative import *
-from fhan.models.R4.Meta import *
+from fhan.models.R4.CodeableConcept import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -31,10 +31,14 @@ class Target(Element):
     :param str dueDate: Reach goal on or before
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
-    measure: "CodeableConcept" = CodeableConcept()
-    detailQuantity: "Quantity" = Quantity()
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
+    
+    measure:  "CodeableConcept" = CodeableConcept()
+    
+    detailQuantity:  "Quantity" = Quantity()
     
     dueDate: str = None
     
@@ -71,49 +75,49 @@ class Goal(ModelBase):
     resourceType: str = "Goal"
     id: str = None
     
-    meta: "Meta" = Meta()
+    meta: "Meta" = None
     
     implicitRules: str = None
     
     language: str = None
     
-    text: "Narrative" = Narrative()
+    text: "Narrative" = None
     
-    contained: list[Resource] = Resource() 
+    contained: list["Resource"] = None
     
-    extension: list[Extension] = Extension() 
+    extension: list["Extension"] = None
     
-    modifierExtension: list[Extension] = Extension() 
+    modifierExtension: list["Extension"] = None
     
-    identifier: list[Identifier] = Identifier() 
+    identifier: list["Identifier"] = None
     
     lifecycleStatus: str = None
     
-    achievementStatus: "CodeableConcept" = CodeableConcept()
+    achievementStatus: "CodeableConcept" = None
     
-    category: list[CodeableConcept] = CodeableConcept() 
+    category: list["CodeableConcept"] = None
     
-    priority: "CodeableConcept" = CodeableConcept()
+    priority: "CodeableConcept" = None
     
-    description: "CodeableConcept" = CodeableConcept()
+    description: "CodeableConcept" = None
     
-    subject: "Reference" = Reference()
+    subject: "Reference" = None
     
     startDate: str = None
     
-    target: list[Target] = Target() 
+    target: list["Target"] = None
     
     statusDate: str = None
     
     statusReason: str = None
     
-    expressedBy: "Reference" = Reference()
+    expressedBy: "Reference" = None
     
-    addresses: list[Reference] = Reference() 
+    addresses: list["Reference"] = None
     
-    note: list[Annotation] = Annotation() 
+    note: list["Annotation"] = None
     
-    outcomeCode: list[CodeableConcept] = CodeableConcept() 
+    outcomeCode: list["CodeableConcept"] = None
     
-    outcomeReference: list[Reference] = Reference() 
+    outcomeReference: list["Reference"] = None
     

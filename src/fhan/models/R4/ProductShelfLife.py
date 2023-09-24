@@ -1,6 +1,6 @@
 """
 Generated class for ProductShelfLife. 
-Time: 2023-09-23 23:45:33
+Time: 2023-09-24 20:01:56
 """
 from dataclasses import dataclass
 from fhan.models.R4.Identifier import *
@@ -25,15 +25,15 @@ class ProductShelfLife(Element):
     resourceType: str = "ProductShelfLife"
     id: str = None
     
-    extension: list[Extension] = Extension() 
+    extension: list["Extension"] = None
     
-    modifierExtension: list[Extension] = Extension() 
+    modifierExtension: list["Extension"] = None
     
-    identifier: "Identifier" = Identifier()
+    identifier: "Identifier" = None
     
-    type: "CodeableConcept" = CodeableConcept()
+    type: "CodeableConcept" = None
     
-    period: "Quantity" = Quantity()
+    period: "Quantity" = None
     
-    specialPrecautionsForStorage: list[CodeableConcept] = CodeableConcept() 
+    specialPrecautionsForStorage: list["CodeableConcept"] = None
     

@@ -1,18 +1,18 @@
 """
 Generated class for CatalogEntry. 
-Time: 2023-09-23 23:45:33
+Time: 2023-09-24 20:01:56
 """
 from dataclasses import dataclass
-from fhan.models.R4.Reference import *
-from fhan.models.R4.Identifier import *
 from fhan.models.R4.Extension import *
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Period import *
 from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Element import *
 from fhan.models.R4.Resource import *
-from fhan.models.R4.Narrative import *
 from fhan.models.R4.Meta import *
+from fhan.models.R4.Reference import *
+from fhan.models.R4.Period import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.Element import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.CodeableConcept import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -26,11 +26,14 @@ class RelatedEntry(Element):
     :param Reference item: The reference to the related item
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
     
     relationtype: str = None
-    item: "Reference" = Reference()
+    
+    item:  "Reference" = Reference()
     
 
 @dataclass
@@ -62,43 +65,43 @@ class CatalogEntry(ModelBase):
     resourceType: str = "CatalogEntry"
     id: str = None
     
-    meta: "Meta" = Meta()
+    meta: "Meta" = None
     
     implicitRules: str = None
     
     language: str = None
     
-    text: "Narrative" = Narrative()
+    text: "Narrative" = None
     
-    contained: list[Resource] = Resource() 
+    contained: list["Resource"] = None
     
-    extension: list[Extension] = Extension() 
+    extension: list["Extension"] = None
     
-    modifierExtension: list[Extension] = Extension() 
+    modifierExtension: list["Extension"] = None
     
-    identifier: list[Identifier] = Identifier() 
+    identifier: list["Identifier"] = None
     
-    type: "CodeableConcept" = CodeableConcept()
+    type: "CodeableConcept" = None
     
     orderable: bool = None
     
-    referencedItem: "Reference" = Reference()
+    referencedItem: "Reference" = None
     
-    additionalIdentifier: list[Identifier] = Identifier() 
+    additionalIdentifier: list["Identifier"] = None
     
-    classification: list[CodeableConcept] = CodeableConcept() 
+    classification: list["CodeableConcept"] = None
     
     status: str = None
     
-    validityPeriod: "Period" = Period()
+    validityPeriod: "Period" = None
     
     validTo: str = None
     
     lastUpdated: str = None
     
-    additionalCharacteristic: list[CodeableConcept] = CodeableConcept() 
+    additionalCharacteristic: list["CodeableConcept"] = None
     
-    additionalClassification: list[CodeableConcept] = CodeableConcept() 
+    additionalClassification: list["CodeableConcept"] = None
     
-    relatedEntry: list[RelatedEntry] = RelatedEntry() 
+    relatedEntry: list["RelatedEntry"] = None
     

@@ -1,15 +1,15 @@
 """
 Generated class for Subscription. 
-Time: 2023-09-23 23:45:33
+Time: 2023-09-24 20:01:56
 """
 from dataclasses import dataclass
 from fhan.models.R4.Extension import *
-from fhan.models.R4.ContactPoint import *
 from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Element import *
 from fhan.models.R4.Resource import *
-from fhan.models.R4.Narrative import *
 from fhan.models.R4.Meta import *
+from fhan.models.R4.ContactPoint import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Element import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -25,8 +25,10 @@ class Channel(Element):
     :param str header: Usage depends on the channel type
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
     
     type: str = None
     
@@ -60,23 +62,23 @@ class Subscription(ModelBase):
     resourceType: str = "Subscription"
     id: str = None
     
-    meta: "Meta" = Meta()
+    meta: "Meta" = None
     
     implicitRules: str = None
     
     language: str = None
     
-    text: "Narrative" = Narrative()
+    text: "Narrative" = None
     
-    contained: list[Resource] = Resource() 
+    contained: list["Resource"] = None
     
-    extension: list[Extension] = Extension() 
+    extension: list["Extension"] = None
     
-    modifierExtension: list[Extension] = Extension() 
+    modifierExtension: list["Extension"] = None
     
     status: str = None
     
-    contact: list[ContactPoint] = ContactPoint() 
+    contact: list["ContactPoint"] = None
     
     end: str = None
     
@@ -86,5 +88,5 @@ class Subscription(ModelBase):
     
     error: str = None
     
-    channel: "Channel" = Channel()
+    channel: "Channel" = None
     

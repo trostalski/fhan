@@ -1,15 +1,15 @@
 """
 Generated class for DataRequirement. 
-Time: 2023-09-23 23:45:33
+Time: 2023-09-24 20:01:56
 """
 from dataclasses import dataclass
-from fhan.models.R4.Reference import *
-from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Extension import *
+from fhan.models.R4.Reference import *
 from fhan.models.R4.Period import *
-from fhan.models.R4.Duration import *
-from fhan.models.R4.Element import *
 from fhan.models.R4.Coding import *
+from fhan.models.R4.Element import *
+from fhan.models.R4.Duration import *
+from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Element import *
 
 
@@ -46,21 +46,21 @@ class DataRequirement(Element):
     resourceType: str = "DataRequirement"
     id: str = None
     
-    extension: list[Extension] = Extension() 
+    extension: list["Extension"] = None
     
     type: str = None
     
     profile: str = None
     
-    subjectCodeableConcept: "CodeableConcept" = CodeableConcept()
+    subjectCodeableConcept: "CodeableConcept" = None
     
     mustSupport: str = None
     
-    codeFilter: list[Element] = Element() 
+    codeFilter: list["Element"] = None
     
     id: str = None
     
-    extension: list[Extension] = Extension() 
+    extension: list["Extension"] = None
     
     path: str = None
     
@@ -68,13 +68,13 @@ class DataRequirement(Element):
     
     valueSet: str = None
     
-    code: list[Coding] = Coding() 
+    code: list["Coding"] = None
     
-    dateFilter: list[Element] = Element() 
+    dateFilter: list["Element"] = None
     
     id: str = None
     
-    extension: list[Extension] = Extension() 
+    extension: list["Extension"] = None
     
     path: str = None
     
@@ -84,11 +84,11 @@ class DataRequirement(Element):
     
     limit: int = None
     
-    sort: list[Element] = Element() 
+    sort: list["Element"] = None
     
     id: str = None
     
-    extension: list[Extension] = Extension() 
+    extension: list["Extension"] = None
     
     path: str = None
     

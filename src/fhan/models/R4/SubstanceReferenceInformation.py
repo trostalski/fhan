@@ -1,19 +1,19 @@
 """
 Generated class for SubstanceReferenceInformation. 
-Time: 2023-09-23 23:45:33
+Time: 2023-09-24 20:01:56
 """
 from dataclasses import dataclass
-from fhan.models.R4.Reference import *
-from fhan.models.R4.Range import *
-from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Extension import *
-from fhan.models.R4.Identifier import *
-from fhan.models.R4.Quantity import *
 from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Element import *
 from fhan.models.R4.Resource import *
-from fhan.models.R4.Narrative import *
 from fhan.models.R4.Meta import *
+from fhan.models.R4.Quantity import *
+from fhan.models.R4.Reference import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.Range import *
+from fhan.models.R4.Element import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.CodeableConcept import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -30,11 +30,16 @@ class GeneElement(Element):
     :param Reference source: Todo
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
-    type: "CodeableConcept" = CodeableConcept()
-    element: "Identifier" = Identifier()
-    source: list[Reference] = Reference() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
+    
+    type:  "CodeableConcept" = CodeableConcept()
+    
+    element:  "Identifier" = Identifier()
+    
+    source:  list["Reference"] = [Reference()]
     
 
   
@@ -51,12 +56,18 @@ class Gene(Element):
     :param GeneElement geneElement: Todo
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
-    geneSequenceOrigin: "CodeableConcept" = CodeableConcept()
-    gene: "CodeableConcept" = CodeableConcept()
-    source: list[Reference] = Reference() 
-    geneElement: list[GeneElement] = GeneElement() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
+    
+    geneSequenceOrigin:  "CodeableConcept" = CodeableConcept()
+    
+    gene:  "CodeableConcept" = CodeableConcept()
+    
+    source:  list["Reference"] = [Reference()]
+    
+    geneElement:  list["GeneElement"] = [GeneElement()]
     
 
     
@@ -72,12 +83,18 @@ class Classification(Element):
     :param Reference source: Todo
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
-    domain: "CodeableConcept" = CodeableConcept()
-    classification: "CodeableConcept" = CodeableConcept()
-    subtype: list[CodeableConcept] = CodeableConcept() 
-    source: list[Reference] = Reference() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
+    
+    domain:  "CodeableConcept" = CodeableConcept()
+    
+    classification:  "CodeableConcept" = CodeableConcept()
+    
+    subtype:  list["CodeableConcept"] = [CodeableConcept()]
+    
+    source:  list["Reference"] = [Reference()]
     
 
     
@@ -97,16 +114,26 @@ class Target(Element):
     :param Reference source: Todo
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
-    target: "Identifier" = Identifier()
-    type: "CodeableConcept" = CodeableConcept()
-    interaction: "CodeableConcept" = CodeableConcept()
-    organism: "CodeableConcept" = CodeableConcept()
-    organismType: "CodeableConcept" = CodeableConcept()
-    amountQuantity: "Quantity" = Quantity()
-    amountType: "CodeableConcept" = CodeableConcept()
-    source: list[Reference] = Reference() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
+    
+    target:  "Identifier" = Identifier()
+    
+    type:  "CodeableConcept" = CodeableConcept()
+    
+    interaction:  "CodeableConcept" = CodeableConcept()
+    
+    organism:  "CodeableConcept" = CodeableConcept()
+    
+    organismType:  "CodeableConcept" = CodeableConcept()
+    
+    amountQuantity:  "Quantity" = Quantity()
+    
+    amountType:  "CodeableConcept" = CodeableConcept()
+    
+    source:  list["Reference"] = [Reference()]
     
 
 @dataclass
@@ -129,25 +156,25 @@ class SubstanceReferenceInformation(ModelBase):
     resourceType: str = "SubstanceReferenceInformation"
     id: str = None
     
-    meta: "Meta" = Meta()
+    meta: "Meta" = None
     
     implicitRules: str = None
     
     language: str = None
     
-    text: "Narrative" = Narrative()
+    text: "Narrative" = None
     
-    contained: list[Resource] = Resource() 
+    contained: list["Resource"] = None
     
-    extension: list[Extension] = Extension() 
+    extension: list["Extension"] = None
     
-    modifierExtension: list[Extension] = Extension() 
+    modifierExtension: list["Extension"] = None
     
     comment: str = None
     
-    gene: list[Gene] = Gene() 
+    gene: list["Gene"] = None
     
-    classification: list[Classification] = Classification() 
+    classification: list["Classification"] = None
     
-    target: list[Target] = Target() 
+    target: list["Target"] = None
     

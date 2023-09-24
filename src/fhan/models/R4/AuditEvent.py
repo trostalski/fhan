@@ -1,18 +1,18 @@
 """
 Generated class for AuditEvent. 
-Time: 2023-09-23 23:45:33
+Time: 2023-09-24 20:01:56
 """
 from dataclasses import dataclass
+from fhan.models.R4.Extension import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Resource import *
+from fhan.models.R4.Meta import *
 from fhan.models.R4.Reference import *
 from fhan.models.R4.Period import *
-from fhan.models.R4.Extension import *
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Element import *
-from fhan.models.R4.Resource import *
 from fhan.models.R4.Coding import *
+from fhan.models.R4.Element import *
 from fhan.models.R4.Narrative import *
-from fhan.models.R4.Meta import *
+from fhan.models.R4.CodeableConcept import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -28,8 +28,10 @@ class Network(Element):
     :param str type: The type of network access point
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
     
     address: str = None
     
@@ -57,23 +59,32 @@ class Agent(Element):
     :param CodeableConcept purposeOfUse: Reason given for this user
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
-    type: "CodeableConcept" = CodeableConcept()
-    role: list[CodeableConcept] = CodeableConcept() 
-    who: "Reference" = Reference()
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
+    
+    type:  "CodeableConcept" = CodeableConcept()
+    
+    role:  list["CodeableConcept"] = [CodeableConcept()]
+    
+    who:  "Reference" = Reference()
     
     altId: str = None
     
     name: str = None
     
     requestor: bool = None
-    location: "Reference" = Reference()
+    
+    location:  "Reference" = Reference()
     
     policy: str = None
-    media: "Coding" = Coding()
-    network: "Network" = Network()
-    purposeOfUse: list[CodeableConcept] = CodeableConcept() 
+    
+    media:  "Coding" = Coding()
+    
+    network:  "Network" = Network()
+    
+    purposeOfUse:  list["CodeableConcept"] = [CodeableConcept()]
     
 
     
@@ -88,12 +99,16 @@ class Source(Element):
     :param Coding type: The type of source where event originated
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
     
     site: str = None
-    observer: "Reference" = Reference()
-    type: list[Coding] = Coding() 
+    
+    observer:  "Reference" = Reference()
+    
+    type:  list["Coding"] = [Coding()]
     
 
     
@@ -109,8 +124,10 @@ class Detail(Element):
     :param str valueString: Property value
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
     
     type: str = None
     
@@ -136,20 +153,28 @@ class Entity(Element):
     :param Detail detail: Additional Information about the entity
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
-    what: "Reference" = Reference()
-    type: "Coding" = Coding()
-    role: "Coding" = Coding()
-    lifecycle: "Coding" = Coding()
-    securityLabel: list[Coding] = Coding() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
+    
+    what:  "Reference" = Reference()
+    
+    type:  "Coding" = Coding()
+    
+    role:  "Coding" = Coding()
+    
+    lifecycle:  "Coding" = Coding()
+    
+    securityLabel:  list["Coding"] = [Coding()]
     
     name: str = None
     
     description: str = None
     
     query: str = None
-    detail: list[Detail] = Detail() 
+    
+    detail:  list["Detail"] = [Detail()]
     
 
 @dataclass
@@ -179,27 +204,27 @@ class AuditEvent(ModelBase):
     resourceType: str = "AuditEvent"
     id: str = None
     
-    meta: "Meta" = Meta()
+    meta: "Meta" = None
     
     implicitRules: str = None
     
     language: str = None
     
-    text: "Narrative" = Narrative()
+    text: "Narrative" = None
     
-    contained: list[Resource] = Resource() 
+    contained: list["Resource"] = None
     
-    extension: list[Extension] = Extension() 
+    extension: list["Extension"] = None
     
-    modifierExtension: list[Extension] = Extension() 
+    modifierExtension: list["Extension"] = None
     
-    type: "Coding" = Coding()
+    type: "Coding" = None
     
-    subtype: list[Coding] = Coding() 
+    subtype: list["Coding"] = None
     
     action: str = None
     
-    period: "Period" = Period()
+    period: "Period" = None
     
     recorded: str = None
     
@@ -207,11 +232,11 @@ class AuditEvent(ModelBase):
     
     outcomeDesc: str = None
     
-    purposeOfEvent: list[CodeableConcept] = CodeableConcept() 
+    purposeOfEvent: list["CodeableConcept"] = None
     
-    agent: list[Agent] = Agent() 
+    agent: list["Agent"] = None
     
-    source: "Source" = Source()
+    source: "Source" = None
     
-    entity: list[Entity] = Entity() 
+    entity: list["Entity"] = None
     

@@ -1,6 +1,6 @@
 """
 Generated class for Expression. 
-Time: 2023-09-23 23:45:33
+Time: 2023-09-24 20:01:56
 """
 from dataclasses import dataclass
 from fhan.models.R4.Extension import *
@@ -22,7 +22,7 @@ class Expression(Element):
     resourceType: str = "Expression"
     id: str = None
     
-    extension: list[Extension] = Extension() 
+    extension: list["Extension"] = None
     
     description: str = None
     

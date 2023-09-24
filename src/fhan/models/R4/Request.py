@@ -1,14 +1,14 @@
 """
 Generated class for Request. 
-Time: 2023-09-23 23:45:33
+Time: 2023-09-24 20:01:56
 """
 from dataclasses import dataclass
 from fhan.models.R4.Annotation import *
 from fhan.models.R4.Reference import *
-from fhan.models.R4.Identifier import *
 from fhan.models.R4.Period import *
-from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Identifier import *
 from fhan.models.R4.Timing import *
+from fhan.models.R4.CodeableConcept import *
 from fhan.models.generator_models import ModelBase
 
 @dataclass
@@ -43,21 +43,21 @@ class Request(ModelBase):
     """
 
     resourceType: str = "Request"
-    identifier: list[Identifier] = Identifier() 
+    identifier: list["Identifier"] = None
     
     instantiatesCanonical: str = None
     
     instantiatesUri: str = None
     
-    basedOn: list[Reference] = Reference() 
+    basedOn: list["Reference"] = None
     
-    replaces: list[Reference] = Reference() 
+    replaces: list["Reference"] = None
     
-    groupIdentifier: "Identifier" = Identifier()
+    groupIdentifier: "Identifier" = None
     
     status: str = None
     
-    statusReason: "CodeableConcept" = CodeableConcept()
+    statusReason: "CodeableConcept" = None
     
     intent: str = None
     
@@ -65,33 +65,33 @@ class Request(ModelBase):
     
     doNotPerform: bool = None
     
-    code: "CodeableConcept" = CodeableConcept()
+    code: "CodeableConcept" = None
     
-    subject: "Reference" = Reference()
+    subject: "Reference" = None
     
-    encounter: "Reference" = Reference()
+    encounter: "Reference" = None
     
     occurrenceDateTime: str = None
     
     authoredOn: str = None
     
-    requester: "Reference" = Reference()
+    requester: "Reference" = None
     
     reportedBoolean: bool = None
     
-    performerType: "CodeableConcept" = CodeableConcept()
+    performerType: "CodeableConcept" = None
     
-    performer: "Reference" = Reference()
+    performer: "Reference" = None
     
-    reasonCode: list[CodeableConcept] = CodeableConcept() 
+    reasonCode: list["CodeableConcept"] = None
     
-    reasonReference: list[Reference] = Reference() 
+    reasonReference: list["Reference"] = None
     
-    insurance: list[Reference] = Reference() 
+    insurance: list["Reference"] = None
     
-    supportingInfo: list[Reference] = Reference() 
+    supportingInfo: list["Reference"] = None
     
-    note: list[Annotation] = Annotation() 
+    note: list["Annotation"] = None
     
-    relevantHistory: list[Reference] = Reference() 
+    relevantHistory: list["Reference"] = None
     

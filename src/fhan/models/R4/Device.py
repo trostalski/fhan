@@ -1,20 +1,20 @@
 """
 Generated class for Device. 
-Time: 2023-09-23 23:45:33
+Time: 2023-09-24 20:01:56
 """
 from dataclasses import dataclass
+from fhan.models.R4.Extension import *
+from fhan.models.R4.BackboneElement import *
 from fhan.models.R4.Annotation import *
+from fhan.models.R4.Resource import *
+from fhan.models.R4.Meta import *
+from fhan.models.R4.Quantity import *
 from fhan.models.R4.Reference import *
 from fhan.models.R4.Identifier import *
-from fhan.models.R4.Extension import *
-from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.ContactPoint import *
-from fhan.models.R4.Quantity import *
-from fhan.models.R4.BackboneElement import *
 from fhan.models.R4.Element import *
-from fhan.models.R4.Resource import *
 from fhan.models.R4.Narrative import *
-from fhan.models.R4.Meta import *
+from fhan.models.R4.CodeableConcept import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -32,8 +32,10 @@ class UdiCarrier(Element):
     :param str entryType: barcode | rfid | manual +
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
     
     deviceIdentifier: str = None
     
@@ -59,8 +61,10 @@ class DeviceName(Element):
     :param str type: udi-label-name | user-friendly-name | patient-reported-name | manufacturer-name | model-name | other
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
     
     name: str = None
     
@@ -78,9 +82,12 @@ class Specialization(Element):
     :param str version: The version of the standard that is used to operate and communicate
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
-    systemType: "CodeableConcept" = CodeableConcept()
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
+    
+    systemType:  "CodeableConcept" = CodeableConcept()
     
     version: str = None
     
@@ -97,10 +104,14 @@ class Version(Element):
     :param str value: The version text
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
-    type: "CodeableConcept" = CodeableConcept()
-    component: "Identifier" = Identifier()
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
+    
+    type:  "CodeableConcept" = CodeableConcept()
+    
+    component:  "Identifier" = Identifier()
     
     value: str = None
     
@@ -117,11 +128,16 @@ class Property(Element):
     :param CodeableConcept valueCode: Property value as a code, e.g., NTP4 (synced to NTP)
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
-    type: "CodeableConcept" = CodeableConcept()
-    valueQuantity: list[Quantity] = Quantity() 
-    valueCode: list[CodeableConcept] = CodeableConcept() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
+    
+    type:  "CodeableConcept" = CodeableConcept()
+    
+    valueQuantity:  list["Quantity"] = [Quantity()]
+    
+    valueCode:  list["CodeableConcept"] = [CodeableConcept()]
     
 
 @dataclass
@@ -166,29 +182,29 @@ class Device(ModelBase):
     resourceType: str = "Device"
     id: str = None
     
-    meta: "Meta" = Meta()
+    meta: "Meta" = None
     
     implicitRules: str = None
     
     language: str = None
     
-    text: "Narrative" = Narrative()
+    text: "Narrative" = None
     
-    contained: list[Resource] = Resource() 
+    contained: list["Resource"] = None
     
-    extension: list[Extension] = Extension() 
+    extension: list["Extension"] = None
     
-    modifierExtension: list[Extension] = Extension() 
+    modifierExtension: list["Extension"] = None
     
-    identifier: list[Identifier] = Identifier() 
+    identifier: list["Identifier"] = None
     
-    definition: "Reference" = Reference()
+    definition: "Reference" = None
     
-    udiCarrier: list[UdiCarrier] = UdiCarrier() 
+    udiCarrier: list["UdiCarrier"] = None
     
     status: str = None
     
-    statusReason: list[CodeableConcept] = CodeableConcept() 
+    statusReason: list["CodeableConcept"] = None
     
     distinctIdentifier: str = None
     
@@ -202,33 +218,33 @@ class Device(ModelBase):
     
     serialNumber: str = None
     
-    deviceName: list[DeviceName] = DeviceName() 
+    deviceName: list["DeviceName"] = None
     
     modelNumber: str = None
     
     partNumber: str = None
     
-    type: "CodeableConcept" = CodeableConcept()
+    type: "CodeableConcept" = None
     
-    specialization: list[Specialization] = Specialization() 
+    specialization: list["Specialization"] = None
     
-    version: list[Version] = Version() 
+    version: list["Version"] = None
     
-    property: list[Property] = Property() 
+    property: list["Property"] = None
     
-    patient: "Reference" = Reference()
+    patient: "Reference" = None
     
-    owner: "Reference" = Reference()
+    owner: "Reference" = None
     
-    contact: list[ContactPoint] = ContactPoint() 
+    contact: list["ContactPoint"] = None
     
-    location: "Reference" = Reference()
+    location: "Reference" = None
     
     url: str = None
     
-    note: list[Annotation] = Annotation() 
+    note: list["Annotation"] = None
     
-    safety: list[CodeableConcept] = CodeableConcept() 
+    safety: list["CodeableConcept"] = None
     
-    parent: "Reference" = Reference()
+    parent: "Reference" = None
     

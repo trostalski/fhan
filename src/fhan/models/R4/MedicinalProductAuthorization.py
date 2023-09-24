@@ -1,18 +1,18 @@
 """
 Generated class for MedicinalProductAuthorization. 
-Time: 2023-09-23 23:45:33
+Time: 2023-09-24 20:01:56
 """
 from dataclasses import dataclass
-from fhan.models.R4.Reference import *
-from fhan.models.R4.Identifier import *
 from fhan.models.R4.Extension import *
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Period import *
 from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Element import *
 from fhan.models.R4.Resource import *
-from fhan.models.R4.Narrative import *
 from fhan.models.R4.Meta import *
+from fhan.models.R4.Reference import *
+from fhan.models.R4.Period import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.Element import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.CodeableConcept import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -29,13 +29,20 @@ class JurisdictionalAuthorization(Element):
     :param Period validityPeriod: The start and expected end date of the authorization
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
-    identifier: list[Identifier] = Identifier() 
-    country: "CodeableConcept" = CodeableConcept()
-    jurisdiction: list[CodeableConcept] = CodeableConcept() 
-    legalStatusOfSupply: "CodeableConcept" = CodeableConcept()
-    validityPeriod: "Period" = Period()
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
+    
+    identifier:  list["Identifier"] = [Identifier()]
+    
+    country:  "CodeableConcept" = CodeableConcept()
+    
+    jurisdiction:  list["CodeableConcept"] = [CodeableConcept()]
+    
+    legalStatusOfSupply:  "CodeableConcept" = CodeableConcept()
+    
+    validityPeriod:  "Period" = Period()
     
 
     
@@ -50,11 +57,16 @@ class Procedure(Element):
     :param Period datePeriod: Date of procedure
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
-    identifier: "Identifier" = Identifier()
-    type: "CodeableConcept" = CodeableConcept()
-    datePeriod: "Period" = Period()
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
+    
+    identifier:  "Identifier" = Identifier()
+    
+    type:  "CodeableConcept" = CodeableConcept()
+    
+    datePeriod:  "Period" = Period()
     
 
 @dataclass
@@ -89,49 +101,49 @@ class MedicinalProductAuthorization(ModelBase):
     resourceType: str = "MedicinalProductAuthorization"
     id: str = None
     
-    meta: "Meta" = Meta()
+    meta: "Meta" = None
     
     implicitRules: str = None
     
     language: str = None
     
-    text: "Narrative" = Narrative()
+    text: "Narrative" = None
     
-    contained: list[Resource] = Resource() 
+    contained: list["Resource"] = None
     
-    extension: list[Extension] = Extension() 
+    extension: list["Extension"] = None
     
-    modifierExtension: list[Extension] = Extension() 
+    modifierExtension: list["Extension"] = None
     
-    identifier: list[Identifier] = Identifier() 
+    identifier: list["Identifier"] = None
     
-    subject: "Reference" = Reference()
+    subject: "Reference" = None
     
-    country: list[CodeableConcept] = CodeableConcept() 
+    country: list["CodeableConcept"] = None
     
-    jurisdiction: list[CodeableConcept] = CodeableConcept() 
+    jurisdiction: list["CodeableConcept"] = None
     
-    status: "CodeableConcept" = CodeableConcept()
+    status: "CodeableConcept" = None
     
     statusDate: str = None
     
     restoreDate: str = None
     
-    validityPeriod: "Period" = Period()
+    validityPeriod: "Period" = None
     
-    dataExclusivityPeriod: "Period" = Period()
+    dataExclusivityPeriod: "Period" = None
     
     dateOfFirstAuthorization: str = None
     
     internationalBirthDate: str = None
     
-    legalBasis: "CodeableConcept" = CodeableConcept()
+    legalBasis: "CodeableConcept" = None
     
-    jurisdictionalAuthorization: list[JurisdictionalAuthorization] = JurisdictionalAuthorization() 
+    jurisdictionalAuthorization: list["JurisdictionalAuthorization"] = None
     
-    holder: "Reference" = Reference()
+    holder: "Reference" = None
     
-    regulator: "Reference" = Reference()
+    regulator: "Reference" = None
     
-    procedure: "Procedure" = Procedure()
+    procedure: "Procedure" = None
     

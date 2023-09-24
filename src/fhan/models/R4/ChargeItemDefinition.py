@@ -1,21 +1,21 @@
 """
 Generated class for ChargeItemDefinition. 
-Time: 2023-09-23 23:45:33
+Time: 2023-09-24 20:01:56
 """
 from dataclasses import dataclass
-from fhan.models.R4.Reference import *
-from fhan.models.R4.ContactDetail import *
-from fhan.models.R4.Identifier import *
-from fhan.models.R4.Extension import *
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Period import *
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Element import *
 from fhan.models.R4.UsageContext import *
+from fhan.models.R4.Extension import *
+from fhan.models.R4.BackboneElement import *
 from fhan.models.R4.Money import *
 from fhan.models.R4.Resource import *
-from fhan.models.R4.Narrative import *
 from fhan.models.R4.Meta import *
+from fhan.models.R4.Reference import *
+from fhan.models.R4.Period import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.Element import *
+from fhan.models.R4.ContactDetail import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.CodeableConcept import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -30,8 +30,10 @@ class Applicability(Element):
     :param str expression: Boolean-valued expression
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
     
     description: str = None
     
@@ -55,14 +57,18 @@ class PriceComponent(Element):
     :param Money amount: Monetary amount associated with this component
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
     
     type: str = None
-    code: "CodeableConcept" = CodeableConcept()
+    
+    code:  "CodeableConcept" = CodeableConcept()
     
     factor: float = None
-    amount: "Money" = Money()
+    
+    amount:  "Money" = Money()
     
 
   
@@ -76,9 +82,12 @@ class PropertyGroup(Element):
     :param PriceComponent priceComponent: Components of total line item price
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
-    priceComponent: list[PriceComponent] = PriceComponent() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
+    
+    priceComponent:  list["PriceComponent"] = [PriceComponent()]
     
 
 @dataclass
@@ -120,23 +129,23 @@ class ChargeItemDefinition(ModelBase):
     resourceType: str = "ChargeItemDefinition"
     id: str = None
     
-    meta: "Meta" = Meta()
+    meta: "Meta" = None
     
     implicitRules: str = None
     
     language: str = None
     
-    text: "Narrative" = Narrative()
+    text: "Narrative" = None
     
-    contained: list[Resource] = Resource() 
+    contained: list["Resource"] = None
     
-    extension: list[Extension] = Extension() 
+    extension: list["Extension"] = None
     
-    modifierExtension: list[Extension] = Extension() 
+    modifierExtension: list["Extension"] = None
     
     url: str = None
     
-    identifier: list[Identifier] = Identifier() 
+    identifier: list["Identifier"] = None
     
     version: str = None
     
@@ -156,13 +165,13 @@ class ChargeItemDefinition(ModelBase):
     
     publisher: str = None
     
-    contact: list[ContactDetail] = ContactDetail() 
+    contact: list["ContactDetail"] = None
     
     description: str = None
     
-    useContext: list[UsageContext] = UsageContext() 
+    useContext: list["UsageContext"] = None
     
-    jurisdiction: list[CodeableConcept] = CodeableConcept() 
+    jurisdiction: list["CodeableConcept"] = None
     
     copyright: str = None
     
@@ -170,13 +179,13 @@ class ChargeItemDefinition(ModelBase):
     
     lastReviewDate: str = None
     
-    effectivePeriod: "Period" = Period()
+    effectivePeriod: "Period" = None
     
-    code: "CodeableConcept" = CodeableConcept()
+    code: "CodeableConcept" = None
     
-    instance: list[Reference] = Reference() 
+    instance: list["Reference"] = None
     
-    applicability: list[Applicability] = Applicability() 
+    applicability: list["Applicability"] = None
     
-    propertyGroup: list[PropertyGroup] = PropertyGroup() 
+    propertyGroup: list["PropertyGroup"] = None
     

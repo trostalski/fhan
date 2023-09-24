@@ -1,18 +1,18 @@
 """
 Generated class for MolecularSequence. 
-Time: 2023-09-23 23:45:33
+Time: 2023-09-24 20:01:56
 """
 from dataclasses import dataclass
+from fhan.models.R4.Extension import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Resource import *
+from fhan.models.R4.Meta import *
+from fhan.models.R4.Quantity import *
 from fhan.models.R4.Reference import *
 from fhan.models.R4.Identifier import *
-from fhan.models.R4.Extension import *
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Quantity import *
-from fhan.models.R4.BackboneElement import *
 from fhan.models.R4.Element import *
-from fhan.models.R4.Resource import *
 from fhan.models.R4.Narrative import *
-from fhan.models.R4.Meta import *
+from fhan.models.R4.CodeableConcept import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -33,15 +33,20 @@ class ReferenceSeq(Element):
     :param int windowEnd: End position of the window on the reference sequence
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
-    chromosome: "CodeableConcept" = CodeableConcept()
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
+    
+    chromosome:  "CodeableConcept" = CodeableConcept()
     
     genomeBuild: str = None
     
     orientation: str = None
-    referenceSeqId: "CodeableConcept" = CodeableConcept()
-    referenceSeqPointer: "Reference" = Reference()
+    
+    referenceSeqId:  "CodeableConcept" = CodeableConcept()
+    
+    referenceSeqPointer:  "Reference" = Reference()
     
     referenceSeqString: str = None
     
@@ -67,8 +72,10 @@ class Variant(Element):
     :param Reference variantPointer: Pointer to observed variant information
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
     
     start: int = None
     
@@ -79,7 +86,8 @@ class Variant(Element):
     referenceAllele: str = None
     
     cigar: str = None
-    variantPointer: "Reference" = Reference()
+    
+    variantPointer:  "Reference" = Reference()
     
 
     
@@ -100,8 +108,10 @@ class Roc(Element):
     :param float fMeasure: FScore of the GQ score
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
     
     score: int = None
     
@@ -143,17 +153,22 @@ class Quality(Element):
     :param Roc roc: Receiver Operator Characteristic (ROC) Curve
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
     
     type: str = None
-    standardSequence: "CodeableConcept" = CodeableConcept()
+    
+    standardSequence:  "CodeableConcept" = CodeableConcept()
     
     start: int = None
     
     end: int = None
-    score: "Quantity" = Quantity()
-    method: "CodeableConcept" = CodeableConcept()
+    
+    score:  "Quantity" = Quantity()
+    
+    method:  "CodeableConcept" = CodeableConcept()
     
     truthTP: float = None
     
@@ -170,7 +185,8 @@ class Quality(Element):
     recall: float = None
     
     fScore: float = None
-    roc: "Roc" = Roc()
+    
+    roc:  "Roc" = Roc()
     
 
     
@@ -188,8 +204,10 @@ class Repository(Element):
     :param str readsetId: Id of the read
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
     
     type: str = None
     
@@ -217,8 +235,10 @@ class Outer(Element):
     :param int end: Structural variant outer end
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
     
     start: int = None
     
@@ -236,8 +256,10 @@ class Inner(Element):
     :param int end: Structural variant inner end
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
     
     start: int = None
     
@@ -259,15 +281,20 @@ class StructureVariant(Element):
     :param Inner inner: Structural variant inner
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
-    variantType: "CodeableConcept" = CodeableConcept()
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
+    
+    variantType:  "CodeableConcept" = CodeableConcept()
     
     exact: bool = None
     
     length: int = None
-    outer: "Outer" = Outer()
-    inner: "Inner" = Inner()
+    
+    outer:  "Outer" = Outer()
+    
+    inner:  "Inner" = Inner()
     
 
 @dataclass
@@ -302,49 +329,49 @@ class MolecularSequence(ModelBase):
     resourceType: str = "MolecularSequence"
     id: str = None
     
-    meta: "Meta" = Meta()
+    meta: "Meta" = None
     
     implicitRules: str = None
     
     language: str = None
     
-    text: "Narrative" = Narrative()
+    text: "Narrative" = None
     
-    contained: list[Resource] = Resource() 
+    contained: list["Resource"] = None
     
-    extension: list[Extension] = Extension() 
+    extension: list["Extension"] = None
     
-    modifierExtension: list[Extension] = Extension() 
+    modifierExtension: list["Extension"] = None
     
-    identifier: list[Identifier] = Identifier() 
+    identifier: list["Identifier"] = None
     
     type: str = None
     
     coordinateSystem: int = None
     
-    patient: "Reference" = Reference()
+    patient: "Reference" = None
     
-    specimen: "Reference" = Reference()
+    specimen: "Reference" = None
     
-    device: "Reference" = Reference()
+    device: "Reference" = None
     
-    performer: "Reference" = Reference()
+    performer: "Reference" = None
     
-    quantity: "Quantity" = Quantity()
+    quantity: "Quantity" = None
     
-    referenceSeq: "ReferenceSeq" = ReferenceSeq()
+    referenceSeq: "ReferenceSeq" = None
     
-    variant: list[Variant] = Variant() 
+    variant: list["Variant"] = None
     
     observedSeq: str = None
     
-    quality: list[Quality] = Quality() 
+    quality: list["Quality"] = None
     
     readCoverage: int = None
     
-    repository: list[Repository] = Repository() 
+    repository: list["Repository"] = None
     
-    pointer: list[Reference] = Reference() 
+    pointer: list["Reference"] = None
     
-    structureVariant: list[StructureVariant] = StructureVariant() 
+    structureVariant: list["StructureVariant"] = None
     

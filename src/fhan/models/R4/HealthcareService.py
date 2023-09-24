@@ -1,20 +1,20 @@
 """
 Generated class for HealthcareService. 
-Time: 2023-09-23 23:45:33
+Time: 2023-09-24 20:01:56
 """
 from dataclasses import dataclass
-from fhan.models.R4.Reference import *
-from fhan.models.R4.Identifier import *
 from fhan.models.R4.Extension import *
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Period import *
-from fhan.models.R4.ContactPoint import *
-from fhan.models.R4.Attachment import *
 from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Element import *
 from fhan.models.R4.Resource import *
-from fhan.models.R4.Narrative import *
 from fhan.models.R4.Meta import *
+from fhan.models.R4.Reference import *
+from fhan.models.R4.Period import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.ContactPoint import *
+from fhan.models.R4.Element import *
+from fhan.models.R4.Attachment import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.CodeableConcept import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -28,9 +28,12 @@ class Eligibility(Element):
     :param str comment: Describes the eligibility conditions for the service
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
-    code: "CodeableConcept" = CodeableConcept()
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
+    
+    code:  "CodeableConcept" = CodeableConcept()
     
     comment: str = None
     
@@ -48,8 +51,10 @@ class AvailableTime(Element):
     :param str availableEndTime: Closing time of day (ignored if allDay = true)
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
     
     daysOfWeek: str = None
     
@@ -71,11 +76,14 @@ class NotAvailable(Element):
     :param Period during: Service not available from this date
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
     
     description: str = None
-    during: "Period" = Period()
+    
+    during:  "Period" = Period()
     
 
 @dataclass
@@ -118,33 +126,33 @@ class HealthcareService(ModelBase):
     resourceType: str = "HealthcareService"
     id: str = None
     
-    meta: "Meta" = Meta()
+    meta: "Meta" = None
     
     implicitRules: str = None
     
     language: str = None
     
-    text: "Narrative" = Narrative()
+    text: "Narrative" = None
     
-    contained: list[Resource] = Resource() 
+    contained: list["Resource"] = None
     
-    extension: list[Extension] = Extension() 
+    extension: list["Extension"] = None
     
-    modifierExtension: list[Extension] = Extension() 
+    modifierExtension: list["Extension"] = None
     
-    identifier: list[Identifier] = Identifier() 
+    identifier: list["Identifier"] = None
     
     active: bool = None
     
-    providedBy: "Reference" = Reference()
+    providedBy: "Reference" = None
     
-    category: list[CodeableConcept] = CodeableConcept() 
+    category: list["CodeableConcept"] = None
     
-    type: list[CodeableConcept] = CodeableConcept() 
+    type: list["CodeableConcept"] = None
     
-    specialty: list[CodeableConcept] = CodeableConcept() 
+    specialty: list["CodeableConcept"] = None
     
-    location: list[Reference] = Reference() 
+    location: list["Reference"] = None
     
     name: str = None
     
@@ -152,31 +160,31 @@ class HealthcareService(ModelBase):
     
     extraDetails: str = None
     
-    photo: "Attachment" = Attachment()
+    photo: "Attachment" = None
     
-    telecom: list[ContactPoint] = ContactPoint() 
+    telecom: list["ContactPoint"] = None
     
-    coverageArea: list[Reference] = Reference() 
+    coverageArea: list["Reference"] = None
     
-    serviceProvisionCode: list[CodeableConcept] = CodeableConcept() 
+    serviceProvisionCode: list["CodeableConcept"] = None
     
-    eligibility: list[Eligibility] = Eligibility() 
+    eligibility: list["Eligibility"] = None
     
-    program: list[CodeableConcept] = CodeableConcept() 
+    program: list["CodeableConcept"] = None
     
-    characteristic: list[CodeableConcept] = CodeableConcept() 
+    characteristic: list["CodeableConcept"] = None
     
-    communication: list[CodeableConcept] = CodeableConcept() 
+    communication: list["CodeableConcept"] = None
     
-    referralMethod: list[CodeableConcept] = CodeableConcept() 
+    referralMethod: list["CodeableConcept"] = None
     
     appointmentRequired: bool = None
     
-    availableTime: list[AvailableTime] = AvailableTime() 
+    availableTime: list["AvailableTime"] = None
     
-    notAvailable: list[NotAvailable] = NotAvailable() 
+    notAvailable: list["NotAvailable"] = None
     
     availabilityExceptions: str = None
     
-    endpoint: list[Reference] = Reference() 
+    endpoint: list["Reference"] = None
     

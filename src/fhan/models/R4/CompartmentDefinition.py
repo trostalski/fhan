@@ -1,16 +1,16 @@
 """
 Generated class for CompartmentDefinition. 
-Time: 2023-09-23 23:45:33
+Time: 2023-09-24 20:01:56
 """
 from dataclasses import dataclass
+from fhan.models.R4.UsageContext import *
 from fhan.models.R4.Extension import *
 from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Element import *
-from fhan.models.R4.UsageContext import *
-from fhan.models.R4.Meta import *
 from fhan.models.R4.Resource import *
-from fhan.models.R4.Narrative import *
+from fhan.models.R4.Meta import *
 from fhan.models.R4.ContactDetail import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Element import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -25,8 +25,10 @@ class Resource(Element):
     :param str documentation: Additional documentation about the resource and compartment
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
     
     code: str = None
     
@@ -65,19 +67,19 @@ class CompartmentDefinition(ModelBase):
     resourceType: str = "CompartmentDefinition"
     id: str = None
     
-    meta: "Meta" = Meta()
+    meta: "Meta" = None
     
     implicitRules: str = None
     
     language: str = None
     
-    text: "Narrative" = Narrative()
+    text: "Narrative" = None
     
-    contained: list[Resource] = Resource() 
+    contained: list["Resource"] = None
     
-    extension: list[Extension] = Extension() 
+    extension: list["Extension"] = None
     
-    modifierExtension: list[Extension] = Extension() 
+    modifierExtension: list["Extension"] = None
     
     url: str = None
     
@@ -93,11 +95,11 @@ class CompartmentDefinition(ModelBase):
     
     publisher: str = None
     
-    contact: list[ContactDetail] = ContactDetail() 
+    contact: list["ContactDetail"] = None
     
     description: str = None
     
-    useContext: list[UsageContext] = UsageContext() 
+    useContext: list["UsageContext"] = None
     
     purpose: str = None
     
@@ -105,5 +107,5 @@ class CompartmentDefinition(ModelBase):
     
     search: bool = None
     
-    resource: list[Resource] = Resource() 
+    resource: list["Resource"] = None
     

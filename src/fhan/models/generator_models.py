@@ -34,32 +34,6 @@ class ModelBase:
             # Initialize an instance of the class with the value as an argument
             setattr(self, key, cls(value))
 
-    @classmethod
-    def from_dict(cls, data_dict):
-        instance = cls()
-        for key, value in data_dict.items():
-            key = _escape_keyword(key) if key in PYTHON_KEYWORDS else key
-            # if key in PYT
-            print("KEY: ", key)
-            if hasattr(instance, key):
-                attr = getattr(instance, key)
-                print("ATTR: ", attr)
-                if isinstance(attr, list):
-                    # Handle lists of nested objects
-                    if all(isinstance(item, dict) for item in value):
-                        attr_value = [
-                            attr[0].__class__.from_dict(item) for item in value
-                        ]
-                    else:
-                        attr_value = value
-                elif isinstance(attr, ModelBase):
-                    # Handle nested objects
-                    attr_value = attr.__class__.from_dict(value)
-                else:
-                    attr_value = value
-                setattr(instance, key, attr_value)
-        return instance
-
 
 class GeneratorElement:
     """Wrapper around a ElementDefinition with a parsed name and type"""

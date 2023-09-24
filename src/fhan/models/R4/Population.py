@@ -1,11 +1,11 @@
 """
 Generated class for Population. 
-Time: 2023-09-23 23:45:33
+Time: 2023-09-24 20:01:56
 """
 from dataclasses import dataclass
+from fhan.models.R4.Extension import *
 from fhan.models.R4.Range import *
 from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Extension import *
 from fhan.models.R4.Element import *
 
 
@@ -24,15 +24,15 @@ class Population(Element):
     resourceType: str = "Population"
     id: str = None
     
-    extension: list[Extension] = Extension() 
+    extension: list["Extension"] = None
     
-    modifierExtension: list[Extension] = Extension() 
+    modifierExtension: list["Extension"] = None
     
-    ageRange: "Range" = Range()
+    ageRange: "Range" = None
     
-    gender: "CodeableConcept" = CodeableConcept()
+    gender: "CodeableConcept" = None
     
-    race: "CodeableConcept" = CodeableConcept()
+    race: "CodeableConcept" = None
     
-    physiologicalCondition: "CodeableConcept" = CodeableConcept()
+    physiologicalCondition: "CodeableConcept" = None
     

@@ -1,20 +1,20 @@
 """
 Generated class for SupplyDelivery. 
-Time: 2023-09-23 23:45:33
+Time: 2023-09-24 20:01:56
 """
 from dataclasses import dataclass
-from fhan.models.R4.Reference import *
-from fhan.models.R4.Identifier import *
 from fhan.models.R4.Extension import *
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Period import *
-from fhan.models.R4.Quantity import *
 from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Timing import *
-from fhan.models.R4.Element import *
 from fhan.models.R4.Resource import *
-from fhan.models.R4.Narrative import *
 from fhan.models.R4.Meta import *
+from fhan.models.R4.Quantity import *
+from fhan.models.R4.Reference import *
+from fhan.models.R4.Period import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.Element import *
+from fhan.models.R4.Timing import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.CodeableConcept import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -28,10 +28,14 @@ class SuppliedItem(Element):
     :param CodeableConcept itemCodeableConcept: Medication, Substance, or Device supplied
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
-    quantity: "Quantity" = Quantity()
-    itemCodeableConcept: "CodeableConcept" = CodeableConcept()
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
+    
+    quantity:  "Quantity" = Quantity()
+    
+    itemCodeableConcept:  "CodeableConcept" = CodeableConcept()
     
 
 @dataclass
@@ -61,39 +65,39 @@ class SupplyDelivery(ModelBase):
     resourceType: str = "SupplyDelivery"
     id: str = None
     
-    meta: "Meta" = Meta()
+    meta: "Meta" = None
     
     implicitRules: str = None
     
     language: str = None
     
-    text: "Narrative" = Narrative()
+    text: "Narrative" = None
     
-    contained: list[Resource] = Resource() 
+    contained: list["Resource"] = None
     
-    extension: list[Extension] = Extension() 
+    extension: list["Extension"] = None
     
-    modifierExtension: list[Extension] = Extension() 
+    modifierExtension: list["Extension"] = None
     
-    identifier: list[Identifier] = Identifier() 
+    identifier: list["Identifier"] = None
     
-    basedOn: list[Reference] = Reference() 
+    basedOn: list["Reference"] = None
     
-    partOf: list[Reference] = Reference() 
+    partOf: list["Reference"] = None
     
     status: str = None
     
-    patient: "Reference" = Reference()
+    patient: "Reference" = None
     
-    type: "CodeableConcept" = CodeableConcept()
+    type: "CodeableConcept" = None
     
-    suppliedItem: "SuppliedItem" = SuppliedItem()
+    suppliedItem: "SuppliedItem" = None
     
     occurrenceDateTime: str = None
     
-    supplier: "Reference" = Reference()
+    supplier: "Reference" = None
     
-    destination: "Reference" = Reference()
+    destination: "Reference" = None
     
-    receiver: list[Reference] = Reference() 
+    receiver: list["Reference"] = None
     

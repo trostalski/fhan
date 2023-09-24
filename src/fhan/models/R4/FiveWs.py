@@ -1,13 +1,13 @@
 """
 Generated class for FiveWs. 
-Time: 2023-09-23 23:45:33
+Time: 2023-09-24 20:01:56
 """
 from dataclasses import dataclass
 from fhan.models.R4.Reference import *
-from fhan.models.R4.Identifier import *
 from fhan.models.R4.Period import *
-from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Identifier import *
 from fhan.models.R4.Timing import *
+from fhan.models.R4.CodeableConcept import *
 from fhan.models.generator_models import ModelBase
 
 @dataclass
@@ -36,43 +36,43 @@ class FiveWs(ModelBase):
     """
 
     resourceType: str = "FiveWs"
-    identifier: list[Identifier] = Identifier() 
+    identifier: list["Identifier"] = None
     
     version: str = None
     
     status: str = None
     
-    _class: list[CodeableConcept] = CodeableConcept() 
+    _class: list["CodeableConcept"] = None
     
-    grade: "CodeableConcept" = CodeableConcept()
+    grade: "CodeableConcept" = None
     
-    whatCodeableConcept: "CodeableConcept" = CodeableConcept()
+    whatCodeableConcept: "CodeableConcept" = None
     
-    subject: list[Reference] = Reference() 
+    subject: list["Reference"] = None
     
-    context: "Reference" = Reference()
+    context: "Reference" = None
     
     init: str = None
     
-    planned: list[Timing] = Timing() 
+    planned: list["Timing"] = None
     
     doneDateTime: str = None
     
     recorded: str = None
     
-    author: list[Reference] = Reference() 
+    author: list["Reference"] = None
     
-    source: list[Reference] = Reference() 
+    source: list["Reference"] = None
     
-    actor: list[Reference] = Reference() 
+    actor: list["Reference"] = None
     
-    cause: list[Reference] = Reference() 
+    cause: list["Reference"] = None
     
-    witness: list[Reference] = Reference() 
+    witness: list["Reference"] = None
     
-    who: list[Reference] = Reference() 
+    who: list["Reference"] = None
     
-    whereCodeableConcept: list[CodeableConcept] = CodeableConcept() 
+    whereCodeableConcept: list["CodeableConcept"] = None
     
-    whyCodeableConcept: list[CodeableConcept] = CodeableConcept() 
+    whyCodeableConcept: list["CodeableConcept"] = None
     

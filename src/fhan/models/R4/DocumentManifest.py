@@ -1,17 +1,17 @@
 """
 Generated class for DocumentManifest. 
-Time: 2023-09-23 23:45:33
+Time: 2023-09-24 20:01:56
 """
 from dataclasses import dataclass
+from fhan.models.R4.Extension import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Resource import *
+from fhan.models.R4.Meta import *
 from fhan.models.R4.Reference import *
 from fhan.models.R4.Identifier import *
-from fhan.models.R4.Extension import *
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.BackboneElement import *
 from fhan.models.R4.Element import *
-from fhan.models.R4.Resource import *
 from fhan.models.R4.Narrative import *
-from fhan.models.R4.Meta import *
+from fhan.models.R4.CodeableConcept import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -25,10 +25,14 @@ class Related(Element):
     :param Reference ref: Related Resource
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
-    identifier: "Identifier" = Identifier()
-    ref: "Reference" = Reference()
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
+    
+    identifier:  "Identifier" = Identifier()
+    
+    ref:  "Reference" = Reference()
     
 
 @dataclass
@@ -59,41 +63,41 @@ class DocumentManifest(ModelBase):
     resourceType: str = "DocumentManifest"
     id: str = None
     
-    meta: "Meta" = Meta()
+    meta: "Meta" = None
     
     implicitRules: str = None
     
     language: str = None
     
-    text: "Narrative" = Narrative()
+    text: "Narrative" = None
     
-    contained: list[Resource] = Resource() 
+    contained: list["Resource"] = None
     
-    extension: list[Extension] = Extension() 
+    extension: list["Extension"] = None
     
-    modifierExtension: list[Extension] = Extension() 
+    modifierExtension: list["Extension"] = None
     
-    masterIdentifier: "Identifier" = Identifier()
+    masterIdentifier: "Identifier" = None
     
-    identifier: list[Identifier] = Identifier() 
+    identifier: list["Identifier"] = None
     
     status: str = None
     
-    type: "CodeableConcept" = CodeableConcept()
+    type: "CodeableConcept" = None
     
-    subject: "Reference" = Reference()
+    subject: "Reference" = None
     
     created: str = None
     
-    author: list[Reference] = Reference() 
+    author: list["Reference"] = None
     
-    recipient: list[Reference] = Reference() 
+    recipient: list["Reference"] = None
     
     source: str = None
     
     description: str = None
     
-    content: list[Reference] = Reference() 
+    content: list["Reference"] = None
     
-    related: list[Related] = Related() 
+    related: list["Related"] = None
     

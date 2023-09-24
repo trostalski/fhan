@@ -1,14 +1,14 @@
 """
 Generated class for UsageContext. 
-Time: 2023-09-23 23:45:33
+Time: 2023-09-24 20:01:56
 """
 from dataclasses import dataclass
-from fhan.models.R4.Reference import *
-from fhan.models.R4.Range import *
-from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Extension import *
 from fhan.models.R4.Quantity import *
+from fhan.models.R4.Reference import *
 from fhan.models.R4.Coding import *
+from fhan.models.R4.Range import *
+from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Element import *
 
 
@@ -24,9 +24,9 @@ class UsageContext(Element):
     resourceType: str = "UsageContext"
     id: str = None
     
-    extension: list[Extension] = Extension() 
+    extension: list["Extension"] = None
     
-    code: "Coding" = Coding()
+    code: "Coding" = None
     
-    valueCodeableConcept: "CodeableConcept" = CodeableConcept()
+    valueCodeableConcept: "CodeableConcept" = None
     

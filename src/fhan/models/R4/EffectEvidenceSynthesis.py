@@ -1,22 +1,22 @@
 """
 Generated class for EffectEvidenceSynthesis. 
-Time: 2023-09-23 23:45:33
+Time: 2023-09-24 20:01:56
 """
 from dataclasses import dataclass
-from fhan.models.R4.Annotation import *
-from fhan.models.R4.Reference import *
-from fhan.models.R4.ContactDetail import *
-from fhan.models.R4.Identifier import *
-from fhan.models.R4.Extension import *
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Period import *
-from fhan.models.R4.RelatedArtifact import *
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Element import *
 from fhan.models.R4.UsageContext import *
+from fhan.models.R4.Extension import *
+from fhan.models.R4.RelatedArtifact import *
+from fhan.models.R4.Annotation import *
+from fhan.models.R4.BackboneElement import *
 from fhan.models.R4.Resource import *
-from fhan.models.R4.Narrative import *
 from fhan.models.R4.Meta import *
+from fhan.models.R4.Reference import *
+from fhan.models.R4.Period import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.Element import *
+from fhan.models.R4.ContactDetail import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.CodeableConcept import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -31,8 +31,10 @@ class SampleSize(Element):
     :param int numberOfParticipants: How many participants?
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
     
     description: str = None
     
@@ -54,14 +56,18 @@ class ResultsByExposure(Element):
     :param Reference riskEvidenceSynthesis: Risk evidence synthesis
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
     
     description: str = None
     
     exposureState: str = None
-    variantState: "CodeableConcept" = CodeableConcept()
-    riskEvidenceSynthesis: "Reference" = Reference()
+    
+    variantState:  "CodeableConcept" = CodeableConcept()
+    
+    riskEvidenceSynthesis:  "Reference" = Reference()
     
 
     
@@ -79,9 +85,12 @@ class PrecisionEstimate(Element):
     :param float to: Upper bound
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
-    type: "CodeableConcept" = CodeableConcept()
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
+    
+    type:  "CodeableConcept" = CodeableConcept()
     
     level: float = None
     
@@ -106,16 +115,22 @@ class EffectEstimate(Element):
     :param PrecisionEstimate precisionEstimate: How precise the estimate is
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
     
     description: str = None
-    type: "CodeableConcept" = CodeableConcept()
-    variantState: "CodeableConcept" = CodeableConcept()
+    
+    type:  "CodeableConcept" = CodeableConcept()
+    
+    variantState:  "CodeableConcept" = CodeableConcept()
     
     value: float = None
-    unitOfMeasure: "CodeableConcept" = CodeableConcept()
-    precisionEstimate: list[PrecisionEstimate] = PrecisionEstimate() 
+    
+    unitOfMeasure:  "CodeableConcept" = CodeableConcept()
+    
+    precisionEstimate:  list["PrecisionEstimate"] = [PrecisionEstimate()]
     
 
     
@@ -132,11 +147,16 @@ class CertaintySubcomponent(Element):
     :param Annotation note: Used for footnotes or explanatory notes
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
-    type: "CodeableConcept" = CodeableConcept()
-    rating: list[CodeableConcept] = CodeableConcept() 
-    note: list[Annotation] = Annotation() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
+    
+    type:  "CodeableConcept" = CodeableConcept()
+    
+    rating:  list["CodeableConcept"] = [CodeableConcept()]
+    
+    note:  list["Annotation"] = [Annotation()]
     
 
   
@@ -152,11 +172,16 @@ class Certainty(Element):
     :param CertaintySubcomponent certaintySubcomponent: A component that contributes to the overall certainty
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
-    rating: list[CodeableConcept] = CodeableConcept() 
-    note: list[Annotation] = Annotation() 
-    certaintySubcomponent: list[CertaintySubcomponent] = CertaintySubcomponent() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
+    
+    rating:  list["CodeableConcept"] = [CodeableConcept()]
+    
+    note:  list["Annotation"] = [Annotation()]
+    
+    certaintySubcomponent:  list["CertaintySubcomponent"] = [CertaintySubcomponent()]
     
 
 @dataclass
@@ -208,23 +233,23 @@ class EffectEvidenceSynthesis(ModelBase):
     resourceType: str = "EffectEvidenceSynthesis"
     id: str = None
     
-    meta: "Meta" = Meta()
+    meta: "Meta" = None
     
     implicitRules: str = None
     
     language: str = None
     
-    text: "Narrative" = Narrative()
+    text: "Narrative" = None
     
-    contained: list[Resource] = Resource() 
+    contained: list["Resource"] = None
     
-    extension: list[Extension] = Extension() 
+    extension: list["Extension"] = None
     
-    modifierExtension: list[Extension] = Extension() 
+    modifierExtension: list["Extension"] = None
     
     url: str = None
     
-    identifier: list[Identifier] = Identifier() 
+    identifier: list["Identifier"] = None
     
     version: str = None
     
@@ -238,15 +263,15 @@ class EffectEvidenceSynthesis(ModelBase):
     
     publisher: str = None
     
-    contact: list[ContactDetail] = ContactDetail() 
+    contact: list["ContactDetail"] = None
     
     description: str = None
     
-    note: list[Annotation] = Annotation() 
+    note: list["Annotation"] = None
     
-    useContext: list[UsageContext] = UsageContext() 
+    useContext: list["UsageContext"] = None
     
-    jurisdiction: list[CodeableConcept] = CodeableConcept() 
+    jurisdiction: list["CodeableConcept"] = None
     
     copyright: str = None
     
@@ -254,37 +279,37 @@ class EffectEvidenceSynthesis(ModelBase):
     
     lastReviewDate: str = None
     
-    effectivePeriod: "Period" = Period()
+    effectivePeriod: "Period" = None
     
-    topic: list[CodeableConcept] = CodeableConcept() 
+    topic: list["CodeableConcept"] = None
     
-    author: list[ContactDetail] = ContactDetail() 
+    author: list["ContactDetail"] = None
     
-    editor: list[ContactDetail] = ContactDetail() 
+    editor: list["ContactDetail"] = None
     
-    reviewer: list[ContactDetail] = ContactDetail() 
+    reviewer: list["ContactDetail"] = None
     
-    endorser: list[ContactDetail] = ContactDetail() 
+    endorser: list["ContactDetail"] = None
     
-    relatedArtifact: list[RelatedArtifact] = RelatedArtifact() 
+    relatedArtifact: list["RelatedArtifact"] = None
     
-    synthesisType: "CodeableConcept" = CodeableConcept()
+    synthesisType: "CodeableConcept" = None
     
-    studyType: "CodeableConcept" = CodeableConcept()
+    studyType: "CodeableConcept" = None
     
-    population: "Reference" = Reference()
+    population: "Reference" = None
     
-    exposure: "Reference" = Reference()
+    exposure: "Reference" = None
     
-    exposureAlternative: "Reference" = Reference()
+    exposureAlternative: "Reference" = None
     
-    outcome: "Reference" = Reference()
+    outcome: "Reference" = None
     
-    sampleSize: "SampleSize" = SampleSize()
+    sampleSize: "SampleSize" = None
     
-    resultsByExposure: list[ResultsByExposure] = ResultsByExposure() 
+    resultsByExposure: list["ResultsByExposure"] = None
     
-    effectEstimate: list[EffectEstimate] = EffectEstimate() 
+    effectEstimate: list["EffectEstimate"] = None
     
-    certainty: list[Certainty] = Certainty() 
+    certainty: list["Certainty"] = None
     

@@ -1,17 +1,17 @@
 """
 Generated class for GraphDefinition. 
-Time: 2023-09-23 23:45:33
+Time: 2023-09-24 20:01:56
 """
 from dataclasses import dataclass
-from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.UsageContext import *
 from fhan.models.R4.Extension import *
 from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Element import *
-from fhan.models.R4.UsageContext import *
-from fhan.models.R4.Meta import *
 from fhan.models.R4.Resource import *
-from fhan.models.R4.Narrative import *
+from fhan.models.R4.Meta import *
+from fhan.models.R4.Element import *
 from fhan.models.R4.ContactDetail import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.CodeableConcept import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -32,8 +32,10 @@ class Compartment(Element):
     :param str description: Documentation for FHIRPath expression
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
     
     use: str = None
     
@@ -60,15 +62,18 @@ class Target(Element):
     :param Compartment compartment: Compartment Consistency Rules
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
     
     type: str = None
     
     params: str = None
     
     profile: str = None
-    compartment: list[Compartment] = Compartment() 
+    
+    compartment:  list["Compartment"] = [Compartment()]
     
 
   
@@ -87,8 +92,10 @@ class Link(Element):
     :param Target target: Potential target for the link
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
     
     path: str = None
     
@@ -99,7 +106,8 @@ class Link(Element):
     max: str = None
     
     description: str = None
-    target: list[Target] = Target() 
+    
+    target:  list["Target"] = [Target()]
     
 
 @dataclass
@@ -133,19 +141,19 @@ class GraphDefinition(ModelBase):
     resourceType: str = "GraphDefinition"
     id: str = None
     
-    meta: "Meta" = Meta()
+    meta: "Meta" = None
     
     implicitRules: str = None
     
     language: str = None
     
-    text: "Narrative" = Narrative()
+    text: "Narrative" = None
     
-    contained: list[Resource] = Resource() 
+    contained: list["Resource"] = None
     
-    extension: list[Extension] = Extension() 
+    extension: list["Extension"] = None
     
-    modifierExtension: list[Extension] = Extension() 
+    modifierExtension: list["Extension"] = None
     
     url: str = None
     
@@ -161,13 +169,13 @@ class GraphDefinition(ModelBase):
     
     publisher: str = None
     
-    contact: list[ContactDetail] = ContactDetail() 
+    contact: list["ContactDetail"] = None
     
     description: str = None
     
-    useContext: list[UsageContext] = UsageContext() 
+    useContext: list["UsageContext"] = None
     
-    jurisdiction: list[CodeableConcept] = CodeableConcept() 
+    jurisdiction: list["CodeableConcept"] = None
     
     purpose: str = None
     
@@ -175,5 +183,5 @@ class GraphDefinition(ModelBase):
     
     profile: str = None
     
-    link: list[Link] = Link() 
+    link: list["Link"] = None
     

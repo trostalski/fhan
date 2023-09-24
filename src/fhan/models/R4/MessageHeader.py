@@ -1,18 +1,18 @@
 """
 Generated class for MessageHeader. 
-Time: 2023-09-23 23:45:33
+Time: 2023-09-24 20:01:56
 """
 from dataclasses import dataclass
-from fhan.models.R4.Reference import *
-from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Extension import *
-from fhan.models.R4.ContactPoint import *
 from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Element import *
 from fhan.models.R4.Resource import *
-from fhan.models.R4.Coding import *
-from fhan.models.R4.Narrative import *
 from fhan.models.R4.Meta import *
+from fhan.models.R4.Reference import *
+from fhan.models.R4.Coding import *
+from fhan.models.R4.ContactPoint import *
+from fhan.models.R4.Element import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.CodeableConcept import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -28,14 +28,18 @@ class Destination(Element):
     :param Reference receiver: Intended "real-world" recipient for the data
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
     
     name: str = None
-    target: "Reference" = Reference()
+    
+    target:  "Reference" = Reference()
     
     endpoint: str = None
-    receiver: "Reference" = Reference()
+    
+    receiver:  "Reference" = Reference()
     
 
     
@@ -52,15 +56,18 @@ class Source(Element):
     :param str endpoint: Actual message source address or id
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
     
     name: str = None
     
     software: str = None
     
     version: str = None
-    contact: "ContactPoint" = ContactPoint()
+    
+    contact:  "ContactPoint" = ContactPoint()
     
     endpoint: str = None
     
@@ -77,13 +84,16 @@ class Response(Element):
     :param Reference details: Specific list of hints/warnings/errors
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
     
     identifier: str = None
     
     code: str = None
-    details: "Reference" = Reference()
+    
+    details:  "Reference" = Reference()
     
 
 @dataclass
@@ -113,39 +123,39 @@ class MessageHeader(ModelBase):
     resourceType: str = "MessageHeader"
     id: str = None
     
-    meta: "Meta" = Meta()
+    meta: "Meta" = None
     
     implicitRules: str = None
     
     language: str = None
     
-    text: "Narrative" = Narrative()
+    text: "Narrative" = None
     
-    contained: list[Resource] = Resource() 
+    contained: list["Resource"] = None
     
-    extension: list[Extension] = Extension() 
+    extension: list["Extension"] = None
     
-    modifierExtension: list[Extension] = Extension() 
+    modifierExtension: list["Extension"] = None
     
-    eventCoding: "Coding" = Coding()
+    eventCoding: "Coding" = None
     
-    destination: list[Destination] = Destination() 
+    destination: list["Destination"] = None
     
-    sender: "Reference" = Reference()
+    sender: "Reference" = None
     
-    enterer: "Reference" = Reference()
+    enterer: "Reference" = None
     
-    author: "Reference" = Reference()
+    author: "Reference" = None
     
-    source: "Source" = Source()
+    source: "Source" = None
     
-    responsible: "Reference" = Reference()
+    responsible: "Reference" = None
     
-    reason: "CodeableConcept" = CodeableConcept()
+    reason: "CodeableConcept" = None
     
-    response: "Response" = Response()
+    response: "Response" = None
     
-    focus: list[Reference] = Reference() 
+    focus: list["Reference"] = None
     
     definition: str = None
     

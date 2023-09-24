@@ -1,18 +1,18 @@
 """
 Generated class for ExampleScenario. 
-Time: 2023-09-23 23:45:33
+Time: 2023-09-24 20:01:56
 """
 from dataclasses import dataclass
-from fhan.models.R4.ContactDetail import *
-from fhan.models.R4.Identifier import *
-from fhan.models.R4.Extension import *
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Element import *
 from fhan.models.R4.UsageContext import *
+from fhan.models.R4.Extension import *
+from fhan.models.R4.BackboneElement import *
 from fhan.models.R4.Resource import *
-from fhan.models.R4.Narrative import *
 from fhan.models.R4.Meta import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.Element import *
+from fhan.models.R4.ContactDetail import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.CodeableConcept import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -28,8 +28,10 @@ class Actor(Element):
     :param str description: The description of the actor
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
     
     actorId: str = None
     
@@ -53,8 +55,10 @@ class Version(Element):
     :param str description: The description of the resource version
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
     
     versionId: str = None
     
@@ -72,8 +76,10 @@ class ContainedInstance(Element):
     :param str versionId: A specific version of a resource contained in the instance
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
     
     resourceId: str = None
     
@@ -96,8 +102,10 @@ class Instance(Element):
     :param ContainedInstance containedInstance: Resources contained in the instance
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
     
     resourceId: str = None
     
@@ -106,8 +114,10 @@ class Instance(Element):
     name: str = None
     
     description: str = None
-    version: list[Version] = Version() 
-    containedInstance: list[ContainedInstance] = ContainedInstance() 
+    
+    version:  list["Version"] = [Version()]
+    
+    containedInstance:  list["ContainedInstance"] = [ContainedInstance()]
     
 
     
@@ -131,8 +141,10 @@ class Operation(Element):
     :param bool receiverActive: Whether the receiver is deactivated right after the transaction
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
     
     number: str = None
     
@@ -162,8 +174,10 @@ class Alternative(Element):
     :param str description: A human-readable description of each option
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
     
     title: str = None
     
@@ -183,12 +197,16 @@ class Step(Element):
     :param Alternative alternative: Alternate non-typical step action
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
     
     pause: bool = None
-    operation: "Operation" = Operation()
-    alternative: list[Alternative] = Alternative() 
+    
+    operation:  "Operation" = Operation()
+    
+    alternative:  list["Alternative"] = [Alternative()]
     
 
   
@@ -206,8 +224,10 @@ class Process(Element):
     :param Step step: Each step of the process
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
     
     title: str = None
     
@@ -216,7 +236,8 @@ class Process(Element):
     preConditions: str = None
     
     postConditions: str = None
-    step: list[Step] = Step() 
+    
+    step:  list["Step"] = [Step()]
     
 
 @dataclass
@@ -252,23 +273,23 @@ class ExampleScenario(ModelBase):
     resourceType: str = "ExampleScenario"
     id: str = None
     
-    meta: "Meta" = Meta()
+    meta: "Meta" = None
     
     implicitRules: str = None
     
     language: str = None
     
-    text: "Narrative" = Narrative()
+    text: "Narrative" = None
     
-    contained: list[Resource] = Resource() 
+    contained: list["Resource"] = None
     
-    extension: list[Extension] = Extension() 
+    extension: list["Extension"] = None
     
-    modifierExtension: list[Extension] = Extension() 
+    modifierExtension: list["Extension"] = None
     
     url: str = None
     
-    identifier: list[Identifier] = Identifier() 
+    identifier: list["Identifier"] = None
     
     version: str = None
     
@@ -282,21 +303,21 @@ class ExampleScenario(ModelBase):
     
     publisher: str = None
     
-    contact: list[ContactDetail] = ContactDetail() 
+    contact: list["ContactDetail"] = None
     
-    useContext: list[UsageContext] = UsageContext() 
+    useContext: list["UsageContext"] = None
     
-    jurisdiction: list[CodeableConcept] = CodeableConcept() 
+    jurisdiction: list["CodeableConcept"] = None
     
     copyright: str = None
     
     purpose: str = None
     
-    actor: list[Actor] = Actor() 
+    actor: list["Actor"] = None
     
-    instance: list[Instance] = Instance() 
+    instance: list["Instance"] = None
     
-    process: list[Process] = Process() 
+    process: list["Process"] = None
     
     workflow: str = None
     

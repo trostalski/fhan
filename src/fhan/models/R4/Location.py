@@ -1,20 +1,20 @@
 """
 Generated class for Location. 
-Time: 2023-09-23 23:45:33
+Time: 2023-09-24 20:01:56
 """
 from dataclasses import dataclass
+from fhan.models.R4.Address import *
+from fhan.models.R4.Extension import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Resource import *
+from fhan.models.R4.Meta import *
 from fhan.models.R4.Reference import *
 from fhan.models.R4.Identifier import *
-from fhan.models.R4.Extension import *
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Address import *
-from fhan.models.R4.ContactPoint import *
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Element import *
-from fhan.models.R4.Resource import *
 from fhan.models.R4.Coding import *
+from fhan.models.R4.ContactPoint import *
+from fhan.models.R4.Element import *
 from fhan.models.R4.Narrative import *
-from fhan.models.R4.Meta import *
+from fhan.models.R4.CodeableConcept import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -29,8 +29,10 @@ class Position(Element):
     :param float altitude: Altitude with WGS84 datum
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
     
     longitude: float = None
     
@@ -52,8 +54,10 @@ class HoursOfOperation(Element):
     :param str closingTime: Time that the Location closes
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
     
     daysOfWeek: str = None
     
@@ -97,25 +101,25 @@ class Location(ModelBase):
     resourceType: str = "Location"
     id: str = None
     
-    meta: "Meta" = Meta()
+    meta: "Meta" = None
     
     implicitRules: str = None
     
     language: str = None
     
-    text: "Narrative" = Narrative()
+    text: "Narrative" = None
     
-    contained: list[Resource] = Resource() 
+    contained: list["Resource"] = None
     
-    extension: list[Extension] = Extension() 
+    extension: list["Extension"] = None
     
-    modifierExtension: list[Extension] = Extension() 
+    modifierExtension: list["Extension"] = None
     
-    identifier: list[Identifier] = Identifier() 
+    identifier: list["Identifier"] = None
     
     status: str = None
     
-    operationalStatus: "Coding" = Coding()
+    operationalStatus: "Coding" = None
     
     name: str = None
     
@@ -125,23 +129,23 @@ class Location(ModelBase):
     
     mode: str = None
     
-    type: list[CodeableConcept] = CodeableConcept() 
+    type: list["CodeableConcept"] = None
     
-    telecom: list[ContactPoint] = ContactPoint() 
+    telecom: list["ContactPoint"] = None
     
-    address: "Address" = Address()
+    address: "Address" = None
     
-    physicalType: "CodeableConcept" = CodeableConcept()
+    physicalType: "CodeableConcept" = None
     
-    position: "Position" = Position()
+    position: "Position" = None
     
-    managingOrganization: "Reference" = Reference()
+    managingOrganization: "Reference" = None
     
-    partOf: "Reference" = Reference()
+    partOf: "Reference" = None
     
-    hoursOfOperation: list[HoursOfOperation] = HoursOfOperation() 
+    hoursOfOperation: list["HoursOfOperation"] = None
     
     availabilityExceptions: str = None
     
-    endpoint: list[Reference] = Reference() 
+    endpoint: list["Reference"] = None
     

@@ -1,15 +1,15 @@
 """
 Generated class for Bundle. 
-Time: 2023-09-23 23:45:33
+Time: 2023-09-24 20:01:56
 """
 from dataclasses import dataclass
-from fhan.models.R4.Identifier import *
 from fhan.models.R4.Extension import *
-from fhan.models.R4.Signature import *
 from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Element import *
 from fhan.models.R4.Resource import *
 from fhan.models.R4.Meta import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.Signature import *
+from fhan.models.R4.Element import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -23,8 +23,10 @@ class Link(Element):
     :param str url: Reference details for the link
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
     
     relation: str = None
     
@@ -44,8 +46,10 @@ class Search(Element):
     :param float score: Search ranking (between 0 and 1)
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
     
     mode: str = None
     
@@ -67,8 +71,10 @@ class Request(Element):
     :param str ifNoneExist: For conditional creates
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
     
     method: str = None
     
@@ -97,8 +103,10 @@ class Response(Element):
     :param Resource outcome: OperationOutcome with hints and warnings (for batch/transaction)
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
     
     status: str = None
     
@@ -107,7 +115,8 @@ class Response(Element):
     etag: str = None
     
     lastModified: str = None
-    outcome: "Resource" = Resource()
+    
+    outcome:  "Resource" = Resource()
     
 
   
@@ -125,14 +134,20 @@ class Entry(Element):
     :param Response response: Results of execution (transaction/batch/history)
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
     
     fullUrl: str = None
-    resource: "Resource" = Resource()
-    search: "Search" = Search()
-    request: "Request" = Request()
-    response: "Response" = Response()
+    
+    resource:  "Resource" = Resource()
+    
+    search:  "Search" = Search()
+    
+    request:  "Request" = Request()
+    
+    response:  "Response" = Response()
     
 
 @dataclass
@@ -154,13 +169,13 @@ class Bundle(ModelBase):
     resourceType: str = "Bundle"
     id: str = None
     
-    meta: "Meta" = Meta()
+    meta: "Meta" = None
     
     implicitRules: str = None
     
     language: str = None
     
-    identifier: "Identifier" = Identifier()
+    identifier: "Identifier" = None
     
     type: str = None
     
@@ -168,9 +183,9 @@ class Bundle(ModelBase):
     
     total: int = None
     
-    link: list[Link] = Link() 
+    link: list["Link"] = None
     
-    entry: list[Entry] = Entry() 
+    entry: list["Entry"] = None
     
-    signature: "Signature" = Signature()
+    signature: "Signature" = None
     

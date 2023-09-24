@@ -1,23 +1,23 @@
 """
 Generated class for Questionnaire. 
-Time: 2023-09-23 23:45:33
+Time: 2023-09-24 20:01:56
 """
 from dataclasses import dataclass
-from fhan.models.R4.Reference import *
-from fhan.models.R4.ContactDetail import *
-from fhan.models.R4.Identifier import *
-from fhan.models.R4.Extension import *
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Period import *
-from fhan.models.R4.Quantity import *
-from fhan.models.R4.Attachment import *
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Element import *
 from fhan.models.R4.UsageContext import *
+from fhan.models.R4.Extension import *
+from fhan.models.R4.BackboneElement import *
 from fhan.models.R4.Resource import *
-from fhan.models.R4.Coding import *
-from fhan.models.R4.Narrative import *
 from fhan.models.R4.Meta import *
+from fhan.models.R4.Quantity import *
+from fhan.models.R4.Reference import *
+from fhan.models.R4.Period import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.Coding import *
+from fhan.models.R4.Element import *
+from fhan.models.R4.Attachment import *
+from fhan.models.R4.ContactDetail import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.CodeableConcept import *
 from fhan.models.generator_models import ModelBase
 
     
@@ -34,8 +34,10 @@ class EnableWhen(Element):
     :param bool answerBoolean: Value for question comparison based on operator
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
     
     question: str = None
     
@@ -55,8 +57,10 @@ class AnswerOption(Element):
     :param bool initialSelected: Whether option is selected by default
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
     
     valueInteger: int = None
     
@@ -73,8 +77,10 @@ class Initial(Element):
     :param bool valueBoolean: Actual value for initializing the question
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
     
     valueBoolean: bool = None
     
@@ -104,20 +110,24 @@ class Item(Element):
     :param Initial initial: Initial value(s) when item is first rendered
     """
     id: str = None
-    extension: list[Extension] = Extension() 
-    modifierExtension: list[Extension] = Extension() 
+    
+    extension:  list["Extension"] = [Extension()]
+    
+    modifierExtension:  list["Extension"] = [Extension()]
     
     linkId: str = None
     
     definition: str = None
-    code: list[Coding] = Coding() 
+    
+    code:  list["Coding"] = [Coding()]
     
     prefix: str = None
     
     text: str = None
     
     type: str = None
-    enableWhen: list[EnableWhen] = EnableWhen() 
+    
+    enableWhen:  list["EnableWhen"] = [EnableWhen()]
     
     enableBehavior: str = None
     
@@ -130,8 +140,10 @@ class Item(Element):
     maxLength: int = None
     
     answerValueSet: str = None
-    answerOption: list[AnswerOption] = AnswerOption() 
-    initial: list[Initial] = Initial() 
+    
+    answerOption:  list["AnswerOption"] = [AnswerOption()]
+    
+    initial:  list["Initial"] = [Initial()]
     
 
 @dataclass
@@ -172,23 +184,23 @@ class Questionnaire(ModelBase):
     resourceType: str = "Questionnaire"
     id: str = None
     
-    meta: "Meta" = Meta()
+    meta: "Meta" = None
     
     implicitRules: str = None
     
     language: str = None
     
-    text: "Narrative" = Narrative()
+    text: "Narrative" = None
     
-    contained: list[Resource] = Resource() 
+    contained: list["Resource"] = None
     
-    extension: list[Extension] = Extension() 
+    extension: list["Extension"] = None
     
-    modifierExtension: list[Extension] = Extension() 
+    modifierExtension: list["Extension"] = None
     
     url: str = None
     
-    identifier: list[Identifier] = Identifier() 
+    identifier: list["Identifier"] = None
     
     version: str = None
     
@@ -208,13 +220,13 @@ class Questionnaire(ModelBase):
     
     publisher: str = None
     
-    contact: list[ContactDetail] = ContactDetail() 
+    contact: list["ContactDetail"] = None
     
     description: str = None
     
-    useContext: list[UsageContext] = UsageContext() 
+    useContext: list["UsageContext"] = None
     
-    jurisdiction: list[CodeableConcept] = CodeableConcept() 
+    jurisdiction: list["CodeableConcept"] = None
     
     purpose: str = None
     
@@ -224,9 +236,9 @@ class Questionnaire(ModelBase):
     
     lastReviewDate: str = None
     
-    effectivePeriod: "Period" = Period()
+    effectivePeriod: "Period" = None
     
-    code: list[Coding] = Coding() 
+    code: list["Coding"] = None
     
-    item: list[Item] = Item() 
+    item: list["Item"] = None
     

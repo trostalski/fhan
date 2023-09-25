@@ -1,14 +1,17 @@
 """
 Generated class for SubstanceProtein. 
-Time: 2023-09-25 14:53:18
+Time: 2023-09-25 16:30:45
 """
-from fhan.models.R4.Resource import *
+from importlib import import_module
+import inspect
+
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.Attachment import *
+from fhan.models.R4.Meta import *
 from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Extension import *
-from fhan.models.R4.Identifier import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Attachment import *
 from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Resource import *
 from fhan.models.R4.Narrative import *
 from fhan.models.R4.DomainResource import *
 
@@ -43,6 +46,44 @@ class Subunit(ModelBase):
         self.cTerminalModification: str = cTerminalModification 
         
 
+    @classmethod
+    def from_dict(cls, data: dict) -> "Subunit":
+        """Create a model instance from a dict. The instance is recursively
+        created by importing the classes for complex fhir types."""
+        instance = cls()
+        for key, value in data.items():
+            # if value is dict try to create complex type
+            if isinstance(value, dict):
+                class_name = key[0].upper() + key[1:]
+                models_path = ".".join(cls.__module__.split(".")[:-1])
+                import_path = f"{models_path}.{class_name}"
+                try:
+                    module = import_module(import_path)
+                    model_class = getattr(module, class_name)
+                except ModuleNotFoundError:
+                    continue
+                # Check if the class is a subclass of ModelBase
+                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                    # Recursively create an instance of the nested class
+                    nested_instance = model_class.from_dict(value)
+                    setattr(instance, key, nested_instance)
+            # if value is list recursively create instances of the list items
+            elif isinstance(value, list):
+                setattr(
+                    instance,
+                    key,
+                    [
+                        cls.from_dict(item) if isinstance(item, dict) else item
+                        for item in value
+                    ],
+                )
+            # else set the value
+            else:
+                setattr(instance, key, value)
+
+        return instance
+
+
 class SubstanceProtein(DomainResource):
     """ A SubstanceProtein is defined as a single unit of a linear amino acid sequence, or a combination of subunits that are either covalently linked or have a defined invariant stoichiometric relationship. This includes all synthetic, recombinant and purified SubstanceProteins of defined sequence, whether the use is therapeutic or prophylactic. This set of elements will be used to describe albumins, coagulation factors, cytokines, growth factors, peptide/SubstanceProtein hormones, enzymes, toxins, toxoids, recombinant vaccines, and immunomodulators.
     :param str id: Logical id of this artifact
@@ -73,3 +114,40 @@ class SubstanceProtein(DomainResource):
         self.disulfideLinkage: str = disulfideLinkage or []
         self.subunit: list['Subunit'] = subunit or []
         
+
+    @classmethod
+    def from_dict(cls, data: dict) -> "SubstanceProtein":
+        """Create a model instance from a dict. The instance is recursively
+        created by importing the classes for complex fhir types."""
+        instance = cls()
+        for key, value in data.items():
+            # if value is dict try to create complex type
+            if isinstance(value, dict):
+                class_name = key[0].upper() + key[1:]
+                models_path = ".".join(cls.__module__.split(".")[:-1])
+                import_path = f"{models_path}.{class_name}"
+                try:
+                    module = import_module(import_path)
+                    model_class = getattr(module, class_name)
+                except ModuleNotFoundError:
+                    continue
+                # Check if the class is a subclass of ModelBase
+                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                    # Recursively create an instance of the nested class
+                    nested_instance = model_class.from_dict(value)
+                    setattr(instance, key, nested_instance)
+            # if value is list recursively create instances of the list items
+            elif isinstance(value, list):
+                setattr(
+                    instance,
+                    key,
+                    [
+                        cls.from_dict(item) if isinstance(item, dict) else item
+                        for item in value
+                    ],
+                )
+            # else set the value
+            else:
+                setattr(instance, key, value)
+
+        return instance

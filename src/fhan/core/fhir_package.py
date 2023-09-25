@@ -57,10 +57,10 @@ class FhirPackage:
         value_sets: list[dict],
         name: str = None,
     ):
-        self._code_systems = code_systems
-        self._search_parameters = search_parameters
-        self._structure_definitions = structure_definitions
-        self._value_sets = value_sets
+        self.code_systems = code_systems
+        self.search_parameters = search_parameters
+        self.structure_definitions = structure_definitions
+        self.value_sets = value_sets
         self.name = name
 
     @classmethod
@@ -108,7 +108,7 @@ class FhirPackage:
     def _get_structure_definitions_by_kind(
         self, kind: Literal["resource", "complex-type", "primitive-type", "logical"]
     ):
-        return [sd for sd in self._structure_definitions if sd["kind"] == kind]
+        return [sd for sd in self.structure_definitions if sd["kind"] == kind]
 
 
 def _read_fhir_package_npm(npm_file: BinaryIO) -> Iterator[Tuple[str, str]]:

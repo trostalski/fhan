@@ -56,7 +56,7 @@ class ModelGenerator:
         """Generate the python classes for the StructureDefinitions in the FHIR package."""
         generator_struc_defs = [
             GeneratorStructureDefinition(sd)
-            for sd in self._package._structure_definitions
+            for sd in self._package.structure_definitions
         ]
         env = Environment(loader=FileSystemLoader(searchpath=self._template_dir))
         for template_name in self._template_names:

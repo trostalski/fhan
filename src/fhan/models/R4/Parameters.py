@@ -1,41 +1,44 @@
 """
 Generated class for Parameters. 
-Time: 2023-09-25 14:53:18
+Time: 2023-09-25 16:30:45
 """
-from fhan.models.R4.Duration import *
-from fhan.models.R4.Reference import *
-from fhan.models.R4.Resource import *
+from importlib import import_module
+import inspect
+
+from fhan.models.R4.ContactPoint import *
+from fhan.models.R4.Quantity import *
+from fhan.models.R4.Ratio import *
+from fhan.models.R4.Distance import *
+from fhan.models.R4.ContactDetail import *
+from fhan.models.R4.Timing import *
+from fhan.models.R4.Range import *
+from fhan.models.R4.Extension import *
 from fhan.models.R4.RelatedArtifact import *
+from fhan.models.R4.Duration import *
+from fhan.models.R4.TriggerDefinition import *
+from fhan.models.R4.Attachment import *
 from fhan.models.R4.HumanName import *
+from fhan.models.R4.Coding import *
+from fhan.models.R4.Count import *
+from fhan.models.R4.Address import *
+from fhan.models.R4.Reference import *
+from fhan.models.R4.Contributor import *
+from fhan.models.R4.ParameterDefinition import *
+from fhan.models.R4.Annotation import *
+from fhan.models.R4.Signature import *
+from fhan.models.R4.Expression import *
+from fhan.models.R4.Age import *
+from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.DataRequirement import *
+from fhan.models.R4.Resource import *
+from fhan.models.R4.SampledData import *
+from fhan.models.R4.UsageContext import *
 from fhan.models.R4.Identifier import *
 from fhan.models.R4.Meta import *
-from fhan.models.R4.TriggerDefinition import *
-from fhan.models.R4.Money import *
-from fhan.models.R4.Ratio import *
-from fhan.models.R4.Timing import *
-from fhan.models.R4.Contributor import *
-from fhan.models.R4.ContactPoint import *
-from fhan.models.R4.Extension import *
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Count import *
-from fhan.models.R4.Annotation import *
-from fhan.models.R4.Dosage import *
-from fhan.models.R4.SampledData import *
-from fhan.models.R4.Expression import *
-from fhan.models.R4.Distance import *
-from fhan.models.R4.Address import *
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Quantity import *
-from fhan.models.R4.Attachment import *
-from fhan.models.R4.UsageContext import *
-from fhan.models.R4.ParameterDefinition import *
-from fhan.models.R4.Age import *
-from fhan.models.R4.Signature import *
-from fhan.models.R4.DataRequirement import *
 from fhan.models.R4.Period import *
-from fhan.models.R4.ContactDetail import *
-from fhan.models.R4.Coding import *
-from fhan.models.R4.Range import *
+from fhan.models.R4.Money import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Dosage import *
 from fhan.models.R4.DomainResource import *
 
 
@@ -157,6 +160,44 @@ class Parameter(ModelBase):
         self.resource: 'Resource' = resource 
         
 
+    @classmethod
+    def from_dict(cls, data: dict) -> "Parameter":
+        """Create a model instance from a dict. The instance is recursively
+        created by importing the classes for complex fhir types."""
+        instance = cls()
+        for key, value in data.items():
+            # if value is dict try to create complex type
+            if isinstance(value, dict):
+                class_name = key[0].upper() + key[1:]
+                models_path = ".".join(cls.__module__.split(".")[:-1])
+                import_path = f"{models_path}.{class_name}"
+                try:
+                    module = import_module(import_path)
+                    model_class = getattr(module, class_name)
+                except ModuleNotFoundError:
+                    continue
+                # Check if the class is a subclass of ModelBase
+                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                    # Recursively create an instance of the nested class
+                    nested_instance = model_class.from_dict(value)
+                    setattr(instance, key, nested_instance)
+            # if value is list recursively create instances of the list items
+            elif isinstance(value, list):
+                setattr(
+                    instance,
+                    key,
+                    [
+                        cls.from_dict(item) if isinstance(item, dict) else item
+                        for item in value
+                    ],
+                )
+            # else set the value
+            else:
+                setattr(instance, key, value)
+
+        return instance
+
+
     
     
 
@@ -275,6 +316,44 @@ class Part(ModelBase):
         self.resource: 'Resource' = resource 
         
 
+    @classmethod
+    def from_dict(cls, data: dict) -> "Part":
+        """Create a model instance from a dict. The instance is recursively
+        created by importing the classes for complex fhir types."""
+        instance = cls()
+        for key, value in data.items():
+            # if value is dict try to create complex type
+            if isinstance(value, dict):
+                class_name = key[0].upper() + key[1:]
+                models_path = ".".join(cls.__module__.split(".")[:-1])
+                import_path = f"{models_path}.{class_name}"
+                try:
+                    module = import_module(import_path)
+                    model_class = getattr(module, class_name)
+                except ModuleNotFoundError:
+                    continue
+                # Check if the class is a subclass of ModelBase
+                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                    # Recursively create an instance of the nested class
+                    nested_instance = model_class.from_dict(value)
+                    setattr(instance, key, nested_instance)
+            # if value is list recursively create instances of the list items
+            elif isinstance(value, list):
+                setattr(
+                    instance,
+                    key,
+                    [
+                        cls.from_dict(item) if isinstance(item, dict) else item
+                        for item in value
+                    ],
+                )
+            # else set the value
+            else:
+                setattr(instance, key, value)
+
+        return instance
+
+
 class Parameters(DomainResource):
     """ This resource is a non-persisted resource used to pass information into and back from an [operation](operations.html). It has no other use, and there is no RESTful endpoint associated with it.
     :param str id: Logical id of this artifact
@@ -293,3 +372,40 @@ class Parameters(DomainResource):
         self.parameter: list['Parameter'] = parameter or []
         self.part: list['Part'] = part or []
         
+
+    @classmethod
+    def from_dict(cls, data: dict) -> "Parameters":
+        """Create a model instance from a dict. The instance is recursively
+        created by importing the classes for complex fhir types."""
+        instance = cls()
+        for key, value in data.items():
+            # if value is dict try to create complex type
+            if isinstance(value, dict):
+                class_name = key[0].upper() + key[1:]
+                models_path = ".".join(cls.__module__.split(".")[:-1])
+                import_path = f"{models_path}.{class_name}"
+                try:
+                    module = import_module(import_path)
+                    model_class = getattr(module, class_name)
+                except ModuleNotFoundError:
+                    continue
+                # Check if the class is a subclass of ModelBase
+                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                    # Recursively create an instance of the nested class
+                    nested_instance = model_class.from_dict(value)
+                    setattr(instance, key, nested_instance)
+            # if value is list recursively create instances of the list items
+            elif isinstance(value, list):
+                setattr(
+                    instance,
+                    key,
+                    [
+                        cls.from_dict(item) if isinstance(item, dict) else item
+                        for item in value
+                    ],
+                )
+            # else set the value
+            else:
+                setattr(instance, key, value)
+
+        return instance

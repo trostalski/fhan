@@ -1,13 +1,16 @@
 """
 Generated class for TestReport. 
-Time: 2023-09-25 14:53:18
+Time: 2023-09-25 16:30:45
 """
-from fhan.models.R4.Reference import *
-from fhan.models.R4.Resource import *
-from fhan.models.R4.Extension import *
+from importlib import import_module
+import inspect
+
 from fhan.models.R4.Identifier import *
 from fhan.models.R4.Meta import *
+from fhan.models.R4.Extension import *
+from fhan.models.R4.Reference import *
 from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Resource import *
 from fhan.models.R4.Narrative import *
 from fhan.models.R4.DomainResource import *
 
@@ -31,6 +34,44 @@ class Participant(ModelBase):
         self.uri: str = uri 
         self.display: str = display 
         
+
+    @classmethod
+    def from_dict(cls, data: dict) -> "Participant":
+        """Create a model instance from a dict. The instance is recursively
+        created by importing the classes for complex fhir types."""
+        instance = cls()
+        for key, value in data.items():
+            # if value is dict try to create complex type
+            if isinstance(value, dict):
+                class_name = key[0].upper() + key[1:]
+                models_path = ".".join(cls.__module__.split(".")[:-1])
+                import_path = f"{models_path}.{class_name}"
+                try:
+                    module = import_module(import_path)
+                    model_class = getattr(module, class_name)
+                except ModuleNotFoundError:
+                    continue
+                # Check if the class is a subclass of ModelBase
+                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                    # Recursively create an instance of the nested class
+                    nested_instance = model_class.from_dict(value)
+                    setattr(instance, key, nested_instance)
+            # if value is list recursively create instances of the list items
+            elif isinstance(value, list):
+                setattr(
+                    instance,
+                    key,
+                    [
+                        cls.from_dict(item) if isinstance(item, dict) else item
+                        for item in value
+                    ],
+                )
+            # else set the value
+            else:
+                setattr(instance, key, value)
+
+        return instance
+
 
     
         
@@ -56,6 +97,44 @@ class Operation(ModelBase):
         self.detail: str = detail 
         
 
+    @classmethod
+    def from_dict(cls, data: dict) -> "Operation":
+        """Create a model instance from a dict. The instance is recursively
+        created by importing the classes for complex fhir types."""
+        instance = cls()
+        for key, value in data.items():
+            # if value is dict try to create complex type
+            if isinstance(value, dict):
+                class_name = key[0].upper() + key[1:]
+                models_path = ".".join(cls.__module__.split(".")[:-1])
+                import_path = f"{models_path}.{class_name}"
+                try:
+                    module = import_module(import_path)
+                    model_class = getattr(module, class_name)
+                except ModuleNotFoundError:
+                    continue
+                # Check if the class is a subclass of ModelBase
+                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                    # Recursively create an instance of the nested class
+                    nested_instance = model_class.from_dict(value)
+                    setattr(instance, key, nested_instance)
+            # if value is list recursively create instances of the list items
+            elif isinstance(value, list):
+                setattr(
+                    instance,
+                    key,
+                    [
+                        cls.from_dict(item) if isinstance(item, dict) else item
+                        for item in value
+                    ],
+                )
+            # else set the value
+            else:
+                setattr(instance, key, value)
+
+        return instance
+
+
     
     
 
@@ -76,6 +155,44 @@ class _assert(ModelBase):
         self.detail: str = detail 
         
 
+    @classmethod
+    def from_dict(cls, data: dict) -> "_assert":
+        """Create a model instance from a dict. The instance is recursively
+        created by importing the classes for complex fhir types."""
+        instance = cls()
+        for key, value in data.items():
+            # if value is dict try to create complex type
+            if isinstance(value, dict):
+                class_name = key[0].upper() + key[1:]
+                models_path = ".".join(cls.__module__.split(".")[:-1])
+                import_path = f"{models_path}.{class_name}"
+                try:
+                    module = import_module(import_path)
+                    model_class = getattr(module, class_name)
+                except ModuleNotFoundError:
+                    continue
+                # Check if the class is a subclass of ModelBase
+                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                    # Recursively create an instance of the nested class
+                    nested_instance = model_class.from_dict(value)
+                    setattr(instance, key, nested_instance)
+            # if value is list recursively create instances of the list items
+            elif isinstance(value, list):
+                setattr(
+                    instance,
+                    key,
+                    [
+                        cls.from_dict(item) if isinstance(item, dict) else item
+                        for item in value
+                    ],
+                )
+            # else set the value
+            else:
+                setattr(instance, key, value)
+
+        return instance
+
+
   
     
     
@@ -95,6 +212,44 @@ class Action(ModelBase):
         self._assert: '_assert' = _assert 
         
 
+    @classmethod
+    def from_dict(cls, data: dict) -> "Action":
+        """Create a model instance from a dict. The instance is recursively
+        created by importing the classes for complex fhir types."""
+        instance = cls()
+        for key, value in data.items():
+            # if value is dict try to create complex type
+            if isinstance(value, dict):
+                class_name = key[0].upper() + key[1:]
+                models_path = ".".join(cls.__module__.split(".")[:-1])
+                import_path = f"{models_path}.{class_name}"
+                try:
+                    module = import_module(import_path)
+                    model_class = getattr(module, class_name)
+                except ModuleNotFoundError:
+                    continue
+                # Check if the class is a subclass of ModelBase
+                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                    # Recursively create an instance of the nested class
+                    nested_instance = model_class.from_dict(value)
+                    setattr(instance, key, nested_instance)
+            # if value is list recursively create instances of the list items
+            elif isinstance(value, list):
+                setattr(
+                    instance,
+                    key,
+                    [
+                        cls.from_dict(item) if isinstance(item, dict) else item
+                        for item in value
+                    ],
+                )
+            # else set the value
+            else:
+                setattr(instance, key, value)
+
+        return instance
+
+
   
     
     
@@ -112,6 +267,44 @@ class Setup(ModelBase):
         self.action: list['Action'] = action or []
         
 
+    @classmethod
+    def from_dict(cls, data: dict) -> "Setup":
+        """Create a model instance from a dict. The instance is recursively
+        created by importing the classes for complex fhir types."""
+        instance = cls()
+        for key, value in data.items():
+            # if value is dict try to create complex type
+            if isinstance(value, dict):
+                class_name = key[0].upper() + key[1:]
+                models_path = ".".join(cls.__module__.split(".")[:-1])
+                import_path = f"{models_path}.{class_name}"
+                try:
+                    module = import_module(import_path)
+                    model_class = getattr(module, class_name)
+                except ModuleNotFoundError:
+                    continue
+                # Check if the class is a subclass of ModelBase
+                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                    # Recursively create an instance of the nested class
+                    nested_instance = model_class.from_dict(value)
+                    setattr(instance, key, nested_instance)
+            # if value is list recursively create instances of the list items
+            elif isinstance(value, list):
+                setattr(
+                    instance,
+                    key,
+                    [
+                        cls.from_dict(item) if isinstance(item, dict) else item
+                        for item in value
+                    ],
+                )
+            # else set the value
+            else:
+                setattr(instance, key, value)
+
+        return instance
+
+
     
         
     
@@ -127,6 +320,44 @@ class Action(ModelBase):
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
         
+
+    @classmethod
+    def from_dict(cls, data: dict) -> "Action":
+        """Create a model instance from a dict. The instance is recursively
+        created by importing the classes for complex fhir types."""
+        instance = cls()
+        for key, value in data.items():
+            # if value is dict try to create complex type
+            if isinstance(value, dict):
+                class_name = key[0].upper() + key[1:]
+                models_path = ".".join(cls.__module__.split(".")[:-1])
+                import_path = f"{models_path}.{class_name}"
+                try:
+                    module = import_module(import_path)
+                    model_class = getattr(module, class_name)
+                except ModuleNotFoundError:
+                    continue
+                # Check if the class is a subclass of ModelBase
+                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                    # Recursively create an instance of the nested class
+                    nested_instance = model_class.from_dict(value)
+                    setattr(instance, key, nested_instance)
+            # if value is list recursively create instances of the list items
+            elif isinstance(value, list):
+                setattr(
+                    instance,
+                    key,
+                    [
+                        cls.from_dict(item) if isinstance(item, dict) else item
+                        for item in value
+                    ],
+                )
+            # else set the value
+            else:
+                setattr(instance, key, value)
+
+        return instance
+
 
   
     
@@ -153,6 +384,44 @@ class Test(ModelBase):
         self.action: list['Action'] = action or []
         
 
+    @classmethod
+    def from_dict(cls, data: dict) -> "Test":
+        """Create a model instance from a dict. The instance is recursively
+        created by importing the classes for complex fhir types."""
+        instance = cls()
+        for key, value in data.items():
+            # if value is dict try to create complex type
+            if isinstance(value, dict):
+                class_name = key[0].upper() + key[1:]
+                models_path = ".".join(cls.__module__.split(".")[:-1])
+                import_path = f"{models_path}.{class_name}"
+                try:
+                    module = import_module(import_path)
+                    model_class = getattr(module, class_name)
+                except ModuleNotFoundError:
+                    continue
+                # Check if the class is a subclass of ModelBase
+                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                    # Recursively create an instance of the nested class
+                    nested_instance = model_class.from_dict(value)
+                    setattr(instance, key, nested_instance)
+            # if value is list recursively create instances of the list items
+            elif isinstance(value, list):
+                setattr(
+                    instance,
+                    key,
+                    [
+                        cls.from_dict(item) if isinstance(item, dict) else item
+                        for item in value
+                    ],
+                )
+            # else set the value
+            else:
+                setattr(instance, key, value)
+
+        return instance
+
+
     
         
     
@@ -168,6 +437,44 @@ class Action(ModelBase):
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
         
+
+    @classmethod
+    def from_dict(cls, data: dict) -> "Action":
+        """Create a model instance from a dict. The instance is recursively
+        created by importing the classes for complex fhir types."""
+        instance = cls()
+        for key, value in data.items():
+            # if value is dict try to create complex type
+            if isinstance(value, dict):
+                class_name = key[0].upper() + key[1:]
+                models_path = ".".join(cls.__module__.split(".")[:-1])
+                import_path = f"{models_path}.{class_name}"
+                try:
+                    module = import_module(import_path)
+                    model_class = getattr(module, class_name)
+                except ModuleNotFoundError:
+                    continue
+                # Check if the class is a subclass of ModelBase
+                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                    # Recursively create an instance of the nested class
+                    nested_instance = model_class.from_dict(value)
+                    setattr(instance, key, nested_instance)
+            # if value is list recursively create instances of the list items
+            elif isinstance(value, list):
+                setattr(
+                    instance,
+                    key,
+                    [
+                        cls.from_dict(item) if isinstance(item, dict) else item
+                        for item in value
+                    ],
+                )
+            # else set the value
+            else:
+                setattr(instance, key, value)
+
+        return instance
+
 
   
     
@@ -185,6 +492,44 @@ class Teardown(ModelBase):
         self.modifierExtension: list['Extension'] = modifierExtension or []
         self.action: list['Action'] = action or []
         
+
+    @classmethod
+    def from_dict(cls, data: dict) -> "Teardown":
+        """Create a model instance from a dict. The instance is recursively
+        created by importing the classes for complex fhir types."""
+        instance = cls()
+        for key, value in data.items():
+            # if value is dict try to create complex type
+            if isinstance(value, dict):
+                class_name = key[0].upper() + key[1:]
+                models_path = ".".join(cls.__module__.split(".")[:-1])
+                import_path = f"{models_path}.{class_name}"
+                try:
+                    module = import_module(import_path)
+                    model_class = getattr(module, class_name)
+                except ModuleNotFoundError:
+                    continue
+                # Check if the class is a subclass of ModelBase
+                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                    # Recursively create an instance of the nested class
+                    nested_instance = model_class.from_dict(value)
+                    setattr(instance, key, nested_instance)
+            # if value is list recursively create instances of the list items
+            elif isinstance(value, list):
+                setattr(
+                    instance,
+                    key,
+                    [
+                        cls.from_dict(item) if isinstance(item, dict) else item
+                        for item in value
+                    ],
+                )
+            # else set the value
+            else:
+                setattr(instance, key, value)
+
+        return instance
+
 
 class TestReport(DomainResource):
     """ A summary of information based on the results of executing a TestScript.
@@ -232,3 +577,40 @@ class TestReport(DomainResource):
         self.test: list['Test'] = test or []
         self.teardown: 'Teardown' = teardown 
         
+
+    @classmethod
+    def from_dict(cls, data: dict) -> "TestReport":
+        """Create a model instance from a dict. The instance is recursively
+        created by importing the classes for complex fhir types."""
+        instance = cls()
+        for key, value in data.items():
+            # if value is dict try to create complex type
+            if isinstance(value, dict):
+                class_name = key[0].upper() + key[1:]
+                models_path = ".".join(cls.__module__.split(".")[:-1])
+                import_path = f"{models_path}.{class_name}"
+                try:
+                    module = import_module(import_path)
+                    model_class = getattr(module, class_name)
+                except ModuleNotFoundError:
+                    continue
+                # Check if the class is a subclass of ModelBase
+                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                    # Recursively create an instance of the nested class
+                    nested_instance = model_class.from_dict(value)
+                    setattr(instance, key, nested_instance)
+            # if value is list recursively create instances of the list items
+            elif isinstance(value, list):
+                setattr(
+                    instance,
+                    key,
+                    [
+                        cls.from_dict(item) if isinstance(item, dict) else item
+                        for item in value
+                    ],
+                )
+            # else set the value
+            else:
+                setattr(instance, key, value)
+
+        return instance

@@ -1,12 +1,15 @@
 import requests
 from typing import Any
+
 from fhan.client.utils.http_utils import make_get_request, build_fhir_url, join_urls
+from fhan.client._resource_getter import ResourceGetterMixin
 
 
-class GetHandler:
+class GetHandler(ResourceGetterMixin):
     def __init__(
         self, session: requests.Session, base_url: str, available_resource_types: list
     ):
+        super().__init__()
         self._session = session
         self._base_url = base_url
         self._available_resource_types = available_resource_types
@@ -36,9 +39,5 @@ class GetHandler:
         response = make_get_request(url=url, session=self._session)
         return response.json()
 
-    def Patient(
-        self,
-        id: str | list[str] | None = None,
-        search: str | None = None,
-    ):
-        return self._get("Patient", id, search)
+    def PatientData(self):
+        return self._get("Patient")

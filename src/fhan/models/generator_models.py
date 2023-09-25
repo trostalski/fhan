@@ -1,14 +1,11 @@
-import json
 from urllib.parse import urlparse
 from enum import Enum
 import os
-from abc import ABC, abstractmethod
 from importlib import import_module
 import inspect
-import stringcase
 
 from fhan.core.data_types import PYTHON_KEYWORDS
-from fhan.core.utils.path_utils import remove_n_parts_from_end, join_paths
+from fhan.core.utils.path_utils import remove_n_parts_from_end
 from fhan.core.data_types import get_python_type_for_primitive, is_primitive_type
 from fhan.core.utils.path_utils import (
     is_choice_path,
@@ -27,31 +24,6 @@ class StructureDefinitionKinds(Enum):
 
 class ModelBase:
     """Base class for all generated models."""
-
-    @classmethod
-    def from_dict(cls, data: dict):
-        """Create a model instance from a dict. The instance is recursively
-        created by importing the classes for complex fhir types."""
-        instance = cls()
-        for key, value in data.items():
-            key = _capitalize_first_letter(key)
-            models_path = remove_n_parts_from_end(cls.__module__, 1)
-            import_path = f"{models_path}.{key}"
-            try:
-                module = import_module(import_path)
-                model_class = getattr(module, key)
-            except ModuleNotFoundError:
-                continue
-            # Check if the class is a subclass of ModelBase
-            if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
-                if isinstance(value, dict):
-                    # Recursively create an instance of the nested class
-                    nested_instance = model_class.from_dict(value)
-                    setattr(instance, key, nested_instance)
-                else:
-                    # Set the value if it's not a dictionary
-                    setattr(instance, key, value)
-        return instance
 
     def __repr__(self) -> str:
         return f"{self.__class__.__name__}({self.__dict__})"

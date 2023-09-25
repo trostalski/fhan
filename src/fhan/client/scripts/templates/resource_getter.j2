@@ -1,0 +1,15 @@
+# generated at {{ time }} from {{ source_script }}
+class ResourceGetterMixin:
+    """This mixin class provides the GetHander with getter methods for each
+    resource type. The methods are syntactic sugar for the _get method.
+    """
+    def __init__(self):
+        pass
+{% for resource_type in resource_types %}
+    def {{ resource_type }}(
+        self,
+        id: str | list[str] | None = None,
+        search: str | None = None,
+    ):
+        return self._get("{{ resource_type }}", id, search)
+{% endfor %}

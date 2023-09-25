@@ -55,12 +55,14 @@ class FhirPackage:
         search_parameters: list[dict],
         structure_definitions: list[dict],
         value_sets: list[dict],
+        capability_statements: list[dict],
         name: str = None,
     ):
         self.code_systems = code_systems
         self.search_parameters = search_parameters
         self.structure_definitions = structure_definitions
         self.value_sets = value_sets
+        self.capability_statements = capability_statements
         self.name = name
 
     @classmethod
@@ -70,6 +72,7 @@ class FhirPackage:
         search_parameters = []
         structure_definitions = []
         value_sets = []
+        capability_statements = []
         for filename, content in _read_fhir_package_npm(npm_file):
             content_json = json.loads(content)
             resource_type = content_json.get("resourceType")
@@ -81,6 +84,8 @@ class FhirPackage:
                 structure_definitions.append(content_json)
             elif resource_type == "ValueSet":
                 value_sets.append(content_json)
+            elif resource_type == "CapabilityStatement":
+                capability_statements.append(content_json)
             else:
                 # logger.info("Skipping file: %s.", filename)
                 continue
@@ -88,6 +93,12 @@ class FhirPackage:
         return cls(
             code_systems, search_parameters, structure_definitions, value_sets, name
         )
+
+    def get_codesystem_by_url(self, url: str):
+        for cs in self.code_systems:
+            if cs["url"] == url:
+                return cs
+        return None
 
     @property
     def resource_structure_definitions(self):

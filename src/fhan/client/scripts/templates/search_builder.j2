@@ -1,0 +1,47 @@
+from typing import Literal
+
+
+class Value:
+    def __init__(self, query_string: str):
+        self.query_string = query_string
+
+    def equals(self, value: str, prefix: Literal[{{}}] = ""):
+        query_string = f"{prefix}{value}"
+        return SearchEndOrJoin()
+
+class SearchEndOrJoin:
+    def __init__(self, query_string: str):
+        self.query_string = query_string
+
+    def __call__(self):
+        return self.query_string
+
+    def and_(self):
+        return PatientQuery()
+
+    def or_(self):
+        return PatientQuery()
+
+class PatientQuery:
+    """Should include modifiers, and joiners"""
+
+    def __init__(self, query_string: str):
+        self.query_string = query_string
+
+    def param(
+        self,
+        value: Literal[{{}}],
+        modifier="",
+    ):
+        query_string = +value
+        query_string += f":{modifier}"
+        return Value()
+
+class ResourceQueryMixin:
+    def __init__(self):
+        self.query_string = query_string = "?"
+
+    @property
+    @classmethod
+    def Patient(self):
+        return PatientQuery(self.query_string)

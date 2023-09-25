@@ -1,16 +1,16 @@
 """
 Generated class for Provenance. 
-Time: 2023-09-24 21:52:32
+Time: 2023-09-25 14:53:18
 """
 from fhan.models.R4.Reference import *
-from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Resource import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Meta import *
+from fhan.models.R4.Signature import *
 from fhan.models.R4.Period import *
 from fhan.models.R4.Extension import *
-from fhan.models.R4.Signature import *
+from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Meta import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Narrative import *
 from fhan.models.R4.DomainResource import *
 
 
@@ -66,6 +66,7 @@ class Provenance(DomainResource):
     :param list['Extension'] modifierExtension: Extensions that cannot be ignored
     :param list['Reference'] target: Target Reference(s) (usually version specific)
     :param 'Period' occurredPeriod: When the activity occurred
+    :param str occurredDateTime: When the activity occurred
     :param str recorded: When the activity was recorded / updated
     :param str policy: Policy or plan the activity was defined by
     :param 'Reference' location: Where the activity occurred, if relevant
@@ -75,7 +76,7 @@ class Provenance(DomainResource):
     :param list['Entity'] entity: An entity used in this activity
     :param list['Signature'] signature: Signature on target
     """
-    def __init__(self, resourceType: str = "Provenance",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  target: list['Reference'] = None,  occurredPeriod: 'Period' = None,  recorded: str = None,  policy: str = None,  location: 'Reference' = None,  reason: list['CodeableConcept'] = None,  activity: 'CodeableConcept' = None,  agent: list['Agent'] = None,  entity: list['Entity'] = None,  signature: list['Signature'] = None, ):
+    def __init__(self, resourceType: str = "Provenance",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  target: list['Reference'] = None,  occurredPeriod: 'Period' = None,  occurredDateTime: str = None,  recorded: str = None,  policy: str = None,  location: 'Reference' = None,  reason: list['CodeableConcept'] = None,  activity: 'CodeableConcept' = None,  agent: list['Agent'] = None,  entity: list['Entity'] = None,  signature: list['Signature'] = None, ):
         self.resourceType: str = resourceType or "Provenance"
         self.id: str = id 
         self.meta: 'Meta' = meta 
@@ -87,6 +88,7 @@ class Provenance(DomainResource):
         self.modifierExtension: list['Extension'] = modifierExtension or []
         self.target: list['Reference'] = target or []
         self.occurredPeriod: 'Period' = occurredPeriod 
+        self.occurredDateTime: str = occurredDateTime 
         self.recorded: str = recorded 
         self.policy: str = policy or []
         self.location: 'Reference' = location 

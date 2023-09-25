@@ -1,17 +1,17 @@
 """
 Generated class for DeviceUseStatement. 
-Time: 2023-09-24 21:52:32
+Time: 2023-09-25 14:53:18
 """
 from fhan.models.R4.Reference import *
-from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Resource import *
-from fhan.models.R4.Annotation import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.Identifier import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Timing import *
 from fhan.models.R4.Period import *
 from fhan.models.R4.Extension import *
+from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Annotation import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.Meta import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Timing import *
 from fhan.models.R4.DomainResource import *
 
 
@@ -31,6 +31,8 @@ class DeviceUseStatement(DomainResource):
     :param 'Reference' subject: Patient using device
     :param list['Reference'] derivedFrom: Supporting information
     :param 'Timing' timingTiming: How often  the device was used
+    :param 'Period' timingPeriod: How often  the device was used
+    :param str timingDateTime: How often  the device was used
     :param str recordedOn: When statement was recorded
     :param 'Reference' source: Who made the statement
     :param 'Reference' device: Reference to device used
@@ -39,7 +41,7 @@ class DeviceUseStatement(DomainResource):
     :param 'CodeableConcept' bodySite: Target body site
     :param list['Annotation'] note: Addition details (comments, instructions)
     """
-    def __init__(self, resourceType: str = "DeviceUseStatement",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  identifier: list['Identifier'] = None,  basedOn: list['Reference'] = None,  status: str = None,  subject: 'Reference' = None,  derivedFrom: list['Reference'] = None,  timingTiming: 'Timing' = None,  recordedOn: str = None,  source: 'Reference' = None,  device: 'Reference' = None,  reasonCode: list['CodeableConcept'] = None,  reasonReference: list['Reference'] = None,  bodySite: 'CodeableConcept' = None,  note: list['Annotation'] = None, ):
+    def __init__(self, resourceType: str = "DeviceUseStatement",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  identifier: list['Identifier'] = None,  basedOn: list['Reference'] = None,  status: str = None,  subject: 'Reference' = None,  derivedFrom: list['Reference'] = None,  timingTiming: 'Timing' = None,  timingPeriod: 'Period' = None,  timingDateTime: str = None,  recordedOn: str = None,  source: 'Reference' = None,  device: 'Reference' = None,  reasonCode: list['CodeableConcept'] = None,  reasonReference: list['Reference'] = None,  bodySite: 'CodeableConcept' = None,  note: list['Annotation'] = None, ):
         self.resourceType: str = resourceType or "DeviceUseStatement"
         self.id: str = id 
         self.meta: 'Meta' = meta 
@@ -55,6 +57,8 @@ class DeviceUseStatement(DomainResource):
         self.subject: 'Reference' = subject 
         self.derivedFrom: list['Reference'] = derivedFrom or []
         self.timingTiming: 'Timing' = timingTiming 
+        self.timingPeriod: 'Period' = timingPeriod 
+        self.timingDateTime: str = timingDateTime 
         self.recordedOn: str = recordedOn 
         self.source: 'Reference' = source 
         self.device: 'Reference' = device 

@@ -1,17 +1,17 @@
 """
 Generated class for CodeSystem. 
-Time: 2023-09-24 21:52:32
+Time: 2023-09-25 14:53:18
 """
-from fhan.models.R4.UsageContext import *
 from fhan.models.R4.Resource import *
 from fhan.models.R4.ContactDetail import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Identifier import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Coding import *
-from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Extension import *
+from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.Coding import *
+from fhan.models.R4.Meta import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.UsageContext import *
 from fhan.models.R4.DomainResource import *
 
 
@@ -90,13 +90,25 @@ class Property(ModelBase):
     :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str code: Reference to CodeSystem.property.code
     :param str valueCode: Value of the property for this concept
+    :param 'Coding' valueCoding: Value of the property for this concept
+    :param str valueString: Value of the property for this concept
+    :param int valueInteger: Value of the property for this concept
+    :param bool valueBoolean: Value of the property for this concept
+    :param str valueDateTime: Value of the property for this concept
+    :param float valueDecimal: Value of the property for this concept
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  code: str = None,  valueCode: str = None, ):
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  code: str = None,  valueCode: str = None,  valueCoding: 'Coding' = None,  valueString: str = None,  valueInteger: int = None,  valueBoolean: bool = None,  valueDateTime: str = None,  valueDecimal: float = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
         self.code: str = code 
         self.valueCode: str = valueCode 
+        self.valueCoding: 'Coding' = valueCoding 
+        self.valueString: str = valueString 
+        self.valueInteger: int = valueInteger 
+        self.valueBoolean: bool = valueBoolean 
+        self.valueDateTime: str = valueDateTime 
+        self.valueDecimal: float = valueDecimal 
         
 
   
@@ -125,7 +137,7 @@ class Concept(ModelBase):
         
 
 class CodeSystem(DomainResource):
-    """ Enforces the minimum information set for the value set metadata required by HL7 and other organizations that share and publish value sets
+    """ The CodeSystem resource is used to declare the existence of and describe a code system or code system supplement and its key properties, and optionally define a part or all of its content.
     :param str id: Logical id of this artifact
     :param 'Meta' meta: Metadata about the resource
     :param str implicitRules: A set of rules under which this content was created

@@ -1,18 +1,18 @@
 """
 Generated class for Coverage. 
-Time: 2023-09-24 21:52:32
+Time: 2023-09-25 14:53:18
 """
-from fhan.models.R4.Period import *
 from fhan.models.R4.Reference import *
 from fhan.models.R4.Resource import *
-from fhan.models.R4.Money import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Period import *
+from fhan.models.R4.Extension import *
+from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Identifier import *
 from fhan.models.R4.Meta import *
 from fhan.models.R4.Quantity import *
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Extension import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Money import *
 from fhan.models.R4.DomainResource import *
 
 
@@ -66,14 +66,16 @@ class CostToBeneficiary(ModelBase):
     :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param 'CodeableConcept' type: Cost category
     :param 'Quantity' valueQuantity: The amount or percentage due from the beneficiary
+    :param 'Money' valueMoney: The amount or percentage due from the beneficiary
     :param list['Exception'] exception: Exceptions for patient payments
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  type: 'CodeableConcept' = None,  valueQuantity: 'Quantity' = None,  exception: list['Exception'] = None, ):
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  type: 'CodeableConcept' = None,  valueQuantity: 'Quantity' = None,  valueMoney: 'Money' = None,  exception: list['Exception'] = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
         self.type: 'CodeableConcept' = type 
         self.valueQuantity: 'Quantity' = valueQuantity 
+        self.valueMoney: 'Money' = valueMoney 
         self.exception: list['Exception'] = exception or []
         
 

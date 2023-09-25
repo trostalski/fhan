@@ -1,27 +1,27 @@
 """
 Generated class for PlanDefinition. 
-Time: 2023-09-24 21:52:32
+Time: 2023-09-25 14:53:18
 """
-from fhan.models.R4.UsageContext import *
-from fhan.models.R4.Resource import *
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.TriggerDefinition import *
-from fhan.models.R4.Reference import *
-from fhan.models.R4.RelatedArtifact import *
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Range import *
-from fhan.models.R4.Identifier import *
-from fhan.models.R4.Quantity import *
-from fhan.models.R4.Timing import *
 from fhan.models.R4.Duration import *
-from fhan.models.R4.DataRequirement import *
-from fhan.models.R4.ContactDetail import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.Age import *
+from fhan.models.R4.Reference import *
+from fhan.models.R4.Resource import *
+from fhan.models.R4.RelatedArtifact import *
+from fhan.models.R4.Identifier import *
 from fhan.models.R4.Meta import *
+from fhan.models.R4.TriggerDefinition import *
+from fhan.models.R4.Timing import *
 from fhan.models.R4.Extension import *
-from fhan.models.R4.Period import *
+from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Expression import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Quantity import *
+from fhan.models.R4.UsageContext import *
+from fhan.models.R4.DataRequirement import *
+from fhan.models.R4.Age import *
+from fhan.models.R4.ContactDetail import *
+from fhan.models.R4.Period import *
+from fhan.models.R4.Range import *
+from fhan.models.R4.Narrative import *
 from fhan.models.R4.DomainResource import *
 
 
@@ -36,14 +36,18 @@ class Target(ModelBase):
     :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param 'CodeableConcept' measure: The parameter whose value is to be tracked
     :param 'Quantity' detailQuantity: The target value to be achieved
+    :param 'Range' detailRange: The target value to be achieved
+    :param 'CodeableConcept' detailCodeableConcept: The target value to be achieved
     :param 'Duration' due: Reach goal within
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  measure: 'CodeableConcept' = None,  detailQuantity: 'Quantity' = None,  due: 'Duration' = None, ):
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  measure: 'CodeableConcept' = None,  detailQuantity: 'Quantity' = None,  detailRange: 'Range' = None,  detailCodeableConcept: 'CodeableConcept' = None,  due: 'Duration' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
         self.measure: 'CodeableConcept' = measure 
         self.detailQuantity: 'Quantity' = detailQuantity 
+        self.detailRange: 'Range' = detailRange 
+        self.detailCodeableConcept: 'CodeableConcept' = detailCodeableConcept 
         self.due: 'Duration' = due 
         
 
@@ -106,14 +110,16 @@ class RelatedAction(ModelBase):
     :param str actionId: What action is this related to
     :param str relationship: before-start | before | before-end | concurrent-with-start | concurrent | concurrent-with-end | after-start | after | after-end
     :param 'Duration' offsetDuration: Time offset for the relationship
+    :param 'Range' offsetRange: Time offset for the relationship
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  actionId: str = None,  relationship: str = None,  offsetDuration: 'Duration' = None, ):
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  actionId: str = None,  relationship: str = None,  offsetDuration: 'Duration' = None,  offsetRange: 'Range' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
         self.actionId: str = actionId 
         self.relationship: str = relationship 
         self.offsetDuration: 'Duration' = offsetDuration 
+        self.offsetRange: 'Range' = offsetRange 
         
 
     
@@ -170,12 +176,18 @@ class Action(ModelBase):
     :param list['RelatedArtifact'] documentation: Supporting documentation for the intended performer of the action
     :param str goalId: What goals this action supports
     :param 'CodeableConcept' subjectCodeableConcept: Type of individual the action is focused on
+    :param 'Reference' subjectReference: Type of individual the action is focused on
     :param list['TriggerDefinition'] trigger: When the action should be triggered
     :param list['Condition'] condition: Whether or not the action is applicable
     :param list['DataRequirement'] input: Input data requirements
     :param list['DataRequirement'] output: Output data definition
     :param list['RelatedAction'] relatedAction: Relationship to another action
     :param str timingDateTime: When the action should take place
+    :param 'Age' timingAge: When the action should take place
+    :param 'Period' timingPeriod: When the action should take place
+    :param 'Duration' timingDuration: When the action should take place
+    :param 'Range' timingRange: When the action should take place
+    :param 'Timing' timingTiming: When the action should take place
     :param list['Participant'] participant: Who should participate in the action
     :param 'CodeableConcept' type: create | update | remove | fire-event
     :param str groupingBehavior: visual-group | logical-group | sentence-group
@@ -184,10 +196,11 @@ class Action(ModelBase):
     :param str precheckBehavior: yes | no
     :param str cardinalityBehavior: single | multiple
     :param str definitionCanonical: Description of the activity to be performed
+    :param str definitionUri: Description of the activity to be performed
     :param str transform: Transform to apply the template
     :param list['DynamicValue'] dynamicValue: Dynamic aspects of the definition
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  prefix: str = None,  title: str = None,  description: str = None,  textEquivalent: str = None,  priority: str = None,  code: list['CodeableConcept'] = None,  reason: list['CodeableConcept'] = None,  documentation: list['RelatedArtifact'] = None,  goalId: str = None,  subjectCodeableConcept: 'CodeableConcept' = None,  trigger: list['TriggerDefinition'] = None,  condition: list['Condition'] = None,  input: list['DataRequirement'] = None,  output: list['DataRequirement'] = None,  relatedAction: list['RelatedAction'] = None,  timingDateTime: str = None,  participant: list['Participant'] = None,  type: 'CodeableConcept' = None,  groupingBehavior: str = None,  selectionBehavior: str = None,  requiredBehavior: str = None,  precheckBehavior: str = None,  cardinalityBehavior: str = None,  definitionCanonical: str = None,  transform: str = None,  dynamicValue: list['DynamicValue'] = None, ):
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  prefix: str = None,  title: str = None,  description: str = None,  textEquivalent: str = None,  priority: str = None,  code: list['CodeableConcept'] = None,  reason: list['CodeableConcept'] = None,  documentation: list['RelatedArtifact'] = None,  goalId: str = None,  subjectCodeableConcept: 'CodeableConcept' = None,  subjectReference: 'Reference' = None,  trigger: list['TriggerDefinition'] = None,  condition: list['Condition'] = None,  input: list['DataRequirement'] = None,  output: list['DataRequirement'] = None,  relatedAction: list['RelatedAction'] = None,  timingDateTime: str = None,  timingAge: 'Age' = None,  timingPeriod: 'Period' = None,  timingDuration: 'Duration' = None,  timingRange: 'Range' = None,  timingTiming: 'Timing' = None,  participant: list['Participant'] = None,  type: 'CodeableConcept' = None,  groupingBehavior: str = None,  selectionBehavior: str = None,  requiredBehavior: str = None,  precheckBehavior: str = None,  cardinalityBehavior: str = None,  definitionCanonical: str = None,  definitionUri: str = None,  transform: str = None,  dynamicValue: list['DynamicValue'] = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -201,12 +214,18 @@ class Action(ModelBase):
         self.documentation: list['RelatedArtifact'] = documentation or []
         self.goalId: str = goalId or []
         self.subjectCodeableConcept: 'CodeableConcept' = subjectCodeableConcept 
+        self.subjectReference: 'Reference' = subjectReference 
         self.trigger: list['TriggerDefinition'] = trigger or []
         self.condition: list['Condition'] = condition or []
         self.input: list['DataRequirement'] = input or []
         self.output: list['DataRequirement'] = output or []
         self.relatedAction: list['RelatedAction'] = relatedAction or []
         self.timingDateTime: str = timingDateTime 
+        self.timingAge: 'Age' = timingAge 
+        self.timingPeriod: 'Period' = timingPeriod 
+        self.timingDuration: 'Duration' = timingDuration 
+        self.timingRange: 'Range' = timingRange 
+        self.timingTiming: 'Timing' = timingTiming 
         self.participant: list['Participant'] = participant or []
         self.type: 'CodeableConcept' = type 
         self.groupingBehavior: str = groupingBehavior 
@@ -215,12 +234,13 @@ class Action(ModelBase):
         self.precheckBehavior: str = precheckBehavior 
         self.cardinalityBehavior: str = cardinalityBehavior 
         self.definitionCanonical: str = definitionCanonical 
+        self.definitionUri: str = definitionUri 
         self.transform: str = transform 
         self.dynamicValue: list['DynamicValue'] = dynamicValue or []
         
 
 class PlanDefinition(DomainResource):
-    """ Enforces the minimum information set for the plan definition metadata required by HL7 and other organizations that share and publish plan definitions
+    """ This resource allows for the definition of various types of plans as a sharable, consumable, and executable artifact. The resource is general enough to support the description of a broad range of clinical artifacts such as clinical decision support rules, order sets and protocols.
     :param str id: Logical id of this artifact
     :param 'Meta' meta: Metadata about the resource
     :param str implicitRules: A set of rules under which this content was created
@@ -239,6 +259,7 @@ class PlanDefinition(DomainResource):
     :param str status: draft | active | retired | unknown
     :param bool experimental: For testing purposes, not real usage
     :param 'CodeableConcept' subjectCodeableConcept: Type of individual the plan definition is focused on
+    :param 'Reference' subjectReference: Type of individual the plan definition is focused on
     :param str date: Date last changed
     :param str publisher: Name of the publisher (organization or individual)
     :param list['ContactDetail'] contact: Contact details for the publisher
@@ -261,7 +282,7 @@ class PlanDefinition(DomainResource):
     :param list['Goal'] goal: What the plan is trying to accomplish
     :param list['Action'] action: Action defined by the plan
     """
-    def __init__(self, resourceType: str = "PlanDefinition",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  url: str = None,  identifier: list['Identifier'] = None,  version: str = None,  name: str = None,  title: str = None,  subtitle: str = None,  type: 'CodeableConcept' = None,  status: str = None,  experimental: bool = None,  subjectCodeableConcept: 'CodeableConcept' = None,  date: str = None,  publisher: str = None,  contact: list['ContactDetail'] = None,  description: str = None,  useContext: list['UsageContext'] = None,  jurisdiction: list['CodeableConcept'] = None,  purpose: str = None,  usage: str = None,  copyright: str = None,  approvalDate: str = None,  lastReviewDate: str = None,  effectivePeriod: 'Period' = None,  topic: list['CodeableConcept'] = None,  author: list['ContactDetail'] = None,  editor: list['ContactDetail'] = None,  reviewer: list['ContactDetail'] = None,  endorser: list['ContactDetail'] = None,  relatedArtifact: list['RelatedArtifact'] = None,  library: str = None,  goal: list['Goal'] = None,  action: list['Action'] = None, ):
+    def __init__(self, resourceType: str = "PlanDefinition",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  url: str = None,  identifier: list['Identifier'] = None,  version: str = None,  name: str = None,  title: str = None,  subtitle: str = None,  type: 'CodeableConcept' = None,  status: str = None,  experimental: bool = None,  subjectCodeableConcept: 'CodeableConcept' = None,  subjectReference: 'Reference' = None,  date: str = None,  publisher: str = None,  contact: list['ContactDetail'] = None,  description: str = None,  useContext: list['UsageContext'] = None,  jurisdiction: list['CodeableConcept'] = None,  purpose: str = None,  usage: str = None,  copyright: str = None,  approvalDate: str = None,  lastReviewDate: str = None,  effectivePeriod: 'Period' = None,  topic: list['CodeableConcept'] = None,  author: list['ContactDetail'] = None,  editor: list['ContactDetail'] = None,  reviewer: list['ContactDetail'] = None,  endorser: list['ContactDetail'] = None,  relatedArtifact: list['RelatedArtifact'] = None,  library: str = None,  goal: list['Goal'] = None,  action: list['Action'] = None, ):
         self.resourceType: str = resourceType or "PlanDefinition"
         self.id: str = id 
         self.meta: 'Meta' = meta 
@@ -281,6 +302,7 @@ class PlanDefinition(DomainResource):
         self.status: str = status 
         self.experimental: bool = experimental 
         self.subjectCodeableConcept: 'CodeableConcept' = subjectCodeableConcept 
+        self.subjectReference: 'Reference' = subjectReference 
         self.date: str = date 
         self.publisher: str = publisher 
         self.contact: list['ContactDetail'] = contact or []

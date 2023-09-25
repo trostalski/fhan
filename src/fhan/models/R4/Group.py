@@ -1,18 +1,18 @@
 """
 Generated class for Group. 
-Time: 2023-09-24 21:52:32
+Time: 2023-09-25 14:53:18
 """
-from fhan.models.R4.Period import *
 from fhan.models.R4.Reference import *
-from fhan.models.R4.Range import *
 from fhan.models.R4.Resource import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Period import *
+from fhan.models.R4.Extension import *
+from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Identifier import *
+from fhan.models.R4.Range import *
 from fhan.models.R4.Meta import *
 from fhan.models.R4.Quantity import *
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Extension import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Narrative import *
 from fhan.models.R4.DomainResource import *
 
 
@@ -25,15 +25,23 @@ class Characteristic(ModelBase):
     :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param 'CodeableConcept' code: Kind of characteristic
     :param 'CodeableConcept' valueCodeableConcept: Value held by characteristic
+    :param bool valueBoolean: Value held by characteristic
+    :param 'Quantity' valueQuantity: Value held by characteristic
+    :param 'Range' valueRange: Value held by characteristic
+    :param 'Reference' valueReference: Value held by characteristic
     :param bool exclude: Group includes or excludes
     :param 'Period' period: Period over which characteristic is tested
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  code: 'CodeableConcept' = None,  valueCodeableConcept: 'CodeableConcept' = None,  exclude: bool = None,  period: 'Period' = None, ):
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  code: 'CodeableConcept' = None,  valueCodeableConcept: 'CodeableConcept' = None,  valueBoolean: bool = None,  valueQuantity: 'Quantity' = None,  valueRange: 'Range' = None,  valueReference: 'Reference' = None,  exclude: bool = None,  period: 'Period' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
         self.code: 'CodeableConcept' = code 
         self.valueCodeableConcept: 'CodeableConcept' = valueCodeableConcept 
+        self.valueBoolean: bool = valueBoolean 
+        self.valueQuantity: 'Quantity' = valueQuantity 
+        self.valueRange: 'Range' = valueRange 
+        self.valueReference: 'Reference' = valueReference 
         self.exclude: bool = exclude 
         self.period: 'Period' = period 
         
@@ -59,7 +67,7 @@ class Member(ModelBase):
         
 
 class Group(DomainResource):
-    """ Enforces a descriptive group that can be used in definitional resources
+    """ Represents a defined collection of entities that may be discussed or acted upon collectively but which are not expected to act collectively, and are not formally or legally recognized; i.e. a collection of entities that isn't an Organization.
     :param str id: Logical id of this artifact
     :param 'Meta' meta: Metadata about the resource
     :param str implicitRules: A set of rules under which this content was created
@@ -77,9 +85,9 @@ class Group(DomainResource):
     :param int quantity: Number of members
     :param 'Reference' managingEntity: Entity that is the custodian of the Group's definition
     :param list['Characteristic'] characteristic: Include / Exclude group members by Trait
-    :param 'Member' member: Who or what is in group
+    :param list['Member'] member: Who or what is in group
     """
-    def __init__(self, resourceType: str = "Group",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  identifier: list['Identifier'] = None,  active: bool = None,  type: str = None,  actual: bool = None,  code: 'CodeableConcept' = None,  name: str = None,  quantity: int = None,  managingEntity: 'Reference' = None,  characteristic: list['Characteristic'] = None,  member: 'Member' = None, ):
+    def __init__(self, resourceType: str = "Group",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  identifier: list['Identifier'] = None,  active: bool = None,  type: str = None,  actual: bool = None,  code: 'CodeableConcept' = None,  name: str = None,  quantity: int = None,  managingEntity: 'Reference' = None,  characteristic: list['Characteristic'] = None,  member: list['Member'] = None, ):
         self.resourceType: str = resourceType or "Group"
         self.id: str = id 
         self.meta: 'Meta' = meta 
@@ -98,5 +106,5 @@ class Group(DomainResource):
         self.quantity: int = quantity 
         self.managingEntity: 'Reference' = managingEntity 
         self.characteristic: list['Characteristic'] = characteristic or []
-        self.member: 'Member' = member 
+        self.member: list['Member'] = member or []
         

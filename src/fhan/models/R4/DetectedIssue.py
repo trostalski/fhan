@@ -1,16 +1,16 @@
 """
 Generated class for DetectedIssue. 
-Time: 2023-09-24 21:52:32
+Time: 2023-09-25 14:53:18
 """
-from fhan.models.R4.Period import *
 from fhan.models.R4.Reference import *
 from fhan.models.R4.Resource import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Period import *
+from fhan.models.R4.Extension import *
+from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Identifier import *
 from fhan.models.R4.Meta import *
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Extension import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Narrative import *
 from fhan.models.R4.DomainResource import *
 
 
@@ -68,6 +68,7 @@ class DetectedIssue(DomainResource):
     :param str severity: high | moderate | low
     :param 'Reference' patient: Associated patient
     :param str identifiedDateTime: When identified
+    :param 'Period' identifiedPeriod: When identified
     :param 'Reference' author: The provider or device that identified the issue
     :param list['Reference'] implicated: Problem resource
     :param list['Evidence'] evidence: Supporting evidence
@@ -75,7 +76,7 @@ class DetectedIssue(DomainResource):
     :param str reference: Authority for issue
     :param list['Mitigation'] mitigation: Step taken to address
     """
-    def __init__(self, resourceType: str = "DetectedIssue",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  identifier: list['Identifier'] = None,  status: str = None,  code: 'CodeableConcept' = None,  severity: str = None,  patient: 'Reference' = None,  identifiedDateTime: str = None,  author: 'Reference' = None,  implicated: list['Reference'] = None,  evidence: list['Evidence'] = None,  detail: str = None,  reference: str = None,  mitigation: list['Mitigation'] = None, ):
+    def __init__(self, resourceType: str = "DetectedIssue",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  identifier: list['Identifier'] = None,  status: str = None,  code: 'CodeableConcept' = None,  severity: str = None,  patient: 'Reference' = None,  identifiedDateTime: str = None,  identifiedPeriod: 'Period' = None,  author: 'Reference' = None,  implicated: list['Reference'] = None,  evidence: list['Evidence'] = None,  detail: str = None,  reference: str = None,  mitigation: list['Mitigation'] = None, ):
         self.resourceType: str = resourceType or "DetectedIssue"
         self.id: str = id 
         self.meta: 'Meta' = meta 
@@ -91,6 +92,7 @@ class DetectedIssue(DomainResource):
         self.severity: str = severity 
         self.patient: 'Reference' = patient 
         self.identifiedDateTime: str = identifiedDateTime 
+        self.identifiedPeriod: 'Period' = identifiedPeriod 
         self.author: 'Reference' = author 
         self.implicated: list['Reference'] = implicated or []
         self.evidence: list['Evidence'] = evidence or []

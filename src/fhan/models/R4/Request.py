@@ -1,13 +1,13 @@
 """
 Generated class for Request. 
-Time: 2023-09-24 21:52:32
+Time: 2023-09-25 14:53:18
 """
-from fhan.models.R4.Period import *
 from fhan.models.R4.Reference import *
+from fhan.models.R4.Period import *
+from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Annotation import *
 from fhan.models.R4.Identifier import *
 from fhan.models.R4.Timing import *
-from fhan.models.R4.CodeableConcept import *
 from fhan.models.generator_models import ModelBase
 
 class Request(ModelBase):
@@ -27,9 +27,12 @@ class Request(ModelBase):
     :param 'Reference' subject: Individual the service is ordered/prohibited for
     :param 'Reference' encounter: Encounter created as part of
     :param str occurrenceDateTime: When service should (not) occur
+    :param 'Period' occurrencePeriod: When service should (not) occur
+    :param 'Timing' occurrenceTiming: When service should (not) occur
     :param str authoredOn: When request was created/transitioned to active
     :param 'Reference' requester: Who/what is requesting service
     :param bool reportedBoolean: Reported rather than primary record
+    :param 'Reference' reportedReference: Reported rather than primary record
     :param 'CodeableConcept' performerType: Desired kind of service performer
     :param 'Reference' performer: Specific desired (non)performer
     :param list['CodeableConcept'] reasonCode: Why is service (not) needed?
@@ -39,7 +42,7 @@ class Request(ModelBase):
     :param list['Annotation'] note: Comments made about {{title}}
     :param list['Reference'] relevantHistory: Key events in history of {{title}}
     """
-    def __init__(self, resourceType: str = "Request",  identifier: list['Identifier'] = None,  instantiatesCanonical: str = None,  instantiatesUri: str = None,  basedOn: list['Reference'] = None,  replaces: list['Reference'] = None,  groupIdentifier: 'Identifier' = None,  status: str = None,  statusReason: 'CodeableConcept' = None,  intent: str = None,  priority: str = None,  doNotPerform: bool = None,  code: 'CodeableConcept' = None,  subject: 'Reference' = None,  encounter: 'Reference' = None,  occurrenceDateTime: str = None,  authoredOn: str = None,  requester: 'Reference' = None,  reportedBoolean: bool = None,  performerType: 'CodeableConcept' = None,  performer: 'Reference' = None,  reasonCode: list['CodeableConcept'] = None,  reasonReference: list['Reference'] = None,  insurance: list['Reference'] = None,  supportingInfo: list['Reference'] = None,  note: list['Annotation'] = None,  relevantHistory: list['Reference'] = None, ):
+    def __init__(self, resourceType: str = "Request",  identifier: list['Identifier'] = None,  instantiatesCanonical: str = None,  instantiatesUri: str = None,  basedOn: list['Reference'] = None,  replaces: list['Reference'] = None,  groupIdentifier: 'Identifier' = None,  status: str = None,  statusReason: 'CodeableConcept' = None,  intent: str = None,  priority: str = None,  doNotPerform: bool = None,  code: 'CodeableConcept' = None,  subject: 'Reference' = None,  encounter: 'Reference' = None,  occurrenceDateTime: str = None,  occurrencePeriod: 'Period' = None,  occurrenceTiming: 'Timing' = None,  authoredOn: str = None,  requester: 'Reference' = None,  reportedBoolean: bool = None,  reportedReference: 'Reference' = None,  performerType: 'CodeableConcept' = None,  performer: 'Reference' = None,  reasonCode: list['CodeableConcept'] = None,  reasonReference: list['Reference'] = None,  insurance: list['Reference'] = None,  supportingInfo: list['Reference'] = None,  note: list['Annotation'] = None,  relevantHistory: list['Reference'] = None, ):
         self.resourceType: str = resourceType or "Request"
         self.identifier: list['Identifier'] = identifier or []
         self.instantiatesCanonical: str = instantiatesCanonical or []
@@ -56,9 +59,12 @@ class Request(ModelBase):
         self.subject: 'Reference' = subject 
         self.encounter: 'Reference' = encounter 
         self.occurrenceDateTime: str = occurrenceDateTime 
+        self.occurrencePeriod: 'Period' = occurrencePeriod 
+        self.occurrenceTiming: 'Timing' = occurrenceTiming 
         self.authoredOn: str = authoredOn 
         self.requester: 'Reference' = requester 
         self.reportedBoolean: bool = reportedBoolean 
+        self.reportedReference: 'Reference' = reportedReference 
         self.performerType: 'CodeableConcept' = performerType 
         self.performer: 'Reference' = performer 
         self.reasonCode: list['CodeableConcept'] = reasonCode or []

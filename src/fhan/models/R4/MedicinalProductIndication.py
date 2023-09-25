@@ -1,16 +1,16 @@
 """
 Generated class for MedicinalProductIndication. 
-Time: 2023-09-24 21:52:32
+Time: 2023-09-25 14:53:18
 """
 from fhan.models.R4.Reference import *
 from fhan.models.R4.Resource import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Extension import *
+from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Population import *
 from fhan.models.R4.Meta import *
 from fhan.models.R4.Quantity import *
-from fhan.models.R4.Population import *
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Extension import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Narrative import *
 from fhan.models.R4.DomainResource import *
 
 
@@ -23,13 +23,15 @@ class OtherTherapy(ModelBase):
     :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param 'CodeableConcept' therapyRelationshipType: The type of relationship between the medicinal product indication or contraindication and another therapy
     :param 'CodeableConcept' medicationCodeableConcept: Reference to a specific medication (active substance, medicinal product or class of products) as part of an indication or contraindication
+    :param 'Reference' medicationReference: Reference to a specific medication (active substance, medicinal product or class of products) as part of an indication or contraindication
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  therapyRelationshipType: 'CodeableConcept' = None,  medicationCodeableConcept: 'CodeableConcept' = None, ):
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  therapyRelationshipType: 'CodeableConcept' = None,  medicationCodeableConcept: 'CodeableConcept' = None,  medicationReference: 'Reference' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
         self.therapyRelationshipType: 'CodeableConcept' = therapyRelationshipType 
         self.medicationCodeableConcept: 'CodeableConcept' = medicationCodeableConcept 
+        self.medicationReference: 'Reference' = medicationReference 
         
 
 class MedicinalProductIndication(DomainResource):

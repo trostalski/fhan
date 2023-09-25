@@ -1,42 +1,42 @@
 """
 Generated class for Task. 
-Time: 2023-09-24 21:52:32
+Time: 2023-09-25 14:53:18
 """
-from fhan.models.R4.UsageContext import *
-from fhan.models.R4.Resource import *
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Ratio import *
-from fhan.models.R4.ParameterDefinition import *
-from fhan.models.R4.Contributor import *
-from fhan.models.R4.TriggerDefinition import *
-from fhan.models.R4.Reference import *
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.RelatedArtifact import *
-from fhan.models.R4.Range import *
-from fhan.models.R4.Attachment import *
-from fhan.models.R4.Identifier import *
-from fhan.models.R4.Quantity import *
-from fhan.models.R4.ContactPoint import *
-from fhan.models.R4.Timing import *
 from fhan.models.R4.Duration import *
-from fhan.models.R4.Address import *
-from fhan.models.R4.DataRequirement import *
-from fhan.models.R4.Distance import *
-from fhan.models.R4.Annotation import *
-from fhan.models.R4.ContactDetail import *
-from fhan.models.R4.Money import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.Age import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Coding import *
-from fhan.models.R4.Dosage import *
-from fhan.models.R4.Extension import *
+from fhan.models.R4.Reference import *
+from fhan.models.R4.Resource import *
+from fhan.models.R4.RelatedArtifact import *
 from fhan.models.R4.HumanName import *
-from fhan.models.R4.Signature import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.Meta import *
+from fhan.models.R4.TriggerDefinition import *
+from fhan.models.R4.Money import *
+from fhan.models.R4.Ratio import *
+from fhan.models.R4.Timing import *
+from fhan.models.R4.Contributor import *
+from fhan.models.R4.ContactPoint import *
+from fhan.models.R4.Extension import *
+from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Count import *
+from fhan.models.R4.Annotation import *
+from fhan.models.R4.Dosage import *
 from fhan.models.R4.SampledData import *
-from fhan.models.R4.Period import *
 from fhan.models.R4.Expression import *
+from fhan.models.R4.Distance import *
+from fhan.models.R4.Address import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Attachment import *
+from fhan.models.R4.Quantity import *
+from fhan.models.R4.UsageContext import *
+from fhan.models.R4.ParameterDefinition import *
+from fhan.models.R4.Age import *
+from fhan.models.R4.Signature import *
+from fhan.models.R4.DataRequirement import *
+from fhan.models.R4.Period import *
+from fhan.models.R4.ContactDetail import *
+from fhan.models.R4.Coding import *
+from fhan.models.R4.Range import *
+from fhan.models.R4.Narrative import *
 from fhan.models.R4.DomainResource import *
 
 
@@ -69,13 +69,111 @@ class Input(ModelBase):
     :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param 'CodeableConcept' type: Label for the input
     :param str valueBase64Binary: Content to use in performing the task
+    :param bool valueBoolean: Content to use in performing the task
+    :param str valueCanonical: Content to use in performing the task
+    :param str valueCode: Content to use in performing the task
+    :param str valueDate: Content to use in performing the task
+    :param str valueDateTime: Content to use in performing the task
+    :param float valueDecimal: Content to use in performing the task
+    :param str valueId: Content to use in performing the task
+    :param str valueInstant: Content to use in performing the task
+    :param int valueInteger: Content to use in performing the task
+    :param str valueMarkdown: Content to use in performing the task
+    :param str valueOid: Content to use in performing the task
+    :param int valuePositiveInt: Content to use in performing the task
+    :param str valueString: Content to use in performing the task
+    :param str valueTime: Content to use in performing the task
+    :param int valueUnsignedInt: Content to use in performing the task
+    :param str valueUri: Content to use in performing the task
+    :param str valueUrl: Content to use in performing the task
+    :param str valueUuid: Content to use in performing the task
+    :param 'Address' valueAddress: Content to use in performing the task
+    :param 'Age' valueAge: Content to use in performing the task
+    :param 'Annotation' valueAnnotation: Content to use in performing the task
+    :param 'Attachment' valueAttachment: Content to use in performing the task
+    :param 'CodeableConcept' valueCodeableConcept: Content to use in performing the task
+    :param 'Coding' valueCoding: Content to use in performing the task
+    :param 'ContactPoint' valueContactPoint: Content to use in performing the task
+    :param 'Count' valueCount: Content to use in performing the task
+    :param 'Distance' valueDistance: Content to use in performing the task
+    :param 'Duration' valueDuration: Content to use in performing the task
+    :param 'HumanName' valueHumanName: Content to use in performing the task
+    :param 'Identifier' valueIdentifier: Content to use in performing the task
+    :param 'Money' valueMoney: Content to use in performing the task
+    :param 'Period' valuePeriod: Content to use in performing the task
+    :param 'Quantity' valueQuantity: Content to use in performing the task
+    :param 'Range' valueRange: Content to use in performing the task
+    :param 'Ratio' valueRatio: Content to use in performing the task
+    :param 'Reference' valueReference: Content to use in performing the task
+    :param 'SampledData' valueSampledData: Content to use in performing the task
+    :param 'Signature' valueSignature: Content to use in performing the task
+    :param 'Timing' valueTiming: Content to use in performing the task
+    :param 'ContactDetail' valueContactDetail: Content to use in performing the task
+    :param 'Contributor' valueContributor: Content to use in performing the task
+    :param 'DataRequirement' valueDataRequirement: Content to use in performing the task
+    :param 'Expression' valueExpression: Content to use in performing the task
+    :param 'ParameterDefinition' valueParameterDefinition: Content to use in performing the task
+    :param 'RelatedArtifact' valueRelatedArtifact: Content to use in performing the task
+    :param 'TriggerDefinition' valueTriggerDefinition: Content to use in performing the task
+    :param 'UsageContext' valueUsageContext: Content to use in performing the task
+    :param 'Dosage' valueDosage: Content to use in performing the task
+    :param 'Meta' valueMeta: Content to use in performing the task
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  type: 'CodeableConcept' = None,  valueBase64Binary: str = None, ):
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  type: 'CodeableConcept' = None,  valueBase64Binary: str = None,  valueBoolean: bool = None,  valueCanonical: str = None,  valueCode: str = None,  valueDate: str = None,  valueDateTime: str = None,  valueDecimal: float = None,  valueId: str = None,  valueInstant: str = None,  valueInteger: int = None,  valueMarkdown: str = None,  valueOid: str = None,  valuePositiveInt: int = None,  valueString: str = None,  valueTime: str = None,  valueUnsignedInt: int = None,  valueUri: str = None,  valueUrl: str = None,  valueUuid: str = None,  valueAddress: 'Address' = None,  valueAge: 'Age' = None,  valueAnnotation: 'Annotation' = None,  valueAttachment: 'Attachment' = None,  valueCodeableConcept: 'CodeableConcept' = None,  valueCoding: 'Coding' = None,  valueContactPoint: 'ContactPoint' = None,  valueCount: 'Count' = None,  valueDistance: 'Distance' = None,  valueDuration: 'Duration' = None,  valueHumanName: 'HumanName' = None,  valueIdentifier: 'Identifier' = None,  valueMoney: 'Money' = None,  valuePeriod: 'Period' = None,  valueQuantity: 'Quantity' = None,  valueRange: 'Range' = None,  valueRatio: 'Ratio' = None,  valueReference: 'Reference' = None,  valueSampledData: 'SampledData' = None,  valueSignature: 'Signature' = None,  valueTiming: 'Timing' = None,  valueContactDetail: 'ContactDetail' = None,  valueContributor: 'Contributor' = None,  valueDataRequirement: 'DataRequirement' = None,  valueExpression: 'Expression' = None,  valueParameterDefinition: 'ParameterDefinition' = None,  valueRelatedArtifact: 'RelatedArtifact' = None,  valueTriggerDefinition: 'TriggerDefinition' = None,  valueUsageContext: 'UsageContext' = None,  valueDosage: 'Dosage' = None,  valueMeta: 'Meta' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
         self.type: 'CodeableConcept' = type 
         self.valueBase64Binary: str = valueBase64Binary 
+        self.valueBoolean: bool = valueBoolean 
+        self.valueCanonical: str = valueCanonical 
+        self.valueCode: str = valueCode 
+        self.valueDate: str = valueDate 
+        self.valueDateTime: str = valueDateTime 
+        self.valueDecimal: float = valueDecimal 
+        self.valueId: str = valueId 
+        self.valueInstant: str = valueInstant 
+        self.valueInteger: int = valueInteger 
+        self.valueMarkdown: str = valueMarkdown 
+        self.valueOid: str = valueOid 
+        self.valuePositiveInt: int = valuePositiveInt 
+        self.valueString: str = valueString 
+        self.valueTime: str = valueTime 
+        self.valueUnsignedInt: int = valueUnsignedInt 
+        self.valueUri: str = valueUri 
+        self.valueUrl: str = valueUrl 
+        self.valueUuid: str = valueUuid 
+        self.valueAddress: 'Address' = valueAddress 
+        self.valueAge: 'Age' = valueAge 
+        self.valueAnnotation: 'Annotation' = valueAnnotation 
+        self.valueAttachment: 'Attachment' = valueAttachment 
+        self.valueCodeableConcept: 'CodeableConcept' = valueCodeableConcept 
+        self.valueCoding: 'Coding' = valueCoding 
+        self.valueContactPoint: 'ContactPoint' = valueContactPoint 
+        self.valueCount: 'Count' = valueCount 
+        self.valueDistance: 'Distance' = valueDistance 
+        self.valueDuration: 'Duration' = valueDuration 
+        self.valueHumanName: 'HumanName' = valueHumanName 
+        self.valueIdentifier: 'Identifier' = valueIdentifier 
+        self.valueMoney: 'Money' = valueMoney 
+        self.valuePeriod: 'Period' = valuePeriod 
+        self.valueQuantity: 'Quantity' = valueQuantity 
+        self.valueRange: 'Range' = valueRange 
+        self.valueRatio: 'Ratio' = valueRatio 
+        self.valueReference: 'Reference' = valueReference 
+        self.valueSampledData: 'SampledData' = valueSampledData 
+        self.valueSignature: 'Signature' = valueSignature 
+        self.valueTiming: 'Timing' = valueTiming 
+        self.valueContactDetail: 'ContactDetail' = valueContactDetail 
+        self.valueContributor: 'Contributor' = valueContributor 
+        self.valueDataRequirement: 'DataRequirement' = valueDataRequirement 
+        self.valueExpression: 'Expression' = valueExpression 
+        self.valueParameterDefinition: 'ParameterDefinition' = valueParameterDefinition 
+        self.valueRelatedArtifact: 'RelatedArtifact' = valueRelatedArtifact 
+        self.valueTriggerDefinition: 'TriggerDefinition' = valueTriggerDefinition 
+        self.valueUsageContext: 'UsageContext' = valueUsageContext 
+        self.valueDosage: 'Dosage' = valueDosage 
+        self.valueMeta: 'Meta' = valueMeta 
         
 
     
@@ -87,13 +185,111 @@ class Output(ModelBase):
     :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param 'CodeableConcept' type: Label for output
     :param str valueBase64Binary: Result of output
+    :param bool valueBoolean: Result of output
+    :param str valueCanonical: Result of output
+    :param str valueCode: Result of output
+    :param str valueDate: Result of output
+    :param str valueDateTime: Result of output
+    :param float valueDecimal: Result of output
+    :param str valueId: Result of output
+    :param str valueInstant: Result of output
+    :param int valueInteger: Result of output
+    :param str valueMarkdown: Result of output
+    :param str valueOid: Result of output
+    :param int valuePositiveInt: Result of output
+    :param str valueString: Result of output
+    :param str valueTime: Result of output
+    :param int valueUnsignedInt: Result of output
+    :param str valueUri: Result of output
+    :param str valueUrl: Result of output
+    :param str valueUuid: Result of output
+    :param 'Address' valueAddress: Result of output
+    :param 'Age' valueAge: Result of output
+    :param 'Annotation' valueAnnotation: Result of output
+    :param 'Attachment' valueAttachment: Result of output
+    :param 'CodeableConcept' valueCodeableConcept: Result of output
+    :param 'Coding' valueCoding: Result of output
+    :param 'ContactPoint' valueContactPoint: Result of output
+    :param 'Count' valueCount: Result of output
+    :param 'Distance' valueDistance: Result of output
+    :param 'Duration' valueDuration: Result of output
+    :param 'HumanName' valueHumanName: Result of output
+    :param 'Identifier' valueIdentifier: Result of output
+    :param 'Money' valueMoney: Result of output
+    :param 'Period' valuePeriod: Result of output
+    :param 'Quantity' valueQuantity: Result of output
+    :param 'Range' valueRange: Result of output
+    :param 'Ratio' valueRatio: Result of output
+    :param 'Reference' valueReference: Result of output
+    :param 'SampledData' valueSampledData: Result of output
+    :param 'Signature' valueSignature: Result of output
+    :param 'Timing' valueTiming: Result of output
+    :param 'ContactDetail' valueContactDetail: Result of output
+    :param 'Contributor' valueContributor: Result of output
+    :param 'DataRequirement' valueDataRequirement: Result of output
+    :param 'Expression' valueExpression: Result of output
+    :param 'ParameterDefinition' valueParameterDefinition: Result of output
+    :param 'RelatedArtifact' valueRelatedArtifact: Result of output
+    :param 'TriggerDefinition' valueTriggerDefinition: Result of output
+    :param 'UsageContext' valueUsageContext: Result of output
+    :param 'Dosage' valueDosage: Result of output
+    :param 'Meta' valueMeta: Result of output
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  type: 'CodeableConcept' = None,  valueBase64Binary: str = None, ):
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  type: 'CodeableConcept' = None,  valueBase64Binary: str = None,  valueBoolean: bool = None,  valueCanonical: str = None,  valueCode: str = None,  valueDate: str = None,  valueDateTime: str = None,  valueDecimal: float = None,  valueId: str = None,  valueInstant: str = None,  valueInteger: int = None,  valueMarkdown: str = None,  valueOid: str = None,  valuePositiveInt: int = None,  valueString: str = None,  valueTime: str = None,  valueUnsignedInt: int = None,  valueUri: str = None,  valueUrl: str = None,  valueUuid: str = None,  valueAddress: 'Address' = None,  valueAge: 'Age' = None,  valueAnnotation: 'Annotation' = None,  valueAttachment: 'Attachment' = None,  valueCodeableConcept: 'CodeableConcept' = None,  valueCoding: 'Coding' = None,  valueContactPoint: 'ContactPoint' = None,  valueCount: 'Count' = None,  valueDistance: 'Distance' = None,  valueDuration: 'Duration' = None,  valueHumanName: 'HumanName' = None,  valueIdentifier: 'Identifier' = None,  valueMoney: 'Money' = None,  valuePeriod: 'Period' = None,  valueQuantity: 'Quantity' = None,  valueRange: 'Range' = None,  valueRatio: 'Ratio' = None,  valueReference: 'Reference' = None,  valueSampledData: 'SampledData' = None,  valueSignature: 'Signature' = None,  valueTiming: 'Timing' = None,  valueContactDetail: 'ContactDetail' = None,  valueContributor: 'Contributor' = None,  valueDataRequirement: 'DataRequirement' = None,  valueExpression: 'Expression' = None,  valueParameterDefinition: 'ParameterDefinition' = None,  valueRelatedArtifact: 'RelatedArtifact' = None,  valueTriggerDefinition: 'TriggerDefinition' = None,  valueUsageContext: 'UsageContext' = None,  valueDosage: 'Dosage' = None,  valueMeta: 'Meta' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
         self.type: 'CodeableConcept' = type 
         self.valueBase64Binary: str = valueBase64Binary 
+        self.valueBoolean: bool = valueBoolean 
+        self.valueCanonical: str = valueCanonical 
+        self.valueCode: str = valueCode 
+        self.valueDate: str = valueDate 
+        self.valueDateTime: str = valueDateTime 
+        self.valueDecimal: float = valueDecimal 
+        self.valueId: str = valueId 
+        self.valueInstant: str = valueInstant 
+        self.valueInteger: int = valueInteger 
+        self.valueMarkdown: str = valueMarkdown 
+        self.valueOid: str = valueOid 
+        self.valuePositiveInt: int = valuePositiveInt 
+        self.valueString: str = valueString 
+        self.valueTime: str = valueTime 
+        self.valueUnsignedInt: int = valueUnsignedInt 
+        self.valueUri: str = valueUri 
+        self.valueUrl: str = valueUrl 
+        self.valueUuid: str = valueUuid 
+        self.valueAddress: 'Address' = valueAddress 
+        self.valueAge: 'Age' = valueAge 
+        self.valueAnnotation: 'Annotation' = valueAnnotation 
+        self.valueAttachment: 'Attachment' = valueAttachment 
+        self.valueCodeableConcept: 'CodeableConcept' = valueCodeableConcept 
+        self.valueCoding: 'Coding' = valueCoding 
+        self.valueContactPoint: 'ContactPoint' = valueContactPoint 
+        self.valueCount: 'Count' = valueCount 
+        self.valueDistance: 'Distance' = valueDistance 
+        self.valueDuration: 'Duration' = valueDuration 
+        self.valueHumanName: 'HumanName' = valueHumanName 
+        self.valueIdentifier: 'Identifier' = valueIdentifier 
+        self.valueMoney: 'Money' = valueMoney 
+        self.valuePeriod: 'Period' = valuePeriod 
+        self.valueQuantity: 'Quantity' = valueQuantity 
+        self.valueRange: 'Range' = valueRange 
+        self.valueRatio: 'Ratio' = valueRatio 
+        self.valueReference: 'Reference' = valueReference 
+        self.valueSampledData: 'SampledData' = valueSampledData 
+        self.valueSignature: 'Signature' = valueSignature 
+        self.valueTiming: 'Timing' = valueTiming 
+        self.valueContactDetail: 'ContactDetail' = valueContactDetail 
+        self.valueContributor: 'Contributor' = valueContributor 
+        self.valueDataRequirement: 'DataRequirement' = valueDataRequirement 
+        self.valueExpression: 'Expression' = valueExpression 
+        self.valueParameterDefinition: 'ParameterDefinition' = valueParameterDefinition 
+        self.valueRelatedArtifact: 'RelatedArtifact' = valueRelatedArtifact 
+        self.valueTriggerDefinition: 'TriggerDefinition' = valueTriggerDefinition 
+        self.valueUsageContext: 'UsageContext' = valueUsageContext 
+        self.valueDosage: 'Dosage' = valueDosage 
+        self.valueMeta: 'Meta' = valueMeta 
         
 
 class Task(DomainResource):

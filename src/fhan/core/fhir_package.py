@@ -2,12 +2,52 @@ import logging
 from typing import BinaryIO, Iterator, Literal, Tuple
 import json
 import tarfile
+import requests
+import io
+
+from fhan.core.settings import BaseSettings
+
 
 logger = logging.getLogger(__name__)
 
 
+class FhirPackageLoader:
+    """Loads a FHIR package from a `.tar.gz` or `.tgz` file following NPM conventions."""
+
+    def __init__(self):
+        pass
+
+    def load_package(
+        self,
+        url: str = None,
+        version: Literal["R4", "R4B", "R5"] = None,
+    ):
+        """Loads a FHIR package for a specified FHIR version."""
+        if not url and not version:
+            raise ValueError("Either version or url must be specified.")
+        if url:
+            url = url
+        elif version:
+            version_urls = BaseSettings.fhir_version_package_urls
+            if version not in version_urls:
+                raise ValueError(
+                    f"Unsupported version: {version}. Supported versions: {version_urls.keys()}"
+                )
+            url = version_urls[version]
+        return self._load_package_from_npm(url, name=version)
+
+    def _load_package_from_npm(self, url: str, name: str = None):
+        """Loads a FHIR npm package from an URL."""
+        with requests.get(url, stream=True) as res:
+            res.raise_for_status()
+            package_bytes = res.content
+            package_buffer = io.BytesIO(package_bytes)
+        return FhirPackage.from_npm_file(npm_file=package_buffer, name=name)
+
+
 class FhirPackage:
-    """Represents a FHIR package."""
+    """Represents a FHIR package. In case a FHIR base version is loaded,
+    the name should be equivalent to the FHIR version (e.g. "R4")."""
 
     def __init__(
         self,
@@ -15,14 +55,16 @@ class FhirPackage:
         search_parameters: list[dict],
         structure_definitions: list[dict],
         value_sets: list[dict],
+        name: str = None,
     ):
         self._code_systems = code_systems
         self._search_parameters = search_parameters
         self._structure_definitions = structure_definitions
         self._value_sets = value_sets
+        self.name = name
 
     @classmethod
-    def from_npm(cls, npm_file: BinaryIO):
+    def from_npm_file(cls, npm_file: BinaryIO, name: str = None):
         """Loads a FHIR package from a `.tar.gz` or `.tgz` file following NPM conventions."""
         code_systems = []
         search_parameters = []
@@ -43,7 +85,9 @@ class FhirPackage:
                 # logger.info("Skipping file: %s.", filename)
                 continue
 
-        return cls(code_systems, search_parameters, structure_definitions, value_sets)
+        return cls(
+            code_systems, search_parameters, structure_definitions, value_sets, name
+        )
 
     @property
     def resource_structure_definitions(self):

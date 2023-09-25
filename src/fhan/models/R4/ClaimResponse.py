@@ -1,20 +1,20 @@
 """
 Generated class for ClaimResponse. 
-Time: 2023-09-24 21:52:32
+Time: 2023-09-25 14:53:18
 """
-from fhan.models.R4.Period import *
 from fhan.models.R4.Reference import *
-from fhan.models.R4.Address import *
 from fhan.models.R4.Resource import *
-from fhan.models.R4.Attachment import *
-from fhan.models.R4.Money import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Period import *
+from fhan.models.R4.Extension import *
+from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Identifier import *
+from fhan.models.R4.Address import *
+from fhan.models.R4.Attachment import *
 from fhan.models.R4.Meta import *
 from fhan.models.R4.Quantity import *
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Extension import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Money import *
 from fhan.models.R4.DomainResource import *
 
 
@@ -187,7 +187,10 @@ class AddItem(ModelBase):
     :param list['CodeableConcept'] modifier: Service/Product billing modifiers
     :param list['CodeableConcept'] programCode: Program the product or service is provided under
     :param str servicedDate: Date or dates of service or product delivery
+    :param 'Period' servicedPeriod: Date or dates of service or product delivery
     :param 'CodeableConcept' locationCodeableConcept: Place of service or where product was supplied
+    :param 'Address' locationAddress: Place of service or where product was supplied
+    :param 'Reference' locationReference: Place of service or where product was supplied
     :param 'Quantity' quantity: Count of products or services
     :param 'Money' unitPrice: Fee, charge or cost per item
     :param float factor: Price scaling factor
@@ -197,7 +200,7 @@ class AddItem(ModelBase):
     :param int noteNumber: Applicable note numbers
     :param list['Detail'] detail: Insurer added line details
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  itemSequence: int = None,  detailSequence: int = None,  subdetailSequence: int = None,  provider: list['Reference'] = None,  productOrService: 'CodeableConcept' = None,  modifier: list['CodeableConcept'] = None,  programCode: list['CodeableConcept'] = None,  servicedDate: str = None,  locationCodeableConcept: 'CodeableConcept' = None,  quantity: 'Quantity' = None,  unitPrice: 'Money' = None,  factor: float = None,  net: 'Money' = None,  bodySite: 'CodeableConcept' = None,  subSite: list['CodeableConcept'] = None,  noteNumber: int = None,  detail: list['Detail'] = None, ):
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  itemSequence: int = None,  detailSequence: int = None,  subdetailSequence: int = None,  provider: list['Reference'] = None,  productOrService: 'CodeableConcept' = None,  modifier: list['CodeableConcept'] = None,  programCode: list['CodeableConcept'] = None,  servicedDate: str = None,  servicedPeriod: 'Period' = None,  locationCodeableConcept: 'CodeableConcept' = None,  locationAddress: 'Address' = None,  locationReference: 'Reference' = None,  quantity: 'Quantity' = None,  unitPrice: 'Money' = None,  factor: float = None,  net: 'Money' = None,  bodySite: 'CodeableConcept' = None,  subSite: list['CodeableConcept'] = None,  noteNumber: int = None,  detail: list['Detail'] = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -209,7 +212,10 @@ class AddItem(ModelBase):
         self.modifier: list['CodeableConcept'] = modifier or []
         self.programCode: list['CodeableConcept'] = programCode or []
         self.servicedDate: str = servicedDate 
+        self.servicedPeriod: 'Period' = servicedPeriod 
         self.locationCodeableConcept: 'CodeableConcept' = locationCodeableConcept 
+        self.locationAddress: 'Address' = locationAddress 
+        self.locationReference: 'Reference' = locationReference 
         self.quantity: 'Quantity' = quantity 
         self.unitPrice: 'Money' = unitPrice 
         self.factor: float = factor 

@@ -1,19 +1,19 @@
 """
 Generated class for MedicationAdministration. 
-Time: 2023-09-24 21:52:32
+Time: 2023-09-25 14:53:18
 """
-from fhan.models.R4.Period import *
 from fhan.models.R4.Reference import *
 from fhan.models.R4.Resource import *
+from fhan.models.R4.Period import *
+from fhan.models.R4.Extension import *
+from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Annotation import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.BackboneElement import *
 from fhan.models.R4.Identifier import *
 from fhan.models.R4.Meta import *
 from fhan.models.R4.Quantity import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Narrative import *
 from fhan.models.R4.Ratio import *
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Extension import *
 from fhan.models.R4.DomainResource import *
 
 
@@ -48,8 +48,9 @@ class Dosage(ModelBase):
     :param 'CodeableConcept' method: How drug was administered
     :param 'Quantity' dose: Amount of medication per dose
     :param 'Ratio' rateRatio: Dose quantity per unit of time
+    :param 'Quantity' rateQuantity: Dose quantity per unit of time
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  text: str = None,  site: 'CodeableConcept' = None,  route: 'CodeableConcept' = None,  method: 'CodeableConcept' = None,  dose: 'Quantity' = None,  rateRatio: 'Ratio' = None, ):
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  text: str = None,  site: 'CodeableConcept' = None,  route: 'CodeableConcept' = None,  method: 'CodeableConcept' = None,  dose: 'Quantity' = None,  rateRatio: 'Ratio' = None,  rateQuantity: 'Quantity' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -59,6 +60,7 @@ class Dosage(ModelBase):
         self.method: 'CodeableConcept' = method 
         self.dose: 'Quantity' = dose 
         self.rateRatio: 'Ratio' = rateRatio 
+        self.rateQuantity: 'Quantity' = rateQuantity 
         
 
 class MedicationAdministration(DomainResource):
@@ -78,10 +80,12 @@ class MedicationAdministration(DomainResource):
     :param list['CodeableConcept'] statusReason: Reason administration not performed
     :param 'CodeableConcept' category: Type of medication usage
     :param 'CodeableConcept' medicationCodeableConcept: What was administered
+    :param 'Reference' medicationReference: What was administered
     :param 'Reference' subject: Who received medication
     :param 'Reference' context: Encounter or Episode of Care administered as part of
     :param list['Reference'] supportingInformation: Additional information to support administration
     :param str effectiveDateTime: Start and end time of administration
+    :param 'Period' effectivePeriod: Start and end time of administration
     :param list['Performer'] performer: Who performed the medication administration and what they did
     :param list['CodeableConcept'] reasonCode: Reason administration performed
     :param list['Reference'] reasonReference: Condition or observation that supports why the medication was administered
@@ -91,7 +95,7 @@ class MedicationAdministration(DomainResource):
     :param 'Dosage' dosage: Details of how medication was taken
     :param list['Reference'] eventHistory: A list of events of interest in the lifecycle
     """
-    def __init__(self, resourceType: str = "MedicationAdministration",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  identifier: list['Identifier'] = None,  instantiates: str = None,  partOf: list['Reference'] = None,  status: str = None,  statusReason: list['CodeableConcept'] = None,  category: 'CodeableConcept' = None,  medicationCodeableConcept: 'CodeableConcept' = None,  subject: 'Reference' = None,  context: 'Reference' = None,  supportingInformation: list['Reference'] = None,  effectiveDateTime: str = None,  performer: list['Performer'] = None,  reasonCode: list['CodeableConcept'] = None,  reasonReference: list['Reference'] = None,  request: 'Reference' = None,  device: list['Reference'] = None,  note: list['Annotation'] = None,  dosage: 'Dosage' = None,  eventHistory: list['Reference'] = None, ):
+    def __init__(self, resourceType: str = "MedicationAdministration",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  identifier: list['Identifier'] = None,  instantiates: str = None,  partOf: list['Reference'] = None,  status: str = None,  statusReason: list['CodeableConcept'] = None,  category: 'CodeableConcept' = None,  medicationCodeableConcept: 'CodeableConcept' = None,  medicationReference: 'Reference' = None,  subject: 'Reference' = None,  context: 'Reference' = None,  supportingInformation: list['Reference'] = None,  effectiveDateTime: str = None,  effectivePeriod: 'Period' = None,  performer: list['Performer'] = None,  reasonCode: list['CodeableConcept'] = None,  reasonReference: list['Reference'] = None,  request: 'Reference' = None,  device: list['Reference'] = None,  note: list['Annotation'] = None,  dosage: 'Dosage' = None,  eventHistory: list['Reference'] = None, ):
         self.resourceType: str = resourceType or "MedicationAdministration"
         self.id: str = id 
         self.meta: 'Meta' = meta 
@@ -108,10 +112,12 @@ class MedicationAdministration(DomainResource):
         self.statusReason: list['CodeableConcept'] = statusReason or []
         self.category: 'CodeableConcept' = category 
         self.medicationCodeableConcept: 'CodeableConcept' = medicationCodeableConcept 
+        self.medicationReference: 'Reference' = medicationReference 
         self.subject: 'Reference' = subject 
         self.context: 'Reference' = context 
         self.supportingInformation: list['Reference'] = supportingInformation or []
         self.effectiveDateTime: str = effectiveDateTime 
+        self.effectivePeriod: 'Period' = effectivePeriod 
         self.performer: list['Performer'] = performer or []
         self.reasonCode: list['CodeableConcept'] = reasonCode or []
         self.reasonReference: list['Reference'] = reasonReference or []

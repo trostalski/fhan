@@ -1,16 +1,16 @@
 """
 Generated class for AuditEvent. 
-Time: 2023-09-24 21:52:32
+Time: 2023-09-25 14:53:18
 """
 from fhan.models.R4.Reference import *
-from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Resource import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Coding import *
 from fhan.models.R4.Period import *
 from fhan.models.R4.Extension import *
+from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Coding import *
+from fhan.models.R4.Meta import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Narrative import *
 from fhan.models.R4.DomainResource import *
 
 
@@ -102,13 +102,15 @@ class Detail(ModelBase):
     :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str type: Name of the property
     :param str valueString: Property value
+    :param str valueBase64Binary: Property value
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  type: str = None,  valueString: str = None, ):
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  type: str = None,  valueString: str = None,  valueBase64Binary: str = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
         self.type: str = type 
         self.valueString: str = valueString 
+        self.valueBase64Binary: str = valueBase64Binary 
         
 
   
@@ -145,7 +147,7 @@ class Entity(ModelBase):
         
 
 class AuditEvent(DomainResource):
-    """ Defines the elements to be supported within the AuditEvent resource in order to conform with the Electronic Health Record System Functional Model Record Lifecycle Event standard
+    """ A record of an event made for purposes of maintaining a security log. Typical uses include detection of intrusion attempts and monitoring for inappropriate usage.
     :param str id: Logical id of this artifact
     :param 'Meta' meta: Metadata about the resource
     :param str implicitRules: A set of rules under which this content was created

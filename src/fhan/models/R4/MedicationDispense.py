@@ -1,18 +1,18 @@
 """
 Generated class for MedicationDispense. 
-Time: 2023-09-24 21:52:32
+Time: 2023-09-25 14:53:18
 """
 from fhan.models.R4.Reference import *
 from fhan.models.R4.Resource import *
+from fhan.models.R4.Extension import *
+from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Dosage import *
 from fhan.models.R4.Annotation import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.BackboneElement import *
 from fhan.models.R4.Identifier import *
 from fhan.models.R4.Meta import *
 from fhan.models.R4.Quantity import *
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Dosage import *
-from fhan.models.R4.Extension import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Narrative import *
 from fhan.models.R4.DomainResource import *
 
 
@@ -70,8 +70,10 @@ class MedicationDispense(DomainResource):
     :param list['Reference'] partOf: Event that dispense is part of
     :param str status: preparation | in-progress | cancelled | on-hold | completed | entered-in-error | stopped | declined | unknown
     :param 'CodeableConcept' statusReasonCodeableConcept: Why a dispense was not performed
+    :param 'Reference' statusReasonReference: Why a dispense was not performed
     :param 'CodeableConcept' category: Type of medication dispense
     :param 'CodeableConcept' medicationCodeableConcept: What medication was supplied
+    :param 'Reference' medicationReference: What medication was supplied
     :param 'Reference' subject: Who the dispense is for
     :param 'Reference' context: Encounter / Episode associated with event
     :param list['Reference'] supportingInformation: Information that supports the dispensing of the medication
@@ -91,7 +93,7 @@ class MedicationDispense(DomainResource):
     :param list['Reference'] detectedIssue: Clinical issue with action
     :param list['Reference'] eventHistory: A list of relevant lifecycle events
     """
-    def __init__(self, resourceType: str = "MedicationDispense",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  identifier: list['Identifier'] = None,  partOf: list['Reference'] = None,  status: str = None,  statusReasonCodeableConcept: 'CodeableConcept' = None,  category: 'CodeableConcept' = None,  medicationCodeableConcept: 'CodeableConcept' = None,  subject: 'Reference' = None,  context: 'Reference' = None,  supportingInformation: list['Reference'] = None,  performer: list['Performer'] = None,  location: 'Reference' = None,  authorizingPrescription: list['Reference'] = None,  type: 'CodeableConcept' = None,  quantity: 'Quantity' = None,  daysSupply: 'Quantity' = None,  whenPrepared: str = None,  whenHandedOver: str = None,  destination: 'Reference' = None,  receiver: list['Reference'] = None,  note: list['Annotation'] = None,  dosageInstruction: list['Dosage'] = None,  substitution: 'Substitution' = None,  detectedIssue: list['Reference'] = None,  eventHistory: list['Reference'] = None, ):
+    def __init__(self, resourceType: str = "MedicationDispense",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  identifier: list['Identifier'] = None,  partOf: list['Reference'] = None,  status: str = None,  statusReasonCodeableConcept: 'CodeableConcept' = None,  statusReasonReference: 'Reference' = None,  category: 'CodeableConcept' = None,  medicationCodeableConcept: 'CodeableConcept' = None,  medicationReference: 'Reference' = None,  subject: 'Reference' = None,  context: 'Reference' = None,  supportingInformation: list['Reference'] = None,  performer: list['Performer'] = None,  location: 'Reference' = None,  authorizingPrescription: list['Reference'] = None,  type: 'CodeableConcept' = None,  quantity: 'Quantity' = None,  daysSupply: 'Quantity' = None,  whenPrepared: str = None,  whenHandedOver: str = None,  destination: 'Reference' = None,  receiver: list['Reference'] = None,  note: list['Annotation'] = None,  dosageInstruction: list['Dosage'] = None,  substitution: 'Substitution' = None,  detectedIssue: list['Reference'] = None,  eventHistory: list['Reference'] = None, ):
         self.resourceType: str = resourceType or "MedicationDispense"
         self.id: str = id 
         self.meta: 'Meta' = meta 
@@ -105,8 +107,10 @@ class MedicationDispense(DomainResource):
         self.partOf: list['Reference'] = partOf or []
         self.status: str = status 
         self.statusReasonCodeableConcept: 'CodeableConcept' = statusReasonCodeableConcept 
+        self.statusReasonReference: 'Reference' = statusReasonReference 
         self.category: 'CodeableConcept' = category 
         self.medicationCodeableConcept: 'CodeableConcept' = medicationCodeableConcept 
+        self.medicationReference: 'Reference' = medicationReference 
         self.subject: 'Reference' = subject 
         self.context: 'Reference' = context 
         self.supportingInformation: list['Reference'] = supportingInformation or []

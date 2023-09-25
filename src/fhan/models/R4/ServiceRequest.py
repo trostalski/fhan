@@ -1,20 +1,20 @@
 """
 Generated class for ServiceRequest. 
-Time: 2023-09-24 21:52:32
+Time: 2023-09-25 14:53:18
 """
-from fhan.models.R4.Period import *
 from fhan.models.R4.Reference import *
-from fhan.models.R4.Range import *
 from fhan.models.R4.Resource import *
+from fhan.models.R4.Period import *
+from fhan.models.R4.Extension import *
+from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Annotation import *
-from fhan.models.R4.Narrative import *
 from fhan.models.R4.Identifier import *
+from fhan.models.R4.Range import *
 from fhan.models.R4.Meta import *
 from fhan.models.R4.Quantity import *
+from fhan.models.R4.Narrative import *
 from fhan.models.R4.Ratio import *
 from fhan.models.R4.Timing import *
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Extension import *
 from fhan.models.R4.DomainResource import *
 
 
@@ -42,10 +42,15 @@ class ServiceRequest(DomainResource):
     :param 'CodeableConcept' code: What is being requested/ordered
     :param list['CodeableConcept'] orderDetail: Additional order information
     :param 'Quantity' quantityQuantity: Service amount
+    :param 'Ratio' quantityRatio: Service amount
+    :param 'Range' quantityRange: Service amount
     :param 'Reference' subject: Individual or Entity the service is ordered for
     :param 'Reference' encounter: Encounter in which the request was created
     :param str occurrenceDateTime: When service should occur
+    :param 'Period' occurrencePeriod: When service should occur
+    :param 'Timing' occurrenceTiming: When service should occur
     :param bool asNeededBoolean: Preconditions for service
+    :param 'CodeableConcept' asNeededCodeableConcept: Preconditions for service
     :param str authoredOn: Date request signed
     :param 'Reference' requester: Who/what is requesting service
     :param 'CodeableConcept' performerType: Performer role
@@ -62,7 +67,7 @@ class ServiceRequest(DomainResource):
     :param str patientInstruction: Patient or consumer-oriented instructions
     :param list['Reference'] relevantHistory: Request provenance
     """
-    def __init__(self, resourceType: str = "ServiceRequest",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  identifier: list['Identifier'] = None,  instantiatesCanonical: str = None,  instantiatesUri: str = None,  basedOn: list['Reference'] = None,  replaces: list['Reference'] = None,  requisition: 'Identifier' = None,  status: str = None,  intent: str = None,  category: list['CodeableConcept'] = None,  priority: str = None,  doNotPerform: bool = None,  code: 'CodeableConcept' = None,  orderDetail: list['CodeableConcept'] = None,  quantityQuantity: 'Quantity' = None,  subject: 'Reference' = None,  encounter: 'Reference' = None,  occurrenceDateTime: str = None,  asNeededBoolean: bool = None,  authoredOn: str = None,  requester: 'Reference' = None,  performerType: 'CodeableConcept' = None,  performer: list['Reference'] = None,  locationCode: list['CodeableConcept'] = None,  locationReference: list['Reference'] = None,  reasonCode: list['CodeableConcept'] = None,  reasonReference: list['Reference'] = None,  insurance: list['Reference'] = None,  supportingInfo: list['Reference'] = None,  specimen: list['Reference'] = None,  bodySite: list['CodeableConcept'] = None,  note: list['Annotation'] = None,  patientInstruction: str = None,  relevantHistory: list['Reference'] = None, ):
+    def __init__(self, resourceType: str = "ServiceRequest",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  identifier: list['Identifier'] = None,  instantiatesCanonical: str = None,  instantiatesUri: str = None,  basedOn: list['Reference'] = None,  replaces: list['Reference'] = None,  requisition: 'Identifier' = None,  status: str = None,  intent: str = None,  category: list['CodeableConcept'] = None,  priority: str = None,  doNotPerform: bool = None,  code: 'CodeableConcept' = None,  orderDetail: list['CodeableConcept'] = None,  quantityQuantity: 'Quantity' = None,  quantityRatio: 'Ratio' = None,  quantityRange: 'Range' = None,  subject: 'Reference' = None,  encounter: 'Reference' = None,  occurrenceDateTime: str = None,  occurrencePeriod: 'Period' = None,  occurrenceTiming: 'Timing' = None,  asNeededBoolean: bool = None,  asNeededCodeableConcept: 'CodeableConcept' = None,  authoredOn: str = None,  requester: 'Reference' = None,  performerType: 'CodeableConcept' = None,  performer: list['Reference'] = None,  locationCode: list['CodeableConcept'] = None,  locationReference: list['Reference'] = None,  reasonCode: list['CodeableConcept'] = None,  reasonReference: list['Reference'] = None,  insurance: list['Reference'] = None,  supportingInfo: list['Reference'] = None,  specimen: list['Reference'] = None,  bodySite: list['CodeableConcept'] = None,  note: list['Annotation'] = None,  patientInstruction: str = None,  relevantHistory: list['Reference'] = None, ):
         self.resourceType: str = resourceType or "ServiceRequest"
         self.id: str = id 
         self.meta: 'Meta' = meta 
@@ -86,10 +91,15 @@ class ServiceRequest(DomainResource):
         self.code: 'CodeableConcept' = code 
         self.orderDetail: list['CodeableConcept'] = orderDetail or []
         self.quantityQuantity: 'Quantity' = quantityQuantity 
+        self.quantityRatio: 'Ratio' = quantityRatio 
+        self.quantityRange: 'Range' = quantityRange 
         self.subject: 'Reference' = subject 
         self.encounter: 'Reference' = encounter 
         self.occurrenceDateTime: str = occurrenceDateTime 
+        self.occurrencePeriod: 'Period' = occurrencePeriod 
+        self.occurrenceTiming: 'Timing' = occurrenceTiming 
         self.asNeededBoolean: bool = asNeededBoolean 
+        self.asNeededCodeableConcept: 'CodeableConcept' = asNeededCodeableConcept 
         self.authoredOn: str = authoredOn 
         self.requester: 'Reference' = requester 
         self.performerType: 'CodeableConcept' = performerType 

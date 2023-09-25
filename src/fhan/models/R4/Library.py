@@ -1,26 +1,26 @@
 """
 Generated class for Library. 
-Time: 2023-09-24 21:52:32
+Time: 2023-09-25 14:53:18
 """
-from fhan.models.R4.UsageContext import *
-from fhan.models.R4.Period import *
 from fhan.models.R4.Reference import *
+from fhan.models.R4.ParameterDefinition import *
+from fhan.models.R4.Resource import *
 from fhan.models.R4.RelatedArtifact import *
 from fhan.models.R4.DataRequirement import *
-from fhan.models.R4.Resource import *
-from fhan.models.R4.ParameterDefinition import *
 from fhan.models.R4.ContactDetail import *
-from fhan.models.R4.Attachment import *
-from fhan.models.R4.Narrative import *
+from fhan.models.R4.Extension import *
+from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Period import *
 from fhan.models.R4.Identifier import *
 from fhan.models.R4.Meta import *
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Extension import *
+from fhan.models.R4.Attachment import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.UsageContext import *
 from fhan.models.R4.DomainResource import *
 
 
 class Library(DomainResource):
-    """ Enforces the minimum information set for the library metadata required by HL7 and other organizations that share and publish libraries
+    """ The Library resource is a general-purpose container for knowledge asset definitions. It can be used to describe and expose existing knowledge assets such as logic libraries and information model descriptions, as well as to describe a collection of knowledge assets.
     :param str id: Logical id of this artifact
     :param 'Meta' meta: Metadata about the resource
     :param str implicitRules: A set of rules under which this content was created
@@ -39,6 +39,7 @@ class Library(DomainResource):
     :param bool experimental: For testing purposes, not real usage
     :param 'CodeableConcept' type: logic-library | model-definition | asset-collection | module-definition
     :param 'CodeableConcept' subjectCodeableConcept: Type of individual the library content is focused on
+    :param 'Reference' subjectReference: Type of individual the library content is focused on
     :param str date: Date last changed
     :param str publisher: Name of the publisher (organization or individual)
     :param list['ContactDetail'] contact: Contact details for the publisher
@@ -61,7 +62,7 @@ class Library(DomainResource):
     :param list['DataRequirement'] dataRequirement: What data is referenced by this library
     :param list['Attachment'] content: Contents of the library, either embedded or referenced
     """
-    def __init__(self, resourceType: str = "Library",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  url: str = None,  identifier: list['Identifier'] = None,  version: str = None,  name: str = None,  title: str = None,  subtitle: str = None,  status: str = None,  experimental: bool = None,  type: 'CodeableConcept' = None,  subjectCodeableConcept: 'CodeableConcept' = None,  date: str = None,  publisher: str = None,  contact: list['ContactDetail'] = None,  description: str = None,  useContext: list['UsageContext'] = None,  jurisdiction: list['CodeableConcept'] = None,  purpose: str = None,  usage: str = None,  copyright: str = None,  approvalDate: str = None,  lastReviewDate: str = None,  effectivePeriod: 'Period' = None,  topic: list['CodeableConcept'] = None,  author: list['ContactDetail'] = None,  editor: list['ContactDetail'] = None,  reviewer: list['ContactDetail'] = None,  endorser: list['ContactDetail'] = None,  relatedArtifact: list['RelatedArtifact'] = None,  parameter: list['ParameterDefinition'] = None,  dataRequirement: list['DataRequirement'] = None,  content: list['Attachment'] = None, ):
+    def __init__(self, resourceType: str = "Library",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  url: str = None,  identifier: list['Identifier'] = None,  version: str = None,  name: str = None,  title: str = None,  subtitle: str = None,  status: str = None,  experimental: bool = None,  type: 'CodeableConcept' = None,  subjectCodeableConcept: 'CodeableConcept' = None,  subjectReference: 'Reference' = None,  date: str = None,  publisher: str = None,  contact: list['ContactDetail'] = None,  description: str = None,  useContext: list['UsageContext'] = None,  jurisdiction: list['CodeableConcept'] = None,  purpose: str = None,  usage: str = None,  copyright: str = None,  approvalDate: str = None,  lastReviewDate: str = None,  effectivePeriod: 'Period' = None,  topic: list['CodeableConcept'] = None,  author: list['ContactDetail'] = None,  editor: list['ContactDetail'] = None,  reviewer: list['ContactDetail'] = None,  endorser: list['ContactDetail'] = None,  relatedArtifact: list['RelatedArtifact'] = None,  parameter: list['ParameterDefinition'] = None,  dataRequirement: list['DataRequirement'] = None,  content: list['Attachment'] = None, ):
         self.resourceType: str = resourceType or "Library"
         self.id: str = id 
         self.meta: 'Meta' = meta 
@@ -81,6 +82,7 @@ class Library(DomainResource):
         self.experimental: bool = experimental 
         self.type: 'CodeableConcept' = type 
         self.subjectCodeableConcept: 'CodeableConcept' = subjectCodeableConcept 
+        self.subjectReference: 'Reference' = subjectReference 
         self.date: str = date 
         self.publisher: str = publisher 
         self.contact: list['ContactDetail'] = contact or []

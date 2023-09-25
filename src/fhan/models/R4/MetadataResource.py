@@ -1,14 +1,14 @@
 """
 Generated class for MetadataResource. 
-Time: 2023-09-24 21:52:32
+Time: 2023-09-25 14:53:18
 """
-from fhan.models.R4.UsageContext import *
 from fhan.models.R4.Resource import *
 from fhan.models.R4.ContactDetail import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Extension import *
+from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Meta import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.UsageContext import *
 from fhan.models.generator_models import ModelBase
 
 class MetadataResource(ModelBase):

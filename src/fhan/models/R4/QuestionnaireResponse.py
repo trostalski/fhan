@@ -1,17 +1,17 @@
 """
 Generated class for QuestionnaireResponse. 
-Time: 2023-09-24 21:52:32
+Time: 2023-09-25 14:53:18
 """
 from fhan.models.R4.Reference import *
 from fhan.models.R4.Resource import *
-from fhan.models.R4.Attachment import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Identifier import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Quantity import *
-from fhan.models.R4.Coding import *
 from fhan.models.R4.Extension import *
+from fhan.models.R4.Quantity import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.Coding import *
+from fhan.models.R4.Meta import *
+from fhan.models.R4.Attachment import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Narrative import *
 from fhan.models.R4.DomainResource import *
 
 
@@ -25,12 +25,34 @@ class Answer(ModelBase):
     :param list['Extension'] extension: Additional content defined by implementations
     :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param bool valueBoolean: Single-valued answer to the question
+    :param float valueDecimal: Single-valued answer to the question
+    :param int valueInteger: Single-valued answer to the question
+    :param str valueDate: Single-valued answer to the question
+    :param str valueDateTime: Single-valued answer to the question
+    :param str valueTime: Single-valued answer to the question
+    :param str valueString: Single-valued answer to the question
+    :param str valueUri: Single-valued answer to the question
+    :param 'Attachment' valueAttachment: Single-valued answer to the question
+    :param 'Coding' valueCoding: Single-valued answer to the question
+    :param 'Quantity' valueQuantity: Single-valued answer to the question
+    :param 'Reference' valueReference: Single-valued answer to the question
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  valueBoolean: bool = None, ):
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  valueBoolean: bool = None,  valueDecimal: float = None,  valueInteger: int = None,  valueDate: str = None,  valueDateTime: str = None,  valueTime: str = None,  valueString: str = None,  valueUri: str = None,  valueAttachment: 'Attachment' = None,  valueCoding: 'Coding' = None,  valueQuantity: 'Quantity' = None,  valueReference: 'Reference' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
         self.valueBoolean: bool = valueBoolean 
+        self.valueDecimal: float = valueDecimal 
+        self.valueInteger: int = valueInteger 
+        self.valueDate: str = valueDate 
+        self.valueDateTime: str = valueDateTime 
+        self.valueTime: str = valueTime 
+        self.valueString: str = valueString 
+        self.valueUri: str = valueUri 
+        self.valueAttachment: 'Attachment' = valueAttachment 
+        self.valueCoding: 'Coding' = valueCoding 
+        self.valueQuantity: 'Quantity' = valueQuantity 
+        self.valueReference: 'Reference' = valueReference 
         
 
   

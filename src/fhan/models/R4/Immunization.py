@@ -1,17 +1,17 @@
 """
 Generated class for Immunization. 
-Time: 2023-09-24 21:52:32
+Time: 2023-09-25 14:53:18
 """
 from fhan.models.R4.Reference import *
 from fhan.models.R4.Resource import *
+from fhan.models.R4.Extension import *
+from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Annotation import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.BackboneElement import *
 from fhan.models.R4.Identifier import *
 from fhan.models.R4.Meta import *
 from fhan.models.R4.Quantity import *
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Extension import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Narrative import *
 from fhan.models.R4.DomainResource import *
 
 
@@ -86,9 +86,11 @@ class ProtocolApplied(ModelBase):
     :param 'Reference' authority: Who is responsible for publishing the recommendations
     :param list['CodeableConcept'] targetDisease: Vaccine preventatable disease being targetted
     :param int doseNumberPositiveInt: Dose number within series
+    :param str doseNumberString: Dose number within series
     :param int seriesDosesPositiveInt: Recommended number of doses for immunity
+    :param str seriesDosesString: Recommended number of doses for immunity
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  series: str = None,  authority: 'Reference' = None,  targetDisease: list['CodeableConcept'] = None,  doseNumberPositiveInt: int = None,  seriesDosesPositiveInt: int = None, ):
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  series: str = None,  authority: 'Reference' = None,  targetDisease: list['CodeableConcept'] = None,  doseNumberPositiveInt: int = None,  doseNumberString: str = None,  seriesDosesPositiveInt: int = None,  seriesDosesString: str = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -96,7 +98,9 @@ class ProtocolApplied(ModelBase):
         self.authority: 'Reference' = authority 
         self.targetDisease: list['CodeableConcept'] = targetDisease or []
         self.doseNumberPositiveInt: int = doseNumberPositiveInt 
+        self.doseNumberString: str = doseNumberString 
         self.seriesDosesPositiveInt: int = seriesDosesPositiveInt 
+        self.seriesDosesString: str = seriesDosesString 
         
 
 class Immunization(DomainResource):
@@ -116,6 +120,7 @@ class Immunization(DomainResource):
     :param 'Reference' patient: Who was immunized
     :param 'Reference' encounter: Encounter immunization was part of
     :param str occurrenceDateTime: Vaccine administration date
+    :param str occurrenceString: Vaccine administration date
     :param str recorded: When the immunization was first captured in the subject's record
     :param bool primarySource: Indicates context the data was recorded in
     :param 'CodeableConcept' reportOrigin: Indicates the source of a secondarily reported record
@@ -138,7 +143,7 @@ class Immunization(DomainResource):
     :param list['Reaction'] reaction: Details of a reaction that follows immunization
     :param list['ProtocolApplied'] protocolApplied: Protocol followed by the provider
     """
-    def __init__(self, resourceType: str = "Immunization",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  identifier: list['Identifier'] = None,  status: str = None,  statusReason: 'CodeableConcept' = None,  vaccineCode: 'CodeableConcept' = None,  patient: 'Reference' = None,  encounter: 'Reference' = None,  occurrenceDateTime: str = None,  recorded: str = None,  primarySource: bool = None,  reportOrigin: 'CodeableConcept' = None,  location: 'Reference' = None,  manufacturer: 'Reference' = None,  lotNumber: str = None,  expirationDate: str = None,  site: 'CodeableConcept' = None,  route: 'CodeableConcept' = None,  doseQuantity: 'Quantity' = None,  performer: list['Performer'] = None,  note: list['Annotation'] = None,  reasonCode: list['CodeableConcept'] = None,  reasonReference: list['Reference'] = None,  isSubpotent: bool = None,  subpotentReason: list['CodeableConcept'] = None,  education: list['Education'] = None,  programEligibility: list['CodeableConcept'] = None,  fundingSource: 'CodeableConcept' = None,  reaction: list['Reaction'] = None,  protocolApplied: list['ProtocolApplied'] = None, ):
+    def __init__(self, resourceType: str = "Immunization",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  identifier: list['Identifier'] = None,  status: str = None,  statusReason: 'CodeableConcept' = None,  vaccineCode: 'CodeableConcept' = None,  patient: 'Reference' = None,  encounter: 'Reference' = None,  occurrenceDateTime: str = None,  occurrenceString: str = None,  recorded: str = None,  primarySource: bool = None,  reportOrigin: 'CodeableConcept' = None,  location: 'Reference' = None,  manufacturer: 'Reference' = None,  lotNumber: str = None,  expirationDate: str = None,  site: 'CodeableConcept' = None,  route: 'CodeableConcept' = None,  doseQuantity: 'Quantity' = None,  performer: list['Performer'] = None,  note: list['Annotation'] = None,  reasonCode: list['CodeableConcept'] = None,  reasonReference: list['Reference'] = None,  isSubpotent: bool = None,  subpotentReason: list['CodeableConcept'] = None,  education: list['Education'] = None,  programEligibility: list['CodeableConcept'] = None,  fundingSource: 'CodeableConcept' = None,  reaction: list['Reaction'] = None,  protocolApplied: list['ProtocolApplied'] = None, ):
         self.resourceType: str = resourceType or "Immunization"
         self.id: str = id 
         self.meta: 'Meta' = meta 
@@ -155,6 +160,7 @@ class Immunization(DomainResource):
         self.patient: 'Reference' = patient 
         self.encounter: 'Reference' = encounter 
         self.occurrenceDateTime: str = occurrenceDateTime 
+        self.occurrenceString: str = occurrenceString 
         self.recorded: str = recorded 
         self.primarySource: bool = primarySource 
         self.reportOrigin: 'CodeableConcept' = reportOrigin 

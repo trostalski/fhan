@@ -1,20 +1,20 @@
 """
 Generated class for MedicationRequest. 
-Time: 2023-09-24 21:52:32
+Time: 2023-09-25 14:53:18
 """
-from fhan.models.R4.Period import *
+from fhan.models.R4.Duration import *
 from fhan.models.R4.Reference import *
 from fhan.models.R4.Resource import *
-from fhan.models.R4.Annotation import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Identifier import *
-from fhan.models.R4.Duration import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Quantity import *
+from fhan.models.R4.Period import *
+from fhan.models.R4.Extension import *
 from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Dosage import *
-from fhan.models.R4.Extension import *
+from fhan.models.R4.Annotation import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.Meta import *
+from fhan.models.R4.Quantity import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Narrative import *
 from fhan.models.R4.DomainResource import *
 
 
@@ -75,13 +75,15 @@ class Substitution(ModelBase):
     :param list['Extension'] extension: Additional content defined by implementations
     :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param bool allowedBoolean: Whether substitution is allowed or not
+    :param 'CodeableConcept' allowedCodeableConcept: Whether substitution is allowed or not
     :param 'CodeableConcept' reason: Why should (not) substitution be made
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  allowedBoolean: bool = None,  reason: 'CodeableConcept' = None, ):
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  allowedBoolean: bool = None,  allowedCodeableConcept: 'CodeableConcept' = None,  reason: 'CodeableConcept' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
         self.allowedBoolean: bool = allowedBoolean 
+        self.allowedCodeableConcept: 'CodeableConcept' = allowedCodeableConcept 
         self.reason: 'CodeableConcept' = reason 
         
 
@@ -103,7 +105,9 @@ class MedicationRequest(DomainResource):
     :param str priority: routine | urgent | asap | stat
     :param bool doNotPerform: True if request is prohibiting action
     :param bool reportedBoolean: Reported rather than primary record
+    :param 'Reference' reportedReference: Reported rather than primary record
     :param 'CodeableConcept' medicationCodeableConcept: Medication to be taken
+    :param 'Reference' medicationReference: Medication to be taken
     :param 'Reference' subject: Who or group medication request is for
     :param 'Reference' encounter: Encounter created as part of encounter/admission/stay
     :param list['Reference'] supportingInformation: Information to support ordering of the medication
@@ -128,7 +132,7 @@ class MedicationRequest(DomainResource):
     :param list['Reference'] detectedIssue: Clinical Issue with action
     :param list['Reference'] eventHistory: A list of events of interest in the lifecycle
     """
-    def __init__(self, resourceType: str = "MedicationRequest",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  identifier: list['Identifier'] = None,  status: str = None,  statusReason: 'CodeableConcept' = None,  intent: str = None,  category: list['CodeableConcept'] = None,  priority: str = None,  doNotPerform: bool = None,  reportedBoolean: bool = None,  medicationCodeableConcept: 'CodeableConcept' = None,  subject: 'Reference' = None,  encounter: 'Reference' = None,  supportingInformation: list['Reference'] = None,  authoredOn: str = None,  requester: 'Reference' = None,  performer: 'Reference' = None,  performerType: 'CodeableConcept' = None,  recorder: 'Reference' = None,  reasonCode: list['CodeableConcept'] = None,  reasonReference: list['Reference'] = None,  instantiatesCanonical: str = None,  instantiatesUri: str = None,  basedOn: list['Reference'] = None,  groupIdentifier: 'Identifier' = None,  courseOfTherapyType: 'CodeableConcept' = None,  insurance: list['Reference'] = None,  note: list['Annotation'] = None,  dosageInstruction: list['Dosage'] = None,  dispenseRequest: 'DispenseRequest' = None,  substitution: 'Substitution' = None,  priorPrescription: 'Reference' = None,  detectedIssue: list['Reference'] = None,  eventHistory: list['Reference'] = None, ):
+    def __init__(self, resourceType: str = "MedicationRequest",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  identifier: list['Identifier'] = None,  status: str = None,  statusReason: 'CodeableConcept' = None,  intent: str = None,  category: list['CodeableConcept'] = None,  priority: str = None,  doNotPerform: bool = None,  reportedBoolean: bool = None,  reportedReference: 'Reference' = None,  medicationCodeableConcept: 'CodeableConcept' = None,  medicationReference: 'Reference' = None,  subject: 'Reference' = None,  encounter: 'Reference' = None,  supportingInformation: list['Reference'] = None,  authoredOn: str = None,  requester: 'Reference' = None,  performer: 'Reference' = None,  performerType: 'CodeableConcept' = None,  recorder: 'Reference' = None,  reasonCode: list['CodeableConcept'] = None,  reasonReference: list['Reference'] = None,  instantiatesCanonical: str = None,  instantiatesUri: str = None,  basedOn: list['Reference'] = None,  groupIdentifier: 'Identifier' = None,  courseOfTherapyType: 'CodeableConcept' = None,  insurance: list['Reference'] = None,  note: list['Annotation'] = None,  dosageInstruction: list['Dosage'] = None,  dispenseRequest: 'DispenseRequest' = None,  substitution: 'Substitution' = None,  priorPrescription: 'Reference' = None,  detectedIssue: list['Reference'] = None,  eventHistory: list['Reference'] = None, ):
         self.resourceType: str = resourceType or "MedicationRequest"
         self.id: str = id 
         self.meta: 'Meta' = meta 
@@ -146,7 +150,9 @@ class MedicationRequest(DomainResource):
         self.priority: str = priority 
         self.doNotPerform: bool = doNotPerform 
         self.reportedBoolean: bool = reportedBoolean 
+        self.reportedReference: 'Reference' = reportedReference 
         self.medicationCodeableConcept: 'CodeableConcept' = medicationCodeableConcept 
+        self.medicationReference: 'Reference' = medicationReference 
         self.subject: 'Reference' = subject 
         self.encounter: 'Reference' = encounter 
         self.supportingInformation: list['Reference'] = supportingInformation or []

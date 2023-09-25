@@ -1,19 +1,19 @@
 """
 Generated class for MedicationKnowledge. 
-Time: 2023-09-24 21:52:32
+Time: 2023-09-25 14:53:18
 """
+from fhan.models.R4.Duration import *
 from fhan.models.R4.Reference import *
 from fhan.models.R4.Resource import *
 from fhan.models.R4.Money import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Duration import *
+from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Extension import *
+from fhan.models.R4.Dosage import *
 from fhan.models.R4.Meta import *
 from fhan.models.R4.Quantity import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Narrative import *
 from fhan.models.R4.Ratio import *
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Dosage import *
-from fhan.models.R4.Extension import *
 from fhan.models.R4.DomainResource import *
 
 
@@ -61,14 +61,16 @@ class Ingredient(ModelBase):
     :param list['Extension'] extension: Additional content defined by implementations
     :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param 'CodeableConcept' itemCodeableConcept: Medication(s) or substance(s) contained in the medication
+    :param 'Reference' itemReference: Medication(s) or substance(s) contained in the medication
     :param bool isActive: Active ingredient indicator
     :param 'Ratio' strength: Quantity of ingredient present
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  itemCodeableConcept: 'CodeableConcept' = None,  isActive: bool = None,  strength: 'Ratio' = None, ):
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  itemCodeableConcept: 'CodeableConcept' = None,  itemReference: 'Reference' = None,  isActive: bool = None,  strength: 'Ratio' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
         self.itemCodeableConcept: 'CodeableConcept' = itemCodeableConcept 
+        self.itemReference: 'Reference' = itemReference 
         self.isActive: bool = isActive 
         self.strength: 'Ratio' = strength 
         
@@ -139,13 +141,15 @@ class PatientCharacteristics(ModelBase):
     :param list['Extension'] extension: Additional content defined by implementations
     :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param 'CodeableConcept' characteristicCodeableConcept: Specific characteristic that is relevant to the administration guideline
+    :param 'Quantity' characteristicQuantity: Specific characteristic that is relevant to the administration guideline
     :param str value: The specific characteristic
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  characteristicCodeableConcept: 'CodeableConcept' = None,  value: str = None, ):
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  characteristicCodeableConcept: 'CodeableConcept' = None,  characteristicQuantity: 'Quantity' = None,  value: str = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
         self.characteristicCodeableConcept: 'CodeableConcept' = characteristicCodeableConcept 
+        self.characteristicQuantity: 'Quantity' = characteristicQuantity 
         self.value: str = value or []
         
 
@@ -159,14 +163,16 @@ class AdministrationGuidelines(ModelBase):
     :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param list['Dosage'] dosage: Dosage for the medication for the specific guidelines
     :param 'CodeableConcept' indicationCodeableConcept: Indication for use that apply to the specific administration guidelines
+    :param 'Reference' indicationReference: Indication for use that apply to the specific administration guidelines
     :param list['PatientCharacteristics'] patientCharacteristics: Characteristics of the patient that are relevant to the administration guidelines
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  dosage: list['Dosage'] = None,  indicationCodeableConcept: 'CodeableConcept' = None,  patientCharacteristics: list['PatientCharacteristics'] = None, ):
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  dosage: list['Dosage'] = None,  indicationCodeableConcept: 'CodeableConcept' = None,  indicationReference: 'Reference' = None,  patientCharacteristics: list['PatientCharacteristics'] = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
         self.dosage: list['Dosage'] = dosage or []
         self.indicationCodeableConcept: 'CodeableConcept' = indicationCodeableConcept 
+        self.indicationReference: 'Reference' = indicationReference 
         self.patientCharacteristics: list['PatientCharacteristics'] = patientCharacteristics or []
         
 
@@ -215,13 +221,19 @@ class DrugCharacteristic(ModelBase):
     :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param 'CodeableConcept' type: Code specifying the type of characteristic of medication
     :param 'CodeableConcept' valueCodeableConcept: Description of the characteristic
+    :param str valueString: Description of the characteristic
+    :param 'Quantity' valueQuantity: Description of the characteristic
+    :param str valueBase64Binary: Description of the characteristic
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  type: 'CodeableConcept' = None,  valueCodeableConcept: 'CodeableConcept' = None, ):
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  type: 'CodeableConcept' = None,  valueCodeableConcept: 'CodeableConcept' = None,  valueString: str = None,  valueQuantity: 'Quantity' = None,  valueBase64Binary: str = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
         self.type: 'CodeableConcept' = type 
         self.valueCodeableConcept: 'CodeableConcept' = valueCodeableConcept 
+        self.valueString: str = valueString 
+        self.valueQuantity: 'Quantity' = valueQuantity 
+        self.valueBase64Binary: str = valueBase64Binary 
         
 
     

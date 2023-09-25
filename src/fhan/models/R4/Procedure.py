@@ -1,19 +1,19 @@
 """
 Generated class for Procedure. 
-Time: 2023-09-24 21:52:32
+Time: 2023-09-25 14:53:18
 """
-from fhan.models.R4.Period import *
 from fhan.models.R4.Reference import *
-from fhan.models.R4.Range import *
 from fhan.models.R4.Resource import *
-from fhan.models.R4.Annotation import *
-from fhan.models.R4.Narrative import *
 from fhan.models.R4.Age import *
-from fhan.models.R4.Identifier import *
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Period import *
 from fhan.models.R4.Extension import *
+from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Annotation import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.Range import *
+from fhan.models.R4.Meta import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Narrative import *
 from fhan.models.R4.DomainResource import *
 
 
@@ -77,6 +77,10 @@ class Procedure(DomainResource):
     :param 'Reference' subject: Who the procedure was performed on
     :param 'Reference' encounter: Encounter created as part of
     :param str performedDateTime: When the procedure was performed
+    :param 'Period' performedPeriod: When the procedure was performed
+    :param str performedString: When the procedure was performed
+    :param 'Age' performedAge: When the procedure was performed
+    :param 'Range' performedRange: When the procedure was performed
     :param 'Reference' recorder: Who recorded the procedure
     :param 'Reference' asserter: Person who asserts this procedure
     :param list['Performer'] performer: The people who performed the procedure
@@ -94,7 +98,7 @@ class Procedure(DomainResource):
     :param list['Reference'] usedReference: Items used during procedure
     :param list['CodeableConcept'] usedCode: Coded items used during the procedure
     """
-    def __init__(self, resourceType: str = "Procedure",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  identifier: list['Identifier'] = None,  instantiatesCanonical: str = None,  instantiatesUri: str = None,  basedOn: list['Reference'] = None,  partOf: list['Reference'] = None,  status: str = None,  statusReason: 'CodeableConcept' = None,  category: 'CodeableConcept' = None,  code: 'CodeableConcept' = None,  subject: 'Reference' = None,  encounter: 'Reference' = None,  performedDateTime: str = None,  recorder: 'Reference' = None,  asserter: 'Reference' = None,  performer: list['Performer'] = None,  location: 'Reference' = None,  reasonCode: list['CodeableConcept'] = None,  reasonReference: list['Reference'] = None,  bodySite: list['CodeableConcept'] = None,  outcome: 'CodeableConcept' = None,  report: list['Reference'] = None,  complication: list['CodeableConcept'] = None,  complicationDetail: list['Reference'] = None,  followUp: list['CodeableConcept'] = None,  note: list['Annotation'] = None,  focalDevice: list['FocalDevice'] = None,  usedReference: list['Reference'] = None,  usedCode: list['CodeableConcept'] = None, ):
+    def __init__(self, resourceType: str = "Procedure",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  identifier: list['Identifier'] = None,  instantiatesCanonical: str = None,  instantiatesUri: str = None,  basedOn: list['Reference'] = None,  partOf: list['Reference'] = None,  status: str = None,  statusReason: 'CodeableConcept' = None,  category: 'CodeableConcept' = None,  code: 'CodeableConcept' = None,  subject: 'Reference' = None,  encounter: 'Reference' = None,  performedDateTime: str = None,  performedPeriod: 'Period' = None,  performedString: str = None,  performedAge: 'Age' = None,  performedRange: 'Range' = None,  recorder: 'Reference' = None,  asserter: 'Reference' = None,  performer: list['Performer'] = None,  location: 'Reference' = None,  reasonCode: list['CodeableConcept'] = None,  reasonReference: list['Reference'] = None,  bodySite: list['CodeableConcept'] = None,  outcome: 'CodeableConcept' = None,  report: list['Reference'] = None,  complication: list['CodeableConcept'] = None,  complicationDetail: list['Reference'] = None,  followUp: list['CodeableConcept'] = None,  note: list['Annotation'] = None,  focalDevice: list['FocalDevice'] = None,  usedReference: list['Reference'] = None,  usedCode: list['CodeableConcept'] = None, ):
         self.resourceType: str = resourceType or "Procedure"
         self.id: str = id 
         self.meta: 'Meta' = meta 
@@ -116,6 +120,10 @@ class Procedure(DomainResource):
         self.subject: 'Reference' = subject 
         self.encounter: 'Reference' = encounter 
         self.performedDateTime: str = performedDateTime 
+        self.performedPeriod: 'Period' = performedPeriod 
+        self.performedString: str = performedString 
+        self.performedAge: 'Age' = performedAge 
+        self.performedRange: 'Range' = performedRange 
         self.recorder: 'Reference' = recorder 
         self.asserter: 'Reference' = asserter 
         self.performer: list['Performer'] = performer or []

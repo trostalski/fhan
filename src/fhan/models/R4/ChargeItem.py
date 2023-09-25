@@ -1,20 +1,20 @@
 """
 Generated class for ChargeItem. 
-Time: 2023-09-24 21:52:32
+Time: 2023-09-25 14:53:18
 """
-from fhan.models.R4.Period import *
 from fhan.models.R4.Reference import *
 from fhan.models.R4.Resource import *
-from fhan.models.R4.Annotation import *
 from fhan.models.R4.Money import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Period import *
+from fhan.models.R4.Extension import *
+from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Annotation import *
 from fhan.models.R4.Identifier import *
 from fhan.models.R4.Meta import *
 from fhan.models.R4.Quantity import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Narrative import *
 from fhan.models.R4.Timing import *
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Extension import *
 from fhan.models.R4.DomainResource import *
 
 
@@ -55,6 +55,8 @@ class ChargeItem(DomainResource):
     :param 'Reference' subject: Individual service was done for/to
     :param 'Reference' context: Encounter / Episode associated with event
     :param str occurrenceDateTime: When the charged service was applied
+    :param 'Period' occurrencePeriod: When the charged service was applied
+    :param 'Timing' occurrenceTiming: When the charged service was applied
     :param list['Performer'] performer: Who performed charged service
     :param 'Reference' performingOrganization: Organization providing the charged service
     :param 'Reference' requestingOrganization: Organization requesting the charged service
@@ -69,11 +71,12 @@ class ChargeItem(DomainResource):
     :param list['CodeableConcept'] reason: Why was the charged  service rendered?
     :param list['Reference'] service: Which rendered service is being charged?
     :param 'Reference' productReference: Product charged
+    :param 'CodeableConcept' productCodeableConcept: Product charged
     :param list['Reference'] account: Account to place this charge
     :param list['Annotation'] note: Comments made about the ChargeItem
     :param list['Reference'] supportingInformation: Further information supporting this charge
     """
-    def __init__(self, resourceType: str = "ChargeItem",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  identifier: list['Identifier'] = None,  definitionUri: str = None,  definitionCanonical: str = None,  status: str = None,  partOf: list['Reference'] = None,  code: 'CodeableConcept' = None,  subject: 'Reference' = None,  context: 'Reference' = None,  occurrenceDateTime: str = None,  performer: list['Performer'] = None,  performingOrganization: 'Reference' = None,  requestingOrganization: 'Reference' = None,  costCenter: 'Reference' = None,  quantity: 'Quantity' = None,  bodysite: list['CodeableConcept'] = None,  factorOverride: float = None,  priceOverride: 'Money' = None,  overrideReason: str = None,  enterer: 'Reference' = None,  enteredDate: str = None,  reason: list['CodeableConcept'] = None,  service: list['Reference'] = None,  productReference: 'Reference' = None,  account: list['Reference'] = None,  note: list['Annotation'] = None,  supportingInformation: list['Reference'] = None, ):
+    def __init__(self, resourceType: str = "ChargeItem",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  identifier: list['Identifier'] = None,  definitionUri: str = None,  definitionCanonical: str = None,  status: str = None,  partOf: list['Reference'] = None,  code: 'CodeableConcept' = None,  subject: 'Reference' = None,  context: 'Reference' = None,  occurrenceDateTime: str = None,  occurrencePeriod: 'Period' = None,  occurrenceTiming: 'Timing' = None,  performer: list['Performer'] = None,  performingOrganization: 'Reference' = None,  requestingOrganization: 'Reference' = None,  costCenter: 'Reference' = None,  quantity: 'Quantity' = None,  bodysite: list['CodeableConcept'] = None,  factorOverride: float = None,  priceOverride: 'Money' = None,  overrideReason: str = None,  enterer: 'Reference' = None,  enteredDate: str = None,  reason: list['CodeableConcept'] = None,  service: list['Reference'] = None,  productReference: 'Reference' = None,  productCodeableConcept: 'CodeableConcept' = None,  account: list['Reference'] = None,  note: list['Annotation'] = None,  supportingInformation: list['Reference'] = None, ):
         self.resourceType: str = resourceType or "ChargeItem"
         self.id: str = id 
         self.meta: 'Meta' = meta 
@@ -92,6 +95,8 @@ class ChargeItem(DomainResource):
         self.subject: 'Reference' = subject 
         self.context: 'Reference' = context 
         self.occurrenceDateTime: str = occurrenceDateTime 
+        self.occurrencePeriod: 'Period' = occurrencePeriod 
+        self.occurrenceTiming: 'Timing' = occurrenceTiming 
         self.performer: list['Performer'] = performer or []
         self.performingOrganization: 'Reference' = performingOrganization 
         self.requestingOrganization: 'Reference' = requestingOrganization 
@@ -106,6 +111,7 @@ class ChargeItem(DomainResource):
         self.reason: list['CodeableConcept'] = reason or []
         self.service: list['Reference'] = service or []
         self.productReference: 'Reference' = productReference 
+        self.productCodeableConcept: 'CodeableConcept' = productCodeableConcept 
         self.account: list['Reference'] = account or []
         self.note: list['Annotation'] = note or []
         self.supportingInformation: list['Reference'] = supportingInformation or []

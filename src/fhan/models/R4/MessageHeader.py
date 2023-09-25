@@ -1,16 +1,16 @@
 """
 Generated class for MessageHeader. 
-Time: 2023-09-24 21:52:32
+Time: 2023-09-25 14:53:18
 """
 from fhan.models.R4.Reference import *
 from fhan.models.R4.Resource import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Coding import *
 from fhan.models.R4.ContactPoint import *
-from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Extension import *
+from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Coding import *
+from fhan.models.R4.Meta import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Narrative import *
 from fhan.models.R4.DomainResource import *
 
 
@@ -91,6 +91,7 @@ class MessageHeader(DomainResource):
     :param list['Extension'] extension: Additional content defined by implementations
     :param list['Extension'] modifierExtension: Extensions that cannot be ignored
     :param 'Coding' eventCoding: Code for the event this message represents or link to event definition
+    :param str eventUri: Code for the event this message represents or link to event definition
     :param list['Destination'] destination: Message destination application(s)
     :param 'Reference' sender: Real world sender of the message
     :param 'Reference' enterer: The source of the data entry
@@ -102,7 +103,7 @@ class MessageHeader(DomainResource):
     :param list['Reference'] focus: The actual content of the message
     :param str definition: Link to the definition for this message
     """
-    def __init__(self, resourceType: str = "MessageHeader",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  eventCoding: 'Coding' = None,  destination: list['Destination'] = None,  sender: 'Reference' = None,  enterer: 'Reference' = None,  author: 'Reference' = None,  source: 'Source' = None,  responsible: 'Reference' = None,  reason: 'CodeableConcept' = None,  response: 'Response' = None,  focus: list['Reference'] = None,  definition: str = None, ):
+    def __init__(self, resourceType: str = "MessageHeader",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  eventCoding: 'Coding' = None,  eventUri: str = None,  destination: list['Destination'] = None,  sender: 'Reference' = None,  enterer: 'Reference' = None,  author: 'Reference' = None,  source: 'Source' = None,  responsible: 'Reference' = None,  reason: 'CodeableConcept' = None,  response: 'Response' = None,  focus: list['Reference'] = None,  definition: str = None, ):
         self.resourceType: str = resourceType or "MessageHeader"
         self.id: str = id 
         self.meta: 'Meta' = meta 
@@ -113,6 +114,7 @@ class MessageHeader(DomainResource):
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
         self.eventCoding: 'Coding' = eventCoding 
+        self.eventUri: str = eventUri 
         self.destination: list['Destination'] = destination or []
         self.sender: 'Reference' = sender 
         self.enterer: 'Reference' = enterer 

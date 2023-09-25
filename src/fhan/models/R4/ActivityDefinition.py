@@ -1,26 +1,26 @@
 """
 Generated class for ActivityDefinition. 
-Time: 2023-09-24 21:52:32
+Time: 2023-09-25 14:53:18
 """
-from fhan.models.R4.UsageContext import *
-from fhan.models.R4.Resource import *
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Reference import *
-from fhan.models.R4.RelatedArtifact import *
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Range import *
-from fhan.models.R4.Identifier import *
-from fhan.models.R4.Quantity import *
-from fhan.models.R4.Timing import *
 from fhan.models.R4.Duration import *
-from fhan.models.R4.ContactDetail import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.Age import *
+from fhan.models.R4.Reference import *
+from fhan.models.R4.Resource import *
+from fhan.models.R4.RelatedArtifact import *
+from fhan.models.R4.Identifier import *
 from fhan.models.R4.Meta import *
-from fhan.models.R4.Dosage import *
+from fhan.models.R4.Timing import *
 from fhan.models.R4.Extension import *
-from fhan.models.R4.Period import *
+from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Dosage import *
 from fhan.models.R4.Expression import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Quantity import *
+from fhan.models.R4.UsageContext import *
+from fhan.models.R4.Age import *
+from fhan.models.R4.ContactDetail import *
+from fhan.models.R4.Period import *
+from fhan.models.R4.Range import *
+from fhan.models.R4.Narrative import *
 from fhan.models.R4.DomainResource import *
 
 
@@ -61,7 +61,7 @@ class DynamicValue(ModelBase):
         
 
 class ActivityDefinition(DomainResource):
-    """ Enforces the minimum information set for the activity definition metadata required by HL7 and other organizations that share and publish activity definitions
+    """ This resource allows for the definition of some activity to be performed, independent of a particular patient, practitioner, or other performance context.
     :param str id: Logical id of this artifact
     :param 'Meta' meta: Metadata about the resource
     :param str implicitRules: A set of rules under which this content was created
@@ -79,6 +79,7 @@ class ActivityDefinition(DomainResource):
     :param str status: draft | active | retired | unknown
     :param bool experimental: For testing purposes, not real usage
     :param 'CodeableConcept' subjectCodeableConcept: Type of individual the activity definition is intended for
+    :param 'Reference' subjectReference: Type of individual the activity definition is intended for
     :param str date: Date last changed
     :param str publisher: Name of the publisher (organization or individual)
     :param list['ContactDetail'] contact: Contact details for the publisher
@@ -105,9 +106,15 @@ class ActivityDefinition(DomainResource):
     :param str priority: routine | urgent | asap | stat
     :param bool doNotPerform: True if the activity should not be performed
     :param 'Timing' timingTiming: When activity is to occur
+    :param str timingDateTime: When activity is to occur
+    :param 'Age' timingAge: When activity is to occur
+    :param 'Period' timingPeriod: When activity is to occur
+    :param 'Range' timingRange: When activity is to occur
+    :param 'Duration' timingDuration: When activity is to occur
     :param 'Reference' location: Where it should happen
     :param list['Participant'] participant: Who should participate in the action
     :param 'Reference' productReference: What's administered/supplied
+    :param 'CodeableConcept' productCodeableConcept: What's administered/supplied
     :param 'Quantity' quantity: How much is administered/consumed/supplied
     :param list['Dosage'] dosage: Detailed dosage instructions
     :param list['CodeableConcept'] bodySite: What part of body to perform on
@@ -117,7 +124,7 @@ class ActivityDefinition(DomainResource):
     :param str transform: Transform to apply the template
     :param list['DynamicValue'] dynamicValue: Dynamic aspects of the definition
     """
-    def __init__(self, resourceType: str = "ActivityDefinition",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  url: str = None,  identifier: list['Identifier'] = None,  version: str = None,  name: str = None,  title: str = None,  subtitle: str = None,  status: str = None,  experimental: bool = None,  subjectCodeableConcept: 'CodeableConcept' = None,  date: str = None,  publisher: str = None,  contact: list['ContactDetail'] = None,  description: str = None,  useContext: list['UsageContext'] = None,  jurisdiction: list['CodeableConcept'] = None,  purpose: str = None,  usage: str = None,  copyright: str = None,  approvalDate: str = None,  lastReviewDate: str = None,  effectivePeriod: 'Period' = None,  topic: list['CodeableConcept'] = None,  author: list['ContactDetail'] = None,  editor: list['ContactDetail'] = None,  reviewer: list['ContactDetail'] = None,  endorser: list['ContactDetail'] = None,  relatedArtifact: list['RelatedArtifact'] = None,  library: str = None,  kind: str = None,  profile: str = None,  code: 'CodeableConcept' = None,  intent: str = None,  priority: str = None,  doNotPerform: bool = None,  timingTiming: 'Timing' = None,  location: 'Reference' = None,  participant: list['Participant'] = None,  productReference: 'Reference' = None,  quantity: 'Quantity' = None,  dosage: list['Dosage'] = None,  bodySite: list['CodeableConcept'] = None,  specimenRequirement: list['Reference'] = None,  observationRequirement: list['Reference'] = None,  observationResultRequirement: list['Reference'] = None,  transform: str = None,  dynamicValue: list['DynamicValue'] = None, ):
+    def __init__(self, resourceType: str = "ActivityDefinition",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  url: str = None,  identifier: list['Identifier'] = None,  version: str = None,  name: str = None,  title: str = None,  subtitle: str = None,  status: str = None,  experimental: bool = None,  subjectCodeableConcept: 'CodeableConcept' = None,  subjectReference: 'Reference' = None,  date: str = None,  publisher: str = None,  contact: list['ContactDetail'] = None,  description: str = None,  useContext: list['UsageContext'] = None,  jurisdiction: list['CodeableConcept'] = None,  purpose: str = None,  usage: str = None,  copyright: str = None,  approvalDate: str = None,  lastReviewDate: str = None,  effectivePeriod: 'Period' = None,  topic: list['CodeableConcept'] = None,  author: list['ContactDetail'] = None,  editor: list['ContactDetail'] = None,  reviewer: list['ContactDetail'] = None,  endorser: list['ContactDetail'] = None,  relatedArtifact: list['RelatedArtifact'] = None,  library: str = None,  kind: str = None,  profile: str = None,  code: 'CodeableConcept' = None,  intent: str = None,  priority: str = None,  doNotPerform: bool = None,  timingTiming: 'Timing' = None,  timingDateTime: str = None,  timingAge: 'Age' = None,  timingPeriod: 'Period' = None,  timingRange: 'Range' = None,  timingDuration: 'Duration' = None,  location: 'Reference' = None,  participant: list['Participant'] = None,  productReference: 'Reference' = None,  productCodeableConcept: 'CodeableConcept' = None,  quantity: 'Quantity' = None,  dosage: list['Dosage'] = None,  bodySite: list['CodeableConcept'] = None,  specimenRequirement: list['Reference'] = None,  observationRequirement: list['Reference'] = None,  observationResultRequirement: list['Reference'] = None,  transform: str = None,  dynamicValue: list['DynamicValue'] = None, ):
         self.resourceType: str = resourceType or "ActivityDefinition"
         self.id: str = id 
         self.meta: 'Meta' = meta 
@@ -136,6 +143,7 @@ class ActivityDefinition(DomainResource):
         self.status: str = status 
         self.experimental: bool = experimental 
         self.subjectCodeableConcept: 'CodeableConcept' = subjectCodeableConcept 
+        self.subjectReference: 'Reference' = subjectReference 
         self.date: str = date 
         self.publisher: str = publisher 
         self.contact: list['ContactDetail'] = contact or []
@@ -162,9 +170,15 @@ class ActivityDefinition(DomainResource):
         self.priority: str = priority 
         self.doNotPerform: bool = doNotPerform 
         self.timingTiming: 'Timing' = timingTiming 
+        self.timingDateTime: str = timingDateTime 
+        self.timingAge: 'Age' = timingAge 
+        self.timingPeriod: 'Period' = timingPeriod 
+        self.timingRange: 'Range' = timingRange 
+        self.timingDuration: 'Duration' = timingDuration 
         self.location: 'Reference' = location 
         self.participant: list['Participant'] = participant or []
         self.productReference: 'Reference' = productReference 
+        self.productCodeableConcept: 'CodeableConcept' = productCodeableConcept 
         self.quantity: 'Quantity' = quantity 
         self.dosage: list['Dosage'] = dosage or []
         self.bodySite: list['CodeableConcept'] = bodySite or []

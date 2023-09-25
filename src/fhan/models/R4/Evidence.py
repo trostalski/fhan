@@ -1,24 +1,24 @@
 """
 Generated class for Evidence. 
-Time: 2023-09-24 21:52:32
+Time: 2023-09-25 14:53:18
 """
-from fhan.models.R4.UsageContext import *
-from fhan.models.R4.Period import *
-from fhan.models.R4.RelatedArtifact import *
 from fhan.models.R4.Reference import *
 from fhan.models.R4.Resource import *
-from fhan.models.R4.Annotation import *
+from fhan.models.R4.RelatedArtifact import *
 from fhan.models.R4.ContactDetail import *
-from fhan.models.R4.Narrative import *
+from fhan.models.R4.Extension import *
+from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Period import *
+from fhan.models.R4.Annotation import *
 from fhan.models.R4.Identifier import *
 from fhan.models.R4.Meta import *
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Extension import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.UsageContext import *
 from fhan.models.R4.DomainResource import *
 
 
 class Evidence(DomainResource):
-    """ Explanation of what this profile contains/is for.
+    """ The Evidence resource describes the conditional state (population and any exposures being compared within the population) and outcome (if specified) that the knowledge (evidence, assertion, recommendation) is about.
     :param str id: Logical id of this artifact
     :param 'Meta' meta: Metadata about the resource
     :param str implicitRules: A set of rules under which this content was created

@@ -1,17 +1,17 @@
 """
 Generated class for Substance. 
-Time: 2023-09-24 21:52:32
+Time: 2023-09-25 14:53:18
 """
 from fhan.models.R4.Reference import *
 from fhan.models.R4.Resource import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Extension import *
+from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Identifier import *
 from fhan.models.R4.Meta import *
 from fhan.models.R4.Quantity import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Narrative import *
 from fhan.models.R4.Ratio import *
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Extension import *
 from fhan.models.R4.DomainResource import *
 
 
@@ -44,13 +44,15 @@ class Ingredient(ModelBase):
     :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param 'Ratio' quantity: Optional amount (concentration)
     :param 'CodeableConcept' substanceCodeableConcept: A component of the substance
+    :param 'Reference' substanceReference: A component of the substance
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  quantity: 'Ratio' = None,  substanceCodeableConcept: 'CodeableConcept' = None, ):
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  quantity: 'Ratio' = None,  substanceCodeableConcept: 'CodeableConcept' = None,  substanceReference: 'Reference' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
         self.quantity: 'Ratio' = quantity 
         self.substanceCodeableConcept: 'CodeableConcept' = substanceCodeableConcept 
+        self.substanceReference: 'Reference' = substanceReference 
         
 
 class Substance(DomainResource):

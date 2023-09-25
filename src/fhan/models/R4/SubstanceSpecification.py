@@ -1,19 +1,19 @@
 """
 Generated class for SubstanceSpecification. 
-Time: 2023-09-24 21:52:32
+Time: 2023-09-25 14:53:18
 """
 from fhan.models.R4.Reference import *
-from fhan.models.R4.Range import *
 from fhan.models.R4.Resource import *
-from fhan.models.R4.Attachment import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Extension import *
+from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Identifier import *
+from fhan.models.R4.Attachment import *
+from fhan.models.R4.Range import *
 from fhan.models.R4.Meta import *
 from fhan.models.R4.Quantity import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Narrative import *
 from fhan.models.R4.Ratio import *
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Extension import *
 from fhan.models.R4.DomainResource import *
 
 
@@ -31,8 +31,9 @@ class Moiety(ModelBase):
     :param 'CodeableConcept' opticalActivity: Optical activity type
     :param str molecularFormula: Molecular formula
     :param 'Quantity' amountQuantity: Quantitative value for this moiety
+    :param str amountString: Quantitative value for this moiety
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  role: 'CodeableConcept' = None,  identifier: 'Identifier' = None,  name: str = None,  stereochemistry: 'CodeableConcept' = None,  opticalActivity: 'CodeableConcept' = None,  molecularFormula: str = None,  amountQuantity: 'Quantity' = None, ):
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  role: 'CodeableConcept' = None,  identifier: 'Identifier' = None,  name: str = None,  stereochemistry: 'CodeableConcept' = None,  opticalActivity: 'CodeableConcept' = None,  molecularFormula: str = None,  amountQuantity: 'Quantity' = None,  amountString: str = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -43,6 +44,7 @@ class Moiety(ModelBase):
         self.opticalActivity: 'CodeableConcept' = opticalActivity 
         self.molecularFormula: str = molecularFormula 
         self.amountQuantity: 'Quantity' = amountQuantity 
+        self.amountString: str = amountString 
         
 
     
@@ -56,9 +58,11 @@ class Property(ModelBase):
     :param 'CodeableConcept' code: Property type e.g. viscosity, pH, isoelectric point
     :param str parameters: Parameters that were used in the measurement of a property (e.g. for viscosity: measured at 20C with a pH of 7.1)
     :param 'Reference' definingSubstanceReference: A substance upon which a defining property depends (e.g. for solubility: in water, in alcohol)
+    :param 'CodeableConcept' definingSubstanceCodeableConcept: A substance upon which a defining property depends (e.g. for solubility: in water, in alcohol)
     :param 'Quantity' amountQuantity: Quantitative value for this property
+    :param str amountString: Quantitative value for this property
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  category: 'CodeableConcept' = None,  code: 'CodeableConcept' = None,  parameters: str = None,  definingSubstanceReference: 'Reference' = None,  amountQuantity: 'Quantity' = None, ):
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  category: 'CodeableConcept' = None,  code: 'CodeableConcept' = None,  parameters: str = None,  definingSubstanceReference: 'Reference' = None,  definingSubstanceCodeableConcept: 'CodeableConcept' = None,  amountQuantity: 'Quantity' = None,  amountString: str = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -66,7 +70,9 @@ class Property(ModelBase):
         self.code: 'CodeableConcept' = code 
         self.parameters: str = parameters 
         self.definingSubstanceReference: 'Reference' = definingSubstanceReference 
+        self.definingSubstanceCodeableConcept: 'CodeableConcept' = definingSubstanceCodeableConcept 
         self.amountQuantity: 'Quantity' = amountQuantity 
+        self.amountString: str = amountString 
         
 
     
@@ -247,6 +253,116 @@ class Name(ModelBase):
         
 
     
+        
+    
+    
+
+class Official(ModelBase):
+    """ Details of the official nature of this name.:param str id: Unique id for inter-element referencing
+    :param list['Extension'] extension: Additional content defined by implementations
+    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'CodeableConcept' authority: Which authority uses this official name
+    :param 'CodeableConcept' status: The status of the official name
+    :param str date: Date of official name change
+    """
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  authority: 'CodeableConcept' = None,  status: 'CodeableConcept' = None,  date: str = None, ):
+        self.id: str = id 
+        self.extension: list['Extension'] = extension or []
+        self.modifierExtension: list['Extension'] = modifierExtension or []
+        self.authority: 'CodeableConcept' = authority 
+        self.status: 'CodeableConcept' = status 
+        self.date: str = date 
+        
+
+  
+    
+    
+
+class Synonym(ModelBase):
+    """ Names applicable to this substance.:param str id: Unique id for inter-element referencing
+    :param list['Extension'] extension: Additional content defined by implementations
+    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param str name: The actual name
+    :param 'CodeableConcept' type: Name type
+    :param 'CodeableConcept' status: The status of the name
+    :param bool preferred: If this is the preferred name for this substance
+    :param list['CodeableConcept'] language: Language of the name
+    :param list['CodeableConcept'] domain: The use context of this name for example if there is a different name a drug active ingredient as opposed to a food colour additive
+    :param list['CodeableConcept'] jurisdiction: The jurisdiction where this name applies
+    :param list['Official'] official: Details of the official nature of this name
+    :param list['Reference'] source: Supporting literature
+    """
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  name: str = None,  type: 'CodeableConcept' = None,  status: 'CodeableConcept' = None,  preferred: bool = None,  language: list['CodeableConcept'] = None,  domain: list['CodeableConcept'] = None,  jurisdiction: list['CodeableConcept'] = None,  official: list['Official'] = None,  source: list['Reference'] = None, ):
+        self.id: str = id 
+        self.extension: list['Extension'] = extension or []
+        self.modifierExtension: list['Extension'] = modifierExtension or []
+        self.name: str = name 
+        self.type: 'CodeableConcept' = type 
+        self.status: 'CodeableConcept' = status 
+        self.preferred: bool = preferred 
+        self.language: list['CodeableConcept'] = language or []
+        self.domain: list['CodeableConcept'] = domain or []
+        self.jurisdiction: list['CodeableConcept'] = jurisdiction or []
+        self.official: list['Official'] = official or []
+        self.source: list['Reference'] = source or []
+        
+
+    
+        
+    
+    
+
+class Official(ModelBase):
+    """ Details of the official nature of this name.:param str id: Unique id for inter-element referencing
+    :param list['Extension'] extension: Additional content defined by implementations
+    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'CodeableConcept' authority: Which authority uses this official name
+    :param 'CodeableConcept' status: The status of the official name
+    :param str date: Date of official name change
+    """
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  authority: 'CodeableConcept' = None,  status: 'CodeableConcept' = None,  date: str = None, ):
+        self.id: str = id 
+        self.extension: list['Extension'] = extension or []
+        self.modifierExtension: list['Extension'] = modifierExtension or []
+        self.authority: 'CodeableConcept' = authority 
+        self.status: 'CodeableConcept' = status 
+        self.date: str = date 
+        
+
+  
+    
+    
+
+class Translation(ModelBase):
+    """ Names applicable to this substance.:param str id: Unique id for inter-element referencing
+    :param list['Extension'] extension: Additional content defined by implementations
+    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param str name: The actual name
+    :param 'CodeableConcept' type: Name type
+    :param 'CodeableConcept' status: The status of the name
+    :param bool preferred: If this is the preferred name for this substance
+    :param list['CodeableConcept'] language: Language of the name
+    :param list['CodeableConcept'] domain: The use context of this name for example if there is a different name a drug active ingredient as opposed to a food colour additive
+    :param list['CodeableConcept'] jurisdiction: The jurisdiction where this name applies
+    :param list['Official'] official: Details of the official nature of this name
+    :param list['Reference'] source: Supporting literature
+    """
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  name: str = None,  type: 'CodeableConcept' = None,  status: 'CodeableConcept' = None,  preferred: bool = None,  language: list['CodeableConcept'] = None,  domain: list['CodeableConcept'] = None,  jurisdiction: list['CodeableConcept'] = None,  official: list['Official'] = None,  source: list['Reference'] = None, ):
+        self.id: str = id 
+        self.extension: list['Extension'] = extension or []
+        self.modifierExtension: list['Extension'] = modifierExtension or []
+        self.name: str = name 
+        self.type: 'CodeableConcept' = type 
+        self.status: 'CodeableConcept' = status 
+        self.preferred: bool = preferred 
+        self.language: list['CodeableConcept'] = language or []
+        self.domain: list['CodeableConcept'] = domain or []
+        self.jurisdiction: list['CodeableConcept'] = jurisdiction or []
+        self.official: list['Official'] = official or []
+        self.source: list['Reference'] = source or []
+        
+
+    
     
 
 class Relationship(ModelBase):
@@ -254,21 +370,29 @@ class Relationship(ModelBase):
     :param list['Extension'] extension: Additional content defined by implementations
     :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param 'Reference' substanceReference: A pointer to another substance, as a resource or just a representational code
+    :param 'CodeableConcept' substanceCodeableConcept: A pointer to another substance, as a resource or just a representational code
     :param 'CodeableConcept' relationship: For example "salt to parent", "active moiety", "starting material"
     :param bool isDefining: For example where an enzyme strongly bonds with a particular substance, this is a defining relationship for that enzyme, out of several possible substance relationships
     :param 'Quantity' amountQuantity: A numeric factor for the relationship, for instance to express that the salt of a substance has some percentage of the active substance in relation to some other
+    :param 'Range' amountRange: A numeric factor for the relationship, for instance to express that the salt of a substance has some percentage of the active substance in relation to some other
+    :param 'Ratio' amountRatio: A numeric factor for the relationship, for instance to express that the salt of a substance has some percentage of the active substance in relation to some other
+    :param str amountString: A numeric factor for the relationship, for instance to express that the salt of a substance has some percentage of the active substance in relation to some other
     :param 'Ratio' amountRatioLowLimit: For use when the numeric
     :param 'CodeableConcept' amountType: An operator for the amount, for example "average", "approximately", "less than"
     :param list['Reference'] source: Supporting literature
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  substanceReference: 'Reference' = None,  relationship: 'CodeableConcept' = None,  isDefining: bool = None,  amountQuantity: 'Quantity' = None,  amountRatioLowLimit: 'Ratio' = None,  amountType: 'CodeableConcept' = None,  source: list['Reference'] = None, ):
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  substanceReference: 'Reference' = None,  substanceCodeableConcept: 'CodeableConcept' = None,  relationship: 'CodeableConcept' = None,  isDefining: bool = None,  amountQuantity: 'Quantity' = None,  amountRange: 'Range' = None,  amountRatio: 'Ratio' = None,  amountString: str = None,  amountRatioLowLimit: 'Ratio' = None,  amountType: 'CodeableConcept' = None,  source: list['Reference'] = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
         self.substanceReference: 'Reference' = substanceReference 
+        self.substanceCodeableConcept: 'CodeableConcept' = substanceCodeableConcept 
         self.relationship: 'CodeableConcept' = relationship 
         self.isDefining: bool = isDefining 
         self.amountQuantity: 'Quantity' = amountQuantity 
+        self.amountRange: 'Range' = amountRange 
+        self.amountRatio: 'Ratio' = amountRatio 
+        self.amountString: str = amountString 
         self.amountRatioLowLimit: 'Ratio' = amountRatioLowLimit 
         self.amountType: 'CodeableConcept' = amountType 
         self.source: list['Reference'] = source or []
@@ -297,13 +421,15 @@ class SubstanceSpecification(DomainResource):
     :param 'Structure' structure: Structural information
     :param list['Code'] code: Codes associated with the substance
     :param list['Name'] name: Names applicable to this substance
+    :param list['Synonym'] synonym: Names applicable to this substance
+    :param list['Translation'] translation: Names applicable to this substance
     :param list['Relationship'] relationship: A link between this substance and another, with details of the relationship
     :param 'Reference' nucleicAcid: Data items specific to nucleic acids
     :param 'Reference' polymer: Data items specific to polymers
     :param 'Reference' protein: Data items specific to proteins
     :param 'Reference' sourceMaterial: Material or taxonomic/anatomical source for the substance
     """
-    def __init__(self, resourceType: str = "SubstanceSpecification",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  identifier: 'Identifier' = None,  type: 'CodeableConcept' = None,  status: 'CodeableConcept' = None,  domain: 'CodeableConcept' = None,  description: str = None,  source: list['Reference'] = None,  comment: str = None,  moiety: list['Moiety'] = None,  property: list['Property'] = None,  referenceInformation: 'Reference' = None,  structure: 'Structure' = None,  code: list['Code'] = None,  name: list['Name'] = None,  relationship: list['Relationship'] = None,  nucleicAcid: 'Reference' = None,  polymer: 'Reference' = None,  protein: 'Reference' = None,  sourceMaterial: 'Reference' = None, ):
+    def __init__(self, resourceType: str = "SubstanceSpecification",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  identifier: 'Identifier' = None,  type: 'CodeableConcept' = None,  status: 'CodeableConcept' = None,  domain: 'CodeableConcept' = None,  description: str = None,  source: list['Reference'] = None,  comment: str = None,  moiety: list['Moiety'] = None,  property: list['Property'] = None,  referenceInformation: 'Reference' = None,  structure: 'Structure' = None,  code: list['Code'] = None,  name: list['Name'] = None,  synonym: list['Synonym'] = None,  translation: list['Translation'] = None,  relationship: list['Relationship'] = None,  nucleicAcid: 'Reference' = None,  polymer: 'Reference' = None,  protein: 'Reference' = None,  sourceMaterial: 'Reference' = None, ):
         self.resourceType: str = resourceType or "SubstanceSpecification"
         self.id: str = id 
         self.meta: 'Meta' = meta 
@@ -326,6 +452,8 @@ class SubstanceSpecification(DomainResource):
         self.structure: 'Structure' = structure 
         self.code: list['Code'] = code or []
         self.name: list['Name'] = name or []
+        self.synonym: list['Synonym'] = synonym or []
+        self.translation: list['Translation'] = translation or []
         self.relationship: list['Relationship'] = relationship or []
         self.nucleicAcid: 'Reference' = nucleicAcid 
         self.polymer: 'Reference' = polymer 

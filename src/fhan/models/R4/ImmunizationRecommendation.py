@@ -1,15 +1,15 @@
 """
 Generated class for ImmunizationRecommendation. 
-Time: 2023-09-24 21:52:32
+Time: 2023-09-25 14:53:18
 """
 from fhan.models.R4.Reference import *
 from fhan.models.R4.Resource import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Extension import *
+from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Identifier import *
 from fhan.models.R4.Meta import *
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Extension import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Narrative import *
 from fhan.models.R4.DomainResource import *
 
 
@@ -50,11 +50,13 @@ class Recommendation(ModelBase):
     :param str description: Protocol details
     :param str series: Name of vaccination series
     :param int doseNumberPositiveInt: Recommended dose number within series
+    :param str doseNumberString: Recommended dose number within series
     :param int seriesDosesPositiveInt: Recommended number of doses for immunity
+    :param str seriesDosesString: Recommended number of doses for immunity
     :param list['Reference'] supportingImmunization: Past immunizations supporting recommendation
     :param list['Reference'] supportingPatientInformation: Patient observations supporting recommendation
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  vaccineCode: list['CodeableConcept'] = None,  targetDisease: 'CodeableConcept' = None,  contraindicatedVaccineCode: list['CodeableConcept'] = None,  forecastStatus: 'CodeableConcept' = None,  forecastReason: list['CodeableConcept'] = None,  dateCriterion: list['DateCriterion'] = None,  description: str = None,  series: str = None,  doseNumberPositiveInt: int = None,  seriesDosesPositiveInt: int = None,  supportingImmunization: list['Reference'] = None,  supportingPatientInformation: list['Reference'] = None, ):
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  vaccineCode: list['CodeableConcept'] = None,  targetDisease: 'CodeableConcept' = None,  contraindicatedVaccineCode: list['CodeableConcept'] = None,  forecastStatus: 'CodeableConcept' = None,  forecastReason: list['CodeableConcept'] = None,  dateCriterion: list['DateCriterion'] = None,  description: str = None,  series: str = None,  doseNumberPositiveInt: int = None,  doseNumberString: str = None,  seriesDosesPositiveInt: int = None,  seriesDosesString: str = None,  supportingImmunization: list['Reference'] = None,  supportingPatientInformation: list['Reference'] = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -67,7 +69,9 @@ class Recommendation(ModelBase):
         self.description: str = description 
         self.series: str = series 
         self.doseNumberPositiveInt: int = doseNumberPositiveInt 
+        self.doseNumberString: str = doseNumberString 
         self.seriesDosesPositiveInt: int = seriesDosesPositiveInt 
+        self.seriesDosesString: str = seriesDosesString 
         self.supportingImmunization: list['Reference'] = supportingImmunization or []
         self.supportingPatientInformation: list['Reference'] = supportingPatientInformation or []
         

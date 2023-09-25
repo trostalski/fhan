@@ -1,18 +1,18 @@
 """
 Generated class for CommunicationRequest. 
-Time: 2023-09-24 21:52:32
+Time: 2023-09-25 14:53:18
 """
-from fhan.models.R4.Period import *
 from fhan.models.R4.Reference import *
 from fhan.models.R4.Resource import *
+from fhan.models.R4.Period import *
+from fhan.models.R4.Extension import *
+from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Annotation import *
-from fhan.models.R4.Attachment import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.BackboneElement import *
 from fhan.models.R4.Identifier import *
 from fhan.models.R4.Meta import *
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Extension import *
+from fhan.models.R4.Attachment import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Narrative import *
 from fhan.models.R4.DomainResource import *
 
 
@@ -24,12 +24,16 @@ class Payload(ModelBase):
     :param list['Extension'] extension: Additional content defined by implementations
     :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str contentString: Message part content
+    :param 'Attachment' contentAttachment: Message part content
+    :param 'Reference' contentReference: Message part content
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  contentString: str = None, ):
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  contentString: str = None,  contentAttachment: 'Attachment' = None,  contentReference: 'Reference' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
         self.contentString: str = contentString 
+        self.contentAttachment: 'Attachment' = contentAttachment 
+        self.contentReference: 'Reference' = contentReference 
         
 
 class CommunicationRequest(DomainResource):
@@ -57,6 +61,7 @@ class CommunicationRequest(DomainResource):
     :param 'Reference' encounter: Encounter created as part of
     :param list['Payload'] payload: Message payload
     :param str occurrenceDateTime: When scheduled
+    :param 'Period' occurrencePeriod: When scheduled
     :param str authoredOn: When request transitioned to being actionable
     :param 'Reference' requester: Who/what is requesting service
     :param list['Reference'] recipient: Message recipient
@@ -65,7 +70,7 @@ class CommunicationRequest(DomainResource):
     :param list['Reference'] reasonReference: Why is communication needed?
     :param list['Annotation'] note: Comments made about communication request
     """
-    def __init__(self, resourceType: str = "CommunicationRequest",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  identifier: list['Identifier'] = None,  basedOn: list['Reference'] = None,  replaces: list['Reference'] = None,  groupIdentifier: 'Identifier' = None,  status: str = None,  statusReason: 'CodeableConcept' = None,  category: list['CodeableConcept'] = None,  priority: str = None,  doNotPerform: bool = None,  medium: list['CodeableConcept'] = None,  subject: 'Reference' = None,  about: list['Reference'] = None,  encounter: 'Reference' = None,  payload: list['Payload'] = None,  occurrenceDateTime: str = None,  authoredOn: str = None,  requester: 'Reference' = None,  recipient: list['Reference'] = None,  sender: 'Reference' = None,  reasonCode: list['CodeableConcept'] = None,  reasonReference: list['Reference'] = None,  note: list['Annotation'] = None, ):
+    def __init__(self, resourceType: str = "CommunicationRequest",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  identifier: list['Identifier'] = None,  basedOn: list['Reference'] = None,  replaces: list['Reference'] = None,  groupIdentifier: 'Identifier' = None,  status: str = None,  statusReason: 'CodeableConcept' = None,  category: list['CodeableConcept'] = None,  priority: str = None,  doNotPerform: bool = None,  medium: list['CodeableConcept'] = None,  subject: 'Reference' = None,  about: list['Reference'] = None,  encounter: 'Reference' = None,  payload: list['Payload'] = None,  occurrenceDateTime: str = None,  occurrencePeriod: 'Period' = None,  authoredOn: str = None,  requester: 'Reference' = None,  recipient: list['Reference'] = None,  sender: 'Reference' = None,  reasonCode: list['CodeableConcept'] = None,  reasonReference: list['Reference'] = None,  note: list['Annotation'] = None, ):
         self.resourceType: str = resourceType or "CommunicationRequest"
         self.id: str = id 
         self.meta: 'Meta' = meta 
@@ -90,6 +95,7 @@ class CommunicationRequest(DomainResource):
         self.encounter: 'Reference' = encounter 
         self.payload: list['Payload'] = payload or []
         self.occurrenceDateTime: str = occurrenceDateTime 
+        self.occurrencePeriod: 'Period' = occurrencePeriod 
         self.authoredOn: str = authoredOn 
         self.requester: 'Reference' = requester 
         self.recipient: list['Reference'] = recipient or []

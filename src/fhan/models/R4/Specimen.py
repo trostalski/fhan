@@ -1,19 +1,19 @@
 """
 Generated class for Specimen. 
-Time: 2023-09-24 21:52:32
+Time: 2023-09-25 14:53:18
 """
-from fhan.models.R4.Period import *
+from fhan.models.R4.Duration import *
 from fhan.models.R4.Reference import *
 from fhan.models.R4.Resource import *
+from fhan.models.R4.Period import *
+from fhan.models.R4.Extension import *
+from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Annotation import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.BackboneElement import *
 from fhan.models.R4.Identifier import *
 from fhan.models.R4.Meta import *
 from fhan.models.R4.Quantity import *
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Duration import *
-from fhan.models.R4.Extension import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Narrative import *
 from fhan.models.R4.DomainResource import *
 
 
@@ -26,23 +26,27 @@ class Collection(ModelBase):
     :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param 'Reference' collector: Who collected the specimen
     :param str collectedDateTime: Collection time
+    :param 'Period' collectedPeriod: Collection time
     :param 'Duration' duration: How long it took to collect specimen
     :param 'Quantity' quantity: The quantity of specimen collected
     :param 'CodeableConcept' method: Technique used to perform collection
     :param 'CodeableConcept' bodySite: Anatomical collection site
     :param 'CodeableConcept' fastingStatusCodeableConcept: Whether or how long patient abstained from food and/or drink
+    :param 'Duration' fastingStatusDuration: Whether or how long patient abstained from food and/or drink
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  collector: 'Reference' = None,  collectedDateTime: str = None,  duration: 'Duration' = None,  quantity: 'Quantity' = None,  method: 'CodeableConcept' = None,  bodySite: 'CodeableConcept' = None,  fastingStatusCodeableConcept: 'CodeableConcept' = None, ):
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  collector: 'Reference' = None,  collectedDateTime: str = None,  collectedPeriod: 'Period' = None,  duration: 'Duration' = None,  quantity: 'Quantity' = None,  method: 'CodeableConcept' = None,  bodySite: 'CodeableConcept' = None,  fastingStatusCodeableConcept: 'CodeableConcept' = None,  fastingStatusDuration: 'Duration' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
         self.collector: 'Reference' = collector 
         self.collectedDateTime: str = collectedDateTime 
+        self.collectedPeriod: 'Period' = collectedPeriod 
         self.duration: 'Duration' = duration 
         self.quantity: 'Quantity' = quantity 
         self.method: 'CodeableConcept' = method 
         self.bodySite: 'CodeableConcept' = bodySite 
         self.fastingStatusCodeableConcept: 'CodeableConcept' = fastingStatusCodeableConcept 
+        self.fastingStatusDuration: 'Duration' = fastingStatusDuration 
         
 
     
@@ -56,8 +60,9 @@ class Processing(ModelBase):
     :param 'CodeableConcept' procedure: Indicates the treatment step  applied to the specimen
     :param list['Reference'] additive: Material used in the processing step
     :param str timeDateTime: Date and time of specimen processing
+    :param 'Period' timePeriod: Date and time of specimen processing
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  description: str = None,  procedure: 'CodeableConcept' = None,  additive: list['Reference'] = None,  timeDateTime: str = None, ):
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  description: str = None,  procedure: 'CodeableConcept' = None,  additive: list['Reference'] = None,  timeDateTime: str = None,  timePeriod: 'Period' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -65,6 +70,7 @@ class Processing(ModelBase):
         self.procedure: 'CodeableConcept' = procedure 
         self.additive: list['Reference'] = additive or []
         self.timeDateTime: str = timeDateTime 
+        self.timePeriod: 'Period' = timePeriod 
         
 
     
@@ -80,8 +86,9 @@ class Container(ModelBase):
     :param 'Quantity' capacity: Container volume or size
     :param 'Quantity' specimenQuantity: Quantity of specimen within container
     :param 'CodeableConcept' additiveCodeableConcept: Additive associated with container
+    :param 'Reference' additiveReference: Additive associated with container
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  identifier: list['Identifier'] = None,  description: str = None,  type: 'CodeableConcept' = None,  capacity: 'Quantity' = None,  specimenQuantity: 'Quantity' = None,  additiveCodeableConcept: 'CodeableConcept' = None, ):
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  identifier: list['Identifier'] = None,  description: str = None,  type: 'CodeableConcept' = None,  capacity: 'Quantity' = None,  specimenQuantity: 'Quantity' = None,  additiveCodeableConcept: 'CodeableConcept' = None,  additiveReference: 'Reference' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -91,6 +98,7 @@ class Container(ModelBase):
         self.capacity: 'Quantity' = capacity 
         self.specimenQuantity: 'Quantity' = specimenQuantity 
         self.additiveCodeableConcept: 'CodeableConcept' = additiveCodeableConcept 
+        self.additiveReference: 'Reference' = additiveReference 
         
 
 class Specimen(DomainResource):

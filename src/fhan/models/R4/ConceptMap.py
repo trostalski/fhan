@@ -1,16 +1,16 @@
 """
 Generated class for ConceptMap. 
-Time: 2023-09-24 21:52:32
+Time: 2023-09-25 14:53:18
 """
-from fhan.models.R4.UsageContext import *
 from fhan.models.R4.Resource import *
 from fhan.models.R4.ContactDetail import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Extension import *
+from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Identifier import *
 from fhan.models.R4.Meta import *
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Extension import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.UsageContext import *
 from fhan.models.R4.DomainResource import *
 
 
@@ -42,6 +42,28 @@ class DependsOn(ModelBase):
         self.display: str = display 
         
 
+    
+    
+
+class Product(ModelBase):
+    """ A set of additional dependencies for this mapping to hold. This mapping is only applicable if the specified element can be resolved, and it has the specified value.:param str id: Unique id for inter-element referencing
+    :param list['Extension'] extension: Additional content defined by implementations
+    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param str property: Reference to property mapping depends on
+    :param str system: Code System (if necessary)
+    :param str value: Value of the referenced element
+    :param str display: Display for the code (if value is a code)
+    """
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  property: str = None,  system: str = None,  value: str = None,  display: str = None, ):
+        self.id: str = id 
+        self.extension: list['Extension'] = extension or []
+        self.modifierExtension: list['Extension'] = modifierExtension or []
+        self.property: str = property 
+        self.system: str = system 
+        self.value: str = value 
+        self.display: str = display 
+        
+
   
     
     
@@ -55,8 +77,9 @@ class Target(ModelBase):
     :param str equivalence: relatedto | equivalent | equal | wider | subsumes | narrower | specializes | inexact | unmatched | disjoint
     :param str comment: Description of status/issues in mapping
     :param list['DependsOn'] dependsOn: Other elements required for this mapping (from context)
+    :param list['Product'] product: Other elements required for this mapping (from context)
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  code: str = None,  display: str = None,  equivalence: str = None,  comment: str = None,  dependsOn: list['DependsOn'] = None, ):
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  code: str = None,  display: str = None,  equivalence: str = None,  comment: str = None,  dependsOn: list['DependsOn'] = None,  product: list['Product'] = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -65,6 +88,7 @@ class Target(ModelBase):
         self.equivalence: str = equivalence 
         self.comment: str = comment 
         self.dependsOn: list['DependsOn'] = dependsOn or []
+        self.product: list['Product'] = product or []
         
 
   
@@ -163,10 +187,12 @@ class ConceptMap(DomainResource):
     :param str purpose: Why this concept map is defined
     :param str copyright: Use and/or publishing restrictions
     :param str sourceUri: The source value set that contains the concepts that are being mapped
+    :param str sourceCanonical: The source value set that contains the concepts that are being mapped
     :param str targetUri: The target value set which provides context for the mappings
+    :param str targetCanonical: The target value set which provides context for the mappings
     :param list['Group'] group: Same source and target systems
     """
-    def __init__(self, resourceType: str = "ConceptMap",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  url: str = None,  identifier: 'Identifier' = None,  version: str = None,  name: str = None,  title: str = None,  status: str = None,  experimental: bool = None,  date: str = None,  publisher: str = None,  contact: list['ContactDetail'] = None,  description: str = None,  useContext: list['UsageContext'] = None,  jurisdiction: list['CodeableConcept'] = None,  purpose: str = None,  copyright: str = None,  sourceUri: str = None,  targetUri: str = None,  group: list['Group'] = None, ):
+    def __init__(self, resourceType: str = "ConceptMap",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  url: str = None,  identifier: 'Identifier' = None,  version: str = None,  name: str = None,  title: str = None,  status: str = None,  experimental: bool = None,  date: str = None,  publisher: str = None,  contact: list['ContactDetail'] = None,  description: str = None,  useContext: list['UsageContext'] = None,  jurisdiction: list['CodeableConcept'] = None,  purpose: str = None,  copyright: str = None,  sourceUri: str = None,  sourceCanonical: str = None,  targetUri: str = None,  targetCanonical: str = None,  group: list['Group'] = None, ):
         self.resourceType: str = resourceType or "ConceptMap"
         self.id: str = id 
         self.meta: 'Meta' = meta 
@@ -192,6 +218,8 @@ class ConceptMap(DomainResource):
         self.purpose: str = purpose 
         self.copyright: str = copyright 
         self.sourceUri: str = sourceUri 
+        self.sourceCanonical: str = sourceCanonical 
         self.targetUri: str = targetUri 
+        self.targetCanonical: str = targetCanonical 
         self.group: list['Group'] = group or []
         

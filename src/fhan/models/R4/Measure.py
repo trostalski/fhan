@@ -1,20 +1,20 @@
 """
 Generated class for Measure. 
-Time: 2023-09-24 21:52:32
+Time: 2023-09-25 14:53:18
 """
-from fhan.models.R4.UsageContext import *
-from fhan.models.R4.Period import *
 from fhan.models.R4.Reference import *
-from fhan.models.R4.RelatedArtifact import *
 from fhan.models.R4.Resource import *
+from fhan.models.R4.RelatedArtifact import *
 from fhan.models.R4.ContactDetail import *
-from fhan.models.R4.Expression import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Extension import *
+from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Period import *
 from fhan.models.R4.Identifier import *
 from fhan.models.R4.Meta import *
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Extension import *
+from fhan.models.R4.Expression import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.UsageContext import *
 from fhan.models.R4.DomainResource import *
 
 
@@ -131,7 +131,7 @@ class SupplementalData(ModelBase):
         
 
 class Measure(DomainResource):
-    """ Enforces the minimum information set for the measure metadata required by HL7 and other organizations that share and publish measures
+    """ The Measure resource provides the definition of a quality measure.
     :param str id: Logical id of this artifact
     :param 'Meta' meta: Metadata about the resource
     :param str implicitRules: A set of rules under which this content was created
@@ -149,6 +149,7 @@ class Measure(DomainResource):
     :param str status: draft | active | retired | unknown
     :param bool experimental: For testing purposes, not real usage
     :param 'CodeableConcept' subjectCodeableConcept: E.g. Patient, Practitioner, RelatedPerson, Organization, Location, Device
+    :param 'Reference' subjectReference: E.g. Patient, Practitioner, RelatedPerson, Organization, Location, Device
     :param str date: Date last changed
     :param str publisher: Name of the publisher (organization or individual)
     :param list['ContactDetail'] contact: Contact details for the publisher
@@ -182,7 +183,7 @@ class Measure(DomainResource):
     :param list['Group'] group: Population criteria group
     :param list['SupplementalData'] supplementalData: What other data should be reported with the measure
     """
-    def __init__(self, resourceType: str = "Measure",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  url: str = None,  identifier: list['Identifier'] = None,  version: str = None,  name: str = None,  title: str = None,  subtitle: str = None,  status: str = None,  experimental: bool = None,  subjectCodeableConcept: 'CodeableConcept' = None,  date: str = None,  publisher: str = None,  contact: list['ContactDetail'] = None,  description: str = None,  useContext: list['UsageContext'] = None,  jurisdiction: list['CodeableConcept'] = None,  purpose: str = None,  usage: str = None,  copyright: str = None,  approvalDate: str = None,  lastReviewDate: str = None,  effectivePeriod: 'Period' = None,  topic: list['CodeableConcept'] = None,  author: list['ContactDetail'] = None,  editor: list['ContactDetail'] = None,  reviewer: list['ContactDetail'] = None,  endorser: list['ContactDetail'] = None,  relatedArtifact: list['RelatedArtifact'] = None,  library: str = None,  disclaimer: str = None,  scoring: 'CodeableConcept' = None,  compositeScoring: 'CodeableConcept' = None,  type: list['CodeableConcept'] = None,  riskAdjustment: str = None,  rateAggregation: str = None,  rationale: str = None,  clinicalRecommendationStatement: str = None,  improvementNotation: 'CodeableConcept' = None,  definition: str = None,  guidance: str = None,  group: list['Group'] = None,  supplementalData: list['SupplementalData'] = None, ):
+    def __init__(self, resourceType: str = "Measure",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  url: str = None,  identifier: list['Identifier'] = None,  version: str = None,  name: str = None,  title: str = None,  subtitle: str = None,  status: str = None,  experimental: bool = None,  subjectCodeableConcept: 'CodeableConcept' = None,  subjectReference: 'Reference' = None,  date: str = None,  publisher: str = None,  contact: list['ContactDetail'] = None,  description: str = None,  useContext: list['UsageContext'] = None,  jurisdiction: list['CodeableConcept'] = None,  purpose: str = None,  usage: str = None,  copyright: str = None,  approvalDate: str = None,  lastReviewDate: str = None,  effectivePeriod: 'Period' = None,  topic: list['CodeableConcept'] = None,  author: list['ContactDetail'] = None,  editor: list['ContactDetail'] = None,  reviewer: list['ContactDetail'] = None,  endorser: list['ContactDetail'] = None,  relatedArtifact: list['RelatedArtifact'] = None,  library: str = None,  disclaimer: str = None,  scoring: 'CodeableConcept' = None,  compositeScoring: 'CodeableConcept' = None,  type: list['CodeableConcept'] = None,  riskAdjustment: str = None,  rateAggregation: str = None,  rationale: str = None,  clinicalRecommendationStatement: str = None,  improvementNotation: 'CodeableConcept' = None,  definition: str = None,  guidance: str = None,  group: list['Group'] = None,  supplementalData: list['SupplementalData'] = None, ):
         self.resourceType: str = resourceType or "Measure"
         self.id: str = id 
         self.meta: 'Meta' = meta 
@@ -201,6 +202,7 @@ class Measure(DomainResource):
         self.status: str = status 
         self.experimental: bool = experimental 
         self.subjectCodeableConcept: 'CodeableConcept' = subjectCodeableConcept 
+        self.subjectReference: 'Reference' = subjectReference 
         self.date: str = date 
         self.publisher: str = publisher 
         self.contact: list['ContactDetail'] = contact or []

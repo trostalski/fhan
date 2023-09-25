@@ -1,23 +1,23 @@
 """
 Generated class for RequestGroup. 
-Time: 2023-09-24 21:52:32
+Time: 2023-09-25 14:53:18
 """
-from fhan.models.R4.Period import *
-from fhan.models.R4.Reference import *
-from fhan.models.R4.RelatedArtifact import *
-from fhan.models.R4.Range import *
-from fhan.models.R4.Resource import *
-from fhan.models.R4.Annotation import *
-from fhan.models.R4.Expression import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Identifier import *
-from fhan.models.R4.Age import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Timing import *
-from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Duration import *
+from fhan.models.R4.Reference import *
+from fhan.models.R4.Resource import *
+from fhan.models.R4.RelatedArtifact import *
+from fhan.models.R4.Age import *
+from fhan.models.R4.Period import *
 from fhan.models.R4.Extension import *
+from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Annotation import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.Range import *
+from fhan.models.R4.Meta import *
+from fhan.models.R4.Expression import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Timing import *
 from fhan.models.R4.DomainResource import *
 
 
@@ -51,14 +51,16 @@ class RelatedAction(ModelBase):
     :param str actionId: What action this is related to
     :param str relationship: before-start | before | before-end | concurrent-with-start | concurrent | concurrent-with-end | after-start | after | after-end
     :param 'Duration' offsetDuration: Time offset for the relationship
+    :param 'Range' offsetRange: Time offset for the relationship
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  actionId: str = None,  relationship: str = None,  offsetDuration: 'Duration' = None, ):
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  actionId: str = None,  relationship: str = None,  offsetDuration: 'Duration' = None,  offsetRange: 'Range' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
         self.actionId: str = actionId 
         self.relationship: str = relationship 
         self.offsetDuration: 'Duration' = offsetDuration 
+        self.offsetRange: 'Range' = offsetRange 
         
 
   
@@ -79,6 +81,11 @@ class Action(ModelBase):
     :param list['Condition'] condition: Whether or not the action is applicable
     :param list['RelatedAction'] relatedAction: Relationship to another action
     :param str timingDateTime: When the action should take place
+    :param 'Age' timingAge: When the action should take place
+    :param 'Period' timingPeriod: When the action should take place
+    :param 'Duration' timingDuration: When the action should take place
+    :param 'Range' timingRange: When the action should take place
+    :param 'Timing' timingTiming: When the action should take place
     :param list['Reference'] participant: Who should perform the action
     :param 'CodeableConcept' type: create | update | remove | fire-event
     :param str groupingBehavior: visual-group | logical-group | sentence-group
@@ -88,7 +95,7 @@ class Action(ModelBase):
     :param str cardinalityBehavior: single | multiple
     :param 'Reference' resource: The target of the action
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  prefix: str = None,  title: str = None,  description: str = None,  textEquivalent: str = None,  priority: str = None,  code: list['CodeableConcept'] = None,  documentation: list['RelatedArtifact'] = None,  condition: list['Condition'] = None,  relatedAction: list['RelatedAction'] = None,  timingDateTime: str = None,  participant: list['Reference'] = None,  type: 'CodeableConcept' = None,  groupingBehavior: str = None,  selectionBehavior: str = None,  requiredBehavior: str = None,  precheckBehavior: str = None,  cardinalityBehavior: str = None,  resource: 'Reference' = None, ):
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  prefix: str = None,  title: str = None,  description: str = None,  textEquivalent: str = None,  priority: str = None,  code: list['CodeableConcept'] = None,  documentation: list['RelatedArtifact'] = None,  condition: list['Condition'] = None,  relatedAction: list['RelatedAction'] = None,  timingDateTime: str = None,  timingAge: 'Age' = None,  timingPeriod: 'Period' = None,  timingDuration: 'Duration' = None,  timingRange: 'Range' = None,  timingTiming: 'Timing' = None,  participant: list['Reference'] = None,  type: 'CodeableConcept' = None,  groupingBehavior: str = None,  selectionBehavior: str = None,  requiredBehavior: str = None,  precheckBehavior: str = None,  cardinalityBehavior: str = None,  resource: 'Reference' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -102,6 +109,11 @@ class Action(ModelBase):
         self.condition: list['Condition'] = condition or []
         self.relatedAction: list['RelatedAction'] = relatedAction or []
         self.timingDateTime: str = timingDateTime 
+        self.timingAge: 'Age' = timingAge 
+        self.timingPeriod: 'Period' = timingPeriod 
+        self.timingDuration: 'Duration' = timingDuration 
+        self.timingRange: 'Range' = timingRange 
+        self.timingTiming: 'Timing' = timingTiming 
         self.participant: list['Reference'] = participant or []
         self.type: 'CodeableConcept' = type 
         self.groupingBehavior: str = groupingBehavior 

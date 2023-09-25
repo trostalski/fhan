@@ -5,6 +5,7 @@ import os
 from abc import ABC, abstractmethod
 from importlib import import_module
 import inspect
+import stringcase
 
 from fhan.core.data_types import PYTHON_KEYWORDS
 from fhan.core.utils.path_utils import remove_n_parts_from_end, join_paths
@@ -68,6 +69,7 @@ class GeneratorElement:
     ):
         children = children or []
         self._element = element_definition
+        self.id = element_definition["id"]
         self.type = type
         self.path: str = element_definition["path"]
         self.name = _escape_keyword(name) if name in PYTHON_KEYWORDS else name
@@ -82,9 +84,9 @@ class GeneratorElement:
             kind=StructureDefinitionKinds.COMPLEX_TYPE.value, type=self.type
         )
         (
-            self.backbone_children,
+            self.contained_children,
             self.defined_children,
-        ) = _filter_backbone_generator_elements(children)
+        ) = _filter_contained_elements(children)
 
     @property
     def is_array(self):
@@ -99,6 +101,16 @@ class GeneratorElement:
             return f"list['{self.type}']"
         else:
             return f"'{self.type}'"
+
+    def __eq__(self, __value: "GeneratorElement") -> bool:
+        """Compares two GeneratorElements by their path, type, name and id.
+        Primarily used to filter duplicate elements."""
+        return (
+            self.path == __value.path
+            and self.type == __value.type
+            and self.name == __value.name
+            and self.id == __value.id
+        )
 
     def _get_cardinalities(self) -> tuple[float, float]:
         """Returns the min and max cardinality of the ElementDefinition."""
@@ -119,9 +131,9 @@ class GeneratorStructureDefinition:
         )
         self.generator_elements = self._initialize_elements(self._element_definitions)
         (
-            self.backbone_elements,
+            self.contained_elements,
             self.defined_elements,
-        ) = _filter_backbone_generator_elements(self.generator_elements)
+        ) = _filter_contained_elements(self.generator_elements)
         self.kind = self._structure_definition["kind"]
         self.is_primitive = self.kind == StructureDefinitionKinds.PRIMITIVE_TYPE.value
         self.id = self._structure_definition["id"]
@@ -132,6 +144,8 @@ class GeneratorStructureDefinition:
         self.base_class, self.base_import_string = _get_base_class(
             kind=self.kind, type=self.type
         )
+        # TODO: For now structure definitions with same id and type are considered base classes, but this is might always true
+        self.is_base = self.id == self.type
 
     @property
     def dependencies(self):
@@ -146,13 +160,10 @@ class GeneratorStructureDefinition:
         """Parse elements from the StructureDefinition to explicitly resolve
         the element name and type."""
         parsed_elements = []
-        [
+        for element_definition in element_definitions:
+            if is_root_path(element_definition["id"]):
+                continue
             parsed_elements.extend(self._parse_element(element_definition))
-            for element_definition in element_definitions
-            if not is_root_path(
-                element_definition["id"]
-            )  # skip root element of StructureDefinition, they dont have a type
-        ]
         return parsed_elements
 
     def _parse_element(self, element_definition: dict) -> list[GeneratorElement]:
@@ -187,7 +198,6 @@ class GeneratorStructureDefinition:
                 type=type_code,
             )
             result.append(element)
-
         return result
 
     def _resolve_missing_type(self, element_definition: dict):
@@ -219,39 +229,40 @@ class GeneratorStructureDefinition:
         return None
 
 
-def _filter_backbone_generator_elements(
+def _filter_contained_elements(
     elements: list[GeneratorElement],
 ) -> tuple[list[GeneratorElement], list[GeneratorElement]]:
-    """Filters the given elements for BackboneElements and None-BackboneElements.
-    BackboneElements are Elements that defined within a resource."""
-    backbone_generator_elements = []
+    """Filters the given elements for Elements that are defined within the resource.
+    They are treated separately in the template because the type is not knonw before
+    parsing the StructureDefinition."""
+    contained_generator_elements = []  # Elements of type BackboneElement or Element
     defined_generator_elements = []
-    seen_paths = []
+    seen_elements = []
     for element in elements:
-        if element.path in seen_paths:
+        if element in seen_elements:  # Can't use path because of choice elements
             continue
-        seen_paths.append(element.path)
-        if element.type == "BackboneElement":
+        seen_elements.append(element)  # Add the element to the set
+        if element.type == "BackboneElement" or element.type == "Element":
             children = [
                 e
                 for e in elements
                 if e.path.startswith(element.path)
                 and e.path
-                != element.path  # all children of backbone element without backbone element itself
+                != element.path  # All children of the contained element without the element itself
             ]
-            seen_paths.extend([e.path for e in children])
-            backbone_element = GeneratorElement(
+            seen_elements.extend(children)  # Add children to the seen elements
+            contained_element = GeneratorElement(
                 element_definition=element._element,
                 name=element.name,
                 type=_capitalize_first_letter(element.name),
                 children=children,
             )
-            backbone_generator_elements.append(backbone_element)
-            # backbone element is now defined, its children are not
-            defined_generator_elements.append(backbone_element)
+            contained_generator_elements.append(contained_element)
+            # Contained Element is now defined (type is known, itself), its children are not
+            defined_generator_elements.append(contained_element)
         else:
             defined_generator_elements.append(element)
-    return backbone_generator_elements, defined_generator_elements
+    return contained_generator_elements, defined_generator_elements
 
 
 def _get_base_class(kind: str, type: str) -> tuple[str, str]:

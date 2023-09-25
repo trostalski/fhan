@@ -1,17 +1,17 @@
 """
 Generated class for Media. 
-Time: 2023-09-24 21:52:32
+Time: 2023-09-25 14:53:18
 """
-from fhan.models.R4.Period import *
 from fhan.models.R4.Reference import *
 from fhan.models.R4.Resource import *
+from fhan.models.R4.Period import *
+from fhan.models.R4.Extension import *
+from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Annotation import *
-from fhan.models.R4.Attachment import *
-from fhan.models.R4.Narrative import *
 from fhan.models.R4.Identifier import *
 from fhan.models.R4.Meta import *
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Extension import *
+from fhan.models.R4.Attachment import *
+from fhan.models.R4.Narrative import *
 from fhan.models.R4.DomainResource import *
 
 
@@ -35,6 +35,7 @@ class Media(DomainResource):
     :param 'Reference' subject: Who/What this Media is a record of
     :param 'Reference' encounter: Encounter associated with media
     :param str createdDateTime: When Media was collected
+    :param 'Period' createdPeriod: When Media was collected
     :param str issued: Date/Time this version was made available
     :param 'Reference' operator: The person who generated the image
     :param list['CodeableConcept'] reasonCode: Why was event performed?
@@ -48,7 +49,7 @@ class Media(DomainResource):
     :param 'Attachment' content: Actual Media - reference or data
     :param list['Annotation'] note: Comments made about the media
     """
-    def __init__(self, resourceType: str = "Media",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  identifier: list['Identifier'] = None,  basedOn: list['Reference'] = None,  partOf: list['Reference'] = None,  status: str = None,  type: 'CodeableConcept' = None,  modality: 'CodeableConcept' = None,  view: 'CodeableConcept' = None,  subject: 'Reference' = None,  encounter: 'Reference' = None,  createdDateTime: str = None,  issued: str = None,  operator: 'Reference' = None,  reasonCode: list['CodeableConcept'] = None,  bodySite: 'CodeableConcept' = None,  deviceName: str = None,  device: 'Reference' = None,  height: int = None,  width: int = None,  frames: int = None,  duration: float = None,  content: 'Attachment' = None,  note: list['Annotation'] = None, ):
+    def __init__(self, resourceType: str = "Media",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  identifier: list['Identifier'] = None,  basedOn: list['Reference'] = None,  partOf: list['Reference'] = None,  status: str = None,  type: 'CodeableConcept' = None,  modality: 'CodeableConcept' = None,  view: 'CodeableConcept' = None,  subject: 'Reference' = None,  encounter: 'Reference' = None,  createdDateTime: str = None,  createdPeriod: 'Period' = None,  issued: str = None,  operator: 'Reference' = None,  reasonCode: list['CodeableConcept'] = None,  bodySite: 'CodeableConcept' = None,  deviceName: str = None,  device: 'Reference' = None,  height: int = None,  width: int = None,  frames: int = None,  duration: float = None,  content: 'Attachment' = None,  note: list['Annotation'] = None, ):
         self.resourceType: str = resourceType or "Media"
         self.id: str = id 
         self.meta: 'Meta' = meta 
@@ -68,6 +69,7 @@ class Media(DomainResource):
         self.subject: 'Reference' = subject 
         self.encounter: 'Reference' = encounter 
         self.createdDateTime: str = createdDateTime 
+        self.createdPeriod: 'Period' = createdPeriod 
         self.issued: str = issued 
         self.operator: 'Reference' = operator 
         self.reasonCode: list['CodeableConcept'] = reasonCode or []

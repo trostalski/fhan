@@ -1,20 +1,20 @@
 """
 Generated class for Patient. 
-Time: 2023-09-24 21:52:32
+Time: 2023-09-25 14:53:18
 """
-from fhan.models.R4.Period import *
 from fhan.models.R4.Reference import *
-from fhan.models.R4.Address import *
 from fhan.models.R4.Resource import *
-from fhan.models.R4.Attachment import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Identifier import *
-from fhan.models.R4.Meta import *
 from fhan.models.R4.ContactPoint import *
-from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Period import *
 from fhan.models.R4.Extension import *
+from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.HumanName import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.Address import *
+from fhan.models.R4.Meta import *
+from fhan.models.R4.Attachment import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Narrative import *
 from fhan.models.R4.DomainResource import *
 
 
@@ -99,9 +99,11 @@ class Patient(DomainResource):
     :param str gender: male | female | other | unknown
     :param str birthDate: The date of birth for the individual
     :param bool deceasedBoolean: Indicates if the individual is deceased or not
+    :param str deceasedDateTime: Indicates if the individual is deceased or not
     :param list['Address'] address: An address for the individual
     :param 'CodeableConcept' maritalStatus: Marital (civil) status of a patient
     :param bool multipleBirthBoolean: Whether patient is part of a multiple birth
+    :param int multipleBirthInteger: Whether patient is part of a multiple birth
     :param list['Attachment'] photo: Image of the patient
     :param list['Contact'] contact: A contact party (e.g. guardian, partner, friend) for the patient
     :param list['Communication'] communication: A language which may be used to communicate with the patient about his or her health
@@ -109,7 +111,7 @@ class Patient(DomainResource):
     :param 'Reference' managingOrganization: Organization that is the custodian of the patient record
     :param list['Link'] link: Link to another patient resource that concerns the same actual person
     """
-    def __init__(self, resourceType: str = "Patient",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  identifier: list['Identifier'] = None,  active: bool = None,  name: list['HumanName'] = None,  telecom: list['ContactPoint'] = None,  gender: str = None,  birthDate: str = None,  deceasedBoolean: bool = None,  address: list['Address'] = None,  maritalStatus: 'CodeableConcept' = None,  multipleBirthBoolean: bool = None,  photo: list['Attachment'] = None,  contact: list['Contact'] = None,  communication: list['Communication'] = None,  generalPractitioner: list['Reference'] = None,  managingOrganization: 'Reference' = None,  link: list['Link'] = None, ):
+    def __init__(self, resourceType: str = "Patient",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  identifier: list['Identifier'] = None,  active: bool = None,  name: list['HumanName'] = None,  telecom: list['ContactPoint'] = None,  gender: str = None,  birthDate: str = None,  deceasedBoolean: bool = None,  deceasedDateTime: str = None,  address: list['Address'] = None,  maritalStatus: 'CodeableConcept' = None,  multipleBirthBoolean: bool = None,  multipleBirthInteger: int = None,  photo: list['Attachment'] = None,  contact: list['Contact'] = None,  communication: list['Communication'] = None,  generalPractitioner: list['Reference'] = None,  managingOrganization: 'Reference' = None,  link: list['Link'] = None, ):
         self.resourceType: str = resourceType or "Patient"
         self.id: str = id 
         self.meta: 'Meta' = meta 
@@ -126,9 +128,11 @@ class Patient(DomainResource):
         self.gender: str = gender 
         self.birthDate: str = birthDate 
         self.deceasedBoolean: bool = deceasedBoolean 
+        self.deceasedDateTime: str = deceasedDateTime 
         self.address: list['Address'] = address or []
         self.maritalStatus: 'CodeableConcept' = maritalStatus 
         self.multipleBirthBoolean: bool = multipleBirthBoolean 
+        self.multipleBirthInteger: int = multipleBirthInteger 
         self.photo: list['Attachment'] = photo or []
         self.contact: list['Contact'] = contact or []
         self.communication: list['Communication'] = communication or []

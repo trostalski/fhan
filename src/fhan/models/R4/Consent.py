@@ -1,18 +1,18 @@
 """
 Generated class for Consent. 
-Time: 2023-09-24 21:52:32
+Time: 2023-09-25 14:53:18
 """
-from fhan.models.R4.Period import *
 from fhan.models.R4.Reference import *
 from fhan.models.R4.Resource import *
-from fhan.models.R4.Attachment import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Identifier import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Coding import *
-from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Period import *
 from fhan.models.R4.Extension import *
+from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.Coding import *
+from fhan.models.R4.Meta import *
+from fhan.models.R4.Attachment import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Narrative import *
 from fhan.models.R4.DomainResource import *
 
 
@@ -150,11 +150,12 @@ class Consent(DomainResource):
     :param list['Reference'] performer: Who is agreeing to the policy and rules
     :param list['Reference'] organization: Custodian of the consent
     :param 'Attachment' sourceAttachment: Source from which this consent is taken
+    :param 'Reference' sourceReference: Source from which this consent is taken
     :param list['Policy'] policy: Policies covered by this consent
     :param list['Verification'] verification: Consent Verified by patient or family
     :param 'Provision' provision: Constraints to the base Consent.policyRule
     """
-    def __init__(self, resourceType: str = "Consent",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  identifier: list['Identifier'] = None,  status: str = None,  scope: 'CodeableConcept' = None,  category: list['CodeableConcept'] = None,  patient: 'Reference' = None,  dateTime: str = None,  performer: list['Reference'] = None,  organization: list['Reference'] = None,  sourceAttachment: 'Attachment' = None,  policy: list['Policy'] = None,  verification: list['Verification'] = None,  provision: 'Provision' = None, ):
+    def __init__(self, resourceType: str = "Consent",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  identifier: list['Identifier'] = None,  status: str = None,  scope: 'CodeableConcept' = None,  category: list['CodeableConcept'] = None,  patient: 'Reference' = None,  dateTime: str = None,  performer: list['Reference'] = None,  organization: list['Reference'] = None,  sourceAttachment: 'Attachment' = None,  sourceReference: 'Reference' = None,  policy: list['Policy'] = None,  verification: list['Verification'] = None,  provision: 'Provision' = None, ):
         self.resourceType: str = resourceType or "Consent"
         self.id: str = id 
         self.meta: 'Meta' = meta 
@@ -173,6 +174,7 @@ class Consent(DomainResource):
         self.performer: list['Reference'] = performer or []
         self.organization: list['Reference'] = organization or []
         self.sourceAttachment: 'Attachment' = sourceAttachment 
+        self.sourceReference: 'Reference' = sourceReference 
         self.policy: list['Policy'] = policy or []
         self.verification: list['Verification'] = verification or []
         self.provision: 'Provision' = provision 

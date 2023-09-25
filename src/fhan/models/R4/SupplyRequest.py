@@ -1,19 +1,19 @@
 """
 Generated class for SupplyRequest. 
-Time: 2023-09-24 21:52:32
+Time: 2023-09-25 14:53:18
 """
-from fhan.models.R4.Period import *
 from fhan.models.R4.Reference import *
-from fhan.models.R4.Range import *
 from fhan.models.R4.Resource import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Period import *
+from fhan.models.R4.Extension import *
+from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Identifier import *
+from fhan.models.R4.Range import *
 from fhan.models.R4.Meta import *
 from fhan.models.R4.Quantity import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Narrative import *
 from fhan.models.R4.Timing import *
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Extension import *
 from fhan.models.R4.DomainResource import *
 
 
@@ -26,13 +26,19 @@ class Parameter(ModelBase):
     :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param 'CodeableConcept' code: Item detail
     :param 'CodeableConcept' valueCodeableConcept: Value of detail
+    :param 'Quantity' valueQuantity: Value of detail
+    :param 'Range' valueRange: Value of detail
+    :param bool valueBoolean: Value of detail
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  code: 'CodeableConcept' = None,  valueCodeableConcept: 'CodeableConcept' = None, ):
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  code: 'CodeableConcept' = None,  valueCodeableConcept: 'CodeableConcept' = None,  valueQuantity: 'Quantity' = None,  valueRange: 'Range' = None,  valueBoolean: bool = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
         self.code: 'CodeableConcept' = code 
         self.valueCodeableConcept: 'CodeableConcept' = valueCodeableConcept 
+        self.valueQuantity: 'Quantity' = valueQuantity 
+        self.valueRange: 'Range' = valueRange 
+        self.valueBoolean: bool = valueBoolean 
         
 
 class SupplyRequest(DomainResource):
@@ -50,9 +56,12 @@ class SupplyRequest(DomainResource):
     :param 'CodeableConcept' category: The kind of supply (central, non-stock, etc.)
     :param str priority: routine | urgent | asap | stat
     :param 'CodeableConcept' itemCodeableConcept: Medication, Substance, or Device requested to be supplied
+    :param 'Reference' itemReference: Medication, Substance, or Device requested to be supplied
     :param 'Quantity' quantity: The requested amount of the item indicated
     :param list['Parameter'] parameter: Ordered item details
     :param str occurrenceDateTime: When the request should be fulfilled
+    :param 'Period' occurrencePeriod: When the request should be fulfilled
+    :param 'Timing' occurrenceTiming: When the request should be fulfilled
     :param str authoredOn: When the request was made
     :param 'Reference' requester: Individual making the request
     :param list['Reference'] supplier: Who is intended to fulfill the request
@@ -61,7 +70,7 @@ class SupplyRequest(DomainResource):
     :param 'Reference' deliverFrom: The origin of the supply
     :param 'Reference' deliverTo: The destination of the supply
     """
-    def __init__(self, resourceType: str = "SupplyRequest",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  identifier: list['Identifier'] = None,  status: str = None,  category: 'CodeableConcept' = None,  priority: str = None,  itemCodeableConcept: 'CodeableConcept' = None,  quantity: 'Quantity' = None,  parameter: list['Parameter'] = None,  occurrenceDateTime: str = None,  authoredOn: str = None,  requester: 'Reference' = None,  supplier: list['Reference'] = None,  reasonCode: list['CodeableConcept'] = None,  reasonReference: list['Reference'] = None,  deliverFrom: 'Reference' = None,  deliverTo: 'Reference' = None, ):
+    def __init__(self, resourceType: str = "SupplyRequest",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  identifier: list['Identifier'] = None,  status: str = None,  category: 'CodeableConcept' = None,  priority: str = None,  itemCodeableConcept: 'CodeableConcept' = None,  itemReference: 'Reference' = None,  quantity: 'Quantity' = None,  parameter: list['Parameter'] = None,  occurrenceDateTime: str = None,  occurrencePeriod: 'Period' = None,  occurrenceTiming: 'Timing' = None,  authoredOn: str = None,  requester: 'Reference' = None,  supplier: list['Reference'] = None,  reasonCode: list['CodeableConcept'] = None,  reasonReference: list['Reference'] = None,  deliverFrom: 'Reference' = None,  deliverTo: 'Reference' = None, ):
         self.resourceType: str = resourceType or "SupplyRequest"
         self.id: str = id 
         self.meta: 'Meta' = meta 
@@ -76,9 +85,12 @@ class SupplyRequest(DomainResource):
         self.category: 'CodeableConcept' = category 
         self.priority: str = priority 
         self.itemCodeableConcept: 'CodeableConcept' = itemCodeableConcept 
+        self.itemReference: 'Reference' = itemReference 
         self.quantity: 'Quantity' = quantity 
         self.parameter: list['Parameter'] = parameter or []
         self.occurrenceDateTime: str = occurrenceDateTime 
+        self.occurrencePeriod: 'Period' = occurrencePeriod 
+        self.occurrenceTiming: 'Timing' = occurrenceTiming 
         self.authoredOn: str = authoredOn 
         self.requester: 'Reference' = requester 
         self.supplier: list['Reference'] = supplier or []

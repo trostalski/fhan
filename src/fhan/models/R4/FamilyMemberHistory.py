@@ -1,19 +1,19 @@
 """
 Generated class for FamilyMemberHistory. 
-Time: 2023-09-24 21:52:32
+Time: 2023-09-25 14:53:18
 """
-from fhan.models.R4.Period import *
 from fhan.models.R4.Reference import *
-from fhan.models.R4.Range import *
 from fhan.models.R4.Resource import *
-from fhan.models.R4.Annotation import *
-from fhan.models.R4.Narrative import *
 from fhan.models.R4.Age import *
-from fhan.models.R4.Identifier import *
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Period import *
 from fhan.models.R4.Extension import *
+from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Annotation import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.Range import *
+from fhan.models.R4.Meta import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Narrative import *
 from fhan.models.R4.DomainResource import *
 
 
@@ -28,9 +28,12 @@ class Condition(ModelBase):
     :param 'CodeableConcept' outcome: deceased | permanent disability | etc.
     :param bool contributedToDeath: Whether the condition contributed to the cause of death
     :param 'Age' onsetAge: When condition first manifested
+    :param 'Range' onsetRange: When condition first manifested
+    :param 'Period' onsetPeriod: When condition first manifested
+    :param str onsetString: When condition first manifested
     :param list['Annotation'] note: Extra information about condition
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  code: 'CodeableConcept' = None,  outcome: 'CodeableConcept' = None,  contributedToDeath: bool = None,  onsetAge: 'Age' = None,  note: list['Annotation'] = None, ):
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  code: 'CodeableConcept' = None,  outcome: 'CodeableConcept' = None,  contributedToDeath: bool = None,  onsetAge: 'Age' = None,  onsetRange: 'Range' = None,  onsetPeriod: 'Period' = None,  onsetString: str = None,  note: list['Annotation'] = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -38,6 +41,9 @@ class Condition(ModelBase):
         self.outcome: 'CodeableConcept' = outcome 
         self.contributedToDeath: bool = contributedToDeath 
         self.onsetAge: 'Age' = onsetAge 
+        self.onsetRange: 'Range' = onsetRange 
+        self.onsetPeriod: 'Period' = onsetPeriod 
+        self.onsetString: str = onsetString 
         self.note: list['Annotation'] = note or []
         
 
@@ -62,15 +68,23 @@ class FamilyMemberHistory(DomainResource):
     :param 'CodeableConcept' relationship: Relationship to the subject
     :param 'CodeableConcept' sex: male | female | other | unknown
     :param 'Period' bornPeriod: (approximate) date of birth
+    :param str bornDate: (approximate) date of birth
+    :param str bornString: (approximate) date of birth
     :param 'Age' ageAge: (approximate) age
+    :param 'Range' ageRange: (approximate) age
+    :param str ageString: (approximate) age
     :param bool estimatedAge: Age is estimated?
     :param bool deceasedBoolean: Dead? How old/when?
+    :param 'Age' deceasedAge: Dead? How old/when?
+    :param 'Range' deceasedRange: Dead? How old/when?
+    :param str deceasedDate: Dead? How old/when?
+    :param str deceasedString: Dead? How old/when?
     :param list['CodeableConcept'] reasonCode: Why was family member history performed?
     :param list['Reference'] reasonReference: Why was family member history performed?
     :param list['Annotation'] note: General note about related person
     :param list['Condition'] condition: Condition that the related person had
     """
-    def __init__(self, resourceType: str = "FamilyMemberHistory",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  identifier: list['Identifier'] = None,  instantiatesCanonical: str = None,  instantiatesUri: str = None,  status: str = None,  dataAbsentReason: 'CodeableConcept' = None,  patient: 'Reference' = None,  date: str = None,  name: str = None,  relationship: 'CodeableConcept' = None,  sex: 'CodeableConcept' = None,  bornPeriod: 'Period' = None,  ageAge: 'Age' = None,  estimatedAge: bool = None,  deceasedBoolean: bool = None,  reasonCode: list['CodeableConcept'] = None,  reasonReference: list['Reference'] = None,  note: list['Annotation'] = None,  condition: list['Condition'] = None, ):
+    def __init__(self, resourceType: str = "FamilyMemberHistory",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  identifier: list['Identifier'] = None,  instantiatesCanonical: str = None,  instantiatesUri: str = None,  status: str = None,  dataAbsentReason: 'CodeableConcept' = None,  patient: 'Reference' = None,  date: str = None,  name: str = None,  relationship: 'CodeableConcept' = None,  sex: 'CodeableConcept' = None,  bornPeriod: 'Period' = None,  bornDate: str = None,  bornString: str = None,  ageAge: 'Age' = None,  ageRange: 'Range' = None,  ageString: str = None,  estimatedAge: bool = None,  deceasedBoolean: bool = None,  deceasedAge: 'Age' = None,  deceasedRange: 'Range' = None,  deceasedDate: str = None,  deceasedString: str = None,  reasonCode: list['CodeableConcept'] = None,  reasonReference: list['Reference'] = None,  note: list['Annotation'] = None,  condition: list['Condition'] = None, ):
         self.resourceType: str = resourceType or "FamilyMemberHistory"
         self.id: str = id 
         self.meta: 'Meta' = meta 
@@ -91,9 +105,17 @@ class FamilyMemberHistory(DomainResource):
         self.relationship: 'CodeableConcept' = relationship 
         self.sex: 'CodeableConcept' = sex 
         self.bornPeriod: 'Period' = bornPeriod 
+        self.bornDate: str = bornDate 
+        self.bornString: str = bornString 
         self.ageAge: 'Age' = ageAge 
+        self.ageRange: 'Range' = ageRange 
+        self.ageString: str = ageString 
         self.estimatedAge: bool = estimatedAge 
         self.deceasedBoolean: bool = deceasedBoolean 
+        self.deceasedAge: 'Age' = deceasedAge 
+        self.deceasedRange: 'Range' = deceasedRange 
+        self.deceasedDate: str = deceasedDate 
+        self.deceasedString: str = deceasedString 
         self.reasonCode: list['CodeableConcept'] = reasonCode or []
         self.reasonReference: list['Reference'] = reasonReference or []
         self.note: list['Annotation'] = note or []

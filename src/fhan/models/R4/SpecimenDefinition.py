@@ -1,18 +1,18 @@
 """
 Generated class for SpecimenDefinition. 
-Time: 2023-09-24 21:52:32
+Time: 2023-09-25 14:53:18
 """
+from fhan.models.R4.Duration import *
 from fhan.models.R4.Reference import *
-from fhan.models.R4.Range import *
 from fhan.models.R4.Resource import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Extension import *
+from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Identifier import *
+from fhan.models.R4.Range import *
 from fhan.models.R4.Meta import *
 from fhan.models.R4.Quantity import *
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Duration import *
-from fhan.models.R4.Extension import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Narrative import *
 from fhan.models.R4.DomainResource import *
 
 
@@ -28,12 +28,14 @@ class Additive(ModelBase):
     :param list['Extension'] extension: Additional content defined by implementations
     :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param 'CodeableConcept' additiveCodeableConcept: Additive associated with container
+    :param 'Reference' additiveReference: Additive associated with container
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  additiveCodeableConcept: 'CodeableConcept' = None, ):
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  additiveCodeableConcept: 'CodeableConcept' = None,  additiveReference: 'Reference' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
         self.additiveCodeableConcept: 'CodeableConcept' = additiveCodeableConcept 
+        self.additiveReference: 'Reference' = additiveReference 
         
 
   
@@ -50,10 +52,11 @@ class Container(ModelBase):
     :param str description: Container description
     :param 'Quantity' capacity: Container capacity
     :param 'Quantity' minimumVolumeQuantity: Minimum volume
+    :param str minimumVolumeString: Minimum volume
     :param list['Additive'] additive: Additive associated with container
     :param str preparation: Specimen container preparation
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  material: 'CodeableConcept' = None,  type: 'CodeableConcept' = None,  cap: 'CodeableConcept' = None,  description: str = None,  capacity: 'Quantity' = None,  minimumVolumeQuantity: 'Quantity' = None,  additive: list['Additive'] = None,  preparation: str = None, ):
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  material: 'CodeableConcept' = None,  type: 'CodeableConcept' = None,  cap: 'CodeableConcept' = None,  description: str = None,  capacity: 'Quantity' = None,  minimumVolumeQuantity: 'Quantity' = None,  minimumVolumeString: str = None,  additive: list['Additive'] = None,  preparation: str = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -63,6 +66,7 @@ class Container(ModelBase):
         self.description: str = description 
         self.capacity: 'Quantity' = capacity 
         self.minimumVolumeQuantity: 'Quantity' = minimumVolumeQuantity 
+        self.minimumVolumeString: str = minimumVolumeString 
         self.additive: list['Additive'] = additive or []
         self.preparation: str = preparation 
         

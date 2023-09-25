@@ -1,13 +1,13 @@
 """
 Generated class for Definition. 
-Time: 2023-09-24 21:52:32
+Time: 2023-09-25 14:53:18
 """
-from fhan.models.R4.UsageContext import *
-from fhan.models.R4.Period import *
 from fhan.models.R4.Reference import *
 from fhan.models.R4.ContactDetail import *
-from fhan.models.R4.Identifier import *
 from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Period import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.UsageContext import *
 from fhan.models.generator_models import ModelBase
 
 class Definition(ModelBase):
@@ -23,6 +23,7 @@ class Definition(ModelBase):
     :param str status: draft | active | retired | unknown
     :param bool experimental: If for testing purposes, not real usage
     :param 'CodeableConcept' subjectCodeableConcept: Type of individual the defined service is for
+    :param 'Reference' subjectReference: Type of individual the defined service is for
     :param str date: Date status first applied
     :param 'Reference' publisher: The name of the individual or organization that published the {{title}}
     :param list['ContactDetail'] contact: Contact details for the publisher
@@ -36,7 +37,7 @@ class Definition(ModelBase):
     :param 'Period' effectivePeriod: The effective date range for the {{title}}
     :param 'CodeableConcept' performerType: Desired kind of service performer
     """
-    def __init__(self, resourceType: str = "Definition",  url: str = None,  identifier: 'Identifier' = None,  version: str = None,  title: str = None,  derivedFromCanonical: str = None,  derivedFromUri: str = None,  partOf: str = None,  replaces: str = None,  status: str = None,  experimental: bool = None,  subjectCodeableConcept: 'CodeableConcept' = None,  date: str = None,  publisher: 'Reference' = None,  contact: list['ContactDetail'] = None,  description: str = None,  useContext: list['UsageContext'] = None,  jurisdiction: list['CodeableConcept'] = None,  purpose: str = None,  copyright: str = None,  approvalDate: str = None,  lastReviewDate: str = None,  effectivePeriod: 'Period' = None,  performerType: 'CodeableConcept' = None, ):
+    def __init__(self, resourceType: str = "Definition",  url: str = None,  identifier: 'Identifier' = None,  version: str = None,  title: str = None,  derivedFromCanonical: str = None,  derivedFromUri: str = None,  partOf: str = None,  replaces: str = None,  status: str = None,  experimental: bool = None,  subjectCodeableConcept: 'CodeableConcept' = None,  subjectReference: 'Reference' = None,  date: str = None,  publisher: 'Reference' = None,  contact: list['ContactDetail'] = None,  description: str = None,  useContext: list['UsageContext'] = None,  jurisdiction: list['CodeableConcept'] = None,  purpose: str = None,  copyright: str = None,  approvalDate: str = None,  lastReviewDate: str = None,  effectivePeriod: 'Period' = None,  performerType: 'CodeableConcept' = None, ):
         self.resourceType: str = resourceType or "Definition"
         self.url: str = url 
         self.identifier: 'Identifier' = identifier 
@@ -49,6 +50,7 @@ class Definition(ModelBase):
         self.status: str = status 
         self.experimental: bool = experimental 
         self.subjectCodeableConcept: 'CodeableConcept' = subjectCodeableConcept 
+        self.subjectReference: 'Reference' = subjectReference 
         self.date: str = date 
         self.publisher: 'Reference' = publisher 
         self.contact: list['ContactDetail'] = contact or []

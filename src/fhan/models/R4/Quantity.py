@@ -1,12 +1,12 @@
 """
 Generated class for Quantity. 
-Time: 2023-09-24 21:52:32
+Time: 2023-09-25 14:53:18
 """
 from fhan.models.R4.Extension import *
 from fhan.models.generator_models import ModelBase
 
 class Quantity(ModelBase):
-    """ A fixed quantity (no comparator)
+    """ Base StructureDefinition for Quantity Type: A measured amount (or an amount that can potentially be measured). Note that measured amounts include amounts that are not precisely quantified, including amounts involving arbitrary units and floating currencies.
     :param str id: Unique id for inter-element referencing
     :param list['Extension'] extension: Additional content defined by implementations
     :param float value: Numerical value (with implicit precision)

@@ -1,14 +1,14 @@
 """
 Generated class for ImmunizationEvaluation. 
-Time: 2023-09-24 21:52:32
+Time: 2023-09-25 14:53:18
 """
 from fhan.models.R4.Reference import *
 from fhan.models.R4.Resource import *
-from fhan.models.R4.Narrative import *
+from fhan.models.R4.Extension import *
+from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Identifier import *
 from fhan.models.R4.Meta import *
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Extension import *
+from fhan.models.R4.Narrative import *
 from fhan.models.R4.DomainResource import *
 
 
@@ -34,9 +34,11 @@ class ImmunizationEvaluation(DomainResource):
     :param str description: Evaluation notes
     :param str series: Name of vaccine series
     :param int doseNumberPositiveInt: Dose number within series
+    :param str doseNumberString: Dose number within series
     :param int seriesDosesPositiveInt: Recommended number of doses for immunity
+    :param str seriesDosesString: Recommended number of doses for immunity
     """
-    def __init__(self, resourceType: str = "ImmunizationEvaluation",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  identifier: list['Identifier'] = None,  status: str = None,  patient: 'Reference' = None,  date: str = None,  authority: 'Reference' = None,  targetDisease: 'CodeableConcept' = None,  immunizationEvent: 'Reference' = None,  doseStatus: 'CodeableConcept' = None,  doseStatusReason: list['CodeableConcept'] = None,  description: str = None,  series: str = None,  doseNumberPositiveInt: int = None,  seriesDosesPositiveInt: int = None, ):
+    def __init__(self, resourceType: str = "ImmunizationEvaluation",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  identifier: list['Identifier'] = None,  status: str = None,  patient: 'Reference' = None,  date: str = None,  authority: 'Reference' = None,  targetDisease: 'CodeableConcept' = None,  immunizationEvent: 'Reference' = None,  doseStatus: 'CodeableConcept' = None,  doseStatusReason: list['CodeableConcept'] = None,  description: str = None,  series: str = None,  doseNumberPositiveInt: int = None,  doseNumberString: str = None,  seriesDosesPositiveInt: int = None,  seriesDosesString: str = None, ):
         self.resourceType: str = resourceType or "ImmunizationEvaluation"
         self.id: str = id 
         self.meta: 'Meta' = meta 
@@ -58,5 +60,7 @@ class ImmunizationEvaluation(DomainResource):
         self.description: str = description 
         self.series: str = series 
         self.doseNumberPositiveInt: int = doseNumberPositiveInt 
+        self.doseNumberString: str = doseNumberString 
         self.seriesDosesPositiveInt: int = seriesDosesPositiveInt 
+        self.seriesDosesString: str = seriesDosesString 
         

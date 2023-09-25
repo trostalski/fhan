@@ -1,14 +1,14 @@
 """
 Generated class for MedicinalProductInteraction. 
-Time: 2023-09-24 21:52:32
+Time: 2023-09-25 14:53:18
 """
 from fhan.models.R4.Reference import *
 from fhan.models.R4.Resource import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Extension import *
+from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Meta import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Narrative import *
 from fhan.models.R4.DomainResource import *
 
 
@@ -20,12 +20,14 @@ class Interactant(ModelBase):
     :param list['Extension'] extension: Additional content defined by implementations
     :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param 'Reference' itemReference: The specific medication, food or laboratory test that interacts
+    :param 'CodeableConcept' itemCodeableConcept: The specific medication, food or laboratory test that interacts
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  itemReference: 'Reference' = None, ):
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  itemReference: 'Reference' = None,  itemCodeableConcept: 'CodeableConcept' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
         self.itemReference: 'Reference' = itemReference 
+        self.itemCodeableConcept: 'CodeableConcept' = itemCodeableConcept 
         
 
 class MedicinalProductInteraction(DomainResource):

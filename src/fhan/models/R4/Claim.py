@@ -1,20 +1,20 @@
 """
 Generated class for Claim. 
-Time: 2023-09-24 21:52:32
+Time: 2023-09-25 14:53:18
 """
-from fhan.models.R4.Period import *
 from fhan.models.R4.Reference import *
-from fhan.models.R4.Address import *
 from fhan.models.R4.Resource import *
-from fhan.models.R4.Attachment import *
-from fhan.models.R4.Money import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Period import *
+from fhan.models.R4.Extension import *
+from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Identifier import *
+from fhan.models.R4.Attachment import *
+from fhan.models.R4.Address import *
 from fhan.models.R4.Meta import *
 from fhan.models.R4.Quantity import *
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Extension import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Money import *
 from fhan.models.R4.DomainResource import *
 
 
@@ -91,10 +91,15 @@ class SupportingInfo(ModelBase):
     :param 'CodeableConcept' category: Classification of the supplied information
     :param 'CodeableConcept' code: Type of information
     :param str timingDate: When it occurred
+    :param 'Period' timingPeriod: When it occurred
     :param bool valueBoolean: Data to be provided
+    :param str valueString: Data to be provided
+    :param 'Quantity' valueQuantity: Data to be provided
+    :param 'Attachment' valueAttachment: Data to be provided
+    :param 'Reference' valueReference: Data to be provided
     :param 'CodeableConcept' reason: Explanation for the information
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  sequence: int = None,  category: 'CodeableConcept' = None,  code: 'CodeableConcept' = None,  timingDate: str = None,  valueBoolean: bool = None,  reason: 'CodeableConcept' = None, ):
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  sequence: int = None,  category: 'CodeableConcept' = None,  code: 'CodeableConcept' = None,  timingDate: str = None,  timingPeriod: 'Period' = None,  valueBoolean: bool = None,  valueString: str = None,  valueQuantity: 'Quantity' = None,  valueAttachment: 'Attachment' = None,  valueReference: 'Reference' = None,  reason: 'CodeableConcept' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -102,7 +107,12 @@ class SupportingInfo(ModelBase):
         self.category: 'CodeableConcept' = category 
         self.code: 'CodeableConcept' = code 
         self.timingDate: str = timingDate 
+        self.timingPeriod: 'Period' = timingPeriod 
         self.valueBoolean: bool = valueBoolean 
+        self.valueString: str = valueString 
+        self.valueQuantity: 'Quantity' = valueQuantity 
+        self.valueAttachment: 'Attachment' = valueAttachment 
+        self.valueReference: 'Reference' = valueReference 
         self.reason: 'CodeableConcept' = reason 
         
 
@@ -115,16 +125,18 @@ class Diagnosis(ModelBase):
     :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param int sequence: Diagnosis instance identifier
     :param 'CodeableConcept' diagnosisCodeableConcept: Nature of illness or problem
+    :param 'Reference' diagnosisReference: Nature of illness or problem
     :param list['CodeableConcept'] type: Timing or nature of the diagnosis
     :param 'CodeableConcept' onAdmission: Present on admission
     :param 'CodeableConcept' packageCode: Package billing code
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  sequence: int = None,  diagnosisCodeableConcept: 'CodeableConcept' = None,  type: list['CodeableConcept'] = None,  onAdmission: 'CodeableConcept' = None,  packageCode: 'CodeableConcept' = None, ):
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  sequence: int = None,  diagnosisCodeableConcept: 'CodeableConcept' = None,  diagnosisReference: 'Reference' = None,  type: list['CodeableConcept'] = None,  onAdmission: 'CodeableConcept' = None,  packageCode: 'CodeableConcept' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
         self.sequence: int = sequence 
         self.diagnosisCodeableConcept: 'CodeableConcept' = diagnosisCodeableConcept 
+        self.diagnosisReference: 'Reference' = diagnosisReference 
         self.type: list['CodeableConcept'] = type or []
         self.onAdmission: 'CodeableConcept' = onAdmission 
         self.packageCode: 'CodeableConcept' = packageCode 
@@ -141,9 +153,10 @@ class Procedure(ModelBase):
     :param list['CodeableConcept'] type: Category of Procedure
     :param str date: When the procedure was performed
     :param 'CodeableConcept' procedureCodeableConcept: Specific clinical procedure
+    :param 'Reference' procedureReference: Specific clinical procedure
     :param list['Reference'] udi: Unique device identifier
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  sequence: int = None,  type: list['CodeableConcept'] = None,  date: str = None,  procedureCodeableConcept: 'CodeableConcept' = None,  udi: list['Reference'] = None, ):
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  sequence: int = None,  type: list['CodeableConcept'] = None,  date: str = None,  procedureCodeableConcept: 'CodeableConcept' = None,  procedureReference: 'Reference' = None,  udi: list['Reference'] = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -151,6 +164,7 @@ class Procedure(ModelBase):
         self.type: list['CodeableConcept'] = type or []
         self.date: str = date 
         self.procedureCodeableConcept: 'CodeableConcept' = procedureCodeableConcept 
+        self.procedureReference: 'Reference' = procedureReference 
         self.udi: list['Reference'] = udi or []
         
 
@@ -192,14 +206,16 @@ class Accident(ModelBase):
     :param str date: When the incident occurred
     :param 'CodeableConcept' type: The nature of the accident
     :param 'Address' locationAddress: Where the event occurred
+    :param 'Reference' locationReference: Where the event occurred
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  date: str = None,  type: 'CodeableConcept' = None,  locationAddress: 'Address' = None, ):
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  date: str = None,  type: 'CodeableConcept' = None,  locationAddress: 'Address' = None,  locationReference: 'Reference' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
         self.date: str = date 
         self.type: 'CodeableConcept' = type 
         self.locationAddress: 'Address' = locationAddress 
+        self.locationReference: 'Reference' = locationReference 
         
 
     
@@ -300,7 +316,10 @@ class Item(ModelBase):
     :param list['CodeableConcept'] modifier: Product or service billing modifiers
     :param list['CodeableConcept'] programCode: Program the product or service is provided under
     :param str servicedDate: Date or dates of service or product delivery
+    :param 'Period' servicedPeriod: Date or dates of service or product delivery
     :param 'CodeableConcept' locationCodeableConcept: Place of service or where product was supplied
+    :param 'Address' locationAddress: Place of service or where product was supplied
+    :param 'Reference' locationReference: Place of service or where product was supplied
     :param 'Quantity' quantity: Count of products or services
     :param 'Money' unitPrice: Fee, charge or cost per item
     :param float factor: Price scaling factor
@@ -311,7 +330,7 @@ class Item(ModelBase):
     :param list['Reference'] encounter: Encounters related to this billed item
     :param list['Detail'] detail: Product or service provided
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  sequence: int = None,  careTeamSequence: int = None,  diagnosisSequence: int = None,  procedureSequence: int = None,  informationSequence: int = None,  revenue: 'CodeableConcept' = None,  category: 'CodeableConcept' = None,  productOrService: 'CodeableConcept' = None,  modifier: list['CodeableConcept'] = None,  programCode: list['CodeableConcept'] = None,  servicedDate: str = None,  locationCodeableConcept: 'CodeableConcept' = None,  quantity: 'Quantity' = None,  unitPrice: 'Money' = None,  factor: float = None,  net: 'Money' = None,  udi: list['Reference'] = None,  bodySite: 'CodeableConcept' = None,  subSite: list['CodeableConcept'] = None,  encounter: list['Reference'] = None,  detail: list['Detail'] = None, ):
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  sequence: int = None,  careTeamSequence: int = None,  diagnosisSequence: int = None,  procedureSequence: int = None,  informationSequence: int = None,  revenue: 'CodeableConcept' = None,  category: 'CodeableConcept' = None,  productOrService: 'CodeableConcept' = None,  modifier: list['CodeableConcept'] = None,  programCode: list['CodeableConcept'] = None,  servicedDate: str = None,  servicedPeriod: 'Period' = None,  locationCodeableConcept: 'CodeableConcept' = None,  locationAddress: 'Address' = None,  locationReference: 'Reference' = None,  quantity: 'Quantity' = None,  unitPrice: 'Money' = None,  factor: float = None,  net: 'Money' = None,  udi: list['Reference'] = None,  bodySite: 'CodeableConcept' = None,  subSite: list['CodeableConcept'] = None,  encounter: list['Reference'] = None,  detail: list['Detail'] = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -326,7 +345,10 @@ class Item(ModelBase):
         self.modifier: list['CodeableConcept'] = modifier or []
         self.programCode: list['CodeableConcept'] = programCode or []
         self.servicedDate: str = servicedDate 
+        self.servicedPeriod: 'Period' = servicedPeriod 
         self.locationCodeableConcept: 'CodeableConcept' = locationCodeableConcept 
+        self.locationAddress: 'Address' = locationAddress 
+        self.locationReference: 'Reference' = locationReference 
         self.quantity: 'Quantity' = quantity 
         self.unitPrice: 'Money' = unitPrice 
         self.factor: float = factor 

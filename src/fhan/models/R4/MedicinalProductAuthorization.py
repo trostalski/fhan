@@ -1,16 +1,16 @@
 """
 Generated class for MedicinalProductAuthorization. 
-Time: 2023-09-24 21:52:32
+Time: 2023-09-25 14:53:18
 """
-from fhan.models.R4.Period import *
 from fhan.models.R4.Reference import *
 from fhan.models.R4.Resource import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Period import *
+from fhan.models.R4.Extension import *
+from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Identifier import *
 from fhan.models.R4.Meta import *
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Extension import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Narrative import *
 from fhan.models.R4.DomainResource import *
 
 
@@ -48,14 +48,38 @@ class Procedure(ModelBase):
     :param 'Identifier' identifier: Identifier for this procedure
     :param 'CodeableConcept' type: Type of procedure
     :param 'Period' datePeriod: Date of procedure
+    :param str dateDateTime: Date of procedure
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  identifier: 'Identifier' = None,  type: 'CodeableConcept' = None,  datePeriod: 'Period' = None, ):
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  identifier: 'Identifier' = None,  type: 'CodeableConcept' = None,  datePeriod: 'Period' = None,  dateDateTime: str = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
         self.identifier: 'Identifier' = identifier 
         self.type: 'CodeableConcept' = type 
         self.datePeriod: 'Period' = datePeriod 
+        self.dateDateTime: str = dateDateTime 
+        
+
+    
+    
+
+class Application(ModelBase):
+    """ The regulatory procedure for granting or amending a marketing authorization.:param str id: Unique id for inter-element referencing
+    :param list['Extension'] extension: Additional content defined by implementations
+    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Identifier' identifier: Identifier for this procedure
+    :param 'CodeableConcept' type: Type of procedure
+    :param 'Period' datePeriod: Date of procedure
+    :param str dateDateTime: Date of procedure
+    """
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  identifier: 'Identifier' = None,  type: 'CodeableConcept' = None,  datePeriod: 'Period' = None,  dateDateTime: str = None, ):
+        self.id: str = id 
+        self.extension: list['Extension'] = extension or []
+        self.modifierExtension: list['Extension'] = modifierExtension or []
+        self.identifier: 'Identifier' = identifier 
+        self.type: 'CodeableConcept' = type 
+        self.datePeriod: 'Period' = datePeriod 
+        self.dateDateTime: str = dateDateTime 
         
 
 class MedicinalProductAuthorization(DomainResource):
@@ -84,8 +108,9 @@ class MedicinalProductAuthorization(DomainResource):
     :param 'Reference' holder: Marketing Authorization Holder
     :param 'Reference' regulator: Medicines Regulatory Agency
     :param 'Procedure' procedure: The regulatory procedure for granting or amending a marketing authorization
+    :param 'Application' application: The regulatory procedure for granting or amending a marketing authorization
     """
-    def __init__(self, resourceType: str = "MedicinalProductAuthorization",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  identifier: list['Identifier'] = None,  subject: 'Reference' = None,  country: list['CodeableConcept'] = None,  jurisdiction: list['CodeableConcept'] = None,  status: 'CodeableConcept' = None,  statusDate: str = None,  restoreDate: str = None,  validityPeriod: 'Period' = None,  dataExclusivityPeriod: 'Period' = None,  dateOfFirstAuthorization: str = None,  internationalBirthDate: str = None,  legalBasis: 'CodeableConcept' = None,  jurisdictionalAuthorization: list['JurisdictionalAuthorization'] = None,  holder: 'Reference' = None,  regulator: 'Reference' = None,  procedure: 'Procedure' = None, ):
+    def __init__(self, resourceType: str = "MedicinalProductAuthorization",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  identifier: list['Identifier'] = None,  subject: 'Reference' = None,  country: list['CodeableConcept'] = None,  jurisdiction: list['CodeableConcept'] = None,  status: 'CodeableConcept' = None,  statusDate: str = None,  restoreDate: str = None,  validityPeriod: 'Period' = None,  dataExclusivityPeriod: 'Period' = None,  dateOfFirstAuthorization: str = None,  internationalBirthDate: str = None,  legalBasis: 'CodeableConcept' = None,  jurisdictionalAuthorization: list['JurisdictionalAuthorization'] = None,  holder: 'Reference' = None,  regulator: 'Reference' = None,  procedure: 'Procedure' = None,  application: 'Application' = None, ):
         self.resourceType: str = resourceType or "MedicinalProductAuthorization"
         self.id: str = id 
         self.meta: 'Meta' = meta 
@@ -111,4 +136,5 @@ class MedicinalProductAuthorization(DomainResource):
         self.holder: 'Reference' = holder 
         self.regulator: 'Reference' = regulator 
         self.procedure: 'Procedure' = procedure 
+        self.application: 'Application' = application 
         

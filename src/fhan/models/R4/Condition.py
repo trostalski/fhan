@@ -1,19 +1,19 @@
 """
 Generated class for Condition. 
-Time: 2023-09-24 21:52:32
+Time: 2023-09-25 14:53:18
 """
-from fhan.models.R4.Period import *
 from fhan.models.R4.Reference import *
-from fhan.models.R4.Range import *
 from fhan.models.R4.Resource import *
-from fhan.models.R4.Annotation import *
-from fhan.models.R4.Narrative import *
 from fhan.models.R4.Age import *
-from fhan.models.R4.Identifier import *
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Period import *
 from fhan.models.R4.Extension import *
+from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Annotation import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.Range import *
+from fhan.models.R4.Meta import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Narrative import *
 from fhan.models.R4.DomainResource import *
 
 
@@ -75,7 +75,15 @@ class Condition(DomainResource):
     :param 'Reference' subject: Who has the condition?
     :param 'Reference' encounter: Encounter created as part of
     :param str onsetDateTime: Estimated or actual date,  date-time, or age
+    :param 'Age' onsetAge: Estimated or actual date,  date-time, or age
+    :param 'Period' onsetPeriod: Estimated or actual date,  date-time, or age
+    :param 'Range' onsetRange: Estimated or actual date,  date-time, or age
+    :param str onsetString: Estimated or actual date,  date-time, or age
     :param str abatementDateTime: When in resolution/remission
+    :param 'Age' abatementAge: When in resolution/remission
+    :param 'Period' abatementPeriod: When in resolution/remission
+    :param 'Range' abatementRange: When in resolution/remission
+    :param str abatementString: When in resolution/remission
     :param str recordedDate: Date record was first recorded
     :param 'Reference' recorder: Who recorded the condition
     :param 'Reference' asserter: Person who asserts this condition
@@ -83,7 +91,7 @@ class Condition(DomainResource):
     :param list['Evidence'] evidence: Supporting evidence
     :param list['Annotation'] note: Additional information about the Condition
     """
-    def __init__(self, resourceType: str = "Condition",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  identifier: list['Identifier'] = None,  clinicalStatus: 'CodeableConcept' = None,  verificationStatus: 'CodeableConcept' = None,  category: list['CodeableConcept'] = None,  severity: 'CodeableConcept' = None,  code: 'CodeableConcept' = None,  bodySite: list['CodeableConcept'] = None,  subject: 'Reference' = None,  encounter: 'Reference' = None,  onsetDateTime: str = None,  abatementDateTime: str = None,  recordedDate: str = None,  recorder: 'Reference' = None,  asserter: 'Reference' = None,  stage: list['Stage'] = None,  evidence: list['Evidence'] = None,  note: list['Annotation'] = None, ):
+    def __init__(self, resourceType: str = "Condition",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  identifier: list['Identifier'] = None,  clinicalStatus: 'CodeableConcept' = None,  verificationStatus: 'CodeableConcept' = None,  category: list['CodeableConcept'] = None,  severity: 'CodeableConcept' = None,  code: 'CodeableConcept' = None,  bodySite: list['CodeableConcept'] = None,  subject: 'Reference' = None,  encounter: 'Reference' = None,  onsetDateTime: str = None,  onsetAge: 'Age' = None,  onsetPeriod: 'Period' = None,  onsetRange: 'Range' = None,  onsetString: str = None,  abatementDateTime: str = None,  abatementAge: 'Age' = None,  abatementPeriod: 'Period' = None,  abatementRange: 'Range' = None,  abatementString: str = None,  recordedDate: str = None,  recorder: 'Reference' = None,  asserter: 'Reference' = None,  stage: list['Stage'] = None,  evidence: list['Evidence'] = None,  note: list['Annotation'] = None, ):
         self.resourceType: str = resourceType or "Condition"
         self.id: str = id 
         self.meta: 'Meta' = meta 
@@ -103,7 +111,15 @@ class Condition(DomainResource):
         self.subject: 'Reference' = subject 
         self.encounter: 'Reference' = encounter 
         self.onsetDateTime: str = onsetDateTime 
+        self.onsetAge: 'Age' = onsetAge 
+        self.onsetPeriod: 'Period' = onsetPeriod 
+        self.onsetRange: 'Range' = onsetRange 
+        self.onsetString: str = onsetString 
         self.abatementDateTime: str = abatementDateTime 
+        self.abatementAge: 'Age' = abatementAge 
+        self.abatementPeriod: 'Period' = abatementPeriod 
+        self.abatementRange: 'Range' = abatementRange 
+        self.abatementString: str = abatementString 
         self.recordedDate: str = recordedDate 
         self.recorder: 'Reference' = recorder 
         self.asserter: 'Reference' = asserter 

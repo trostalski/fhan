@@ -1,9 +1,9 @@
 """
 Generated class for Binary. 
-Time: 2023-09-24 21:52:32
+Time: 2023-09-25 14:53:18
 """
-from fhan.models.R4.Meta import *
 from fhan.models.R4.Reference import *
+from fhan.models.R4.Meta import *
 from fhan.models.R4.DomainResource import *
 
 

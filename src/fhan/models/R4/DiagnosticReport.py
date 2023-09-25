@@ -1,17 +1,17 @@
 """
 Generated class for DiagnosticReport. 
-Time: 2023-09-24 21:52:32
+Time: 2023-09-25 14:53:18
 """
-from fhan.models.R4.Period import *
 from fhan.models.R4.Reference import *
 from fhan.models.R4.Resource import *
-from fhan.models.R4.Attachment import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Period import *
+from fhan.models.R4.Extension import *
+from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Identifier import *
 from fhan.models.R4.Meta import *
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Extension import *
+from fhan.models.R4.Attachment import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Narrative import *
 from fhan.models.R4.DomainResource import *
 
 
@@ -34,7 +34,7 @@ class Media(ModelBase):
         
 
 class DiagnosticReport(DomainResource):
-    """ Lipid Lab Report
+    """ The findings and interpretation of diagnostic  tests performed on patients, groups of patients, devices, and locations, and/or specimens derived from these. The report includes clinical context such as requesting and provider information, and some mix of atomic results, images, textual and coded interpretations, and formatted representation of diagnostic reports.
     :param str id: Logical id of this artifact
     :param 'Meta' meta: Metadata about the resource
     :param str implicitRules: A set of rules under which this content was created
@@ -47,10 +47,11 @@ class DiagnosticReport(DomainResource):
     :param list['Reference'] basedOn: What was requested
     :param str status: registered | partial | preliminary | final +
     :param list['CodeableConcept'] category: Service category
-    :param 'CodeableConcept' code: LOINC Code for Lipid Panel with LDL
+    :param 'CodeableConcept' code: Name/Code for this diagnostic report
     :param 'Reference' subject: The subject of the report - usually, but not always, the patient
     :param 'Reference' encounter: Health care event when test ordered
     :param str effectiveDateTime: Clinically relevant time/time-period for report
+    :param 'Period' effectivePeriod: Clinically relevant time/time-period for report
     :param str issued: DateTime this version was made
     :param list['Reference'] performer: Responsible Diagnostic Service
     :param list['Reference'] resultsInterpreter: Primary result interpreter
@@ -58,11 +59,11 @@ class DiagnosticReport(DomainResource):
     :param list['Reference'] result: Observations
     :param list['Reference'] imagingStudy: Reference to full details of imaging associated with the diagnostic report
     :param list['Media'] media: Key images associated with this report
-    :param str conclusion: Clinical Interpretation of Lipid Panel
-    :param 'CodeableConcept' conclusionCode: No codes for a lipid panel
+    :param str conclusion: Clinical conclusion (interpretation) of test results
+    :param list['CodeableConcept'] conclusionCode: Codes for the clinical conclusion of test results
     :param list['Attachment'] presentedForm: Entire report as issued
     """
-    def __init__(self, resourceType: str = "DiagnosticReport",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  identifier: list['Identifier'] = None,  basedOn: list['Reference'] = None,  status: str = None,  category: list['CodeableConcept'] = None,  code: 'CodeableConcept' = None,  subject: 'Reference' = None,  encounter: 'Reference' = None,  effectiveDateTime: str = None,  issued: str = None,  performer: list['Reference'] = None,  resultsInterpreter: list['Reference'] = None,  specimen: list['Reference'] = None,  result: list['Reference'] = None,  imagingStudy: list['Reference'] = None,  media: list['Media'] = None,  conclusion: str = None,  conclusionCode: 'CodeableConcept' = None,  presentedForm: list['Attachment'] = None, ):
+    def __init__(self, resourceType: str = "DiagnosticReport",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  identifier: list['Identifier'] = None,  basedOn: list['Reference'] = None,  status: str = None,  category: list['CodeableConcept'] = None,  code: 'CodeableConcept' = None,  subject: 'Reference' = None,  encounter: 'Reference' = None,  effectiveDateTime: str = None,  effectivePeriod: 'Period' = None,  issued: str = None,  performer: list['Reference'] = None,  resultsInterpreter: list['Reference'] = None,  specimen: list['Reference'] = None,  result: list['Reference'] = None,  imagingStudy: list['Reference'] = None,  media: list['Media'] = None,  conclusion: str = None,  conclusionCode: list['CodeableConcept'] = None,  presentedForm: list['Attachment'] = None, ):
         self.resourceType: str = resourceType or "DiagnosticReport"
         self.id: str = id 
         self.meta: 'Meta' = meta 
@@ -80,6 +81,7 @@ class DiagnosticReport(DomainResource):
         self.subject: 'Reference' = subject 
         self.encounter: 'Reference' = encounter 
         self.effectiveDateTime: str = effectiveDateTime 
+        self.effectivePeriod: 'Period' = effectivePeriod 
         self.issued: str = issued 
         self.performer: list['Reference'] = performer or []
         self.resultsInterpreter: list['Reference'] = resultsInterpreter or []
@@ -88,6 +90,6 @@ class DiagnosticReport(DomainResource):
         self.imagingStudy: list['Reference'] = imagingStudy or []
         self.media: list['Media'] = media or []
         self.conclusion: str = conclusion 
-        self.conclusionCode: 'CodeableConcept' = conclusionCode 
+        self.conclusionCode: list['CodeableConcept'] = conclusionCode or []
         self.presentedForm: list['Attachment'] = presentedForm or []
         

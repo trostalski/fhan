@@ -1,42 +1,42 @@
 """
 Generated class for StructureMap. 
-Time: 2023-09-24 21:52:32
+Time: 2023-09-25 14:53:18
 """
-from fhan.models.R4.UsageContext import *
-from fhan.models.R4.Resource import *
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Ratio import *
-from fhan.models.R4.ParameterDefinition import *
-from fhan.models.R4.Contributor import *
-from fhan.models.R4.TriggerDefinition import *
-from fhan.models.R4.Reference import *
-from fhan.models.R4.RelatedArtifact import *
-from fhan.models.R4.Range import *
-from fhan.models.R4.Attachment import *
-from fhan.models.R4.Identifier import *
-from fhan.models.R4.Quantity import *
-from fhan.models.R4.ContactPoint import *
-from fhan.models.R4.Timing import *
 from fhan.models.R4.Duration import *
-from fhan.models.R4.Address import *
-from fhan.models.R4.DataRequirement import *
-from fhan.models.R4.Distance import *
-from fhan.models.R4.Annotation import *
-from fhan.models.R4.ContactDetail import *
-from fhan.models.R4.Money import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.Age import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Coding import *
-from fhan.models.R4.Dosage import *
-from fhan.models.R4.Extension import *
+from fhan.models.R4.Reference import *
+from fhan.models.R4.Resource import *
+from fhan.models.R4.RelatedArtifact import *
 from fhan.models.R4.HumanName import *
-from fhan.models.R4.Period import *
-from fhan.models.R4.Signature import *
-from fhan.models.R4.Count import *
-from fhan.models.R4.SampledData import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.Meta import *
+from fhan.models.R4.TriggerDefinition import *
+from fhan.models.R4.Money import *
+from fhan.models.R4.Ratio import *
+from fhan.models.R4.Timing import *
+from fhan.models.R4.Contributor import *
+from fhan.models.R4.ContactPoint import *
+from fhan.models.R4.Extension import *
 from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Count import *
+from fhan.models.R4.Annotation import *
+from fhan.models.R4.Dosage import *
+from fhan.models.R4.SampledData import *
 from fhan.models.R4.Expression import *
+from fhan.models.R4.Distance import *
+from fhan.models.R4.Address import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Attachment import *
+from fhan.models.R4.UsageContext import *
+from fhan.models.R4.Quantity import *
+from fhan.models.R4.ParameterDefinition import *
+from fhan.models.R4.Age import *
+from fhan.models.R4.Signature import *
+from fhan.models.R4.DataRequirement import *
+from fhan.models.R4.ContactDetail import *
+from fhan.models.R4.Period import *
+from fhan.models.R4.Coding import *
+from fhan.models.R4.Range import *
+from fhan.models.R4.Narrative import *
 from fhan.models.R4.DomainResource import *
 
 
@@ -100,6 +100,55 @@ class Source(ModelBase):
     :param str max: Specified maximum cardinality (number or *)
     :param str type: Rule only applies if source has this type
     :param str defaultValueBase64Binary: Default value if no value exists
+    :param bool defaultValueBoolean: Default value if no value exists
+    :param str defaultValueCanonical: Default value if no value exists
+    :param str defaultValueCode: Default value if no value exists
+    :param str defaultValueDate: Default value if no value exists
+    :param str defaultValueDateTime: Default value if no value exists
+    :param float defaultValueDecimal: Default value if no value exists
+    :param str defaultValueId: Default value if no value exists
+    :param str defaultValueInstant: Default value if no value exists
+    :param int defaultValueInteger: Default value if no value exists
+    :param str defaultValueMarkdown: Default value if no value exists
+    :param str defaultValueOid: Default value if no value exists
+    :param int defaultValuePositiveInt: Default value if no value exists
+    :param str defaultValueString: Default value if no value exists
+    :param str defaultValueTime: Default value if no value exists
+    :param int defaultValueUnsignedInt: Default value if no value exists
+    :param str defaultValueUri: Default value if no value exists
+    :param str defaultValueUrl: Default value if no value exists
+    :param str defaultValueUuid: Default value if no value exists
+    :param 'Address' defaultValueAddress: Default value if no value exists
+    :param 'Age' defaultValueAge: Default value if no value exists
+    :param 'Annotation' defaultValueAnnotation: Default value if no value exists
+    :param 'Attachment' defaultValueAttachment: Default value if no value exists
+    :param 'CodeableConcept' defaultValueCodeableConcept: Default value if no value exists
+    :param 'Coding' defaultValueCoding: Default value if no value exists
+    :param 'ContactPoint' defaultValueContactPoint: Default value if no value exists
+    :param 'Count' defaultValueCount: Default value if no value exists
+    :param 'Distance' defaultValueDistance: Default value if no value exists
+    :param 'Duration' defaultValueDuration: Default value if no value exists
+    :param 'HumanName' defaultValueHumanName: Default value if no value exists
+    :param 'Identifier' defaultValueIdentifier: Default value if no value exists
+    :param 'Money' defaultValueMoney: Default value if no value exists
+    :param 'Period' defaultValuePeriod: Default value if no value exists
+    :param 'Quantity' defaultValueQuantity: Default value if no value exists
+    :param 'Range' defaultValueRange: Default value if no value exists
+    :param 'Ratio' defaultValueRatio: Default value if no value exists
+    :param 'Reference' defaultValueReference: Default value if no value exists
+    :param 'SampledData' defaultValueSampledData: Default value if no value exists
+    :param 'Signature' defaultValueSignature: Default value if no value exists
+    :param 'Timing' defaultValueTiming: Default value if no value exists
+    :param 'ContactDetail' defaultValueContactDetail: Default value if no value exists
+    :param 'Contributor' defaultValueContributor: Default value if no value exists
+    :param 'DataRequirement' defaultValueDataRequirement: Default value if no value exists
+    :param 'Expression' defaultValueExpression: Default value if no value exists
+    :param 'ParameterDefinition' defaultValueParameterDefinition: Default value if no value exists
+    :param 'RelatedArtifact' defaultValueRelatedArtifact: Default value if no value exists
+    :param 'TriggerDefinition' defaultValueTriggerDefinition: Default value if no value exists
+    :param 'UsageContext' defaultValueUsageContext: Default value if no value exists
+    :param 'Dosage' defaultValueDosage: Default value if no value exists
+    :param 'Meta' defaultValueMeta: Default value if no value exists
     :param str element: Optional field for this source
     :param str listMode: first | not_first | last | not_last | only_one
     :param str variable: Named context for field, if a field is specified
@@ -107,7 +156,7 @@ class Source(ModelBase):
     :param str check: FHIRPath expression  - must be true or the mapping engine throws an error instead of completing
     :param str logMessage: Message to put in log if source exists (FHIRPath)
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  context: str = None,  min: int = None,  max: str = None,  type: str = None,  defaultValueBase64Binary: str = None,  element: str = None,  listMode: str = None,  variable: str = None,  condition: str = None,  check: str = None,  logMessage: str = None, ):
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  context: str = None,  min: int = None,  max: str = None,  type: str = None,  defaultValueBase64Binary: str = None,  defaultValueBoolean: bool = None,  defaultValueCanonical: str = None,  defaultValueCode: str = None,  defaultValueDate: str = None,  defaultValueDateTime: str = None,  defaultValueDecimal: float = None,  defaultValueId: str = None,  defaultValueInstant: str = None,  defaultValueInteger: int = None,  defaultValueMarkdown: str = None,  defaultValueOid: str = None,  defaultValuePositiveInt: int = None,  defaultValueString: str = None,  defaultValueTime: str = None,  defaultValueUnsignedInt: int = None,  defaultValueUri: str = None,  defaultValueUrl: str = None,  defaultValueUuid: str = None,  defaultValueAddress: 'Address' = None,  defaultValueAge: 'Age' = None,  defaultValueAnnotation: 'Annotation' = None,  defaultValueAttachment: 'Attachment' = None,  defaultValueCodeableConcept: 'CodeableConcept' = None,  defaultValueCoding: 'Coding' = None,  defaultValueContactPoint: 'ContactPoint' = None,  defaultValueCount: 'Count' = None,  defaultValueDistance: 'Distance' = None,  defaultValueDuration: 'Duration' = None,  defaultValueHumanName: 'HumanName' = None,  defaultValueIdentifier: 'Identifier' = None,  defaultValueMoney: 'Money' = None,  defaultValuePeriod: 'Period' = None,  defaultValueQuantity: 'Quantity' = None,  defaultValueRange: 'Range' = None,  defaultValueRatio: 'Ratio' = None,  defaultValueReference: 'Reference' = None,  defaultValueSampledData: 'SampledData' = None,  defaultValueSignature: 'Signature' = None,  defaultValueTiming: 'Timing' = None,  defaultValueContactDetail: 'ContactDetail' = None,  defaultValueContributor: 'Contributor' = None,  defaultValueDataRequirement: 'DataRequirement' = None,  defaultValueExpression: 'Expression' = None,  defaultValueParameterDefinition: 'ParameterDefinition' = None,  defaultValueRelatedArtifact: 'RelatedArtifact' = None,  defaultValueTriggerDefinition: 'TriggerDefinition' = None,  defaultValueUsageContext: 'UsageContext' = None,  defaultValueDosage: 'Dosage' = None,  defaultValueMeta: 'Meta' = None,  element: str = None,  listMode: str = None,  variable: str = None,  condition: str = None,  check: str = None,  logMessage: str = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -116,6 +165,55 @@ class Source(ModelBase):
         self.max: str = max 
         self.type: str = type 
         self.defaultValueBase64Binary: str = defaultValueBase64Binary 
+        self.defaultValueBoolean: bool = defaultValueBoolean 
+        self.defaultValueCanonical: str = defaultValueCanonical 
+        self.defaultValueCode: str = defaultValueCode 
+        self.defaultValueDate: str = defaultValueDate 
+        self.defaultValueDateTime: str = defaultValueDateTime 
+        self.defaultValueDecimal: float = defaultValueDecimal 
+        self.defaultValueId: str = defaultValueId 
+        self.defaultValueInstant: str = defaultValueInstant 
+        self.defaultValueInteger: int = defaultValueInteger 
+        self.defaultValueMarkdown: str = defaultValueMarkdown 
+        self.defaultValueOid: str = defaultValueOid 
+        self.defaultValuePositiveInt: int = defaultValuePositiveInt 
+        self.defaultValueString: str = defaultValueString 
+        self.defaultValueTime: str = defaultValueTime 
+        self.defaultValueUnsignedInt: int = defaultValueUnsignedInt 
+        self.defaultValueUri: str = defaultValueUri 
+        self.defaultValueUrl: str = defaultValueUrl 
+        self.defaultValueUuid: str = defaultValueUuid 
+        self.defaultValueAddress: 'Address' = defaultValueAddress 
+        self.defaultValueAge: 'Age' = defaultValueAge 
+        self.defaultValueAnnotation: 'Annotation' = defaultValueAnnotation 
+        self.defaultValueAttachment: 'Attachment' = defaultValueAttachment 
+        self.defaultValueCodeableConcept: 'CodeableConcept' = defaultValueCodeableConcept 
+        self.defaultValueCoding: 'Coding' = defaultValueCoding 
+        self.defaultValueContactPoint: 'ContactPoint' = defaultValueContactPoint 
+        self.defaultValueCount: 'Count' = defaultValueCount 
+        self.defaultValueDistance: 'Distance' = defaultValueDistance 
+        self.defaultValueDuration: 'Duration' = defaultValueDuration 
+        self.defaultValueHumanName: 'HumanName' = defaultValueHumanName 
+        self.defaultValueIdentifier: 'Identifier' = defaultValueIdentifier 
+        self.defaultValueMoney: 'Money' = defaultValueMoney 
+        self.defaultValuePeriod: 'Period' = defaultValuePeriod 
+        self.defaultValueQuantity: 'Quantity' = defaultValueQuantity 
+        self.defaultValueRange: 'Range' = defaultValueRange 
+        self.defaultValueRatio: 'Ratio' = defaultValueRatio 
+        self.defaultValueReference: 'Reference' = defaultValueReference 
+        self.defaultValueSampledData: 'SampledData' = defaultValueSampledData 
+        self.defaultValueSignature: 'Signature' = defaultValueSignature 
+        self.defaultValueTiming: 'Timing' = defaultValueTiming 
+        self.defaultValueContactDetail: 'ContactDetail' = defaultValueContactDetail 
+        self.defaultValueContributor: 'Contributor' = defaultValueContributor 
+        self.defaultValueDataRequirement: 'DataRequirement' = defaultValueDataRequirement 
+        self.defaultValueExpression: 'Expression' = defaultValueExpression 
+        self.defaultValueParameterDefinition: 'ParameterDefinition' = defaultValueParameterDefinition 
+        self.defaultValueRelatedArtifact: 'RelatedArtifact' = defaultValueRelatedArtifact 
+        self.defaultValueTriggerDefinition: 'TriggerDefinition' = defaultValueTriggerDefinition 
+        self.defaultValueUsageContext: 'UsageContext' = defaultValueUsageContext 
+        self.defaultValueDosage: 'Dosage' = defaultValueDosage 
+        self.defaultValueMeta: 'Meta' = defaultValueMeta 
         self.element: str = element 
         self.listMode: str = listMode 
         self.variable: str = variable 
@@ -134,12 +232,20 @@ class Parameter(ModelBase):
     :param list['Extension'] extension: Additional content defined by implementations
     :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str valueId: Parameter value - variable or literal
+    :param str valueString: Parameter value - variable or literal
+    :param bool valueBoolean: Parameter value - variable or literal
+    :param int valueInteger: Parameter value - variable or literal
+    :param float valueDecimal: Parameter value - variable or literal
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  valueId: str = None, ):
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  valueId: str = None,  valueString: str = None,  valueBoolean: bool = None,  valueInteger: int = None,  valueDecimal: float = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
         self.valueId: str = valueId 
+        self.valueString: str = valueString 
+        self.valueBoolean: bool = valueBoolean 
+        self.valueInteger: int = valueInteger 
+        self.valueDecimal: float = valueDecimal 
         
 
   

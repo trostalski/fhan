@@ -1,17 +1,17 @@
 """
 Generated class for ClinicalImpression. 
-Time: 2023-09-24 21:52:32
+Time: 2023-09-25 14:53:18
 """
-from fhan.models.R4.Period import *
 from fhan.models.R4.Reference import *
 from fhan.models.R4.Resource import *
+from fhan.models.R4.Period import *
+from fhan.models.R4.Extension import *
+from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Annotation import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.BackboneElement import *
 from fhan.models.R4.Identifier import *
 from fhan.models.R4.Meta import *
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Extension import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Narrative import *
 from fhan.models.R4.DomainResource import *
 
 
@@ -71,6 +71,7 @@ class ClinicalImpression(DomainResource):
     :param 'Reference' subject: Patient or group assessed
     :param 'Reference' encounter: Encounter created as part of
     :param str effectiveDateTime: Time of assessment
+    :param 'Period' effectivePeriod: Time of assessment
     :param str date: When the assessment was documented
     :param 'Reference' assessor: The clinician performing the assessment
     :param 'Reference' previous: Reference to last assessment
@@ -84,7 +85,7 @@ class ClinicalImpression(DomainResource):
     :param list['Reference'] supportingInfo: Information supporting the clinical impression
     :param list['Annotation'] note: Comments made about the ClinicalImpression
     """
-    def __init__(self, resourceType: str = "ClinicalImpression",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  identifier: list['Identifier'] = None,  status: str = None,  statusReason: 'CodeableConcept' = None,  code: 'CodeableConcept' = None,  description: str = None,  subject: 'Reference' = None,  encounter: 'Reference' = None,  effectiveDateTime: str = None,  date: str = None,  assessor: 'Reference' = None,  previous: 'Reference' = None,  problem: list['Reference'] = None,  investigation: list['Investigation'] = None,  protocol: str = None,  summary: str = None,  finding: list['Finding'] = None,  prognosisCodeableConcept: list['CodeableConcept'] = None,  prognosisReference: list['Reference'] = None,  supportingInfo: list['Reference'] = None,  note: list['Annotation'] = None, ):
+    def __init__(self, resourceType: str = "ClinicalImpression",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  identifier: list['Identifier'] = None,  status: str = None,  statusReason: 'CodeableConcept' = None,  code: 'CodeableConcept' = None,  description: str = None,  subject: 'Reference' = None,  encounter: 'Reference' = None,  effectiveDateTime: str = None,  effectivePeriod: 'Period' = None,  date: str = None,  assessor: 'Reference' = None,  previous: 'Reference' = None,  problem: list['Reference'] = None,  investigation: list['Investigation'] = None,  protocol: str = None,  summary: str = None,  finding: list['Finding'] = None,  prognosisCodeableConcept: list['CodeableConcept'] = None,  prognosisReference: list['Reference'] = None,  supportingInfo: list['Reference'] = None,  note: list['Annotation'] = None, ):
         self.resourceType: str = resourceType or "ClinicalImpression"
         self.id: str = id 
         self.meta: 'Meta' = meta 
@@ -102,6 +103,7 @@ class ClinicalImpression(DomainResource):
         self.subject: 'Reference' = subject 
         self.encounter: 'Reference' = encounter 
         self.effectiveDateTime: str = effectiveDateTime 
+        self.effectivePeriod: 'Period' = effectivePeriod 
         self.date: str = date 
         self.assessor: 'Reference' = assessor 
         self.previous: 'Reference' = previous 

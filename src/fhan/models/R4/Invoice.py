@@ -1,17 +1,17 @@
 """
 Generated class for Invoice. 
-Time: 2023-09-24 21:52:32
+Time: 2023-09-25 14:53:18
 """
 from fhan.models.R4.Reference import *
 from fhan.models.R4.Resource import *
+from fhan.models.R4.Extension import *
+from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Annotation import *
-from fhan.models.R4.Money import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.BackboneElement import *
 from fhan.models.R4.Identifier import *
 from fhan.models.R4.Meta import *
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Extension import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Money import *
 from fhan.models.R4.DomainResource import *
 
 
@@ -57,6 +57,28 @@ class PriceComponent(ModelBase):
         self.amount: 'Money' = amount 
         
 
+    
+    
+
+class TotalPriceComponent(ModelBase):
+    """ The price for a ChargeItem may be calculated as a base price with surcharges/deductions that apply in certain conditions. A ChargeItemDefinition resource that defines the prices, factors and conditions that apply to a billing code is currently under development. The priceComponent element can be used to offer transparency to the recipient of the Invoice as to how the prices have been calculated.:param str id: Unique id for inter-element referencing
+    :param list['Extension'] extension: Additional content defined by implementations
+    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param str type: base | surcharge | deduction | discount | tax | informational
+    :param 'CodeableConcept' code: Code identifying the specific component
+    :param float factor: Factor used for calculating this component
+    :param 'Money' amount: Monetary amount associated with this component
+    """
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  type: str = None,  code: 'CodeableConcept' = None,  factor: float = None,  amount: 'Money' = None, ):
+        self.id: str = id 
+        self.extension: list['Extension'] = extension or []
+        self.modifierExtension: list['Extension'] = modifierExtension or []
+        self.type: str = type 
+        self.code: 'CodeableConcept' = code 
+        self.factor: float = factor 
+        self.amount: 'Money' = amount 
+        
+
   
     
     
@@ -67,15 +89,19 @@ class LineItem(ModelBase):
     :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param int sequence: Sequence number of line item
     :param 'Reference' chargeItemReference: Reference to ChargeItem containing details of this line item or an inline billing code
+    :param 'CodeableConcept' chargeItemCodeableConcept: Reference to ChargeItem containing details of this line item or an inline billing code
     :param list['PriceComponent'] priceComponent: Components of total line item price
+    :param list['TotalPriceComponent'] totalPriceComponent: Components of total line item price
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  sequence: int = None,  chargeItemReference: 'Reference' = None,  priceComponent: list['PriceComponent'] = None, ):
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  sequence: int = None,  chargeItemReference: 'Reference' = None,  chargeItemCodeableConcept: 'CodeableConcept' = None,  priceComponent: list['PriceComponent'] = None,  totalPriceComponent: list['TotalPriceComponent'] = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
         self.sequence: int = sequence 
         self.chargeItemReference: 'Reference' = chargeItemReference 
+        self.chargeItemCodeableConcept: 'CodeableConcept' = chargeItemCodeableConcept 
         self.priceComponent: list['PriceComponent'] = priceComponent or []
+        self.totalPriceComponent: list['TotalPriceComponent'] = totalPriceComponent or []
         
 
 class Invoice(DomainResource):

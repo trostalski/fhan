@@ -1,12 +1,12 @@
 """
 Generated class for TriggerDefinition. 
-Time: 2023-09-24 21:52:32
+Time: 2023-09-25 14:53:18
 """
 from fhan.models.R4.Reference import *
 from fhan.models.R4.DataRequirement import *
+from fhan.models.R4.Extension import *
 from fhan.models.R4.Expression import *
 from fhan.models.R4.Timing import *
-from fhan.models.R4.Extension import *
 from fhan.models.generator_models import ModelBase
 
 class TriggerDefinition(ModelBase):
@@ -16,16 +16,22 @@ class TriggerDefinition(ModelBase):
     :param str type: named-event | periodic | data-changed | data-added | data-modified | data-removed | data-accessed | data-access-ended
     :param str name: Name or URI that identifies the event
     :param 'Timing' timingTiming: Timing of the event
+    :param 'Reference' timingReference: Timing of the event
+    :param str timingDate: Timing of the event
+    :param str timingDateTime: Timing of the event
     :param list['DataRequirement'] data: Triggering data of the event (multiple = 'and')
     :param 'Expression' condition: Whether the event triggers (boolean expression)
     """
-    def __init__(self, resourceType: str = "TriggerDefinition",  id: str = None,  extension: list['Extension'] = None,  type: str = None,  name: str = None,  timingTiming: 'Timing' = None,  data: list['DataRequirement'] = None,  condition: 'Expression' = None, ):
+    def __init__(self, resourceType: str = "TriggerDefinition",  id: str = None,  extension: list['Extension'] = None,  type: str = None,  name: str = None,  timingTiming: 'Timing' = None,  timingReference: 'Reference' = None,  timingDate: str = None,  timingDateTime: str = None,  data: list['DataRequirement'] = None,  condition: 'Expression' = None, ):
         self.resourceType: str = resourceType or "TriggerDefinition"
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.type: str = type 
         self.name: str = name 
         self.timingTiming: 'Timing' = timingTiming 
+        self.timingReference: 'Reference' = timingReference 
+        self.timingDate: str = timingDate 
+        self.timingDateTime: str = timingDateTime 
         self.data: list['DataRequirement'] = data or []
         self.condition: 'Expression' = condition 
         

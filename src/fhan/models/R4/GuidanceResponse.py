@@ -1,16 +1,16 @@
 """
 Generated class for GuidanceResponse. 
-Time: 2023-09-24 21:52:32
+Time: 2023-09-25 14:53:18
 """
 from fhan.models.R4.Reference import *
-from fhan.models.R4.DataRequirement import *
 from fhan.models.R4.Resource import *
+from fhan.models.R4.DataRequirement import *
+from fhan.models.R4.Extension import *
+from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Annotation import *
-from fhan.models.R4.Narrative import *
 from fhan.models.R4.Identifier import *
 from fhan.models.R4.Meta import *
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Extension import *
+from fhan.models.R4.Narrative import *
 from fhan.models.R4.DomainResource import *
 
 
@@ -27,6 +27,8 @@ class GuidanceResponse(DomainResource):
     :param 'Identifier' requestIdentifier: The identifier of the request associated with this response, if any
     :param list['Identifier'] identifier: Business identifier
     :param str moduleUri: What guidance was requested
+    :param str moduleCanonical: What guidance was requested
+    :param 'CodeableConcept' moduleCodeableConcept: What guidance was requested
     :param str status: success | data-requested | data-required | in-progress | failure | entered-in-error
     :param 'Reference' subject: Patient the request was performed for
     :param 'Reference' encounter: Encounter during which the response was returned
@@ -40,7 +42,7 @@ class GuidanceResponse(DomainResource):
     :param 'Reference' result: Proposed actions, if any
     :param list['DataRequirement'] dataRequirement: Additional required data
     """
-    def __init__(self, resourceType: str = "GuidanceResponse",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  requestIdentifier: 'Identifier' = None,  identifier: list['Identifier'] = None,  moduleUri: str = None,  status: str = None,  subject: 'Reference' = None,  encounter: 'Reference' = None,  occurrenceDateTime: str = None,  performer: 'Reference' = None,  reasonCode: list['CodeableConcept'] = None,  reasonReference: list['Reference'] = None,  note: list['Annotation'] = None,  evaluationMessage: list['Reference'] = None,  outputParameters: 'Reference' = None,  result: 'Reference' = None,  dataRequirement: list['DataRequirement'] = None, ):
+    def __init__(self, resourceType: str = "GuidanceResponse",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  requestIdentifier: 'Identifier' = None,  identifier: list['Identifier'] = None,  moduleUri: str = None,  moduleCanonical: str = None,  moduleCodeableConcept: 'CodeableConcept' = None,  status: str = None,  subject: 'Reference' = None,  encounter: 'Reference' = None,  occurrenceDateTime: str = None,  performer: 'Reference' = None,  reasonCode: list['CodeableConcept'] = None,  reasonReference: list['Reference'] = None,  note: list['Annotation'] = None,  evaluationMessage: list['Reference'] = None,  outputParameters: 'Reference' = None,  result: 'Reference' = None,  dataRequirement: list['DataRequirement'] = None, ):
         self.resourceType: str = resourceType or "GuidanceResponse"
         self.id: str = id 
         self.meta: 'Meta' = meta 
@@ -53,6 +55,8 @@ class GuidanceResponse(DomainResource):
         self.requestIdentifier: 'Identifier' = requestIdentifier 
         self.identifier: list['Identifier'] = identifier or []
         self.moduleUri: str = moduleUri 
+        self.moduleCanonical: str = moduleCanonical 
+        self.moduleCodeableConcept: 'CodeableConcept' = moduleCodeableConcept 
         self.status: str = status 
         self.subject: 'Reference' = subject 
         self.encounter: 'Reference' = encounter 

@@ -1,18 +1,18 @@
 """
 Generated class for CoverageEligibilityRequest. 
-Time: 2023-09-24 21:52:32
+Time: 2023-09-25 14:53:18
 """
-from fhan.models.R4.Period import *
 from fhan.models.R4.Reference import *
 from fhan.models.R4.Resource import *
-from fhan.models.R4.Money import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Period import *
+from fhan.models.R4.Extension import *
+from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Identifier import *
 from fhan.models.R4.Meta import *
 from fhan.models.R4.Quantity import *
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Extension import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Money import *
 from fhan.models.R4.DomainResource import *
 
 
@@ -66,12 +66,14 @@ class Diagnosis(ModelBase):
     :param list['Extension'] extension: Additional content defined by implementations
     :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param 'CodeableConcept' diagnosisCodeableConcept: Nature of illness or problem
+    :param 'Reference' diagnosisReference: Nature of illness or problem
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  diagnosisCodeableConcept: 'CodeableConcept' = None, ):
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  diagnosisCodeableConcept: 'CodeableConcept' = None,  diagnosisReference: 'Reference' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
         self.diagnosisCodeableConcept: 'CodeableConcept' = diagnosisCodeableConcept 
+        self.diagnosisReference: 'Reference' = diagnosisReference 
         
 
   
@@ -125,6 +127,7 @@ class CoverageEligibilityRequest(DomainResource):
     :param str purpose: auth-requirements | benefits | discovery | validation
     :param 'Reference' patient: Intended recipient of products and services
     :param str servicedDate: Estimated date or dates of service
+    :param 'Period' servicedPeriod: Estimated date or dates of service
     :param str created: Creation date
     :param 'Reference' enterer: Author
     :param 'Reference' provider: Party responsible for the request
@@ -134,7 +137,7 @@ class CoverageEligibilityRequest(DomainResource):
     :param list['Insurance'] insurance: Patient insurance information
     :param list['Item'] item: Item to be evaluated for eligibiity
     """
-    def __init__(self, resourceType: str = "CoverageEligibilityRequest",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  identifier: list['Identifier'] = None,  status: str = None,  priority: 'CodeableConcept' = None,  purpose: str = None,  patient: 'Reference' = None,  servicedDate: str = None,  created: str = None,  enterer: 'Reference' = None,  provider: 'Reference' = None,  insurer: 'Reference' = None,  facility: 'Reference' = None,  supportingInfo: list['SupportingInfo'] = None,  insurance: list['Insurance'] = None,  item: list['Item'] = None, ):
+    def __init__(self, resourceType: str = "CoverageEligibilityRequest",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  identifier: list['Identifier'] = None,  status: str = None,  priority: 'CodeableConcept' = None,  purpose: str = None,  patient: 'Reference' = None,  servicedDate: str = None,  servicedPeriod: 'Period' = None,  created: str = None,  enterer: 'Reference' = None,  provider: 'Reference' = None,  insurer: 'Reference' = None,  facility: 'Reference' = None,  supportingInfo: list['SupportingInfo'] = None,  insurance: list['Insurance'] = None,  item: list['Item'] = None, ):
         self.resourceType: str = resourceType or "CoverageEligibilityRequest"
         self.id: str = id 
         self.meta: 'Meta' = meta 
@@ -150,6 +153,7 @@ class CoverageEligibilityRequest(DomainResource):
         self.purpose: str = purpose or []
         self.patient: 'Reference' = patient 
         self.servicedDate: str = servicedDate 
+        self.servicedPeriod: 'Period' = servicedPeriod 
         self.created: str = created 
         self.enterer: 'Reference' = enterer 
         self.provider: 'Reference' = provider 

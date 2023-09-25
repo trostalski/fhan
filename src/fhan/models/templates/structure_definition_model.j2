@@ -13,7 +13,7 @@ from fhan.models.{{dir_name}}.{{structure_definition.base_class}} import *
 {% endif %}
 {% endif %}
 
-{%- macro render_backbone_element(element) %}
+{%- macro render_contained_element(element) %}
 
 class {{ element.type }}({{ element.base_class }}):
     """ {{ element.description }}
@@ -30,16 +30,16 @@ class {{ element.type }}({{ element.base_class }}):
         {% endfor -%}
 {% endmacro -%}
 
-{%- macro render_backbone_elements(elements) %}
+{%- macro render_contained_elements(elements) %}
 {%- for element in elements %}
-    {% if element.backbone_children %}
-        {{ render_backbone_elements(element.backbone_children) }}  {# Recursively call render_backbone_elements for backbone_children #}
+    {% if element.contained_children %}
+        {{ render_contained_elements(element.contained_children) }}  {# Recursively call render_contained_elements for contained_children #}
     {% endif %}
-    {{ render_backbone_element(element) }}
+    {{ render_contained_element(element) }}
 {% endfor %}
 {% endmacro -%}
 
-{{ render_backbone_elements(structure_definition.backbone_elements) -}}
+{{ render_contained_elements(structure_definition.contained_elements) -}}
 
 class {{structure_definition.type}}{% if structure_definition.base_class %}({{structure_definition.base_class}}){% endif %}:
     """ {{structure_definition.description}}

@@ -1,25 +1,25 @@
 """
 Generated class for EvidenceVariable. 
-Time: 2023-09-24 21:52:32
+Time: 2023-09-25 14:53:18
 """
-from fhan.models.R4.UsageContext import *
-from fhan.models.R4.Period import *
-from fhan.models.R4.RelatedArtifact import *
+from fhan.models.R4.Duration import *
 from fhan.models.R4.Reference import *
-from fhan.models.R4.DataRequirement import *
 from fhan.models.R4.Resource import *
-from fhan.models.R4.Annotation import *
+from fhan.models.R4.RelatedArtifact import *
+from fhan.models.R4.DataRequirement import *
 from fhan.models.R4.ContactDetail import *
-from fhan.models.R4.Expression import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Extension import *
+from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Period import *
+from fhan.models.R4.Annotation import *
 from fhan.models.R4.Identifier import *
 from fhan.models.R4.Meta import *
-from fhan.models.R4.Timing import *
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Duration import *
-from fhan.models.R4.Extension import *
+from fhan.models.R4.Expression import *
 from fhan.models.R4.TriggerDefinition import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.UsageContext import *
+from fhan.models.R4.Timing import *
 from fhan.models.R4.DomainResource import *
 
 
@@ -32,27 +32,43 @@ class Characteristic(ModelBase):
     :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str description: Natural language description of the characteristic
     :param 'Reference' definitionReference: What code or expression defines members?
+    :param str definitionCanonical: What code or expression defines members?
+    :param 'CodeableConcept' definitionCodeableConcept: What code or expression defines members?
+    :param 'Expression' definitionExpression: What code or expression defines members?
+    :param 'DataRequirement' definitionDataRequirement: What code or expression defines members?
+    :param 'TriggerDefinition' definitionTriggerDefinition: What code or expression defines members?
     :param list['UsageContext'] usageContext: What code/value pairs define members?
     :param bool exclude: Whether the characteristic includes or excludes members
     :param str participantEffectiveDateTime: What time period do participants cover
+    :param 'Period' participantEffectivePeriod: What time period do participants cover
+    :param 'Duration' participantEffectiveDuration: What time period do participants cover
+    :param 'Timing' participantEffectiveTiming: What time period do participants cover
     :param 'Duration' timeFromStart: Observation time from study start
     :param str groupMeasure: mean | median | mean-of-mean | mean-of-median | median-of-mean | median-of-median
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  description: str = None,  definitionReference: 'Reference' = None,  usageContext: list['UsageContext'] = None,  exclude: bool = None,  participantEffectiveDateTime: str = None,  timeFromStart: 'Duration' = None,  groupMeasure: str = None, ):
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  description: str = None,  definitionReference: 'Reference' = None,  definitionCanonical: str = None,  definitionCodeableConcept: 'CodeableConcept' = None,  definitionExpression: 'Expression' = None,  definitionDataRequirement: 'DataRequirement' = None,  definitionTriggerDefinition: 'TriggerDefinition' = None,  usageContext: list['UsageContext'] = None,  exclude: bool = None,  participantEffectiveDateTime: str = None,  participantEffectivePeriod: 'Period' = None,  participantEffectiveDuration: 'Duration' = None,  participantEffectiveTiming: 'Timing' = None,  timeFromStart: 'Duration' = None,  groupMeasure: str = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
         self.description: str = description 
         self.definitionReference: 'Reference' = definitionReference 
+        self.definitionCanonical: str = definitionCanonical 
+        self.definitionCodeableConcept: 'CodeableConcept' = definitionCodeableConcept 
+        self.definitionExpression: 'Expression' = definitionExpression 
+        self.definitionDataRequirement: 'DataRequirement' = definitionDataRequirement 
+        self.definitionTriggerDefinition: 'TriggerDefinition' = definitionTriggerDefinition 
         self.usageContext: list['UsageContext'] = usageContext or []
         self.exclude: bool = exclude 
         self.participantEffectiveDateTime: str = participantEffectiveDateTime 
+        self.participantEffectivePeriod: 'Period' = participantEffectivePeriod 
+        self.participantEffectiveDuration: 'Duration' = participantEffectiveDuration 
+        self.participantEffectiveTiming: 'Timing' = participantEffectiveTiming 
         self.timeFromStart: 'Duration' = timeFromStart 
         self.groupMeasure: str = groupMeasure 
         
 
 class EvidenceVariable(DomainResource):
-    """ Explanation of what this profile contains/is for.
+    """ The EvidenceVariable resource describes a "PICO" element that knowledge (evidence, assertion, recommendation) is about.
     :param str id: Logical id of this artifact
     :param 'Meta' meta: Metadata about the resource
     :param str implicitRules: A set of rules under which this content was created

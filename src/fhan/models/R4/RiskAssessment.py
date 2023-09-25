@@ -1,18 +1,18 @@
 """
 Generated class for RiskAssessment. 
-Time: 2023-09-24 21:52:32
+Time: 2023-09-25 14:53:18
 """
-from fhan.models.R4.Period import *
 from fhan.models.R4.Reference import *
-from fhan.models.R4.Range import *
 from fhan.models.R4.Resource import *
-from fhan.models.R4.Annotation import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Identifier import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Period import *
 from fhan.models.R4.Extension import *
+from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Annotation import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.Range import *
+from fhan.models.R4.Meta import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Narrative import *
 from fhan.models.R4.DomainResource import *
 
 
@@ -25,20 +25,24 @@ class Prediction(ModelBase):
     :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param 'CodeableConcept' outcome: Possible outcome for the subject
     :param float probabilityDecimal: Likelihood of specified outcome
+    :param 'Range' probabilityRange: Likelihood of specified outcome
     :param 'CodeableConcept' qualitativeRisk: Likelihood of specified outcome as a qualitative value
     :param float relativeRisk: Relative likelihood
     :param 'Period' whenPeriod: Timeframe or age range
+    :param 'Range' whenRange: Timeframe or age range
     :param str rationale: Explanation of prediction
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  outcome: 'CodeableConcept' = None,  probabilityDecimal: float = None,  qualitativeRisk: 'CodeableConcept' = None,  relativeRisk: float = None,  whenPeriod: 'Period' = None,  rationale: str = None, ):
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  outcome: 'CodeableConcept' = None,  probabilityDecimal: float = None,  probabilityRange: 'Range' = None,  qualitativeRisk: 'CodeableConcept' = None,  relativeRisk: float = None,  whenPeriod: 'Period' = None,  whenRange: 'Range' = None,  rationale: str = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
         self.outcome: 'CodeableConcept' = outcome 
         self.probabilityDecimal: float = probabilityDecimal 
+        self.probabilityRange: 'Range' = probabilityRange 
         self.qualitativeRisk: 'CodeableConcept' = qualitativeRisk 
         self.relativeRisk: float = relativeRisk 
         self.whenPeriod: 'Period' = whenPeriod 
+        self.whenRange: 'Range' = whenRange 
         self.rationale: str = rationale 
         
 
@@ -61,6 +65,7 @@ class RiskAssessment(DomainResource):
     :param 'Reference' subject: Who/what does assessment apply to?
     :param 'Reference' encounter: Where was assessment performed?
     :param str occurrenceDateTime: When was assessment made?
+    :param 'Period' occurrencePeriod: When was assessment made?
     :param 'Reference' condition: Condition assessed
     :param 'Reference' performer: Who did assessment?
     :param list['CodeableConcept'] reasonCode: Why the assessment was necessary?
@@ -70,7 +75,7 @@ class RiskAssessment(DomainResource):
     :param str mitigation: How to reduce risk
     :param list['Annotation'] note: Comments on the risk assessment
     """
-    def __init__(self, resourceType: str = "RiskAssessment",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  identifier: list['Identifier'] = None,  basedOn: 'Reference' = None,  parent: 'Reference' = None,  status: str = None,  method: 'CodeableConcept' = None,  code: 'CodeableConcept' = None,  subject: 'Reference' = None,  encounter: 'Reference' = None,  occurrenceDateTime: str = None,  condition: 'Reference' = None,  performer: 'Reference' = None,  reasonCode: list['CodeableConcept'] = None,  reasonReference: list['Reference'] = None,  basis: list['Reference'] = None,  prediction: list['Prediction'] = None,  mitigation: str = None,  note: list['Annotation'] = None, ):
+    def __init__(self, resourceType: str = "RiskAssessment",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  identifier: list['Identifier'] = None,  basedOn: 'Reference' = None,  parent: 'Reference' = None,  status: str = None,  method: 'CodeableConcept' = None,  code: 'CodeableConcept' = None,  subject: 'Reference' = None,  encounter: 'Reference' = None,  occurrenceDateTime: str = None,  occurrencePeriod: 'Period' = None,  condition: 'Reference' = None,  performer: 'Reference' = None,  reasonCode: list['CodeableConcept'] = None,  reasonReference: list['Reference'] = None,  basis: list['Reference'] = None,  prediction: list['Prediction'] = None,  mitigation: str = None,  note: list['Annotation'] = None, ):
         self.resourceType: str = resourceType or "RiskAssessment"
         self.id: str = id 
         self.meta: 'Meta' = meta 
@@ -89,6 +94,7 @@ class RiskAssessment(DomainResource):
         self.subject: 'Reference' = subject 
         self.encounter: 'Reference' = encounter 
         self.occurrenceDateTime: str = occurrenceDateTime 
+        self.occurrencePeriod: 'Period' = occurrencePeriod 
         self.condition: 'Reference' = condition 
         self.performer: 'Reference' = performer 
         self.reasonCode: list['CodeableConcept'] = reasonCode or []

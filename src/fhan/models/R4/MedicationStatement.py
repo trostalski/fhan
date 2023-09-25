@@ -1,17 +1,17 @@
 """
 Generated class for MedicationStatement. 
-Time: 2023-09-24 21:52:32
+Time: 2023-09-25 14:53:18
 """
-from fhan.models.R4.Period import *
 from fhan.models.R4.Reference import *
 from fhan.models.R4.Resource import *
-from fhan.models.R4.Annotation import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.Identifier import *
-from fhan.models.R4.Meta import *
+from fhan.models.R4.Period import *
+from fhan.models.R4.Extension import *
 from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Dosage import *
-from fhan.models.R4.Extension import *
+from fhan.models.R4.Annotation import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.Meta import *
+from fhan.models.R4.Narrative import *
 from fhan.models.R4.DomainResource import *
 
 
@@ -34,9 +34,11 @@ The primary difference between a medication statement and a medication administr
     :param list['CodeableConcept'] statusReason: Reason for current status
     :param 'CodeableConcept' category: Type of medication usage
     :param 'CodeableConcept' medicationCodeableConcept: What medication was taken
+    :param 'Reference' medicationReference: What medication was taken
     :param 'Reference' subject: Who is/was taking  the medication
     :param 'Reference' context: Encounter / Episode associated with MedicationStatement
     :param str effectiveDateTime: The date/time or interval when the medication is/was/will be taken
+    :param 'Period' effectivePeriod: The date/time or interval when the medication is/was/will be taken
     :param str dateAsserted: When the statement was asserted?
     :param 'Reference' informationSource: Person or organization that provided the information about the taking of this medication
     :param list['Reference'] derivedFrom: Additional supporting information
@@ -45,7 +47,7 @@ The primary difference between a medication statement and a medication administr
     :param list['Annotation'] note: Further information about the statement
     :param list['Dosage'] dosage: Details of how medication is/was taken or should be taken
     """
-    def __init__(self, resourceType: str = "MedicationStatement",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  identifier: list['Identifier'] = None,  basedOn: list['Reference'] = None,  partOf: list['Reference'] = None,  status: str = None,  statusReason: list['CodeableConcept'] = None,  category: 'CodeableConcept' = None,  medicationCodeableConcept: 'CodeableConcept' = None,  subject: 'Reference' = None,  context: 'Reference' = None,  effectiveDateTime: str = None,  dateAsserted: str = None,  informationSource: 'Reference' = None,  derivedFrom: list['Reference'] = None,  reasonCode: list['CodeableConcept'] = None,  reasonReference: list['Reference'] = None,  note: list['Annotation'] = None,  dosage: list['Dosage'] = None, ):
+    def __init__(self, resourceType: str = "MedicationStatement",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  identifier: list['Identifier'] = None,  basedOn: list['Reference'] = None,  partOf: list['Reference'] = None,  status: str = None,  statusReason: list['CodeableConcept'] = None,  category: 'CodeableConcept' = None,  medicationCodeableConcept: 'CodeableConcept' = None,  medicationReference: 'Reference' = None,  subject: 'Reference' = None,  context: 'Reference' = None,  effectiveDateTime: str = None,  effectivePeriod: 'Period' = None,  dateAsserted: str = None,  informationSource: 'Reference' = None,  derivedFrom: list['Reference'] = None,  reasonCode: list['CodeableConcept'] = None,  reasonReference: list['Reference'] = None,  note: list['Annotation'] = None,  dosage: list['Dosage'] = None, ):
         self.resourceType: str = resourceType or "MedicationStatement"
         self.id: str = id 
         self.meta: 'Meta' = meta 
@@ -62,9 +64,11 @@ The primary difference between a medication statement and a medication administr
         self.statusReason: list['CodeableConcept'] = statusReason or []
         self.category: 'CodeableConcept' = category 
         self.medicationCodeableConcept: 'CodeableConcept' = medicationCodeableConcept 
+        self.medicationReference: 'Reference' = medicationReference 
         self.subject: 'Reference' = subject 
         self.context: 'Reference' = context 
         self.effectiveDateTime: str = effectiveDateTime 
+        self.effectivePeriod: 'Period' = effectivePeriod 
         self.dateAsserted: str = dateAsserted 
         self.informationSource: 'Reference' = informationSource 
         self.derivedFrom: list['Reference'] = derivedFrom or []

@@ -1,16 +1,16 @@
 """
 Generated class for ImplementationGuide. 
-Time: 2023-09-24 21:52:32
+Time: 2023-09-25 14:53:18
 """
-from fhan.models.R4.UsageContext import *
 from fhan.models.R4.Reference import *
 from fhan.models.R4.Resource import *
 from fhan.models.R4.ContactDetail import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Extension import *
+from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Meta import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.UsageContext import *
 from fhan.models.R4.DomainResource import *
 
 
@@ -84,9 +84,10 @@ class Resource(ModelBase):
     :param str name: Human Name for the resource
     :param str description: Reason why included in guide
     :param bool exampleBoolean: Is an example/What is this an example of?
+    :param str exampleCanonical: Is an example/What is this an example of?
     :param str groupingId: Grouping this is part of
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  reference: 'Reference' = None,  fhirVersion: str = None,  name: str = None,  description: str = None,  exampleBoolean: bool = None,  groupingId: str = None, ):
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  reference: 'Reference' = None,  fhirVersion: str = None,  name: str = None,  description: str = None,  exampleBoolean: bool = None,  exampleCanonical: str = None,  groupingId: str = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -95,6 +96,7 @@ class Resource(ModelBase):
         self.name: str = name 
         self.description: str = description 
         self.exampleBoolean: bool = exampleBoolean 
+        self.exampleCanonical: str = exampleCanonical 
         self.groupingId: str = groupingId 
         
 
@@ -106,14 +108,16 @@ class Page(ModelBase):
     :param list['Extension'] extension: Additional content defined by implementations
     :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str nameUrl: Where to find that page
+    :param 'Reference' nameReference: Where to find that page
     :param str title: Short title shown for navigational assistance
     :param str generation: html | markdown | xml | generated
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  nameUrl: str = None,  title: str = None,  generation: str = None, ):
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  nameUrl: str = None,  nameReference: 'Reference' = None,  title: str = None,  generation: str = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
         self.nameUrl: str = nameUrl 
+        self.nameReference: 'Reference' = nameReference 
         self.title: str = title 
         self.generation: str = generation 
         
@@ -192,14 +196,16 @@ class Resource(ModelBase):
     :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param 'Reference' reference: Location of the resource
     :param bool exampleBoolean: Is an example/What is this an example of?
+    :param str exampleCanonical: Is an example/What is this an example of?
     :param str relativePath: Relative path for page in IG
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  reference: 'Reference' = None,  exampleBoolean: bool = None,  relativePath: str = None, ):
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  reference: 'Reference' = None,  exampleBoolean: bool = None,  exampleCanonical: str = None,  relativePath: str = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
         self.reference: 'Reference' = reference 
         self.exampleBoolean: bool = exampleBoolean 
+        self.exampleCanonical: str = exampleCanonical 
         self.relativePath: str = relativePath 
         
 

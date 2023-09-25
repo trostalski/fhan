@@ -1,17 +1,17 @@
 """
 Generated class for ValueSet. 
-Time: 2023-09-24 21:52:32
+Time: 2023-09-25 14:53:18
 """
-from fhan.models.R4.UsageContext import *
 from fhan.models.R4.Resource import *
 from fhan.models.R4.ContactDetail import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Identifier import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Coding import *
-from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Extension import *
+from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.Coding import *
+from fhan.models.R4.Meta import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.UsageContext import *
 from fhan.models.R4.DomainResource import *
 
 
@@ -107,6 +107,96 @@ class Include(ModelBase):
         self.valueSet: str = valueSet or []
         
 
+    
+        
+    
+        
+    
+    
+
+class Designation(ModelBase):
+    """ Additional representations for this concept when used in this value set - other languages, aliases, specialized purposes, used for particular purposes, etc.:param str id: Unique id for inter-element referencing
+    :param list['Extension'] extension: Additional content defined by implementations
+    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param str language: Human language of the designation
+    :param 'Coding' use: Types of uses of designations
+    :param str value: The text value for this designation
+    """
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  language: str = None,  use: 'Coding' = None,  value: str = None, ):
+        self.id: str = id 
+        self.extension: list['Extension'] = extension or []
+        self.modifierExtension: list['Extension'] = modifierExtension or []
+        self.language: str = language 
+        self.use: 'Coding' = use 
+        self.value: str = value 
+        
+
+  
+    
+    
+
+class Concept(ModelBase):
+    """ Specifies a concept to be included or excluded.:param str id: Unique id for inter-element referencing
+    :param list['Extension'] extension: Additional content defined by implementations
+    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param str code: Code or expression from system
+    :param str display: Text to display for this code for this value set in this valueset
+    :param list['Designation'] designation: Additional representations for this concept
+    """
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  code: str = None,  display: str = None,  designation: list['Designation'] = None, ):
+        self.id: str = id 
+        self.extension: list['Extension'] = extension or []
+        self.modifierExtension: list['Extension'] = modifierExtension or []
+        self.code: str = code 
+        self.display: str = display 
+        self.designation: list['Designation'] = designation or []
+        
+
+    
+    
+
+class Filter(ModelBase):
+    """ Select concepts by specify a matching criterion based on the properties (including relationships) defined by the system, or on filters defined by the system. If multiple filters are specified, they SHALL all be true.:param str id: Unique id for inter-element referencing
+    :param list['Extension'] extension: Additional content defined by implementations
+    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param str property: A property/filter defined by the code system
+    :param str op: = | is-a | descendent-of | is-not-a | regex | in | not-in | generalizes | exists
+    :param str value: Code from the system, or regex criteria, or boolean value for exists
+    """
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  property: str = None,  op: str = None,  value: str = None, ):
+        self.id: str = id 
+        self.extension: list['Extension'] = extension or []
+        self.modifierExtension: list['Extension'] = modifierExtension or []
+        self.property: str = property 
+        self.op: str = op 
+        self.value: str = value 
+        
+
+  
+    
+    
+
+class Exclude(ModelBase):
+    """ Include one or more codes from a code system or other value set(s).:param str id: Unique id for inter-element referencing
+    :param list['Extension'] extension: Additional content defined by implementations
+    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param str system: The system the codes come from
+    :param str version: Specific version of the code system referred to
+    :param list['Concept'] concept: A concept defined in the system
+    :param list['Filter'] filter: Select codes/concepts by their properties (including relationships)
+    :param str valueSet: Select the contents included in this value set
+    """
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  system: str = None,  version: str = None,  concept: list['Concept'] = None,  filter: list['Filter'] = None,  valueSet: str = None, ):
+        self.id: str = id 
+        self.extension: list['Extension'] = extension or []
+        self.modifierExtension: list['Extension'] = modifierExtension or []
+        self.system: str = system 
+        self.version: str = version 
+        self.concept: list['Concept'] = concept or []
+        self.filter: list['Filter'] = filter or []
+        self.valueSet: str = valueSet or []
+        
+
   
     
     
@@ -118,14 +208,16 @@ class Compose(ModelBase):
     :param str lockedDate: Fixed date for references with no specified version (transitive)
     :param bool inactive: Whether inactive codes are in the value set
     :param list['Include'] include: Include one or more codes from a code system or other value set(s)
+    :param list['Exclude'] exclude: Include one or more codes from a code system or other value set(s)
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  lockedDate: str = None,  inactive: bool = None,  include: list['Include'] = None, ):
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  lockedDate: str = None,  inactive: bool = None,  include: list['Include'] = None,  exclude: list['Exclude'] = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
         self.lockedDate: str = lockedDate 
         self.inactive: bool = inactive 
         self.include: list['Include'] = include or []
+        self.exclude: list['Exclude'] = exclude or []
         
 
     
@@ -139,13 +231,25 @@ class Parameter(ModelBase):
     :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str name: Name as assigned by the client or server
     :param str valueString: Value of the named parameter
+    :param bool valueBoolean: Value of the named parameter
+    :param int valueInteger: Value of the named parameter
+    :param float valueDecimal: Value of the named parameter
+    :param str valueUri: Value of the named parameter
+    :param str valueCode: Value of the named parameter
+    :param str valueDateTime: Value of the named parameter
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  name: str = None,  valueString: str = None, ):
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  name: str = None,  valueString: str = None,  valueBoolean: bool = None,  valueInteger: int = None,  valueDecimal: float = None,  valueUri: str = None,  valueCode: str = None,  valueDateTime: str = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
         self.name: str = name 
         self.valueString: str = valueString 
+        self.valueBoolean: bool = valueBoolean 
+        self.valueInteger: int = valueInteger 
+        self.valueDecimal: float = valueDecimal 
+        self.valueUri: str = valueUri 
+        self.valueCode: str = valueCode 
+        self.valueDateTime: str = valueDateTime 
         
 
     

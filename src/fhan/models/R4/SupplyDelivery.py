@@ -1,18 +1,18 @@
 """
 Generated class for SupplyDelivery. 
-Time: 2023-09-24 21:52:32
+Time: 2023-09-25 14:53:18
 """
-from fhan.models.R4.Period import *
 from fhan.models.R4.Reference import *
 from fhan.models.R4.Resource import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Period import *
+from fhan.models.R4.Extension import *
+from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Identifier import *
 from fhan.models.R4.Meta import *
 from fhan.models.R4.Quantity import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Narrative import *
 from fhan.models.R4.Timing import *
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Extension import *
 from fhan.models.R4.DomainResource import *
 
 
@@ -25,13 +25,15 @@ class SuppliedItem(ModelBase):
     :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param 'Quantity' quantity: Amount dispensed
     :param 'CodeableConcept' itemCodeableConcept: Medication, Substance, or Device supplied
+    :param 'Reference' itemReference: Medication, Substance, or Device supplied
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  quantity: 'Quantity' = None,  itemCodeableConcept: 'CodeableConcept' = None, ):
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  quantity: 'Quantity' = None,  itemCodeableConcept: 'CodeableConcept' = None,  itemReference: 'Reference' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
         self.quantity: 'Quantity' = quantity 
         self.itemCodeableConcept: 'CodeableConcept' = itemCodeableConcept 
+        self.itemReference: 'Reference' = itemReference 
         
 
 class SupplyDelivery(DomainResource):
@@ -52,11 +54,13 @@ class SupplyDelivery(DomainResource):
     :param 'CodeableConcept' type: Category of dispense event
     :param 'SuppliedItem' suppliedItem: The item that is delivered or supplied
     :param str occurrenceDateTime: When event occurred
+    :param 'Period' occurrencePeriod: When event occurred
+    :param 'Timing' occurrenceTiming: When event occurred
     :param 'Reference' supplier: Dispenser
     :param 'Reference' destination: Where the Supply was sent
     :param list['Reference'] receiver: Who collected the Supply
     """
-    def __init__(self, resourceType: str = "SupplyDelivery",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  identifier: list['Identifier'] = None,  basedOn: list['Reference'] = None,  partOf: list['Reference'] = None,  status: str = None,  patient: 'Reference' = None,  type: 'CodeableConcept' = None,  suppliedItem: 'SuppliedItem' = None,  occurrenceDateTime: str = None,  supplier: 'Reference' = None,  destination: 'Reference' = None,  receiver: list['Reference'] = None, ):
+    def __init__(self, resourceType: str = "SupplyDelivery",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  identifier: list['Identifier'] = None,  basedOn: list['Reference'] = None,  partOf: list['Reference'] = None,  status: str = None,  patient: 'Reference' = None,  type: 'CodeableConcept' = None,  suppliedItem: 'SuppliedItem' = None,  occurrenceDateTime: str = None,  occurrencePeriod: 'Period' = None,  occurrenceTiming: 'Timing' = None,  supplier: 'Reference' = None,  destination: 'Reference' = None,  receiver: list['Reference'] = None, ):
         self.resourceType: str = resourceType or "SupplyDelivery"
         self.id: str = id 
         self.meta: 'Meta' = meta 
@@ -74,6 +78,8 @@ class SupplyDelivery(DomainResource):
         self.type: 'CodeableConcept' = type 
         self.suppliedItem: 'SuppliedItem' = suppliedItem 
         self.occurrenceDateTime: str = occurrenceDateTime 
+        self.occurrencePeriod: 'Period' = occurrencePeriod 
+        self.occurrenceTiming: 'Timing' = occurrenceTiming 
         self.supplier: 'Reference' = supplier 
         self.destination: 'Reference' = destination 
         self.receiver: list['Reference'] = receiver or []

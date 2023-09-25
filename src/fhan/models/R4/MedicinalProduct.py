@@ -1,17 +1,17 @@
 """
 Generated class for MedicinalProduct. 
-Time: 2023-09-24 21:52:32
+Time: 2023-09-25 14:53:18
 """
 from fhan.models.R4.Reference import *
 from fhan.models.R4.Resource import *
-from fhan.models.R4.Narrative import *
+from fhan.models.R4.Extension import *
+from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.BackboneElement import *
 from fhan.models.R4.Identifier import *
+from fhan.models.R4.Coding import *
 from fhan.models.R4.Meta import *
 from fhan.models.R4.MarketingStatus import *
-from fhan.models.R4.Coding import *
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Extension import *
+from fhan.models.R4.Narrative import *
 from fhan.models.R4.DomainResource import *
 
 
@@ -113,11 +113,12 @@ class SpecialDesignation(ModelBase):
     :param 'CodeableConcept' type: The type of special designation, e.g. orphan drug, minor use
     :param 'CodeableConcept' intendedUse: The intended use of the product, e.g. prevention, treatment
     :param 'CodeableConcept' indicationCodeableConcept: Condition for which the medicinal use applies
+    :param 'Reference' indicationReference: Condition for which the medicinal use applies
     :param 'CodeableConcept' status: For example granted, pending, expired or withdrawn
     :param str date: Date when the designation was granted
     :param 'CodeableConcept' species: Animal species for which this applies
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  identifier: list['Identifier'] = None,  type: 'CodeableConcept' = None,  intendedUse: 'CodeableConcept' = None,  indicationCodeableConcept: 'CodeableConcept' = None,  status: 'CodeableConcept' = None,  date: str = None,  species: 'CodeableConcept' = None, ):
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  identifier: list['Identifier'] = None,  type: 'CodeableConcept' = None,  intendedUse: 'CodeableConcept' = None,  indicationCodeableConcept: 'CodeableConcept' = None,  indicationReference: 'Reference' = None,  status: 'CodeableConcept' = None,  date: str = None,  species: 'CodeableConcept' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -125,6 +126,7 @@ class SpecialDesignation(ModelBase):
         self.type: 'CodeableConcept' = type 
         self.intendedUse: 'CodeableConcept' = intendedUse 
         self.indicationCodeableConcept: 'CodeableConcept' = indicationCodeableConcept 
+        self.indicationReference: 'Reference' = indicationReference 
         self.status: 'CodeableConcept' = status 
         self.date: str = date 
         self.species: 'CodeableConcept' = species 

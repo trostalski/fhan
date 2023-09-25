@@ -1,21 +1,21 @@
 """
 Generated class for Questionnaire. 
-Time: 2023-09-24 21:52:32
+Time: 2023-09-25 14:53:18
 """
-from fhan.models.R4.UsageContext import *
-from fhan.models.R4.Period import *
 from fhan.models.R4.Reference import *
 from fhan.models.R4.Resource import *
 from fhan.models.R4.ContactDetail import *
-from fhan.models.R4.Attachment import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Extension import *
+from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Period import *
 from fhan.models.R4.Identifier import *
+from fhan.models.R4.Coding import *
+from fhan.models.R4.Attachment import *
 from fhan.models.R4.Meta import *
 from fhan.models.R4.Quantity import *
-from fhan.models.R4.Coding import *
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Extension import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.UsageContext import *
 from fhan.models.R4.DomainResource import *
 
 
@@ -31,14 +31,32 @@ class EnableWhen(ModelBase):
     :param str question: Question that determines whether item is enabled
     :param str operator: exists | = | != | > | < | >= | <=
     :param bool answerBoolean: Value for question comparison based on operator
+    :param float answerDecimal: Value for question comparison based on operator
+    :param int answerInteger: Value for question comparison based on operator
+    :param str answerDate: Value for question comparison based on operator
+    :param str answerDateTime: Value for question comparison based on operator
+    :param str answerTime: Value for question comparison based on operator
+    :param str answerString: Value for question comparison based on operator
+    :param 'Coding' answerCoding: Value for question comparison based on operator
+    :param 'Quantity' answerQuantity: Value for question comparison based on operator
+    :param 'Reference' answerReference: Value for question comparison based on operator
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  question: str = None,  operator: str = None,  answerBoolean: bool = None, ):
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  question: str = None,  operator: str = None,  answerBoolean: bool = None,  answerDecimal: float = None,  answerInteger: int = None,  answerDate: str = None,  answerDateTime: str = None,  answerTime: str = None,  answerString: str = None,  answerCoding: 'Coding' = None,  answerQuantity: 'Quantity' = None,  answerReference: 'Reference' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
         self.question: str = question 
         self.operator: str = operator 
         self.answerBoolean: bool = answerBoolean 
+        self.answerDecimal: float = answerDecimal 
+        self.answerInteger: int = answerInteger 
+        self.answerDate: str = answerDate 
+        self.answerDateTime: str = answerDateTime 
+        self.answerTime: str = answerTime 
+        self.answerString: str = answerString 
+        self.answerCoding: 'Coding' = answerCoding 
+        self.answerQuantity: 'Quantity' = answerQuantity 
+        self.answerReference: 'Reference' = answerReference 
         
 
     
@@ -49,13 +67,23 @@ class AnswerOption(ModelBase):
     :param list['Extension'] extension: Additional content defined by implementations
     :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param int valueInteger: Answer value
+    :param str valueDate: Answer value
+    :param str valueTime: Answer value
+    :param str valueString: Answer value
+    :param 'Coding' valueCoding: Answer value
+    :param 'Reference' valueReference: Answer value
     :param bool initialSelected: Whether option is selected by default
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  valueInteger: int = None,  initialSelected: bool = None, ):
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  valueInteger: int = None,  valueDate: str = None,  valueTime: str = None,  valueString: str = None,  valueCoding: 'Coding' = None,  valueReference: 'Reference' = None,  initialSelected: bool = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
         self.valueInteger: int = valueInteger 
+        self.valueDate: str = valueDate 
+        self.valueTime: str = valueTime 
+        self.valueString: str = valueString 
+        self.valueCoding: 'Coding' = valueCoding 
+        self.valueReference: 'Reference' = valueReference 
         self.initialSelected: bool = initialSelected 
         
 
@@ -67,12 +95,34 @@ class Initial(ModelBase):
     :param list['Extension'] extension: Additional content defined by implementations
     :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param bool valueBoolean: Actual value for initializing the question
+    :param float valueDecimal: Actual value for initializing the question
+    :param int valueInteger: Actual value for initializing the question
+    :param str valueDate: Actual value for initializing the question
+    :param str valueDateTime: Actual value for initializing the question
+    :param str valueTime: Actual value for initializing the question
+    :param str valueString: Actual value for initializing the question
+    :param str valueUri: Actual value for initializing the question
+    :param 'Attachment' valueAttachment: Actual value for initializing the question
+    :param 'Coding' valueCoding: Actual value for initializing the question
+    :param 'Quantity' valueQuantity: Actual value for initializing the question
+    :param 'Reference' valueReference: Actual value for initializing the question
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  valueBoolean: bool = None, ):
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  valueBoolean: bool = None,  valueDecimal: float = None,  valueInteger: int = None,  valueDate: str = None,  valueDateTime: str = None,  valueTime: str = None,  valueString: str = None,  valueUri: str = None,  valueAttachment: 'Attachment' = None,  valueCoding: 'Coding' = None,  valueQuantity: 'Quantity' = None,  valueReference: 'Reference' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
         self.valueBoolean: bool = valueBoolean 
+        self.valueDecimal: float = valueDecimal 
+        self.valueInteger: int = valueInteger 
+        self.valueDate: str = valueDate 
+        self.valueDateTime: str = valueDateTime 
+        self.valueTime: str = valueTime 
+        self.valueString: str = valueString 
+        self.valueUri: str = valueUri 
+        self.valueAttachment: 'Attachment' = valueAttachment 
+        self.valueCoding: 'Coding' = valueCoding 
+        self.valueQuantity: 'Quantity' = valueQuantity 
+        self.valueReference: 'Reference' = valueReference 
         
 
   

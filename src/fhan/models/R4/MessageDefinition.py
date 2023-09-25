@@ -1,17 +1,17 @@
 """
 Generated class for MessageDefinition. 
-Time: 2023-09-24 21:52:32
+Time: 2023-09-25 14:53:18
 """
-from fhan.models.R4.UsageContext import *
 from fhan.models.R4.Resource import *
 from fhan.models.R4.ContactDetail import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Identifier import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Coding import *
-from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Extension import *
+from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.Coding import *
+from fhan.models.R4.Meta import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.UsageContext import *
 from fhan.models.R4.DomainResource import *
 
 
@@ -84,13 +84,14 @@ class MessageDefinition(DomainResource):
     :param str base: Definition this one is based on
     :param str parent: Protocol/workflow this is part of
     :param 'Coding' eventCoding: Event code  or link to the EventDefinition
+    :param str eventUri: Event code  or link to the EventDefinition
     :param str category: consequence | currency | notification
     :param list['Focus'] focus: Resource(s) that are the subject of the event
     :param str responseRequired: always | on-error | never | on-success
     :param list['AllowedResponse'] allowedResponse: Responses to this message
     :param str graph: Canonical reference to a GraphDefinition
     """
-    def __init__(self, resourceType: str = "MessageDefinition",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  url: str = None,  identifier: list['Identifier'] = None,  version: str = None,  name: str = None,  title: str = None,  replaces: str = None,  status: str = None,  experimental: bool = None,  date: str = None,  publisher: str = None,  contact: list['ContactDetail'] = None,  description: str = None,  useContext: list['UsageContext'] = None,  jurisdiction: list['CodeableConcept'] = None,  purpose: str = None,  copyright: str = None,  base: str = None,  parent: str = None,  eventCoding: 'Coding' = None,  category: str = None,  focus: list['Focus'] = None,  responseRequired: str = None,  allowedResponse: list['AllowedResponse'] = None,  graph: str = None, ):
+    def __init__(self, resourceType: str = "MessageDefinition",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  url: str = None,  identifier: list['Identifier'] = None,  version: str = None,  name: str = None,  title: str = None,  replaces: str = None,  status: str = None,  experimental: bool = None,  date: str = None,  publisher: str = None,  contact: list['ContactDetail'] = None,  description: str = None,  useContext: list['UsageContext'] = None,  jurisdiction: list['CodeableConcept'] = None,  purpose: str = None,  copyright: str = None,  base: str = None,  parent: str = None,  eventCoding: 'Coding' = None,  eventUri: str = None,  category: str = None,  focus: list['Focus'] = None,  responseRequired: str = None,  allowedResponse: list['AllowedResponse'] = None,  graph: str = None, ):
         self.resourceType: str = resourceType or "MessageDefinition"
         self.id: str = id 
         self.meta: 'Meta' = meta 
@@ -119,6 +120,7 @@ class MessageDefinition(DomainResource):
         self.base: str = base 
         self.parent: str = parent or []
         self.eventCoding: 'Coding' = eventCoding 
+        self.eventUri: str = eventUri 
         self.category: str = category 
         self.focus: list['Focus'] = focus or []
         self.responseRequired: str = responseRequired 

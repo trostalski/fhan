@@ -1,17 +1,17 @@
 """
 Generated class for SubstanceReferenceInformation. 
-Time: 2023-09-24 21:52:32
+Time: 2023-09-25 14:53:18
 """
 from fhan.models.R4.Reference import *
-from fhan.models.R4.Range import *
 from fhan.models.R4.Resource import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Extension import *
+from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Identifier import *
+from fhan.models.R4.Range import *
 from fhan.models.R4.Meta import *
 from fhan.models.R4.Quantity import *
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Extension import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Narrative import *
 from fhan.models.R4.DomainResource import *
 
 
@@ -95,10 +95,12 @@ class Target(ModelBase):
     :param 'CodeableConcept' organism: Todo
     :param 'CodeableConcept' organismType: Todo
     :param 'Quantity' amountQuantity: Todo
+    :param 'Range' amountRange: Todo
+    :param str amountString: Todo
     :param 'CodeableConcept' amountType: Todo
     :param list['Reference'] source: Todo
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  target: 'Identifier' = None,  type: 'CodeableConcept' = None,  interaction: 'CodeableConcept' = None,  organism: 'CodeableConcept' = None,  organismType: 'CodeableConcept' = None,  amountQuantity: 'Quantity' = None,  amountType: 'CodeableConcept' = None,  source: list['Reference'] = None, ):
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  target: 'Identifier' = None,  type: 'CodeableConcept' = None,  interaction: 'CodeableConcept' = None,  organism: 'CodeableConcept' = None,  organismType: 'CodeableConcept' = None,  amountQuantity: 'Quantity' = None,  amountRange: 'Range' = None,  amountString: str = None,  amountType: 'CodeableConcept' = None,  source: list['Reference'] = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -108,6 +110,8 @@ class Target(ModelBase):
         self.organism: 'CodeableConcept' = organism 
         self.organismType: 'CodeableConcept' = organismType 
         self.amountQuantity: 'Quantity' = amountQuantity 
+        self.amountRange: 'Range' = amountRange 
+        self.amountString: str = amountString 
         self.amountType: 'CodeableConcept' = amountType 
         self.source: list['Reference'] = source or []
         

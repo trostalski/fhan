@@ -1,16 +1,16 @@
 """
 Generated class for ExampleScenario. 
-Time: 2023-09-24 21:52:32
+Time: 2023-09-25 14:53:18
 """
-from fhan.models.R4.UsageContext import *
 from fhan.models.R4.Resource import *
 from fhan.models.R4.ContactDetail import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Extension import *
+from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Identifier import *
 from fhan.models.R4.Meta import *
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Extension import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.UsageContext import *
 from fhan.models.R4.DomainResource import *
 
 
@@ -74,6 +74,42 @@ class ContainedInstance(ModelBase):
         self.versionId: str = versionId 
         
 
+    
+    
+
+class Request(ModelBase):
+    """ Resources contained in the instance (e.g. the observations contained in a bundle).:param str id: Unique id for inter-element referencing
+    :param list['Extension'] extension: Additional content defined by implementations
+    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param str resourceId: Each resource contained in the instance
+    :param str versionId: A specific version of a resource contained in the instance
+    """
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  resourceId: str = None,  versionId: str = None, ):
+        self.id: str = id 
+        self.extension: list['Extension'] = extension or []
+        self.modifierExtension: list['Extension'] = modifierExtension or []
+        self.resourceId: str = resourceId 
+        self.versionId: str = versionId 
+        
+
+    
+    
+
+class Response(ModelBase):
+    """ Resources contained in the instance (e.g. the observations contained in a bundle).:param str id: Unique id for inter-element referencing
+    :param list['Extension'] extension: Additional content defined by implementations
+    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param str resourceId: Each resource contained in the instance
+    :param str versionId: A specific version of a resource contained in the instance
+    """
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  resourceId: str = None,  versionId: str = None, ):
+        self.id: str = id 
+        self.extension: list['Extension'] = extension or []
+        self.modifierExtension: list['Extension'] = modifierExtension or []
+        self.resourceId: str = resourceId 
+        self.versionId: str = versionId 
+        
+
   
     
     
@@ -88,8 +124,10 @@ class Instance(ModelBase):
     :param str description: Human-friendly description of the resource instance
     :param list['Version'] version: A specific version of the resource
     :param list['ContainedInstance'] containedInstance: Resources contained in the instance
+    :param list['Request'] request: Resources contained in the instance
+    :param list['Response'] response: Resources contained in the instance
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  resourceId: str = None,  resourceType: str = None,  name: str = None,  description: str = None,  version: list['Version'] = None,  containedInstance: list['ContainedInstance'] = None, ):
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  resourceId: str = None,  resourceType: str = None,  name: str = None,  description: str = None,  version: list['Version'] = None,  containedInstance: list['ContainedInstance'] = None,  request: list['Request'] = None,  response: list['Response'] = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -99,6 +137,8 @@ class Instance(ModelBase):
         self.description: str = description 
         self.version: list['Version'] = version or []
         self.containedInstance: list['ContainedInstance'] = containedInstance or []
+        self.request: list['Request'] = request or []
+        self.response: list['Response'] = response or []
         
 
     

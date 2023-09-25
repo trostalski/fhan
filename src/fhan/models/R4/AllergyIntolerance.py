@@ -1,19 +1,19 @@
 """
 Generated class for AllergyIntolerance. 
-Time: 2023-09-24 21:52:32
+Time: 2023-09-25 14:53:18
 """
-from fhan.models.R4.Period import *
 from fhan.models.R4.Reference import *
-from fhan.models.R4.Range import *
 from fhan.models.R4.Resource import *
-from fhan.models.R4.Annotation import *
-from fhan.models.R4.Narrative import *
 from fhan.models.R4.Age import *
-from fhan.models.R4.Identifier import *
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Period import *
 from fhan.models.R4.Extension import *
+from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Annotation import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.Range import *
+from fhan.models.R4.Meta import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Narrative import *
 from fhan.models.R4.DomainResource import *
 
 
@@ -65,6 +65,10 @@ class AllergyIntolerance(DomainResource):
     :param 'Reference' patient: Who the sensitivity is for
     :param 'Reference' encounter: Encounter when the allergy or intolerance was asserted
     :param str onsetDateTime: When allergy or intolerance was identified
+    :param 'Age' onsetAge: When allergy or intolerance was identified
+    :param 'Period' onsetPeriod: When allergy or intolerance was identified
+    :param 'Range' onsetRange: When allergy or intolerance was identified
+    :param str onsetString: When allergy or intolerance was identified
     :param str recordedDate: Date first version of the resource instance was recorded
     :param 'Reference' recorder: Who recorded the sensitivity
     :param 'Reference' asserter: Source of the information about the allergy
@@ -72,7 +76,7 @@ class AllergyIntolerance(DomainResource):
     :param list['Annotation'] note: Additional text not captured in other fields
     :param list['Reaction'] reaction: Adverse Reaction Events linked to exposure to substance
     """
-    def __init__(self, resourceType: str = "AllergyIntolerance",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  identifier: list['Identifier'] = None,  clinicalStatus: 'CodeableConcept' = None,  verificationStatus: 'CodeableConcept' = None,  type: str = None,  category: str = None,  criticality: str = None,  code: 'CodeableConcept' = None,  patient: 'Reference' = None,  encounter: 'Reference' = None,  onsetDateTime: str = None,  recordedDate: str = None,  recorder: 'Reference' = None,  asserter: 'Reference' = None,  lastOccurrence: str = None,  note: list['Annotation'] = None,  reaction: list['Reaction'] = None, ):
+    def __init__(self, resourceType: str = "AllergyIntolerance",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  identifier: list['Identifier'] = None,  clinicalStatus: 'CodeableConcept' = None,  verificationStatus: 'CodeableConcept' = None,  type: str = None,  category: str = None,  criticality: str = None,  code: 'CodeableConcept' = None,  patient: 'Reference' = None,  encounter: 'Reference' = None,  onsetDateTime: str = None,  onsetAge: 'Age' = None,  onsetPeriod: 'Period' = None,  onsetRange: 'Range' = None,  onsetString: str = None,  recordedDate: str = None,  recorder: 'Reference' = None,  asserter: 'Reference' = None,  lastOccurrence: str = None,  note: list['Annotation'] = None,  reaction: list['Reaction'] = None, ):
         self.resourceType: str = resourceType or "AllergyIntolerance"
         self.id: str = id 
         self.meta: 'Meta' = meta 
@@ -92,6 +96,10 @@ class AllergyIntolerance(DomainResource):
         self.patient: 'Reference' = patient 
         self.encounter: 'Reference' = encounter 
         self.onsetDateTime: str = onsetDateTime 
+        self.onsetAge: 'Age' = onsetAge 
+        self.onsetPeriod: 'Period' = onsetPeriod 
+        self.onsetRange: 'Range' = onsetRange 
+        self.onsetString: str = onsetString 
         self.recordedDate: str = recordedDate 
         self.recorder: 'Reference' = recorder 
         self.asserter: 'Reference' = asserter 

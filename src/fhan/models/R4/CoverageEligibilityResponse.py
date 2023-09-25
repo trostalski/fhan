@@ -1,17 +1,17 @@
 """
 Generated class for CoverageEligibilityResponse. 
-Time: 2023-09-24 21:52:32
+Time: 2023-09-25 14:53:18
 """
 from fhan.models.R4.Reference import *
-from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Resource import *
-from fhan.models.R4.Money import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Identifier import *
-from fhan.models.R4.Meta import *
 from fhan.models.R4.Period import *
 from fhan.models.R4.Extension import *
+from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.Meta import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Money import *
 from fhan.models.R4.DomainResource import *
 
 
@@ -28,15 +28,23 @@ class Benefit(ModelBase):
     :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param 'CodeableConcept' type: Benefit classification
     :param int allowedUnsignedInt: Benefits allowed
+    :param str allowedString: Benefits allowed
+    :param 'Money' allowedMoney: Benefits allowed
     :param int usedUnsignedInt: Benefits used
+    :param str usedString: Benefits used
+    :param 'Money' usedMoney: Benefits used
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  type: 'CodeableConcept' = None,  allowedUnsignedInt: int = None,  usedUnsignedInt: int = None, ):
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  type: 'CodeableConcept' = None,  allowedUnsignedInt: int = None,  allowedString: str = None,  allowedMoney: 'Money' = None,  usedUnsignedInt: int = None,  usedString: str = None,  usedMoney: 'Money' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
         self.type: 'CodeableConcept' = type 
         self.allowedUnsignedInt: int = allowedUnsignedInt 
+        self.allowedString: str = allowedString 
+        self.allowedMoney: 'Money' = allowedMoney 
         self.usedUnsignedInt: int = usedUnsignedInt 
+        self.usedString: str = usedString 
+        self.usedMoney: 'Money' = usedMoney 
         
 
   
@@ -136,6 +144,7 @@ class CoverageEligibilityResponse(DomainResource):
     :param str purpose: auth-requirements | benefits | discovery | validation
     :param 'Reference' patient: Intended recipient of products and services
     :param str servicedDate: Estimated date or dates of service
+    :param 'Period' servicedPeriod: Estimated date or dates of service
     :param str created: Response creation date
     :param 'Reference' requestor: Party responsible for the request
     :param 'Reference' request: Eligibility request reference
@@ -147,7 +156,7 @@ class CoverageEligibilityResponse(DomainResource):
     :param 'CodeableConcept' form: Printed form identifier
     :param list['Error'] error: Processing errors
     """
-    def __init__(self, resourceType: str = "CoverageEligibilityResponse",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  identifier: list['Identifier'] = None,  status: str = None,  purpose: str = None,  patient: 'Reference' = None,  servicedDate: str = None,  created: str = None,  requestor: 'Reference' = None,  request: 'Reference' = None,  outcome: str = None,  disposition: str = None,  insurer: 'Reference' = None,  insurance: list['Insurance'] = None,  preAuthRef: str = None,  form: 'CodeableConcept' = None,  error: list['Error'] = None, ):
+    def __init__(self, resourceType: str = "CoverageEligibilityResponse",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  identifier: list['Identifier'] = None,  status: str = None,  purpose: str = None,  patient: 'Reference' = None,  servicedDate: str = None,  servicedPeriod: 'Period' = None,  created: str = None,  requestor: 'Reference' = None,  request: 'Reference' = None,  outcome: str = None,  disposition: str = None,  insurer: 'Reference' = None,  insurance: list['Insurance'] = None,  preAuthRef: str = None,  form: 'CodeableConcept' = None,  error: list['Error'] = None, ):
         self.resourceType: str = resourceType or "CoverageEligibilityResponse"
         self.id: str = id 
         self.meta: 'Meta' = meta 
@@ -162,6 +171,7 @@ class CoverageEligibilityResponse(DomainResource):
         self.purpose: str = purpose or []
         self.patient: 'Reference' = patient 
         self.servicedDate: str = servicedDate 
+        self.servicedPeriod: 'Period' = servicedPeriod 
         self.created: str = created 
         self.requestor: 'Reference' = requestor 
         self.request: 'Reference' = request 

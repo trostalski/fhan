@@ -1,16 +1,16 @@
 """
 Generated class for BiologicallyDerivedProduct. 
-Time: 2023-09-24 21:52:32
+Time: 2023-09-25 14:53:18
 """
-from fhan.models.R4.Period import *
 from fhan.models.R4.Reference import *
 from fhan.models.R4.Resource import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Period import *
+from fhan.models.R4.Extension import *
+from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Identifier import *
 from fhan.models.R4.Meta import *
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Extension import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Narrative import *
 from fhan.models.R4.DomainResource import *
 
 
@@ -24,14 +24,16 @@ class Collection(ModelBase):
     :param 'Reference' collector: Individual performing collection
     :param 'Reference' source: Who is product from
     :param str collectedDateTime: Time of product collection
+    :param 'Period' collectedPeriod: Time of product collection
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  collector: 'Reference' = None,  source: 'Reference' = None,  collectedDateTime: str = None, ):
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  collector: 'Reference' = None,  source: 'Reference' = None,  collectedDateTime: str = None,  collectedPeriod: 'Period' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
         self.collector: 'Reference' = collector 
         self.source: 'Reference' = source 
         self.collectedDateTime: str = collectedDateTime 
+        self.collectedPeriod: 'Period' = collectedPeriod 
         
 
     
@@ -45,8 +47,9 @@ class Processing(ModelBase):
     :param 'CodeableConcept' procedure: Procesing code
     :param 'Reference' additive: Substance added during processing
     :param str timeDateTime: Time of processing
+    :param 'Period' timePeriod: Time of processing
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  description: str = None,  procedure: 'CodeableConcept' = None,  additive: 'Reference' = None,  timeDateTime: str = None, ):
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  description: str = None,  procedure: 'CodeableConcept' = None,  additive: 'Reference' = None,  timeDateTime: str = None,  timePeriod: 'Period' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -54,6 +57,7 @@ class Processing(ModelBase):
         self.procedure: 'CodeableConcept' = procedure 
         self.additive: 'Reference' = additive 
         self.timeDateTime: str = timeDateTime 
+        self.timePeriod: 'Period' = timePeriod 
         
 
     
@@ -65,13 +69,15 @@ class Manipulation(ModelBase):
     :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str description: Description of manipulation
     :param str timeDateTime: Time of manipulation
+    :param 'Period' timePeriod: Time of manipulation
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  description: str = None,  timeDateTime: str = None, ):
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  description: str = None,  timeDateTime: str = None,  timePeriod: 'Period' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
         self.description: str = description 
         self.timeDateTime: str = timeDateTime 
+        self.timePeriod: 'Period' = timePeriod 
         
 
     

@@ -1,20 +1,20 @@
 """
 Generated class for Goal. 
-Time: 2023-09-24 21:52:32
+Time: 2023-09-25 14:53:18
 """
+from fhan.models.R4.Duration import *
 from fhan.models.R4.Reference import *
-from fhan.models.R4.Range import *
 from fhan.models.R4.Resource import *
+from fhan.models.R4.Extension import *
+from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Annotation import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.BackboneElement import *
 from fhan.models.R4.Identifier import *
+from fhan.models.R4.Range import *
 from fhan.models.R4.Meta import *
 from fhan.models.R4.Quantity import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Narrative import *
 from fhan.models.R4.Ratio import *
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Duration import *
-from fhan.models.R4.Extension import *
 from fhan.models.R4.DomainResource import *
 
 
@@ -27,15 +27,29 @@ class Target(ModelBase):
     :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param 'CodeableConcept' measure: The parameter whose value is being tracked
     :param 'Quantity' detailQuantity: The target value to be achieved
+    :param 'Range' detailRange: The target value to be achieved
+    :param 'CodeableConcept' detailCodeableConcept: The target value to be achieved
+    :param str detailString: The target value to be achieved
+    :param bool detailBoolean: The target value to be achieved
+    :param int detailInteger: The target value to be achieved
+    :param 'Ratio' detailRatio: The target value to be achieved
     :param str dueDate: Reach goal on or before
+    :param 'Duration' dueDuration: Reach goal on or before
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  measure: 'CodeableConcept' = None,  detailQuantity: 'Quantity' = None,  dueDate: str = None, ):
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  measure: 'CodeableConcept' = None,  detailQuantity: 'Quantity' = None,  detailRange: 'Range' = None,  detailCodeableConcept: 'CodeableConcept' = None,  detailString: str = None,  detailBoolean: bool = None,  detailInteger: int = None,  detailRatio: 'Ratio' = None,  dueDate: str = None,  dueDuration: 'Duration' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
         self.measure: 'CodeableConcept' = measure 
         self.detailQuantity: 'Quantity' = detailQuantity 
+        self.detailRange: 'Range' = detailRange 
+        self.detailCodeableConcept: 'CodeableConcept' = detailCodeableConcept 
+        self.detailString: str = detailString 
+        self.detailBoolean: bool = detailBoolean 
+        self.detailInteger: int = detailInteger 
+        self.detailRatio: 'Ratio' = detailRatio 
         self.dueDate: str = dueDate 
+        self.dueDuration: 'Duration' = dueDuration 
         
 
 class Goal(DomainResource):
@@ -56,6 +70,7 @@ class Goal(DomainResource):
     :param 'CodeableConcept' description: Code or text describing goal
     :param 'Reference' subject: Who this goal is intended for
     :param str startDate: When goal pursuit begins
+    :param 'CodeableConcept' startCodeableConcept: When goal pursuit begins
     :param list['Target'] target: Target outcome for the goal
     :param str statusDate: When goal status took effect
     :param str statusReason: Reason for current status
@@ -65,7 +80,7 @@ class Goal(DomainResource):
     :param list['CodeableConcept'] outcomeCode: What result was achieved regarding the goal?
     :param list['Reference'] outcomeReference: Observation that resulted from goal
     """
-    def __init__(self, resourceType: str = "Goal",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  identifier: list['Identifier'] = None,  lifecycleStatus: str = None,  achievementStatus: 'CodeableConcept' = None,  category: list['CodeableConcept'] = None,  priority: 'CodeableConcept' = None,  description: 'CodeableConcept' = None,  subject: 'Reference' = None,  startDate: str = None,  target: list['Target'] = None,  statusDate: str = None,  statusReason: str = None,  expressedBy: 'Reference' = None,  addresses: list['Reference'] = None,  note: list['Annotation'] = None,  outcomeCode: list['CodeableConcept'] = None,  outcomeReference: list['Reference'] = None, ):
+    def __init__(self, resourceType: str = "Goal",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  identifier: list['Identifier'] = None,  lifecycleStatus: str = None,  achievementStatus: 'CodeableConcept' = None,  category: list['CodeableConcept'] = None,  priority: 'CodeableConcept' = None,  description: 'CodeableConcept' = None,  subject: 'Reference' = None,  startDate: str = None,  startCodeableConcept: 'CodeableConcept' = None,  target: list['Target'] = None,  statusDate: str = None,  statusReason: str = None,  expressedBy: 'Reference' = None,  addresses: list['Reference'] = None,  note: list['Annotation'] = None,  outcomeCode: list['CodeableConcept'] = None,  outcomeReference: list['Reference'] = None, ):
         self.resourceType: str = resourceType or "Goal"
         self.id: str = id 
         self.meta: 'Meta' = meta 
@@ -83,6 +98,7 @@ class Goal(DomainResource):
         self.description: 'CodeableConcept' = description 
         self.subject: 'Reference' = subject 
         self.startDate: str = startDate 
+        self.startCodeableConcept: 'CodeableConcept' = startCodeableConcept 
         self.target: list['Target'] = target or []
         self.statusDate: str = statusDate 
         self.statusReason: str = statusReason 

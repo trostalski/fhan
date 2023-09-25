@@ -1,19 +1,19 @@
 """
 Generated class for NutritionOrder. 
-Time: 2023-09-24 21:52:32
+Time: 2023-09-25 14:53:18
 """
 from fhan.models.R4.Reference import *
 from fhan.models.R4.Resource import *
+from fhan.models.R4.Extension import *
+from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Ratio import *
 from fhan.models.R4.Annotation import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.BackboneElement import *
 from fhan.models.R4.Identifier import *
 from fhan.models.R4.Meta import *
 from fhan.models.R4.Quantity import *
-from fhan.models.R4.Ratio import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Narrative import *
 from fhan.models.R4.Timing import *
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Extension import *
 from fhan.models.R4.DomainResource import *
 
 
@@ -118,15 +118,17 @@ class Administration(ModelBase):
     :param 'Timing' schedule: Scheduled frequency of enteral feeding
     :param 'Quantity' quantity: The volume of formula to provide
     :param 'Quantity' rateQuantity: Speed with which the formula is provided per period of time
+    :param 'Ratio' rateRatio: Speed with which the formula is provided per period of time
     :param str administrationInstruction: Formula feeding instructions expressed as text
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  schedule: 'Timing' = None,  quantity: 'Quantity' = None,  rateQuantity: 'Quantity' = None,  administrationInstruction: str = None, ):
+    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  schedule: 'Timing' = None,  quantity: 'Quantity' = None,  rateQuantity: 'Quantity' = None,  rateRatio: 'Ratio' = None,  administrationInstruction: str = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
         self.schedule: 'Timing' = schedule 
         self.quantity: 'Quantity' = quantity 
         self.rateQuantity: 'Quantity' = rateQuantity 
+        self.rateRatio: 'Ratio' = rateRatio 
         self.administrationInstruction: str = administrationInstruction 
         
 

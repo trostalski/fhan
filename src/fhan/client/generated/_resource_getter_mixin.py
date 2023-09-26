@@ -1,6 +1,6 @@
-# generated at 2023-09-25 17:15:47.867367 from /Users/tillrostalski/Git/fhan/src/fhan/client/scripts/create_resource_getter.py
+# generated at 2023-09-26 17:25:20.691662 from /Users/tillrostalski/Git/fhan/src/fhan/client/scripts/create_from_template.py
 class ResourceGetterMixin:
-    """This mixin class provides the GetHander with getter methods for each
+    """This mixin class provides the GetHandler with getter methods for each
     resource type. The methods are syntactic sugar for the _get method.
     """
     def __init__(self):

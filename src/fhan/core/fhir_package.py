@@ -91,7 +91,12 @@ class FhirPackage:
                 continue
 
         return cls(
-            code_systems, search_parameters, structure_definitions, value_sets, name
+            code_systems,
+            search_parameters,
+            structure_definitions,
+            value_sets,
+            capability_statements,
+            name,
         )
 
     def get_codesystem_by_url(self, url: str):

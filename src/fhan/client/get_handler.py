@@ -2,7 +2,7 @@ import requests
 from typing import Any
 
 from fhan.client.utils.http_utils import make_get_request, build_fhir_url, join_urls
-from fhan.client._resource_getter import ResourceGetterMixin
+from fhan.client.generated._resource_getter_mixin import ResourceGetterMixin
 
 
 class GetHandler(ResourceGetterMixin):

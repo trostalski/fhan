@@ -1,0 +1,15 @@
+# generated at {{ time }} from {{ source_script }}
+{% for resource_type in resource_types %}
+from {{ search_builder_import_path }} import {{ resource_type }}SearchBuilder
+{% endfor %}
+
+class SearchBuilderMixin:
+    """This mixin class provides the SearchBuilder class 
+    with getter methods for each resource type.
+    """
+    def __init__(self):
+        pass
+{% for resource_type in resource_types %}
+    def {{ resource_type }}(self):
+        return {{ resource_type }}SearchBuilder(search_string=self.search_string)
+{% endfor %}

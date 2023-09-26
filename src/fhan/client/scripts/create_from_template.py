@@ -87,9 +87,10 @@ def create_search_builder(
         for search_param in resource.get("searchParam", []):
             params.append(search_param["name"])
         for search_include in resource.get("searchInclude", []):
-            includes.append(search_include)
+            # TODO: hapi.fhir.org/baseR4 expects the format "_include=RT:value", check if this is always the case
+            includes.append(search_include.replace(".", ":"))
         for search_revinclude in resource.get("searchRevInclude", []):
-            revincludes.append(search_revinclude)
+            revincludes.append(search_revinclude.replace(".", ":"))
         resource_requests.append(
             ResourceRequest(
                 resource_type=resource_type,

@@ -1,4 +1,4 @@
-# generated at 2023-09-26 17:25:55.537518 from /Users/tillrostalski/Git/fhan/src/fhan/client/scripts/create_from_template.py
+# generated at 2023-09-26 17:30:09.676569 from /Users/tillrostalski/Git/fhan/src/fhan/client/scripts/create_from_template.py
 
 from fhan.client.generated._search_builder import AccountSearchBuilder
 

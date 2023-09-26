@@ -38,11 +38,11 @@ class {{ resource_request.resource_type }}SearchBuilder:
         return {{ resource_request.resource_type }}Value(search_string=search_string)
     
     def include(self, value: Literal{{ resource_request.includes }}):
-        search_string = self.search_string + f"include={value}"
+        search_string = self.search_string + f"_include={value}"
         return {{ resource_request.resource_type }}BooleanEnd(search_string=search_string)
 
     def revinclude(self, value: Literal{{ resource_request.revincludes }}):
-        search_string = self.search_string + f"revinclude={value}"
+        search_string = self.search_string + f"_revinclude={value}"
         return {{ resource_request.resource_type }}BooleanEnd(search_string=search_string)
 
 {% endmacro %}

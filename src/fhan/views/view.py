@@ -1,62 +1,46 @@
-from typing import Any, Literal
+from typing import Any
 import logging
 import dataclasses
 
 from fhirpathpy import compile
 from pandas import DataFrame
+from dacite import from_dict
 
 from fhan.views.resource_collection import ResourceCollection
+from fhan.views.view_definition import ViewDefinition, validate_view_definition
 
 logger = logging.getLogger(__name__)
 
 
 @dataclasses.dataclass
-class ViewMetadata:
-    uri: str = None
-    identifier: str = None
-    name: str = None
-    version: str = None
-    title: str = None
-    status: Literal["draft", "active", "retired", "unknown"] = None
-    experimental: bool = None
-    publisher: str = None
-    description: str = None
-    copyright: str = None
-    resourceVersion: str = None
-
-
 class ViewResult:
-    def __init__(self, table: dict):
-        """_summary_
+    """_summary_
 
-        Args:
-            table (dict): Result from the view execution. The keys are the aliases
-                from the view definition and the values are lists of values.
-        """
-        self._table_dict = table
+    Args:
+        table_dict (dict): Result from the view execution. The keys are the aliases
+            from the view definition and the values are lists of values.
+    """
 
-    def _validate_table(self):
-        """
-        Validate the table. The table must have the same length for all keys.
-        """
+    table_dict: dict
 
     def to_dataframe(self):
         """
-        Return the view result as a pandas dataframe.
+        Returns the view result as a pandas dataframe.
         """
-        return DataFrame(self._table_dict, columns=self._table_dict.keys())
+        return DataFrame(self.table_dict, columns=self.table_dict.keys())
 
 
 class View:
-    def __init__(self, view_definition: dict, fhir_input: dict = None):
+    def __init__(self, view_definition: ViewDefinition | dict, fhir_input: dict = None):
         """
-        Main class for sql on fhir views.
+        Main class for sql on FHIR views.
         """
-        _validate_view_definition_structure(view_definition)
+        if isinstance(view_definition, dict):
+            view_definition = from_dict(data_class=ViewDefinition, data=view_definition)
+        validate_view_definition(view_definition)
         self._fhir_input = fhir_input
         self._view_definition = view_definition
-        self._resource = view_definition.get("resource")
-        self._metadata = self._get_metadata()
+        self._resource = view_definition.resource
 
         self._select_fns = self._get_select_fns()
         self._constraint_fns = self._get_constraint_fns()
@@ -78,23 +62,6 @@ class View:
         self._resource_collection = self._get_collection_from_input(fhir_input)
         view_result = self._execute()
         return view_result
-
-    def _get_metadata(self) -> ViewMetadata:
-        """
-        Get the metadata of the view.
-        """
-        metadata = ViewMetadata(
-            uri=self._view_definition.get("uri"),
-            identifier=self._view_definition.get("identifier"),
-            name=self._view_definition.get("name"),
-            version=self._view_definition.get("version"),
-            title=self._view_definition.get("title"),
-            status=self._view_definition.get("status"),
-            experimental=self._view_definition.get("experimental"),
-            publisher=self._view_definition.get("publisher"),
-            description=self._view_definition.get("description"),
-        )
-        return metadata
 
     def _get_collection_from_input(self, fhir_input: dict):
         """
@@ -127,7 +94,7 @@ class View:
         execution_result = {
             alias: select_result[i] for i, alias in enumerate(self._select_aliases)
         }  # returns a dict with the aliases as keys and lists of values as values
-        view_result = ViewResult(execution_result)
+        view_result = ViewResult(table_dict=execution_result)
         self._view_result = view_result
         return view_result
 
@@ -163,7 +130,7 @@ class View:
         Get the constraints from the view definition.
         """
         constraint_fns = []
-        if not "where" in self._view_definition:
+        if not self._view_definition.where:
             return constraint_fns
         for constraint in self._view_definition["where"]:
             path = constraint["path"]
@@ -176,8 +143,8 @@ class View:
         Get the select functions from the view definition.
         """
         select_fns = []
-        for select in self._view_definition["select"]:
-            path = select["path"]
+        for select in self._view_definition.select:
+            path = select.path
             fn = compile(path)
             select_fns.append(fn)
         return select_fns
@@ -187,34 +154,10 @@ class View:
         Get the select aliases from the view definition.
         """
         select_aliases = []
-        for select in self._view_definition["select"]:
-            alias = select.get("alias") or select["path"]
+        for select in self._view_definition.select:
+            alias = select.alias or select.path
             select_aliases.append(alias)
         return select_aliases
-
-
-def _validate_view_definition_structure(view_definition: dict):
-    """
-    Validate the view definition.
-    """
-    errors = []
-    if "resource" not in view_definition:
-        errors.append("View definition must have a resource.")
-    if "select" not in view_definition:
-        errors.append("View definition must have a select.")
-    if "where" in view_definition:
-        for constraint in view_definition["where"]:
-            if "path" not in constraint:
-                errors.append(
-                    f"All where clauses must contain `path` fields. Got {constraint}."
-                )
-            if not isinstance(constraint["path"], str):
-                errors.append(
-                    "The `path` field in a where clause must be strings."
-                    f' Got {constraint["path"]}.'
-                )
-    if errors:
-        raise ValueError("\n".join(errors))
 
 
 def _unnest_fp_result(fp_result: list) -> Any:

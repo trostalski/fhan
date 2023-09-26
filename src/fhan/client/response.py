@@ -1,6 +1,3 @@
-import requests
-
-
 class ServerResponseFactory:
     """
     Parses the response from a FHIR server.

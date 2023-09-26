@@ -10,6 +10,7 @@ dependencies = [
     "stringcase>=1.2.0",
     "fhirpathpy>=0.2.2",
     "pandas>=2.0.3",
+    "dacite>=1.8.1",
 ]
 readme = "README.md"
 requires-python = ">= 3.8"

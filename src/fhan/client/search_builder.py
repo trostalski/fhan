@@ -5,5 +5,5 @@ class SearchBuilder(SearchBuilderMixin):
     def __init__(self):
         self.search_string = "?"
 
-    def get_search_string(self):
+    def build(self, validate: bool = False):
         return self.search_string

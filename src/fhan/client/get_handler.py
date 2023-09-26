@@ -4,6 +4,7 @@ from fhan.client.search_builder import SearchBuilder
 
 from fhan.client.utils.http_utils import make_get_request, build_fhir_url, join_urls
 from fhan.client.generated._resource_getter_mixin import ResourceGetterMixin
+from fhan.views.view import View
 
 
 class GetHandler(ResourceGetterMixin):
@@ -41,4 +42,7 @@ class GetHandler(ResourceGetterMixin):
         return response.json()
 
     def PatientData(self, types: list[str]):
-        return self._get("Patient")
+        pass
+
+    def View(self, view: View):
+        pass

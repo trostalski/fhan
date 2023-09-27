@@ -1,15 +1,15 @@
 """
 Generated class for Subscription. 
-Time: 2023-09-25 16:30:45
+Time: 2023-09-27 15:54:17
 """
 from importlib import import_module
 import inspect
 
-from fhan.models.R4.ContactPoint import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Extension import *
 from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Meta import *
 from fhan.models.R4.Resource import *
+from fhan.models.R4.ContactPoint import *
+from fhan.models.R4.Extension import *
 from fhan.models.R4.Narrative import *
 from fhan.models.R4.DomainResource import *
 
@@ -17,23 +17,23 @@ from fhan.models.R4.DomainResource import *
     
     
 
-class Channel(ModelBase):
+class Channel(BaseModel):
     """ Details where to send notifications when resources are received that meet the criteria.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str type: rest-hook | websocket | email | sms | message
     :param str endpoint: Where the channel points to
     :param str payload: MIME type to send, or omit for no payload
     :param str header: Usage depends on the channel type
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  type: str = None,  endpoint: str = None,  payload: str = None,  header: str = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  type: str = None,  endpoint: str = None,  payload: str = None,  header: str = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
         self.type: str = type 
         self.endpoint: str = endpoint 
         self.payload: str = payload 
-        self.header: str = header or []
+        self.header: list[str] = header or []
         
 
     @classmethod
@@ -52,8 +52,8 @@ class Channel(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -81,18 +81,18 @@ class Subscription(DomainResource):
     :param str implicitRules: A set of rules under which this content was created
     :param str language: Language of the resource content
     :param 'Narrative' text: Text summary of the resource, for human interpretation
-    :param list['Resource'] contained: Contained, inline Resources
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored
+    :param 'Resource' contained: Contained, inline Resources
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored
     :param str status: requested | active | error | off
-    :param list['ContactPoint'] contact: Contact details for source (e.g. troubleshooting)
+    :param 'ContactPoint' contact: Contact details for source (e.g. troubleshooting)
     :param str end: When to automatically delete the subscription
     :param str reason: Description of why this subscription was created
     :param str criteria: Rule for server push
     :param str error: Latest error note
     :param 'Channel' channel: The channel on which to report matches to the criteria
     """
-    def __init__(self, resourceType: str = "Subscription",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  status: str = None,  contact: list['ContactPoint'] = None,  end: str = None,  reason: str = None,  criteria: str = None,  error: str = None,  channel: 'Channel' = None, ):
+    def __init__(self, resourceType: str = "Subscription",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: 'Resource' = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  status: str = None,  contact: 'ContactPoint' = None,  end: str = None,  reason: str = None,  criteria: str = None,  error: str = None,  channel: 'Channel' = None, ):
         self.resourceType: str = resourceType or "Subscription"
         self.id: str = id 
         self.meta: 'Meta' = meta 
@@ -127,8 +127,8 @@ class Subscription(DomainResource):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)

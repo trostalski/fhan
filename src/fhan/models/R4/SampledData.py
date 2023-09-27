@@ -1,18 +1,18 @@
 """
 Generated class for SampledData. 
-Time: 2023-09-25 16:30:45
+Time: 2023-09-27 15:54:17
 """
 from importlib import import_module
 import inspect
 
 from fhan.models.R4.Quantity import *
 from fhan.models.R4.Extension import *
-from fhan.models.generator_models import ModelBase
+from fhan.models.generator_models import BaseModel
 
-class SampledData(ModelBase):
+class SampledData(BaseModel):
     """ Base StructureDefinition for SampledData Type: A series of measurements taken by a device, with upper and lower limits. There may be more than one dimension in the data.
     :param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
+    :param 'Extension' extension: Additional content defined by implementations
     :param 'Quantity' origin: Zero value and units
     :param float period: Number of milliseconds between samples
     :param float factor: Multiply data by this before adding to origin
@@ -21,7 +21,7 @@ class SampledData(ModelBase):
     :param int dimensions: Number of sample points at each time point
     :param str data: Decimal values with spaces, or "E" | "U" | "L"
     """
-    def __init__(self, resourceType: str = "SampledData",  id: str = None,  extension: list['Extension'] = None,  origin: 'Quantity' = None,  period: float = None,  factor: float = None,  lowerLimit: float = None,  upperLimit: float = None,  dimensions: int = None,  data: str = None, ):
+    def __init__(self, resourceType: str = "SampledData",  id: str = None,  extension: 'Extension' = None,  origin: 'Quantity' = None,  period: float = None,  factor: float = None,  lowerLimit: float = None,  upperLimit: float = None,  dimensions: int = None,  data: str = None, ):
         self.resourceType: str = resourceType or "SampledData"
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
@@ -50,8 +50,8 @@ class SampledData(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)

@@ -12,6 +12,9 @@ class {{ resource_request.resource_type }}BooleanEnd:
     def OR(self):
         search_string = self.search_string + "|"
         return {{ resource_request.resource_type }}SearchBuilder(search_string=search_string)
+    
+    def build(self):
+        return self.search_string
 
 
 class {{ resource_request.resource_type }}Value:

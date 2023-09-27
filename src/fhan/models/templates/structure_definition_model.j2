@@ -30,7 +30,7 @@ class {{ element.type }}({{ element.base_class }}):
     def __init__(self, {% for child in element.defined_children %} {{ child.name }}: {{ child.type_string }} = None, {% endfor %}):
         {% for child in element.defined_children %}
         {%- if child.is_array -%}
-        self.{{child.name}}: {{child.type_string}} = {{child.name}} or []
+        self.{{child.name}}: list[{{child.type_string}}] = {{child.name}} or []
         {%- else -%}
         self.{{child.name}}: {{child.type_string}} = {{child.name}} {% endif %}
         {% endfor %}
@@ -51,8 +51,8 @@ class {{ element.type }}({{ element.base_class }}):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -95,7 +95,7 @@ class {{structure_definition.type}}{% if structure_definition.base_class %}({{st
         self.resourceType: str = resourceType or "{{structure_definition.type}}"
         {% for element in structure_definition.defined_elements %}
         {%- if element.is_array -%}
-        self.{{element.name}}: {{element.type_string}} = {{element.name}} or []
+        self.{{element.name}}: list[{{element.type_string}}] = {{element.name}} or []
         {%- else -%}
         self.{{element.name}}: {{element.type_string}} = {{element.name}} {% endif %}
         {% endfor %}
@@ -116,8 +116,8 @@ class {{structure_definition.type}}{% if structure_definition.base_class %}({{st
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)

@@ -1,34 +1,34 @@
 """
 Generated class for Composition. 
-Time: 2023-09-25 16:30:45
+Time: 2023-09-27 15:54:17
 """
 from importlib import import_module
 import inspect
 
-from fhan.models.R4.Identifier import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Period import *
-from fhan.models.R4.Extension import *
-from fhan.models.R4.Reference import *
 from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Meta import *
+from fhan.models.R4.Period import *
 from fhan.models.R4.Resource import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Extension import *
 from fhan.models.R4.Narrative import *
+from fhan.models.R4.Reference import *
 from fhan.models.R4.DomainResource import *
 
 
     
     
 
-class Attester(ModelBase):
+class Attester(BaseModel):
     """ A participant who has attested to the accuracy of the composition/document.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str mode: personal | professional | legal | official
     :param str time: When the composition was attested
     :param 'Reference' party: Who attested the composition
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  mode: str = None,  time: str = None,  party: 'Reference' = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  mode: str = None,  time: str = None,  party: 'Reference' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -53,8 +53,8 @@ class Attester(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -78,15 +78,15 @@ class Attester(ModelBase):
     
     
 
-class RelatesTo(ModelBase):
+class RelatesTo(BaseModel):
     """ Relationships that this composition has with other compositions or documents that already exist.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str code: replaces | transforms | signs | appends
     :param 'Identifier' targetIdentifier: Target of the relationship
     :param 'Reference' targetReference: Target of the relationship
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  code: str = None,  targetIdentifier: 'Identifier' = None,  targetReference: 'Reference' = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  code: str = None,  targetIdentifier: 'Identifier' = None,  targetReference: 'Reference' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -111,8 +111,8 @@ class RelatesTo(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -136,15 +136,15 @@ class RelatesTo(ModelBase):
     
     
 
-class Event(ModelBase):
+class Event(BaseModel):
     """ The clinical service, such as a colonoscopy or an appendectomy, being documented.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param list['CodeableConcept'] code: Code(s) that apply to the event being documented
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'CodeableConcept' code: Code(s) that apply to the event being documented
     :param 'Period' period: The period covered by the documentation
-    :param list['Reference'] detail: The event(s) being documented
+    :param 'Reference' detail: The event(s) being documented
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  code: list['CodeableConcept'] = None,  period: 'Period' = None,  detail: list['Reference'] = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  code: 'CodeableConcept' = None,  period: 'Period' = None,  detail: 'Reference' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -169,8 +169,8 @@ class Event(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -194,21 +194,21 @@ class Event(ModelBase):
     
     
 
-class Section(ModelBase):
+class Section(BaseModel):
     """ The root of the sections that make up the composition.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str title: Label for section (e.g. for ToC)
     :param 'CodeableConcept' code: Classification of section (recommended)
-    :param list['Reference'] author: Who and/or what authored the section
+    :param 'Reference' author: Who and/or what authored the section
     :param 'Reference' focus: Who/what the section is about, when it is not about the subject of composition
     :param 'Narrative' text: Text summary of the section, for human interpretation
     :param str mode: working | snapshot | changes
     :param 'CodeableConcept' orderedBy: Order of section entries
-    :param list['Reference'] entry: A reference to data that supports this section
+    :param 'Reference' entry: A reference to data that supports this section
     :param 'CodeableConcept' emptyReason: Why the section is empty
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  title: str = None,  code: 'CodeableConcept' = None,  author: list['Reference'] = None,  focus: 'Reference' = None,  text: 'Narrative' = None,  mode: str = None,  orderedBy: 'CodeableConcept' = None,  entry: list['Reference'] = None,  emptyReason: 'CodeableConcept' = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  title: str = None,  code: 'CodeableConcept' = None,  author: 'Reference' = None,  focus: 'Reference' = None,  text: 'Narrative' = None,  mode: str = None,  orderedBy: 'CodeableConcept' = None,  entry: 'Reference' = None,  emptyReason: 'CodeableConcept' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -239,8 +239,8 @@ class Section(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -268,26 +268,26 @@ class Composition(DomainResource):
     :param str implicitRules: A set of rules under which this content was created
     :param str language: Language of the resource content
     :param 'Narrative' text: Text summary of the resource, for human interpretation
-    :param list['Resource'] contained: Contained, inline Resources
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored
+    :param 'Resource' contained: Contained, inline Resources
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored
     :param 'Identifier' identifier: Version-independent identifier for the Composition
     :param str status: preliminary | final | amended | entered-in-error
     :param 'CodeableConcept' type: Kind of composition (LOINC if possible)
-    :param list['CodeableConcept'] category: Categorization of Composition
+    :param 'CodeableConcept' category: Categorization of Composition
     :param 'Reference' subject: Who and/or what the composition is about
     :param 'Reference' encounter: Context of the Composition
     :param str date: Composition editing time
-    :param list['Reference'] author: Who and/or what authored the composition
+    :param 'Reference' author: Who and/or what authored the composition
     :param str title: Human Readable name/title
     :param str confidentiality: As defined by affinity domain
-    :param list['Attester'] attester: Attests to accuracy of composition
+    :param 'Attester' attester: Attests to accuracy of composition
     :param 'Reference' custodian: Organization which maintains the composition
-    :param list['RelatesTo'] relatesTo: Relationships to other compositions/documents
-    :param list['Event'] event: The clinical service(s) being documented
-    :param list['Section'] section: Composition is broken into sections
+    :param 'RelatesTo' relatesTo: Relationships to other compositions/documents
+    :param 'Event' event: The clinical service(s) being documented
+    :param 'Section' section: Composition is broken into sections
     """
-    def __init__(self, resourceType: str = "Composition",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  identifier: 'Identifier' = None,  status: str = None,  type: 'CodeableConcept' = None,  category: list['CodeableConcept'] = None,  subject: 'Reference' = None,  encounter: 'Reference' = None,  date: str = None,  author: list['Reference'] = None,  title: str = None,  confidentiality: str = None,  attester: list['Attester'] = None,  custodian: 'Reference' = None,  relatesTo: list['RelatesTo'] = None,  event: list['Event'] = None,  section: list['Section'] = None, ):
+    def __init__(self, resourceType: str = "Composition",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: 'Resource' = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  identifier: 'Identifier' = None,  status: str = None,  type: 'CodeableConcept' = None,  category: 'CodeableConcept' = None,  subject: 'Reference' = None,  encounter: 'Reference' = None,  date: str = None,  author: 'Reference' = None,  title: str = None,  confidentiality: str = None,  attester: 'Attester' = None,  custodian: 'Reference' = None,  relatesTo: 'RelatesTo' = None,  event: 'Event' = None,  section: 'Section' = None, ):
         self.resourceType: str = resourceType or "Composition"
         self.id: str = id 
         self.meta: 'Meta' = meta 
@@ -330,8 +330,8 @@ class Composition(DomainResource):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)

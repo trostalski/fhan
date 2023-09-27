@@ -1,41 +1,41 @@
 """
 Generated class for AllergyIntolerance. 
-Time: 2023-09-25 16:30:45
+Time: 2023-09-27 15:54:17
 """
 from importlib import import_module
 import inspect
 
-from fhan.models.R4.Identifier import *
+from fhan.models.R4.BackboneElement import *
 from fhan.models.R4.Meta import *
-from fhan.models.R4.Annotation import *
 from fhan.models.R4.Age import *
-from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Annotation import *
 from fhan.models.R4.Period import *
+from fhan.models.R4.Resource import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Range import *
 from fhan.models.R4.Extension import *
-from fhan.models.R4.Reference import *
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Resource import *
 from fhan.models.R4.Narrative import *
+from fhan.models.R4.Reference import *
 from fhan.models.R4.DomainResource import *
 
 
     
     
 
-class Reaction(ModelBase):
+class Reaction(BaseModel):
     """ Details about each adverse reaction event linked to exposure to the identified substance.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param 'CodeableConcept' substance: Specific substance or pharmaceutical product considered to be responsible for event
-    :param list['CodeableConcept'] manifestation: Clinical symptoms/signs associated with the Event
+    :param 'CodeableConcept' manifestation: Clinical symptoms/signs associated with the Event
     :param str description: Description of the event as a whole
     :param str onset: Date(/time) when manifestations showed
     :param str severity: mild | moderate | severe (of event as a whole)
     :param 'CodeableConcept' exposureRoute: How the subject was exposed to the substance
-    :param list['Annotation'] note: Text about event not captured in other fields
+    :param 'Annotation' note: Text about event not captured in other fields
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  substance: 'CodeableConcept' = None,  manifestation: list['CodeableConcept'] = None,  description: str = None,  onset: str = None,  severity: str = None,  exposureRoute: 'CodeableConcept' = None,  note: list['Annotation'] = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  substance: 'CodeableConcept' = None,  manifestation: 'CodeableConcept' = None,  description: str = None,  onset: str = None,  severity: str = None,  exposureRoute: 'CodeableConcept' = None,  note: 'Annotation' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -64,8 +64,8 @@ class Reaction(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -93,10 +93,10 @@ class AllergyIntolerance(DomainResource):
     :param str implicitRules: A set of rules under which this content was created
     :param str language: Language of the resource content
     :param 'Narrative' text: Text summary of the resource, for human interpretation
-    :param list['Resource'] contained: Contained, inline Resources
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored
-    :param list['Identifier'] identifier: External ids for this item
+    :param 'Resource' contained: Contained, inline Resources
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored
+    :param 'Identifier' identifier: External ids for this item
     :param 'CodeableConcept' clinicalStatus: active | inactive | resolved
     :param 'CodeableConcept' verificationStatus: unconfirmed | confirmed | refuted | entered-in-error
     :param str type: allergy | intolerance - Underlying mechanism (if known)
@@ -114,10 +114,10 @@ class AllergyIntolerance(DomainResource):
     :param 'Reference' recorder: Who recorded the sensitivity
     :param 'Reference' asserter: Source of the information about the allergy
     :param str lastOccurrence: Date(/time) of last known occurrence of a reaction
-    :param list['Annotation'] note: Additional text not captured in other fields
-    :param list['Reaction'] reaction: Adverse Reaction Events linked to exposure to substance
+    :param 'Annotation' note: Additional text not captured in other fields
+    :param 'Reaction' reaction: Adverse Reaction Events linked to exposure to substance
     """
-    def __init__(self, resourceType: str = "AllergyIntolerance",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  identifier: list['Identifier'] = None,  clinicalStatus: 'CodeableConcept' = None,  verificationStatus: 'CodeableConcept' = None,  type: str = None,  category: str = None,  criticality: str = None,  code: 'CodeableConcept' = None,  patient: 'Reference' = None,  encounter: 'Reference' = None,  onsetDateTime: str = None,  onsetAge: 'Age' = None,  onsetPeriod: 'Period' = None,  onsetRange: 'Range' = None,  onsetString: str = None,  recordedDate: str = None,  recorder: 'Reference' = None,  asserter: 'Reference' = None,  lastOccurrence: str = None,  note: list['Annotation'] = None,  reaction: list['Reaction'] = None, ):
+    def __init__(self, resourceType: str = "AllergyIntolerance",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: 'Resource' = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  identifier: 'Identifier' = None,  clinicalStatus: 'CodeableConcept' = None,  verificationStatus: 'CodeableConcept' = None,  type: str = None,  category: str = None,  criticality: str = None,  code: 'CodeableConcept' = None,  patient: 'Reference' = None,  encounter: 'Reference' = None,  onsetDateTime: str = None,  onsetAge: 'Age' = None,  onsetPeriod: 'Period' = None,  onsetRange: 'Range' = None,  onsetString: str = None,  recordedDate: str = None,  recorder: 'Reference' = None,  asserter: 'Reference' = None,  lastOccurrence: str = None,  note: 'Annotation' = None,  reaction: 'Reaction' = None, ):
         self.resourceType: str = resourceType or "AllergyIntolerance"
         self.id: str = id 
         self.meta: 'Meta' = meta 
@@ -131,7 +131,7 @@ class AllergyIntolerance(DomainResource):
         self.clinicalStatus: 'CodeableConcept' = clinicalStatus 
         self.verificationStatus: 'CodeableConcept' = verificationStatus 
         self.type: str = type 
-        self.category: str = category or []
+        self.category: list[str] = category or []
         self.criticality: str = criticality 
         self.code: 'CodeableConcept' = code 
         self.patient: 'Reference' = patient 
@@ -165,8 +165,8 @@ class AllergyIntolerance(DomainResource):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)

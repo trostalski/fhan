@@ -1,34 +1,34 @@
 """
 Generated class for MedicinalProductIndication. 
-Time: 2023-09-25 16:30:45
+Time: 2023-09-27 15:54:17
 """
 from importlib import import_module
 import inspect
 
-from fhan.models.R4.Quantity import *
+from fhan.models.R4.BackboneElement import *
 from fhan.models.R4.Meta import *
+from fhan.models.R4.Quantity import *
+from fhan.models.R4.Resource import *
 from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Population import *
 from fhan.models.R4.Extension import *
-from fhan.models.R4.Reference import *
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Resource import *
 from fhan.models.R4.Narrative import *
+from fhan.models.R4.Reference import *
 from fhan.models.R4.DomainResource import *
 
 
     
     
 
-class OtherTherapy(ModelBase):
+class OtherTherapy(BaseModel):
     """ Information about the use of the medicinal product in relation to other therapies described as part of the indication.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param 'CodeableConcept' therapyRelationshipType: The type of relationship between the medicinal product indication or contraindication and another therapy
     :param 'CodeableConcept' medicationCodeableConcept: Reference to a specific medication (active substance, medicinal product or class of products) as part of an indication or contraindication
     :param 'Reference' medicationReference: Reference to a specific medication (active substance, medicinal product or class of products) as part of an indication or contraindication
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  therapyRelationshipType: 'CodeableConcept' = None,  medicationCodeableConcept: 'CodeableConcept' = None,  medicationReference: 'Reference' = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  therapyRelationshipType: 'CodeableConcept' = None,  medicationCodeableConcept: 'CodeableConcept' = None,  medicationReference: 'Reference' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -53,8 +53,8 @@ class OtherTherapy(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -82,20 +82,20 @@ class MedicinalProductIndication(DomainResource):
     :param str implicitRules: A set of rules under which this content was created
     :param str language: Language of the resource content
     :param 'Narrative' text: Text summary of the resource, for human interpretation
-    :param list['Resource'] contained: Contained, inline Resources
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored
-    :param list['Reference'] subject: The medication for which this is an indication
+    :param 'Resource' contained: Contained, inline Resources
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored
+    :param 'Reference' subject: The medication for which this is an indication
     :param 'CodeableConcept' diseaseSymptomProcedure: The disease, symptom or procedure that is the indication for treatment
     :param 'CodeableConcept' diseaseStatus: The status of the disease or symptom for which the indication applies
-    :param list['CodeableConcept'] comorbidity: Comorbidity (concurrent condition) or co-infection as part of the indication
+    :param 'CodeableConcept' comorbidity: Comorbidity (concurrent condition) or co-infection as part of the indication
     :param 'CodeableConcept' intendedEffect: The intended effect, aim or strategy to be achieved by the indication
     :param 'Quantity' duration: Timing or duration information as part of the indication
-    :param list['OtherTherapy'] otherTherapy: Information about the use of the medicinal product in relation to other therapies described as part of the indication
-    :param list['Reference'] undesirableEffect: Describe the undesirable effects of the medicinal product
-    :param list['Population'] population: The population group to which this applies
+    :param 'OtherTherapy' otherTherapy: Information about the use of the medicinal product in relation to other therapies described as part of the indication
+    :param 'Reference' undesirableEffect: Describe the undesirable effects of the medicinal product
+    :param 'Population' population: The population group to which this applies
     """
-    def __init__(self, resourceType: str = "MedicinalProductIndication",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  subject: list['Reference'] = None,  diseaseSymptomProcedure: 'CodeableConcept' = None,  diseaseStatus: 'CodeableConcept' = None,  comorbidity: list['CodeableConcept'] = None,  intendedEffect: 'CodeableConcept' = None,  duration: 'Quantity' = None,  otherTherapy: list['OtherTherapy'] = None,  undesirableEffect: list['Reference'] = None,  population: list['Population'] = None, ):
+    def __init__(self, resourceType: str = "MedicinalProductIndication",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: 'Resource' = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  subject: 'Reference' = None,  diseaseSymptomProcedure: 'CodeableConcept' = None,  diseaseStatus: 'CodeableConcept' = None,  comorbidity: 'CodeableConcept' = None,  intendedEffect: 'CodeableConcept' = None,  duration: 'Quantity' = None,  otherTherapy: 'OtherTherapy' = None,  undesirableEffect: 'Reference' = None,  population: 'Population' = None, ):
         self.resourceType: str = resourceType or "MedicinalProductIndication"
         self.id: str = id 
         self.meta: 'Meta' = meta 
@@ -132,8 +132,8 @@ class MedicinalProductIndication(DomainResource):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)

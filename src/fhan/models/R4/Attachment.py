@@ -1,17 +1,17 @@
 """
 Generated class for Attachment. 
-Time: 2023-09-25 16:30:45
+Time: 2023-09-27 15:54:17
 """
 from importlib import import_module
 import inspect
 
 from fhan.models.R4.Extension import *
-from fhan.models.generator_models import ModelBase
+from fhan.models.generator_models import BaseModel
 
-class Attachment(ModelBase):
+class Attachment(BaseModel):
     """ Base StructureDefinition for Attachment Type: For referring to data content defined in other formats.
     :param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
+    :param 'Extension' extension: Additional content defined by implementations
     :param str contentType: Mime type of the content, with charset etc.
     :param str language: Human language of the content (BCP-47)
     :param str data: Data inline, base64ed
@@ -21,7 +21,7 @@ class Attachment(ModelBase):
     :param str title: Label to display in place of the data
     :param str creation: Date attachment was first created
     """
-    def __init__(self, resourceType: str = "Attachment",  id: str = None,  extension: list['Extension'] = None,  contentType: str = None,  language: str = None,  data: str = None,  url: str = None,  size: int = None,  hash: str = None,  title: str = None,  creation: str = None, ):
+    def __init__(self, resourceType: str = "Attachment",  id: str = None,  extension: 'Extension' = None,  contentType: str = None,  language: str = None,  data: str = None,  url: str = None,  size: int = None,  hash: str = None,  title: str = None,  creation: str = None, ):
         self.resourceType: str = resourceType or "Attachment"
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
@@ -51,8 +51,8 @@ class Attachment(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)

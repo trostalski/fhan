@@ -1,36 +1,36 @@
 """
 Generated class for MedicationKnowledge. 
-Time: 2023-09-25 16:30:45
+Time: 2023-09-27 15:54:17
 """
 from importlib import import_module
 import inspect
 
 from fhan.models.R4.Duration import *
-from fhan.models.R4.Quantity import *
-from fhan.models.R4.Dosage import *
-from fhan.models.R4.Ratio import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Money import *
-from fhan.models.R4.Extension import *
-from fhan.models.R4.Reference import *
 from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Meta import *
+from fhan.models.R4.Money import *
+from fhan.models.R4.Quantity import *
 from fhan.models.R4.Resource import *
+from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Ratio import *
+from fhan.models.R4.Extension import *
+from fhan.models.R4.Dosage import *
 from fhan.models.R4.Narrative import *
+from fhan.models.R4.Reference import *
 from fhan.models.R4.DomainResource import *
 
 
     
     
 
-class RelatedMedicationKnowledge(ModelBase):
+class RelatedMedicationKnowledge(BaseModel):
     """ Associated or related knowledge about a medication.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param 'CodeableConcept' type: Category of medicationKnowledge
-    :param list['Reference'] reference: Associated documentation about the associated medication knowledge
+    :param 'Reference' reference: Associated documentation about the associated medication knowledge
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  type: 'CodeableConcept' = None,  reference: list['Reference'] = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  type: 'CodeableConcept' = None,  reference: 'Reference' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -54,8 +54,8 @@ class RelatedMedicationKnowledge(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -79,14 +79,14 @@ class RelatedMedicationKnowledge(ModelBase):
     
     
 
-class Monograph(ModelBase):
+class Monograph(BaseModel):
     """ Associated documentation about the medication.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param 'CodeableConcept' type: The category of medication document
     :param 'Reference' source: Associated documentation about the medication
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  type: 'CodeableConcept' = None,  source: 'Reference' = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  type: 'CodeableConcept' = None,  source: 'Reference' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -110,8 +110,8 @@ class Monograph(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -135,16 +135,16 @@ class Monograph(ModelBase):
     
     
 
-class Ingredient(ModelBase):
+class Ingredient(BaseModel):
     """ Identifies a particular constituent of interest in the product.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param 'CodeableConcept' itemCodeableConcept: Medication(s) or substance(s) contained in the medication
     :param 'Reference' itemReference: Medication(s) or substance(s) contained in the medication
     :param bool isActive: Active ingredient indicator
     :param 'Ratio' strength: Quantity of ingredient present
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  itemCodeableConcept: 'CodeableConcept' = None,  itemReference: 'Reference' = None,  isActive: bool = None,  strength: 'Ratio' = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  itemCodeableConcept: 'CodeableConcept' = None,  itemReference: 'Reference' = None,  isActive: bool = None,  strength: 'Ratio' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -170,8 +170,8 @@ class Ingredient(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -195,15 +195,15 @@ class Ingredient(ModelBase):
     
     
 
-class Cost(ModelBase):
+class Cost(BaseModel):
     """ The price of the medication.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param 'CodeableConcept' type: The category of the cost information
     :param str source: The source or owner for the price information
     :param 'Money' cost: The price of the medication
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  type: 'CodeableConcept' = None,  source: str = None,  cost: 'Money' = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  type: 'CodeableConcept' = None,  source: str = None,  cost: 'Money' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -228,8 +228,8 @@ class Cost(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -253,14 +253,14 @@ class Cost(ModelBase):
     
     
 
-class MonitoringProgram(ModelBase):
+class MonitoringProgram(BaseModel):
     """ The program under which the medication is reviewed.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param 'CodeableConcept' type: Type of program under which the medication is monitored
     :param str name: Name of the reviewing program
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  type: 'CodeableConcept' = None,  name: str = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  type: 'CodeableConcept' = None,  name: str = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -284,8 +284,8 @@ class MonitoringProgram(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -311,14 +311,14 @@ class MonitoringProgram(ModelBase):
     
     
 
-class Dosage(ModelBase):
+class Dosage(BaseModel):
     """ Dosage for the medication for the specific guidelines.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param 'CodeableConcept' type: Type of dosage
-    :param list['Dosage'] dosage: Dosage for the medication for the specific guidelines
+    :param 'Dosage' dosage: Dosage for the medication for the specific guidelines
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  type: 'CodeableConcept' = None,  dosage: list['Dosage'] = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  type: 'CodeableConcept' = None,  dosage: 'Dosage' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -342,8 +342,8 @@ class Dosage(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -367,21 +367,21 @@ class Dosage(ModelBase):
     
     
 
-class PatientCharacteristics(ModelBase):
+class PatientCharacteristics(BaseModel):
     """ Characteristics of the patient that are relevant to the administration guidelines (for example, height, weight, gender, etc.).:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param 'CodeableConcept' characteristicCodeableConcept: Specific characteristic that is relevant to the administration guideline
     :param 'Quantity' characteristicQuantity: Specific characteristic that is relevant to the administration guideline
     :param str value: The specific characteristic
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  characteristicCodeableConcept: 'CodeableConcept' = None,  characteristicQuantity: 'Quantity' = None,  value: str = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  characteristicCodeableConcept: 'CodeableConcept' = None,  characteristicQuantity: 'Quantity' = None,  value: str = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
         self.characteristicCodeableConcept: 'CodeableConcept' = characteristicCodeableConcept 
         self.characteristicQuantity: 'Quantity' = characteristicQuantity 
-        self.value: str = value or []
+        self.value: list[str] = value or []
         
 
     @classmethod
@@ -400,8 +400,8 @@ class PatientCharacteristics(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -426,16 +426,16 @@ class PatientCharacteristics(ModelBase):
     
     
 
-class AdministrationGuidelines(ModelBase):
+class AdministrationGuidelines(BaseModel):
     """ Guidelines for the administration of the medication.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param list['Dosage'] dosage: Dosage for the medication for the specific guidelines
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Dosage' dosage: Dosage for the medication for the specific guidelines
     :param 'CodeableConcept' indicationCodeableConcept: Indication for use that apply to the specific administration guidelines
     :param 'Reference' indicationReference: Indication for use that apply to the specific administration guidelines
-    :param list['PatientCharacteristics'] patientCharacteristics: Characteristics of the patient that are relevant to the administration guidelines
+    :param 'PatientCharacteristics' patientCharacteristics: Characteristics of the patient that are relevant to the administration guidelines
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  dosage: list['Dosage'] = None,  indicationCodeableConcept: 'CodeableConcept' = None,  indicationReference: 'Reference' = None,  patientCharacteristics: list['PatientCharacteristics'] = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  dosage: 'Dosage' = None,  indicationCodeableConcept: 'CodeableConcept' = None,  indicationReference: 'Reference' = None,  patientCharacteristics: 'PatientCharacteristics' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -461,8 +461,8 @@ class AdministrationGuidelines(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -486,14 +486,14 @@ class AdministrationGuidelines(ModelBase):
     
     
 
-class MedicineClassification(ModelBase):
+class MedicineClassification(BaseModel):
     """ Categorization of the medication within a formulary or classification system.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param 'CodeableConcept' type: The type of category for the medication (for example, therapeutic classification, therapeutic sub-classification)
-    :param list['CodeableConcept'] classification: Specific category assigned to the medication
+    :param 'CodeableConcept' classification: Specific category assigned to the medication
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  type: 'CodeableConcept' = None,  classification: list['CodeableConcept'] = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  type: 'CodeableConcept' = None,  classification: 'CodeableConcept' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -517,8 +517,8 @@ class MedicineClassification(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -542,14 +542,14 @@ class MedicineClassification(ModelBase):
     
     
 
-class Packaging(ModelBase):
+class Packaging(BaseModel):
     """ Information that only applies to packages (not products).:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param 'CodeableConcept' type: A code that defines the specific type of packaging that the medication can be found in
     :param 'Quantity' quantity: The number of product units the package would contain if fully loaded
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  type: 'CodeableConcept' = None,  quantity: 'Quantity' = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  type: 'CodeableConcept' = None,  quantity: 'Quantity' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -573,8 +573,8 @@ class Packaging(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -598,17 +598,17 @@ class Packaging(ModelBase):
     
     
 
-class DrugCharacteristic(ModelBase):
+class DrugCharacteristic(BaseModel):
     """ Specifies descriptive properties of the medicine, such as color, shape, imprints, etc.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param 'CodeableConcept' type: Code specifying the type of characteristic of medication
     :param 'CodeableConcept' valueCodeableConcept: Description of the characteristic
     :param str valueString: Description of the characteristic
     :param 'Quantity' valueQuantity: Description of the characteristic
     :param str valueBase64Binary: Description of the characteristic
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  type: 'CodeableConcept' = None,  valueCodeableConcept: 'CodeableConcept' = None,  valueString: str = None,  valueQuantity: 'Quantity' = None,  valueBase64Binary: str = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  type: 'CodeableConcept' = None,  valueCodeableConcept: 'CodeableConcept' = None,  valueString: str = None,  valueQuantity: 'Quantity' = None,  valueBase64Binary: str = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -635,8 +635,8 @@ class DrugCharacteristic(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -662,14 +662,14 @@ class DrugCharacteristic(ModelBase):
     
     
 
-class Substitution(ModelBase):
+class Substitution(BaseModel):
     """ Specifies if changes are allowed when dispensing a medication from a regulatory perspective.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param 'CodeableConcept' type: Specifies the type of substitution allowed
     :param bool allowed: Specifies if regulation allows for changes in the medication when dispensing
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  type: 'CodeableConcept' = None,  allowed: bool = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  type: 'CodeableConcept' = None,  allowed: bool = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -693,8 +693,8 @@ class Substitution(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -718,13 +718,13 @@ class Substitution(ModelBase):
     
     
 
-class Schedule(ModelBase):
+class Schedule(BaseModel):
     """ Specifies the schedule of a medication in jurisdiction.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param 'CodeableConcept' schedule: Specifies the specific drug schedule
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  schedule: 'CodeableConcept' = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  schedule: 'CodeableConcept' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -747,8 +747,8 @@ class Schedule(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -772,14 +772,14 @@ class Schedule(ModelBase):
     
     
 
-class MaxDispense(ModelBase):
+class MaxDispense(BaseModel):
     """ The maximum number of units of the medication that can be dispensed in a period.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param 'Quantity' quantity: The maximum number of units of the medication that can be dispensed
     :param 'Duration' period: The period that applies to the maximum number of units
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  quantity: 'Quantity' = None,  period: 'Duration' = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  quantity: 'Quantity' = None,  period: 'Duration' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -803,8 +803,8 @@ class MaxDispense(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -829,16 +829,16 @@ class MaxDispense(ModelBase):
     
     
 
-class Regulatory(ModelBase):
+class Regulatory(BaseModel):
     """ Regulatory information about a medication.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param 'Reference' regulatoryAuthority: Specifies the authority of the regulation
-    :param list['Substitution'] substitution: Specifies if changes are allowed when dispensing a medication from a regulatory perspective
-    :param list['Schedule'] schedule: Specifies the schedule of a medication in jurisdiction
+    :param 'Substitution' substitution: Specifies if changes are allowed when dispensing a medication from a regulatory perspective
+    :param 'Schedule' schedule: Specifies the schedule of a medication in jurisdiction
     :param 'MaxDispense' maxDispense: The maximum number of units of the medication that can be dispensed in a period
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  regulatoryAuthority: 'Reference' = None,  substitution: list['Substitution'] = None,  schedule: list['Schedule'] = None,  maxDispense: 'MaxDispense' = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  regulatoryAuthority: 'Reference' = None,  substitution: 'Substitution' = None,  schedule: 'Schedule' = None,  maxDispense: 'MaxDispense' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -864,8 +864,8 @@ class Regulatory(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -889,15 +889,15 @@ class Regulatory(ModelBase):
     
     
 
-class Kinetics(ModelBase):
+class Kinetics(BaseModel):
     """ The time course of drug absorption, distribution, metabolism and excretion of a medication from the body.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param list['Quantity'] areaUnderCurve: The drug concentration measured at certain discrete points in time
-    :param list['Quantity'] lethalDose50: The median lethal dose of a drug
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Quantity' areaUnderCurve: The drug concentration measured at certain discrete points in time
+    :param 'Quantity' lethalDose50: The median lethal dose of a drug
     :param 'Duration' halfLifePeriod: Time required for concentration in the body to decrease by half
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  areaUnderCurve: list['Quantity'] = None,  lethalDose50: list['Quantity'] = None,  halfLifePeriod: 'Duration' = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  areaUnderCurve: 'Quantity' = None,  lethalDose50: 'Quantity' = None,  halfLifePeriod: 'Duration' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -922,8 +922,8 @@ class Kinetics(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -951,33 +951,33 @@ class MedicationKnowledge(DomainResource):
     :param str implicitRules: A set of rules under which this content was created
     :param str language: Language of the resource content
     :param 'Narrative' text: Text summary of the resource, for human interpretation
-    :param list['Resource'] contained: Contained, inline Resources
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored
+    :param 'Resource' contained: Contained, inline Resources
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored
     :param 'CodeableConcept' code: Code that identifies this medication
     :param str status: active | inactive | entered-in-error
     :param 'Reference' manufacturer: Manufacturer of the item
     :param 'CodeableConcept' doseForm: powder | tablets | capsule +
     :param 'Quantity' amount: Amount of drug in package
     :param str synonym: Additional names for a medication
-    :param list['RelatedMedicationKnowledge'] relatedMedicationKnowledge: Associated or related medication information
-    :param list['Reference'] associatedMedication: A medication resource that is associated with this medication
-    :param list['CodeableConcept'] productType: Category of the medication or product
-    :param list['Monograph'] monograph: Associated documentation about the medication
-    :param list['Ingredient'] ingredient: Active or inactive ingredient
+    :param 'RelatedMedicationKnowledge' relatedMedicationKnowledge: Associated or related medication information
+    :param 'Reference' associatedMedication: A medication resource that is associated with this medication
+    :param 'CodeableConcept' productType: Category of the medication or product
+    :param 'Monograph' monograph: Associated documentation about the medication
+    :param 'Ingredient' ingredient: Active or inactive ingredient
     :param str preparationInstruction: The instructions for preparing the medication
-    :param list['CodeableConcept'] intendedRoute: The intended or approved route of administration
-    :param list['Cost'] cost: The pricing of the medication
-    :param list['MonitoringProgram'] monitoringProgram: Program under which a medication is reviewed
-    :param list['AdministrationGuidelines'] administrationGuidelines: Guidelines for administration of the medication
-    :param list['MedicineClassification'] medicineClassification: Categorization of the medication within a formulary or classification system
+    :param 'CodeableConcept' intendedRoute: The intended or approved route of administration
+    :param 'Cost' cost: The pricing of the medication
+    :param 'MonitoringProgram' monitoringProgram: Program under which a medication is reviewed
+    :param 'AdministrationGuidelines' administrationGuidelines: Guidelines for administration of the medication
+    :param 'MedicineClassification' medicineClassification: Categorization of the medication within a formulary or classification system
     :param 'Packaging' packaging: Details about packaged medications
-    :param list['DrugCharacteristic'] drugCharacteristic: Specifies descriptive properties of the medicine
-    :param list['Reference'] contraindication: Potential clinical issue with or between medication(s)
-    :param list['Regulatory'] regulatory: Regulatory information about a medication
-    :param list['Kinetics'] kinetics: The time course of drug absorption, distribution, metabolism and excretion of a medication from the body
+    :param 'DrugCharacteristic' drugCharacteristic: Specifies descriptive properties of the medicine
+    :param 'Reference' contraindication: Potential clinical issue with or between medication(s)
+    :param 'Regulatory' regulatory: Regulatory information about a medication
+    :param 'Kinetics' kinetics: The time course of drug absorption, distribution, metabolism and excretion of a medication from the body
     """
-    def __init__(self, resourceType: str = "MedicationKnowledge",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  code: 'CodeableConcept' = None,  status: str = None,  manufacturer: 'Reference' = None,  doseForm: 'CodeableConcept' = None,  amount: 'Quantity' = None,  synonym: str = None,  relatedMedicationKnowledge: list['RelatedMedicationKnowledge'] = None,  associatedMedication: list['Reference'] = None,  productType: list['CodeableConcept'] = None,  monograph: list['Monograph'] = None,  ingredient: list['Ingredient'] = None,  preparationInstruction: str = None,  intendedRoute: list['CodeableConcept'] = None,  cost: list['Cost'] = None,  monitoringProgram: list['MonitoringProgram'] = None,  administrationGuidelines: list['AdministrationGuidelines'] = None,  medicineClassification: list['MedicineClassification'] = None,  packaging: 'Packaging' = None,  drugCharacteristic: list['DrugCharacteristic'] = None,  contraindication: list['Reference'] = None,  regulatory: list['Regulatory'] = None,  kinetics: list['Kinetics'] = None, ):
+    def __init__(self, resourceType: str = "MedicationKnowledge",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: 'Resource' = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  code: 'CodeableConcept' = None,  status: str = None,  manufacturer: 'Reference' = None,  doseForm: 'CodeableConcept' = None,  amount: 'Quantity' = None,  synonym: str = None,  relatedMedicationKnowledge: 'RelatedMedicationKnowledge' = None,  associatedMedication: 'Reference' = None,  productType: 'CodeableConcept' = None,  monograph: 'Monograph' = None,  ingredient: 'Ingredient' = None,  preparationInstruction: str = None,  intendedRoute: 'CodeableConcept' = None,  cost: 'Cost' = None,  monitoringProgram: 'MonitoringProgram' = None,  administrationGuidelines: 'AdministrationGuidelines' = None,  medicineClassification: 'MedicineClassification' = None,  packaging: 'Packaging' = None,  drugCharacteristic: 'DrugCharacteristic' = None,  contraindication: 'Reference' = None,  regulatory: 'Regulatory' = None,  kinetics: 'Kinetics' = None, ):
         self.resourceType: str = resourceType or "MedicationKnowledge"
         self.id: str = id 
         self.meta: 'Meta' = meta 
@@ -992,7 +992,7 @@ class MedicationKnowledge(DomainResource):
         self.manufacturer: 'Reference' = manufacturer 
         self.doseForm: 'CodeableConcept' = doseForm 
         self.amount: 'Quantity' = amount 
-        self.synonym: str = synonym or []
+        self.synonym: list[str] = synonym or []
         self.relatedMedicationKnowledge: list['RelatedMedicationKnowledge'] = relatedMedicationKnowledge or []
         self.associatedMedication: list['Reference'] = associatedMedication or []
         self.productType: list['CodeableConcept'] = productType or []
@@ -1027,8 +1027,8 @@ class MedicationKnowledge(DomainResource):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)

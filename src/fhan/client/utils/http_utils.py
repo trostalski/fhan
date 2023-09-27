@@ -32,22 +32,25 @@ def make_get_request(
     return response
 
 
-def build_fhir_url(
+def build_fhir_get_url(
     base_url: str,
     resource_type: str,
-    id: str | list[str] | None = None,
-    search: str | None = None,
+    id: str,
 ) -> str:
     """
     Build a FHIR URL from a base URL, resource type, and optional ID or search string.
     """
+    url = join_urls(base_url, resource_type, id)
+    return url
+
+
+def build_fhir_search_url(
+    base_url: str,
+    resource_type: str,
+    search: str,
+):
     url = join_urls(base_url, resource_type)
-    if isinstance(id, list):
-        id = ",".join(id)
-    if id:
-        url = join_urls(url, id)
-    elif search:
-        if not search.startswith("?"):
-            search = f"?{search}"
-        url += search
+    if not search.startswith("?"):
+        search = f"?{search}"
+    url += search
     return url

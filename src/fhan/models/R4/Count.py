@@ -1,24 +1,24 @@
 """
 Generated class for Count. 
-Time: 2023-09-25 16:30:45
+Time: 2023-09-27 15:54:17
 """
 from importlib import import_module
 import inspect
 
 from fhan.models.R4.Extension import *
-from fhan.models.generator_models import ModelBase
+from fhan.models.generator_models import BaseModel
 
-class Count(ModelBase):
+class Count(BaseModel):
     """ Base StructureDefinition for Count Type: A measured amount (or an amount that can potentially be measured). Note that measured amounts include amounts that are not precisely quantified, including amounts involving arbitrary units and floating currencies.
     :param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
+    :param 'Extension' extension: Additional content defined by implementations
     :param float value: Numerical value (with implicit precision)
     :param str comparator: < | <= | >= | > - how to understand the value
     :param str unit: Unit representation
     :param str system: System that defines coded unit form
     :param str code: Coded form of the unit
     """
-    def __init__(self, resourceType: str = "Count",  id: str = None,  extension: list['Extension'] = None,  value: float = None,  comparator: str = None,  unit: str = None,  system: str = None,  code: str = None, ):
+    def __init__(self, resourceType: str = "Count",  id: str = None,  extension: 'Extension' = None,  value: float = None,  comparator: str = None,  unit: str = None,  system: str = None,  code: str = None, ):
         self.resourceType: str = resourceType or "Count"
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
@@ -45,8 +45,8 @@ class Count(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)

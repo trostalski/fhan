@@ -1,35 +1,35 @@
 """
 Generated class for Encounter. 
-Time: 2023-09-25 16:30:45
+Time: 2023-09-27 15:54:17
 """
 from importlib import import_module
 import inspect
 
 from fhan.models.R4.Duration import *
-from fhan.models.R4.Identifier import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Period import *
-from fhan.models.R4.Coding import *
-from fhan.models.R4.Extension import *
-from fhan.models.R4.Reference import *
 from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Meta import *
+from fhan.models.R4.Period import *
 from fhan.models.R4.Resource import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.Coding import *
+from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Extension import *
 from fhan.models.R4.Narrative import *
+from fhan.models.R4.Reference import *
 from fhan.models.R4.DomainResource import *
 
 
     
     
 
-class StatusHistory(ModelBase):
+class StatusHistory(BaseModel):
     """ The status history permits the encounter resource to contain the status history without needing to read through the historical versions of the resource, or even have the server store them.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str status: planned | arrived | triaged | in-progress | onleave | finished | cancelled +
     :param 'Period' period: The time that the episode was in the specified status
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  status: str = None,  period: 'Period' = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  status: str = None,  period: 'Period' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -53,8 +53,8 @@ class StatusHistory(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -78,14 +78,14 @@ class StatusHistory(ModelBase):
     
     
 
-class ClassHistory(ModelBase):
+class ClassHistory(BaseModel):
     """ The class history permits the tracking of the encounters transitions without needing to go  through the resource history.  This would be used for a case where an admission starts of as an emergency encounter, then transitions into an inpatient scenario. Doing this and not restarting a new encounter ensures that any lab/diagnostic results can more easily follow the patient and not require re-processing and not get lost or cancelled during a kind of discharge from emergency to inpatient.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param 'Coding' _class: inpatient | outpatient | ambulatory | emergency +
     :param 'Period' period: The time that the episode was in the specified class
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  _class: 'Coding' = None,  period: 'Period' = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  _class: 'Coding' = None,  period: 'Period' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -109,8 +109,8 @@ class ClassHistory(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -134,15 +134,15 @@ class ClassHistory(ModelBase):
     
     
 
-class Participant(ModelBase):
+class Participant(BaseModel):
     """ The list of people responsible for providing the service.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param list['CodeableConcept'] type: Role of participant in encounter
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'CodeableConcept' type: Role of participant in encounter
     :param 'Period' period: Period of time during the encounter that the participant participated
     :param 'Reference' individual: Persons involved in the encounter other than the patient
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  type: list['CodeableConcept'] = None,  period: 'Period' = None,  individual: 'Reference' = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  type: 'CodeableConcept' = None,  period: 'Period' = None,  individual: 'Reference' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -167,8 +167,8 @@ class Participant(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -192,15 +192,15 @@ class Participant(ModelBase):
     
     
 
-class Diagnosis(ModelBase):
+class Diagnosis(BaseModel):
     """ The list of diagnosis relevant to this encounter.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param 'Reference' condition: The diagnosis or procedure relevant to the encounter
     :param 'CodeableConcept' use: Role that this diagnosis has within the encounter (e.g. admission, billing, discharge …)
     :param int rank: Ranking of the diagnosis (for each role type)
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  condition: 'Reference' = None,  use: 'CodeableConcept' = None,  rank: int = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  condition: 'Reference' = None,  use: 'CodeableConcept' = None,  rank: int = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -225,8 +225,8 @@ class Diagnosis(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -250,21 +250,21 @@ class Diagnosis(ModelBase):
     
     
 
-class Hospitalization(ModelBase):
+class Hospitalization(BaseModel):
     """ Details about the admission to a healthcare service.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param 'Identifier' preAdmissionIdentifier: Pre-admission identifier
     :param 'Reference' origin: The location/organization from which the patient came before admission
     :param 'CodeableConcept' admitSource: From where patient was admitted (physician referral, transfer)
     :param 'CodeableConcept' reAdmission: The type of hospital re-admission that has occurred (if any). If the value is absent, then this is not identified as a readmission
-    :param list['CodeableConcept'] dietPreference: Diet preferences reported by the patient
-    :param list['CodeableConcept'] specialCourtesy: Special courtesies (VIP, board member)
-    :param list['CodeableConcept'] specialArrangement: Wheelchair, translator, stretcher, etc.
+    :param 'CodeableConcept' dietPreference: Diet preferences reported by the patient
+    :param 'CodeableConcept' specialCourtesy: Special courtesies (VIP, board member)
+    :param 'CodeableConcept' specialArrangement: Wheelchair, translator, stretcher, etc.
     :param 'Reference' destination: Location/organization to which the patient is discharged
     :param 'CodeableConcept' dischargeDisposition: Category or kind of location after discharge
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  preAdmissionIdentifier: 'Identifier' = None,  origin: 'Reference' = None,  admitSource: 'CodeableConcept' = None,  reAdmission: 'CodeableConcept' = None,  dietPreference: list['CodeableConcept'] = None,  specialCourtesy: list['CodeableConcept'] = None,  specialArrangement: list['CodeableConcept'] = None,  destination: 'Reference' = None,  dischargeDisposition: 'CodeableConcept' = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  preAdmissionIdentifier: 'Identifier' = None,  origin: 'Reference' = None,  admitSource: 'CodeableConcept' = None,  reAdmission: 'CodeableConcept' = None,  dietPreference: 'CodeableConcept' = None,  specialCourtesy: 'CodeableConcept' = None,  specialArrangement: 'CodeableConcept' = None,  destination: 'Reference' = None,  dischargeDisposition: 'CodeableConcept' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -295,8 +295,8 @@ class Hospitalization(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -320,16 +320,16 @@ class Hospitalization(ModelBase):
     
     
 
-class Location(ModelBase):
+class Location(BaseModel):
     """ List of locations where  the patient has been during this encounter.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param 'Reference' location: Location the encounter takes place
     :param str status: planned | active | reserved | completed
     :param 'CodeableConcept' physicalType: The physical type of the location (usually the level in the location hierachy - bed room ward etc.)
     :param 'Period' period: Time period during which the patient was present at the location
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  location: 'Reference' = None,  status: str = None,  physicalType: 'CodeableConcept' = None,  period: 'Period' = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  location: 'Reference' = None,  status: str = None,  physicalType: 'CodeableConcept' = None,  period: 'Period' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -355,8 +355,8 @@ class Location(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -384,34 +384,34 @@ class Encounter(DomainResource):
     :param str implicitRules: A set of rules under which this content was created
     :param str language: Language of the resource content
     :param 'Narrative' text: Text summary of the resource, for human interpretation
-    :param list['Resource'] contained: Contained, inline Resources
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored
-    :param list['Identifier'] identifier: Identifier(s) by which this encounter is known
+    :param 'Resource' contained: Contained, inline Resources
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored
+    :param 'Identifier' identifier: Identifier(s) by which this encounter is known
     :param str status: planned | arrived | triaged | in-progress | onleave | finished | cancelled +
-    :param list['StatusHistory'] statusHistory: List of past encounter statuses
+    :param 'StatusHistory' statusHistory: List of past encounter statuses
     :param 'Coding' _class: Classification of patient encounter
-    :param list['ClassHistory'] classHistory: List of past encounter classes
-    :param list['CodeableConcept'] type: Specific type of encounter
+    :param 'ClassHistory' classHistory: List of past encounter classes
+    :param 'CodeableConcept' type: Specific type of encounter
     :param 'CodeableConcept' serviceType: Specific type of service
     :param 'CodeableConcept' priority: Indicates the urgency of the encounter
     :param 'Reference' subject: The patient or group present at the encounter
-    :param list['Reference'] episodeOfCare: Episode(s) of care that this encounter should be recorded against
-    :param list['Reference'] basedOn: The ServiceRequest that initiated this encounter
-    :param list['Participant'] participant: List of participants involved in the encounter
-    :param list['Reference'] appointment: The appointment that scheduled this encounter
+    :param 'Reference' episodeOfCare: Episode(s) of care that this encounter should be recorded against
+    :param 'Reference' basedOn: The ServiceRequest that initiated this encounter
+    :param 'Participant' participant: List of participants involved in the encounter
+    :param 'Reference' appointment: The appointment that scheduled this encounter
     :param 'Period' period: The start and end time of the encounter
     :param 'Duration' length: Quantity of time the encounter lasted (less time absent)
-    :param list['CodeableConcept'] reasonCode: Coded reason the encounter takes place
-    :param list['Reference'] reasonReference: Reason the encounter takes place (reference)
-    :param list['Diagnosis'] diagnosis: The list of diagnosis relevant to this encounter
-    :param list['Reference'] account: The set of accounts that may be used for billing for this Encounter
+    :param 'CodeableConcept' reasonCode: Coded reason the encounter takes place
+    :param 'Reference' reasonReference: Reason the encounter takes place (reference)
+    :param 'Diagnosis' diagnosis: The list of diagnosis relevant to this encounter
+    :param 'Reference' account: The set of accounts that may be used for billing for this Encounter
     :param 'Hospitalization' hospitalization: Details about the admission to a healthcare service
-    :param list['Location'] location: List of locations where the patient has been
+    :param 'Location' location: List of locations where the patient has been
     :param 'Reference' serviceProvider: The organization (facility) responsible for this encounter
     :param 'Reference' partOf: Another Encounter this encounter is part of
     """
-    def __init__(self, resourceType: str = "Encounter",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  identifier: list['Identifier'] = None,  status: str = None,  statusHistory: list['StatusHistory'] = None,  _class: 'Coding' = None,  classHistory: list['ClassHistory'] = None,  type: list['CodeableConcept'] = None,  serviceType: 'CodeableConcept' = None,  priority: 'CodeableConcept' = None,  subject: 'Reference' = None,  episodeOfCare: list['Reference'] = None,  basedOn: list['Reference'] = None,  participant: list['Participant'] = None,  appointment: list['Reference'] = None,  period: 'Period' = None,  length: 'Duration' = None,  reasonCode: list['CodeableConcept'] = None,  reasonReference: list['Reference'] = None,  diagnosis: list['Diagnosis'] = None,  account: list['Reference'] = None,  hospitalization: 'Hospitalization' = None,  location: list['Location'] = None,  serviceProvider: 'Reference' = None,  partOf: 'Reference' = None, ):
+    def __init__(self, resourceType: str = "Encounter",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: 'Resource' = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  identifier: 'Identifier' = None,  status: str = None,  statusHistory: 'StatusHistory' = None,  _class: 'Coding' = None,  classHistory: 'ClassHistory' = None,  type: 'CodeableConcept' = None,  serviceType: 'CodeableConcept' = None,  priority: 'CodeableConcept' = None,  subject: 'Reference' = None,  episodeOfCare: 'Reference' = None,  basedOn: 'Reference' = None,  participant: 'Participant' = None,  appointment: 'Reference' = None,  period: 'Period' = None,  length: 'Duration' = None,  reasonCode: 'CodeableConcept' = None,  reasonReference: 'Reference' = None,  diagnosis: 'Diagnosis' = None,  account: 'Reference' = None,  hospitalization: 'Hospitalization' = None,  location: 'Location' = None,  serviceProvider: 'Reference' = None,  partOf: 'Reference' = None, ):
         self.resourceType: str = resourceType or "Encounter"
         self.id: str = id 
         self.meta: 'Meta' = meta 
@@ -462,8 +462,8 @@ class Encounter(DomainResource):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)

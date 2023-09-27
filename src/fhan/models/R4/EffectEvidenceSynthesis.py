@@ -1,38 +1,38 @@
 """
 Generated class for EffectEvidenceSynthesis. 
-Time: 2023-09-25 16:30:45
+Time: 2023-09-27 15:54:17
 """
 from importlib import import_module
 import inspect
 
-from fhan.models.R4.Identifier import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Annotation import *
-from fhan.models.R4.ContactDetail import *
-from fhan.models.R4.UsageContext import *
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Period import *
-from fhan.models.R4.Extension import *
-from fhan.models.R4.Reference import *
 from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Meta import *
+from fhan.models.R4.UsageContext import *
+from fhan.models.R4.ContactDetail import *
+from fhan.models.R4.Annotation import *
+from fhan.models.R4.Period import *
 from fhan.models.R4.Resource import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.RelatedArtifact import *
+from fhan.models.R4.Extension import *
 from fhan.models.R4.Narrative import *
+from fhan.models.R4.Reference import *
 from fhan.models.R4.DomainResource import *
 
 
     
     
 
-class SampleSize(ModelBase):
+class SampleSize(BaseModel):
     """ A description of the size of the sample involved in the synthesis.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str description: Description of sample size
     :param int numberOfStudies: How many studies?
     :param int numberOfParticipants: How many participants?
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  description: str = None,  numberOfStudies: int = None,  numberOfParticipants: int = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  description: str = None,  numberOfStudies: int = None,  numberOfParticipants: int = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -57,8 +57,8 @@ class SampleSize(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -82,16 +82,16 @@ class SampleSize(ModelBase):
     
     
 
-class ResultsByExposure(ModelBase):
+class ResultsByExposure(BaseModel):
     """ A description of the results for each exposure considered in the effect estimate.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str description: Description of results by exposure
     :param str exposureState: exposure | exposure-alternative
     :param 'CodeableConcept' variantState: Variant exposure states
     :param 'Reference' riskEvidenceSynthesis: Risk evidence synthesis
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  description: str = None,  exposureState: str = None,  variantState: 'CodeableConcept' = None,  riskEvidenceSynthesis: 'Reference' = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  description: str = None,  exposureState: str = None,  variantState: 'CodeableConcept' = None,  riskEvidenceSynthesis: 'Reference' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -117,8 +117,8 @@ class ResultsByExposure(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -144,16 +144,16 @@ class ResultsByExposure(ModelBase):
     
     
 
-class PrecisionEstimate(ModelBase):
+class PrecisionEstimate(BaseModel):
     """ A description of the precision of the estimate for the effect.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param 'CodeableConcept' type: Type of precision estimate
     :param float level: Level of confidence interval
     :param float _from: Lower bound
     :param float to: Upper bound
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  type: 'CodeableConcept' = None,  level: float = None,  _from: float = None,  to: float = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  type: 'CodeableConcept' = None,  level: float = None,  _from: float = None,  to: float = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -179,8 +179,8 @@ class PrecisionEstimate(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -205,18 +205,18 @@ class PrecisionEstimate(ModelBase):
     
     
 
-class EffectEstimate(ModelBase):
+class EffectEstimate(BaseModel):
     """ The estimated effect of the exposure variant.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str description: Description of effect estimate
     :param 'CodeableConcept' type: Type of efffect estimate
     :param 'CodeableConcept' variantState: Variant exposure states
     :param float value: Point estimate
     :param 'CodeableConcept' unitOfMeasure: What unit is the outcome described in?
-    :param list['PrecisionEstimate'] precisionEstimate: How precise the estimate is
+    :param 'PrecisionEstimate' precisionEstimate: How precise the estimate is
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  description: str = None,  type: 'CodeableConcept' = None,  variantState: 'CodeableConcept' = None,  value: float = None,  unitOfMeasure: 'CodeableConcept' = None,  precisionEstimate: list['PrecisionEstimate'] = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  description: str = None,  type: 'CodeableConcept' = None,  variantState: 'CodeableConcept' = None,  value: float = None,  unitOfMeasure: 'CodeableConcept' = None,  precisionEstimate: 'PrecisionEstimate' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -244,8 +244,8 @@ class EffectEstimate(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -271,15 +271,15 @@ class EffectEstimate(ModelBase):
     
     
 
-class CertaintySubcomponent(ModelBase):
+class CertaintySubcomponent(BaseModel):
     """ A description of a component of the overall certainty.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param 'CodeableConcept' type: Type of subcomponent of certainty rating
-    :param list['CodeableConcept'] rating: Subcomponent certainty rating
-    :param list['Annotation'] note: Used for footnotes or explanatory notes
+    :param 'CodeableConcept' rating: Subcomponent certainty rating
+    :param 'Annotation' note: Used for footnotes or explanatory notes
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  type: 'CodeableConcept' = None,  rating: list['CodeableConcept'] = None,  note: list['Annotation'] = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  type: 'CodeableConcept' = None,  rating: 'CodeableConcept' = None,  note: 'Annotation' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -304,8 +304,8 @@ class CertaintySubcomponent(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -330,15 +330,15 @@ class CertaintySubcomponent(ModelBase):
     
     
 
-class Certainty(ModelBase):
+class Certainty(BaseModel):
     """ A description of the certainty of the effect estimate.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param list['CodeableConcept'] rating: Certainty rating
-    :param list['Annotation'] note: Used for footnotes or explanatory notes
-    :param list['CertaintySubcomponent'] certaintySubcomponent: A component that contributes to the overall certainty
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'CodeableConcept' rating: Certainty rating
+    :param 'Annotation' note: Used for footnotes or explanatory notes
+    :param 'CertaintySubcomponent' certaintySubcomponent: A component that contributes to the overall certainty
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  rating: list['CodeableConcept'] = None,  note: list['Annotation'] = None,  certaintySubcomponent: list['CertaintySubcomponent'] = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  rating: 'CodeableConcept' = None,  note: 'Annotation' = None,  certaintySubcomponent: 'CertaintySubcomponent' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -363,8 +363,8 @@ class Certainty(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -392,32 +392,32 @@ class EffectEvidenceSynthesis(DomainResource):
     :param str implicitRules: A set of rules under which this content was created
     :param str language: Language of the resource content
     :param 'Narrative' text: Text summary of the resource, for human interpretation
-    :param list['Resource'] contained: Contained, inline Resources
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored
+    :param 'Resource' contained: Contained, inline Resources
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored
     :param str url: Canonical identifier for this effect evidence synthesis, represented as a URI (globally unique)
-    :param list['Identifier'] identifier: Additional identifier for the effect evidence synthesis
+    :param 'Identifier' identifier: Additional identifier for the effect evidence synthesis
     :param str version: Business version of the effect evidence synthesis
     :param str name: Name for this effect evidence synthesis (computer friendly)
     :param str title: Name for this effect evidence synthesis (human friendly)
     :param str status: draft | active | retired | unknown
     :param str date: Date last changed
     :param str publisher: Name of the publisher (organization or individual)
-    :param list['ContactDetail'] contact: Contact details for the publisher
+    :param 'ContactDetail' contact: Contact details for the publisher
     :param str description: Natural language description of the effect evidence synthesis
-    :param list['Annotation'] note: Used for footnotes or explanatory notes
-    :param list['UsageContext'] useContext: The context that the content is intended to support
-    :param list['CodeableConcept'] jurisdiction: Intended jurisdiction for effect evidence synthesis (if applicable)
+    :param 'Annotation' note: Used for footnotes or explanatory notes
+    :param 'UsageContext' useContext: The context that the content is intended to support
+    :param 'CodeableConcept' jurisdiction: Intended jurisdiction for effect evidence synthesis (if applicable)
     :param str copyright: Use and/or publishing restrictions
     :param str approvalDate: When the effect evidence synthesis was approved by publisher
     :param str lastReviewDate: When the effect evidence synthesis was last reviewed
     :param 'Period' effectivePeriod: When the effect evidence synthesis is expected to be used
-    :param list['CodeableConcept'] topic: The category of the EffectEvidenceSynthesis, such as Education, Treatment, Assessment, etc.
-    :param list['ContactDetail'] author: Who authored the content
-    :param list['ContactDetail'] editor: Who edited the content
-    :param list['ContactDetail'] reviewer: Who reviewed the content
-    :param list['ContactDetail'] endorser: Who endorsed the content
-    :param list['RelatedArtifact'] relatedArtifact: Additional documentation, citations, etc.
+    :param 'CodeableConcept' topic: The category of the EffectEvidenceSynthesis, such as Education, Treatment, Assessment, etc.
+    :param 'ContactDetail' author: Who authored the content
+    :param 'ContactDetail' editor: Who edited the content
+    :param 'ContactDetail' reviewer: Who reviewed the content
+    :param 'ContactDetail' endorser: Who endorsed the content
+    :param 'RelatedArtifact' relatedArtifact: Additional documentation, citations, etc.
     :param 'CodeableConcept' synthesisType: Type of synthesis
     :param 'CodeableConcept' studyType: Type of study
     :param 'Reference' population: What population?
@@ -425,11 +425,11 @@ class EffectEvidenceSynthesis(DomainResource):
     :param 'Reference' exposureAlternative: What comparison exposure?
     :param 'Reference' outcome: What outcome?
     :param 'SampleSize' sampleSize: What sample size was involved?
-    :param list['ResultsByExposure'] resultsByExposure: What was the result per exposure?
-    :param list['EffectEstimate'] effectEstimate: What was the estimated effect
-    :param list['Certainty'] certainty: How certain is the effect
+    :param 'ResultsByExposure' resultsByExposure: What was the result per exposure?
+    :param 'EffectEstimate' effectEstimate: What was the estimated effect
+    :param 'Certainty' certainty: How certain is the effect
     """
-    def __init__(self, resourceType: str = "EffectEvidenceSynthesis",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  url: str = None,  identifier: list['Identifier'] = None,  version: str = None,  name: str = None,  title: str = None,  status: str = None,  date: str = None,  publisher: str = None,  contact: list['ContactDetail'] = None,  description: str = None,  note: list['Annotation'] = None,  useContext: list['UsageContext'] = None,  jurisdiction: list['CodeableConcept'] = None,  copyright: str = None,  approvalDate: str = None,  lastReviewDate: str = None,  effectivePeriod: 'Period' = None,  topic: list['CodeableConcept'] = None,  author: list['ContactDetail'] = None,  editor: list['ContactDetail'] = None,  reviewer: list['ContactDetail'] = None,  endorser: list['ContactDetail'] = None,  relatedArtifact: list['RelatedArtifact'] = None,  synthesisType: 'CodeableConcept' = None,  studyType: 'CodeableConcept' = None,  population: 'Reference' = None,  exposure: 'Reference' = None,  exposureAlternative: 'Reference' = None,  outcome: 'Reference' = None,  sampleSize: 'SampleSize' = None,  resultsByExposure: list['ResultsByExposure'] = None,  effectEstimate: list['EffectEstimate'] = None,  certainty: list['Certainty'] = None, ):
+    def __init__(self, resourceType: str = "EffectEvidenceSynthesis",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: 'Resource' = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  url: str = None,  identifier: 'Identifier' = None,  version: str = None,  name: str = None,  title: str = None,  status: str = None,  date: str = None,  publisher: str = None,  contact: 'ContactDetail' = None,  description: str = None,  note: 'Annotation' = None,  useContext: 'UsageContext' = None,  jurisdiction: 'CodeableConcept' = None,  copyright: str = None,  approvalDate: str = None,  lastReviewDate: str = None,  effectivePeriod: 'Period' = None,  topic: 'CodeableConcept' = None,  author: 'ContactDetail' = None,  editor: 'ContactDetail' = None,  reviewer: 'ContactDetail' = None,  endorser: 'ContactDetail' = None,  relatedArtifact: 'RelatedArtifact' = None,  synthesisType: 'CodeableConcept' = None,  studyType: 'CodeableConcept' = None,  population: 'Reference' = None,  exposure: 'Reference' = None,  exposureAlternative: 'Reference' = None,  outcome: 'Reference' = None,  sampleSize: 'SampleSize' = None,  resultsByExposure: 'ResultsByExposure' = None,  effectEstimate: 'EffectEstimate' = None,  certainty: 'Certainty' = None, ):
         self.resourceType: str = resourceType or "EffectEvidenceSynthesis"
         self.id: str = id 
         self.meta: 'Meta' = meta 
@@ -490,8 +490,8 @@ class EffectEvidenceSynthesis(DomainResource):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)

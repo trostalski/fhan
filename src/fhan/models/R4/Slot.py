@@ -1,17 +1,17 @@
 """
 Generated class for Slot. 
-Time: 2023-09-25 16:30:45
+Time: 2023-09-27 15:54:17
 """
 from importlib import import_module
 import inspect
 
-from fhan.models.R4.Identifier import *
 from fhan.models.R4.Meta import *
+from fhan.models.R4.Resource import *
+from fhan.models.R4.Identifier import *
 from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Extension import *
-from fhan.models.R4.Reference import *
-from fhan.models.R4.Resource import *
 from fhan.models.R4.Narrative import *
+from fhan.models.R4.Reference import *
 from fhan.models.R4.DomainResource import *
 
 
@@ -22,13 +22,13 @@ class Slot(DomainResource):
     :param str implicitRules: A set of rules under which this content was created
     :param str language: Language of the resource content
     :param 'Narrative' text: Text summary of the resource, for human interpretation
-    :param list['Resource'] contained: Contained, inline Resources
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored
-    :param list['Identifier'] identifier: External Ids for this item
-    :param list['CodeableConcept'] serviceCategory: A broad categorization of the service that is to be performed during this appointment
-    :param list['CodeableConcept'] serviceType: The type of appointments that can be booked into this slot (ideally this would be an identifiable service - which is at a location, rather than the location itself). If provided then this overrides the value provided on the availability resource
-    :param list['CodeableConcept'] specialty: The specialty of a practitioner that would be required to perform the service requested in this appointment
+    :param 'Resource' contained: Contained, inline Resources
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored
+    :param 'Identifier' identifier: External Ids for this item
+    :param 'CodeableConcept' serviceCategory: A broad categorization of the service that is to be performed during this appointment
+    :param 'CodeableConcept' serviceType: The type of appointments that can be booked into this slot (ideally this would be an identifiable service - which is at a location, rather than the location itself). If provided then this overrides the value provided on the availability resource
+    :param 'CodeableConcept' specialty: The specialty of a practitioner that would be required to perform the service requested in this appointment
     :param 'CodeableConcept' appointmentType: The style of appointment or patient that may be booked in the slot (not service type)
     :param 'Reference' schedule: The schedule resource that this slot defines an interval of status information
     :param str status: busy | free | busy-unavailable | busy-tentative | entered-in-error
@@ -37,7 +37,7 @@ class Slot(DomainResource):
     :param bool overbooked: This slot has already been overbooked, appointments are unlikely to be accepted for this time
     :param str comment: Comments on the slot to describe any extended information. Such as custom constraints on the slot
     """
-    def __init__(self, resourceType: str = "Slot",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  identifier: list['Identifier'] = None,  serviceCategory: list['CodeableConcept'] = None,  serviceType: list['CodeableConcept'] = None,  specialty: list['CodeableConcept'] = None,  appointmentType: 'CodeableConcept' = None,  schedule: 'Reference' = None,  status: str = None,  start: str = None,  end: str = None,  overbooked: bool = None,  comment: str = None, ):
+    def __init__(self, resourceType: str = "Slot",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: 'Resource' = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  identifier: 'Identifier' = None,  serviceCategory: 'CodeableConcept' = None,  serviceType: 'CodeableConcept' = None,  specialty: 'CodeableConcept' = None,  appointmentType: 'CodeableConcept' = None,  schedule: 'Reference' = None,  status: str = None,  start: str = None,  end: str = None,  overbooked: bool = None,  comment: str = None, ):
         self.resourceType: str = resourceType or "Slot"
         self.id: str = id 
         self.meta: 'Meta' = meta 
@@ -76,8 +76,8 @@ class Slot(DomainResource):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)

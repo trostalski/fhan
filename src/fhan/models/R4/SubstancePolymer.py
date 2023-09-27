@@ -1,17 +1,17 @@
 """
 Generated class for SubstancePolymer. 
-Time: 2023-09-25 16:30:45
+Time: 2023-09-27 15:54:17
 """
 from importlib import import_module
 import inspect
 
-from fhan.models.R4.SubstanceAmount import *
 from fhan.models.R4.Attachment import *
+from fhan.models.R4.BackboneElement import *
 from fhan.models.R4.Meta import *
+from fhan.models.R4.Resource import *
 from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Extension import *
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Resource import *
+from fhan.models.R4.SubstanceAmount import *
 from fhan.models.R4.Narrative import *
 from fhan.models.R4.DomainResource import *
 
@@ -21,16 +21,16 @@ from fhan.models.R4.DomainResource import *
     
     
 
-class StartingMaterial(ModelBase):
+class StartingMaterial(BaseModel):
     """ Todo.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param 'CodeableConcept' material: Todo
     :param 'CodeableConcept' type: Todo
     :param bool isDefining: Todo
     :param 'SubstanceAmount' amount: Todo
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  material: 'CodeableConcept' = None,  type: 'CodeableConcept' = None,  isDefining: bool = None,  amount: 'SubstanceAmount' = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  material: 'CodeableConcept' = None,  type: 'CodeableConcept' = None,  isDefining: bool = None,  amount: 'SubstanceAmount' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -56,8 +56,8 @@ class StartingMaterial(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -82,14 +82,14 @@ class StartingMaterial(ModelBase):
     
     
 
-class MonomerSet(ModelBase):
+class MonomerSet(BaseModel):
     """ Todo.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param 'CodeableConcept' ratioType: Todo
-    :param list['StartingMaterial'] startingMaterial: Todo
+    :param 'StartingMaterial' startingMaterial: Todo
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  ratioType: 'CodeableConcept' = None,  startingMaterial: list['StartingMaterial'] = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  ratioType: 'CodeableConcept' = None,  startingMaterial: 'StartingMaterial' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -113,8 +113,8 @@ class MonomerSet(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -142,14 +142,14 @@ class MonomerSet(ModelBase):
     
     
 
-class DegreeOfPolymerisation(ModelBase):
+class DegreeOfPolymerisation(BaseModel):
     """ Todo.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param 'CodeableConcept' degree: Todo
     :param 'SubstanceAmount' amount: Todo
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  degree: 'CodeableConcept' = None,  amount: 'SubstanceAmount' = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  degree: 'CodeableConcept' = None,  amount: 'SubstanceAmount' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -173,8 +173,8 @@ class DegreeOfPolymerisation(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -198,15 +198,15 @@ class DegreeOfPolymerisation(ModelBase):
     
     
 
-class StructuralRepresentation(ModelBase):
+class StructuralRepresentation(BaseModel):
     """ Todo.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param 'CodeableConcept' type: Todo
     :param str representation: Todo
     :param 'Attachment' attachment: Todo
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  type: 'CodeableConcept' = None,  representation: str = None,  attachment: 'Attachment' = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  type: 'CodeableConcept' = None,  representation: str = None,  attachment: 'Attachment' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -231,8 +231,8 @@ class StructuralRepresentation(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -257,18 +257,18 @@ class StructuralRepresentation(ModelBase):
     
     
 
-class RepeatUnit(ModelBase):
+class RepeatUnit(BaseModel):
     """ Todo.:param 'CodeableConcept' repeatUnitAmountType: Todo
     :param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param 'CodeableConcept' orientationOfPolymerisation: Todo
     :param str repeatUnit: Todo
     :param 'SubstanceAmount' amount: Todo
-    :param list['DegreeOfPolymerisation'] degreeOfPolymerisation: Todo
-    :param list['StructuralRepresentation'] structuralRepresentation: Todo
+    :param 'DegreeOfPolymerisation' degreeOfPolymerisation: Todo
+    :param 'StructuralRepresentation' structuralRepresentation: Todo
     """
-    def __init__(self,  repeatUnitAmountType: 'CodeableConcept' = None,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  orientationOfPolymerisation: 'CodeableConcept' = None,  repeatUnit: str = None,  amount: 'SubstanceAmount' = None,  degreeOfPolymerisation: list['DegreeOfPolymerisation'] = None,  structuralRepresentation: list['StructuralRepresentation'] = None, ):
+    def __init__(self,  repeatUnitAmountType: 'CodeableConcept' = None,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  orientationOfPolymerisation: 'CodeableConcept' = None,  repeatUnit: str = None,  amount: 'SubstanceAmount' = None,  degreeOfPolymerisation: 'DegreeOfPolymerisation' = None,  structuralRepresentation: 'StructuralRepresentation' = None, ):
         self.repeatUnitAmountType: 'CodeableConcept' = repeatUnitAmountType 
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
@@ -296,8 +296,8 @@ class RepeatUnit(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -322,16 +322,16 @@ class RepeatUnit(ModelBase):
     
     
 
-class Repeat(ModelBase):
+class Repeat(BaseModel):
     """ Todo.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param int numberOfUnits: Todo
     :param str averageMolecularFormula: Todo
     :param 'CodeableConcept' repeatUnitAmountType: Todo
-    :param list['RepeatUnit'] repeatUnit: Todo
+    :param 'RepeatUnit' repeatUnit: Todo
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  numberOfUnits: int = None,  averageMolecularFormula: str = None,  repeatUnitAmountType: 'CodeableConcept' = None,  repeatUnit: list['RepeatUnit'] = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  numberOfUnits: int = None,  averageMolecularFormula: str = None,  repeatUnitAmountType: 'CodeableConcept' = None,  repeatUnit: 'RepeatUnit' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -357,8 +357,8 @@ class Repeat(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -386,17 +386,17 @@ class SubstancePolymer(DomainResource):
     :param str implicitRules: A set of rules under which this content was created
     :param str language: Language of the resource content
     :param 'Narrative' text: Text summary of the resource, for human interpretation
-    :param list['Resource'] contained: Contained, inline Resources
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored
+    :param 'Resource' contained: Contained, inline Resources
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored
     :param 'CodeableConcept' _class: Todo
     :param 'CodeableConcept' geometry: Todo
-    :param list['CodeableConcept'] copolymerConnectivity: Todo
+    :param 'CodeableConcept' copolymerConnectivity: Todo
     :param str modification: Todo
-    :param list['MonomerSet'] monomerSet: Todo
-    :param list['Repeat'] repeat: Todo
+    :param 'MonomerSet' monomerSet: Todo
+    :param 'Repeat' repeat: Todo
     """
-    def __init__(self, resourceType: str = "SubstancePolymer",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  _class: 'CodeableConcept' = None,  geometry: 'CodeableConcept' = None,  copolymerConnectivity: list['CodeableConcept'] = None,  modification: str = None,  monomerSet: list['MonomerSet'] = None,  repeat: list['Repeat'] = None, ):
+    def __init__(self, resourceType: str = "SubstancePolymer",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: 'Resource' = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  _class: 'CodeableConcept' = None,  geometry: 'CodeableConcept' = None,  copolymerConnectivity: 'CodeableConcept' = None,  modification: str = None,  monomerSet: 'MonomerSet' = None,  repeat: 'Repeat' = None, ):
         self.resourceType: str = resourceType or "SubstancePolymer"
         self.id: str = id 
         self.meta: 'Meta' = meta 
@@ -409,7 +409,7 @@ class SubstancePolymer(DomainResource):
         self._class: 'CodeableConcept' = _class 
         self.geometry: 'CodeableConcept' = geometry 
         self.copolymerConnectivity: list['CodeableConcept'] = copolymerConnectivity or []
-        self.modification: str = modification or []
+        self.modification: list[str] = modification or []
         self.monomerSet: list['MonomerSet'] = monomerSet or []
         self.repeat: list['Repeat'] = repeat or []
         
@@ -430,8 +430,8 @@ class SubstancePolymer(DomainResource):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)

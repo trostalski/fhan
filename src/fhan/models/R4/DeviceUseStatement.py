@@ -1,20 +1,20 @@
 """
 Generated class for DeviceUseStatement. 
-Time: 2023-09-25 16:30:45
+Time: 2023-09-27 15:54:17
 """
 from importlib import import_module
 import inspect
 
-from fhan.models.R4.Identifier import *
 from fhan.models.R4.Meta import *
-from fhan.models.R4.Annotation import *
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Period import *
 from fhan.models.R4.Timing import *
-from fhan.models.R4.Extension import *
-from fhan.models.R4.Reference import *
+from fhan.models.R4.Annotation import *
+from fhan.models.R4.Period import *
 from fhan.models.R4.Resource import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Extension import *
 from fhan.models.R4.Narrative import *
+from fhan.models.R4.Reference import *
 from fhan.models.R4.DomainResource import *
 
 
@@ -25,26 +25,26 @@ class DeviceUseStatement(DomainResource):
     :param str implicitRules: A set of rules under which this content was created
     :param str language: Language of the resource content
     :param 'Narrative' text: Text summary of the resource, for human interpretation
-    :param list['Resource'] contained: Contained, inline Resources
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored
-    :param list['Identifier'] identifier: External identifier for this record
-    :param list['Reference'] basedOn: Fulfills plan, proposal or order
+    :param 'Resource' contained: Contained, inline Resources
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored
+    :param 'Identifier' identifier: External identifier for this record
+    :param 'Reference' basedOn: Fulfills plan, proposal or order
     :param str status: active | completed | entered-in-error +
     :param 'Reference' subject: Patient using device
-    :param list['Reference'] derivedFrom: Supporting information
+    :param 'Reference' derivedFrom: Supporting information
     :param 'Timing' timingTiming: How often  the device was used
     :param 'Period' timingPeriod: How often  the device was used
     :param str timingDateTime: How often  the device was used
     :param str recordedOn: When statement was recorded
     :param 'Reference' source: Who made the statement
     :param 'Reference' device: Reference to device used
-    :param list['CodeableConcept'] reasonCode: Why device was used
-    :param list['Reference'] reasonReference: Why was DeviceUseStatement performed?
+    :param 'CodeableConcept' reasonCode: Why device was used
+    :param 'Reference' reasonReference: Why was DeviceUseStatement performed?
     :param 'CodeableConcept' bodySite: Target body site
-    :param list['Annotation'] note: Addition details (comments, instructions)
+    :param 'Annotation' note: Addition details (comments, instructions)
     """
-    def __init__(self, resourceType: str = "DeviceUseStatement",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  identifier: list['Identifier'] = None,  basedOn: list['Reference'] = None,  status: str = None,  subject: 'Reference' = None,  derivedFrom: list['Reference'] = None,  timingTiming: 'Timing' = None,  timingPeriod: 'Period' = None,  timingDateTime: str = None,  recordedOn: str = None,  source: 'Reference' = None,  device: 'Reference' = None,  reasonCode: list['CodeableConcept'] = None,  reasonReference: list['Reference'] = None,  bodySite: 'CodeableConcept' = None,  note: list['Annotation'] = None, ):
+    def __init__(self, resourceType: str = "DeviceUseStatement",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: 'Resource' = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  identifier: 'Identifier' = None,  basedOn: 'Reference' = None,  status: str = None,  subject: 'Reference' = None,  derivedFrom: 'Reference' = None,  timingTiming: 'Timing' = None,  timingPeriod: 'Period' = None,  timingDateTime: str = None,  recordedOn: str = None,  source: 'Reference' = None,  device: 'Reference' = None,  reasonCode: 'CodeableConcept' = None,  reasonReference: 'Reference' = None,  bodySite: 'CodeableConcept' = None,  note: 'Annotation' = None, ):
         self.resourceType: str = resourceType or "DeviceUseStatement"
         self.id: str = id 
         self.meta: 'Meta' = meta 
@@ -87,8 +87,8 @@ class DeviceUseStatement(DomainResource):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)

@@ -1,17 +1,17 @@
 """
 Generated class for SubstanceProtein. 
-Time: 2023-09-25 16:30:45
+Time: 2023-09-27 15:54:17
 """
 from importlib import import_module
 import inspect
 
-from fhan.models.R4.Identifier import *
 from fhan.models.R4.Attachment import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Extension import *
 from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Meta import *
 from fhan.models.R4.Resource import *
+from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.Extension import *
 from fhan.models.R4.Narrative import *
 from fhan.models.R4.DomainResource import *
 
@@ -19,10 +19,10 @@ from fhan.models.R4.DomainResource import *
     
     
 
-class Subunit(ModelBase):
+class Subunit(BaseModel):
     """ This subclause refers to the description of each subunit constituting the SubstanceProtein. A subunit is a linear sequence of amino acids linked through peptide bonds. The Subunit information shall be provided when the finished SubstanceProtein is a complex of multiple sequences; subunits are not used to delineate domains within a single sequence. Subunits are listed in order of decreasing length; sequences of the same length will be ordered by decreasing molecular weight; subunits that have identical sequences will be repeated multiple times.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param int subunit: Index of primary sequences of amino acids linked through peptide bonds in order of decreasing length. Sequences of the same length will be ordered by molecular weight. Subunits that have identical sequences will be repeated and have sequential subscripts
     :param str sequence: The sequence information shall be provided enumerating the amino acids from N- to C-terminal end using standard single-letter amino acid codes. Uppercase shall be used for L-amino acids and lowercase for D-amino acids. Transcribed SubstanceProteins will always be described using the translated sequence; for synthetic peptide containing amino acids that are not represented with a single letter code an X should be used within the sequence. The modified amino acids will be distinguished by their position in the sequence
     :param int length: Length of linear sequences of amino acids contained in the subunit
@@ -32,7 +32,7 @@ class Subunit(ModelBase):
     :param 'Identifier' cTerminalModificationId: Unique identifier for molecular fragment modification based on the ISO 11238 Substance ID
     :param str cTerminalModification: The modification at the C-terminal shall be specified
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  subunit: int = None,  sequence: str = None,  length: int = None,  sequenceAttachment: 'Attachment' = None,  nTerminalModificationId: 'Identifier' = None,  nTerminalModification: str = None,  cTerminalModificationId: 'Identifier' = None,  cTerminalModification: str = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  subunit: int = None,  sequence: str = None,  length: int = None,  sequenceAttachment: 'Attachment' = None,  nTerminalModificationId: 'Identifier' = None,  nTerminalModification: str = None,  cTerminalModificationId: 'Identifier' = None,  cTerminalModification: str = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -62,8 +62,8 @@ class Subunit(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -91,15 +91,15 @@ class SubstanceProtein(DomainResource):
     :param str implicitRules: A set of rules under which this content was created
     :param str language: Language of the resource content
     :param 'Narrative' text: Text summary of the resource, for human interpretation
-    :param list['Resource'] contained: Contained, inline Resources
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored
+    :param 'Resource' contained: Contained, inline Resources
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored
     :param 'CodeableConcept' sequenceType: The SubstanceProtein descriptive elements will only be used when a complete or partial amino acid sequence is available or derivable from a nucleic acid sequence
     :param int numberOfSubunits: Number of linear sequences of amino acids linked through peptide bonds. The number of subunits constituting the SubstanceProtein shall be described. It is possible that the number of subunits can be variable
     :param str disulfideLinkage: The disulphide bond between two cysteine residues either on the same subunit or on two different subunits shall be described. The position of the disulfide bonds in the SubstanceProtein shall be listed in increasing order of subunit number and position within subunit followed by the abbreviation of the amino acids involved. The disulfide linkage positions shall actually contain the amino acid Cysteine at the respective positions
-    :param list['Subunit'] subunit: This subclause refers to the description of each subunit constituting the SubstanceProtein. A subunit is a linear sequence of amino acids linked through peptide bonds. The Subunit information shall be provided when the finished SubstanceProtein is a complex of multiple sequences; subunits are not used to delineate domains within a single sequence. Subunits are listed in order of decreasing length; sequences of the same length will be ordered by decreasing molecular weight; subunits that have identical sequences will be repeated multiple times
+    :param 'Subunit' subunit: This subclause refers to the description of each subunit constituting the SubstanceProtein. A subunit is a linear sequence of amino acids linked through peptide bonds. The Subunit information shall be provided when the finished SubstanceProtein is a complex of multiple sequences; subunits are not used to delineate domains within a single sequence. Subunits are listed in order of decreasing length; sequences of the same length will be ordered by decreasing molecular weight; subunits that have identical sequences will be repeated multiple times
     """
-    def __init__(self, resourceType: str = "SubstanceProtein",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  sequenceType: 'CodeableConcept' = None,  numberOfSubunits: int = None,  disulfideLinkage: str = None,  subunit: list['Subunit'] = None, ):
+    def __init__(self, resourceType: str = "SubstanceProtein",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: 'Resource' = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  sequenceType: 'CodeableConcept' = None,  numberOfSubunits: int = None,  disulfideLinkage: str = None,  subunit: 'Subunit' = None, ):
         self.resourceType: str = resourceType or "SubstanceProtein"
         self.id: str = id 
         self.meta: 'Meta' = meta 
@@ -111,7 +111,7 @@ class SubstanceProtein(DomainResource):
         self.modifierExtension: list['Extension'] = modifierExtension or []
         self.sequenceType: 'CodeableConcept' = sequenceType 
         self.numberOfSubunits: int = numberOfSubunits 
-        self.disulfideLinkage: str = disulfideLinkage or []
+        self.disulfideLinkage: list[str] = disulfideLinkage or []
         self.subunit: list['Subunit'] = subunit or []
         
 
@@ -131,8 +131,8 @@ class SubstanceProtein(DomainResource):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)

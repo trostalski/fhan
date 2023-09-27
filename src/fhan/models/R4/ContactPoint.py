@@ -1,25 +1,25 @@
 """
 Generated class for ContactPoint. 
-Time: 2023-09-25 16:30:45
+Time: 2023-09-27 15:54:17
 """
 from importlib import import_module
 import inspect
 
 from fhan.models.R4.Period import *
 from fhan.models.R4.Extension import *
-from fhan.models.generator_models import ModelBase
+from fhan.models.generator_models import BaseModel
 
-class ContactPoint(ModelBase):
+class ContactPoint(BaseModel):
     """ Base StructureDefinition for ContactPoint Type: Details for all kinds of technology mediated contact points for a person or organization, including telephone, email, etc.
     :param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
+    :param 'Extension' extension: Additional content defined by implementations
     :param str system: phone | fax | email | pager | url | sms | other
     :param str value: The actual contact point details
     :param str use: home | work | temp | old | mobile - purpose of this contact point
     :param int rank: Specify preferred order of use (1 = highest)
     :param 'Period' period: Time period when the contact point was/is in use
     """
-    def __init__(self, resourceType: str = "ContactPoint",  id: str = None,  extension: list['Extension'] = None,  system: str = None,  value: str = None,  use: str = None,  rank: int = None,  period: 'Period' = None, ):
+    def __init__(self, resourceType: str = "ContactPoint",  id: str = None,  extension: 'Extension' = None,  system: str = None,  value: str = None,  use: str = None,  rank: int = None,  period: 'Period' = None, ):
         self.resourceType: str = resourceType or "ContactPoint"
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
@@ -46,8 +46,8 @@ class ContactPoint(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)

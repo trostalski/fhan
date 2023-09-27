@@ -1,37 +1,37 @@
 """
 Generated class for RelatedPerson. 
-Time: 2023-09-25 16:30:45
+Time: 2023-09-27 15:54:17
 """
 from importlib import import_module
 import inspect
 
-from fhan.models.R4.ContactPoint import *
-from fhan.models.R4.Identifier import *
 from fhan.models.R4.Attachment import *
-from fhan.models.R4.Meta import *
 from fhan.models.R4.HumanName import *
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Period import *
-from fhan.models.R4.Address import *
-from fhan.models.R4.Extension import *
-from fhan.models.R4.Reference import *
+from fhan.models.R4.Meta import *
 from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Period import *
 from fhan.models.R4.Resource import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.ContactPoint import *
+from fhan.models.R4.Extension import *
 from fhan.models.R4.Narrative import *
+from fhan.models.R4.Address import *
+from fhan.models.R4.Reference import *
 from fhan.models.R4.DomainResource import *
 
 
     
     
 
-class Communication(ModelBase):
+class Communication(BaseModel):
     """ A language which may be used to communicate with about the patient's health.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param 'CodeableConcept' language: The language which can be used to communicate with the patient about his or her health
     :param bool preferred: Language preference indicator
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  language: 'CodeableConcept' = None,  preferred: bool = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  language: 'CodeableConcept' = None,  preferred: bool = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -55,8 +55,8 @@ class Communication(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -84,23 +84,23 @@ class RelatedPerson(DomainResource):
     :param str implicitRules: A set of rules under which this content was created
     :param str language: Language of the resource content
     :param 'Narrative' text: Text summary of the resource, for human interpretation
-    :param list['Resource'] contained: Contained, inline Resources
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored
-    :param list['Identifier'] identifier: A human identifier for this person
+    :param 'Resource' contained: Contained, inline Resources
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored
+    :param 'Identifier' identifier: A human identifier for this person
     :param bool active: Whether this related person's record is in active use
     :param 'Reference' patient: The patient this person is related to
-    :param list['CodeableConcept'] relationship: The nature of the relationship
-    :param list['HumanName'] name: A name associated with the person
-    :param list['ContactPoint'] telecom: A contact detail for the person
+    :param 'CodeableConcept' relationship: The nature of the relationship
+    :param 'HumanName' name: A name associated with the person
+    :param 'ContactPoint' telecom: A contact detail for the person
     :param str gender: male | female | other | unknown
     :param str birthDate: The date on which the related person was born
-    :param list['Address'] address: Address where the related person can be contacted or visited
-    :param list['Attachment'] photo: Image of the person
+    :param 'Address' address: Address where the related person can be contacted or visited
+    :param 'Attachment' photo: Image of the person
     :param 'Period' period: Period of time that this relationship is considered valid
-    :param list['Communication'] communication: A language which may be used to communicate with about the patient's health
+    :param 'Communication' communication: A language which may be used to communicate with about the patient's health
     """
-    def __init__(self, resourceType: str = "RelatedPerson",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  identifier: list['Identifier'] = None,  active: bool = None,  patient: 'Reference' = None,  relationship: list['CodeableConcept'] = None,  name: list['HumanName'] = None,  telecom: list['ContactPoint'] = None,  gender: str = None,  birthDate: str = None,  address: list['Address'] = None,  photo: list['Attachment'] = None,  period: 'Period' = None,  communication: list['Communication'] = None, ):
+    def __init__(self, resourceType: str = "RelatedPerson",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: 'Resource' = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  identifier: 'Identifier' = None,  active: bool = None,  patient: 'Reference' = None,  relationship: 'CodeableConcept' = None,  name: 'HumanName' = None,  telecom: 'ContactPoint' = None,  gender: str = None,  birthDate: str = None,  address: 'Address' = None,  photo: 'Attachment' = None,  period: 'Period' = None,  communication: 'Communication' = None, ):
         self.resourceType: str = resourceType or "RelatedPerson"
         self.id: str = id 
         self.meta: 'Meta' = meta 
@@ -140,8 +140,8 @@ class RelatedPerson(DomainResource):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)

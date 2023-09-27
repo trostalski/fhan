@@ -1,0 +1,19 @@
+# generated at {{ time }} from {{ source_script }}
+from {{ model_import_path }} import SearchBundle
+
+class SearchResourceMixin:
+    """This mixin class provides the SearchHandler with methods for each
+    resource type. The methods are syntactic sugar for the _search method.
+    """
+    def __init__(self):
+        pass
+{% for resource_type in resource_types %}
+    def {{ resource_type }}(
+        self,
+        search: str = None,
+        as_object: bool = False,
+    ) -> dict | SearchBundle:
+        """Search for {{ resource_type }}s. The search string is passed
+        directly to the API."""
+        return self._search("{{ resource_type }}", search, as_object)
+{% endfor %}

@@ -1,11 +1,8 @@
-from typing import Literal
 import logging
-import io
 import os
 import pathlib
 from datetime import datetime
 
-import requests
 from jinja2 import Environment, FileSystemLoader
 
 from fhan.core.fhir_package import FhirPackage

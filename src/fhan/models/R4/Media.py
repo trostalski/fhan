@@ -1,20 +1,20 @@
 """
 Generated class for Media. 
-Time: 2023-09-25 16:30:45
+Time: 2023-09-27 15:54:17
 """
 from importlib import import_module
 import inspect
 
-from fhan.models.R4.Identifier import *
 from fhan.models.R4.Attachment import *
 from fhan.models.R4.Meta import *
 from fhan.models.R4.Annotation import *
-from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Period import *
-from fhan.models.R4.Extension import *
-from fhan.models.R4.Reference import *
 from fhan.models.R4.Resource import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Extension import *
 from fhan.models.R4.Narrative import *
+from fhan.models.R4.Reference import *
 from fhan.models.R4.DomainResource import *
 
 
@@ -25,12 +25,12 @@ class Media(DomainResource):
     :param str implicitRules: A set of rules under which this content was created
     :param str language: Language of the resource content
     :param 'Narrative' text: Text summary of the resource, for human interpretation
-    :param list['Resource'] contained: Contained, inline Resources
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored
-    :param list['Identifier'] identifier: Identifier(s) for the image
-    :param list['Reference'] basedOn: Procedure that caused this media to be created
-    :param list['Reference'] partOf: Part of referenced event
+    :param 'Resource' contained: Contained, inline Resources
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored
+    :param 'Identifier' identifier: Identifier(s) for the image
+    :param 'Reference' basedOn: Procedure that caused this media to be created
+    :param 'Reference' partOf: Part of referenced event
     :param str status: preparation | in-progress | not-done | on-hold | stopped | completed | entered-in-error | unknown
     :param 'CodeableConcept' type: Classification of media as image, video, or audio
     :param 'CodeableConcept' modality: The type of acquisition equipment/process
@@ -41,7 +41,7 @@ class Media(DomainResource):
     :param 'Period' createdPeriod: When Media was collected
     :param str issued: Date/Time this version was made available
     :param 'Reference' operator: The person who generated the image
-    :param list['CodeableConcept'] reasonCode: Why was event performed?
+    :param 'CodeableConcept' reasonCode: Why was event performed?
     :param 'CodeableConcept' bodySite: Observed body part
     :param str deviceName: Name of the device/manufacturer
     :param 'Reference' device: Observing Device
@@ -50,9 +50,9 @@ class Media(DomainResource):
     :param int frames: Number of frames if > 1 (photo)
     :param float duration: Length in seconds (audio / video)
     :param 'Attachment' content: Actual Media - reference or data
-    :param list['Annotation'] note: Comments made about the media
+    :param 'Annotation' note: Comments made about the media
     """
-    def __init__(self, resourceType: str = "Media",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  identifier: list['Identifier'] = None,  basedOn: list['Reference'] = None,  partOf: list['Reference'] = None,  status: str = None,  type: 'CodeableConcept' = None,  modality: 'CodeableConcept' = None,  view: 'CodeableConcept' = None,  subject: 'Reference' = None,  encounter: 'Reference' = None,  createdDateTime: str = None,  createdPeriod: 'Period' = None,  issued: str = None,  operator: 'Reference' = None,  reasonCode: list['CodeableConcept'] = None,  bodySite: 'CodeableConcept' = None,  deviceName: str = None,  device: 'Reference' = None,  height: int = None,  width: int = None,  frames: int = None,  duration: float = None,  content: 'Attachment' = None,  note: list['Annotation'] = None, ):
+    def __init__(self, resourceType: str = "Media",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: 'Resource' = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  identifier: 'Identifier' = None,  basedOn: 'Reference' = None,  partOf: 'Reference' = None,  status: str = None,  type: 'CodeableConcept' = None,  modality: 'CodeableConcept' = None,  view: 'CodeableConcept' = None,  subject: 'Reference' = None,  encounter: 'Reference' = None,  createdDateTime: str = None,  createdPeriod: 'Period' = None,  issued: str = None,  operator: 'Reference' = None,  reasonCode: 'CodeableConcept' = None,  bodySite: 'CodeableConcept' = None,  deviceName: str = None,  device: 'Reference' = None,  height: int = None,  width: int = None,  frames: int = None,  duration: float = None,  content: 'Attachment' = None,  note: 'Annotation' = None, ):
         self.resourceType: str = resourceType or "Media"
         self.id: str = id 
         self.meta: 'Meta' = meta 
@@ -103,8 +103,8 @@ class Media(DomainResource):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)

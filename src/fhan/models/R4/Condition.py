@@ -1,37 +1,37 @@
 """
 Generated class for Condition. 
-Time: 2023-09-25 16:30:45
+Time: 2023-09-27 15:54:17
 """
 from importlib import import_module
 import inspect
 
-from fhan.models.R4.Identifier import *
+from fhan.models.R4.BackboneElement import *
 from fhan.models.R4.Meta import *
-from fhan.models.R4.Annotation import *
 from fhan.models.R4.Age import *
-from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Annotation import *
 from fhan.models.R4.Period import *
+from fhan.models.R4.Resource import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Range import *
 from fhan.models.R4.Extension import *
-from fhan.models.R4.Reference import *
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Resource import *
 from fhan.models.R4.Narrative import *
+from fhan.models.R4.Reference import *
 from fhan.models.R4.DomainResource import *
 
 
     
     
 
-class Stage(ModelBase):
+class Stage(BaseModel):
     """ Clinical stage or grade of a condition. May include formal severity assessments.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param 'CodeableConcept' summary: Simple summary (disease specific)
-    :param list['Reference'] assessment: Formal record of assessment
+    :param 'Reference' assessment: Formal record of assessment
     :param 'CodeableConcept' type: Kind of staging
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  summary: 'CodeableConcept' = None,  assessment: list['Reference'] = None,  type: 'CodeableConcept' = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  summary: 'CodeableConcept' = None,  assessment: 'Reference' = None,  type: 'CodeableConcept' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -56,8 +56,8 @@ class Stage(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -81,14 +81,14 @@ class Stage(ModelBase):
     
     
 
-class Evidence(ModelBase):
+class Evidence(BaseModel):
     """ Supporting evidence / manifestations that are the basis of the Condition's verification status, such as evidence that confirmed or refuted the condition.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param list['CodeableConcept'] code: Manifestation/symptom
-    :param list['Reference'] detail: Supporting information found elsewhere
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'CodeableConcept' code: Manifestation/symptom
+    :param 'Reference' detail: Supporting information found elsewhere
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  code: list['CodeableConcept'] = None,  detail: list['Reference'] = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  code: 'CodeableConcept' = None,  detail: 'Reference' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -112,8 +112,8 @@ class Evidence(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -141,16 +141,16 @@ class Condition(DomainResource):
     :param str implicitRules: A set of rules under which this content was created
     :param str language: Language of the resource content
     :param 'Narrative' text: Text summary of the resource, for human interpretation
-    :param list['Resource'] contained: Contained, inline Resources
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored
-    :param list['Identifier'] identifier: External Ids for this condition
+    :param 'Resource' contained: Contained, inline Resources
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored
+    :param 'Identifier' identifier: External Ids for this condition
     :param 'CodeableConcept' clinicalStatus: active | recurrence | relapse | inactive | remission | resolved
     :param 'CodeableConcept' verificationStatus: unconfirmed | provisional | differential | confirmed | refuted | entered-in-error
-    :param list['CodeableConcept'] category: problem-list-item | encounter-diagnosis
+    :param 'CodeableConcept' category: problem-list-item | encounter-diagnosis
     :param 'CodeableConcept' severity: Subjective severity of condition
     :param 'CodeableConcept' code: Identification of the condition, problem or diagnosis
-    :param list['CodeableConcept'] bodySite: Anatomical location, if relevant
+    :param 'CodeableConcept' bodySite: Anatomical location, if relevant
     :param 'Reference' subject: Who has the condition?
     :param 'Reference' encounter: Encounter created as part of
     :param str onsetDateTime: Estimated or actual date,  date-time, or age
@@ -166,11 +166,11 @@ class Condition(DomainResource):
     :param str recordedDate: Date record was first recorded
     :param 'Reference' recorder: Who recorded the condition
     :param 'Reference' asserter: Person who asserts this condition
-    :param list['Stage'] stage: Stage/grade, usually assessed formally
-    :param list['Evidence'] evidence: Supporting evidence
-    :param list['Annotation'] note: Additional information about the Condition
+    :param 'Stage' stage: Stage/grade, usually assessed formally
+    :param 'Evidence' evidence: Supporting evidence
+    :param 'Annotation' note: Additional information about the Condition
     """
-    def __init__(self, resourceType: str = "Condition",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  identifier: list['Identifier'] = None,  clinicalStatus: 'CodeableConcept' = None,  verificationStatus: 'CodeableConcept' = None,  category: list['CodeableConcept'] = None,  severity: 'CodeableConcept' = None,  code: 'CodeableConcept' = None,  bodySite: list['CodeableConcept'] = None,  subject: 'Reference' = None,  encounter: 'Reference' = None,  onsetDateTime: str = None,  onsetAge: 'Age' = None,  onsetPeriod: 'Period' = None,  onsetRange: 'Range' = None,  onsetString: str = None,  abatementDateTime: str = None,  abatementAge: 'Age' = None,  abatementPeriod: 'Period' = None,  abatementRange: 'Range' = None,  abatementString: str = None,  recordedDate: str = None,  recorder: 'Reference' = None,  asserter: 'Reference' = None,  stage: list['Stage'] = None,  evidence: list['Evidence'] = None,  note: list['Annotation'] = None, ):
+    def __init__(self, resourceType: str = "Condition",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: 'Resource' = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  identifier: 'Identifier' = None,  clinicalStatus: 'CodeableConcept' = None,  verificationStatus: 'CodeableConcept' = None,  category: 'CodeableConcept' = None,  severity: 'CodeableConcept' = None,  code: 'CodeableConcept' = None,  bodySite: 'CodeableConcept' = None,  subject: 'Reference' = None,  encounter: 'Reference' = None,  onsetDateTime: str = None,  onsetAge: 'Age' = None,  onsetPeriod: 'Period' = None,  onsetRange: 'Range' = None,  onsetString: str = None,  abatementDateTime: str = None,  abatementAge: 'Age' = None,  abatementPeriod: 'Period' = None,  abatementRange: 'Range' = None,  abatementString: str = None,  recordedDate: str = None,  recorder: 'Reference' = None,  asserter: 'Reference' = None,  stage: 'Stage' = None,  evidence: 'Evidence' = None,  note: 'Annotation' = None, ):
         self.resourceType: str = resourceType or "Condition"
         self.id: str = id 
         self.meta: 'Meta' = meta 
@@ -223,8 +223,8 @@ class Condition(DomainResource):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)

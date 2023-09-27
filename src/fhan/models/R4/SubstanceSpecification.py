@@ -1,32 +1,32 @@
 """
 Generated class for SubstanceSpecification. 
-Time: 2023-09-25 16:30:45
+Time: 2023-09-27 15:54:17
 """
 from importlib import import_module
 import inspect
 
-from fhan.models.R4.Identifier import *
-from fhan.models.R4.Quantity import *
 from fhan.models.R4.Attachment import *
+from fhan.models.R4.BackboneElement import *
 from fhan.models.R4.Meta import *
-from fhan.models.R4.Ratio import *
+from fhan.models.R4.Quantity import *
+from fhan.models.R4.Resource import *
+from fhan.models.R4.Identifier import *
 from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Range import *
+from fhan.models.R4.Ratio import *
 from fhan.models.R4.Extension import *
-from fhan.models.R4.Reference import *
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Resource import *
 from fhan.models.R4.Narrative import *
+from fhan.models.R4.Reference import *
 from fhan.models.R4.DomainResource import *
 
 
     
     
 
-class Moiety(ModelBase):
+class Moiety(BaseModel):
     """ Moiety, for structural modifications.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param 'CodeableConcept' role: Role that the moiety is playing
     :param 'Identifier' identifier: Identifier by which this moiety substance is known
     :param str name: Textual name for this moiety substance
@@ -36,7 +36,7 @@ class Moiety(ModelBase):
     :param 'Quantity' amountQuantity: Quantitative value for this moiety
     :param str amountString: Quantitative value for this moiety
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  role: 'CodeableConcept' = None,  identifier: 'Identifier' = None,  name: str = None,  stereochemistry: 'CodeableConcept' = None,  opticalActivity: 'CodeableConcept' = None,  molecularFormula: str = None,  amountQuantity: 'Quantity' = None,  amountString: str = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  role: 'CodeableConcept' = None,  identifier: 'Identifier' = None,  name: str = None,  stereochemistry: 'CodeableConcept' = None,  opticalActivity: 'CodeableConcept' = None,  molecularFormula: str = None,  amountQuantity: 'Quantity' = None,  amountString: str = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -66,8 +66,8 @@ class Moiety(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -91,10 +91,10 @@ class Moiety(ModelBase):
     
     
 
-class Property(ModelBase):
+class Property(BaseModel):
     """ General specifications for this substance, including how it is related to other substances.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param 'CodeableConcept' category: A category for this property, e.g. Physical, Chemical, Enzymatic
     :param 'CodeableConcept' code: Property type e.g. viscosity, pH, isoelectric point
     :param str parameters: Parameters that were used in the measurement of a property (e.g. for viscosity: measured at 20C with a pH of 7.1)
@@ -103,7 +103,7 @@ class Property(ModelBase):
     :param 'Quantity' amountQuantity: Quantitative value for this property
     :param str amountString: Quantitative value for this property
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  category: 'CodeableConcept' = None,  code: 'CodeableConcept' = None,  parameters: str = None,  definingSubstanceReference: 'Reference' = None,  definingSubstanceCodeableConcept: 'CodeableConcept' = None,  amountQuantity: 'Quantity' = None,  amountString: str = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  category: 'CodeableConcept' = None,  code: 'CodeableConcept' = None,  parameters: str = None,  definingSubstanceReference: 'Reference' = None,  definingSubstanceCodeableConcept: 'CodeableConcept' = None,  amountQuantity: 'Quantity' = None,  amountString: str = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -132,8 +132,8 @@ class Property(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -161,15 +161,15 @@ class Property(ModelBase):
     
     
 
-class MolecularWeight(ModelBase):
+class MolecularWeight(BaseModel):
     """ The molecular weight or weight range (for proteins, polymers or nucleic acids).:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param 'CodeableConcept' method: The method by which the molecular weight was determined
     :param 'CodeableConcept' type: Type of molecular weight such as exact, average (also known as. number average), weight average
     :param 'Quantity' amount: Used to capture quantitative values for a variety of elements. If only limits are given, the arithmetic mean would be the average. If only a single definite value for a given element is given, it would be captured in this field
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  method: 'CodeableConcept' = None,  type: 'CodeableConcept' = None,  amount: 'Quantity' = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  method: 'CodeableConcept' = None,  type: 'CodeableConcept' = None,  amount: 'Quantity' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -194,8 +194,8 @@ class MolecularWeight(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -220,17 +220,17 @@ class MolecularWeight(ModelBase):
     
     
 
-class Isotope(ModelBase):
+class Isotope(BaseModel):
     """ Applicable for single substances that contain a radionuclide or a non-natural isotopic ratio.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param 'Identifier' identifier: Substance identifier for each non-natural or radioisotope
     :param 'CodeableConcept' name: Substance name for each non-natural or radioisotope
     :param 'CodeableConcept' substitution: The type of isotopic substitution present in a single substance
     :param 'Quantity' halfLife: Half life - for a non-natural nuclide
     :param 'MolecularWeight' molecularWeight: The molecular weight or weight range (for proteins, polymers or nucleic acids)
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  identifier: 'Identifier' = None,  name: 'CodeableConcept' = None,  substitution: 'CodeableConcept' = None,  halfLife: 'Quantity' = None,  molecularWeight: 'MolecularWeight' = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  identifier: 'Identifier' = None,  name: 'CodeableConcept' = None,  substitution: 'CodeableConcept' = None,  halfLife: 'Quantity' = None,  molecularWeight: 'MolecularWeight' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -257,8 +257,8 @@ class Isotope(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -282,15 +282,15 @@ class Isotope(ModelBase):
     
     
 
-class Representation(ModelBase):
+class Representation(BaseModel):
     """ Molecular structural representation.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param 'CodeableConcept' type: The type of structure (e.g. Full, Partial, Representative)
     :param str representation: The structural representation as text string in a format e.g. InChI, SMILES, MOLFILE, CDX
     :param 'Attachment' attachment: An attached file with the structural representation
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  type: 'CodeableConcept' = None,  representation: str = None,  attachment: 'Attachment' = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  type: 'CodeableConcept' = None,  representation: str = None,  attachment: 'Attachment' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -315,8 +315,8 @@ class Representation(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -341,19 +341,19 @@ class Representation(ModelBase):
     
     
 
-class Structure(ModelBase):
+class Structure(BaseModel):
     """ Structural information.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param 'CodeableConcept' stereochemistry: Stereochemistry type
     :param 'CodeableConcept' opticalActivity: Optical activity type
     :param str molecularFormula: Molecular formula
     :param str molecularFormulaByMoiety: Specified per moiety according to the Hill system, i.e. first C, then H, then alphabetical, each moiety separated by a dot
-    :param list['Isotope'] isotope: Applicable for single substances that contain a radionuclide or a non-natural isotopic ratio
-    :param list['Reference'] source: Supporting literature
-    :param list['Representation'] representation: Molecular structural representation
+    :param 'Isotope' isotope: Applicable for single substances that contain a radionuclide or a non-natural isotopic ratio
+    :param 'Reference' source: Supporting literature
+    :param 'Representation' representation: Molecular structural representation
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  stereochemistry: 'CodeableConcept' = None,  opticalActivity: 'CodeableConcept' = None,  molecularFormula: str = None,  molecularFormulaByMoiety: str = None,  isotope: list['Isotope'] = None,  source: list['Reference'] = None,  representation: list['Representation'] = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  stereochemistry: 'CodeableConcept' = None,  opticalActivity: 'CodeableConcept' = None,  molecularFormula: str = None,  molecularFormulaByMoiety: str = None,  isotope: 'Isotope' = None,  source: 'Reference' = None,  representation: 'Representation' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -382,8 +382,8 @@ class Structure(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -407,17 +407,17 @@ class Structure(ModelBase):
     
     
 
-class Code(ModelBase):
+class Code(BaseModel):
     """ Codes associated with the substance.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param 'CodeableConcept' code: The specific code
     :param 'CodeableConcept' status: Status of the code assignment
     :param str statusDate: The date at which the code status is changed as part of the terminology maintenance
     :param str comment: Any comment can be provided in this field, if necessary
-    :param list['Reference'] source: Supporting literature
+    :param 'Reference' source: Supporting literature
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  code: 'CodeableConcept' = None,  status: 'CodeableConcept' = None,  statusDate: str = None,  comment: str = None,  source: list['Reference'] = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  code: 'CodeableConcept' = None,  status: 'CodeableConcept' = None,  statusDate: str = None,  comment: str = None,  source: 'Reference' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -444,8 +444,8 @@ class Code(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -471,15 +471,15 @@ class Code(ModelBase):
     
     
 
-class Official(ModelBase):
+class Official(BaseModel):
     """ Details of the official nature of this name.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param 'CodeableConcept' authority: Which authority uses this official name
     :param 'CodeableConcept' status: The status of the official name
     :param str date: Date of official name change
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  authority: 'CodeableConcept' = None,  status: 'CodeableConcept' = None,  date: str = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  authority: 'CodeableConcept' = None,  status: 'CodeableConcept' = None,  date: str = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -504,8 +504,8 @@ class Official(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -530,21 +530,21 @@ class Official(ModelBase):
     
     
 
-class Name(ModelBase):
+class Name(BaseModel):
     """ Names applicable to this substance.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str name: The actual name
     :param 'CodeableConcept' type: Name type
     :param 'CodeableConcept' status: The status of the name
     :param bool preferred: If this is the preferred name for this substance
-    :param list['CodeableConcept'] language: Language of the name
-    :param list['CodeableConcept'] domain: The use context of this name for example if there is a different name a drug active ingredient as opposed to a food colour additive
-    :param list['CodeableConcept'] jurisdiction: The jurisdiction where this name applies
-    :param list['Official'] official: Details of the official nature of this name
-    :param list['Reference'] source: Supporting literature
+    :param 'CodeableConcept' language: Language of the name
+    :param 'CodeableConcept' domain: The use context of this name for example if there is a different name a drug active ingredient as opposed to a food colour additive
+    :param 'CodeableConcept' jurisdiction: The jurisdiction where this name applies
+    :param 'Official' official: Details of the official nature of this name
+    :param 'Reference' source: Supporting literature
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  name: str = None,  type: 'CodeableConcept' = None,  status: 'CodeableConcept' = None,  preferred: bool = None,  language: list['CodeableConcept'] = None,  domain: list['CodeableConcept'] = None,  jurisdiction: list['CodeableConcept'] = None,  official: list['Official'] = None,  source: list['Reference'] = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  name: str = None,  type: 'CodeableConcept' = None,  status: 'CodeableConcept' = None,  preferred: bool = None,  language: 'CodeableConcept' = None,  domain: 'CodeableConcept' = None,  jurisdiction: 'CodeableConcept' = None,  official: 'Official' = None,  source: 'Reference' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -575,8 +575,8 @@ class Name(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -602,15 +602,15 @@ class Name(ModelBase):
     
     
 
-class Official(ModelBase):
+class Official(BaseModel):
     """ Details of the official nature of this name.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param 'CodeableConcept' authority: Which authority uses this official name
     :param 'CodeableConcept' status: The status of the official name
     :param str date: Date of official name change
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  authority: 'CodeableConcept' = None,  status: 'CodeableConcept' = None,  date: str = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  authority: 'CodeableConcept' = None,  status: 'CodeableConcept' = None,  date: str = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -635,8 +635,8 @@ class Official(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -661,21 +661,21 @@ class Official(ModelBase):
     
     
 
-class Synonym(ModelBase):
+class Synonym(BaseModel):
     """ Names applicable to this substance.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str name: The actual name
     :param 'CodeableConcept' type: Name type
     :param 'CodeableConcept' status: The status of the name
     :param bool preferred: If this is the preferred name for this substance
-    :param list['CodeableConcept'] language: Language of the name
-    :param list['CodeableConcept'] domain: The use context of this name for example if there is a different name a drug active ingredient as opposed to a food colour additive
-    :param list['CodeableConcept'] jurisdiction: The jurisdiction where this name applies
-    :param list['Official'] official: Details of the official nature of this name
-    :param list['Reference'] source: Supporting literature
+    :param 'CodeableConcept' language: Language of the name
+    :param 'CodeableConcept' domain: The use context of this name for example if there is a different name a drug active ingredient as opposed to a food colour additive
+    :param 'CodeableConcept' jurisdiction: The jurisdiction where this name applies
+    :param 'Official' official: Details of the official nature of this name
+    :param 'Reference' source: Supporting literature
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  name: str = None,  type: 'CodeableConcept' = None,  status: 'CodeableConcept' = None,  preferred: bool = None,  language: list['CodeableConcept'] = None,  domain: list['CodeableConcept'] = None,  jurisdiction: list['CodeableConcept'] = None,  official: list['Official'] = None,  source: list['Reference'] = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  name: str = None,  type: 'CodeableConcept' = None,  status: 'CodeableConcept' = None,  preferred: bool = None,  language: 'CodeableConcept' = None,  domain: 'CodeableConcept' = None,  jurisdiction: 'CodeableConcept' = None,  official: 'Official' = None,  source: 'Reference' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -706,8 +706,8 @@ class Synonym(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -733,15 +733,15 @@ class Synonym(ModelBase):
     
     
 
-class Official(ModelBase):
+class Official(BaseModel):
     """ Details of the official nature of this name.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param 'CodeableConcept' authority: Which authority uses this official name
     :param 'CodeableConcept' status: The status of the official name
     :param str date: Date of official name change
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  authority: 'CodeableConcept' = None,  status: 'CodeableConcept' = None,  date: str = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  authority: 'CodeableConcept' = None,  status: 'CodeableConcept' = None,  date: str = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -766,8 +766,8 @@ class Official(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -792,21 +792,21 @@ class Official(ModelBase):
     
     
 
-class Translation(ModelBase):
+class Translation(BaseModel):
     """ Names applicable to this substance.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str name: The actual name
     :param 'CodeableConcept' type: Name type
     :param 'CodeableConcept' status: The status of the name
     :param bool preferred: If this is the preferred name for this substance
-    :param list['CodeableConcept'] language: Language of the name
-    :param list['CodeableConcept'] domain: The use context of this name for example if there is a different name a drug active ingredient as opposed to a food colour additive
-    :param list['CodeableConcept'] jurisdiction: The jurisdiction where this name applies
-    :param list['Official'] official: Details of the official nature of this name
-    :param list['Reference'] source: Supporting literature
+    :param 'CodeableConcept' language: Language of the name
+    :param 'CodeableConcept' domain: The use context of this name for example if there is a different name a drug active ingredient as opposed to a food colour additive
+    :param 'CodeableConcept' jurisdiction: The jurisdiction where this name applies
+    :param 'Official' official: Details of the official nature of this name
+    :param 'Reference' source: Supporting literature
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  name: str = None,  type: 'CodeableConcept' = None,  status: 'CodeableConcept' = None,  preferred: bool = None,  language: list['CodeableConcept'] = None,  domain: list['CodeableConcept'] = None,  jurisdiction: list['CodeableConcept'] = None,  official: list['Official'] = None,  source: list['Reference'] = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  name: str = None,  type: 'CodeableConcept' = None,  status: 'CodeableConcept' = None,  preferred: bool = None,  language: 'CodeableConcept' = None,  domain: 'CodeableConcept' = None,  jurisdiction: 'CodeableConcept' = None,  official: 'Official' = None,  source: 'Reference' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -837,8 +837,8 @@ class Translation(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -862,10 +862,10 @@ class Translation(ModelBase):
     
     
 
-class Relationship(ModelBase):
+class Relationship(BaseModel):
     """ A link between this substance and another, with details of the relationship.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param 'Reference' substanceReference: A pointer to another substance, as a resource or just a representational code
     :param 'CodeableConcept' substanceCodeableConcept: A pointer to another substance, as a resource or just a representational code
     :param 'CodeableConcept' relationship: For example "salt to parent", "active moiety", "starting material"
@@ -876,9 +876,9 @@ class Relationship(ModelBase):
     :param str amountString: A numeric factor for the relationship, for instance to express that the salt of a substance has some percentage of the active substance in relation to some other
     :param 'Ratio' amountRatioLowLimit: For use when the numeric
     :param 'CodeableConcept' amountType: An operator for the amount, for example "average", "approximately", "less than"
-    :param list['Reference'] source: Supporting literature
+    :param 'Reference' source: Supporting literature
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  substanceReference: 'Reference' = None,  substanceCodeableConcept: 'CodeableConcept' = None,  relationship: 'CodeableConcept' = None,  isDefining: bool = None,  amountQuantity: 'Quantity' = None,  amountRange: 'Range' = None,  amountRatio: 'Ratio' = None,  amountString: str = None,  amountRatioLowLimit: 'Ratio' = None,  amountType: 'CodeableConcept' = None,  source: list['Reference'] = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  substanceReference: 'Reference' = None,  substanceCodeableConcept: 'CodeableConcept' = None,  relationship: 'CodeableConcept' = None,  isDefining: bool = None,  amountQuantity: 'Quantity' = None,  amountRange: 'Range' = None,  amountRatio: 'Ratio' = None,  amountString: str = None,  amountRatioLowLimit: 'Ratio' = None,  amountType: 'CodeableConcept' = None,  source: 'Reference' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -911,8 +911,8 @@ class Relationship(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -940,31 +940,31 @@ class SubstanceSpecification(DomainResource):
     :param str implicitRules: A set of rules under which this content was created
     :param str language: Language of the resource content
     :param 'Narrative' text: Text summary of the resource, for human interpretation
-    :param list['Resource'] contained: Contained, inline Resources
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored
+    :param 'Resource' contained: Contained, inline Resources
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored
     :param 'Identifier' identifier: Identifier by which this substance is known
     :param 'CodeableConcept' type: High level categorization, e.g. polymer or nucleic acid
     :param 'CodeableConcept' status: Status of substance within the catalogue e.g. approved
     :param 'CodeableConcept' domain: If the substance applies to only human or veterinary use
     :param str description: Textual description of the substance
-    :param list['Reference'] source: Supporting literature
+    :param 'Reference' source: Supporting literature
     :param str comment: Textual comment about this record of a substance
-    :param list['Moiety'] moiety: Moiety, for structural modifications
-    :param list['Property'] property: General specifications for this substance, including how it is related to other substances
+    :param 'Moiety' moiety: Moiety, for structural modifications
+    :param 'Property' property: General specifications for this substance, including how it is related to other substances
     :param 'Reference' referenceInformation: General information detailing this substance
     :param 'Structure' structure: Structural information
-    :param list['Code'] code: Codes associated with the substance
-    :param list['Name'] name: Names applicable to this substance
-    :param list['Synonym'] synonym: Names applicable to this substance
-    :param list['Translation'] translation: Names applicable to this substance
-    :param list['Relationship'] relationship: A link between this substance and another, with details of the relationship
+    :param 'Code' code: Codes associated with the substance
+    :param 'Name' name: Names applicable to this substance
+    :param 'Synonym' synonym: Names applicable to this substance
+    :param 'Translation' translation: Names applicable to this substance
+    :param 'Relationship' relationship: A link between this substance and another, with details of the relationship
     :param 'Reference' nucleicAcid: Data items specific to nucleic acids
     :param 'Reference' polymer: Data items specific to polymers
     :param 'Reference' protein: Data items specific to proteins
     :param 'Reference' sourceMaterial: Material or taxonomic/anatomical source for the substance
     """
-    def __init__(self, resourceType: str = "SubstanceSpecification",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  identifier: 'Identifier' = None,  type: 'CodeableConcept' = None,  status: 'CodeableConcept' = None,  domain: 'CodeableConcept' = None,  description: str = None,  source: list['Reference'] = None,  comment: str = None,  moiety: list['Moiety'] = None,  property: list['Property'] = None,  referenceInformation: 'Reference' = None,  structure: 'Structure' = None,  code: list['Code'] = None,  name: list['Name'] = None,  synonym: list['Synonym'] = None,  translation: list['Translation'] = None,  relationship: list['Relationship'] = None,  nucleicAcid: 'Reference' = None,  polymer: 'Reference' = None,  protein: 'Reference' = None,  sourceMaterial: 'Reference' = None, ):
+    def __init__(self, resourceType: str = "SubstanceSpecification",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: 'Resource' = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  identifier: 'Identifier' = None,  type: 'CodeableConcept' = None,  status: 'CodeableConcept' = None,  domain: 'CodeableConcept' = None,  description: str = None,  source: 'Reference' = None,  comment: str = None,  moiety: 'Moiety' = None,  property: 'Property' = None,  referenceInformation: 'Reference' = None,  structure: 'Structure' = None,  code: 'Code' = None,  name: 'Name' = None,  synonym: 'Synonym' = None,  translation: 'Translation' = None,  relationship: 'Relationship' = None,  nucleicAcid: 'Reference' = None,  polymer: 'Reference' = None,  protein: 'Reference' = None,  sourceMaterial: 'Reference' = None, ):
         self.resourceType: str = resourceType or "SubstanceSpecification"
         self.id: str = id 
         self.meta: 'Meta' = meta 
@@ -1012,8 +1012,8 @@ class SubstanceSpecification(DomainResource):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)

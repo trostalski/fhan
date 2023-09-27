@@ -1,17 +1,17 @@
 """
 Generated class for SubstanceNucleicAcid. 
-Time: 2023-09-25 16:30:45
+Time: 2023-09-27 15:54:17
 """
 from importlib import import_module
 import inspect
 
-from fhan.models.R4.Identifier import *
 from fhan.models.R4.Attachment import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Extension import *
 from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Meta import *
 from fhan.models.R4.Resource import *
+from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.Extension import *
 from fhan.models.R4.Narrative import *
 from fhan.models.R4.DomainResource import *
 
@@ -21,16 +21,16 @@ from fhan.models.R4.DomainResource import *
     
     
 
-class Linkage(ModelBase):
+class Linkage(BaseModel):
     """ The linkages between sugar residues will also be captured.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str connectivity: The entity that links the sugar residues together should also be captured for nearly all naturally occurring nucleic acid the linkage is a phosphate group. For many synthetic oligonucleotides phosphorothioate linkages are often seen. Linkage connectivity is assumed to be 3’-5’. If the linkage is either 3’-3’ or 5’-5’ this should be specified
     :param 'Identifier' identifier: Each linkage will be registered as a fragment and have an ID
     :param str name: Each linkage will be registered as a fragment and have at least one name. A single name shall be assigned to each linkage
     :param str residueSite: Residues shall be captured as described in 5.3.6.8.3
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  connectivity: str = None,  identifier: 'Identifier' = None,  name: str = None,  residueSite: str = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  connectivity: str = None,  identifier: 'Identifier' = None,  name: str = None,  residueSite: str = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -56,8 +56,8 @@ class Linkage(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -81,15 +81,15 @@ class Linkage(ModelBase):
     
     
 
-class Sugar(ModelBase):
+class Sugar(BaseModel):
     """ 5.3.6.8.1 Sugar ID (Mandatory).:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param 'Identifier' identifier: The Substance ID of the sugar or sugar-like component that make up the nucleotide
     :param str name: The name of the sugar or sugar-like component that make up the nucleotide
     :param str residueSite: The residues that contain a given sugar will be captured. The order of given residues will be captured in the 5‘-3‘direction consistent with the base sequences listed above
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  identifier: 'Identifier' = None,  name: str = None,  residueSite: str = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  identifier: 'Identifier' = None,  name: str = None,  residueSite: str = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -114,8 +114,8 @@ class Sugar(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -140,20 +140,20 @@ class Sugar(ModelBase):
     
     
 
-class Subunit(ModelBase):
+class Subunit(BaseModel):
     """ Subunits are listed in order of decreasing length; sequences of the same length will be ordered by molecular weight; subunits that have identical sequences will be repeated multiple times.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param int subunit: Index of linear sequences of nucleic acids in order of decreasing length. Sequences of the same length will be ordered by molecular weight. Subunits that have identical sequences will be repeated and have sequential subscripts
     :param str sequence: Actual nucleotide sequence notation from 5' to 3' end using standard single letter codes. In addition to the base sequence, sugar and type of phosphate or non-phosphate linkage should also be captured
     :param int length: The length of the sequence shall be captured
     :param 'Attachment' sequenceAttachment: (TBC)
     :param 'CodeableConcept' fivePrime: The nucleotide present at the 5’ terminal shall be specified based on a controlled vocabulary. Since the sequence is represented from the 5' to the 3' end, the 5’ prime nucleotide is the letter at the first position in the sequence. A separate representation would be redundant
     :param 'CodeableConcept' threePrime: The nucleotide present at the 3’ terminal shall be specified based on a controlled vocabulary. Since the sequence is represented from the 5' to the 3' end, the 5’ prime nucleotide is the letter at the last position in the sequence. A separate representation would be redundant
-    :param list['Linkage'] linkage: The linkages between sugar residues will also be captured
-    :param list['Sugar'] sugar: 5.3.6.8.1 Sugar ID (Mandatory)
+    :param 'Linkage' linkage: The linkages between sugar residues will also be captured
+    :param 'Sugar' sugar: 5.3.6.8.1 Sugar ID (Mandatory)
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  subunit: int = None,  sequence: str = None,  length: int = None,  sequenceAttachment: 'Attachment' = None,  fivePrime: 'CodeableConcept' = None,  threePrime: 'CodeableConcept' = None,  linkage: list['Linkage'] = None,  sugar: list['Sugar'] = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  subunit: int = None,  sequence: str = None,  length: int = None,  sequenceAttachment: 'Attachment' = None,  fivePrime: 'CodeableConcept' = None,  threePrime: 'CodeableConcept' = None,  linkage: 'Linkage' = None,  sugar: 'Sugar' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -183,8 +183,8 @@ class Subunit(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -212,16 +212,16 @@ class SubstanceNucleicAcid(DomainResource):
     :param str implicitRules: A set of rules under which this content was created
     :param str language: Language of the resource content
     :param 'Narrative' text: Text summary of the resource, for human interpretation
-    :param list['Resource'] contained: Contained, inline Resources
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored
+    :param 'Resource' contained: Contained, inline Resources
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored
     :param 'CodeableConcept' sequenceType: The type of the sequence shall be specified based on a controlled vocabulary
     :param int numberOfSubunits: The number of linear sequences of nucleotides linked through phosphodiester bonds shall be described. Subunits would be strands of nucleic acids that are tightly associated typically through Watson-Crick base pairing. NOTE: If not specified in the reference source, the assumption is that there is 1 subunit
     :param str areaOfHybridisation: The area of hybridisation shall be described if applicable for double stranded RNA or DNA. The number associated with the subunit followed by the number associated to the residue shall be specified in increasing order. The underscore “” shall be used as separator as follows: “Subunitnumber Residue”
     :param 'CodeableConcept' oligoNucleotideType: (TBC)
-    :param list['Subunit'] subunit: Subunits are listed in order of decreasing length; sequences of the same length will be ordered by molecular weight; subunits that have identical sequences will be repeated multiple times
+    :param 'Subunit' subunit: Subunits are listed in order of decreasing length; sequences of the same length will be ordered by molecular weight; subunits that have identical sequences will be repeated multiple times
     """
-    def __init__(self, resourceType: str = "SubstanceNucleicAcid",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  sequenceType: 'CodeableConcept' = None,  numberOfSubunits: int = None,  areaOfHybridisation: str = None,  oligoNucleotideType: 'CodeableConcept' = None,  subunit: list['Subunit'] = None, ):
+    def __init__(self, resourceType: str = "SubstanceNucleicAcid",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: 'Resource' = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  sequenceType: 'CodeableConcept' = None,  numberOfSubunits: int = None,  areaOfHybridisation: str = None,  oligoNucleotideType: 'CodeableConcept' = None,  subunit: 'Subunit' = None, ):
         self.resourceType: str = resourceType or "SubstanceNucleicAcid"
         self.id: str = id 
         self.meta: 'Meta' = meta 
@@ -254,8 +254,8 @@ class SubstanceNucleicAcid(DomainResource):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)

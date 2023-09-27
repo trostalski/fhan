@@ -1,0 +1,18 @@
+# generated at {{ time }} from {{ source_script }}
+{% for resource_type in resource_types %}
+from {{ model_import_path }}.{{resource_type}} import {{ resource_type }}
+{% endfor %}
+class GetResourceMixin:
+    """This mixin class provides the GetHandler with methods for each
+    resource type. The methods are syntactic sugar for the _get method.
+    """
+    def __init__(self):
+        pass
+{% for resource_type in resource_types %}
+    def {{ resource_type }}(
+        self,
+        id: str,
+        as_object: bool = False,
+    ) -> dict | {{ resource_type }}:
+        return self._get("{{ resource_type }}", id, as_object)
+{% endfor %}

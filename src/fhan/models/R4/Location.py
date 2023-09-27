@@ -1,36 +1,36 @@
 """
 Generated class for Location. 
-Time: 2023-09-25 16:30:45
+Time: 2023-09-27 15:54:17
 """
 from importlib import import_module
 import inspect
 
-from fhan.models.R4.ContactPoint import *
-from fhan.models.R4.Identifier import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Coding import *
-from fhan.models.R4.Address import *
-from fhan.models.R4.Extension import *
-from fhan.models.R4.Reference import *
 from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Meta import *
 from fhan.models.R4.Resource import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.Coding import *
+from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.ContactPoint import *
+from fhan.models.R4.Extension import *
 from fhan.models.R4.Narrative import *
+from fhan.models.R4.Address import *
+from fhan.models.R4.Reference import *
 from fhan.models.R4.DomainResource import *
 
 
     
     
 
-class Position(ModelBase):
+class Position(BaseModel):
     """ The absolute geographic location of the Location, expressed using the WGS84 datum (This is the same co-ordinate system used in KML).:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param float longitude: Longitude with WGS84 datum
     :param float latitude: Latitude with WGS84 datum
     :param float altitude: Altitude with WGS84 datum
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  longitude: float = None,  latitude: float = None,  altitude: float = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  longitude: float = None,  latitude: float = None,  altitude: float = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -55,8 +55,8 @@ class Position(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -80,20 +80,20 @@ class Position(ModelBase):
     
     
 
-class HoursOfOperation(ModelBase):
+class HoursOfOperation(BaseModel):
     """ What days/times during a week is this location usually open.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str daysOfWeek: mon | tue | wed | thu | fri | sat | sun
     :param bool allDay: The Location is open all day
     :param str openingTime: Time that the Location opens
     :param str closingTime: Time that the Location closes
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  daysOfWeek: str = None,  allDay: bool = None,  openingTime: str = None,  closingTime: str = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  daysOfWeek: str = None,  allDay: bool = None,  openingTime: str = None,  closingTime: str = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
-        self.daysOfWeek: str = daysOfWeek or []
+        self.daysOfWeek: list[str] = daysOfWeek or []
         self.allDay: bool = allDay 
         self.openingTime: str = openingTime 
         self.closingTime: str = closingTime 
@@ -115,8 +115,8 @@ class HoursOfOperation(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -144,28 +144,28 @@ class Location(DomainResource):
     :param str implicitRules: A set of rules under which this content was created
     :param str language: Language of the resource content
     :param 'Narrative' text: Text summary of the resource, for human interpretation
-    :param list['Resource'] contained: Contained, inline Resources
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored
-    :param list['Identifier'] identifier: Unique code or number identifying the location to its users
+    :param 'Resource' contained: Contained, inline Resources
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored
+    :param 'Identifier' identifier: Unique code or number identifying the location to its users
     :param str status: active | suspended | inactive
     :param 'Coding' operationalStatus: The operational status of the location (typically only for a bed/room)
     :param str name: Name of the location as used by humans
     :param str alias: A list of alternate names that the location is known as, or was known as, in the past
     :param str description: Additional details about the location that could be displayed as further information to identify the location beyond its name
     :param str mode: instance | kind
-    :param list['CodeableConcept'] type: Type of function performed
-    :param list['ContactPoint'] telecom: Contact details of the location
+    :param 'CodeableConcept' type: Type of function performed
+    :param 'ContactPoint' telecom: Contact details of the location
     :param 'Address' address: Physical location
     :param 'CodeableConcept' physicalType: Physical form of the location
     :param 'Position' position: The absolute geographic location
     :param 'Reference' managingOrganization: Organization responsible for provisioning and upkeep
     :param 'Reference' partOf: Another Location this one is physically a part of
-    :param list['HoursOfOperation'] hoursOfOperation: What days/times during a week is this location usually open
+    :param 'HoursOfOperation' hoursOfOperation: What days/times during a week is this location usually open
     :param str availabilityExceptions: Description of availability exceptions
-    :param list['Reference'] endpoint: Technical endpoints providing access to services operated for the location
+    :param 'Reference' endpoint: Technical endpoints providing access to services operated for the location
     """
-    def __init__(self, resourceType: str = "Location",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  identifier: list['Identifier'] = None,  status: str = None,  operationalStatus: 'Coding' = None,  name: str = None,  alias: str = None,  description: str = None,  mode: str = None,  type: list['CodeableConcept'] = None,  telecom: list['ContactPoint'] = None,  address: 'Address' = None,  physicalType: 'CodeableConcept' = None,  position: 'Position' = None,  managingOrganization: 'Reference' = None,  partOf: 'Reference' = None,  hoursOfOperation: list['HoursOfOperation'] = None,  availabilityExceptions: str = None,  endpoint: list['Reference'] = None, ):
+    def __init__(self, resourceType: str = "Location",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: 'Resource' = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  identifier: 'Identifier' = None,  status: str = None,  operationalStatus: 'Coding' = None,  name: str = None,  alias: str = None,  description: str = None,  mode: str = None,  type: 'CodeableConcept' = None,  telecom: 'ContactPoint' = None,  address: 'Address' = None,  physicalType: 'CodeableConcept' = None,  position: 'Position' = None,  managingOrganization: 'Reference' = None,  partOf: 'Reference' = None,  hoursOfOperation: 'HoursOfOperation' = None,  availabilityExceptions: str = None,  endpoint: 'Reference' = None, ):
         self.resourceType: str = resourceType or "Location"
         self.id: str = id 
         self.meta: 'Meta' = meta 
@@ -179,7 +179,7 @@ class Location(DomainResource):
         self.status: str = status 
         self.operationalStatus: 'Coding' = operationalStatus 
         self.name: str = name 
-        self.alias: str = alias or []
+        self.alias: list[str] = alias or []
         self.description: str = description 
         self.mode: str = mode 
         self.type: list['CodeableConcept'] = type or []
@@ -210,8 +210,8 @@ class Location(DomainResource):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)

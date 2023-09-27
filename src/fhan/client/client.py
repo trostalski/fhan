@@ -1,10 +1,9 @@
 import requests
 import logging
 
-from fhan.core.settings import ClientSettings
-from fhan.client.get_handler import GetHandler
 from fhan.client.utils.http_utils import make_get_request, join_urls
-
+from fhan.core.settings import ClientSettings
+from fhan.client.get_handler import GetHandler, SearchHandler
 from fhan.models.R4.CapabilityStatement import CapabilityStatement
 
 logger = logging.getLogger(__name__)
@@ -52,6 +51,10 @@ class ServerMetadata:
 class Client:
     """
     Client for interacting with a FHIR server.
+
+    Args:
+        base_url (str): Base url of the FHIR server.
+        fhir_version (str): FHIR version of the server. Defaults to version specified in the settings.
     """
 
     def __init__(self, base_url: str, fhir_version: str = DEFAULT_FHIR_VERSION):
@@ -59,7 +62,13 @@ class Client:
         self._fhir_version = fhir_version
         self._sesssion = requests.Session()
         self._metadata = ServerMetadata(self._get_metadata())
+        self._package = None
         self.get = GetHandler(
+            session=self._sesssion,
+            base_url=self._base_url,
+            available_resource_types=self._metadata.available_resource_types,
+        )
+        self.search = SearchHandler(
             session=self._sesssion,
             base_url=self._base_url,
             available_resource_types=self._metadata.available_resource_types,

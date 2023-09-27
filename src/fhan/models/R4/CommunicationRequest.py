@@ -1,36 +1,36 @@
 """
 Generated class for CommunicationRequest. 
-Time: 2023-09-25 16:30:45
+Time: 2023-09-27 15:54:17
 """
 from importlib import import_module
 import inspect
 
-from fhan.models.R4.Identifier import *
 from fhan.models.R4.Attachment import *
+from fhan.models.R4.BackboneElement import *
 from fhan.models.R4.Meta import *
 from fhan.models.R4.Annotation import *
-from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Period import *
-from fhan.models.R4.Extension import *
-from fhan.models.R4.Reference import *
-from fhan.models.R4.BackboneElement import *
 from fhan.models.R4.Resource import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Extension import *
 from fhan.models.R4.Narrative import *
+from fhan.models.R4.Reference import *
 from fhan.models.R4.DomainResource import *
 
 
     
     
 
-class Payload(ModelBase):
+class Payload(BaseModel):
     """ Text, attachment(s), or resource(s) to be communicated to the recipient.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str contentString: Message part content
     :param 'Attachment' contentAttachment: Message part content
     :param 'Reference' contentReference: Message part content
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  contentString: str = None,  contentAttachment: 'Attachment' = None,  contentReference: 'Reference' = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  contentString: str = None,  contentAttachment: 'Attachment' = None,  contentReference: 'Reference' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -55,8 +55,8 @@ class Payload(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -84,34 +84,34 @@ class CommunicationRequest(DomainResource):
     :param str implicitRules: A set of rules under which this content was created
     :param str language: Language of the resource content
     :param 'Narrative' text: Text summary of the resource, for human interpretation
-    :param list['Resource'] contained: Contained, inline Resources
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored
-    :param list['Identifier'] identifier: Unique identifier
-    :param list['Reference'] basedOn: Fulfills plan or proposal
-    :param list['Reference'] replaces: Request(s) replaced by this request
+    :param 'Resource' contained: Contained, inline Resources
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored
+    :param 'Identifier' identifier: Unique identifier
+    :param 'Reference' basedOn: Fulfills plan or proposal
+    :param 'Reference' replaces: Request(s) replaced by this request
     :param 'Identifier' groupIdentifier: Composite request this is part of
     :param str status: draft | active | on-hold | revoked | completed | entered-in-error | unknown
     :param 'CodeableConcept' statusReason: Reason for current status
-    :param list['CodeableConcept'] category: Message category
+    :param 'CodeableConcept' category: Message category
     :param str priority: routine | urgent | asap | stat
     :param bool doNotPerform: True if request is prohibiting action
-    :param list['CodeableConcept'] medium: A channel of communication
+    :param 'CodeableConcept' medium: A channel of communication
     :param 'Reference' subject: Focus of message
-    :param list['Reference'] about: Resources that pertain to this communication request
+    :param 'Reference' about: Resources that pertain to this communication request
     :param 'Reference' encounter: Encounter created as part of
-    :param list['Payload'] payload: Message payload
+    :param 'Payload' payload: Message payload
     :param str occurrenceDateTime: When scheduled
     :param 'Period' occurrencePeriod: When scheduled
     :param str authoredOn: When request transitioned to being actionable
     :param 'Reference' requester: Who/what is requesting service
-    :param list['Reference'] recipient: Message recipient
+    :param 'Reference' recipient: Message recipient
     :param 'Reference' sender: Message sender
-    :param list['CodeableConcept'] reasonCode: Why is communication needed?
-    :param list['Reference'] reasonReference: Why is communication needed?
-    :param list['Annotation'] note: Comments made about communication request
+    :param 'CodeableConcept' reasonCode: Why is communication needed?
+    :param 'Reference' reasonReference: Why is communication needed?
+    :param 'Annotation' note: Comments made about communication request
     """
-    def __init__(self, resourceType: str = "CommunicationRequest",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  identifier: list['Identifier'] = None,  basedOn: list['Reference'] = None,  replaces: list['Reference'] = None,  groupIdentifier: 'Identifier' = None,  status: str = None,  statusReason: 'CodeableConcept' = None,  category: list['CodeableConcept'] = None,  priority: str = None,  doNotPerform: bool = None,  medium: list['CodeableConcept'] = None,  subject: 'Reference' = None,  about: list['Reference'] = None,  encounter: 'Reference' = None,  payload: list['Payload'] = None,  occurrenceDateTime: str = None,  occurrencePeriod: 'Period' = None,  authoredOn: str = None,  requester: 'Reference' = None,  recipient: list['Reference'] = None,  sender: 'Reference' = None,  reasonCode: list['CodeableConcept'] = None,  reasonReference: list['Reference'] = None,  note: list['Annotation'] = None, ):
+    def __init__(self, resourceType: str = "CommunicationRequest",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: 'Resource' = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  identifier: 'Identifier' = None,  basedOn: 'Reference' = None,  replaces: 'Reference' = None,  groupIdentifier: 'Identifier' = None,  status: str = None,  statusReason: 'CodeableConcept' = None,  category: 'CodeableConcept' = None,  priority: str = None,  doNotPerform: bool = None,  medium: 'CodeableConcept' = None,  subject: 'Reference' = None,  about: 'Reference' = None,  encounter: 'Reference' = None,  payload: 'Payload' = None,  occurrenceDateTime: str = None,  occurrencePeriod: 'Period' = None,  authoredOn: str = None,  requester: 'Reference' = None,  recipient: 'Reference' = None,  sender: 'Reference' = None,  reasonCode: 'CodeableConcept' = None,  reasonReference: 'Reference' = None,  note: 'Annotation' = None, ):
         self.resourceType: str = resourceType or "CommunicationRequest"
         self.id: str = id 
         self.meta: 'Meta' = meta 
@@ -162,8 +162,8 @@ class CommunicationRequest(DomainResource):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)

@@ -1,35 +1,35 @@
 """
 Generated class for Provenance. 
-Time: 2023-09-25 16:30:45
+Time: 2023-09-27 15:54:17
 """
 from importlib import import_module
 import inspect
 
+from fhan.models.R4.BackboneElement import *
 from fhan.models.R4.Meta import *
 from fhan.models.R4.Signature import *
-from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Period import *
-from fhan.models.R4.Extension import *
-from fhan.models.R4.Reference import *
-from fhan.models.R4.BackboneElement import *
 from fhan.models.R4.Resource import *
+from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Extension import *
 from fhan.models.R4.Narrative import *
+from fhan.models.R4.Reference import *
 from fhan.models.R4.DomainResource import *
 
 
     
     
 
-class Agent(ModelBase):
+class Agent(BaseModel):
     """ An actor taking a role in an activity  for which it can be assigned some degree of responsibility for the activity taking place.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param 'CodeableConcept' type: How the agent participated
-    :param list['CodeableConcept'] role: What the agents role was
+    :param 'CodeableConcept' role: What the agents role was
     :param 'Reference' who: Who participated
     :param 'Reference' onBehalfOf: Who the agent is representing
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  type: 'CodeableConcept' = None,  role: list['CodeableConcept'] = None,  who: 'Reference' = None,  onBehalfOf: 'Reference' = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  type: 'CodeableConcept' = None,  role: 'CodeableConcept' = None,  who: 'Reference' = None,  onBehalfOf: 'Reference' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -55,8 +55,8 @@ class Agent(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -80,14 +80,14 @@ class Agent(ModelBase):
     
     
 
-class Entity(ModelBase):
+class Entity(BaseModel):
     """ An entity used in this activity.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str role: derivation | revision | quotation | source | removal
     :param 'Reference' what: Identity of entity
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  role: str = None,  what: 'Reference' = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  role: str = None,  what: 'Reference' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -111,8 +111,8 @@ class Entity(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -140,22 +140,22 @@ class Provenance(DomainResource):
     :param str implicitRules: A set of rules under which this content was created
     :param str language: Language of the resource content
     :param 'Narrative' text: Text summary of the resource, for human interpretation
-    :param list['Resource'] contained: Contained, inline Resources
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored
-    :param list['Reference'] target: Target Reference(s) (usually version specific)
+    :param 'Resource' contained: Contained, inline Resources
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored
+    :param 'Reference' target: Target Reference(s) (usually version specific)
     :param 'Period' occurredPeriod: When the activity occurred
     :param str occurredDateTime: When the activity occurred
     :param str recorded: When the activity was recorded / updated
     :param str policy: Policy or plan the activity was defined by
     :param 'Reference' location: Where the activity occurred, if relevant
-    :param list['CodeableConcept'] reason: Reason the activity is occurring
+    :param 'CodeableConcept' reason: Reason the activity is occurring
     :param 'CodeableConcept' activity: Activity that occurred
-    :param list['Agent'] agent: Actor involved
-    :param list['Entity'] entity: An entity used in this activity
-    :param list['Signature'] signature: Signature on target
+    :param 'Agent' agent: Actor involved
+    :param 'Entity' entity: An entity used in this activity
+    :param 'Signature' signature: Signature on target
     """
-    def __init__(self, resourceType: str = "Provenance",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  target: list['Reference'] = None,  occurredPeriod: 'Period' = None,  occurredDateTime: str = None,  recorded: str = None,  policy: str = None,  location: 'Reference' = None,  reason: list['CodeableConcept'] = None,  activity: 'CodeableConcept' = None,  agent: list['Agent'] = None,  entity: list['Entity'] = None,  signature: list['Signature'] = None, ):
+    def __init__(self, resourceType: str = "Provenance",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: 'Resource' = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  target: 'Reference' = None,  occurredPeriod: 'Period' = None,  occurredDateTime: str = None,  recorded: str = None,  policy: str = None,  location: 'Reference' = None,  reason: 'CodeableConcept' = None,  activity: 'CodeableConcept' = None,  agent: 'Agent' = None,  entity: 'Entity' = None,  signature: 'Signature' = None, ):
         self.resourceType: str = resourceType or "Provenance"
         self.id: str = id 
         self.meta: 'Meta' = meta 
@@ -169,7 +169,7 @@ class Provenance(DomainResource):
         self.occurredPeriod: 'Period' = occurredPeriod 
         self.occurredDateTime: str = occurredDateTime 
         self.recorded: str = recorded 
-        self.policy: str = policy or []
+        self.policy: list[str] = policy or []
         self.location: 'Reference' = location 
         self.reason: list['CodeableConcept'] = reason or []
         self.activity: 'CodeableConcept' = activity 
@@ -194,8 +194,8 @@ class Provenance(DomainResource):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)

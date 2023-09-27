@@ -1,43 +1,43 @@
 """
 Generated class for Observation. 
-Time: 2023-09-25 16:30:45
+Time: 2023-09-27 15:54:17
 """
 from importlib import import_module
 import inspect
 
-from fhan.models.R4.Identifier import *
-from fhan.models.R4.Quantity import *
-from fhan.models.R4.Ratio import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Annotation import *
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Period import *
-from fhan.models.R4.Timing import *
-from fhan.models.R4.Range import *
-from fhan.models.R4.Extension import *
-from fhan.models.R4.Reference import *
-from fhan.models.R4.SampledData import *
 from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Meta import *
+from fhan.models.R4.Timing import *
+from fhan.models.R4.SampledData import *
+from fhan.models.R4.Annotation import *
+from fhan.models.R4.Quantity import *
+from fhan.models.R4.Period import *
 from fhan.models.R4.Resource import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Range import *
+from fhan.models.R4.Ratio import *
+from fhan.models.R4.Extension import *
 from fhan.models.R4.Narrative import *
+from fhan.models.R4.Reference import *
 from fhan.models.R4.DomainResource import *
 
 
     
     
 
-class ReferenceRange(ModelBase):
+class ReferenceRange(BaseModel):
     """ Guidance on how to interpret the value by comparison to a normal or recommended range.  Multiple reference ranges are interpreted as an "OR".   In other words, to represent two distinct target populations, two `referenceRange` elements would be used.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param 'Quantity' low: Low Range, if relevant
     :param 'Quantity' high: High Range, if relevant
     :param 'CodeableConcept' type: Reference range qualifier
-    :param list['CodeableConcept'] appliesTo: Reference range population
+    :param 'CodeableConcept' appliesTo: Reference range population
     :param 'Range' age: Applicable age range, if relevant
     :param str text: Text based reference range in an observation
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  low: 'Quantity' = None,  high: 'Quantity' = None,  type: 'CodeableConcept' = None,  appliesTo: list['CodeableConcept'] = None,  age: 'Range' = None,  text: str = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  low: 'Quantity' = None,  high: 'Quantity' = None,  type: 'CodeableConcept' = None,  appliesTo: 'CodeableConcept' = None,  age: 'Range' = None,  text: str = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -65,8 +65,8 @@ class ReferenceRange(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -90,10 +90,10 @@ class ReferenceRange(ModelBase):
     
     
 
-class Component(ModelBase):
+class Component(BaseModel):
     """ Some observations have multiple component observations.  These component observations are expressed as separate code value pairs that share the same attributes.  Examples include systolic and diastolic component observations for blood pressure measurement and multiple component observations for genetics observations.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param 'CodeableConcept' code: Type of component observation (code / type)
     :param 'Quantity' valueQuantity: Actual component result
     :param 'CodeableConcept' valueCodeableConcept: Actual component result
@@ -107,9 +107,9 @@ class Component(ModelBase):
     :param str valueDateTime: Actual component result
     :param 'Period' valuePeriod: Actual component result
     :param 'CodeableConcept' dataAbsentReason: Why the component result is missing
-    :param list['CodeableConcept'] interpretation: High, low, normal, etc.
+    :param 'CodeableConcept' interpretation: High, low, normal, etc.
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  code: 'CodeableConcept' = None,  valueQuantity: 'Quantity' = None,  valueCodeableConcept: 'CodeableConcept' = None,  valueString: str = None,  valueBoolean: bool = None,  valueInteger: int = None,  valueRange: 'Range' = None,  valueRatio: 'Ratio' = None,  valueSampledData: 'SampledData' = None,  valueTime: str = None,  valueDateTime: str = None,  valuePeriod: 'Period' = None,  dataAbsentReason: 'CodeableConcept' = None,  interpretation: list['CodeableConcept'] = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  code: 'CodeableConcept' = None,  valueQuantity: 'Quantity' = None,  valueCodeableConcept: 'CodeableConcept' = None,  valueString: str = None,  valueBoolean: bool = None,  valueInteger: int = None,  valueRange: 'Range' = None,  valueRatio: 'Ratio' = None,  valueSampledData: 'SampledData' = None,  valueTime: str = None,  valueDateTime: str = None,  valuePeriod: 'Period' = None,  dataAbsentReason: 'CodeableConcept' = None,  interpretation: 'CodeableConcept' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -145,8 +145,8 @@ class Component(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -174,24 +174,24 @@ class Observation(DomainResource):
     :param str implicitRules: A set of rules under which this content was created
     :param str language: Language of the resource content
     :param 'Narrative' text: Text summary of the resource, for human interpretation
-    :param list['Resource'] contained: Contained, inline Resources
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored
-    :param list['Identifier'] identifier: Business Identifier for observation
-    :param list['Reference'] basedOn: Fulfills plan, proposal or order
-    :param list['Reference'] partOf: Part of referenced event
+    :param 'Resource' contained: Contained, inline Resources
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored
+    :param 'Identifier' identifier: Business Identifier for observation
+    :param 'Reference' basedOn: Fulfills plan, proposal or order
+    :param 'Reference' partOf: Part of referenced event
     :param str status: registered | preliminary | final | amended +
-    :param list['CodeableConcept'] category: Classification of  type of observation
+    :param 'CodeableConcept' category: Classification of  type of observation
     :param 'CodeableConcept' code: Type of observation (code / type)
     :param 'Reference' subject: Who and/or what the observation is about
-    :param list['Reference'] focus: What the observation is about, when it is not about the subject of record
+    :param 'Reference' focus: What the observation is about, when it is not about the subject of record
     :param 'Reference' encounter: Healthcare event during which this observation is made
     :param str effectiveDateTime: Clinically relevant time/time-period for observation
     :param 'Period' effectivePeriod: Clinically relevant time/time-period for observation
     :param 'Timing' effectiveTiming: Clinically relevant time/time-period for observation
     :param str effectiveInstant: Clinically relevant time/time-period for observation
     :param str issued: Date/Time this version was made available
-    :param list['Reference'] performer: Who is responsible for the observation
+    :param 'Reference' performer: Who is responsible for the observation
     :param 'Quantity' valueQuantity: Actual result
     :param 'CodeableConcept' valueCodeableConcept: Actual result
     :param str valueString: Actual result
@@ -204,18 +204,18 @@ class Observation(DomainResource):
     :param str valueDateTime: Actual result
     :param 'Period' valuePeriod: Actual result
     :param 'CodeableConcept' dataAbsentReason: Why the result is missing
-    :param list['CodeableConcept'] interpretation: High, low, normal, etc.
-    :param list['Annotation'] note: Comments about the observation
+    :param 'CodeableConcept' interpretation: High, low, normal, etc.
+    :param 'Annotation' note: Comments about the observation
     :param 'CodeableConcept' bodySite: Observed body part
     :param 'CodeableConcept' method: How it was done
     :param 'Reference' specimen: Specimen used for this observation
     :param 'Reference' device: (Measurement) Device
-    :param list['ReferenceRange'] referenceRange: Provides guide for interpretation
-    :param list['Reference'] hasMember: Related resource that belongs to the Observation group
-    :param list['Reference'] derivedFrom: Related measurements the observation is made from
-    :param list['Component'] component: Component results
+    :param 'ReferenceRange' referenceRange: Provides guide for interpretation
+    :param 'Reference' hasMember: Related resource that belongs to the Observation group
+    :param 'Reference' derivedFrom: Related measurements the observation is made from
+    :param 'Component' component: Component results
     """
-    def __init__(self, resourceType: str = "Observation",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  identifier: list['Identifier'] = None,  basedOn: list['Reference'] = None,  partOf: list['Reference'] = None,  status: str = None,  category: list['CodeableConcept'] = None,  code: 'CodeableConcept' = None,  subject: 'Reference' = None,  focus: list['Reference'] = None,  encounter: 'Reference' = None,  effectiveDateTime: str = None,  effectivePeriod: 'Period' = None,  effectiveTiming: 'Timing' = None,  effectiveInstant: str = None,  issued: str = None,  performer: list['Reference'] = None,  valueQuantity: 'Quantity' = None,  valueCodeableConcept: 'CodeableConcept' = None,  valueString: str = None,  valueBoolean: bool = None,  valueInteger: int = None,  valueRange: 'Range' = None,  valueRatio: 'Ratio' = None,  valueSampledData: 'SampledData' = None,  valueTime: str = None,  valueDateTime: str = None,  valuePeriod: 'Period' = None,  dataAbsentReason: 'CodeableConcept' = None,  interpretation: list['CodeableConcept'] = None,  note: list['Annotation'] = None,  bodySite: 'CodeableConcept' = None,  method: 'CodeableConcept' = None,  specimen: 'Reference' = None,  device: 'Reference' = None,  referenceRange: list['ReferenceRange'] = None,  hasMember: list['Reference'] = None,  derivedFrom: list['Reference'] = None,  component: list['Component'] = None, ):
+    def __init__(self, resourceType: str = "Observation",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: 'Resource' = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  identifier: 'Identifier' = None,  basedOn: 'Reference' = None,  partOf: 'Reference' = None,  status: str = None,  category: 'CodeableConcept' = None,  code: 'CodeableConcept' = None,  subject: 'Reference' = None,  focus: 'Reference' = None,  encounter: 'Reference' = None,  effectiveDateTime: str = None,  effectivePeriod: 'Period' = None,  effectiveTiming: 'Timing' = None,  effectiveInstant: str = None,  issued: str = None,  performer: 'Reference' = None,  valueQuantity: 'Quantity' = None,  valueCodeableConcept: 'CodeableConcept' = None,  valueString: str = None,  valueBoolean: bool = None,  valueInteger: int = None,  valueRange: 'Range' = None,  valueRatio: 'Ratio' = None,  valueSampledData: 'SampledData' = None,  valueTime: str = None,  valueDateTime: str = None,  valuePeriod: 'Period' = None,  dataAbsentReason: 'CodeableConcept' = None,  interpretation: 'CodeableConcept' = None,  note: 'Annotation' = None,  bodySite: 'CodeableConcept' = None,  method: 'CodeableConcept' = None,  specimen: 'Reference' = None,  device: 'Reference' = None,  referenceRange: 'ReferenceRange' = None,  hasMember: 'Reference' = None,  derivedFrom: 'Reference' = None,  component: 'Component' = None, ):
         self.resourceType: str = resourceType or "Observation"
         self.id: str = id 
         self.meta: 'Meta' = meta 
@@ -280,8 +280,8 @@ class Observation(DomainResource):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)

@@ -1,19 +1,19 @@
 """
 Generated class for GuidanceResponse. 
-Time: 2023-09-25 16:30:45
+Time: 2023-09-27 15:54:17
 """
 from importlib import import_module
 import inspect
 
-from fhan.models.R4.Identifier import *
 from fhan.models.R4.Meta import *
-from fhan.models.R4.Annotation import *
-from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.DataRequirement import *
-from fhan.models.R4.Extension import *
-from fhan.models.R4.Reference import *
+from fhan.models.R4.Annotation import *
 from fhan.models.R4.Resource import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Extension import *
 from fhan.models.R4.Narrative import *
+from fhan.models.R4.Reference import *
 from fhan.models.R4.DomainResource import *
 
 
@@ -24,11 +24,11 @@ class GuidanceResponse(DomainResource):
     :param str implicitRules: A set of rules under which this content was created
     :param str language: Language of the resource content
     :param 'Narrative' text: Text summary of the resource, for human interpretation
-    :param list['Resource'] contained: Contained, inline Resources
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored
+    :param 'Resource' contained: Contained, inline Resources
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored
     :param 'Identifier' requestIdentifier: The identifier of the request associated with this response, if any
-    :param list['Identifier'] identifier: Business identifier
+    :param 'Identifier' identifier: Business identifier
     :param str moduleUri: What guidance was requested
     :param str moduleCanonical: What guidance was requested
     :param 'CodeableConcept' moduleCodeableConcept: What guidance was requested
@@ -37,15 +37,15 @@ class GuidanceResponse(DomainResource):
     :param 'Reference' encounter: Encounter during which the response was returned
     :param str occurrenceDateTime: When the guidance response was processed
     :param 'Reference' performer: Device returning the guidance
-    :param list['CodeableConcept'] reasonCode: Why guidance is needed
-    :param list['Reference'] reasonReference: Why guidance is needed
-    :param list['Annotation'] note: Additional notes about the response
-    :param list['Reference'] evaluationMessage: Messages resulting from the evaluation of the artifact or artifacts
+    :param 'CodeableConcept' reasonCode: Why guidance is needed
+    :param 'Reference' reasonReference: Why guidance is needed
+    :param 'Annotation' note: Additional notes about the response
+    :param 'Reference' evaluationMessage: Messages resulting from the evaluation of the artifact or artifacts
     :param 'Reference' outputParameters: The output parameters of the evaluation, if any
     :param 'Reference' result: Proposed actions, if any
-    :param list['DataRequirement'] dataRequirement: Additional required data
+    :param 'DataRequirement' dataRequirement: Additional required data
     """
-    def __init__(self, resourceType: str = "GuidanceResponse",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  requestIdentifier: 'Identifier' = None,  identifier: list['Identifier'] = None,  moduleUri: str = None,  moduleCanonical: str = None,  moduleCodeableConcept: 'CodeableConcept' = None,  status: str = None,  subject: 'Reference' = None,  encounter: 'Reference' = None,  occurrenceDateTime: str = None,  performer: 'Reference' = None,  reasonCode: list['CodeableConcept'] = None,  reasonReference: list['Reference'] = None,  note: list['Annotation'] = None,  evaluationMessage: list['Reference'] = None,  outputParameters: 'Reference' = None,  result: 'Reference' = None,  dataRequirement: list['DataRequirement'] = None, ):
+    def __init__(self, resourceType: str = "GuidanceResponse",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: 'Resource' = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  requestIdentifier: 'Identifier' = None,  identifier: 'Identifier' = None,  moduleUri: str = None,  moduleCanonical: str = None,  moduleCodeableConcept: 'CodeableConcept' = None,  status: str = None,  subject: 'Reference' = None,  encounter: 'Reference' = None,  occurrenceDateTime: str = None,  performer: 'Reference' = None,  reasonCode: 'CodeableConcept' = None,  reasonReference: 'Reference' = None,  note: 'Annotation' = None,  evaluationMessage: 'Reference' = None,  outputParameters: 'Reference' = None,  result: 'Reference' = None,  dataRequirement: 'DataRequirement' = None, ):
         self.resourceType: str = resourceType or "GuidanceResponse"
         self.id: str = id 
         self.meta: 'Meta' = meta 
@@ -90,8 +90,8 @@ class GuidanceResponse(DomainResource):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)

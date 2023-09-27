@@ -1,41 +1,41 @@
 """
 Generated class for ResearchElementDefinition. 
-Time: 2023-09-25 16:30:45
+Time: 2023-09-27 15:54:17
 """
 from importlib import import_module
 import inspect
 
 from fhan.models.R4.Duration import *
-from fhan.models.R4.Identifier import *
+from fhan.models.R4.BackboneElement import *
 from fhan.models.R4.Meta import *
+from fhan.models.R4.DataRequirement import *
+from fhan.models.R4.Expression import *
+from fhan.models.R4.Timing import *
 from fhan.models.R4.UsageContext import *
 from fhan.models.R4.ContactDetail import *
-from fhan.models.R4.Expression import *
-from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Period import *
-from fhan.models.R4.DataRequirement import *
-from fhan.models.R4.Timing import *
-from fhan.models.R4.Extension import *
-from fhan.models.R4.Reference import *
-from fhan.models.R4.BackboneElement import *
 from fhan.models.R4.Resource import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.RelatedArtifact import *
+from fhan.models.R4.Extension import *
 from fhan.models.R4.Narrative import *
+from fhan.models.R4.Reference import *
 from fhan.models.R4.DomainResource import *
 
 
     
     
 
-class Characteristic(ModelBase):
+class Characteristic(BaseModel):
     """ A characteristic that defines the members of the research element. Multiple characteristics are applied with "and" semantics.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param 'CodeableConcept' definitionCodeableConcept: What code or expression defines members?
     :param str definitionCanonical: What code or expression defines members?
     :param 'Expression' definitionExpression: What code or expression defines members?
     :param 'DataRequirement' definitionDataRequirement: What code or expression defines members?
-    :param list['UsageContext'] usageContext: What code/value pairs define members?
+    :param 'UsageContext' usageContext: What code/value pairs define members?
     :param bool exclude: Whether the characteristic includes or excludes members
     :param 'CodeableConcept' unitOfMeasure: What unit is the outcome described in?
     :param str studyEffectiveDescription: What time period does the study cover
@@ -53,7 +53,7 @@ class Characteristic(ModelBase):
     :param 'Duration' participantEffectiveTimeFromStart: Observation time from study start
     :param str participantEffectiveGroupMeasure: mean | median | mean-of-mean | mean-of-median | median-of-mean | median-of-median
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  definitionCodeableConcept: 'CodeableConcept' = None,  definitionCanonical: str = None,  definitionExpression: 'Expression' = None,  definitionDataRequirement: 'DataRequirement' = None,  usageContext: list['UsageContext'] = None,  exclude: bool = None,  unitOfMeasure: 'CodeableConcept' = None,  studyEffectiveDescription: str = None,  studyEffectiveDateTime: str = None,  studyEffectivePeriod: 'Period' = None,  studyEffectiveDuration: 'Duration' = None,  studyEffectiveTiming: 'Timing' = None,  studyEffectiveTimeFromStart: 'Duration' = None,  studyEffectiveGroupMeasure: str = None,  participantEffectiveDescription: str = None,  participantEffectiveDateTime: str = None,  participantEffectivePeriod: 'Period' = None,  participantEffectiveDuration: 'Duration' = None,  participantEffectiveTiming: 'Timing' = None,  participantEffectiveTimeFromStart: 'Duration' = None,  participantEffectiveGroupMeasure: str = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  definitionCodeableConcept: 'CodeableConcept' = None,  definitionCanonical: str = None,  definitionExpression: 'Expression' = None,  definitionDataRequirement: 'DataRequirement' = None,  usageContext: 'UsageContext' = None,  exclude: bool = None,  unitOfMeasure: 'CodeableConcept' = None,  studyEffectiveDescription: str = None,  studyEffectiveDateTime: str = None,  studyEffectivePeriod: 'Period' = None,  studyEffectiveDuration: 'Duration' = None,  studyEffectiveTiming: 'Timing' = None,  studyEffectiveTimeFromStart: 'Duration' = None,  studyEffectiveGroupMeasure: str = None,  participantEffectiveDescription: str = None,  participantEffectiveDateTime: str = None,  participantEffectivePeriod: 'Period' = None,  participantEffectiveDuration: 'Duration' = None,  participantEffectiveTiming: 'Timing' = None,  participantEffectiveTimeFromStart: 'Duration' = None,  participantEffectiveGroupMeasure: str = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -96,8 +96,8 @@ class Characteristic(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -125,11 +125,11 @@ class ResearchElementDefinition(DomainResource):
     :param str implicitRules: A set of rules under which this content was created
     :param str language: Language of the resource content
     :param 'Narrative' text: Text summary of the resource, for human interpretation
-    :param list['Resource'] contained: Contained, inline Resources
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored
+    :param 'Resource' contained: Contained, inline Resources
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored
     :param str url: Canonical identifier for this research element definition, represented as a URI (globally unique)
-    :param list['Identifier'] identifier: Additional identifier for the research element definition
+    :param 'Identifier' identifier: Additional identifier for the research element definition
     :param str version: Business version of the research element definition
     :param str name: Name for this research element definition (computer friendly)
     :param str title: Name for this research element definition (human friendly)
@@ -141,29 +141,29 @@ class ResearchElementDefinition(DomainResource):
     :param 'Reference' subjectReference: E.g. Patient, Practitioner, RelatedPerson, Organization, Location, Device
     :param str date: Date last changed
     :param str publisher: Name of the publisher (organization or individual)
-    :param list['ContactDetail'] contact: Contact details for the publisher
+    :param 'ContactDetail' contact: Contact details for the publisher
     :param str description: Natural language description of the research element definition
     :param str comment: Used for footnotes or explanatory notes
-    :param list['UsageContext'] useContext: The context that the content is intended to support
-    :param list['CodeableConcept'] jurisdiction: Intended jurisdiction for research element definition (if applicable)
+    :param 'UsageContext' useContext: The context that the content is intended to support
+    :param 'CodeableConcept' jurisdiction: Intended jurisdiction for research element definition (if applicable)
     :param str purpose: Why this research element definition is defined
     :param str usage: Describes the clinical usage of the ResearchElementDefinition
     :param str copyright: Use and/or publishing restrictions
     :param str approvalDate: When the research element definition was approved by publisher
     :param str lastReviewDate: When the research element definition was last reviewed
     :param 'Period' effectivePeriod: When the research element definition is expected to be used
-    :param list['CodeableConcept'] topic: The category of the ResearchElementDefinition, such as Education, Treatment, Assessment, etc.
-    :param list['ContactDetail'] author: Who authored the content
-    :param list['ContactDetail'] editor: Who edited the content
-    :param list['ContactDetail'] reviewer: Who reviewed the content
-    :param list['ContactDetail'] endorser: Who endorsed the content
-    :param list['RelatedArtifact'] relatedArtifact: Additional documentation, citations, etc.
+    :param 'CodeableConcept' topic: The category of the ResearchElementDefinition, such as Education, Treatment, Assessment, etc.
+    :param 'ContactDetail' author: Who authored the content
+    :param 'ContactDetail' editor: Who edited the content
+    :param 'ContactDetail' reviewer: Who reviewed the content
+    :param 'ContactDetail' endorser: Who endorsed the content
+    :param 'RelatedArtifact' relatedArtifact: Additional documentation, citations, etc.
     :param str library: Logic used by the ResearchElementDefinition
     :param str type: population | exposure | outcome
     :param str variableType: dichotomous | continuous | descriptive
-    :param list['Characteristic'] characteristic: What defines the members of the research element
+    :param 'Characteristic' characteristic: What defines the members of the research element
     """
-    def __init__(self, resourceType: str = "ResearchElementDefinition",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  url: str = None,  identifier: list['Identifier'] = None,  version: str = None,  name: str = None,  title: str = None,  shortTitle: str = None,  subtitle: str = None,  status: str = None,  experimental: bool = None,  subjectCodeableConcept: 'CodeableConcept' = None,  subjectReference: 'Reference' = None,  date: str = None,  publisher: str = None,  contact: list['ContactDetail'] = None,  description: str = None,  comment: str = None,  useContext: list['UsageContext'] = None,  jurisdiction: list['CodeableConcept'] = None,  purpose: str = None,  usage: str = None,  copyright: str = None,  approvalDate: str = None,  lastReviewDate: str = None,  effectivePeriod: 'Period' = None,  topic: list['CodeableConcept'] = None,  author: list['ContactDetail'] = None,  editor: list['ContactDetail'] = None,  reviewer: list['ContactDetail'] = None,  endorser: list['ContactDetail'] = None,  relatedArtifact: list['RelatedArtifact'] = None,  library: str = None,  type: str = None,  variableType: str = None,  characteristic: list['Characteristic'] = None, ):
+    def __init__(self, resourceType: str = "ResearchElementDefinition",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: 'Resource' = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  url: str = None,  identifier: 'Identifier' = None,  version: str = None,  name: str = None,  title: str = None,  shortTitle: str = None,  subtitle: str = None,  status: str = None,  experimental: bool = None,  subjectCodeableConcept: 'CodeableConcept' = None,  subjectReference: 'Reference' = None,  date: str = None,  publisher: str = None,  contact: 'ContactDetail' = None,  description: str = None,  comment: str = None,  useContext: 'UsageContext' = None,  jurisdiction: 'CodeableConcept' = None,  purpose: str = None,  usage: str = None,  copyright: str = None,  approvalDate: str = None,  lastReviewDate: str = None,  effectivePeriod: 'Period' = None,  topic: 'CodeableConcept' = None,  author: 'ContactDetail' = None,  editor: 'ContactDetail' = None,  reviewer: 'ContactDetail' = None,  endorser: 'ContactDetail' = None,  relatedArtifact: 'RelatedArtifact' = None,  library: str = None,  type: str = None,  variableType: str = None,  characteristic: 'Characteristic' = None, ):
         self.resourceType: str = resourceType or "ResearchElementDefinition"
         self.id: str = id 
         self.meta: 'Meta' = meta 
@@ -188,7 +188,7 @@ class ResearchElementDefinition(DomainResource):
         self.publisher: str = publisher 
         self.contact: list['ContactDetail'] = contact or []
         self.description: str = description 
-        self.comment: str = comment or []
+        self.comment: list[str] = comment or []
         self.useContext: list['UsageContext'] = useContext or []
         self.jurisdiction: list['CodeableConcept'] = jurisdiction or []
         self.purpose: str = purpose 
@@ -203,7 +203,7 @@ class ResearchElementDefinition(DomainResource):
         self.reviewer: list['ContactDetail'] = reviewer or []
         self.endorser: list['ContactDetail'] = endorser or []
         self.relatedArtifact: list['RelatedArtifact'] = relatedArtifact or []
-        self.library: str = library or []
+        self.library: list[str] = library or []
         self.type: str = type 
         self.variableType: str = variableType 
         self.characteristic: list['Characteristic'] = characteristic or []
@@ -225,8 +225,8 @@ class ResearchElementDefinition(DomainResource):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)

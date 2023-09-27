@@ -1,36 +1,36 @@
 """
 Generated class for Contract. 
-Time: 2023-09-25 16:30:45
+Time: 2023-09-27 15:54:17
 """
 from importlib import import_module
 import inspect
 
-from fhan.models.R4.Identifier import *
 from fhan.models.R4.Attachment import *
-from fhan.models.R4.Quantity import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Annotation import *
-from fhan.models.R4.Signature import *
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Period import *
-from fhan.models.R4.Coding import *
-from fhan.models.R4.Money import *
-from fhan.models.R4.Timing import *
-from fhan.models.R4.Extension import *
-from fhan.models.R4.Reference import *
 from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Meta import *
+from fhan.models.R4.Timing import *
+from fhan.models.R4.Money import *
+from fhan.models.R4.Annotation import *
+from fhan.models.R4.Quantity import *
+from fhan.models.R4.Signature import *
+from fhan.models.R4.Period import *
 from fhan.models.R4.Resource import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Coding import *
+from fhan.models.R4.Extension import *
 from fhan.models.R4.Narrative import *
+from fhan.models.R4.Reference import *
 from fhan.models.R4.DomainResource import *
 
 
     
     
 
-class ContentDefinition(ModelBase):
+class ContentDefinition(BaseModel):
     """ Precusory content developed with a focus and intent of supporting the formation a Contract instance, which may be associated with and transformable into a Contract.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param 'CodeableConcept' type: Content structure and use
     :param 'CodeableConcept' subType: Detailed Content Type Definition
     :param 'Reference' publisher: Publisher Entity
@@ -38,7 +38,7 @@ class ContentDefinition(ModelBase):
     :param str publicationStatus: amended | appended | cancelled | disputed | entered-in-error | executable | executed | negotiable | offered | policy | rejected | renewed | revoked | resolved | terminated
     :param str copyright: Publication Ownership
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  type: 'CodeableConcept' = None,  subType: 'CodeableConcept' = None,  publisher: 'Reference' = None,  publicationDate: str = None,  publicationStatus: str = None,  copyright: str = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  type: 'CodeableConcept' = None,  subType: 'CodeableConcept' = None,  publisher: 'Reference' = None,  publicationDate: str = None,  publicationStatus: str = None,  copyright: str = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -66,8 +66,8 @@ class ContentDefinition(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -93,20 +93,20 @@ class ContentDefinition(ModelBase):
     
     
 
-class SecurityLabel(ModelBase):
+class SecurityLabel(BaseModel):
     """ Security labels that protect the handling of information about the term and its elements, which may be specifically identified..:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param int number: Link to Security Labels
     :param 'Coding' classification: Confidentiality Protection
-    :param list['Coding'] category: Applicable Policy
-    :param list['Coding'] control: Handling Instructions
+    :param 'Coding' category: Applicable Policy
+    :param 'Coding' control: Handling Instructions
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  number: int = None,  classification: 'Coding' = None,  category: list['Coding'] = None,  control: list['Coding'] = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  number: int = None,  classification: 'Coding' = None,  category: 'Coding' = None,  control: 'Coding' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
-        self.number: int = number or []
+        self.number: list[int] = number or []
         self.classification: 'Coding' = classification 
         self.category: list['Coding'] = category or []
         self.control: list['Coding'] = control or []
@@ -128,8 +128,8 @@ class SecurityLabel(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -155,14 +155,14 @@ class SecurityLabel(ModelBase):
     
     
 
-class Party(ModelBase):
+class Party(BaseModel):
     """ Offer Recipient.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param list['Reference'] reference: Referenced entity
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Reference' reference: Referenced entity
     :param 'CodeableConcept' role: Participant engagement type
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  reference: list['Reference'] = None,  role: 'CodeableConcept' = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  reference: 'Reference' = None,  role: 'CodeableConcept' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -186,8 +186,8 @@ class Party(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -211,10 +211,10 @@ class Party(ModelBase):
     
     
 
-class Answer(ModelBase):
+class Answer(BaseModel):
     """ Response to offer text.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param bool valueBoolean: The actual answer response
     :param float valueDecimal: The actual answer response
     :param int valueInteger: The actual answer response
@@ -228,7 +228,7 @@ class Answer(ModelBase):
     :param 'Quantity' valueQuantity: The actual answer response
     :param 'Reference' valueReference: The actual answer response
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  valueBoolean: bool = None,  valueDecimal: float = None,  valueInteger: int = None,  valueDate: str = None,  valueDateTime: str = None,  valueTime: str = None,  valueString: str = None,  valueUri: str = None,  valueAttachment: 'Attachment' = None,  valueCoding: 'Coding' = None,  valueQuantity: 'Quantity' = None,  valueReference: 'Reference' = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  valueBoolean: bool = None,  valueDecimal: float = None,  valueInteger: int = None,  valueDate: str = None,  valueDateTime: str = None,  valueTime: str = None,  valueString: str = None,  valueUri: str = None,  valueAttachment: 'Attachment' = None,  valueCoding: 'Coding' = None,  valueQuantity: 'Quantity' = None,  valueReference: 'Reference' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -262,8 +262,8 @@ class Answer(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -288,22 +288,22 @@ class Answer(ModelBase):
     
     
 
-class Offer(ModelBase):
+class Offer(BaseModel):
     """ The matter of concern in the context of this provision of the agrement.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param list['Identifier'] identifier: Offer business ID
-    :param list['Party'] party: Offer Recipient
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Identifier' identifier: Offer business ID
+    :param 'Party' party: Offer Recipient
     :param 'Reference' topic: Negotiable offer asset
     :param 'CodeableConcept' type: Contract Offer Type or Form
     :param 'CodeableConcept' decision: Accepting party choice
-    :param list['CodeableConcept'] decisionMode: How decision is conveyed
-    :param list['Answer'] answer: Response to offer text
+    :param 'CodeableConcept' decisionMode: How decision is conveyed
+    :param 'Answer' answer: Response to offer text
     :param str text: Human readable offer text
     :param str linkId: Pointer to text
     :param int securityLabelNumber: Offer restriction numbers
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  identifier: list['Identifier'] = None,  party: list['Party'] = None,  topic: 'Reference' = None,  type: 'CodeableConcept' = None,  decision: 'CodeableConcept' = None,  decisionMode: list['CodeableConcept'] = None,  answer: list['Answer'] = None,  text: str = None,  linkId: str = None,  securityLabelNumber: int = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  identifier: 'Identifier' = None,  party: 'Party' = None,  topic: 'Reference' = None,  type: 'CodeableConcept' = None,  decision: 'CodeableConcept' = None,  decisionMode: 'CodeableConcept' = None,  answer: 'Answer' = None,  text: str = None,  linkId: str = None,  securityLabelNumber: int = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -315,8 +315,8 @@ class Offer(ModelBase):
         self.decisionMode: list['CodeableConcept'] = decisionMode or []
         self.answer: list['Answer'] = answer or []
         self.text: str = text 
-        self.linkId: str = linkId or []
-        self.securityLabelNumber: int = securityLabelNumber or []
+        self.linkId: list[str] = linkId or []
+        self.securityLabelNumber: list[int] = securityLabelNumber or []
         
 
     @classmethod
@@ -335,8 +335,8 @@ class Offer(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -362,15 +362,15 @@ class Offer(ModelBase):
     
     
 
-class Context(ModelBase):
+class Context(BaseModel):
     """ Circumstance of the asset.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param 'Reference' reference: Creator,custodian or owner
-    :param list['CodeableConcept'] code: Codeable asset context
+    :param 'CodeableConcept' code: Codeable asset context
     :param str text: Context description
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  reference: 'Reference' = None,  code: list['CodeableConcept'] = None,  text: str = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  reference: 'Reference' = None,  code: 'CodeableConcept' = None,  text: str = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -395,8 +395,8 @@ class Context(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -420,10 +420,10 @@ class Context(ModelBase):
     
     
 
-class ValuedItem(ModelBase):
+class ValuedItem(BaseModel):
     """ Contract Valued Item List.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param 'CodeableConcept' entityCodeableConcept: Contract Valued Item Type
     :param 'Reference' entityReference: Contract Valued Item Type
     :param 'Identifier' identifier: Contract Valued Item Number
@@ -440,7 +440,7 @@ class ValuedItem(ModelBase):
     :param str linkId: Pointer to specific item
     :param int securityLabelNumber: Security Labels that define affected terms
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  entityCodeableConcept: 'CodeableConcept' = None,  entityReference: 'Reference' = None,  identifier: 'Identifier' = None,  effectiveTime: str = None,  quantity: 'Quantity' = None,  unitPrice: 'Money' = None,  factor: float = None,  points: float = None,  net: 'Money' = None,  payment: str = None,  paymentDate: str = None,  responsible: 'Reference' = None,  recipient: 'Reference' = None,  linkId: str = None,  securityLabelNumber: int = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  entityCodeableConcept: 'CodeableConcept' = None,  entityReference: 'Reference' = None,  identifier: 'Identifier' = None,  effectiveTime: str = None,  quantity: 'Quantity' = None,  unitPrice: 'Money' = None,  factor: float = None,  points: float = None,  net: 'Money' = None,  payment: str = None,  paymentDate: str = None,  responsible: 'Reference' = None,  recipient: 'Reference' = None,  linkId: str = None,  securityLabelNumber: int = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -457,8 +457,8 @@ class ValuedItem(ModelBase):
         self.paymentDate: str = paymentDate 
         self.responsible: 'Reference' = responsible 
         self.recipient: 'Reference' = recipient 
-        self.linkId: str = linkId or []
-        self.securityLabelNumber: int = securityLabelNumber or []
+        self.linkId: list[str] = linkId or []
+        self.securityLabelNumber: list[int] = securityLabelNumber or []
         
 
     @classmethod
@@ -477,8 +477,8 @@ class ValuedItem(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -503,26 +503,26 @@ class ValuedItem(ModelBase):
     
     
 
-class Asset(ModelBase):
+class Asset(BaseModel):
     """ Contract Term Asset List.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param 'CodeableConcept' scope: Range of asset
-    :param list['CodeableConcept'] type: Asset category
-    :param list['Reference'] typeReference: Associated entities
-    :param list['CodeableConcept'] subtype: Asset sub-category
+    :param 'CodeableConcept' type: Asset category
+    :param 'Reference' typeReference: Associated entities
+    :param 'CodeableConcept' subtype: Asset sub-category
     :param 'Coding' relationship: Kinship of the asset
-    :param list['Context'] context: Circumstance of the asset
+    :param 'Context' context: Circumstance of the asset
     :param str condition: Quality desctiption of asset
-    :param list['CodeableConcept'] periodType: Asset availability types
-    :param list['Period'] period: Time period of the asset
-    :param list['Period'] usePeriod: Time period
+    :param 'CodeableConcept' periodType: Asset availability types
+    :param 'Period' period: Time period of the asset
+    :param 'Period' usePeriod: Time period
     :param str text: Asset clause or question text
     :param str linkId: Pointer to asset text
     :param int securityLabelNumber: Asset restriction numbers
-    :param list['ValuedItem'] valuedItem: Contract Valued Item List
+    :param 'ValuedItem' valuedItem: Contract Valued Item List
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  scope: 'CodeableConcept' = None,  type: list['CodeableConcept'] = None,  typeReference: list['Reference'] = None,  subtype: list['CodeableConcept'] = None,  relationship: 'Coding' = None,  context: list['Context'] = None,  condition: str = None,  periodType: list['CodeableConcept'] = None,  period: list['Period'] = None,  usePeriod: list['Period'] = None,  text: str = None,  linkId: str = None,  securityLabelNumber: int = None,  valuedItem: list['ValuedItem'] = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  scope: 'CodeableConcept' = None,  type: 'CodeableConcept' = None,  typeReference: 'Reference' = None,  subtype: 'CodeableConcept' = None,  relationship: 'Coding' = None,  context: 'Context' = None,  condition: str = None,  periodType: 'CodeableConcept' = None,  period: 'Period' = None,  usePeriod: 'Period' = None,  text: str = None,  linkId: str = None,  securityLabelNumber: int = None,  valuedItem: 'ValuedItem' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -537,8 +537,8 @@ class Asset(ModelBase):
         self.period: list['Period'] = period or []
         self.usePeriod: list['Period'] = usePeriod or []
         self.text: str = text 
-        self.linkId: str = linkId or []
-        self.securityLabelNumber: int = securityLabelNumber or []
+        self.linkId: list[str] = linkId or []
+        self.securityLabelNumber: list[int] = securityLabelNumber or []
         self.valuedItem: list['ValuedItem'] = valuedItem or []
         
 
@@ -558,8 +558,8 @@ class Asset(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -585,14 +585,14 @@ class Asset(ModelBase):
     
     
 
-class Subject(ModelBase):
+class Subject(BaseModel):
     """ Entity of the action.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param list['Reference'] reference: Entity of the action
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Reference' reference: Entity of the action
     :param 'CodeableConcept' role: Role type of the agent
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  reference: list['Reference'] = None,  role: 'CodeableConcept' = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  reference: 'Reference' = None,  role: 'CodeableConcept' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -616,8 +616,8 @@ class Subject(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -642,13 +642,13 @@ class Subject(ModelBase):
     
     
 
-class Action(ModelBase):
+class Action(BaseModel):
     """ An actor taking a role in an activity for which it can be assigned some degree of responsibility for the activity taking place.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param bool doNotPerform: True if the term prohibits the  action
     :param 'CodeableConcept' type: Type or form of the action
-    :param list['Subject'] subject: Entity of the action
+    :param 'Subject' subject: Entity of the action
     :param 'CodeableConcept' intent: Purpose for the Contract Term Action
     :param str linkId: Pointer to specific item
     :param 'CodeableConcept' status: State of the action
@@ -657,20 +657,20 @@ class Action(ModelBase):
     :param str occurrenceDateTime: When action happens
     :param 'Period' occurrencePeriod: When action happens
     :param 'Timing' occurrenceTiming: When action happens
-    :param list['Reference'] requester: Who asked for action
+    :param 'Reference' requester: Who asked for action
     :param str requesterLinkId: Pointer to specific item
-    :param list['CodeableConcept'] performerType: Kind of service performer
+    :param 'CodeableConcept' performerType: Kind of service performer
     :param 'CodeableConcept' performerRole: Competency of the performer
     :param 'Reference' performer: Actor that wil execute (or not) the action
     :param str performerLinkId: Pointer to specific item
-    :param list['CodeableConcept'] reasonCode: Why is action (not) needed?
-    :param list['Reference'] reasonReference: Why is action (not) needed?
+    :param 'CodeableConcept' reasonCode: Why is action (not) needed?
+    :param 'Reference' reasonReference: Why is action (not) needed?
     :param str reason: Why action is to be performed
     :param str reasonLinkId: Pointer to specific item
-    :param list['Annotation'] note: Comments about the action
+    :param 'Annotation' note: Comments about the action
     :param int securityLabelNumber: Action restriction numbers
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  doNotPerform: bool = None,  type: 'CodeableConcept' = None,  subject: list['Subject'] = None,  intent: 'CodeableConcept' = None,  linkId: str = None,  status: 'CodeableConcept' = None,  context: 'Reference' = None,  contextLinkId: str = None,  occurrenceDateTime: str = None,  occurrencePeriod: 'Period' = None,  occurrenceTiming: 'Timing' = None,  requester: list['Reference'] = None,  requesterLinkId: str = None,  performerType: list['CodeableConcept'] = None,  performerRole: 'CodeableConcept' = None,  performer: 'Reference' = None,  performerLinkId: str = None,  reasonCode: list['CodeableConcept'] = None,  reasonReference: list['Reference'] = None,  reason: str = None,  reasonLinkId: str = None,  note: list['Annotation'] = None,  securityLabelNumber: int = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  doNotPerform: bool = None,  type: 'CodeableConcept' = None,  subject: 'Subject' = None,  intent: 'CodeableConcept' = None,  linkId: str = None,  status: 'CodeableConcept' = None,  context: 'Reference' = None,  contextLinkId: str = None,  occurrenceDateTime: str = None,  occurrencePeriod: 'Period' = None,  occurrenceTiming: 'Timing' = None,  requester: 'Reference' = None,  requesterLinkId: str = None,  performerType: 'CodeableConcept' = None,  performerRole: 'CodeableConcept' = None,  performer: 'Reference' = None,  performerLinkId: str = None,  reasonCode: 'CodeableConcept' = None,  reasonReference: 'Reference' = None,  reason: str = None,  reasonLinkId: str = None,  note: 'Annotation' = None,  securityLabelNumber: int = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -678,25 +678,25 @@ class Action(ModelBase):
         self.type: 'CodeableConcept' = type 
         self.subject: list['Subject'] = subject or []
         self.intent: 'CodeableConcept' = intent 
-        self.linkId: str = linkId or []
+        self.linkId: list[str] = linkId or []
         self.status: 'CodeableConcept' = status 
         self.context: 'Reference' = context 
-        self.contextLinkId: str = contextLinkId or []
+        self.contextLinkId: list[str] = contextLinkId or []
         self.occurrenceDateTime: str = occurrenceDateTime 
         self.occurrencePeriod: 'Period' = occurrencePeriod 
         self.occurrenceTiming: 'Timing' = occurrenceTiming 
         self.requester: list['Reference'] = requester or []
-        self.requesterLinkId: str = requesterLinkId or []
+        self.requesterLinkId: list[str] = requesterLinkId or []
         self.performerType: list['CodeableConcept'] = performerType or []
         self.performerRole: 'CodeableConcept' = performerRole 
         self.performer: 'Reference' = performer 
-        self.performerLinkId: str = performerLinkId or []
+        self.performerLinkId: list[str] = performerLinkId or []
         self.reasonCode: list['CodeableConcept'] = reasonCode or []
         self.reasonReference: list['Reference'] = reasonReference or []
-        self.reason: str = reason or []
-        self.reasonLinkId: str = reasonLinkId or []
+        self.reason: list[str] = reason or []
+        self.reasonLinkId: list[str] = reasonLinkId or []
         self.note: list['Annotation'] = note or []
-        self.securityLabelNumber: int = securityLabelNumber or []
+        self.securityLabelNumber: list[int] = securityLabelNumber or []
         
 
     @classmethod
@@ -715,8 +715,8 @@ class Action(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -741,10 +741,10 @@ class Action(ModelBase):
     
     
 
-class Term(ModelBase):
+class Term(BaseModel):
     """ One or more Contract Provisions, which may be related and conveyed as a group, and may contain nested groups.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param 'Identifier' identifier: Contract Term Number
     :param str issued: Contract Term Issue Date Time
     :param 'Period' applies: Contract Term Effective Time
@@ -753,12 +753,12 @@ class Term(ModelBase):
     :param 'CodeableConcept' type: Contract Term Type or Form
     :param 'CodeableConcept' subType: Contract Term Type specific classification
     :param str text: Term Statement
-    :param list['SecurityLabel'] securityLabel: Protection for the Term
+    :param 'SecurityLabel' securityLabel: Protection for the Term
     :param 'Offer' offer: Context of the Contract term
-    :param list['Asset'] asset: Contract Term Asset List
-    :param list['Action'] action: Entity being ascribed responsibility
+    :param 'Asset' asset: Contract Term Asset List
+    :param 'Action' action: Entity being ascribed responsibility
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  identifier: 'Identifier' = None,  issued: str = None,  applies: 'Period' = None,  topicCodeableConcept: 'CodeableConcept' = None,  topicReference: 'Reference' = None,  type: 'CodeableConcept' = None,  subType: 'CodeableConcept' = None,  text: str = None,  securityLabel: list['SecurityLabel'] = None,  offer: 'Offer' = None,  asset: list['Asset'] = None,  action: list['Action'] = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  identifier: 'Identifier' = None,  issued: str = None,  applies: 'Period' = None,  topicCodeableConcept: 'CodeableConcept' = None,  topicReference: 'Reference' = None,  type: 'CodeableConcept' = None,  subType: 'CodeableConcept' = None,  text: str = None,  securityLabel: 'SecurityLabel' = None,  offer: 'Offer' = None,  asset: 'Asset' = None,  action: 'Action' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -792,8 +792,8 @@ class Term(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -819,20 +819,20 @@ class Term(ModelBase):
     
     
 
-class SecurityLabel(ModelBase):
+class SecurityLabel(BaseModel):
     """ Security labels that protect the handling of information about the term and its elements, which may be specifically identified..:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param int number: Link to Security Labels
     :param 'Coding' classification: Confidentiality Protection
-    :param list['Coding'] category: Applicable Policy
-    :param list['Coding'] control: Handling Instructions
+    :param 'Coding' category: Applicable Policy
+    :param 'Coding' control: Handling Instructions
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  number: int = None,  classification: 'Coding' = None,  category: list['Coding'] = None,  control: list['Coding'] = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  number: int = None,  classification: 'Coding' = None,  category: 'Coding' = None,  control: 'Coding' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
-        self.number: int = number or []
+        self.number: list[int] = number or []
         self.classification: 'Coding' = classification 
         self.category: list['Coding'] = category or []
         self.control: list['Coding'] = control or []
@@ -854,8 +854,8 @@ class SecurityLabel(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -881,14 +881,14 @@ class SecurityLabel(ModelBase):
     
     
 
-class Party(ModelBase):
+class Party(BaseModel):
     """ Offer Recipient.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param list['Reference'] reference: Referenced entity
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Reference' reference: Referenced entity
     :param 'CodeableConcept' role: Participant engagement type
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  reference: list['Reference'] = None,  role: 'CodeableConcept' = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  reference: 'Reference' = None,  role: 'CodeableConcept' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -912,8 +912,8 @@ class Party(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -937,10 +937,10 @@ class Party(ModelBase):
     
     
 
-class Answer(ModelBase):
+class Answer(BaseModel):
     """ Response to offer text.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param bool valueBoolean: The actual answer response
     :param float valueDecimal: The actual answer response
     :param int valueInteger: The actual answer response
@@ -954,7 +954,7 @@ class Answer(ModelBase):
     :param 'Quantity' valueQuantity: The actual answer response
     :param 'Reference' valueReference: The actual answer response
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  valueBoolean: bool = None,  valueDecimal: float = None,  valueInteger: int = None,  valueDate: str = None,  valueDateTime: str = None,  valueTime: str = None,  valueString: str = None,  valueUri: str = None,  valueAttachment: 'Attachment' = None,  valueCoding: 'Coding' = None,  valueQuantity: 'Quantity' = None,  valueReference: 'Reference' = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  valueBoolean: bool = None,  valueDecimal: float = None,  valueInteger: int = None,  valueDate: str = None,  valueDateTime: str = None,  valueTime: str = None,  valueString: str = None,  valueUri: str = None,  valueAttachment: 'Attachment' = None,  valueCoding: 'Coding' = None,  valueQuantity: 'Quantity' = None,  valueReference: 'Reference' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -988,8 +988,8 @@ class Answer(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -1014,22 +1014,22 @@ class Answer(ModelBase):
     
     
 
-class Offer(ModelBase):
+class Offer(BaseModel):
     """ The matter of concern in the context of this provision of the agrement.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param list['Identifier'] identifier: Offer business ID
-    :param list['Party'] party: Offer Recipient
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Identifier' identifier: Offer business ID
+    :param 'Party' party: Offer Recipient
     :param 'Reference' topic: Negotiable offer asset
     :param 'CodeableConcept' type: Contract Offer Type or Form
     :param 'CodeableConcept' decision: Accepting party choice
-    :param list['CodeableConcept'] decisionMode: How decision is conveyed
-    :param list['Answer'] answer: Response to offer text
+    :param 'CodeableConcept' decisionMode: How decision is conveyed
+    :param 'Answer' answer: Response to offer text
     :param str text: Human readable offer text
     :param str linkId: Pointer to text
     :param int securityLabelNumber: Offer restriction numbers
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  identifier: list['Identifier'] = None,  party: list['Party'] = None,  topic: 'Reference' = None,  type: 'CodeableConcept' = None,  decision: 'CodeableConcept' = None,  decisionMode: list['CodeableConcept'] = None,  answer: list['Answer'] = None,  text: str = None,  linkId: str = None,  securityLabelNumber: int = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  identifier: 'Identifier' = None,  party: 'Party' = None,  topic: 'Reference' = None,  type: 'CodeableConcept' = None,  decision: 'CodeableConcept' = None,  decisionMode: 'CodeableConcept' = None,  answer: 'Answer' = None,  text: str = None,  linkId: str = None,  securityLabelNumber: int = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -1041,8 +1041,8 @@ class Offer(ModelBase):
         self.decisionMode: list['CodeableConcept'] = decisionMode or []
         self.answer: list['Answer'] = answer or []
         self.text: str = text 
-        self.linkId: str = linkId or []
-        self.securityLabelNumber: int = securityLabelNumber or []
+        self.linkId: list[str] = linkId or []
+        self.securityLabelNumber: list[int] = securityLabelNumber or []
         
 
     @classmethod
@@ -1061,8 +1061,8 @@ class Offer(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -1088,15 +1088,15 @@ class Offer(ModelBase):
     
     
 
-class Context(ModelBase):
+class Context(BaseModel):
     """ Circumstance of the asset.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param 'Reference' reference: Creator,custodian or owner
-    :param list['CodeableConcept'] code: Codeable asset context
+    :param 'CodeableConcept' code: Codeable asset context
     :param str text: Context description
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  reference: 'Reference' = None,  code: list['CodeableConcept'] = None,  text: str = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  reference: 'Reference' = None,  code: 'CodeableConcept' = None,  text: str = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -1121,8 +1121,8 @@ class Context(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -1146,10 +1146,10 @@ class Context(ModelBase):
     
     
 
-class ValuedItem(ModelBase):
+class ValuedItem(BaseModel):
     """ Contract Valued Item List.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param 'CodeableConcept' entityCodeableConcept: Contract Valued Item Type
     :param 'Reference' entityReference: Contract Valued Item Type
     :param 'Identifier' identifier: Contract Valued Item Number
@@ -1166,7 +1166,7 @@ class ValuedItem(ModelBase):
     :param str linkId: Pointer to specific item
     :param int securityLabelNumber: Security Labels that define affected terms
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  entityCodeableConcept: 'CodeableConcept' = None,  entityReference: 'Reference' = None,  identifier: 'Identifier' = None,  effectiveTime: str = None,  quantity: 'Quantity' = None,  unitPrice: 'Money' = None,  factor: float = None,  points: float = None,  net: 'Money' = None,  payment: str = None,  paymentDate: str = None,  responsible: 'Reference' = None,  recipient: 'Reference' = None,  linkId: str = None,  securityLabelNumber: int = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  entityCodeableConcept: 'CodeableConcept' = None,  entityReference: 'Reference' = None,  identifier: 'Identifier' = None,  effectiveTime: str = None,  quantity: 'Quantity' = None,  unitPrice: 'Money' = None,  factor: float = None,  points: float = None,  net: 'Money' = None,  payment: str = None,  paymentDate: str = None,  responsible: 'Reference' = None,  recipient: 'Reference' = None,  linkId: str = None,  securityLabelNumber: int = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -1183,8 +1183,8 @@ class ValuedItem(ModelBase):
         self.paymentDate: str = paymentDate 
         self.responsible: 'Reference' = responsible 
         self.recipient: 'Reference' = recipient 
-        self.linkId: str = linkId or []
-        self.securityLabelNumber: int = securityLabelNumber or []
+        self.linkId: list[str] = linkId or []
+        self.securityLabelNumber: list[int] = securityLabelNumber or []
         
 
     @classmethod
@@ -1203,8 +1203,8 @@ class ValuedItem(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -1229,26 +1229,26 @@ class ValuedItem(ModelBase):
     
     
 
-class Asset(ModelBase):
+class Asset(BaseModel):
     """ Contract Term Asset List.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param 'CodeableConcept' scope: Range of asset
-    :param list['CodeableConcept'] type: Asset category
-    :param list['Reference'] typeReference: Associated entities
-    :param list['CodeableConcept'] subtype: Asset sub-category
+    :param 'CodeableConcept' type: Asset category
+    :param 'Reference' typeReference: Associated entities
+    :param 'CodeableConcept' subtype: Asset sub-category
     :param 'Coding' relationship: Kinship of the asset
-    :param list['Context'] context: Circumstance of the asset
+    :param 'Context' context: Circumstance of the asset
     :param str condition: Quality desctiption of asset
-    :param list['CodeableConcept'] periodType: Asset availability types
-    :param list['Period'] period: Time period of the asset
-    :param list['Period'] usePeriod: Time period
+    :param 'CodeableConcept' periodType: Asset availability types
+    :param 'Period' period: Time period of the asset
+    :param 'Period' usePeriod: Time period
     :param str text: Asset clause or question text
     :param str linkId: Pointer to asset text
     :param int securityLabelNumber: Asset restriction numbers
-    :param list['ValuedItem'] valuedItem: Contract Valued Item List
+    :param 'ValuedItem' valuedItem: Contract Valued Item List
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  scope: 'CodeableConcept' = None,  type: list['CodeableConcept'] = None,  typeReference: list['Reference'] = None,  subtype: list['CodeableConcept'] = None,  relationship: 'Coding' = None,  context: list['Context'] = None,  condition: str = None,  periodType: list['CodeableConcept'] = None,  period: list['Period'] = None,  usePeriod: list['Period'] = None,  text: str = None,  linkId: str = None,  securityLabelNumber: int = None,  valuedItem: list['ValuedItem'] = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  scope: 'CodeableConcept' = None,  type: 'CodeableConcept' = None,  typeReference: 'Reference' = None,  subtype: 'CodeableConcept' = None,  relationship: 'Coding' = None,  context: 'Context' = None,  condition: str = None,  periodType: 'CodeableConcept' = None,  period: 'Period' = None,  usePeriod: 'Period' = None,  text: str = None,  linkId: str = None,  securityLabelNumber: int = None,  valuedItem: 'ValuedItem' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -1263,8 +1263,8 @@ class Asset(ModelBase):
         self.period: list['Period'] = period or []
         self.usePeriod: list['Period'] = usePeriod or []
         self.text: str = text 
-        self.linkId: str = linkId or []
-        self.securityLabelNumber: int = securityLabelNumber or []
+        self.linkId: list[str] = linkId or []
+        self.securityLabelNumber: list[int] = securityLabelNumber or []
         self.valuedItem: list['ValuedItem'] = valuedItem or []
         
 
@@ -1284,8 +1284,8 @@ class Asset(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -1311,14 +1311,14 @@ class Asset(ModelBase):
     
     
 
-class Subject(ModelBase):
+class Subject(BaseModel):
     """ Entity of the action.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param list['Reference'] reference: Entity of the action
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Reference' reference: Entity of the action
     :param 'CodeableConcept' role: Role type of the agent
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  reference: list['Reference'] = None,  role: 'CodeableConcept' = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  reference: 'Reference' = None,  role: 'CodeableConcept' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -1342,8 +1342,8 @@ class Subject(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -1368,13 +1368,13 @@ class Subject(ModelBase):
     
     
 
-class Action(ModelBase):
+class Action(BaseModel):
     """ An actor taking a role in an activity for which it can be assigned some degree of responsibility for the activity taking place.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param bool doNotPerform: True if the term prohibits the  action
     :param 'CodeableConcept' type: Type or form of the action
-    :param list['Subject'] subject: Entity of the action
+    :param 'Subject' subject: Entity of the action
     :param 'CodeableConcept' intent: Purpose for the Contract Term Action
     :param str linkId: Pointer to specific item
     :param 'CodeableConcept' status: State of the action
@@ -1383,20 +1383,20 @@ class Action(ModelBase):
     :param str occurrenceDateTime: When action happens
     :param 'Period' occurrencePeriod: When action happens
     :param 'Timing' occurrenceTiming: When action happens
-    :param list['Reference'] requester: Who asked for action
+    :param 'Reference' requester: Who asked for action
     :param str requesterLinkId: Pointer to specific item
-    :param list['CodeableConcept'] performerType: Kind of service performer
+    :param 'CodeableConcept' performerType: Kind of service performer
     :param 'CodeableConcept' performerRole: Competency of the performer
     :param 'Reference' performer: Actor that wil execute (or not) the action
     :param str performerLinkId: Pointer to specific item
-    :param list['CodeableConcept'] reasonCode: Why is action (not) needed?
-    :param list['Reference'] reasonReference: Why is action (not) needed?
+    :param 'CodeableConcept' reasonCode: Why is action (not) needed?
+    :param 'Reference' reasonReference: Why is action (not) needed?
     :param str reason: Why action is to be performed
     :param str reasonLinkId: Pointer to specific item
-    :param list['Annotation'] note: Comments about the action
+    :param 'Annotation' note: Comments about the action
     :param int securityLabelNumber: Action restriction numbers
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  doNotPerform: bool = None,  type: 'CodeableConcept' = None,  subject: list['Subject'] = None,  intent: 'CodeableConcept' = None,  linkId: str = None,  status: 'CodeableConcept' = None,  context: 'Reference' = None,  contextLinkId: str = None,  occurrenceDateTime: str = None,  occurrencePeriod: 'Period' = None,  occurrenceTiming: 'Timing' = None,  requester: list['Reference'] = None,  requesterLinkId: str = None,  performerType: list['CodeableConcept'] = None,  performerRole: 'CodeableConcept' = None,  performer: 'Reference' = None,  performerLinkId: str = None,  reasonCode: list['CodeableConcept'] = None,  reasonReference: list['Reference'] = None,  reason: str = None,  reasonLinkId: str = None,  note: list['Annotation'] = None,  securityLabelNumber: int = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  doNotPerform: bool = None,  type: 'CodeableConcept' = None,  subject: 'Subject' = None,  intent: 'CodeableConcept' = None,  linkId: str = None,  status: 'CodeableConcept' = None,  context: 'Reference' = None,  contextLinkId: str = None,  occurrenceDateTime: str = None,  occurrencePeriod: 'Period' = None,  occurrenceTiming: 'Timing' = None,  requester: 'Reference' = None,  requesterLinkId: str = None,  performerType: 'CodeableConcept' = None,  performerRole: 'CodeableConcept' = None,  performer: 'Reference' = None,  performerLinkId: str = None,  reasonCode: 'CodeableConcept' = None,  reasonReference: 'Reference' = None,  reason: str = None,  reasonLinkId: str = None,  note: 'Annotation' = None,  securityLabelNumber: int = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -1404,25 +1404,25 @@ class Action(ModelBase):
         self.type: 'CodeableConcept' = type 
         self.subject: list['Subject'] = subject or []
         self.intent: 'CodeableConcept' = intent 
-        self.linkId: str = linkId or []
+        self.linkId: list[str] = linkId or []
         self.status: 'CodeableConcept' = status 
         self.context: 'Reference' = context 
-        self.contextLinkId: str = contextLinkId or []
+        self.contextLinkId: list[str] = contextLinkId or []
         self.occurrenceDateTime: str = occurrenceDateTime 
         self.occurrencePeriod: 'Period' = occurrencePeriod 
         self.occurrenceTiming: 'Timing' = occurrenceTiming 
         self.requester: list['Reference'] = requester or []
-        self.requesterLinkId: str = requesterLinkId or []
+        self.requesterLinkId: list[str] = requesterLinkId or []
         self.performerType: list['CodeableConcept'] = performerType or []
         self.performerRole: 'CodeableConcept' = performerRole 
         self.performer: 'Reference' = performer 
-        self.performerLinkId: str = performerLinkId or []
+        self.performerLinkId: list[str] = performerLinkId or []
         self.reasonCode: list['CodeableConcept'] = reasonCode or []
         self.reasonReference: list['Reference'] = reasonReference or []
-        self.reason: str = reason or []
-        self.reasonLinkId: str = reasonLinkId or []
+        self.reason: list[str] = reason or []
+        self.reasonLinkId: list[str] = reasonLinkId or []
         self.note: list['Annotation'] = note or []
-        self.securityLabelNumber: int = securityLabelNumber or []
+        self.securityLabelNumber: list[int] = securityLabelNumber or []
         
 
     @classmethod
@@ -1441,8 +1441,8 @@ class Action(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -1467,10 +1467,10 @@ class Action(ModelBase):
     
     
 
-class Group(ModelBase):
+class Group(BaseModel):
     """ One or more Contract Provisions, which may be related and conveyed as a group, and may contain nested groups.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param 'Identifier' identifier: Contract Term Number
     :param str issued: Contract Term Issue Date Time
     :param 'Period' applies: Contract Term Effective Time
@@ -1479,12 +1479,12 @@ class Group(ModelBase):
     :param 'CodeableConcept' type: Contract Term Type or Form
     :param 'CodeableConcept' subType: Contract Term Type specific classification
     :param str text: Term Statement
-    :param list['SecurityLabel'] securityLabel: Protection for the Term
+    :param 'SecurityLabel' securityLabel: Protection for the Term
     :param 'Offer' offer: Context of the Contract term
-    :param list['Asset'] asset: Contract Term Asset List
-    :param list['Action'] action: Entity being ascribed responsibility
+    :param 'Asset' asset: Contract Term Asset List
+    :param 'Action' action: Entity being ascribed responsibility
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  identifier: 'Identifier' = None,  issued: str = None,  applies: 'Period' = None,  topicCodeableConcept: 'CodeableConcept' = None,  topicReference: 'Reference' = None,  type: 'CodeableConcept' = None,  subType: 'CodeableConcept' = None,  text: str = None,  securityLabel: list['SecurityLabel'] = None,  offer: 'Offer' = None,  asset: list['Asset'] = None,  action: list['Action'] = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  identifier: 'Identifier' = None,  issued: str = None,  applies: 'Period' = None,  topicCodeableConcept: 'CodeableConcept' = None,  topicReference: 'Reference' = None,  type: 'CodeableConcept' = None,  subType: 'CodeableConcept' = None,  text: str = None,  securityLabel: 'SecurityLabel' = None,  offer: 'Offer' = None,  asset: 'Asset' = None,  action: 'Action' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -1518,8 +1518,8 @@ class Group(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -1543,15 +1543,15 @@ class Group(ModelBase):
     
     
 
-class Signer(ModelBase):
+class Signer(BaseModel):
     """ Parties with legal standing in the Contract, including the principal parties, the grantor(s) and grantee(s), which are any person or organization bound by the contract, and any ancillary parties, which facilitate the execution of the contract such as a notary or witness.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param 'Coding' type: Contract Signatory Role
     :param 'Reference' party: Contract Signatory Party
-    :param list['Signature'] signature: Contract Documentation Signature
+    :param 'Signature' signature: Contract Documentation Signature
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  type: 'Coding' = None,  party: 'Reference' = None,  signature: list['Signature'] = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  type: 'Coding' = None,  party: 'Reference' = None,  signature: 'Signature' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -1576,8 +1576,8 @@ class Signer(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -1601,14 +1601,14 @@ class Signer(ModelBase):
     
     
 
-class Friendly(ModelBase):
+class Friendly(BaseModel):
     """ The "patient friendly language" versionof the Contract in whole or in parts. "Patient friendly language" means the representation of the Contract and Contract Provisions in a manner that is readily accessible and understandable by a layperson in accordance with best practices for communication styles that ensure that those agreeing to or signing the Contract understand the roles, actions, obligations, responsibilities, and implication of the agreement.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param 'Attachment' contentAttachment: Easily comprehended representation of this Contract
     :param 'Reference' contentReference: Easily comprehended representation of this Contract
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  contentAttachment: 'Attachment' = None,  contentReference: 'Reference' = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  contentAttachment: 'Attachment' = None,  contentReference: 'Reference' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -1632,8 +1632,8 @@ class Friendly(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -1657,17 +1657,17 @@ class Friendly(ModelBase):
     
     
 
-class Legal(ModelBase):
+class Legal(BaseModel):
     """ List of Legal expressions or representations of this Contract.:param 'CodeableConcept' legalState: Negotiation status
     :param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param 'Attachment' contentAttachment: Contract Legal Text
     :param 'Reference' contentReference: Contract Legal Text
     :param 'Attachment' legallyBindingAttachment: Binding Contract
     :param 'Reference' legallyBindingReference: Binding Contract
     """
-    def __init__(self,  legalState: 'CodeableConcept' = None,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  contentAttachment: 'Attachment' = None,  contentReference: 'Reference' = None,  legallyBindingAttachment: 'Attachment' = None,  legallyBindingReference: 'Reference' = None, ):
+    def __init__(self,  legalState: 'CodeableConcept' = None,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  contentAttachment: 'Attachment' = None,  contentReference: 'Reference' = None,  legallyBindingAttachment: 'Attachment' = None,  legallyBindingReference: 'Reference' = None, ):
         self.legalState: 'CodeableConcept' = legalState 
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
@@ -1694,8 +1694,8 @@ class Legal(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -1719,14 +1719,14 @@ class Legal(ModelBase):
     
     
 
-class Rule(ModelBase):
+class Rule(BaseModel):
     """ List of Computable Policy Rule Language Representations of this Contract.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param 'Attachment' contentAttachment: Computable Contract Rules
     :param 'Reference' contentReference: Computable Contract Rules
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  contentAttachment: 'Attachment' = None,  contentReference: 'Reference' = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  contentAttachment: 'Attachment' = None,  contentReference: 'Reference' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -1750,8 +1750,8 @@ class Rule(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -1779,10 +1779,10 @@ class Contract(DomainResource):
     :param str implicitRules: A set of rules under which this content was created
     :param str language: Language of the resource content
     :param 'Narrative' text: Text summary of the resource, for human interpretation
-    :param list['Resource'] contained: Contained, inline Resources
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored
-    :param list['Identifier'] identifier: Contract number
+    :param 'Resource' contained: Contained, inline Resources
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored
+    :param 'Identifier' identifier: Contract number
     :param str url: Basal definition
     :param str version: Business edition
     :param str status: amended | appended | cancelled | disputed | entered-in-error | executable | executed | negotiable | offered | policy | rejected | renewed | revoked | resolved | terminated
@@ -1793,10 +1793,10 @@ class Contract(DomainResource):
     :param str issued: When this Contract was issued
     :param 'Period' applies: Effective time
     :param 'CodeableConcept' expirationType: Contract cessation cause
-    :param list['Reference'] subject: Contract Target Entity
-    :param list['Reference'] authority: Authority under which this Contract has standing
-    :param list['Reference'] domain: A sphere of control governed by an authoritative jurisdiction, organization, or person
-    :param list['Reference'] site: Specific Location
+    :param 'Reference' subject: Contract Target Entity
+    :param 'Reference' authority: Authority under which this Contract has standing
+    :param 'Reference' domain: A sphere of control governed by an authoritative jurisdiction, organization, or person
+    :param 'Reference' site: Specific Location
     :param str name: Computer friendly designation
     :param str title: Human Friendly name
     :param str subtitle: Subordinate Friendly name
@@ -1806,18 +1806,18 @@ class Contract(DomainResource):
     :param 'CodeableConcept' topicCodeableConcept: Focus of contract interest
     :param 'Reference' topicReference: Focus of contract interest
     :param 'CodeableConcept' type: Legal instrument category
-    :param list['CodeableConcept'] subType: Subtype within the context of type
+    :param 'CodeableConcept' subType: Subtype within the context of type
     :param 'ContentDefinition' contentDefinition: Contract precursor content
-    :param list['Term'] term: Contract Term List
-    :param list['Group'] group: Contract Term List
-    :param list['Reference'] supportingInfo: Extra Information
-    :param list['Reference'] relevantHistory: Key event in Contract History
-    :param list['Signer'] signer: Contract Signatory
-    :param list['Friendly'] friendly: Contract Friendly Language
-    :param list['Legal'] legal: Contract Legal Language
-    :param list['Rule'] rule: Computable Contract Language
+    :param 'Term' term: Contract Term List
+    :param 'Group' group: Contract Term List
+    :param 'Reference' supportingInfo: Extra Information
+    :param 'Reference' relevantHistory: Key event in Contract History
+    :param 'Signer' signer: Contract Signatory
+    :param 'Friendly' friendly: Contract Friendly Language
+    :param 'Legal' legal: Contract Legal Language
+    :param 'Rule' rule: Computable Contract Language
     """
-    def __init__(self, resourceType: str = "Contract",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  identifier: list['Identifier'] = None,  url: str = None,  version: str = None,  status: str = None,  legalState: 'CodeableConcept' = None,  instantiatesCanonical: 'Reference' = None,  instantiatesUri: str = None,  contentDerivative: 'CodeableConcept' = None,  issued: str = None,  applies: 'Period' = None,  expirationType: 'CodeableConcept' = None,  subject: list['Reference'] = None,  authority: list['Reference'] = None,  domain: list['Reference'] = None,  site: list['Reference'] = None,  name: str = None,  title: str = None,  subtitle: str = None,  alias: str = None,  author: 'Reference' = None,  scope: 'CodeableConcept' = None,  topicCodeableConcept: 'CodeableConcept' = None,  topicReference: 'Reference' = None,  type: 'CodeableConcept' = None,  subType: list['CodeableConcept'] = None,  contentDefinition: 'ContentDefinition' = None,  term: list['Term'] = None,  group: list['Group'] = None,  supportingInfo: list['Reference'] = None,  relevantHistory: list['Reference'] = None,  signer: list['Signer'] = None,  friendly: list['Friendly'] = None,  legal: list['Legal'] = None,  rule: list['Rule'] = None, ):
+    def __init__(self, resourceType: str = "Contract",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: 'Resource' = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  identifier: 'Identifier' = None,  url: str = None,  version: str = None,  status: str = None,  legalState: 'CodeableConcept' = None,  instantiatesCanonical: 'Reference' = None,  instantiatesUri: str = None,  contentDerivative: 'CodeableConcept' = None,  issued: str = None,  applies: 'Period' = None,  expirationType: 'CodeableConcept' = None,  subject: 'Reference' = None,  authority: 'Reference' = None,  domain: 'Reference' = None,  site: 'Reference' = None,  name: str = None,  title: str = None,  subtitle: str = None,  alias: str = None,  author: 'Reference' = None,  scope: 'CodeableConcept' = None,  topicCodeableConcept: 'CodeableConcept' = None,  topicReference: 'Reference' = None,  type: 'CodeableConcept' = None,  subType: 'CodeableConcept' = None,  contentDefinition: 'ContentDefinition' = None,  term: 'Term' = None,  group: 'Group' = None,  supportingInfo: 'Reference' = None,  relevantHistory: 'Reference' = None,  signer: 'Signer' = None,  friendly: 'Friendly' = None,  legal: 'Legal' = None,  rule: 'Rule' = None, ):
         self.resourceType: str = resourceType or "Contract"
         self.id: str = id 
         self.meta: 'Meta' = meta 
@@ -1845,7 +1845,7 @@ class Contract(DomainResource):
         self.name: str = name 
         self.title: str = title 
         self.subtitle: str = subtitle 
-        self.alias: str = alias or []
+        self.alias: list[str] = alias or []
         self.author: 'Reference' = author 
         self.scope: 'CodeableConcept' = scope 
         self.topicCodeableConcept: 'CodeableConcept' = topicCodeableConcept 
@@ -1879,8 +1879,8 @@ class Contract(DomainResource):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)

@@ -1,20 +1,20 @@
 """
 Generated class for QuestionnaireResponse. 
-Time: 2023-09-25 16:30:45
+Time: 2023-09-27 15:54:17
 """
 from importlib import import_module
 import inspect
 
-from fhan.models.R4.Identifier import *
 from fhan.models.R4.Attachment import *
-from fhan.models.R4.Quantity import *
+from fhan.models.R4.BackboneElement import *
 from fhan.models.R4.Meta import *
+from fhan.models.R4.Quantity import *
+from fhan.models.R4.Resource import *
+from fhan.models.R4.Identifier import *
 from fhan.models.R4.Coding import *
 from fhan.models.R4.Extension import *
-from fhan.models.R4.Reference import *
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Resource import *
 from fhan.models.R4.Narrative import *
+from fhan.models.R4.Reference import *
 from fhan.models.R4.DomainResource import *
 
 
@@ -23,10 +23,10 @@ from fhan.models.R4.DomainResource import *
     
     
 
-class Answer(ModelBase):
+class Answer(BaseModel):
     """ The respondent's answer(s) to the question.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param bool valueBoolean: Single-valued answer to the question
     :param float valueDecimal: Single-valued answer to the question
     :param int valueInteger: Single-valued answer to the question
@@ -40,7 +40,7 @@ class Answer(ModelBase):
     :param 'Quantity' valueQuantity: Single-valued answer to the question
     :param 'Reference' valueReference: Single-valued answer to the question
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  valueBoolean: bool = None,  valueDecimal: float = None,  valueInteger: int = None,  valueDate: str = None,  valueDateTime: str = None,  valueTime: str = None,  valueString: str = None,  valueUri: str = None,  valueAttachment: 'Attachment' = None,  valueCoding: 'Coding' = None,  valueQuantity: 'Quantity' = None,  valueReference: 'Reference' = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  valueBoolean: bool = None,  valueDecimal: float = None,  valueInteger: int = None,  valueDate: str = None,  valueDateTime: str = None,  valueTime: str = None,  valueString: str = None,  valueUri: str = None,  valueAttachment: 'Attachment' = None,  valueCoding: 'Coding' = None,  valueQuantity: 'Quantity' = None,  valueReference: 'Reference' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -74,8 +74,8 @@ class Answer(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -100,16 +100,16 @@ class Answer(ModelBase):
     
     
 
-class Item(ModelBase):
+class Item(BaseModel):
     """ A group or question item from the original questionnaire for which answers are provided.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str linkId: Pointer to specific item from Questionnaire
     :param str definition: ElementDefinition - details for the item
     :param str text: Name for group or question text
-    :param list['Answer'] answer: The response(s) to the question
+    :param 'Answer' answer: The response(s) to the question
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  linkId: str = None,  definition: str = None,  text: str = None,  answer: list['Answer'] = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  linkId: str = None,  definition: str = None,  text: str = None,  answer: 'Answer' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -135,8 +135,8 @@ class Item(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -164,12 +164,12 @@ class QuestionnaireResponse(DomainResource):
     :param str implicitRules: A set of rules under which this content was created
     :param str language: Language of the resource content
     :param 'Narrative' text: Text summary of the resource, for human interpretation
-    :param list['Resource'] contained: Contained, inline Resources
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored
+    :param 'Resource' contained: Contained, inline Resources
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored
     :param 'Identifier' identifier: Unique id for this set of answers
-    :param list['Reference'] basedOn: Request fulfilled by this QuestionnaireResponse
-    :param list['Reference'] partOf: Part of this action
+    :param 'Reference' basedOn: Request fulfilled by this QuestionnaireResponse
+    :param 'Reference' partOf: Part of this action
     :param str questionnaire: Form being answered
     :param str status: in-progress | completed | amended | entered-in-error | stopped
     :param 'Reference' subject: The subject of the questions
@@ -177,9 +177,9 @@ class QuestionnaireResponse(DomainResource):
     :param str authored: Date the answers were gathered
     :param 'Reference' author: Person who received and recorded the answers
     :param 'Reference' source: The person who answered the questions
-    :param list['Item'] item: Groups and questions
+    :param 'Item' item: Groups and questions
     """
-    def __init__(self, resourceType: str = "QuestionnaireResponse",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  identifier: 'Identifier' = None,  basedOn: list['Reference'] = None,  partOf: list['Reference'] = None,  questionnaire: str = None,  status: str = None,  subject: 'Reference' = None,  encounter: 'Reference' = None,  authored: str = None,  author: 'Reference' = None,  source: 'Reference' = None,  item: list['Item'] = None, ):
+    def __init__(self, resourceType: str = "QuestionnaireResponse",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: 'Resource' = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  identifier: 'Identifier' = None,  basedOn: 'Reference' = None,  partOf: 'Reference' = None,  questionnaire: str = None,  status: str = None,  subject: 'Reference' = None,  encounter: 'Reference' = None,  authored: str = None,  author: 'Reference' = None,  source: 'Reference' = None,  item: 'Item' = None, ):
         self.resourceType: str = resourceType or "QuestionnaireResponse"
         self.id: str = id 
         self.meta: 'Meta' = meta 
@@ -218,8 +218,8 @@ class QuestionnaireResponse(DomainResource):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)

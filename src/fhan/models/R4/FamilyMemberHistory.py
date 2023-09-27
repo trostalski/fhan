@@ -1,32 +1,32 @@
 """
 Generated class for FamilyMemberHistory. 
-Time: 2023-09-25 16:30:45
+Time: 2023-09-27 15:54:17
 """
 from importlib import import_module
 import inspect
 
-from fhan.models.R4.Identifier import *
+from fhan.models.R4.BackboneElement import *
 from fhan.models.R4.Meta import *
-from fhan.models.R4.Annotation import *
 from fhan.models.R4.Age import *
-from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Annotation import *
 from fhan.models.R4.Period import *
+from fhan.models.R4.Resource import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Range import *
 from fhan.models.R4.Extension import *
-from fhan.models.R4.Reference import *
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Resource import *
 from fhan.models.R4.Narrative import *
+from fhan.models.R4.Reference import *
 from fhan.models.R4.DomainResource import *
 
 
     
     
 
-class Condition(ModelBase):
+class Condition(BaseModel):
     """ The significant Conditions (or condition) that the family member had. This is a repeating section to allow a system to represent more than one condition per resource, though there is nothing stopping multiple resources - one per condition.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param 'CodeableConcept' code: Condition suffered by relation
     :param 'CodeableConcept' outcome: deceased | permanent disability | etc.
     :param bool contributedToDeath: Whether the condition contributed to the cause of death
@@ -34,9 +34,9 @@ class Condition(ModelBase):
     :param 'Range' onsetRange: When condition first manifested
     :param 'Period' onsetPeriod: When condition first manifested
     :param str onsetString: When condition first manifested
-    :param list['Annotation'] note: Extra information about condition
+    :param 'Annotation' note: Extra information about condition
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  code: 'CodeableConcept' = None,  outcome: 'CodeableConcept' = None,  contributedToDeath: bool = None,  onsetAge: 'Age' = None,  onsetRange: 'Range' = None,  onsetPeriod: 'Period' = None,  onsetString: str = None,  note: list['Annotation'] = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  code: 'CodeableConcept' = None,  outcome: 'CodeableConcept' = None,  contributedToDeath: bool = None,  onsetAge: 'Age' = None,  onsetRange: 'Range' = None,  onsetPeriod: 'Period' = None,  onsetString: str = None,  note: 'Annotation' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -66,8 +66,8 @@ class Condition(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -95,10 +95,10 @@ class FamilyMemberHistory(DomainResource):
     :param str implicitRules: A set of rules under which this content was created
     :param str language: Language of the resource content
     :param 'Narrative' text: Text summary of the resource, for human interpretation
-    :param list['Resource'] contained: Contained, inline Resources
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored
-    :param list['Identifier'] identifier: External Id(s) for this record
+    :param 'Resource' contained: Contained, inline Resources
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored
+    :param 'Identifier' identifier: External Id(s) for this record
     :param str instantiatesCanonical: Instantiates FHIR protocol or definition
     :param str instantiatesUri: Instantiates external protocol or definition
     :param str status: partial | completed | entered-in-error | health-unknown
@@ -120,12 +120,12 @@ class FamilyMemberHistory(DomainResource):
     :param 'Range' deceasedRange: Dead? How old/when?
     :param str deceasedDate: Dead? How old/when?
     :param str deceasedString: Dead? How old/when?
-    :param list['CodeableConcept'] reasonCode: Why was family member history performed?
-    :param list['Reference'] reasonReference: Why was family member history performed?
-    :param list['Annotation'] note: General note about related person
-    :param list['Condition'] condition: Condition that the related person had
+    :param 'CodeableConcept' reasonCode: Why was family member history performed?
+    :param 'Reference' reasonReference: Why was family member history performed?
+    :param 'Annotation' note: General note about related person
+    :param 'Condition' condition: Condition that the related person had
     """
-    def __init__(self, resourceType: str = "FamilyMemberHistory",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  identifier: list['Identifier'] = None,  instantiatesCanonical: str = None,  instantiatesUri: str = None,  status: str = None,  dataAbsentReason: 'CodeableConcept' = None,  patient: 'Reference' = None,  date: str = None,  name: str = None,  relationship: 'CodeableConcept' = None,  sex: 'CodeableConcept' = None,  bornPeriod: 'Period' = None,  bornDate: str = None,  bornString: str = None,  ageAge: 'Age' = None,  ageRange: 'Range' = None,  ageString: str = None,  estimatedAge: bool = None,  deceasedBoolean: bool = None,  deceasedAge: 'Age' = None,  deceasedRange: 'Range' = None,  deceasedDate: str = None,  deceasedString: str = None,  reasonCode: list['CodeableConcept'] = None,  reasonReference: list['Reference'] = None,  note: list['Annotation'] = None,  condition: list['Condition'] = None, ):
+    def __init__(self, resourceType: str = "FamilyMemberHistory",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: 'Resource' = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  identifier: 'Identifier' = None,  instantiatesCanonical: str = None,  instantiatesUri: str = None,  status: str = None,  dataAbsentReason: 'CodeableConcept' = None,  patient: 'Reference' = None,  date: str = None,  name: str = None,  relationship: 'CodeableConcept' = None,  sex: 'CodeableConcept' = None,  bornPeriod: 'Period' = None,  bornDate: str = None,  bornString: str = None,  ageAge: 'Age' = None,  ageRange: 'Range' = None,  ageString: str = None,  estimatedAge: bool = None,  deceasedBoolean: bool = None,  deceasedAge: 'Age' = None,  deceasedRange: 'Range' = None,  deceasedDate: str = None,  deceasedString: str = None,  reasonCode: 'CodeableConcept' = None,  reasonReference: 'Reference' = None,  note: 'Annotation' = None,  condition: 'Condition' = None, ):
         self.resourceType: str = resourceType or "FamilyMemberHistory"
         self.id: str = id 
         self.meta: 'Meta' = meta 
@@ -136,8 +136,8 @@ class FamilyMemberHistory(DomainResource):
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
         self.identifier: list['Identifier'] = identifier or []
-        self.instantiatesCanonical: str = instantiatesCanonical or []
-        self.instantiatesUri: str = instantiatesUri or []
+        self.instantiatesCanonical: list[str] = instantiatesCanonical or []
+        self.instantiatesUri: list[str] = instantiatesUri or []
         self.status: str = status 
         self.dataAbsentReason: 'CodeableConcept' = dataAbsentReason 
         self.patient: 'Reference' = patient 
@@ -179,8 +179,8 @@ class FamilyMemberHistory(DomainResource):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)

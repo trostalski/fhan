@@ -1,20 +1,20 @@
 """
 Generated class for MedicationStatement. 
-Time: 2023-09-25 16:30:45
+Time: 2023-09-27 15:54:17
 """
 from importlib import import_module
 import inspect
 
-from fhan.models.R4.Identifier import *
-from fhan.models.R4.Dosage import *
 from fhan.models.R4.Meta import *
 from fhan.models.R4.Annotation import *
-from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Period import *
-from fhan.models.R4.Extension import *
-from fhan.models.R4.Reference import *
 from fhan.models.R4.Resource import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Extension import *
+from fhan.models.R4.Dosage import *
 from fhan.models.R4.Narrative import *
+from fhan.models.R4.Reference import *
 from fhan.models.R4.DomainResource import *
 
 
@@ -27,14 +27,14 @@ The primary difference between a medication statement and a medication administr
     :param str implicitRules: A set of rules under which this content was created
     :param str language: Language of the resource content
     :param 'Narrative' text: Text summary of the resource, for human interpretation
-    :param list['Resource'] contained: Contained, inline Resources
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored
-    :param list['Identifier'] identifier: External identifier
-    :param list['Reference'] basedOn: Fulfils plan, proposal or order
-    :param list['Reference'] partOf: Part of referenced event
+    :param 'Resource' contained: Contained, inline Resources
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored
+    :param 'Identifier' identifier: External identifier
+    :param 'Reference' basedOn: Fulfils plan, proposal or order
+    :param 'Reference' partOf: Part of referenced event
     :param str status: active | completed | entered-in-error | intended | stopped | on-hold | unknown | not-taken
-    :param list['CodeableConcept'] statusReason: Reason for current status
+    :param 'CodeableConcept' statusReason: Reason for current status
     :param 'CodeableConcept' category: Type of medication usage
     :param 'CodeableConcept' medicationCodeableConcept: What medication was taken
     :param 'Reference' medicationReference: What medication was taken
@@ -44,13 +44,13 @@ The primary difference between a medication statement and a medication administr
     :param 'Period' effectivePeriod: The date/time or interval when the medication is/was/will be taken
     :param str dateAsserted: When the statement was asserted?
     :param 'Reference' informationSource: Person or organization that provided the information about the taking of this medication
-    :param list['Reference'] derivedFrom: Additional supporting information
-    :param list['CodeableConcept'] reasonCode: Reason for why the medication is being/was taken
-    :param list['Reference'] reasonReference: Condition or observation that supports why the medication is being/was taken
-    :param list['Annotation'] note: Further information about the statement
-    :param list['Dosage'] dosage: Details of how medication is/was taken or should be taken
+    :param 'Reference' derivedFrom: Additional supporting information
+    :param 'CodeableConcept' reasonCode: Reason for why the medication is being/was taken
+    :param 'Reference' reasonReference: Condition or observation that supports why the medication is being/was taken
+    :param 'Annotation' note: Further information about the statement
+    :param 'Dosage' dosage: Details of how medication is/was taken or should be taken
     """
-    def __init__(self, resourceType: str = "MedicationStatement",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  identifier: list['Identifier'] = None,  basedOn: list['Reference'] = None,  partOf: list['Reference'] = None,  status: str = None,  statusReason: list['CodeableConcept'] = None,  category: 'CodeableConcept' = None,  medicationCodeableConcept: 'CodeableConcept' = None,  medicationReference: 'Reference' = None,  subject: 'Reference' = None,  context: 'Reference' = None,  effectiveDateTime: str = None,  effectivePeriod: 'Period' = None,  dateAsserted: str = None,  informationSource: 'Reference' = None,  derivedFrom: list['Reference'] = None,  reasonCode: list['CodeableConcept'] = None,  reasonReference: list['Reference'] = None,  note: list['Annotation'] = None,  dosage: list['Dosage'] = None, ):
+    def __init__(self, resourceType: str = "MedicationStatement",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: 'Resource' = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  identifier: 'Identifier' = None,  basedOn: 'Reference' = None,  partOf: 'Reference' = None,  status: str = None,  statusReason: 'CodeableConcept' = None,  category: 'CodeableConcept' = None,  medicationCodeableConcept: 'CodeableConcept' = None,  medicationReference: 'Reference' = None,  subject: 'Reference' = None,  context: 'Reference' = None,  effectiveDateTime: str = None,  effectivePeriod: 'Period' = None,  dateAsserted: str = None,  informationSource: 'Reference' = None,  derivedFrom: 'Reference' = None,  reasonCode: 'CodeableConcept' = None,  reasonReference: 'Reference' = None,  note: 'Annotation' = None,  dosage: 'Dosage' = None, ):
         self.resourceType: str = resourceType or "MedicationStatement"
         self.id: str = id 
         self.meta: 'Meta' = meta 
@@ -97,8 +97,8 @@ The primary difference between a medication statement and a medication administr
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)

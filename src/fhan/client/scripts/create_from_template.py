@@ -6,6 +6,7 @@ from datetime import datetime
 from dataclasses import dataclass
 
 from fhan.core.fhir_package import FhirPackageLoader
+from fhan.core.settings import ClientSettings
 
 MODIFIER_CODE_SYSTEM_URL = "http://hl7.org/fhir/search-modifier-code"
 COMPARATOR_CODE_SYSTEM_URL = "http://hl7.org/fhir/search-comparator"
@@ -48,9 +49,9 @@ def get_resource_types_from_cap_stat(version: str):
 
 
 def create_search_builder(
-    version: str = "R5",
-    template_name: str = "search_builder.j2",
-    output_file_name: str = "_search_builder.py",
+    version: str,
+    template_name: str,
+    output_file_name: str,
 ):
     @dataclass
     class ResourceRequest:
@@ -113,10 +114,10 @@ def create_search_builder(
 
 
 def create_search_builder_mixin(
-    version: str = "R5",
-    template_name: str = "resource_getter.j2",
-    output_file_name: str = "_resource_getter.py",
-    search_builder_import_path: str = "fhan.client.generated._search_builder",
+    version: str,
+    template_name: str,
+    output_file_name: str,
+    search_builder_import_path: str,
 ):
     """Creates SearchBuilderMixin class from template."""
     template = get_template(template_name)
@@ -133,17 +134,22 @@ def create_search_builder_mixin(
         f.write(res)
 
 
-def create_resource_getter_mixin(
-    version: str = "R5",
-    template_name: str = "resource_getter.j2",
-    output_file_name: str = "_resource_getter.py",
+def create_resource_mixin(
+    version: str,
+    template_name: str,
+    output_file_name: str,
+    model_import_path: str,
 ):
-    """Creates ResourceGetterMixin class from template."""
+    """Creates the GetResourceMixin or SearchResourceMixin class from template
+    based on the template name input."""
     template = get_template(template_name)
-    resource_types = get_resource_types_from_struc_defs(version=version)
+    resource_types = get_resource_types_from_cap_stat(version=version)
     resource_types.sort()
     res = template.render(
-        resource_types=resource_types, time=datetime.now(), source_script=__file__
+        resource_types=resource_types,
+        time=datetime.now(),
+        source_script=__file__,
+        model_import_path=model_import_path,
     )
     output_file = os.path.join(OUTPUT_DIR, output_file_name)
     with open(output_file, "w") as f:
@@ -152,23 +158,31 @@ def create_resource_getter_mixin(
 
 if __name__ == "__main__":
     template_settings = {
-        "RG": {  # -> Resource Getter
-            "creator_func": create_resource_getter_mixin,
-            "version": "R5",
-            "output_file_name": "_resource_getter_mixin.py",
-            "template_name": "resource_getter.j2",
+        "GRM": {  # -> Get Resource Mixin
+            "creator_func": create_resource_mixin,
+            "version": "R4",
+            "output_file_name": "get_resource_mixin.py",
+            "template_name": "get_resource_mixin.j2",
+            "model_import_path": "fhan.models.R4",
+        },
+        "SRM": {  # -> Search Resource Mixin
+            "creator_func": create_resource_mixin,
+            "version": "R4",
+            "output_file_name": "search_resource_mixin.py",
+            "template_name": "search_resource_mixin.j2",
+            "model_import_path": "fhan.client.search_bundle",
         },
         "SBM": {  # -> Search Builder Mixin
             "creator_func": create_search_builder_mixin,
             "version": "R5",
-            "output_file_name": "_search_builder_mixin.py",
+            "output_file_name": "search_builder_mixin.py",
             "template_name": "search_builder_mixin.j2",
-            "search_builder_import_path": "fhan.client.generated._search_builder",
+            "search_builder_import_path": "fhan.client.generated.search_builder",
         },
         "SB": {  # -> Search Builder
             "creator_func": create_search_builder,
             "version": "R5",
-            "output_file_name": "_search_builder.py",
+            "output_file_name": "search_builder.py",
             "template_name": "search_builder.j2",
         },
     }

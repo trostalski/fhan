@@ -1,32 +1,32 @@
 """
 Generated class for Specimen. 
-Time: 2023-09-25 16:30:45
+Time: 2023-09-27 15:54:17
 """
 from importlib import import_module
 import inspect
 
 from fhan.models.R4.Duration import *
-from fhan.models.R4.Identifier import *
-from fhan.models.R4.Quantity import *
+from fhan.models.R4.BackboneElement import *
 from fhan.models.R4.Meta import *
 from fhan.models.R4.Annotation import *
-from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Quantity import *
 from fhan.models.R4.Period import *
-from fhan.models.R4.Extension import *
-from fhan.models.R4.Reference import *
-from fhan.models.R4.BackboneElement import *
 from fhan.models.R4.Resource import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Extension import *
 from fhan.models.R4.Narrative import *
+from fhan.models.R4.Reference import *
 from fhan.models.R4.DomainResource import *
 
 
     
     
 
-class Collection(ModelBase):
+class Collection(BaseModel):
     """ Details concerning the specimen collection.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param 'Reference' collector: Who collected the specimen
     :param str collectedDateTime: Collection time
     :param 'Period' collectedPeriod: Collection time
@@ -37,7 +37,7 @@ class Collection(ModelBase):
     :param 'CodeableConcept' fastingStatusCodeableConcept: Whether or how long patient abstained from food and/or drink
     :param 'Duration' fastingStatusDuration: Whether or how long patient abstained from food and/or drink
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  collector: 'Reference' = None,  collectedDateTime: str = None,  collectedPeriod: 'Period' = None,  duration: 'Duration' = None,  quantity: 'Quantity' = None,  method: 'CodeableConcept' = None,  bodySite: 'CodeableConcept' = None,  fastingStatusCodeableConcept: 'CodeableConcept' = None,  fastingStatusDuration: 'Duration' = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  collector: 'Reference' = None,  collectedDateTime: str = None,  collectedPeriod: 'Period' = None,  duration: 'Duration' = None,  quantity: 'Quantity' = None,  method: 'CodeableConcept' = None,  bodySite: 'CodeableConcept' = None,  fastingStatusCodeableConcept: 'CodeableConcept' = None,  fastingStatusDuration: 'Duration' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -68,8 +68,8 @@ class Collection(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -93,17 +93,17 @@ class Collection(ModelBase):
     
     
 
-class Processing(ModelBase):
+class Processing(BaseModel):
     """ Details concerning processing and processing steps for the specimen.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str description: Textual description of procedure
     :param 'CodeableConcept' procedure: Indicates the treatment step  applied to the specimen
-    :param list['Reference'] additive: Material used in the processing step
+    :param 'Reference' additive: Material used in the processing step
     :param str timeDateTime: Date and time of specimen processing
     :param 'Period' timePeriod: Date and time of specimen processing
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  description: str = None,  procedure: 'CodeableConcept' = None,  additive: list['Reference'] = None,  timeDateTime: str = None,  timePeriod: 'Period' = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  description: str = None,  procedure: 'CodeableConcept' = None,  additive: 'Reference' = None,  timeDateTime: str = None,  timePeriod: 'Period' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -130,8 +130,8 @@ class Processing(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -155,11 +155,11 @@ class Processing(ModelBase):
     
     
 
-class Container(ModelBase):
+class Container(BaseModel):
     """ The container holding the specimen.  The recursive nature of containers; i.e. blood in tube in tray in rack is not addressed here.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param list['Identifier'] identifier: Id for the container
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Identifier' identifier: Id for the container
     :param str description: Textual description of the container
     :param 'CodeableConcept' type: Kind of container directly associated with specimen
     :param 'Quantity' capacity: Container volume or size
@@ -167,7 +167,7 @@ class Container(ModelBase):
     :param 'CodeableConcept' additiveCodeableConcept: Additive associated with container
     :param 'Reference' additiveReference: Additive associated with container
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  identifier: list['Identifier'] = None,  description: str = None,  type: 'CodeableConcept' = None,  capacity: 'Quantity' = None,  specimenQuantity: 'Quantity' = None,  additiveCodeableConcept: 'CodeableConcept' = None,  additiveReference: 'Reference' = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  identifier: 'Identifier' = None,  description: str = None,  type: 'CodeableConcept' = None,  capacity: 'Quantity' = None,  specimenQuantity: 'Quantity' = None,  additiveCodeableConcept: 'CodeableConcept' = None,  additiveReference: 'Reference' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -196,8 +196,8 @@ class Container(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -225,24 +225,24 @@ class Specimen(DomainResource):
     :param str implicitRules: A set of rules under which this content was created
     :param str language: Language of the resource content
     :param 'Narrative' text: Text summary of the resource, for human interpretation
-    :param list['Resource'] contained: Contained, inline Resources
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored
-    :param list['Identifier'] identifier: External Identifier
+    :param 'Resource' contained: Contained, inline Resources
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored
+    :param 'Identifier' identifier: External Identifier
     :param 'Identifier' accessionIdentifier: Identifier assigned by the lab
     :param str status: available | unavailable | unsatisfactory | entered-in-error
     :param 'CodeableConcept' type: Kind of material that forms the specimen
     :param 'Reference' subject: Where the specimen came from. This may be from patient(s), from a location (e.g., the source of an environmental sample), or a sampling of a substance or a device
     :param str receivedTime: The time when specimen was received for processing
-    :param list['Reference'] parent: Specimen from which this specimen originated
-    :param list['Reference'] request: Why the specimen was collected
+    :param 'Reference' parent: Specimen from which this specimen originated
+    :param 'Reference' request: Why the specimen was collected
     :param 'Collection' collection: Collection details
-    :param list['Processing'] processing: Processing and processing step details
-    :param list['Container'] container: Direct container of specimen (tube/slide, etc.)
-    :param list['CodeableConcept'] condition: State of the specimen
-    :param list['Annotation'] note: Comments
+    :param 'Processing' processing: Processing and processing step details
+    :param 'Container' container: Direct container of specimen (tube/slide, etc.)
+    :param 'CodeableConcept' condition: State of the specimen
+    :param 'Annotation' note: Comments
     """
-    def __init__(self, resourceType: str = "Specimen",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  identifier: list['Identifier'] = None,  accessionIdentifier: 'Identifier' = None,  status: str = None,  type: 'CodeableConcept' = None,  subject: 'Reference' = None,  receivedTime: str = None,  parent: list['Reference'] = None,  request: list['Reference'] = None,  collection: 'Collection' = None,  processing: list['Processing'] = None,  container: list['Container'] = None,  condition: list['CodeableConcept'] = None,  note: list['Annotation'] = None, ):
+    def __init__(self, resourceType: str = "Specimen",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: 'Resource' = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  identifier: 'Identifier' = None,  accessionIdentifier: 'Identifier' = None,  status: str = None,  type: 'CodeableConcept' = None,  subject: 'Reference' = None,  receivedTime: str = None,  parent: 'Reference' = None,  request: 'Reference' = None,  collection: 'Collection' = None,  processing: 'Processing' = None,  container: 'Container' = None,  condition: 'CodeableConcept' = None,  note: 'Annotation' = None, ):
         self.resourceType: str = resourceType or "Specimen"
         self.id: str = id 
         self.meta: 'Meta' = meta 
@@ -283,8 +283,8 @@ class Specimen(DomainResource):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)

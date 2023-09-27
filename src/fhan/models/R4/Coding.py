@@ -1,24 +1,24 @@
 """
 Generated class for Coding. 
-Time: 2023-09-25 16:30:45
+Time: 2023-09-27 15:54:17
 """
 from importlib import import_module
 import inspect
 
 from fhan.models.R4.Extension import *
-from fhan.models.generator_models import ModelBase
+from fhan.models.generator_models import BaseModel
 
-class Coding(ModelBase):
+class Coding(BaseModel):
     """ Base StructureDefinition for Coding Type: A reference to a code defined by a terminology system.
     :param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
+    :param 'Extension' extension: Additional content defined by implementations
     :param str system: Identity of the terminology system
     :param str version: Version of the system - if relevant
     :param str code: Symbol in syntax defined by the system
     :param str display: Representation defined by the system
     :param bool userSelected: If this coding was chosen directly by the user
     """
-    def __init__(self, resourceType: str = "Coding",  id: str = None,  extension: list['Extension'] = None,  system: str = None,  version: str = None,  code: str = None,  display: str = None,  userSelected: bool = None, ):
+    def __init__(self, resourceType: str = "Coding",  id: str = None,  extension: 'Extension' = None,  system: str = None,  version: str = None,  code: str = None,  display: str = None,  userSelected: bool = None, ):
         self.resourceType: str = resourceType or "Coding"
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
@@ -45,8 +45,8 @@ class Coding(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)

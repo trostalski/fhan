@@ -14,7 +14,7 @@ logger = logging.getLogger(__name__)
 
 @dataclasses.dataclass
 class ViewResult:
-    """_summary_
+    """Result from a view execution.
 
     Args:
         table_dict (dict): Result from the view execution. The keys are the aliases

@@ -1,24 +1,24 @@
 """
 Generated class for Annotation. 
-Time: 2023-09-25 16:30:45
+Time: 2023-09-27 15:54:17
 """
 from importlib import import_module
 import inspect
 
 from fhan.models.R4.Reference import *
 from fhan.models.R4.Extension import *
-from fhan.models.generator_models import ModelBase
+from fhan.models.generator_models import BaseModel
 
-class Annotation(ModelBase):
+class Annotation(BaseModel):
     """ Base StructureDefinition for Annotation Type: A  text note which also  contains information about who made the statement and when.
     :param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
+    :param 'Extension' extension: Additional content defined by implementations
     :param 'Reference' authorReference: Individual responsible for the annotation
     :param str authorString: Individual responsible for the annotation
     :param str time: When the annotation was made
     :param str text: The annotation  - text content (as markdown)
     """
-    def __init__(self, resourceType: str = "Annotation",  id: str = None,  extension: list['Extension'] = None,  authorReference: 'Reference' = None,  authorString: str = None,  time: str = None,  text: str = None, ):
+    def __init__(self, resourceType: str = "Annotation",  id: str = None,  extension: 'Extension' = None,  authorReference: 'Reference' = None,  authorString: str = None,  time: str = None,  text: str = None, ):
         self.resourceType: str = resourceType or "Annotation"
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
@@ -44,8 +44,8 @@ class Annotation(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)

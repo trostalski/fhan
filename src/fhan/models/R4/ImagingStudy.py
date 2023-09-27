@@ -1,20 +1,20 @@
 """
 Generated class for ImagingStudy. 
-Time: 2023-09-25 16:30:45
+Time: 2023-09-27 15:54:17
 """
 from importlib import import_module
 import inspect
 
-from fhan.models.R4.Identifier import *
+from fhan.models.R4.BackboneElement import *
 from fhan.models.R4.Meta import *
 from fhan.models.R4.Annotation import *
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Coding import *
-from fhan.models.R4.Extension import *
-from fhan.models.R4.Reference import *
-from fhan.models.R4.BackboneElement import *
 from fhan.models.R4.Resource import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.Coding import *
+from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Extension import *
 from fhan.models.R4.Narrative import *
+from fhan.models.R4.Reference import *
 from fhan.models.R4.DomainResource import *
 
 
@@ -23,14 +23,14 @@ from fhan.models.R4.DomainResource import *
     
     
 
-class Performer(ModelBase):
+class Performer(BaseModel):
     """ Indicates who or what performed the series and how they were involved.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param 'CodeableConcept' function: Type of performance
     :param 'Reference' actor: Who performed the series
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  function: 'CodeableConcept' = None,  actor: 'Reference' = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  function: 'CodeableConcept' = None,  actor: 'Reference' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -54,8 +54,8 @@ class Performer(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -79,16 +79,16 @@ class Performer(ModelBase):
     
     
 
-class Instance(ModelBase):
+class Instance(BaseModel):
     """ A single SOP instance within the series, e.g. an image, or presentation state.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str uid: DICOM SOP Instance UID
     :param 'Coding' sopClass: DICOM class type
     :param int number: The number of this instance in the series
     :param str title: Description of instance
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  uid: str = None,  sopClass: 'Coding' = None,  number: int = None,  title: str = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  uid: str = None,  sopClass: 'Coding' = None,  number: int = None,  title: str = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -114,8 +114,8 @@ class Instance(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -140,24 +140,24 @@ class Instance(ModelBase):
     
     
 
-class Series(ModelBase):
+class Series(BaseModel):
     """ Each study has one or more series of images or other content.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str uid: DICOM Series Instance UID for the series
     :param int number: Numeric identifier of this series
     :param 'Coding' modality: The modality of the instances in the series
     :param str description: A short human readable summary of the series
     :param int numberOfInstances: Number of Series Related Instances
-    :param list['Reference'] endpoint: Series access endpoint
+    :param 'Reference' endpoint: Series access endpoint
     :param 'Coding' bodySite: Body part examined
     :param 'Coding' laterality: Body part laterality
-    :param list['Reference'] specimen: Specimen imaged
+    :param 'Reference' specimen: Specimen imaged
     :param str started: When the series started
-    :param list['Performer'] performer: Who performed the series
-    :param list['Instance'] instance: A single SOP instance from the series
+    :param 'Performer' performer: Who performed the series
+    :param 'Instance' instance: A single SOP instance from the series
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  uid: str = None,  number: int = None,  modality: 'Coding' = None,  description: str = None,  numberOfInstances: int = None,  endpoint: list['Reference'] = None,  bodySite: 'Coding' = None,  laterality: 'Coding' = None,  specimen: list['Reference'] = None,  started: str = None,  performer: list['Performer'] = None,  instance: list['Instance'] = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  uid: str = None,  number: int = None,  modality: 'Coding' = None,  description: str = None,  numberOfInstances: int = None,  endpoint: 'Reference' = None,  bodySite: 'Coding' = None,  laterality: 'Coding' = None,  specimen: 'Reference' = None,  started: str = None,  performer: 'Performer' = None,  instance: 'Instance' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -191,8 +191,8 @@ class Series(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -220,31 +220,31 @@ class ImagingStudy(DomainResource):
     :param str implicitRules: A set of rules under which this content was created
     :param str language: Language of the resource content
     :param 'Narrative' text: Text summary of the resource, for human interpretation
-    :param list['Resource'] contained: Contained, inline Resources
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored
-    :param list['Identifier'] identifier: Identifiers for the whole study
+    :param 'Resource' contained: Contained, inline Resources
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored
+    :param 'Identifier' identifier: Identifiers for the whole study
     :param str status: registered | available | cancelled | entered-in-error | unknown
-    :param list['Coding'] modality: All series modality if actual acquisition modalities
+    :param 'Coding' modality: All series modality if actual acquisition modalities
     :param 'Reference' subject: Who or what is the subject of the study
     :param 'Reference' encounter: Encounter with which this imaging study is associated
     :param str started: When the study was started
-    :param list['Reference'] basedOn: Request fulfilled
+    :param 'Reference' basedOn: Request fulfilled
     :param 'Reference' referrer: Referring physician
-    :param list['Reference'] interpreter: Who interpreted images
-    :param list['Reference'] endpoint: Study access endpoint
+    :param 'Reference' interpreter: Who interpreted images
+    :param 'Reference' endpoint: Study access endpoint
     :param int numberOfSeries: Number of Study Related Series
     :param int numberOfInstances: Number of Study Related Instances
     :param 'Reference' procedureReference: The performed Procedure reference
-    :param list['CodeableConcept'] procedureCode: The performed procedure code
+    :param 'CodeableConcept' procedureCode: The performed procedure code
     :param 'Reference' location: Where ImagingStudy occurred
-    :param list['CodeableConcept'] reasonCode: Why the study was requested
-    :param list['Reference'] reasonReference: Why was study performed
-    :param list['Annotation'] note: User-defined comments
+    :param 'CodeableConcept' reasonCode: Why the study was requested
+    :param 'Reference' reasonReference: Why was study performed
+    :param 'Annotation' note: User-defined comments
     :param str description: Institution-generated description
-    :param list['Series'] series: Each study has one or more series of instances
+    :param 'Series' series: Each study has one or more series of instances
     """
-    def __init__(self, resourceType: str = "ImagingStudy",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  identifier: list['Identifier'] = None,  status: str = None,  modality: list['Coding'] = None,  subject: 'Reference' = None,  encounter: 'Reference' = None,  started: str = None,  basedOn: list['Reference'] = None,  referrer: 'Reference' = None,  interpreter: list['Reference'] = None,  endpoint: list['Reference'] = None,  numberOfSeries: int = None,  numberOfInstances: int = None,  procedureReference: 'Reference' = None,  procedureCode: list['CodeableConcept'] = None,  location: 'Reference' = None,  reasonCode: list['CodeableConcept'] = None,  reasonReference: list['Reference'] = None,  note: list['Annotation'] = None,  description: str = None,  series: list['Series'] = None, ):
+    def __init__(self, resourceType: str = "ImagingStudy",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: 'Resource' = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  identifier: 'Identifier' = None,  status: str = None,  modality: 'Coding' = None,  subject: 'Reference' = None,  encounter: 'Reference' = None,  started: str = None,  basedOn: 'Reference' = None,  referrer: 'Reference' = None,  interpreter: 'Reference' = None,  endpoint: 'Reference' = None,  numberOfSeries: int = None,  numberOfInstances: int = None,  procedureReference: 'Reference' = None,  procedureCode: 'CodeableConcept' = None,  location: 'Reference' = None,  reasonCode: 'CodeableConcept' = None,  reasonReference: 'Reference' = None,  note: 'Annotation' = None,  description: str = None,  series: 'Series' = None, ):
         self.resourceType: str = resourceType or "ImagingStudy"
         self.id: str = id 
         self.meta: 'Meta' = meta 
@@ -292,8 +292,8 @@ class ImagingStudy(DomainResource):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)

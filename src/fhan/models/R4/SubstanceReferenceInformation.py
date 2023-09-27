@@ -1,20 +1,20 @@
 """
 Generated class for SubstanceReferenceInformation. 
-Time: 2023-09-25 16:30:45
+Time: 2023-09-27 15:54:17
 """
 from importlib import import_module
 import inspect
 
-from fhan.models.R4.Identifier import *
-from fhan.models.R4.Quantity import *
+from fhan.models.R4.BackboneElement import *
 from fhan.models.R4.Meta import *
+from fhan.models.R4.Quantity import *
+from fhan.models.R4.Resource import *
 from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Identifier import *
 from fhan.models.R4.Range import *
 from fhan.models.R4.Extension import *
-from fhan.models.R4.Reference import *
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Resource import *
 from fhan.models.R4.Narrative import *
+from fhan.models.R4.Reference import *
 from fhan.models.R4.DomainResource import *
 
 
@@ -23,15 +23,15 @@ from fhan.models.R4.DomainResource import *
     
     
 
-class GeneElement(ModelBase):
+class GeneElement(BaseModel):
     """ Todo.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param 'CodeableConcept' type: Todo
     :param 'Identifier' element: Todo
-    :param list['Reference'] source: Todo
+    :param 'Reference' source: Todo
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  type: 'CodeableConcept' = None,  element: 'Identifier' = None,  source: list['Reference'] = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  type: 'CodeableConcept' = None,  element: 'Identifier' = None,  source: 'Reference' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -56,8 +56,8 @@ class GeneElement(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -82,16 +82,16 @@ class GeneElement(ModelBase):
     
     
 
-class Gene(ModelBase):
+class Gene(BaseModel):
     """ Todo.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param 'CodeableConcept' geneSequenceOrigin: Todo
     :param 'CodeableConcept' gene: Todo
-    :param list['Reference'] source: Todo
-    :param list['GeneElement'] geneElement: Todo
+    :param 'Reference' source: Todo
+    :param 'GeneElement' geneElement: Todo
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  geneSequenceOrigin: 'CodeableConcept' = None,  gene: 'CodeableConcept' = None,  source: list['Reference'] = None,  geneElement: list['GeneElement'] = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  geneSequenceOrigin: 'CodeableConcept' = None,  gene: 'CodeableConcept' = None,  source: 'Reference' = None,  geneElement: 'GeneElement' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -117,8 +117,8 @@ class Gene(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -142,16 +142,16 @@ class Gene(ModelBase):
     
     
 
-class Classification(ModelBase):
+class Classification(BaseModel):
     """ Todo.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param 'CodeableConcept' domain: Todo
     :param 'CodeableConcept' classification: Todo
-    :param list['CodeableConcept'] subtype: Todo
-    :param list['Reference'] source: Todo
+    :param 'CodeableConcept' subtype: Todo
+    :param 'Reference' source: Todo
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  domain: 'CodeableConcept' = None,  classification: 'CodeableConcept' = None,  subtype: list['CodeableConcept'] = None,  source: list['Reference'] = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  domain: 'CodeableConcept' = None,  classification: 'CodeableConcept' = None,  subtype: 'CodeableConcept' = None,  source: 'Reference' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -177,8 +177,8 @@ class Classification(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -202,10 +202,10 @@ class Classification(ModelBase):
     
     
 
-class Target(ModelBase):
+class Target(BaseModel):
     """ Todo.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param 'Identifier' target: Todo
     :param 'CodeableConcept' type: Todo
     :param 'CodeableConcept' interaction: Todo
@@ -215,9 +215,9 @@ class Target(ModelBase):
     :param 'Range' amountRange: Todo
     :param str amountString: Todo
     :param 'CodeableConcept' amountType: Todo
-    :param list['Reference'] source: Todo
+    :param 'Reference' source: Todo
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  target: 'Identifier' = None,  type: 'CodeableConcept' = None,  interaction: 'CodeableConcept' = None,  organism: 'CodeableConcept' = None,  organismType: 'CodeableConcept' = None,  amountQuantity: 'Quantity' = None,  amountRange: 'Range' = None,  amountString: str = None,  amountType: 'CodeableConcept' = None,  source: list['Reference'] = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  target: 'Identifier' = None,  type: 'CodeableConcept' = None,  interaction: 'CodeableConcept' = None,  organism: 'CodeableConcept' = None,  organismType: 'CodeableConcept' = None,  amountQuantity: 'Quantity' = None,  amountRange: 'Range' = None,  amountString: str = None,  amountType: 'CodeableConcept' = None,  source: 'Reference' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -249,8 +249,8 @@ class Target(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -278,15 +278,15 @@ class SubstanceReferenceInformation(DomainResource):
     :param str implicitRules: A set of rules under which this content was created
     :param str language: Language of the resource content
     :param 'Narrative' text: Text summary of the resource, for human interpretation
-    :param list['Resource'] contained: Contained, inline Resources
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored
+    :param 'Resource' contained: Contained, inline Resources
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored
     :param str comment: Todo
-    :param list['Gene'] gene: Todo
-    :param list['Classification'] classification: Todo
-    :param list['Target'] target: Todo
+    :param 'Gene' gene: Todo
+    :param 'Classification' classification: Todo
+    :param 'Target' target: Todo
     """
-    def __init__(self, resourceType: str = "SubstanceReferenceInformation",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  comment: str = None,  gene: list['Gene'] = None,  classification: list['Classification'] = None,  target: list['Target'] = None, ):
+    def __init__(self, resourceType: str = "SubstanceReferenceInformation",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: 'Resource' = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  comment: str = None,  gene: 'Gene' = None,  classification: 'Classification' = None,  target: 'Target' = None, ):
         self.resourceType: str = resourceType or "SubstanceReferenceInformation"
         self.id: str = id 
         self.meta: 'Meta' = meta 
@@ -318,8 +318,8 @@ class SubstanceReferenceInformation(DomainResource):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)

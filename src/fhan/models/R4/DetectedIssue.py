@@ -1,33 +1,33 @@
 """
 Generated class for DetectedIssue. 
-Time: 2023-09-25 16:30:45
+Time: 2023-09-27 15:54:17
 """
 from importlib import import_module
 import inspect
 
-from fhan.models.R4.Identifier import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Period import *
-from fhan.models.R4.Extension import *
-from fhan.models.R4.Reference import *
 from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Meta import *
+from fhan.models.R4.Period import *
 from fhan.models.R4.Resource import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Extension import *
 from fhan.models.R4.Narrative import *
+from fhan.models.R4.Reference import *
 from fhan.models.R4.DomainResource import *
 
 
     
     
 
-class Evidence(ModelBase):
+class Evidence(BaseModel):
     """ Supporting evidence or manifestations that provide the basis for identifying the detected issue such as a GuidanceResponse or MeasureReport.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param list['CodeableConcept'] code: Manifestation
-    :param list['Reference'] detail: Supporting information
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'CodeableConcept' code: Manifestation
+    :param 'Reference' detail: Supporting information
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  code: list['CodeableConcept'] = None,  detail: list['Reference'] = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  code: 'CodeableConcept' = None,  detail: 'Reference' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -51,8 +51,8 @@ class Evidence(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -76,15 +76,15 @@ class Evidence(ModelBase):
     
     
 
-class Mitigation(ModelBase):
+class Mitigation(BaseModel):
     """ Indicates an action that has been taken or is committed to reduce or eliminate the likelihood of the risk identified by the detected issue from manifesting.  Can also reflect an observation of known mitigating factors that may reduce/eliminate the need for any action.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param 'CodeableConcept' action: What mitigation?
     :param str date: Date committed
     :param 'Reference' author: Who is committing?
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  action: 'CodeableConcept' = None,  date: str = None,  author: 'Reference' = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  action: 'CodeableConcept' = None,  date: str = None,  author: 'Reference' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -109,8 +109,8 @@ class Mitigation(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -138,10 +138,10 @@ class DetectedIssue(DomainResource):
     :param str implicitRules: A set of rules under which this content was created
     :param str language: Language of the resource content
     :param 'Narrative' text: Text summary of the resource, for human interpretation
-    :param list['Resource'] contained: Contained, inline Resources
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored
-    :param list['Identifier'] identifier: Unique id for the detected issue
+    :param 'Resource' contained: Contained, inline Resources
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored
+    :param 'Identifier' identifier: Unique id for the detected issue
     :param str status: registered | preliminary | final | amended +
     :param 'CodeableConcept' code: Issue Category, e.g. drug-drug, duplicate therapy, etc.
     :param str severity: high | moderate | low
@@ -149,13 +149,13 @@ class DetectedIssue(DomainResource):
     :param str identifiedDateTime: When identified
     :param 'Period' identifiedPeriod: When identified
     :param 'Reference' author: The provider or device that identified the issue
-    :param list['Reference'] implicated: Problem resource
-    :param list['Evidence'] evidence: Supporting evidence
+    :param 'Reference' implicated: Problem resource
+    :param 'Evidence' evidence: Supporting evidence
     :param str detail: Description and context
     :param str reference: Authority for issue
-    :param list['Mitigation'] mitigation: Step taken to address
+    :param 'Mitigation' mitigation: Step taken to address
     """
-    def __init__(self, resourceType: str = "DetectedIssue",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  identifier: list['Identifier'] = None,  status: str = None,  code: 'CodeableConcept' = None,  severity: str = None,  patient: 'Reference' = None,  identifiedDateTime: str = None,  identifiedPeriod: 'Period' = None,  author: 'Reference' = None,  implicated: list['Reference'] = None,  evidence: list['Evidence'] = None,  detail: str = None,  reference: str = None,  mitigation: list['Mitigation'] = None, ):
+    def __init__(self, resourceType: str = "DetectedIssue",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: 'Resource' = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  identifier: 'Identifier' = None,  status: str = None,  code: 'CodeableConcept' = None,  severity: str = None,  patient: 'Reference' = None,  identifiedDateTime: str = None,  identifiedPeriod: 'Period' = None,  author: 'Reference' = None,  implicated: 'Reference' = None,  evidence: 'Evidence' = None,  detail: str = None,  reference: str = None,  mitigation: 'Mitigation' = None, ):
         self.resourceType: str = resourceType or "DetectedIssue"
         self.id: str = id 
         self.meta: 'Meta' = meta 
@@ -196,8 +196,8 @@ class DetectedIssue(DomainResource):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)

@@ -1,57 +1,57 @@
 """
 Generated class for ElementDefinition. 
-Time: 2023-09-25 16:30:45
+Time: 2023-09-27 15:54:17
 """
 from importlib import import_module
 import inspect
 
-from fhan.models.R4.ContactPoint import *
-from fhan.models.R4.Quantity import *
-from fhan.models.R4.Ratio import *
-from fhan.models.R4.Distance import *
-from fhan.models.R4.ContactDetail import *
-from fhan.models.R4.Timing import *
-from fhan.models.R4.Range import *
-from fhan.models.R4.Extension import *
-from fhan.models.R4.RelatedArtifact import *
-from fhan.models.R4.Duration import *
-from fhan.models.R4.TriggerDefinition import *
-from fhan.models.R4.Attachment import *
-from fhan.models.R4.HumanName import *
-from fhan.models.R4.Coding import *
-from fhan.models.R4.Count import *
-from fhan.models.R4.Address import *
-from fhan.models.R4.Reference import *
-from fhan.models.R4.Contributor import *
-from fhan.models.R4.ParameterDefinition import *
-from fhan.models.R4.Element import *
-from fhan.models.R4.Annotation import *
-from fhan.models.R4.Signature import *
-from fhan.models.R4.Expression import *
 from fhan.models.R4.Age import *
-from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Coding import *
+from fhan.models.R4.ContactPoint import *
+from fhan.models.R4.Duration import *
+from fhan.models.R4.Period import *
+from fhan.models.R4.Address import *
+from fhan.models.R4.ContactDetail import *
+from fhan.models.R4.TriggerDefinition import *
 from fhan.models.R4.DataRequirement import *
-from fhan.models.R4.SampledData import *
+from fhan.models.R4.Annotation import *
+from fhan.models.R4.Quantity import *
+from fhan.models.R4.Signature import *
+from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.RelatedArtifact import *
+from fhan.models.R4.HumanName import *
+from fhan.models.R4.Dosage import *
+from fhan.models.R4.Range import *
+from fhan.models.R4.Reference import *
+from fhan.models.R4.Attachment import *
+from fhan.models.R4.Distance import *
+from fhan.models.R4.Expression import *
+from fhan.models.R4.Timing import *
+from fhan.models.R4.Money import *
 from fhan.models.R4.UsageContext import *
 from fhan.models.R4.Identifier import *
+from fhan.models.R4.Extension import *
 from fhan.models.R4.Meta import *
-from fhan.models.R4.Period import *
-from fhan.models.R4.Money import *
-from fhan.models.R4.Dosage import *
-from fhan.models.generator_models import ModelBase
+from fhan.models.R4.SampledData import *
+from fhan.models.R4.Element import *
+from fhan.models.R4.Contributor import *
+from fhan.models.R4.Ratio import *
+from fhan.models.R4.Count import *
+from fhan.models.R4.ParameterDefinition import *
+from fhan.models.generator_models import BaseModel
 
     
         
     
     
 
-class Discriminator(ModelBase):
+class Discriminator(BaseModel):
     """ Designates which child elements are used to discriminate between the slices when processing an instance. If one or more discriminators are provided, the value of the child elements in the instance data SHALL completely distinguish which slice the element in the resource matches based on the allowed values for those elements in each of the slices.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
+    :param 'Extension' extension: Additional content defined by implementations
     :param str type: value | exists | pattern | type | profile
     :param str path: Path to element value
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  type: str = None,  path: str = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  type: str = None,  path: str = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.type: str = type 
@@ -74,8 +74,8 @@ class Discriminator(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -100,15 +100,15 @@ class Discriminator(ModelBase):
     
     
 
-class Slicing(ModelBase):
+class Slicing(BaseModel):
     """ Indicates that the element is sliced into a set of alternative definitions (i.e. in a structure definition, there are multiple different constraints on a single element in the base resource). Slicing can be used in any resource that has cardinality ..* on the base resource, or any resource with a choice of types. The set of slices is any elements that come after this in the element sequence that have the same path, until a shorter path occurs (the shorter path terminates the set).:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Discriminator'] discriminator: Element values that are used to distinguish the slices
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Discriminator' discriminator: Element values that are used to distinguish the slices
     :param str description: Text description of how slicing works (or not)
     :param bool ordered: If elements must be in same order as slices
     :param str rules: closed | open | openAtEnd
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  discriminator: list['Discriminator'] = None,  description: str = None,  ordered: bool = None,  rules: str = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  discriminator: 'Discriminator' = None,  description: str = None,  ordered: bool = None,  rules: str = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.discriminator: list['Discriminator'] = discriminator or []
@@ -133,8 +133,8 @@ class Slicing(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -158,14 +158,14 @@ class Slicing(ModelBase):
     
     
 
-class Base(ModelBase):
+class Base(BaseModel):
     """ Information about the base definition of the element, provided to make it unnecessary for tools to trace the deviation of the element through the derived and related profiles. When the element definition is not the original definition of an element - i.g. either in a constraint on another type, or for elements from a super type in a snap shot - then the information in provided in the element definition may be different to the base definition. On the original definition of the element, it will be same.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
+    :param 'Extension' extension: Additional content defined by implementations
     :param str path: Path that identifies the base element
     :param int min: Min cardinality of the base element
     :param str max: Max cardinality of the base element
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  path: str = None,  min: int = None,  max: str = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  path: str = None,  min: int = None,  max: str = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.path: str = path 
@@ -189,8 +189,8 @@ class Base(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -214,22 +214,22 @@ class Base(ModelBase):
     
     
 
-class Type(ModelBase):
+class Type(BaseModel):
     """ The data type or resource that the value of this element is permitted to be.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
+    :param 'Extension' extension: Additional content defined by implementations
     :param str code: Data type or Resource (reference to definition)
     :param str profile: Profiles (StructureDefinition or IG) - one must apply
     :param str targetProfile: Profile (StructureDefinition or IG) on the Reference/canonical target - one must apply
     :param str aggregation: contained | referenced | bundled - how aggregated
     :param str versioning: either | independent | specific
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  code: str = None,  profile: str = None,  targetProfile: str = None,  aggregation: str = None,  versioning: str = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  code: str = None,  profile: str = None,  targetProfile: str = None,  aggregation: str = None,  versioning: str = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.code: str = code 
-        self.profile: str = profile or []
-        self.targetProfile: str = targetProfile or []
-        self.aggregation: str = aggregation or []
+        self.profile: list[str] = profile or []
+        self.targetProfile: list[str] = targetProfile or []
+        self.aggregation: list[str] = aggregation or []
         self.versioning: str = versioning 
         
 
@@ -249,8 +249,8 @@ class Type(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -274,9 +274,9 @@ class Type(ModelBase):
     
     
 
-class Example(ModelBase):
+class Example(BaseModel):
     """ A sample value for this element demonstrating the type of information that would typically be found in the element.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
+    :param 'Extension' extension: Additional content defined by implementations
     :param str label: Describes the purpose of this example
     :param str valueBase64Binary: Value of Example (one of allowed types)
     :param bool valueBoolean: Value of Example (one of allowed types)
@@ -329,7 +329,7 @@ class Example(ModelBase):
     :param 'Dosage' valueDosage: Value of Example (one of allowed types)
     :param 'Meta' valueMeta: Value of Example (one of allowed types)
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  label: str = None,  valueBase64Binary: str = None,  valueBoolean: bool = None,  valueCanonical: str = None,  valueCode: str = None,  valueDate: str = None,  valueDateTime: str = None,  valueDecimal: float = None,  valueId: str = None,  valueInstant: str = None,  valueInteger: int = None,  valueMarkdown: str = None,  valueOid: str = None,  valuePositiveInt: int = None,  valueString: str = None,  valueTime: str = None,  valueUnsignedInt: int = None,  valueUri: str = None,  valueUrl: str = None,  valueUuid: str = None,  valueAddress: 'Address' = None,  valueAge: 'Age' = None,  valueAnnotation: 'Annotation' = None,  valueAttachment: 'Attachment' = None,  valueCodeableConcept: 'CodeableConcept' = None,  valueCoding: 'Coding' = None,  valueContactPoint: 'ContactPoint' = None,  valueCount: 'Count' = None,  valueDistance: 'Distance' = None,  valueDuration: 'Duration' = None,  valueHumanName: 'HumanName' = None,  valueIdentifier: 'Identifier' = None,  valueMoney: 'Money' = None,  valuePeriod: 'Period' = None,  valueQuantity: 'Quantity' = None,  valueRange: 'Range' = None,  valueRatio: 'Ratio' = None,  valueReference: 'Reference' = None,  valueSampledData: 'SampledData' = None,  valueSignature: 'Signature' = None,  valueTiming: 'Timing' = None,  valueContactDetail: 'ContactDetail' = None,  valueContributor: 'Contributor' = None,  valueDataRequirement: 'DataRequirement' = None,  valueExpression: 'Expression' = None,  valueParameterDefinition: 'ParameterDefinition' = None,  valueRelatedArtifact: 'RelatedArtifact' = None,  valueTriggerDefinition: 'TriggerDefinition' = None,  valueUsageContext: 'UsageContext' = None,  valueDosage: 'Dosage' = None,  valueMeta: 'Meta' = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  label: str = None,  valueBase64Binary: str = None,  valueBoolean: bool = None,  valueCanonical: str = None,  valueCode: str = None,  valueDate: str = None,  valueDateTime: str = None,  valueDecimal: float = None,  valueId: str = None,  valueInstant: str = None,  valueInteger: int = None,  valueMarkdown: str = None,  valueOid: str = None,  valuePositiveInt: int = None,  valueString: str = None,  valueTime: str = None,  valueUnsignedInt: int = None,  valueUri: str = None,  valueUrl: str = None,  valueUuid: str = None,  valueAddress: 'Address' = None,  valueAge: 'Age' = None,  valueAnnotation: 'Annotation' = None,  valueAttachment: 'Attachment' = None,  valueCodeableConcept: 'CodeableConcept' = None,  valueCoding: 'Coding' = None,  valueContactPoint: 'ContactPoint' = None,  valueCount: 'Count' = None,  valueDistance: 'Distance' = None,  valueDuration: 'Duration' = None,  valueHumanName: 'HumanName' = None,  valueIdentifier: 'Identifier' = None,  valueMoney: 'Money' = None,  valuePeriod: 'Period' = None,  valueQuantity: 'Quantity' = None,  valueRange: 'Range' = None,  valueRatio: 'Ratio' = None,  valueReference: 'Reference' = None,  valueSampledData: 'SampledData' = None,  valueSignature: 'Signature' = None,  valueTiming: 'Timing' = None,  valueContactDetail: 'ContactDetail' = None,  valueContributor: 'Contributor' = None,  valueDataRequirement: 'DataRequirement' = None,  valueExpression: 'Expression' = None,  valueParameterDefinition: 'ParameterDefinition' = None,  valueRelatedArtifact: 'RelatedArtifact' = None,  valueTriggerDefinition: 'TriggerDefinition' = None,  valueUsageContext: 'UsageContext' = None,  valueDosage: 'Dosage' = None,  valueMeta: 'Meta' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.label: str = label 
@@ -401,8 +401,8 @@ class Example(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -426,9 +426,9 @@ class Example(ModelBase):
     
     
 
-class Constraint(ModelBase):
+class Constraint(BaseModel):
     """ Formal constraints such as co-occurrence and other constraints that can be computationally evaluated within the context of the instance.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
+    :param 'Extension' extension: Additional content defined by implementations
     :param str key: Target of 'condition' reference above
     :param str requirements: Why this constraint is necessary or appropriate
     :param str severity: error | warning
@@ -437,7 +437,7 @@ class Constraint(ModelBase):
     :param str xpath: XPath expression of constraint
     :param str source: Reference to original source of constraint
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  key: str = None,  requirements: str = None,  severity: str = None,  human: str = None,  expression: str = None,  xpath: str = None,  source: str = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  key: str = None,  requirements: str = None,  severity: str = None,  human: str = None,  expression: str = None,  xpath: str = None,  source: str = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.key: str = key 
@@ -465,8 +465,8 @@ class Constraint(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -490,14 +490,14 @@ class Constraint(ModelBase):
     
     
 
-class Binding(ModelBase):
+class Binding(BaseModel):
     """ Binds to a value set if this element is coded (code, Coding, CodeableConcept, Quantity), or the data types (string, uri).:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
+    :param 'Extension' extension: Additional content defined by implementations
     :param str strength: required | extensible | preferred | example
     :param str description: Human explanation of the value set
     :param str valueSet: Source of value set
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  strength: str = None,  description: str = None,  valueSet: str = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  strength: str = None,  description: str = None,  valueSet: str = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.strength: str = strength 
@@ -521,8 +521,8 @@ class Binding(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -546,15 +546,15 @@ class Binding(ModelBase):
     
     
 
-class Mapping(ModelBase):
+class Mapping(BaseModel):
     """ Identifies a concept from an external specification that roughly corresponds to this element.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
+    :param 'Extension' extension: Additional content defined by implementations
     :param str identity: Reference to mapping declaration
     :param str language: Computable language of mapping
     :param str map: Details of the mapping
     :param str comment: Comments about the mapping or its use
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  identity: str = None,  language: str = None,  map: str = None,  comment: str = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  identity: str = None,  language: str = None,  map: str = None,  comment: str = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.identity: str = identity 
@@ -579,8 +579,8 @@ class Mapping(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -601,17 +601,17 @@ class Mapping(ModelBase):
         return instance
 
 
-class ElementDefinition(ModelBase):
+class ElementDefinition(BaseModel):
     """ Base StructureDefinition for ElementDefinition Type: Captures constraints on each element within the resource, profile, or extension.
     :param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str path: Path of the element in the hierarchy of elements
     :param str representation: xmlAttr | xmlText | typeAttr | cdaText | xhtml
     :param str sliceName: Name for this particular element (in a set of slices)
     :param bool sliceIsConstraining: If this slice definition constrains an inherited slice definition (or not)
     :param str label: Name for element to display with or prompt for element
-    :param list['Coding'] code: Corresponding codes in terminologies
+    :param 'Coding' code: Corresponding codes in terminologies
     :param 'Slicing' slicing: This element is sliced - slices follow
     :param str short: Concise definition for space-constrained presentation
     :param str definition: Full formal definition as narrative text
@@ -622,7 +622,7 @@ class ElementDefinition(ModelBase):
     :param str max: Maximum Cardinality (a number or *)
     :param 'Base' base: Base definition information for tools
     :param str contentReference: Reference to definition of content for the element
-    :param list['Type'] type: Data type and Profile for this element
+    :param 'Type' type: Data type and Profile for this element
     :param str defaultValueBase64Binary: Specified value if missing from instance
     :param bool defaultValueBoolean: Specified value if missing from instance
     :param str defaultValueCanonical: Specified value if missing from instance
@@ -775,7 +775,7 @@ class ElementDefinition(ModelBase):
     :param 'UsageContext' patternUsageContext: Value must have at least these property values
     :param 'Dosage' patternDosage: Value must have at least these property values
     :param 'Meta' patternMeta: Value must have at least these property values
-    :param list['Example'] example: Example value (as defined for type)
+    :param 'Example' example: Example value (as defined for type)
     :param str minValueDate: Minimum Allowed Value (for some types)
     :param str minValueDateTime: Minimum Allowed Value (for some types)
     :param str minValueInstant: Minimum Allowed Value (for some types)
@@ -796,21 +796,21 @@ class ElementDefinition(ModelBase):
     :param 'Quantity' maxValueQuantity: Maximum Allowed Value (for some types)
     :param int maxLength: Max length for strings
     :param str condition: Reference to invariant about presence
-    :param list['Constraint'] constraint: Condition that must evaluate to true
+    :param 'Constraint' constraint: Condition that must evaluate to true
     :param bool mustSupport: If the element must be supported
     :param bool isModifier: If this modifies the meaning of other elements
     :param str isModifierReason: Reason that this element is marked as a modifier
     :param bool isSummary: Include when _summary = true?
     :param 'Binding' binding: ValueSet details if this is coded
-    :param list['Mapping'] mapping: Map element to another set of definitions
+    :param 'Mapping' mapping: Map element to another set of definitions
     """
-    def __init__(self, resourceType: str = "ElementDefinition",  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  path: str = None,  representation: str = None,  sliceName: str = None,  sliceIsConstraining: bool = None,  label: str = None,  code: list['Coding'] = None,  slicing: 'Slicing' = None,  short: str = None,  definition: str = None,  comment: str = None,  requirements: str = None,  alias: str = None,  min: int = None,  max: str = None,  base: 'Base' = None,  contentReference: str = None,  type: list['Type'] = None,  defaultValueBase64Binary: str = None,  defaultValueBoolean: bool = None,  defaultValueCanonical: str = None,  defaultValueCode: str = None,  defaultValueDate: str = None,  defaultValueDateTime: str = None,  defaultValueDecimal: float = None,  defaultValueId: str = None,  defaultValueInstant: str = None,  defaultValueInteger: int = None,  defaultValueMarkdown: str = None,  defaultValueOid: str = None,  defaultValuePositiveInt: int = None,  defaultValueString: str = None,  defaultValueTime: str = None,  defaultValueUnsignedInt: int = None,  defaultValueUri: str = None,  defaultValueUrl: str = None,  defaultValueUuid: str = None,  defaultValueAddress: 'Address' = None,  defaultValueAge: 'Age' = None,  defaultValueAnnotation: 'Annotation' = None,  defaultValueAttachment: 'Attachment' = None,  defaultValueCodeableConcept: 'CodeableConcept' = None,  defaultValueCoding: 'Coding' = None,  defaultValueContactPoint: 'ContactPoint' = None,  defaultValueCount: 'Count' = None,  defaultValueDistance: 'Distance' = None,  defaultValueDuration: 'Duration' = None,  defaultValueHumanName: 'HumanName' = None,  defaultValueIdentifier: 'Identifier' = None,  defaultValueMoney: 'Money' = None,  defaultValuePeriod: 'Period' = None,  defaultValueQuantity: 'Quantity' = None,  defaultValueRange: 'Range' = None,  defaultValueRatio: 'Ratio' = None,  defaultValueReference: 'Reference' = None,  defaultValueSampledData: 'SampledData' = None,  defaultValueSignature: 'Signature' = None,  defaultValueTiming: 'Timing' = None,  defaultValueContactDetail: 'ContactDetail' = None,  defaultValueContributor: 'Contributor' = None,  defaultValueDataRequirement: 'DataRequirement' = None,  defaultValueExpression: 'Expression' = None,  defaultValueParameterDefinition: 'ParameterDefinition' = None,  defaultValueRelatedArtifact: 'RelatedArtifact' = None,  defaultValueTriggerDefinition: 'TriggerDefinition' = None,  defaultValueUsageContext: 'UsageContext' = None,  defaultValueDosage: 'Dosage' = None,  defaultValueMeta: 'Meta' = None,  meaningWhenMissing: str = None,  orderMeaning: str = None,  fixedBase64Binary: str = None,  fixedBoolean: bool = None,  fixedCanonical: str = None,  fixedCode: str = None,  fixedDate: str = None,  fixedDateTime: str = None,  fixedDecimal: float = None,  fixedId: str = None,  fixedInstant: str = None,  fixedInteger: int = None,  fixedMarkdown: str = None,  fixedOid: str = None,  fixedPositiveInt: int = None,  fixedString: str = None,  fixedTime: str = None,  fixedUnsignedInt: int = None,  fixedUri: str = None,  fixedUrl: str = None,  fixedUuid: str = None,  fixedAddress: 'Address' = None,  fixedAge: 'Age' = None,  fixedAnnotation: 'Annotation' = None,  fixedAttachment: 'Attachment' = None,  fixedCodeableConcept: 'CodeableConcept' = None,  fixedCoding: 'Coding' = None,  fixedContactPoint: 'ContactPoint' = None,  fixedCount: 'Count' = None,  fixedDistance: 'Distance' = None,  fixedDuration: 'Duration' = None,  fixedHumanName: 'HumanName' = None,  fixedIdentifier: 'Identifier' = None,  fixedMoney: 'Money' = None,  fixedPeriod: 'Period' = None,  fixedQuantity: 'Quantity' = None,  fixedRange: 'Range' = None,  fixedRatio: 'Ratio' = None,  fixedReference: 'Reference' = None,  fixedSampledData: 'SampledData' = None,  fixedSignature: 'Signature' = None,  fixedTiming: 'Timing' = None,  fixedContactDetail: 'ContactDetail' = None,  fixedContributor: 'Contributor' = None,  fixedDataRequirement: 'DataRequirement' = None,  fixedExpression: 'Expression' = None,  fixedParameterDefinition: 'ParameterDefinition' = None,  fixedRelatedArtifact: 'RelatedArtifact' = None,  fixedTriggerDefinition: 'TriggerDefinition' = None,  fixedUsageContext: 'UsageContext' = None,  fixedDosage: 'Dosage' = None,  fixedMeta: 'Meta' = None,  patternBase64Binary: str = None,  patternBoolean: bool = None,  patternCanonical: str = None,  patternCode: str = None,  patternDate: str = None,  patternDateTime: str = None,  patternDecimal: float = None,  patternId: str = None,  patternInstant: str = None,  patternInteger: int = None,  patternMarkdown: str = None,  patternOid: str = None,  patternPositiveInt: int = None,  patternString: str = None,  patternTime: str = None,  patternUnsignedInt: int = None,  patternUri: str = None,  patternUrl: str = None,  patternUuid: str = None,  patternAddress: 'Address' = None,  patternAge: 'Age' = None,  patternAnnotation: 'Annotation' = None,  patternAttachment: 'Attachment' = None,  patternCodeableConcept: 'CodeableConcept' = None,  patternCoding: 'Coding' = None,  patternContactPoint: 'ContactPoint' = None,  patternCount: 'Count' = None,  patternDistance: 'Distance' = None,  patternDuration: 'Duration' = None,  patternHumanName: 'HumanName' = None,  patternIdentifier: 'Identifier' = None,  patternMoney: 'Money' = None,  patternPeriod: 'Period' = None,  patternQuantity: 'Quantity' = None,  patternRange: 'Range' = None,  patternRatio: 'Ratio' = None,  patternReference: 'Reference' = None,  patternSampledData: 'SampledData' = None,  patternSignature: 'Signature' = None,  patternTiming: 'Timing' = None,  patternContactDetail: 'ContactDetail' = None,  patternContributor: 'Contributor' = None,  patternDataRequirement: 'DataRequirement' = None,  patternExpression: 'Expression' = None,  patternParameterDefinition: 'ParameterDefinition' = None,  patternRelatedArtifact: 'RelatedArtifact' = None,  patternTriggerDefinition: 'TriggerDefinition' = None,  patternUsageContext: 'UsageContext' = None,  patternDosage: 'Dosage' = None,  patternMeta: 'Meta' = None,  example: list['Example'] = None,  minValueDate: str = None,  minValueDateTime: str = None,  minValueInstant: str = None,  minValueTime: str = None,  minValueDecimal: float = None,  minValueInteger: int = None,  minValuePositiveInt: int = None,  minValueUnsignedInt: int = None,  minValueQuantity: 'Quantity' = None,  maxValueDate: str = None,  maxValueDateTime: str = None,  maxValueInstant: str = None,  maxValueTime: str = None,  maxValueDecimal: float = None,  maxValueInteger: int = None,  maxValuePositiveInt: int = None,  maxValueUnsignedInt: int = None,  maxValueQuantity: 'Quantity' = None,  maxLength: int = None,  condition: str = None,  constraint: list['Constraint'] = None,  mustSupport: bool = None,  isModifier: bool = None,  isModifierReason: str = None,  isSummary: bool = None,  binding: 'Binding' = None,  mapping: list['Mapping'] = None, ):
+    def __init__(self, resourceType: str = "ElementDefinition",  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  path: str = None,  representation: str = None,  sliceName: str = None,  sliceIsConstraining: bool = None,  label: str = None,  code: 'Coding' = None,  slicing: 'Slicing' = None,  short: str = None,  definition: str = None,  comment: str = None,  requirements: str = None,  alias: str = None,  min: int = None,  max: str = None,  base: 'Base' = None,  contentReference: str = None,  type: 'Type' = None,  defaultValueBase64Binary: str = None,  defaultValueBoolean: bool = None,  defaultValueCanonical: str = None,  defaultValueCode: str = None,  defaultValueDate: str = None,  defaultValueDateTime: str = None,  defaultValueDecimal: float = None,  defaultValueId: str = None,  defaultValueInstant: str = None,  defaultValueInteger: int = None,  defaultValueMarkdown: str = None,  defaultValueOid: str = None,  defaultValuePositiveInt: int = None,  defaultValueString: str = None,  defaultValueTime: str = None,  defaultValueUnsignedInt: int = None,  defaultValueUri: str = None,  defaultValueUrl: str = None,  defaultValueUuid: str = None,  defaultValueAddress: 'Address' = None,  defaultValueAge: 'Age' = None,  defaultValueAnnotation: 'Annotation' = None,  defaultValueAttachment: 'Attachment' = None,  defaultValueCodeableConcept: 'CodeableConcept' = None,  defaultValueCoding: 'Coding' = None,  defaultValueContactPoint: 'ContactPoint' = None,  defaultValueCount: 'Count' = None,  defaultValueDistance: 'Distance' = None,  defaultValueDuration: 'Duration' = None,  defaultValueHumanName: 'HumanName' = None,  defaultValueIdentifier: 'Identifier' = None,  defaultValueMoney: 'Money' = None,  defaultValuePeriod: 'Period' = None,  defaultValueQuantity: 'Quantity' = None,  defaultValueRange: 'Range' = None,  defaultValueRatio: 'Ratio' = None,  defaultValueReference: 'Reference' = None,  defaultValueSampledData: 'SampledData' = None,  defaultValueSignature: 'Signature' = None,  defaultValueTiming: 'Timing' = None,  defaultValueContactDetail: 'ContactDetail' = None,  defaultValueContributor: 'Contributor' = None,  defaultValueDataRequirement: 'DataRequirement' = None,  defaultValueExpression: 'Expression' = None,  defaultValueParameterDefinition: 'ParameterDefinition' = None,  defaultValueRelatedArtifact: 'RelatedArtifact' = None,  defaultValueTriggerDefinition: 'TriggerDefinition' = None,  defaultValueUsageContext: 'UsageContext' = None,  defaultValueDosage: 'Dosage' = None,  defaultValueMeta: 'Meta' = None,  meaningWhenMissing: str = None,  orderMeaning: str = None,  fixedBase64Binary: str = None,  fixedBoolean: bool = None,  fixedCanonical: str = None,  fixedCode: str = None,  fixedDate: str = None,  fixedDateTime: str = None,  fixedDecimal: float = None,  fixedId: str = None,  fixedInstant: str = None,  fixedInteger: int = None,  fixedMarkdown: str = None,  fixedOid: str = None,  fixedPositiveInt: int = None,  fixedString: str = None,  fixedTime: str = None,  fixedUnsignedInt: int = None,  fixedUri: str = None,  fixedUrl: str = None,  fixedUuid: str = None,  fixedAddress: 'Address' = None,  fixedAge: 'Age' = None,  fixedAnnotation: 'Annotation' = None,  fixedAttachment: 'Attachment' = None,  fixedCodeableConcept: 'CodeableConcept' = None,  fixedCoding: 'Coding' = None,  fixedContactPoint: 'ContactPoint' = None,  fixedCount: 'Count' = None,  fixedDistance: 'Distance' = None,  fixedDuration: 'Duration' = None,  fixedHumanName: 'HumanName' = None,  fixedIdentifier: 'Identifier' = None,  fixedMoney: 'Money' = None,  fixedPeriod: 'Period' = None,  fixedQuantity: 'Quantity' = None,  fixedRange: 'Range' = None,  fixedRatio: 'Ratio' = None,  fixedReference: 'Reference' = None,  fixedSampledData: 'SampledData' = None,  fixedSignature: 'Signature' = None,  fixedTiming: 'Timing' = None,  fixedContactDetail: 'ContactDetail' = None,  fixedContributor: 'Contributor' = None,  fixedDataRequirement: 'DataRequirement' = None,  fixedExpression: 'Expression' = None,  fixedParameterDefinition: 'ParameterDefinition' = None,  fixedRelatedArtifact: 'RelatedArtifact' = None,  fixedTriggerDefinition: 'TriggerDefinition' = None,  fixedUsageContext: 'UsageContext' = None,  fixedDosage: 'Dosage' = None,  fixedMeta: 'Meta' = None,  patternBase64Binary: str = None,  patternBoolean: bool = None,  patternCanonical: str = None,  patternCode: str = None,  patternDate: str = None,  patternDateTime: str = None,  patternDecimal: float = None,  patternId: str = None,  patternInstant: str = None,  patternInteger: int = None,  patternMarkdown: str = None,  patternOid: str = None,  patternPositiveInt: int = None,  patternString: str = None,  patternTime: str = None,  patternUnsignedInt: int = None,  patternUri: str = None,  patternUrl: str = None,  patternUuid: str = None,  patternAddress: 'Address' = None,  patternAge: 'Age' = None,  patternAnnotation: 'Annotation' = None,  patternAttachment: 'Attachment' = None,  patternCodeableConcept: 'CodeableConcept' = None,  patternCoding: 'Coding' = None,  patternContactPoint: 'ContactPoint' = None,  patternCount: 'Count' = None,  patternDistance: 'Distance' = None,  patternDuration: 'Duration' = None,  patternHumanName: 'HumanName' = None,  patternIdentifier: 'Identifier' = None,  patternMoney: 'Money' = None,  patternPeriod: 'Period' = None,  patternQuantity: 'Quantity' = None,  patternRange: 'Range' = None,  patternRatio: 'Ratio' = None,  patternReference: 'Reference' = None,  patternSampledData: 'SampledData' = None,  patternSignature: 'Signature' = None,  patternTiming: 'Timing' = None,  patternContactDetail: 'ContactDetail' = None,  patternContributor: 'Contributor' = None,  patternDataRequirement: 'DataRequirement' = None,  patternExpression: 'Expression' = None,  patternParameterDefinition: 'ParameterDefinition' = None,  patternRelatedArtifact: 'RelatedArtifact' = None,  patternTriggerDefinition: 'TriggerDefinition' = None,  patternUsageContext: 'UsageContext' = None,  patternDosage: 'Dosage' = None,  patternMeta: 'Meta' = None,  example: 'Example' = None,  minValueDate: str = None,  minValueDateTime: str = None,  minValueInstant: str = None,  minValueTime: str = None,  minValueDecimal: float = None,  minValueInteger: int = None,  minValuePositiveInt: int = None,  minValueUnsignedInt: int = None,  minValueQuantity: 'Quantity' = None,  maxValueDate: str = None,  maxValueDateTime: str = None,  maxValueInstant: str = None,  maxValueTime: str = None,  maxValueDecimal: float = None,  maxValueInteger: int = None,  maxValuePositiveInt: int = None,  maxValueUnsignedInt: int = None,  maxValueQuantity: 'Quantity' = None,  maxLength: int = None,  condition: str = None,  constraint: 'Constraint' = None,  mustSupport: bool = None,  isModifier: bool = None,  isModifierReason: str = None,  isSummary: bool = None,  binding: 'Binding' = None,  mapping: 'Mapping' = None, ):
         self.resourceType: str = resourceType or "ElementDefinition"
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
         self.path: str = path 
-        self.representation: str = representation or []
+        self.representation: list[str] = representation or []
         self.sliceName: str = sliceName 
         self.sliceIsConstraining: bool = sliceIsConstraining 
         self.label: str = label 
@@ -820,7 +820,7 @@ class ElementDefinition(ModelBase):
         self.definition: str = definition 
         self.comment: str = comment 
         self.requirements: str = requirements 
-        self.alias: str = alias or []
+        self.alias: list[str] = alias or []
         self.min: int = min 
         self.max: str = max 
         self.base: 'Base' = base 
@@ -998,7 +998,7 @@ class ElementDefinition(ModelBase):
         self.maxValueUnsignedInt: int = maxValueUnsignedInt 
         self.maxValueQuantity: 'Quantity' = maxValueQuantity 
         self.maxLength: int = maxLength 
-        self.condition: str = condition or []
+        self.condition: list[str] = condition or []
         self.constraint: list['Constraint'] = constraint or []
         self.mustSupport: bool = mustSupport 
         self.isModifier: bool = isModifier 
@@ -1024,8 +1024,8 @@ class ElementDefinition(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)

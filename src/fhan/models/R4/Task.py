@@ -1,60 +1,60 @@
 """
 Generated class for Task. 
-Time: 2023-09-25 16:30:45
+Time: 2023-09-27 15:54:17
 """
 from importlib import import_module
 import inspect
 
-from fhan.models.R4.ContactPoint import *
-from fhan.models.R4.Quantity import *
-from fhan.models.R4.Ratio import *
-from fhan.models.R4.Distance import *
-from fhan.models.R4.ContactDetail import *
-from fhan.models.R4.Timing import *
-from fhan.models.R4.Range import *
-from fhan.models.R4.Extension import *
-from fhan.models.R4.RelatedArtifact import *
-from fhan.models.R4.Duration import *
-from fhan.models.R4.TriggerDefinition import *
-from fhan.models.R4.Attachment import *
-from fhan.models.R4.HumanName import *
-from fhan.models.R4.Coding import *
-from fhan.models.R4.Count import *
-from fhan.models.R4.Address import *
-from fhan.models.R4.Reference import *
-from fhan.models.R4.Contributor import *
-from fhan.models.R4.ParameterDefinition import *
-from fhan.models.R4.Annotation import *
-from fhan.models.R4.Signature import *
-from fhan.models.R4.Expression import *
-from fhan.models.R4.Age import *
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.DataRequirement import *
-from fhan.models.R4.SampledData import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.UsageContext import *
-from fhan.models.R4.Identifier import *
-from fhan.models.R4.Dosage import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Period import *
-from fhan.models.R4.Money import *
 from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Age import *
+from fhan.models.R4.Coding import *
+from fhan.models.R4.ContactPoint import *
+from fhan.models.R4.Duration import *
+from fhan.models.R4.Period import *
+from fhan.models.R4.Address import *
+from fhan.models.R4.ContactDetail import *
+from fhan.models.R4.TriggerDefinition import *
+from fhan.models.R4.DataRequirement import *
+from fhan.models.R4.Annotation import *
+from fhan.models.R4.Quantity import *
+from fhan.models.R4.Signature import *
+from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.RelatedArtifact import *
+from fhan.models.R4.HumanName import *
+from fhan.models.R4.Dosage import *
+from fhan.models.R4.Reference import *
+from fhan.models.R4.Range import *
+from fhan.models.R4.Attachment import *
+from fhan.models.R4.Distance import *
+from fhan.models.R4.Expression import *
+from fhan.models.R4.Timing import *
+from fhan.models.R4.Money import *
+from fhan.models.R4.UsageContext import *
 from fhan.models.R4.Resource import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.Extension import *
+from fhan.models.R4.Meta import *
+from fhan.models.R4.SampledData import *
+from fhan.models.R4.Contributor import *
+from fhan.models.R4.Ratio import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Count import *
+from fhan.models.R4.ParameterDefinition import *
 from fhan.models.R4.DomainResource import *
 
 
     
     
 
-class Restriction(ModelBase):
+class Restriction(BaseModel):
     """ If the Task.focus is a request resource and the task is seeking fulfillment (i.e. is asking for the request to be actioned), this element identifies any limitations on what parts of the referenced request should be actioned.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param int repetitions: How many times to repeat
     :param 'Period' period: When fulfillment sought
-    :param list['Reference'] recipient: For whom is fulfillment sought?
+    :param 'Reference' recipient: For whom is fulfillment sought?
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  repetitions: int = None,  period: 'Period' = None,  recipient: list['Reference'] = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  repetitions: int = None,  period: 'Period' = None,  recipient: 'Reference' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -79,8 +79,8 @@ class Restriction(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -104,10 +104,10 @@ class Restriction(ModelBase):
     
     
 
-class Input(ModelBase):
+class Input(BaseModel):
     """ Additional information that may be needed in the execution of the task.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param 'CodeableConcept' type: Label for the input
     :param str valueBase64Binary: Content to use in performing the task
     :param bool valueBoolean: Content to use in performing the task
@@ -160,7 +160,7 @@ class Input(ModelBase):
     :param 'Dosage' valueDosage: Content to use in performing the task
     :param 'Meta' valueMeta: Content to use in performing the task
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  type: 'CodeableConcept' = None,  valueBase64Binary: str = None,  valueBoolean: bool = None,  valueCanonical: str = None,  valueCode: str = None,  valueDate: str = None,  valueDateTime: str = None,  valueDecimal: float = None,  valueId: str = None,  valueInstant: str = None,  valueInteger: int = None,  valueMarkdown: str = None,  valueOid: str = None,  valuePositiveInt: int = None,  valueString: str = None,  valueTime: str = None,  valueUnsignedInt: int = None,  valueUri: str = None,  valueUrl: str = None,  valueUuid: str = None,  valueAddress: 'Address' = None,  valueAge: 'Age' = None,  valueAnnotation: 'Annotation' = None,  valueAttachment: 'Attachment' = None,  valueCodeableConcept: 'CodeableConcept' = None,  valueCoding: 'Coding' = None,  valueContactPoint: 'ContactPoint' = None,  valueCount: 'Count' = None,  valueDistance: 'Distance' = None,  valueDuration: 'Duration' = None,  valueHumanName: 'HumanName' = None,  valueIdentifier: 'Identifier' = None,  valueMoney: 'Money' = None,  valuePeriod: 'Period' = None,  valueQuantity: 'Quantity' = None,  valueRange: 'Range' = None,  valueRatio: 'Ratio' = None,  valueReference: 'Reference' = None,  valueSampledData: 'SampledData' = None,  valueSignature: 'Signature' = None,  valueTiming: 'Timing' = None,  valueContactDetail: 'ContactDetail' = None,  valueContributor: 'Contributor' = None,  valueDataRequirement: 'DataRequirement' = None,  valueExpression: 'Expression' = None,  valueParameterDefinition: 'ParameterDefinition' = None,  valueRelatedArtifact: 'RelatedArtifact' = None,  valueTriggerDefinition: 'TriggerDefinition' = None,  valueUsageContext: 'UsageContext' = None,  valueDosage: 'Dosage' = None,  valueMeta: 'Meta' = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  type: 'CodeableConcept' = None,  valueBase64Binary: str = None,  valueBoolean: bool = None,  valueCanonical: str = None,  valueCode: str = None,  valueDate: str = None,  valueDateTime: str = None,  valueDecimal: float = None,  valueId: str = None,  valueInstant: str = None,  valueInteger: int = None,  valueMarkdown: str = None,  valueOid: str = None,  valuePositiveInt: int = None,  valueString: str = None,  valueTime: str = None,  valueUnsignedInt: int = None,  valueUri: str = None,  valueUrl: str = None,  valueUuid: str = None,  valueAddress: 'Address' = None,  valueAge: 'Age' = None,  valueAnnotation: 'Annotation' = None,  valueAttachment: 'Attachment' = None,  valueCodeableConcept: 'CodeableConcept' = None,  valueCoding: 'Coding' = None,  valueContactPoint: 'ContactPoint' = None,  valueCount: 'Count' = None,  valueDistance: 'Distance' = None,  valueDuration: 'Duration' = None,  valueHumanName: 'HumanName' = None,  valueIdentifier: 'Identifier' = None,  valueMoney: 'Money' = None,  valuePeriod: 'Period' = None,  valueQuantity: 'Quantity' = None,  valueRange: 'Range' = None,  valueRatio: 'Ratio' = None,  valueReference: 'Reference' = None,  valueSampledData: 'SampledData' = None,  valueSignature: 'Signature' = None,  valueTiming: 'Timing' = None,  valueContactDetail: 'ContactDetail' = None,  valueContributor: 'Contributor' = None,  valueDataRequirement: 'DataRequirement' = None,  valueExpression: 'Expression' = None,  valueParameterDefinition: 'ParameterDefinition' = None,  valueRelatedArtifact: 'RelatedArtifact' = None,  valueTriggerDefinition: 'TriggerDefinition' = None,  valueUsageContext: 'UsageContext' = None,  valueDosage: 'Dosage' = None,  valueMeta: 'Meta' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -233,8 +233,8 @@ class Input(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -258,10 +258,10 @@ class Input(ModelBase):
     
     
 
-class Output(ModelBase):
+class Output(BaseModel):
     """ Outputs produced by the Task.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param 'CodeableConcept' type: Label for output
     :param str valueBase64Binary: Result of output
     :param bool valueBoolean: Result of output
@@ -314,7 +314,7 @@ class Output(ModelBase):
     :param 'Dosage' valueDosage: Result of output
     :param 'Meta' valueMeta: Result of output
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  type: 'CodeableConcept' = None,  valueBase64Binary: str = None,  valueBoolean: bool = None,  valueCanonical: str = None,  valueCode: str = None,  valueDate: str = None,  valueDateTime: str = None,  valueDecimal: float = None,  valueId: str = None,  valueInstant: str = None,  valueInteger: int = None,  valueMarkdown: str = None,  valueOid: str = None,  valuePositiveInt: int = None,  valueString: str = None,  valueTime: str = None,  valueUnsignedInt: int = None,  valueUri: str = None,  valueUrl: str = None,  valueUuid: str = None,  valueAddress: 'Address' = None,  valueAge: 'Age' = None,  valueAnnotation: 'Annotation' = None,  valueAttachment: 'Attachment' = None,  valueCodeableConcept: 'CodeableConcept' = None,  valueCoding: 'Coding' = None,  valueContactPoint: 'ContactPoint' = None,  valueCount: 'Count' = None,  valueDistance: 'Distance' = None,  valueDuration: 'Duration' = None,  valueHumanName: 'HumanName' = None,  valueIdentifier: 'Identifier' = None,  valueMoney: 'Money' = None,  valuePeriod: 'Period' = None,  valueQuantity: 'Quantity' = None,  valueRange: 'Range' = None,  valueRatio: 'Ratio' = None,  valueReference: 'Reference' = None,  valueSampledData: 'SampledData' = None,  valueSignature: 'Signature' = None,  valueTiming: 'Timing' = None,  valueContactDetail: 'ContactDetail' = None,  valueContributor: 'Contributor' = None,  valueDataRequirement: 'DataRequirement' = None,  valueExpression: 'Expression' = None,  valueParameterDefinition: 'ParameterDefinition' = None,  valueRelatedArtifact: 'RelatedArtifact' = None,  valueTriggerDefinition: 'TriggerDefinition' = None,  valueUsageContext: 'UsageContext' = None,  valueDosage: 'Dosage' = None,  valueMeta: 'Meta' = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  type: 'CodeableConcept' = None,  valueBase64Binary: str = None,  valueBoolean: bool = None,  valueCanonical: str = None,  valueCode: str = None,  valueDate: str = None,  valueDateTime: str = None,  valueDecimal: float = None,  valueId: str = None,  valueInstant: str = None,  valueInteger: int = None,  valueMarkdown: str = None,  valueOid: str = None,  valuePositiveInt: int = None,  valueString: str = None,  valueTime: str = None,  valueUnsignedInt: int = None,  valueUri: str = None,  valueUrl: str = None,  valueUuid: str = None,  valueAddress: 'Address' = None,  valueAge: 'Age' = None,  valueAnnotation: 'Annotation' = None,  valueAttachment: 'Attachment' = None,  valueCodeableConcept: 'CodeableConcept' = None,  valueCoding: 'Coding' = None,  valueContactPoint: 'ContactPoint' = None,  valueCount: 'Count' = None,  valueDistance: 'Distance' = None,  valueDuration: 'Duration' = None,  valueHumanName: 'HumanName' = None,  valueIdentifier: 'Identifier' = None,  valueMoney: 'Money' = None,  valuePeriod: 'Period' = None,  valueQuantity: 'Quantity' = None,  valueRange: 'Range' = None,  valueRatio: 'Ratio' = None,  valueReference: 'Reference' = None,  valueSampledData: 'SampledData' = None,  valueSignature: 'Signature' = None,  valueTiming: 'Timing' = None,  valueContactDetail: 'ContactDetail' = None,  valueContributor: 'Contributor' = None,  valueDataRequirement: 'DataRequirement' = None,  valueExpression: 'Expression' = None,  valueParameterDefinition: 'ParameterDefinition' = None,  valueRelatedArtifact: 'RelatedArtifact' = None,  valueTriggerDefinition: 'TriggerDefinition' = None,  valueUsageContext: 'UsageContext' = None,  valueDosage: 'Dosage' = None,  valueMeta: 'Meta' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -387,8 +387,8 @@ class Output(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -416,15 +416,15 @@ class Task(DomainResource):
     :param str implicitRules: A set of rules under which this content was created
     :param str language: Language of the resource content
     :param 'Narrative' text: Text summary of the resource, for human interpretation
-    :param list['Resource'] contained: Contained, inline Resources
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored
-    :param list['Identifier'] identifier: Task Instance Identifier
+    :param 'Resource' contained: Contained, inline Resources
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored
+    :param 'Identifier' identifier: Task Instance Identifier
     :param str instantiatesCanonical: Formal definition of task
     :param str instantiatesUri: Formal definition of task
-    :param list['Reference'] basedOn: Request fulfilled by this task
+    :param 'Reference' basedOn: Request fulfilled by this task
     :param 'Identifier' groupIdentifier: Requisition or grouper id
-    :param list['Reference'] partOf: Composite task
+    :param 'Reference' partOf: Composite task
     :param str status: draft | requested | received | accepted | +
     :param 'CodeableConcept' statusReason: Reason for current status
     :param 'CodeableConcept' businessStatus: E.g. "Specimen collected", "IV prepped"
@@ -439,19 +439,19 @@ class Task(DomainResource):
     :param str authoredOn: Task Creation Date
     :param str lastModified: Task Last Modified Date
     :param 'Reference' requester: Who is asking for task to be done
-    :param list['CodeableConcept'] performerType: Requested performer
+    :param 'CodeableConcept' performerType: Requested performer
     :param 'Reference' owner: Responsible individual
     :param 'Reference' location: Where task occurs
     :param 'CodeableConcept' reasonCode: Why task is needed
     :param 'Reference' reasonReference: Why task is needed
-    :param list['Reference'] insurance: Associated insurance coverage
-    :param list['Annotation'] note: Comments made about the task
-    :param list['Reference'] relevantHistory: Key events in history of the Task
+    :param 'Reference' insurance: Associated insurance coverage
+    :param 'Annotation' note: Comments made about the task
+    :param 'Reference' relevantHistory: Key events in history of the Task
     :param 'Restriction' restriction: Constraints on fulfillment tasks
-    :param list['Input'] input: Information used to perform task
-    :param list['Output'] output: Information produced as part of task
+    :param 'Input' input: Information used to perform task
+    :param 'Output' output: Information produced as part of task
     """
-    def __init__(self, resourceType: str = "Task",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  identifier: list['Identifier'] = None,  instantiatesCanonical: str = None,  instantiatesUri: str = None,  basedOn: list['Reference'] = None,  groupIdentifier: 'Identifier' = None,  partOf: list['Reference'] = None,  status: str = None,  statusReason: 'CodeableConcept' = None,  businessStatus: 'CodeableConcept' = None,  intent: str = None,  priority: str = None,  code: 'CodeableConcept' = None,  description: str = None,  focus: 'Reference' = None,  _for: 'Reference' = None,  encounter: 'Reference' = None,  executionPeriod: 'Period' = None,  authoredOn: str = None,  lastModified: str = None,  requester: 'Reference' = None,  performerType: list['CodeableConcept'] = None,  owner: 'Reference' = None,  location: 'Reference' = None,  reasonCode: 'CodeableConcept' = None,  reasonReference: 'Reference' = None,  insurance: list['Reference'] = None,  note: list['Annotation'] = None,  relevantHistory: list['Reference'] = None,  restriction: 'Restriction' = None,  input: list['Input'] = None,  output: list['Output'] = None, ):
+    def __init__(self, resourceType: str = "Task",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: 'Resource' = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  identifier: 'Identifier' = None,  instantiatesCanonical: str = None,  instantiatesUri: str = None,  basedOn: 'Reference' = None,  groupIdentifier: 'Identifier' = None,  partOf: 'Reference' = None,  status: str = None,  statusReason: 'CodeableConcept' = None,  businessStatus: 'CodeableConcept' = None,  intent: str = None,  priority: str = None,  code: 'CodeableConcept' = None,  description: str = None,  focus: 'Reference' = None,  _for: 'Reference' = None,  encounter: 'Reference' = None,  executionPeriod: 'Period' = None,  authoredOn: str = None,  lastModified: str = None,  requester: 'Reference' = None,  performerType: 'CodeableConcept' = None,  owner: 'Reference' = None,  location: 'Reference' = None,  reasonCode: 'CodeableConcept' = None,  reasonReference: 'Reference' = None,  insurance: 'Reference' = None,  note: 'Annotation' = None,  relevantHistory: 'Reference' = None,  restriction: 'Restriction' = None,  input: 'Input' = None,  output: 'Output' = None, ):
         self.resourceType: str = resourceType or "Task"
         self.id: str = id 
         self.meta: 'Meta' = meta 
@@ -510,8 +510,8 @@ class Task(DomainResource):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)

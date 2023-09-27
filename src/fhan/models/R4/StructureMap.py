@@ -1,61 +1,61 @@
 """
 Generated class for StructureMap. 
-Time: 2023-09-25 16:30:45
+Time: 2023-09-27 15:54:17
 """
 from importlib import import_module
 import inspect
 
-from fhan.models.R4.ContactPoint import *
-from fhan.models.R4.Quantity import *
-from fhan.models.R4.Ratio import *
-from fhan.models.R4.Distance import *
-from fhan.models.R4.ContactDetail import *
-from fhan.models.R4.Timing import *
-from fhan.models.R4.Range import *
-from fhan.models.R4.Extension import *
-from fhan.models.R4.RelatedArtifact import *
-from fhan.models.R4.Duration import *
-from fhan.models.R4.TriggerDefinition import *
-from fhan.models.R4.Attachment import *
-from fhan.models.R4.HumanName import *
-from fhan.models.R4.Coding import *
-from fhan.models.R4.Count import *
-from fhan.models.R4.Address import *
-from fhan.models.R4.Reference import *
-from fhan.models.R4.Contributor import *
-from fhan.models.R4.ParameterDefinition import *
-from fhan.models.R4.Annotation import *
-from fhan.models.R4.Signature import *
-from fhan.models.R4.Expression import *
-from fhan.models.R4.Age import *
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.DataRequirement import *
-from fhan.models.R4.SampledData import *
-from fhan.models.R4.UsageContext import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.Identifier import *
-from fhan.models.R4.Dosage import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Period import *
-from fhan.models.R4.Money import *
 from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Age import *
+from fhan.models.R4.Coding import *
+from fhan.models.R4.ContactPoint import *
+from fhan.models.R4.Duration import *
+from fhan.models.R4.ContactDetail import *
+from fhan.models.R4.Address import *
+from fhan.models.R4.Period import *
+from fhan.models.R4.TriggerDefinition import *
+from fhan.models.R4.DataRequirement import *
+from fhan.models.R4.Annotation import *
+from fhan.models.R4.Quantity import *
+from fhan.models.R4.Signature import *
+from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.RelatedArtifact import *
+from fhan.models.R4.HumanName import *
+from fhan.models.R4.Dosage import *
+from fhan.models.R4.Range import *
+from fhan.models.R4.Reference import *
+from fhan.models.R4.Attachment import *
+from fhan.models.R4.Distance import *
+from fhan.models.R4.Expression import *
+from fhan.models.R4.Timing import *
+from fhan.models.R4.Money import *
+from fhan.models.R4.UsageContext import *
 from fhan.models.R4.Resource import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.Extension import *
+from fhan.models.R4.Meta import *
+from fhan.models.R4.SampledData import *
+from fhan.models.R4.Contributor import *
+from fhan.models.R4.Ratio import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Count import *
+from fhan.models.R4.ParameterDefinition import *
 from fhan.models.R4.DomainResource import *
 
 
     
     
 
-class Structure(ModelBase):
+class Structure(BaseModel):
     """ A structure definition used by this map. The structure definition may describe instances that are converted, or the instances that are produced.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str url: Canonical reference to structure definition
     :param str mode: source | queried | target | produced
     :param str alias: Name for type in this map
     :param str documentation: Documentation on use of structure
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  url: str = None,  mode: str = None,  alias: str = None,  documentation: str = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  url: str = None,  mode: str = None,  alias: str = None,  documentation: str = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -81,8 +81,8 @@ class Structure(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -108,16 +108,16 @@ class Structure(ModelBase):
     
     
 
-class Input(ModelBase):
+class Input(BaseModel):
     """ A name assigned to an instance of data. The instance must be provided when the mapping is invoked.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str name: Name for this instance of data
     :param str type: Type for this instance of data
     :param str mode: source | target
     :param str documentation: Documentation for this instance of data
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  name: str = None,  type: str = None,  mode: str = None,  documentation: str = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  name: str = None,  type: str = None,  mode: str = None,  documentation: str = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -143,8 +143,8 @@ class Input(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -170,10 +170,10 @@ class Input(ModelBase):
     
     
 
-class Source(ModelBase):
+class Source(BaseModel):
     """ Source inputs to the mapping.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str context: Type or variable this rule applies to
     :param int min: Specified minimum cardinality
     :param str max: Specified maximum cardinality (number or *)
@@ -235,7 +235,7 @@ class Source(ModelBase):
     :param str check: FHIRPath expression  - must be true or the mapping engine throws an error instead of completing
     :param str logMessage: Message to put in log if source exists (FHIRPath)
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  context: str = None,  min: int = None,  max: str = None,  type: str = None,  defaultValueBase64Binary: str = None,  defaultValueBoolean: bool = None,  defaultValueCanonical: str = None,  defaultValueCode: str = None,  defaultValueDate: str = None,  defaultValueDateTime: str = None,  defaultValueDecimal: float = None,  defaultValueId: str = None,  defaultValueInstant: str = None,  defaultValueInteger: int = None,  defaultValueMarkdown: str = None,  defaultValueOid: str = None,  defaultValuePositiveInt: int = None,  defaultValueString: str = None,  defaultValueTime: str = None,  defaultValueUnsignedInt: int = None,  defaultValueUri: str = None,  defaultValueUrl: str = None,  defaultValueUuid: str = None,  defaultValueAddress: 'Address' = None,  defaultValueAge: 'Age' = None,  defaultValueAnnotation: 'Annotation' = None,  defaultValueAttachment: 'Attachment' = None,  defaultValueCodeableConcept: 'CodeableConcept' = None,  defaultValueCoding: 'Coding' = None,  defaultValueContactPoint: 'ContactPoint' = None,  defaultValueCount: 'Count' = None,  defaultValueDistance: 'Distance' = None,  defaultValueDuration: 'Duration' = None,  defaultValueHumanName: 'HumanName' = None,  defaultValueIdentifier: 'Identifier' = None,  defaultValueMoney: 'Money' = None,  defaultValuePeriod: 'Period' = None,  defaultValueQuantity: 'Quantity' = None,  defaultValueRange: 'Range' = None,  defaultValueRatio: 'Ratio' = None,  defaultValueReference: 'Reference' = None,  defaultValueSampledData: 'SampledData' = None,  defaultValueSignature: 'Signature' = None,  defaultValueTiming: 'Timing' = None,  defaultValueContactDetail: 'ContactDetail' = None,  defaultValueContributor: 'Contributor' = None,  defaultValueDataRequirement: 'DataRequirement' = None,  defaultValueExpression: 'Expression' = None,  defaultValueParameterDefinition: 'ParameterDefinition' = None,  defaultValueRelatedArtifact: 'RelatedArtifact' = None,  defaultValueTriggerDefinition: 'TriggerDefinition' = None,  defaultValueUsageContext: 'UsageContext' = None,  defaultValueDosage: 'Dosage' = None,  defaultValueMeta: 'Meta' = None,  element: str = None,  listMode: str = None,  variable: str = None,  condition: str = None,  check: str = None,  logMessage: str = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  context: str = None,  min: int = None,  max: str = None,  type: str = None,  defaultValueBase64Binary: str = None,  defaultValueBoolean: bool = None,  defaultValueCanonical: str = None,  defaultValueCode: str = None,  defaultValueDate: str = None,  defaultValueDateTime: str = None,  defaultValueDecimal: float = None,  defaultValueId: str = None,  defaultValueInstant: str = None,  defaultValueInteger: int = None,  defaultValueMarkdown: str = None,  defaultValueOid: str = None,  defaultValuePositiveInt: int = None,  defaultValueString: str = None,  defaultValueTime: str = None,  defaultValueUnsignedInt: int = None,  defaultValueUri: str = None,  defaultValueUrl: str = None,  defaultValueUuid: str = None,  defaultValueAddress: 'Address' = None,  defaultValueAge: 'Age' = None,  defaultValueAnnotation: 'Annotation' = None,  defaultValueAttachment: 'Attachment' = None,  defaultValueCodeableConcept: 'CodeableConcept' = None,  defaultValueCoding: 'Coding' = None,  defaultValueContactPoint: 'ContactPoint' = None,  defaultValueCount: 'Count' = None,  defaultValueDistance: 'Distance' = None,  defaultValueDuration: 'Duration' = None,  defaultValueHumanName: 'HumanName' = None,  defaultValueIdentifier: 'Identifier' = None,  defaultValueMoney: 'Money' = None,  defaultValuePeriod: 'Period' = None,  defaultValueQuantity: 'Quantity' = None,  defaultValueRange: 'Range' = None,  defaultValueRatio: 'Ratio' = None,  defaultValueReference: 'Reference' = None,  defaultValueSampledData: 'SampledData' = None,  defaultValueSignature: 'Signature' = None,  defaultValueTiming: 'Timing' = None,  defaultValueContactDetail: 'ContactDetail' = None,  defaultValueContributor: 'Contributor' = None,  defaultValueDataRequirement: 'DataRequirement' = None,  defaultValueExpression: 'Expression' = None,  defaultValueParameterDefinition: 'ParameterDefinition' = None,  defaultValueRelatedArtifact: 'RelatedArtifact' = None,  defaultValueTriggerDefinition: 'TriggerDefinition' = None,  defaultValueUsageContext: 'UsageContext' = None,  defaultValueDosage: 'Dosage' = None,  defaultValueMeta: 'Meta' = None,  element: str = None,  listMode: str = None,  variable: str = None,  condition: str = None,  check: str = None,  logMessage: str = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -317,8 +317,8 @@ class Source(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -344,17 +344,17 @@ class Source(ModelBase):
     
     
 
-class Parameter(ModelBase):
+class Parameter(BaseModel):
     """ Parameters to the transform.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str valueId: Parameter value - variable or literal
     :param str valueString: Parameter value - variable or literal
     :param bool valueBoolean: Parameter value - variable or literal
     :param int valueInteger: Parameter value - variable or literal
     :param float valueDecimal: Parameter value - variable or literal
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  valueId: str = None,  valueString: str = None,  valueBoolean: bool = None,  valueInteger: int = None,  valueDecimal: float = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  valueId: str = None,  valueString: str = None,  valueBoolean: bool = None,  valueInteger: int = None,  valueDecimal: float = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -381,8 +381,8 @@ class Parameter(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -407,10 +407,10 @@ class Parameter(ModelBase):
     
     
 
-class Target(ModelBase):
+class Target(BaseModel):
     """ Content to create because of this mapping rule.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str context: Type or variable this rule applies to
     :param str contextType: type | variable
     :param str element: Field to create in the context
@@ -418,9 +418,9 @@ class Target(ModelBase):
     :param str listMode: first | share | last | collate
     :param str listRuleId: Internal rule reference for shared list items
     :param str transform: create | copy +
-    :param list['Parameter'] parameter: Parameters to the transform
+    :param 'Parameter' parameter: Parameters to the transform
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  context: str = None,  contextType: str = None,  element: str = None,  variable: str = None,  listMode: str = None,  listRuleId: str = None,  transform: str = None,  parameter: list['Parameter'] = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  context: str = None,  contextType: str = None,  element: str = None,  variable: str = None,  listMode: str = None,  listRuleId: str = None,  transform: str = None,  parameter: 'Parameter' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -428,7 +428,7 @@ class Target(ModelBase):
         self.contextType: str = contextType 
         self.element: str = element 
         self.variable: str = variable 
-        self.listMode: str = listMode or []
+        self.listMode: list[str] = listMode or []
         self.listRuleId: str = listRuleId 
         self.transform: str = transform 
         self.parameter: list['Parameter'] = parameter or []
@@ -450,8 +450,8 @@ class Target(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -475,19 +475,19 @@ class Target(ModelBase):
     
     
 
-class Dependent(ModelBase):
+class Dependent(BaseModel):
     """ Which other rules to apply in the context of this rule.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str name: Name of a rule or group to apply
     :param str variable: Variable to pass to the rule or group
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  name: str = None,  variable: str = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  name: str = None,  variable: str = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
         self.name: str = name 
-        self.variable: str = variable or []
+        self.variable: list[str] = variable or []
         
 
     @classmethod
@@ -506,8 +506,8 @@ class Dependent(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -532,17 +532,17 @@ class Dependent(ModelBase):
     
     
 
-class Rule(ModelBase):
+class Rule(BaseModel):
     """ Transform Rule from source to target.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str name: Name of the rule for internal references
-    :param list['Source'] source: Source inputs to the mapping
-    :param list['Target'] target: Content to create because of this mapping rule
-    :param list['Dependent'] dependent: Which other rules to apply in the context of this rule
+    :param 'Source' source: Source inputs to the mapping
+    :param 'Target' target: Content to create because of this mapping rule
+    :param 'Dependent' dependent: Which other rules to apply in the context of this rule
     :param str documentation: Documentation for this instance of data
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  name: str = None,  source: list['Source'] = None,  target: list['Target'] = None,  dependent: list['Dependent'] = None,  documentation: str = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  name: str = None,  source: 'Source' = None,  target: 'Target' = None,  dependent: 'Dependent' = None,  documentation: str = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -569,8 +569,8 @@ class Rule(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -595,18 +595,18 @@ class Rule(ModelBase):
     
     
 
-class Group(ModelBase):
+class Group(BaseModel):
     """ Organizes the mapping into manageable chunks for human review/ease of maintenance.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str name: Human-readable label
     :param str extends: Another group that this group adds rules to
     :param str typeMode: none | types | type-and-types
     :param str documentation: Additional description/explanation for group
-    :param list['Input'] input: Named instance provided when invoking the map
-    :param list['Rule'] rule: Transform Rule from source to target
+    :param 'Input' input: Named instance provided when invoking the map
+    :param 'Rule' rule: Transform Rule from source to target
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  name: str = None,  extends: str = None,  typeMode: str = None,  documentation: str = None,  input: list['Input'] = None,  rule: list['Rule'] = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  name: str = None,  extends: str = None,  typeMode: str = None,  documentation: str = None,  input: 'Input' = None,  rule: 'Rule' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -634,8 +634,8 @@ class Group(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -663,11 +663,11 @@ class StructureMap(DomainResource):
     :param str implicitRules: A set of rules under which this content was created
     :param str language: Language of the resource content
     :param 'Narrative' text: Text summary of the resource, for human interpretation
-    :param list['Resource'] contained: Contained, inline Resources
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored
+    :param 'Resource' contained: Contained, inline Resources
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored
     :param str url: Canonical identifier for this structure map, represented as a URI (globally unique)
-    :param list['Identifier'] identifier: Additional identifier for the structure map
+    :param 'Identifier' identifier: Additional identifier for the structure map
     :param str version: Business version of the structure map
     :param str name: Name for this structure map (computer friendly)
     :param str title: Name for this structure map (human friendly)
@@ -675,17 +675,17 @@ class StructureMap(DomainResource):
     :param bool experimental: For testing purposes, not real usage
     :param str date: Date last changed
     :param str publisher: Name of the publisher (organization or individual)
-    :param list['ContactDetail'] contact: Contact details for the publisher
+    :param 'ContactDetail' contact: Contact details for the publisher
     :param str description: Natural language description of the structure map
-    :param list['UsageContext'] useContext: The context that the content is intended to support
-    :param list['CodeableConcept'] jurisdiction: Intended jurisdiction for structure map (if applicable)
+    :param 'UsageContext' useContext: The context that the content is intended to support
+    :param 'CodeableConcept' jurisdiction: Intended jurisdiction for structure map (if applicable)
     :param str purpose: Why this structure map is defined
     :param str copyright: Use and/or publishing restrictions
-    :param list['Structure'] structure: Structure Definition used by this map
+    :param 'Structure' structure: Structure Definition used by this map
     :param str _import: Other maps used by this map (canonical URLs)
-    :param list['Group'] group: Named sections for reader convenience
+    :param 'Group' group: Named sections for reader convenience
     """
-    def __init__(self, resourceType: str = "StructureMap",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  url: str = None,  identifier: list['Identifier'] = None,  version: str = None,  name: str = None,  title: str = None,  status: str = None,  experimental: bool = None,  date: str = None,  publisher: str = None,  contact: list['ContactDetail'] = None,  description: str = None,  useContext: list['UsageContext'] = None,  jurisdiction: list['CodeableConcept'] = None,  purpose: str = None,  copyright: str = None,  structure: list['Structure'] = None,  _import: str = None,  group: list['Group'] = None, ):
+    def __init__(self, resourceType: str = "StructureMap",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: 'Resource' = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  url: str = None,  identifier: 'Identifier' = None,  version: str = None,  name: str = None,  title: str = None,  status: str = None,  experimental: bool = None,  date: str = None,  publisher: str = None,  contact: 'ContactDetail' = None,  description: str = None,  useContext: 'UsageContext' = None,  jurisdiction: 'CodeableConcept' = None,  purpose: str = None,  copyright: str = None,  structure: 'Structure' = None,  _import: str = None,  group: 'Group' = None, ):
         self.resourceType: str = resourceType or "StructureMap"
         self.id: str = id 
         self.meta: 'Meta' = meta 
@@ -711,7 +711,7 @@ class StructureMap(DomainResource):
         self.purpose: str = purpose 
         self.copyright: str = copyright 
         self.structure: list['Structure'] = structure or []
-        self._import: str = _import or []
+        self._import: list[str] = _import or []
         self.group: list['Group'] = group or []
         
 
@@ -731,8 +731,8 @@ class StructureMap(DomainResource):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)

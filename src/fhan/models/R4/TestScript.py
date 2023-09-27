@@ -1,35 +1,35 @@
 """
 Generated class for TestScript. 
-Time: 2023-09-25 16:30:45
+Time: 2023-09-27 15:54:17
 """
 from importlib import import_module
 import inspect
 
-from fhan.models.R4.Identifier import *
+from fhan.models.R4.BackboneElement import *
 from fhan.models.R4.Meta import *
 from fhan.models.R4.UsageContext import *
 from fhan.models.R4.ContactDetail import *
+from fhan.models.R4.Resource import *
+from fhan.models.R4.Identifier import *
 from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Coding import *
 from fhan.models.R4.Extension import *
-from fhan.models.R4.Reference import *
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Resource import *
 from fhan.models.R4.Narrative import *
+from fhan.models.R4.Reference import *
 from fhan.models.R4.DomainResource import *
 
 
     
     
 
-class Origin(ModelBase):
+class Origin(BaseModel):
     """ An abstract server used in operations within this test script in the origin element.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param int index: The index of the abstract origin server starting at 1
     :param 'Coding' profile: FHIR-Client | FHIR-SDC-FormFiller
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  index: int = None,  profile: 'Coding' = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  index: int = None,  profile: 'Coding' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -53,8 +53,8 @@ class Origin(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -78,14 +78,14 @@ class Origin(ModelBase):
     
     
 
-class Destination(ModelBase):
+class Destination(BaseModel):
     """ An abstract server used in operations within this test script in the destination element.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param int index: The index of the abstract destination server starting at 1
     :param 'Coding' profile: FHIR-Server | FHIR-SDC-FormManager | FHIR-SDC-FormReceiver | FHIR-SDC-FormProcessor
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  index: int = None,  profile: 'Coding' = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  index: int = None,  profile: 'Coding' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -109,8 +109,8 @@ class Destination(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -136,14 +136,14 @@ class Destination(ModelBase):
     
     
 
-class Link(ModelBase):
+class Link(BaseModel):
     """ A link to the FHIR specification that this test is covering.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str url: URL to the specification
     :param str description: Short description
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  url: str = None,  description: str = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  url: str = None,  description: str = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -167,8 +167,8 @@ class Link(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -192,10 +192,10 @@ class Link(ModelBase):
     
     
 
-class Capability(ModelBase):
+class Capability(BaseModel):
     """ Capabilities that must exist and are assumed to function correctly on the FHIR server being tested.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param bool required: Are the capabilities required?
     :param bool validated: Are the capabilities validated?
     :param str description: The expected capabilities of the server
@@ -204,16 +204,16 @@ class Capability(ModelBase):
     :param str link: Links to the FHIR specification
     :param str capabilities: Required Capability Statement
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  required: bool = None,  validated: bool = None,  description: str = None,  origin: int = None,  destination: int = None,  link: str = None,  capabilities: str = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  required: bool = None,  validated: bool = None,  description: str = None,  origin: int = None,  destination: int = None,  link: str = None,  capabilities: str = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
         self.required: bool = required 
         self.validated: bool = validated 
         self.description: str = description 
-        self.origin: int = origin or []
+        self.origin: list[int] = origin or []
         self.destination: int = destination 
-        self.link: str = link or []
+        self.link: list[str] = link or []
         self.capabilities: str = capabilities 
         
 
@@ -233,8 +233,8 @@ class Capability(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -259,14 +259,14 @@ class Capability(ModelBase):
     
     
 
-class Metadata(ModelBase):
+class Metadata(BaseModel):
     """ The required capability must exist and are assumed to function correctly on the FHIR server being tested.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param list['Link'] link: Links to the FHIR specification
-    :param list['Capability'] capability: Capabilities  that are assumed to function correctly on the FHIR server being tested
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Link' link: Links to the FHIR specification
+    :param 'Capability' capability: Capabilities  that are assumed to function correctly on the FHIR server being tested
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  link: list['Link'] = None,  capability: list['Capability'] = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  link: 'Link' = None,  capability: 'Capability' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -290,8 +290,8 @@ class Metadata(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -315,15 +315,15 @@ class Metadata(ModelBase):
     
     
 
-class Fixture(ModelBase):
+class Fixture(BaseModel):
     """ Fixture in the test script - by reference (uri). All fixtures are required for the test script to execute.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param bool autocreate: Whether or not to implicitly create the fixture during setup
     :param bool autodelete: Whether or not to implicitly delete the fixture during teardown
     :param 'Reference' resource: Reference of the resource
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  autocreate: bool = None,  autodelete: bool = None,  resource: 'Reference' = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  autocreate: bool = None,  autodelete: bool = None,  resource: 'Reference' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -348,8 +348,8 @@ class Fixture(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -373,10 +373,10 @@ class Fixture(ModelBase):
     
     
 
-class Variable(ModelBase):
+class Variable(BaseModel):
     """ Variable is set based either on element value in response body or on header field value in the response headers.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str name: Descriptive name for this variable
     :param str defaultValue: Default, hard-coded, or user-defined value for this variable
     :param str description: Natural language description of the variable
@@ -386,7 +386,7 @@ class Variable(ModelBase):
     :param str path: XPath or JSONPath against the fixture body
     :param str sourceId: Fixture Id of source expression or headerField within this variable
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  name: str = None,  defaultValue: str = None,  description: str = None,  expression: str = None,  headerField: str = None,  hint: str = None,  path: str = None,  sourceId: str = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  name: str = None,  defaultValue: str = None,  description: str = None,  expression: str = None,  headerField: str = None,  hint: str = None,  path: str = None,  sourceId: str = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -416,8 +416,8 @@ class Variable(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -447,14 +447,14 @@ class Variable(ModelBase):
     
     
 
-class RequestHeader(ModelBase):
+class RequestHeader(BaseModel):
     """ Header elements would be used to set HTTP headers.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str field: HTTP header field name
     :param str value: HTTP headerfield value
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  field: str = None,  value: str = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  field: str = None,  value: str = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -478,8 +478,8 @@ class RequestHeader(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -504,10 +504,10 @@ class RequestHeader(ModelBase):
     
     
 
-class Operation(ModelBase):
+class Operation(BaseModel):
     """ The operation to perform.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param 'Coding' type: The operation code type that will be executed
     :param str resource: Resource type
     :param str label: Tracking/logging operation label
@@ -519,14 +519,14 @@ class Operation(ModelBase):
     :param str method: delete | get | options | patch | post | put | head
     :param int origin: Server initiating the request
     :param str params: Explicitly defined path parameters
-    :param list['RequestHeader'] requestHeader: Each operation can have one or more header elements
+    :param 'RequestHeader' requestHeader: Each operation can have one or more header elements
     :param str requestId: Fixture Id of mapped request
     :param str responseId: Fixture Id of mapped response
     :param str sourceId: Fixture Id of body for PUT and POST requests
     :param str targetId: Id of fixture used for extracting the [id],  [type], and [vid] for GET requests
     :param str url: Request URL
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  type: 'Coding' = None,  resource: str = None,  label: str = None,  description: str = None,  accept: str = None,  contentType: str = None,  destination: int = None,  encodeRequestUrl: bool = None,  method: str = None,  origin: int = None,  params: str = None,  requestHeader: list['RequestHeader'] = None,  requestId: str = None,  responseId: str = None,  sourceId: str = None,  targetId: str = None,  url: str = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  type: 'Coding' = None,  resource: str = None,  label: str = None,  description: str = None,  accept: str = None,  contentType: str = None,  destination: int = None,  encodeRequestUrl: bool = None,  method: str = None,  origin: int = None,  params: str = None,  requestHeader: 'RequestHeader' = None,  requestId: str = None,  responseId: str = None,  sourceId: str = None,  targetId: str = None,  url: str = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -565,8 +565,8 @@ class Operation(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -590,10 +590,10 @@ class Operation(ModelBase):
     
     
 
-class _assert(ModelBase):
+class _assert(BaseModel):
     """ Evaluates the results of previous operations to determine if the server under test behaves appropriately.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str label: Tracking/logging assertion label
     :param str description: Tracking/reporting assertion description
     :param str direction: response | request
@@ -617,7 +617,7 @@ class _assert(ModelBase):
     :param str value: The value to compare to
     :param bool warningOnly: Will this assert produce a warning only on error?
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  label: str = None,  description: str = None,  direction: str = None,  compareToSourceId: str = None,  compareToSourceExpression: str = None,  compareToSourcePath: str = None,  contentType: str = None,  expression: str = None,  headerField: str = None,  minimumId: str = None,  navigationLinks: bool = None,  operator: str = None,  path: str = None,  requestMethod: str = None,  requestURL: str = None,  resource: str = None,  response: str = None,  responseCode: str = None,  sourceId: str = None,  validateProfileId: str = None,  value: str = None,  warningOnly: bool = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  label: str = None,  description: str = None,  direction: str = None,  compareToSourceId: str = None,  compareToSourceExpression: str = None,  compareToSourcePath: str = None,  contentType: str = None,  expression: str = None,  headerField: str = None,  minimumId: str = None,  navigationLinks: bool = None,  operator: str = None,  path: str = None,  requestMethod: str = None,  requestURL: str = None,  resource: str = None,  response: str = None,  responseCode: str = None,  sourceId: str = None,  validateProfileId: str = None,  value: str = None,  warningOnly: bool = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -661,8 +661,8 @@ class _assert(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -687,14 +687,14 @@ class _assert(ModelBase):
     
     
 
-class Action(ModelBase):
+class Action(BaseModel):
     """ Action would contain either an operation or an assertion.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param 'Operation' operation: The setup operation to perform
     :param '_assert' _assert: The assertion to perform
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  operation: 'Operation' = None,  _assert: '_assert' = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  operation: 'Operation' = None,  _assert: '_assert' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -718,8 +718,8 @@ class Action(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -744,13 +744,13 @@ class Action(ModelBase):
     
     
 
-class Setup(ModelBase):
+class Setup(BaseModel):
     """ A series of required setup operations before tests are executed.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param list['Action'] action: A setup operation or assert to perform
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Action' action: A setup operation or assert to perform
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  action: list['Action'] = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  action: 'Action' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -773,8 +773,8 @@ class Setup(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -800,12 +800,12 @@ class Setup(ModelBase):
     
     
 
-class Action(ModelBase):
+class Action(BaseModel):
     """ Action would contain either an operation or an assertion.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -827,8 +827,8 @@ class Action(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -853,15 +853,15 @@ class Action(ModelBase):
     
     
 
-class Test(ModelBase):
+class Test(BaseModel):
     """ A test in this script.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str name: Tracking/logging name of this test
     :param str description: Tracking/reporting short description of the test
-    :param list['Action'] action: A test operation or assert to perform
+    :param 'Action' action: A test operation or assert to perform
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  name: str = None,  description: str = None,  action: list['Action'] = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  name: str = None,  description: str = None,  action: 'Action' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -886,8 +886,8 @@ class Test(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -913,12 +913,12 @@ class Test(ModelBase):
     
     
 
-class Action(ModelBase):
+class Action(BaseModel):
     """ The teardown action will only contain an operation.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -940,8 +940,8 @@ class Action(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -966,13 +966,13 @@ class Action(ModelBase):
     
     
 
-class Teardown(ModelBase):
+class Teardown(BaseModel):
     """ A series of operations required to clean up after all the tests are executed (successfully or otherwise).:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param list['Action'] action: One or more teardown operations to perform
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Action' action: One or more teardown operations to perform
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  action: list['Action'] = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  action: 'Action' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -995,8 +995,8 @@ class Teardown(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -1024,9 +1024,9 @@ class TestScript(DomainResource):
     :param str implicitRules: A set of rules under which this content was created
     :param str language: Language of the resource content
     :param 'Narrative' text: Text summary of the resource, for human interpretation
-    :param list['Resource'] contained: Contained, inline Resources
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored
+    :param 'Resource' contained: Contained, inline Resources
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored
     :param str url: Canonical identifier for this test script, represented as a URI (globally unique)
     :param 'Identifier' identifier: Additional identifier for the test script
     :param str version: Business version of the test script
@@ -1036,23 +1036,23 @@ class TestScript(DomainResource):
     :param bool experimental: For testing purposes, not real usage
     :param str date: Date last changed
     :param str publisher: Name of the publisher (organization or individual)
-    :param list['ContactDetail'] contact: Contact details for the publisher
+    :param 'ContactDetail' contact: Contact details for the publisher
     :param str description: Natural language description of the test script
-    :param list['UsageContext'] useContext: The context that the content is intended to support
-    :param list['CodeableConcept'] jurisdiction: Intended jurisdiction for test script (if applicable)
+    :param 'UsageContext' useContext: The context that the content is intended to support
+    :param 'CodeableConcept' jurisdiction: Intended jurisdiction for test script (if applicable)
     :param str purpose: Why this test script is defined
     :param str copyright: Use and/or publishing restrictions
-    :param list['Origin'] origin: An abstract server representing a client or sender in a message exchange
-    :param list['Destination'] destination: An abstract server representing a destination or receiver in a message exchange
+    :param 'Origin' origin: An abstract server representing a client or sender in a message exchange
+    :param 'Destination' destination: An abstract server representing a destination or receiver in a message exchange
     :param 'Metadata' metadata: Required capability that is assumed to function correctly on the FHIR server being tested
-    :param list['Fixture'] fixture: Fixture in the test script - by reference (uri)
-    :param list['Reference'] profile: Reference of the validation profile
-    :param list['Variable'] variable: Placeholder for evaluated elements
+    :param 'Fixture' fixture: Fixture in the test script - by reference (uri)
+    :param 'Reference' profile: Reference of the validation profile
+    :param 'Variable' variable: Placeholder for evaluated elements
     :param 'Setup' setup: A series of required setup operations before tests are executed
-    :param list['Test'] test: A test in this script
+    :param 'Test' test: A test in this script
     :param 'Teardown' teardown: A series of required clean up steps
     """
-    def __init__(self, resourceType: str = "TestScript",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  url: str = None,  identifier: 'Identifier' = None,  version: str = None,  name: str = None,  title: str = None,  status: str = None,  experimental: bool = None,  date: str = None,  publisher: str = None,  contact: list['ContactDetail'] = None,  description: str = None,  useContext: list['UsageContext'] = None,  jurisdiction: list['CodeableConcept'] = None,  purpose: str = None,  copyright: str = None,  origin: list['Origin'] = None,  destination: list['Destination'] = None,  metadata: 'Metadata' = None,  fixture: list['Fixture'] = None,  profile: list['Reference'] = None,  variable: list['Variable'] = None,  setup: 'Setup' = None,  test: list['Test'] = None,  teardown: 'Teardown' = None, ):
+    def __init__(self, resourceType: str = "TestScript",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: 'Resource' = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  url: str = None,  identifier: 'Identifier' = None,  version: str = None,  name: str = None,  title: str = None,  status: str = None,  experimental: bool = None,  date: str = None,  publisher: str = None,  contact: 'ContactDetail' = None,  description: str = None,  useContext: 'UsageContext' = None,  jurisdiction: 'CodeableConcept' = None,  purpose: str = None,  copyright: str = None,  origin: 'Origin' = None,  destination: 'Destination' = None,  metadata: 'Metadata' = None,  fixture: 'Fixture' = None,  profile: 'Reference' = None,  variable: 'Variable' = None,  setup: 'Setup' = None,  test: 'Test' = None,  teardown: 'Teardown' = None, ):
         self.resourceType: str = resourceType or "TestScript"
         self.id: str = id 
         self.meta: 'Meta' = meta 
@@ -1104,8 +1104,8 @@ class TestScript(DomainResource):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)

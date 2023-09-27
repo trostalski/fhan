@@ -1,19 +1,19 @@
 """
 Generated class for ValueSet. 
-Time: 2023-09-25 16:30:45
+Time: 2023-09-27 15:54:17
 """
 from importlib import import_module
 import inspect
 
-from fhan.models.R4.Identifier import *
+from fhan.models.R4.BackboneElement import *
 from fhan.models.R4.Meta import *
 from fhan.models.R4.UsageContext import *
 from fhan.models.R4.ContactDetail import *
+from fhan.models.R4.Resource import *
+from fhan.models.R4.Identifier import *
 from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Coding import *
 from fhan.models.R4.Extension import *
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Resource import *
 from fhan.models.R4.Narrative import *
 from fhan.models.R4.DomainResource import *
 
@@ -27,15 +27,15 @@ from fhan.models.R4.DomainResource import *
     
     
 
-class Designation(ModelBase):
+class Designation(BaseModel):
     """ Additional representations for this concept when used in this value set - other languages, aliases, specialized purposes, used for particular purposes, etc.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str language: Human language of the designation
     :param 'Coding' use: Types of uses of designations
     :param str value: The text value for this designation
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  language: str = None,  use: 'Coding' = None,  value: str = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  language: str = None,  use: 'Coding' = None,  value: str = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -60,8 +60,8 @@ class Designation(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -86,15 +86,15 @@ class Designation(ModelBase):
     
     
 
-class Concept(ModelBase):
+class Concept(BaseModel):
     """ Specifies a concept to be included or excluded.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str code: Code or expression from system
     :param str display: Text to display for this code for this value set in this valueset
-    :param list['Designation'] designation: Additional representations for this concept
+    :param 'Designation' designation: Additional representations for this concept
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  code: str = None,  display: str = None,  designation: list['Designation'] = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  code: str = None,  display: str = None,  designation: 'Designation' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -119,8 +119,8 @@ class Concept(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -144,15 +144,15 @@ class Concept(ModelBase):
     
     
 
-class Filter(ModelBase):
+class Filter(BaseModel):
     """ Select concepts by specify a matching criterion based on the properties (including relationships) defined by the system, or on filters defined by the system. If multiple filters are specified, they SHALL all be true.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str property: A property/filter defined by the code system
     :param str op: = | is-a | descendent-of | is-not-a | regex | in | not-in | generalizes | exists
     :param str value: Code from the system, or regex criteria, or boolean value for exists
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  property: str = None,  op: str = None,  value: str = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  property: str = None,  op: str = None,  value: str = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -177,8 +177,8 @@ class Filter(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -203,17 +203,17 @@ class Filter(ModelBase):
     
     
 
-class Include(ModelBase):
+class Include(BaseModel):
     """ Include one or more codes from a code system or other value set(s).:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str system: The system the codes come from
     :param str version: Specific version of the code system referred to
-    :param list['Concept'] concept: A concept defined in the system
-    :param list['Filter'] filter: Select codes/concepts by their properties (including relationships)
+    :param 'Concept' concept: A concept defined in the system
+    :param 'Filter' filter: Select codes/concepts by their properties (including relationships)
     :param str valueSet: Select the contents included in this value set
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  system: str = None,  version: str = None,  concept: list['Concept'] = None,  filter: list['Filter'] = None,  valueSet: str = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  system: str = None,  version: str = None,  concept: 'Concept' = None,  filter: 'Filter' = None,  valueSet: str = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -221,7 +221,7 @@ class Include(ModelBase):
         self.version: str = version 
         self.concept: list['Concept'] = concept or []
         self.filter: list['Filter'] = filter or []
-        self.valueSet: str = valueSet or []
+        self.valueSet: list[str] = valueSet or []
         
 
     @classmethod
@@ -240,8 +240,8 @@ class Include(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -269,15 +269,15 @@ class Include(ModelBase):
     
     
 
-class Designation(ModelBase):
+class Designation(BaseModel):
     """ Additional representations for this concept when used in this value set - other languages, aliases, specialized purposes, used for particular purposes, etc.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str language: Human language of the designation
     :param 'Coding' use: Types of uses of designations
     :param str value: The text value for this designation
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  language: str = None,  use: 'Coding' = None,  value: str = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  language: str = None,  use: 'Coding' = None,  value: str = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -302,8 +302,8 @@ class Designation(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -328,15 +328,15 @@ class Designation(ModelBase):
     
     
 
-class Concept(ModelBase):
+class Concept(BaseModel):
     """ Specifies a concept to be included or excluded.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str code: Code or expression from system
     :param str display: Text to display for this code for this value set in this valueset
-    :param list['Designation'] designation: Additional representations for this concept
+    :param 'Designation' designation: Additional representations for this concept
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  code: str = None,  display: str = None,  designation: list['Designation'] = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  code: str = None,  display: str = None,  designation: 'Designation' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -361,8 +361,8 @@ class Concept(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -386,15 +386,15 @@ class Concept(ModelBase):
     
     
 
-class Filter(ModelBase):
+class Filter(BaseModel):
     """ Select concepts by specify a matching criterion based on the properties (including relationships) defined by the system, or on filters defined by the system. If multiple filters are specified, they SHALL all be true.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str property: A property/filter defined by the code system
     :param str op: = | is-a | descendent-of | is-not-a | regex | in | not-in | generalizes | exists
     :param str value: Code from the system, or regex criteria, or boolean value for exists
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  property: str = None,  op: str = None,  value: str = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  property: str = None,  op: str = None,  value: str = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -419,8 +419,8 @@ class Filter(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -445,17 +445,17 @@ class Filter(ModelBase):
     
     
 
-class Exclude(ModelBase):
+class Exclude(BaseModel):
     """ Include one or more codes from a code system or other value set(s).:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str system: The system the codes come from
     :param str version: Specific version of the code system referred to
-    :param list['Concept'] concept: A concept defined in the system
-    :param list['Filter'] filter: Select codes/concepts by their properties (including relationships)
+    :param 'Concept' concept: A concept defined in the system
+    :param 'Filter' filter: Select codes/concepts by their properties (including relationships)
     :param str valueSet: Select the contents included in this value set
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  system: str = None,  version: str = None,  concept: list['Concept'] = None,  filter: list['Filter'] = None,  valueSet: str = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  system: str = None,  version: str = None,  concept: 'Concept' = None,  filter: 'Filter' = None,  valueSet: str = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -463,7 +463,7 @@ class Exclude(ModelBase):
         self.version: str = version 
         self.concept: list['Concept'] = concept or []
         self.filter: list['Filter'] = filter or []
-        self.valueSet: str = valueSet or []
+        self.valueSet: list[str] = valueSet or []
         
 
     @classmethod
@@ -482,8 +482,8 @@ class Exclude(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -508,16 +508,16 @@ class Exclude(ModelBase):
     
     
 
-class Compose(ModelBase):
+class Compose(BaseModel):
     """ A set of criteria that define the contents of the value set by including or excluding codes selected from the specified code system(s) that the value set draws from. This is also known as the Content Logical Definition (CLD).:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str lockedDate: Fixed date for references with no specified version (transitive)
     :param bool inactive: Whether inactive codes are in the value set
-    :param list['Include'] include: Include one or more codes from a code system or other value set(s)
-    :param list['Exclude'] exclude: Include one or more codes from a code system or other value set(s)
+    :param 'Include' include: Include one or more codes from a code system or other value set(s)
+    :param 'Exclude' exclude: Include one or more codes from a code system or other value set(s)
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  lockedDate: str = None,  inactive: bool = None,  include: list['Include'] = None,  exclude: list['Exclude'] = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  lockedDate: str = None,  inactive: bool = None,  include: 'Include' = None,  exclude: 'Exclude' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -543,8 +543,8 @@ class Compose(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -570,10 +570,10 @@ class Compose(ModelBase):
     
     
 
-class Parameter(ModelBase):
+class Parameter(BaseModel):
     """ A parameter that controlled the expansion process. These parameters may be used by users of expanded value sets to check whether the expansion is suitable for a particular purpose, or to pick the correct expansion.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str name: Name as assigned by the client or server
     :param str valueString: Value of the named parameter
     :param bool valueBoolean: Value of the named parameter
@@ -583,7 +583,7 @@ class Parameter(ModelBase):
     :param str valueCode: Value of the named parameter
     :param str valueDateTime: Value of the named parameter
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  name: str = None,  valueString: str = None,  valueBoolean: bool = None,  valueInteger: int = None,  valueDecimal: float = None,  valueUri: str = None,  valueCode: str = None,  valueDateTime: str = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  name: str = None,  valueString: str = None,  valueBoolean: bool = None,  valueInteger: int = None,  valueDecimal: float = None,  valueUri: str = None,  valueCode: str = None,  valueDateTime: str = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -613,8 +613,8 @@ class Parameter(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -638,10 +638,10 @@ class Parameter(ModelBase):
     
     
 
-class Contains(ModelBase):
+class Contains(BaseModel):
     """ The codes that are contained in the value set expansion.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str system: System value for the code
     :param bool abstract: If user cannot select this entry
     :param bool inactive: If concept is inactive in the code system
@@ -649,7 +649,7 @@ class Contains(ModelBase):
     :param str code: Code - if blank, this is not a selectable code
     :param str display: User display for the concept
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  system: str = None,  abstract: bool = None,  inactive: bool = None,  version: str = None,  code: str = None,  display: str = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  system: str = None,  abstract: bool = None,  inactive: bool = None,  version: str = None,  code: str = None,  display: str = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -677,8 +677,8 @@ class Contains(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -703,18 +703,18 @@ class Contains(ModelBase):
     
     
 
-class Expansion(ModelBase):
+class Expansion(BaseModel):
     """ A value set can also be "expanded", where the value set is turned into a simple collection of enumerated codes. This element holds the expansion, if it has been performed.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str identifier: Identifies the value set expansion (business identifier)
     :param str timestamp: Time ValueSet expansion happened
     :param int total: Total number of codes in the expansion
     :param int offset: Offset at which this resource starts
-    :param list['Parameter'] parameter: Parameter that controlled the expansion process
-    :param list['Contains'] contains: Codes in the value set
+    :param 'Parameter' parameter: Parameter that controlled the expansion process
+    :param 'Contains' contains: Codes in the value set
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  identifier: str = None,  timestamp: str = None,  total: int = None,  offset: int = None,  parameter: list['Parameter'] = None,  contains: list['Contains'] = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  identifier: str = None,  timestamp: str = None,  total: int = None,  offset: int = None,  parameter: 'Parameter' = None,  contains: 'Contains' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -742,8 +742,8 @@ class Expansion(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -771,11 +771,11 @@ class ValueSet(DomainResource):
     :param str implicitRules: A set of rules under which this content was created
     :param str language: Language of the resource content
     :param 'Narrative' text: Text summary of the resource, for human interpretation
-    :param list['Resource'] contained: Contained, inline Resources
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored
+    :param 'Resource' contained: Contained, inline Resources
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored
     :param str url: Canonical identifier for this value set, represented as a URI (globally unique)
-    :param list['Identifier'] identifier: Additional identifier for the value set (business identifier)
+    :param 'Identifier' identifier: Additional identifier for the value set (business identifier)
     :param str version: Business version of the value set
     :param str name: Name for this value set (computer friendly)
     :param str title: Name for this value set (human friendly)
@@ -783,17 +783,17 @@ class ValueSet(DomainResource):
     :param bool experimental: For testing purposes, not real usage
     :param str date: Date last changed
     :param str publisher: Name of the publisher (organization or individual)
-    :param list['ContactDetail'] contact: Contact details for the publisher
+    :param 'ContactDetail' contact: Contact details for the publisher
     :param str description: Natural language description of the value set
-    :param list['UsageContext'] useContext: The context that the content is intended to support
-    :param list['CodeableConcept'] jurisdiction: Intended jurisdiction for value set (if applicable)
+    :param 'UsageContext' useContext: The context that the content is intended to support
+    :param 'CodeableConcept' jurisdiction: Intended jurisdiction for value set (if applicable)
     :param bool immutable: Indicates whether or not any change to the content logical definition may occur
     :param str purpose: Why this value set is defined
     :param str copyright: Use and/or publishing restrictions
     :param 'Compose' compose: Content logical definition of the value set (CLD)
     :param 'Expansion' expansion: Used when the value set is "expanded"
     """
-    def __init__(self, resourceType: str = "ValueSet",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  url: str = None,  identifier: list['Identifier'] = None,  version: str = None,  name: str = None,  title: str = None,  status: str = None,  experimental: bool = None,  date: str = None,  publisher: str = None,  contact: list['ContactDetail'] = None,  description: str = None,  useContext: list['UsageContext'] = None,  jurisdiction: list['CodeableConcept'] = None,  immutable: bool = None,  purpose: str = None,  copyright: str = None,  compose: 'Compose' = None,  expansion: 'Expansion' = None, ):
+    def __init__(self, resourceType: str = "ValueSet",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: 'Resource' = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  url: str = None,  identifier: 'Identifier' = None,  version: str = None,  name: str = None,  title: str = None,  status: str = None,  experimental: bool = None,  date: str = None,  publisher: str = None,  contact: 'ContactDetail' = None,  description: str = None,  useContext: 'UsageContext' = None,  jurisdiction: 'CodeableConcept' = None,  immutable: bool = None,  purpose: str = None,  copyright: str = None,  compose: 'Compose' = None,  expansion: 'Expansion' = None, ):
         self.resourceType: str = resourceType or "ValueSet"
         self.id: str = id 
         self.meta: 'Meta' = meta 
@@ -839,8 +839,8 @@ class ValueSet(DomainResource):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)

@@ -1,33 +1,33 @@
 """
 Generated class for Goal. 
-Time: 2023-09-25 16:30:45
+Time: 2023-09-27 15:54:17
 """
 from importlib import import_module
 import inspect
 
 from fhan.models.R4.Duration import *
-from fhan.models.R4.Identifier import *
-from fhan.models.R4.Quantity import *
-from fhan.models.R4.Ratio import *
+from fhan.models.R4.BackboneElement import *
 from fhan.models.R4.Meta import *
 from fhan.models.R4.Annotation import *
+from fhan.models.R4.Quantity import *
+from fhan.models.R4.Resource import *
+from fhan.models.R4.Identifier import *
 from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Range import *
+from fhan.models.R4.Ratio import *
 from fhan.models.R4.Extension import *
-from fhan.models.R4.Reference import *
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Resource import *
 from fhan.models.R4.Narrative import *
+from fhan.models.R4.Reference import *
 from fhan.models.R4.DomainResource import *
 
 
     
     
 
-class Target(ModelBase):
+class Target(BaseModel):
     """ Indicates what should be done by when.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param 'CodeableConcept' measure: The parameter whose value is being tracked
     :param 'Quantity' detailQuantity: The target value to be achieved
     :param 'Range' detailRange: The target value to be achieved
@@ -39,7 +39,7 @@ class Target(ModelBase):
     :param str dueDate: Reach goal on or before
     :param 'Duration' dueDuration: Reach goal on or before
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  measure: 'CodeableConcept' = None,  detailQuantity: 'Quantity' = None,  detailRange: 'Range' = None,  detailCodeableConcept: 'CodeableConcept' = None,  detailString: str = None,  detailBoolean: bool = None,  detailInteger: int = None,  detailRatio: 'Ratio' = None,  dueDate: str = None,  dueDuration: 'Duration' = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  measure: 'CodeableConcept' = None,  detailQuantity: 'Quantity' = None,  detailRange: 'Range' = None,  detailCodeableConcept: 'CodeableConcept' = None,  detailString: str = None,  detailBoolean: bool = None,  detailInteger: int = None,  detailRatio: 'Ratio' = None,  dueDate: str = None,  dueDuration: 'Duration' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -71,8 +71,8 @@ class Target(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -100,28 +100,28 @@ class Goal(DomainResource):
     :param str implicitRules: A set of rules under which this content was created
     :param str language: Language of the resource content
     :param 'Narrative' text: Text summary of the resource, for human interpretation
-    :param list['Resource'] contained: Contained, inline Resources
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored
-    :param list['Identifier'] identifier: External Ids for this goal
+    :param 'Resource' contained: Contained, inline Resources
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored
+    :param 'Identifier' identifier: External Ids for this goal
     :param str lifecycleStatus: proposed | planned | accepted | active | on-hold | completed | cancelled | entered-in-error | rejected
     :param 'CodeableConcept' achievementStatus: in-progress | improving | worsening | no-change | achieved | sustaining | not-achieved | no-progress | not-attainable
-    :param list['CodeableConcept'] category: E.g. Treatment, dietary, behavioral, etc.
+    :param 'CodeableConcept' category: E.g. Treatment, dietary, behavioral, etc.
     :param 'CodeableConcept' priority: high-priority | medium-priority | low-priority
     :param 'CodeableConcept' description: Code or text describing goal
     :param 'Reference' subject: Who this goal is intended for
     :param str startDate: When goal pursuit begins
     :param 'CodeableConcept' startCodeableConcept: When goal pursuit begins
-    :param list['Target'] target: Target outcome for the goal
+    :param 'Target' target: Target outcome for the goal
     :param str statusDate: When goal status took effect
     :param str statusReason: Reason for current status
     :param 'Reference' expressedBy: Who's responsible for creating Goal?
-    :param list['Reference'] addresses: Issues addressed by this goal
-    :param list['Annotation'] note: Comments about the goal
-    :param list['CodeableConcept'] outcomeCode: What result was achieved regarding the goal?
-    :param list['Reference'] outcomeReference: Observation that resulted from goal
+    :param 'Reference' addresses: Issues addressed by this goal
+    :param 'Annotation' note: Comments about the goal
+    :param 'CodeableConcept' outcomeCode: What result was achieved regarding the goal?
+    :param 'Reference' outcomeReference: Observation that resulted from goal
     """
-    def __init__(self, resourceType: str = "Goal",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  identifier: list['Identifier'] = None,  lifecycleStatus: str = None,  achievementStatus: 'CodeableConcept' = None,  category: list['CodeableConcept'] = None,  priority: 'CodeableConcept' = None,  description: 'CodeableConcept' = None,  subject: 'Reference' = None,  startDate: str = None,  startCodeableConcept: 'CodeableConcept' = None,  target: list['Target'] = None,  statusDate: str = None,  statusReason: str = None,  expressedBy: 'Reference' = None,  addresses: list['Reference'] = None,  note: list['Annotation'] = None,  outcomeCode: list['CodeableConcept'] = None,  outcomeReference: list['Reference'] = None, ):
+    def __init__(self, resourceType: str = "Goal",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: 'Resource' = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  identifier: 'Identifier' = None,  lifecycleStatus: str = None,  achievementStatus: 'CodeableConcept' = None,  category: 'CodeableConcept' = None,  priority: 'CodeableConcept' = None,  description: 'CodeableConcept' = None,  subject: 'Reference' = None,  startDate: str = None,  startCodeableConcept: 'CodeableConcept' = None,  target: 'Target' = None,  statusDate: str = None,  statusReason: str = None,  expressedBy: 'Reference' = None,  addresses: 'Reference' = None,  note: 'Annotation' = None,  outcomeCode: 'CodeableConcept' = None,  outcomeReference: 'Reference' = None, ):
         self.resourceType: str = resourceType or "Goal"
         self.id: str = id 
         self.meta: 'Meta' = meta 
@@ -166,8 +166,8 @@ class Goal(DomainResource):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)

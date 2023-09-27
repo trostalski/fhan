@@ -1,21 +1,21 @@
 """
 Generated class for SpecimenDefinition. 
-Time: 2023-09-25 16:30:45
+Time: 2023-09-27 15:54:17
 """
 from importlib import import_module
 import inspect
 
 from fhan.models.R4.Duration import *
-from fhan.models.R4.Identifier import *
-from fhan.models.R4.Quantity import *
+from fhan.models.R4.BackboneElement import *
 from fhan.models.R4.Meta import *
+from fhan.models.R4.Quantity import *
+from fhan.models.R4.Resource import *
+from fhan.models.R4.Identifier import *
 from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Range import *
 from fhan.models.R4.Extension import *
-from fhan.models.R4.Reference import *
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Resource import *
 from fhan.models.R4.Narrative import *
+from fhan.models.R4.Reference import *
 from fhan.models.R4.DomainResource import *
 
 
@@ -26,14 +26,14 @@ from fhan.models.R4.DomainResource import *
     
     
 
-class Additive(ModelBase):
+class Additive(BaseModel):
     """ Substance introduced in the kind of container to preserve, maintain or enhance the specimen. Examples: Formalin, Citrate, EDTA.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param 'CodeableConcept' additiveCodeableConcept: Additive associated with container
     :param 'Reference' additiveReference: Additive associated with container
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  additiveCodeableConcept: 'CodeableConcept' = None,  additiveReference: 'Reference' = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  additiveCodeableConcept: 'CodeableConcept' = None,  additiveReference: 'Reference' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -57,8 +57,8 @@ class Additive(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -83,10 +83,10 @@ class Additive(ModelBase):
     
     
 
-class Container(ModelBase):
+class Container(BaseModel):
     """ The specimen's container.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param 'CodeableConcept' material: Container material
     :param 'CodeableConcept' type: Kind of container associated with the kind of specimen
     :param 'CodeableConcept' cap: Color of container cap
@@ -94,10 +94,10 @@ class Container(ModelBase):
     :param 'Quantity' capacity: Container capacity
     :param 'Quantity' minimumVolumeQuantity: Minimum volume
     :param str minimumVolumeString: Minimum volume
-    :param list['Additive'] additive: Additive associated with container
+    :param 'Additive' additive: Additive associated with container
     :param str preparation: Specimen container preparation
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  material: 'CodeableConcept' = None,  type: 'CodeableConcept' = None,  cap: 'CodeableConcept' = None,  description: str = None,  capacity: 'Quantity' = None,  minimumVolumeQuantity: 'Quantity' = None,  minimumVolumeString: str = None,  additive: list['Additive'] = None,  preparation: str = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  material: 'CodeableConcept' = None,  type: 'CodeableConcept' = None,  cap: 'CodeableConcept' = None,  description: str = None,  capacity: 'Quantity' = None,  minimumVolumeQuantity: 'Quantity' = None,  minimumVolumeString: str = None,  additive: 'Additive' = None,  preparation: str = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -128,8 +128,8 @@ class Container(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -153,16 +153,16 @@ class Container(ModelBase):
     
     
 
-class Handling(ModelBase):
+class Handling(BaseModel):
     """ Set of instructions for preservation/transport of the specimen at a defined temperature interval, prior the testing process.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param 'CodeableConcept' temperatureQualifier: Temperature qualifier
     :param 'Range' temperatureRange: Temperature range
     :param 'Duration' maxDuration: Maximum preservation time
     :param str instruction: Preservation instruction
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  temperatureQualifier: 'CodeableConcept' = None,  temperatureRange: 'Range' = None,  maxDuration: 'Duration' = None,  instruction: str = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  temperatureQualifier: 'CodeableConcept' = None,  temperatureRange: 'Range' = None,  maxDuration: 'Duration' = None,  instruction: str = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -188,8 +188,8 @@ class Handling(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -214,20 +214,20 @@ class Handling(ModelBase):
     
     
 
-class TypeTested(ModelBase):
+class TypeTested(BaseModel):
     """ Specimen conditioned in a container as expected by the testing laboratory.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param bool isDerived: Primary or secondary specimen
     :param 'CodeableConcept' type: Type of intended specimen
     :param str preference: preferred | alternate
     :param 'Container' container: The specimen's container
     :param str requirement: Specimen requirements
     :param 'Duration' retentionTime: Specimen retention time
-    :param list['CodeableConcept'] rejectionCriterion: Rejection criterion
-    :param list['Handling'] handling: Specimen handling before testing
+    :param 'CodeableConcept' rejectionCriterion: Rejection criterion
+    :param 'Handling' handling: Specimen handling before testing
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  isDerived: bool = None,  type: 'CodeableConcept' = None,  preference: str = None,  container: 'Container' = None,  requirement: str = None,  retentionTime: 'Duration' = None,  rejectionCriterion: list['CodeableConcept'] = None,  handling: list['Handling'] = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  isDerived: bool = None,  type: 'CodeableConcept' = None,  preference: str = None,  container: 'Container' = None,  requirement: str = None,  retentionTime: 'Duration' = None,  rejectionCriterion: 'CodeableConcept' = None,  handling: 'Handling' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -257,8 +257,8 @@ class TypeTested(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -286,17 +286,17 @@ class SpecimenDefinition(DomainResource):
     :param str implicitRules: A set of rules under which this content was created
     :param str language: Language of the resource content
     :param 'Narrative' text: Text summary of the resource, for human interpretation
-    :param list['Resource'] contained: Contained, inline Resources
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored
+    :param 'Resource' contained: Contained, inline Resources
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored
     :param 'Identifier' identifier: Business identifier of a kind of specimen
     :param 'CodeableConcept' typeCollected: Kind of material to collect
-    :param list['CodeableConcept'] patientPreparation: Patient preparation for collection
+    :param 'CodeableConcept' patientPreparation: Patient preparation for collection
     :param str timeAspect: Time aspect for collection
-    :param list['CodeableConcept'] collection: Specimen collection procedure
-    :param list['TypeTested'] typeTested: Specimen in container intended for testing by lab
+    :param 'CodeableConcept' collection: Specimen collection procedure
+    :param 'TypeTested' typeTested: Specimen in container intended for testing by lab
     """
-    def __init__(self, resourceType: str = "SpecimenDefinition",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  identifier: 'Identifier' = None,  typeCollected: 'CodeableConcept' = None,  patientPreparation: list['CodeableConcept'] = None,  timeAspect: str = None,  collection: list['CodeableConcept'] = None,  typeTested: list['TypeTested'] = None, ):
+    def __init__(self, resourceType: str = "SpecimenDefinition",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: 'Resource' = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  identifier: 'Identifier' = None,  typeCollected: 'CodeableConcept' = None,  patientPreparation: 'CodeableConcept' = None,  timeAspect: str = None,  collection: 'CodeableConcept' = None,  typeTested: 'TypeTested' = None, ):
         self.resourceType: str = resourceType or "SpecimenDefinition"
         self.id: str = id 
         self.meta: 'Meta' = meta 
@@ -330,8 +330,8 @@ class SpecimenDefinition(DomainResource):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)

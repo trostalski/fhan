@@ -1,25 +1,25 @@
 """
 Generated class for Request. 
-Time: 2023-09-25 16:30:45
+Time: 2023-09-27 15:54:17
 """
 from importlib import import_module
 import inspect
 
-from fhan.models.R4.Identifier import *
+from fhan.models.R4.Timing import *
 from fhan.models.R4.Annotation import *
+from fhan.models.R4.Identifier import *
 from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Period import *
-from fhan.models.R4.Timing import *
 from fhan.models.R4.Reference import *
-from fhan.models.generator_models import ModelBase
+from fhan.models.generator_models import BaseModel
 
-class Request(ModelBase):
+class Request(BaseModel):
     """ Logical Model: A pattern to be followed by resources that represent a specific proposal, plan and/or order for some sort of action or service.
-    :param list['Identifier'] identifier: Business Identifier for {{title}}
+    :param 'Identifier' identifier: Business Identifier for {{title}}
     :param str instantiatesCanonical: Instantiates FHIR protocol or definition
     :param str instantiatesUri: Instantiates external protocol or definition
-    :param list['Reference'] basedOn: Fulfills plan, proposal or order
-    :param list['Reference'] replaces: Request(s) replaced by this {{title}}
+    :param 'Reference' basedOn: Fulfills plan, proposal or order
+    :param 'Reference' replaces: Request(s) replaced by this {{title}}
     :param 'Identifier' groupIdentifier: Composite request this is part of
     :param str status: draft | active | suspended | cancelled | completed | entered-in-error | unknown
     :param 'CodeableConcept' statusReason: Reason for current status
@@ -38,18 +38,18 @@ class Request(ModelBase):
     :param 'Reference' reportedReference: Reported rather than primary record
     :param 'CodeableConcept' performerType: Desired kind of service performer
     :param 'Reference' performer: Specific desired (non)performer
-    :param list['CodeableConcept'] reasonCode: Why is service (not) needed?
-    :param list['Reference'] reasonReference: Why is service (not) needed?
-    :param list['Reference'] insurance: Associated insurance coverage
-    :param list['Reference'] supportingInfo: Extra information to use in performing request
-    :param list['Annotation'] note: Comments made about {{title}}
-    :param list['Reference'] relevantHistory: Key events in history of {{title}}
+    :param 'CodeableConcept' reasonCode: Why is service (not) needed?
+    :param 'Reference' reasonReference: Why is service (not) needed?
+    :param 'Reference' insurance: Associated insurance coverage
+    :param 'Reference' supportingInfo: Extra information to use in performing request
+    :param 'Annotation' note: Comments made about {{title}}
+    :param 'Reference' relevantHistory: Key events in history of {{title}}
     """
-    def __init__(self, resourceType: str = "Request",  identifier: list['Identifier'] = None,  instantiatesCanonical: str = None,  instantiatesUri: str = None,  basedOn: list['Reference'] = None,  replaces: list['Reference'] = None,  groupIdentifier: 'Identifier' = None,  status: str = None,  statusReason: 'CodeableConcept' = None,  intent: str = None,  priority: str = None,  doNotPerform: bool = None,  code: 'CodeableConcept' = None,  subject: 'Reference' = None,  encounter: 'Reference' = None,  occurrenceDateTime: str = None,  occurrencePeriod: 'Period' = None,  occurrenceTiming: 'Timing' = None,  authoredOn: str = None,  requester: 'Reference' = None,  reportedBoolean: bool = None,  reportedReference: 'Reference' = None,  performerType: 'CodeableConcept' = None,  performer: 'Reference' = None,  reasonCode: list['CodeableConcept'] = None,  reasonReference: list['Reference'] = None,  insurance: list['Reference'] = None,  supportingInfo: list['Reference'] = None,  note: list['Annotation'] = None,  relevantHistory: list['Reference'] = None, ):
+    def __init__(self, resourceType: str = "Request",  identifier: 'Identifier' = None,  instantiatesCanonical: str = None,  instantiatesUri: str = None,  basedOn: 'Reference' = None,  replaces: 'Reference' = None,  groupIdentifier: 'Identifier' = None,  status: str = None,  statusReason: 'CodeableConcept' = None,  intent: str = None,  priority: str = None,  doNotPerform: bool = None,  code: 'CodeableConcept' = None,  subject: 'Reference' = None,  encounter: 'Reference' = None,  occurrenceDateTime: str = None,  occurrencePeriod: 'Period' = None,  occurrenceTiming: 'Timing' = None,  authoredOn: str = None,  requester: 'Reference' = None,  reportedBoolean: bool = None,  reportedReference: 'Reference' = None,  performerType: 'CodeableConcept' = None,  performer: 'Reference' = None,  reasonCode: 'CodeableConcept' = None,  reasonReference: 'Reference' = None,  insurance: 'Reference' = None,  supportingInfo: 'Reference' = None,  note: 'Annotation' = None,  relevantHistory: 'Reference' = None, ):
         self.resourceType: str = resourceType or "Request"
         self.identifier: list['Identifier'] = identifier or []
-        self.instantiatesCanonical: str = instantiatesCanonical or []
-        self.instantiatesUri: str = instantiatesUri or []
+        self.instantiatesCanonical: list[str] = instantiatesCanonical or []
+        self.instantiatesUri: list[str] = instantiatesUri or []
         self.basedOn: list['Reference'] = basedOn or []
         self.replaces: list['Reference'] = replaces or []
         self.groupIdentifier: 'Identifier' = groupIdentifier 
@@ -94,8 +94,8 @@ class Request(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)

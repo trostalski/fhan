@@ -1,23 +1,23 @@
 """
 Generated class for Measure. 
-Time: 2023-09-25 16:30:45
+Time: 2023-09-27 15:54:17
 """
 from importlib import import_module
 import inspect
 
-from fhan.models.R4.Identifier import *
+from fhan.models.R4.BackboneElement import *
 from fhan.models.R4.Meta import *
+from fhan.models.R4.Expression import *
 from fhan.models.R4.UsageContext import *
 from fhan.models.R4.ContactDetail import *
-from fhan.models.R4.Expression import *
-from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Period import *
-from fhan.models.R4.Extension import *
-from fhan.models.R4.Reference import *
-from fhan.models.R4.BackboneElement import *
 from fhan.models.R4.Resource import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.RelatedArtifact import *
+from fhan.models.R4.Extension import *
 from fhan.models.R4.Narrative import *
+from fhan.models.R4.Reference import *
 from fhan.models.R4.DomainResource import *
 
 
@@ -26,15 +26,15 @@ from fhan.models.R4.DomainResource import *
     
     
 
-class Population(ModelBase):
+class Population(BaseModel):
     """ A population criteria for the measure.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param 'CodeableConcept' code: initial-population | numerator | numerator-exclusion | denominator | denominator-exclusion | denominator-exception | measure-population | measure-population-exclusion | measure-observation
     :param str description: The human readable description of this population criteria
     :param 'Expression' criteria: The criteria that defines this population
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  code: 'CodeableConcept' = None,  description: str = None,  criteria: 'Expression' = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  code: 'CodeableConcept' = None,  description: str = None,  criteria: 'Expression' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -59,8 +59,8 @@ class Population(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -86,15 +86,15 @@ class Population(ModelBase):
     
     
 
-class Component(ModelBase):
+class Component(BaseModel):
     """ A component of the stratifier criteria for the measure report, specified as either the name of a valid CQL expression defined within a referenced library or a valid FHIR Resource Path.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param 'CodeableConcept' code: Meaning of the stratifier component
     :param str description: The human readable description of this stratifier component
     :param 'Expression' criteria: Component of how the measure should be stratified
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  code: 'CodeableConcept' = None,  description: str = None,  criteria: 'Expression' = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  code: 'CodeableConcept' = None,  description: str = None,  criteria: 'Expression' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -119,8 +119,8 @@ class Component(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -145,16 +145,16 @@ class Component(ModelBase):
     
     
 
-class Stratifier(ModelBase):
+class Stratifier(BaseModel):
     """ The stratifier criteria for the measure report, specified as either the name of a valid CQL expression defined within a referenced library or a valid FHIR Resource Path.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param 'CodeableConcept' code: Meaning of the stratifier
     :param str description: The human readable description of this stratifier
     :param 'Expression' criteria: How the measure should be stratified
-    :param list['Component'] component: Stratifier criteria component for the measure
+    :param 'Component' component: Stratifier criteria component for the measure
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  code: 'CodeableConcept' = None,  description: str = None,  criteria: 'Expression' = None,  component: list['Component'] = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  code: 'CodeableConcept' = None,  description: str = None,  criteria: 'Expression' = None,  component: 'Component' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -180,8 +180,8 @@ class Stratifier(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -206,16 +206,16 @@ class Stratifier(ModelBase):
     
     
 
-class Group(ModelBase):
+class Group(BaseModel):
     """ A group of population criteria for the measure.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param 'CodeableConcept' code: Meaning of the group
     :param str description: Summary description
-    :param list['Population'] population: Population criteria
-    :param list['Stratifier'] stratifier: Stratifier criteria for the measure
+    :param 'Population' population: Population criteria
+    :param 'Stratifier' stratifier: Stratifier criteria for the measure
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  code: 'CodeableConcept' = None,  description: str = None,  population: list['Population'] = None,  stratifier: list['Stratifier'] = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  code: 'CodeableConcept' = None,  description: str = None,  population: 'Population' = None,  stratifier: 'Stratifier' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -241,8 +241,8 @@ class Group(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -266,16 +266,16 @@ class Group(ModelBase):
     
     
 
-class SupplementalData(ModelBase):
+class SupplementalData(BaseModel):
     """ The supplemental data criteria for the measure report, specified as either the name of a valid CQL expression within a referenced library, or a valid FHIR Resource Path.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param 'CodeableConcept' code: Meaning of the supplemental data
-    :param list['CodeableConcept'] usage: supplemental-data | risk-adjustment-factor
+    :param 'CodeableConcept' usage: supplemental-data | risk-adjustment-factor
     :param str description: The human readable description of this supplemental data
     :param 'Expression' criteria: Expression describing additional data to be reported
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  code: 'CodeableConcept' = None,  usage: list['CodeableConcept'] = None,  description: str = None,  criteria: 'Expression' = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  code: 'CodeableConcept' = None,  usage: 'CodeableConcept' = None,  description: str = None,  criteria: 'Expression' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -301,8 +301,8 @@ class SupplementalData(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -330,11 +330,11 @@ class Measure(DomainResource):
     :param str implicitRules: A set of rules under which this content was created
     :param str language: Language of the resource content
     :param 'Narrative' text: Text summary of the resource, for human interpretation
-    :param list['Resource'] contained: Contained, inline Resources
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored
+    :param 'Resource' contained: Contained, inline Resources
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored
     :param str url: Canonical identifier for this measure, represented as a URI (globally unique)
-    :param list['Identifier'] identifier: Additional identifier for the measure
+    :param 'Identifier' identifier: Additional identifier for the measure
     :param str version: Business version of the measure
     :param str name: Name for this measure (computer friendly)
     :param str title: Name for this measure (human friendly)
@@ -345,27 +345,27 @@ class Measure(DomainResource):
     :param 'Reference' subjectReference: E.g. Patient, Practitioner, RelatedPerson, Organization, Location, Device
     :param str date: Date last changed
     :param str publisher: Name of the publisher (organization or individual)
-    :param list['ContactDetail'] contact: Contact details for the publisher
+    :param 'ContactDetail' contact: Contact details for the publisher
     :param str description: Natural language description of the measure
-    :param list['UsageContext'] useContext: The context that the content is intended to support
-    :param list['CodeableConcept'] jurisdiction: Intended jurisdiction for measure (if applicable)
+    :param 'UsageContext' useContext: The context that the content is intended to support
+    :param 'CodeableConcept' jurisdiction: Intended jurisdiction for measure (if applicable)
     :param str purpose: Why this measure is defined
     :param str usage: Describes the clinical usage of the measure
     :param str copyright: Use and/or publishing restrictions
     :param str approvalDate: When the measure was approved by publisher
     :param str lastReviewDate: When the measure was last reviewed
     :param 'Period' effectivePeriod: When the measure is expected to be used
-    :param list['CodeableConcept'] topic: The category of the measure, such as Education, Treatment, Assessment, etc.
-    :param list['ContactDetail'] author: Who authored the content
-    :param list['ContactDetail'] editor: Who edited the content
-    :param list['ContactDetail'] reviewer: Who reviewed the content
-    :param list['ContactDetail'] endorser: Who endorsed the content
-    :param list['RelatedArtifact'] relatedArtifact: Additional documentation, citations, etc.
+    :param 'CodeableConcept' topic: The category of the measure, such as Education, Treatment, Assessment, etc.
+    :param 'ContactDetail' author: Who authored the content
+    :param 'ContactDetail' editor: Who edited the content
+    :param 'ContactDetail' reviewer: Who reviewed the content
+    :param 'ContactDetail' endorser: Who endorsed the content
+    :param 'RelatedArtifact' relatedArtifact: Additional documentation, citations, etc.
     :param str library: Logic used by the measure
     :param str disclaimer: Disclaimer for use of the measure or its referenced content
     :param 'CodeableConcept' scoring: proportion | ratio | continuous-variable | cohort
     :param 'CodeableConcept' compositeScoring: opportunity | all-or-nothing | linear | weighted
-    :param list['CodeableConcept'] type: process | outcome | structure | patient-reported-outcome | composite
+    :param 'CodeableConcept' type: process | outcome | structure | patient-reported-outcome | composite
     :param str riskAdjustment: How risk adjustment is applied for this measure
     :param str rateAggregation: How is rate aggregation performed for this measure
     :param str rationale: Detailed description of why the measure exists
@@ -373,10 +373,10 @@ class Measure(DomainResource):
     :param 'CodeableConcept' improvementNotation: increase | decrease
     :param str definition: Defined terms used in the measure documentation
     :param str guidance: Additional guidance for implementers
-    :param list['Group'] group: Population criteria group
-    :param list['SupplementalData'] supplementalData: What other data should be reported with the measure
+    :param 'Group' group: Population criteria group
+    :param 'SupplementalData' supplementalData: What other data should be reported with the measure
     """
-    def __init__(self, resourceType: str = "Measure",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  url: str = None,  identifier: list['Identifier'] = None,  version: str = None,  name: str = None,  title: str = None,  subtitle: str = None,  status: str = None,  experimental: bool = None,  subjectCodeableConcept: 'CodeableConcept' = None,  subjectReference: 'Reference' = None,  date: str = None,  publisher: str = None,  contact: list['ContactDetail'] = None,  description: str = None,  useContext: list['UsageContext'] = None,  jurisdiction: list['CodeableConcept'] = None,  purpose: str = None,  usage: str = None,  copyright: str = None,  approvalDate: str = None,  lastReviewDate: str = None,  effectivePeriod: 'Period' = None,  topic: list['CodeableConcept'] = None,  author: list['ContactDetail'] = None,  editor: list['ContactDetail'] = None,  reviewer: list['ContactDetail'] = None,  endorser: list['ContactDetail'] = None,  relatedArtifact: list['RelatedArtifact'] = None,  library: str = None,  disclaimer: str = None,  scoring: 'CodeableConcept' = None,  compositeScoring: 'CodeableConcept' = None,  type: list['CodeableConcept'] = None,  riskAdjustment: str = None,  rateAggregation: str = None,  rationale: str = None,  clinicalRecommendationStatement: str = None,  improvementNotation: 'CodeableConcept' = None,  definition: str = None,  guidance: str = None,  group: list['Group'] = None,  supplementalData: list['SupplementalData'] = None, ):
+    def __init__(self, resourceType: str = "Measure",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: 'Resource' = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  url: str = None,  identifier: 'Identifier' = None,  version: str = None,  name: str = None,  title: str = None,  subtitle: str = None,  status: str = None,  experimental: bool = None,  subjectCodeableConcept: 'CodeableConcept' = None,  subjectReference: 'Reference' = None,  date: str = None,  publisher: str = None,  contact: 'ContactDetail' = None,  description: str = None,  useContext: 'UsageContext' = None,  jurisdiction: 'CodeableConcept' = None,  purpose: str = None,  usage: str = None,  copyright: str = None,  approvalDate: str = None,  lastReviewDate: str = None,  effectivePeriod: 'Period' = None,  topic: 'CodeableConcept' = None,  author: 'ContactDetail' = None,  editor: 'ContactDetail' = None,  reviewer: 'ContactDetail' = None,  endorser: 'ContactDetail' = None,  relatedArtifact: 'RelatedArtifact' = None,  library: str = None,  disclaimer: str = None,  scoring: 'CodeableConcept' = None,  compositeScoring: 'CodeableConcept' = None,  type: 'CodeableConcept' = None,  riskAdjustment: str = None,  rateAggregation: str = None,  rationale: str = None,  clinicalRecommendationStatement: str = None,  improvementNotation: 'CodeableConcept' = None,  definition: str = None,  guidance: str = None,  group: 'Group' = None,  supplementalData: 'SupplementalData' = None, ):
         self.resourceType: str = resourceType or "Measure"
         self.id: str = id 
         self.meta: 'Meta' = meta 
@@ -414,7 +414,7 @@ class Measure(DomainResource):
         self.reviewer: list['ContactDetail'] = reviewer or []
         self.endorser: list['ContactDetail'] = endorser or []
         self.relatedArtifact: list['RelatedArtifact'] = relatedArtifact or []
-        self.library: str = library or []
+        self.library: list[str] = library or []
         self.disclaimer: str = disclaimer 
         self.scoring: 'CodeableConcept' = scoring 
         self.compositeScoring: 'CodeableConcept' = compositeScoring 
@@ -424,7 +424,7 @@ class Measure(DomainResource):
         self.rationale: str = rationale 
         self.clinicalRecommendationStatement: str = clinicalRecommendationStatement 
         self.improvementNotation: 'CodeableConcept' = improvementNotation 
-        self.definition: str = definition or []
+        self.definition: list[str] = definition or []
         self.guidance: str = guidance 
         self.group: list['Group'] = group or []
         self.supplementalData: list['SupplementalData'] = supplementalData or []
@@ -446,8 +446,8 @@ class Measure(DomainResource):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)

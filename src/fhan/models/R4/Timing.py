@@ -1,24 +1,24 @@
 """
 Generated class for Timing. 
-Time: 2023-09-25 16:30:45
+Time: 2023-09-27 15:54:17
 """
 from importlib import import_module
 import inspect
 
 from fhan.models.R4.Element import *
-from fhan.models.R4.Duration import *
+from fhan.models.R4.Extension import *
 from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Duration import *
 from fhan.models.R4.Period import *
 from fhan.models.R4.Range import *
-from fhan.models.R4.Extension import *
-from fhan.models.generator_models import ModelBase
+from fhan.models.generator_models import BaseModel
 
     
     
 
-class Repeat(ModelBase):
+class Repeat(BaseModel):
     """ A set of rules that describe when the event is scheduled.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
+    :param 'Extension' extension: Additional content defined by implementations
     :param 'Duration' boundsDuration: Length/Range of lengths, or (Start and/or end) limits
     :param 'Range' boundsRange: Length/Range of lengths, or (Start and/or end) limits
     :param 'Period' boundsPeriod: Length/Range of lengths, or (Start and/or end) limits
@@ -37,7 +37,7 @@ class Repeat(ModelBase):
     :param str when: Code for time period of occurrence
     :param int offset: Minutes from event (before or after)
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  boundsDuration: 'Duration' = None,  boundsRange: 'Range' = None,  boundsPeriod: 'Period' = None,  count: int = None,  countMax: int = None,  duration: float = None,  durationMax: float = None,  durationUnit: str = None,  frequency: int = None,  frequencyMax: int = None,  period: float = None,  periodMax: float = None,  periodUnit: str = None,  dayOfWeek: str = None,  timeOfDay: str = None,  when: str = None,  offset: int = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  boundsDuration: 'Duration' = None,  boundsRange: 'Range' = None,  boundsPeriod: 'Period' = None,  count: int = None,  countMax: int = None,  duration: float = None,  durationMax: float = None,  durationUnit: str = None,  frequency: int = None,  frequencyMax: int = None,  period: float = None,  periodMax: float = None,  periodUnit: str = None,  dayOfWeek: str = None,  timeOfDay: str = None,  when: str = None,  offset: int = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.boundsDuration: 'Duration' = boundsDuration 
@@ -53,9 +53,9 @@ class Repeat(ModelBase):
         self.period: float = period 
         self.periodMax: float = periodMax 
         self.periodUnit: str = periodUnit 
-        self.dayOfWeek: str = dayOfWeek or []
-        self.timeOfDay: str = timeOfDay or []
-        self.when: str = when or []
+        self.dayOfWeek: list[str] = dayOfWeek or []
+        self.timeOfDay: list[str] = timeOfDay or []
+        self.when: list[str] = when or []
         self.offset: int = offset 
         
 
@@ -75,8 +75,8 @@ class Repeat(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -97,21 +97,21 @@ class Repeat(ModelBase):
         return instance
 
 
-class Timing(ModelBase):
+class Timing(BaseModel):
     """ Base StructureDefinition for Timing Type: Specifies an event that may occur multiple times. Timing schedules are used to record when things are planned, expected or requested to occur. The most common usage is in dosage instructions for medications. They are also used when planning care of various kinds, and may be used for reporting the schedule to which past regular activities were carried out.
     :param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str event: When the event occurs
     :param 'Repeat' repeat: When the event is to occur
     :param 'CodeableConcept' code: BID | TID | QID | AM | PM | QD | QOD | +
     """
-    def __init__(self, resourceType: str = "Timing",  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  event: str = None,  repeat: 'Repeat' = None,  code: 'CodeableConcept' = None, ):
+    def __init__(self, resourceType: str = "Timing",  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  event: str = None,  repeat: 'Repeat' = None,  code: 'CodeableConcept' = None, ):
         self.resourceType: str = resourceType or "Timing"
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
-        self.event: str = event or []
+        self.event: list[str] = event or []
         self.repeat: 'Repeat' = repeat 
         self.code: 'CodeableConcept' = code 
         
@@ -132,8 +132,8 @@ class Timing(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)

@@ -1,36 +1,36 @@
 """
 Generated class for MedicinalProductAuthorization. 
-Time: 2023-09-25 16:30:45
+Time: 2023-09-27 15:54:17
 """
 from importlib import import_module
 import inspect
 
-from fhan.models.R4.Identifier import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Period import *
-from fhan.models.R4.Extension import *
-from fhan.models.R4.Reference import *
 from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Meta import *
+from fhan.models.R4.Period import *
 from fhan.models.R4.Resource import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Extension import *
 from fhan.models.R4.Narrative import *
+from fhan.models.R4.Reference import *
 from fhan.models.R4.DomainResource import *
 
 
     
     
 
-class JurisdictionalAuthorization(ModelBase):
+class JurisdictionalAuthorization(BaseModel):
     """ Authorization in areas within a country.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param list['Identifier'] identifier: The assigned number for the marketing authorization
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Identifier' identifier: The assigned number for the marketing authorization
     :param 'CodeableConcept' country: Country of authorization
-    :param list['CodeableConcept'] jurisdiction: Jurisdiction within a country
+    :param 'CodeableConcept' jurisdiction: Jurisdiction within a country
     :param 'CodeableConcept' legalStatusOfSupply: The legal status of supply in a jurisdiction or region
     :param 'Period' validityPeriod: The start and expected end date of the authorization
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  identifier: list['Identifier'] = None,  country: 'CodeableConcept' = None,  jurisdiction: list['CodeableConcept'] = None,  legalStatusOfSupply: 'CodeableConcept' = None,  validityPeriod: 'Period' = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  identifier: 'Identifier' = None,  country: 'CodeableConcept' = None,  jurisdiction: 'CodeableConcept' = None,  legalStatusOfSupply: 'CodeableConcept' = None,  validityPeriod: 'Period' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -57,8 +57,8 @@ class JurisdictionalAuthorization(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -82,16 +82,16 @@ class JurisdictionalAuthorization(ModelBase):
     
     
 
-class Procedure(ModelBase):
+class Procedure(BaseModel):
     """ The regulatory procedure for granting or amending a marketing authorization.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param 'Identifier' identifier: Identifier for this procedure
     :param 'CodeableConcept' type: Type of procedure
     :param 'Period' datePeriod: Date of procedure
     :param str dateDateTime: Date of procedure
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  identifier: 'Identifier' = None,  type: 'CodeableConcept' = None,  datePeriod: 'Period' = None,  dateDateTime: str = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  identifier: 'Identifier' = None,  type: 'CodeableConcept' = None,  datePeriod: 'Period' = None,  dateDateTime: str = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -117,8 +117,8 @@ class Procedure(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -142,16 +142,16 @@ class Procedure(ModelBase):
     
     
 
-class Application(ModelBase):
+class Application(BaseModel):
     """ The regulatory procedure for granting or amending a marketing authorization.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param 'Identifier' identifier: Identifier for this procedure
     :param 'CodeableConcept' type: Type of procedure
     :param 'Period' datePeriod: Date of procedure
     :param str dateDateTime: Date of procedure
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  identifier: 'Identifier' = None,  type: 'CodeableConcept' = None,  datePeriod: 'Period' = None,  dateDateTime: str = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  identifier: 'Identifier' = None,  type: 'CodeableConcept' = None,  datePeriod: 'Period' = None,  dateDateTime: str = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -177,8 +177,8 @@ class Application(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -206,13 +206,13 @@ class MedicinalProductAuthorization(DomainResource):
     :param str implicitRules: A set of rules under which this content was created
     :param str language: Language of the resource content
     :param 'Narrative' text: Text summary of the resource, for human interpretation
-    :param list['Resource'] contained: Contained, inline Resources
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored
-    :param list['Identifier'] identifier: Business identifier for the marketing authorization, as assigned by a regulator
+    :param 'Resource' contained: Contained, inline Resources
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored
+    :param 'Identifier' identifier: Business identifier for the marketing authorization, as assigned by a regulator
     :param 'Reference' subject: The medicinal product that is being authorized
-    :param list['CodeableConcept'] country: The country in which the marketing authorization has been granted
-    :param list['CodeableConcept'] jurisdiction: Jurisdiction within a country
+    :param 'CodeableConcept' country: The country in which the marketing authorization has been granted
+    :param 'CodeableConcept' jurisdiction: Jurisdiction within a country
     :param 'CodeableConcept' status: The status of the marketing authorization
     :param str statusDate: The date at which the given status has become applicable
     :param str restoreDate: The date when a suspended the marketing or the marketing authorization of the product is anticipated to be restored
@@ -221,13 +221,13 @@ class MedicinalProductAuthorization(DomainResource):
     :param str dateOfFirstAuthorization: The date when the first authorization was granted by a Medicines Regulatory Agency
     :param str internationalBirthDate: Date of first marketing authorization for a company's new medicinal product in any country in the World
     :param 'CodeableConcept' legalBasis: The legal framework against which this authorization is granted
-    :param list['JurisdictionalAuthorization'] jurisdictionalAuthorization: Authorization in areas within a country
+    :param 'JurisdictionalAuthorization' jurisdictionalAuthorization: Authorization in areas within a country
     :param 'Reference' holder: Marketing Authorization Holder
     :param 'Reference' regulator: Medicines Regulatory Agency
     :param 'Procedure' procedure: The regulatory procedure for granting or amending a marketing authorization
     :param 'Application' application: The regulatory procedure for granting or amending a marketing authorization
     """
-    def __init__(self, resourceType: str = "MedicinalProductAuthorization",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  identifier: list['Identifier'] = None,  subject: 'Reference' = None,  country: list['CodeableConcept'] = None,  jurisdiction: list['CodeableConcept'] = None,  status: 'CodeableConcept' = None,  statusDate: str = None,  restoreDate: str = None,  validityPeriod: 'Period' = None,  dataExclusivityPeriod: 'Period' = None,  dateOfFirstAuthorization: str = None,  internationalBirthDate: str = None,  legalBasis: 'CodeableConcept' = None,  jurisdictionalAuthorization: list['JurisdictionalAuthorization'] = None,  holder: 'Reference' = None,  regulator: 'Reference' = None,  procedure: 'Procedure' = None,  application: 'Application' = None, ):
+    def __init__(self, resourceType: str = "MedicinalProductAuthorization",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: 'Resource' = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  identifier: 'Identifier' = None,  subject: 'Reference' = None,  country: 'CodeableConcept' = None,  jurisdiction: 'CodeableConcept' = None,  status: 'CodeableConcept' = None,  statusDate: str = None,  restoreDate: str = None,  validityPeriod: 'Period' = None,  dataExclusivityPeriod: 'Period' = None,  dateOfFirstAuthorization: str = None,  internationalBirthDate: str = None,  legalBasis: 'CodeableConcept' = None,  jurisdictionalAuthorization: 'JurisdictionalAuthorization' = None,  holder: 'Reference' = None,  regulator: 'Reference' = None,  procedure: 'Procedure' = None,  application: 'Application' = None, ):
         self.resourceType: str = resourceType or "MedicinalProductAuthorization"
         self.id: str = id 
         self.meta: 'Meta' = meta 
@@ -272,8 +272,8 @@ class MedicinalProductAuthorization(DomainResource):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)

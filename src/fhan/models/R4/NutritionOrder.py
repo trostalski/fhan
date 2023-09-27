@@ -1,22 +1,22 @@
 """
 Generated class for NutritionOrder. 
-Time: 2023-09-25 16:30:45
+Time: 2023-09-27 15:54:17
 """
 from importlib import import_module
 import inspect
 
-from fhan.models.R4.Identifier import *
-from fhan.models.R4.Quantity import *
-from fhan.models.R4.Ratio import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Annotation import *
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Timing import *
-from fhan.models.R4.Extension import *
-from fhan.models.R4.Reference import *
 from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Meta import *
+from fhan.models.R4.Timing import *
+from fhan.models.R4.Annotation import *
+from fhan.models.R4.Quantity import *
 from fhan.models.R4.Resource import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Ratio import *
+from fhan.models.R4.Extension import *
 from fhan.models.R4.Narrative import *
+from fhan.models.R4.Reference import *
 from fhan.models.R4.DomainResource import *
 
 
@@ -25,14 +25,14 @@ from fhan.models.R4.DomainResource import *
     
     
 
-class Nutrient(ModelBase):
+class Nutrient(BaseModel):
     """ Class that defines the quantity and type of nutrient modifications (for example carbohydrate, fiber or sodium) required for the oral diet.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param 'CodeableConcept' modifier: Type of nutrient that is being modified
     :param 'Quantity' amount: Quantity of the specified nutrient
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  modifier: 'CodeableConcept' = None,  amount: 'Quantity' = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  modifier: 'CodeableConcept' = None,  amount: 'Quantity' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -56,8 +56,8 @@ class Nutrient(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -81,14 +81,14 @@ class Nutrient(ModelBase):
     
     
 
-class Texture(ModelBase):
+class Texture(BaseModel):
     """ Class that describes any texture modifications required for the patient to safely consume various types of solid foods.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param 'CodeableConcept' modifier: Code to indicate how to alter the texture of the foods, e.g. pureed
     :param 'CodeableConcept' foodType: Concepts that are used to identify an entity that is ingested for nutritional purposes
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  modifier: 'CodeableConcept' = None,  foodType: 'CodeableConcept' = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  modifier: 'CodeableConcept' = None,  foodType: 'CodeableConcept' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -112,8 +112,8 @@ class Texture(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -138,18 +138,18 @@ class Texture(ModelBase):
     
     
 
-class OralDiet(ModelBase):
+class OralDiet(BaseModel):
     """ Diet given orally in contrast to enteral (tube) feeding.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param list['CodeableConcept'] type: Type of oral diet or diet restrictions that describe what can be consumed orally
-    :param list['Timing'] schedule: Scheduled frequency of diet
-    :param list['Nutrient'] nutrient: Required  nutrient modifications
-    :param list['Texture'] texture: Required  texture modifications
-    :param list['CodeableConcept'] fluidConsistencyType: The required consistency of fluids and liquids provided to the patient
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'CodeableConcept' type: Type of oral diet or diet restrictions that describe what can be consumed orally
+    :param 'Timing' schedule: Scheduled frequency of diet
+    :param 'Nutrient' nutrient: Required  nutrient modifications
+    :param 'Texture' texture: Required  texture modifications
+    :param 'CodeableConcept' fluidConsistencyType: The required consistency of fluids and liquids provided to the patient
     :param str instruction: Instructions or additional information about the oral diet
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  type: list['CodeableConcept'] = None,  schedule: list['Timing'] = None,  nutrient: list['Nutrient'] = None,  texture: list['Texture'] = None,  fluidConsistencyType: list['CodeableConcept'] = None,  instruction: str = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  type: 'CodeableConcept' = None,  schedule: 'Timing' = None,  nutrient: 'Nutrient' = None,  texture: 'Texture' = None,  fluidConsistencyType: 'CodeableConcept' = None,  instruction: str = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -177,8 +177,8 @@ class OralDiet(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -202,17 +202,17 @@ class OralDiet(ModelBase):
     
     
 
-class Supplement(ModelBase):
+class Supplement(BaseModel):
     """ Oral nutritional products given in order to add further nutritional value to the patient's diet.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param 'CodeableConcept' type: Type of supplement product requested
     :param str productName: Product or brand name of the nutritional supplement
-    :param list['Timing'] schedule: Scheduled frequency of supplement
+    :param 'Timing' schedule: Scheduled frequency of supplement
     :param 'Quantity' quantity: Amount of the nutritional supplement
     :param str instruction: Instructions or additional information about the oral supplement
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  type: 'CodeableConcept' = None,  productName: str = None,  schedule: list['Timing'] = None,  quantity: 'Quantity' = None,  instruction: str = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  type: 'CodeableConcept' = None,  productName: str = None,  schedule: 'Timing' = None,  quantity: 'Quantity' = None,  instruction: str = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -239,8 +239,8 @@ class Supplement(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -266,17 +266,17 @@ class Supplement(ModelBase):
     
     
 
-class Administration(ModelBase):
+class Administration(BaseModel):
     """ Formula administration instructions as structured data.  This repeating structure allows for changing the administration rate or volume over time for both bolus and continuous feeding.  An example of this would be an instruction to increase the rate of continuous feeding every 2 hours.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param 'Timing' schedule: Scheduled frequency of enteral feeding
     :param 'Quantity' quantity: The volume of formula to provide
     :param 'Quantity' rateQuantity: Speed with which the formula is provided per period of time
     :param 'Ratio' rateRatio: Speed with which the formula is provided per period of time
     :param str administrationInstruction: Formula feeding instructions expressed as text
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  schedule: 'Timing' = None,  quantity: 'Quantity' = None,  rateQuantity: 'Quantity' = None,  rateRatio: 'Ratio' = None,  administrationInstruction: str = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  schedule: 'Timing' = None,  quantity: 'Quantity' = None,  rateQuantity: 'Quantity' = None,  rateRatio: 'Ratio' = None,  administrationInstruction: str = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -303,8 +303,8 @@ class Administration(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -329,20 +329,20 @@ class Administration(ModelBase):
     
     
 
-class EnteralFormula(ModelBase):
+class EnteralFormula(BaseModel):
     """ Feeding provided through the gastrointestinal tract via a tube, catheter, or stoma that delivers nutrition distal to the oral cavity.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param 'CodeableConcept' baseFormulaType: Type of enteral or infant formula
     :param str baseFormulaProductName: Product or brand name of the enteral or infant formula
     :param 'CodeableConcept' additiveType: Type of modular component to add to the feeding
     :param str additiveProductName: Product or brand name of the modular additive
     :param 'Quantity' caloricDensity: Amount of energy per specified volume that is required
     :param 'CodeableConcept' routeofAdministration: How the formula should enter the patient's gastrointestinal tract
-    :param list['Administration'] administration: Formula feeding instruction as structured data
+    :param 'Administration' administration: Formula feeding instruction as structured data
     :param 'Quantity' maxVolumeToDeliver: Upper limit on formula volume per unit of time
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  baseFormulaType: 'CodeableConcept' = None,  baseFormulaProductName: str = None,  additiveType: 'CodeableConcept' = None,  additiveProductName: str = None,  caloricDensity: 'Quantity' = None,  routeofAdministration: 'CodeableConcept' = None,  administration: list['Administration'] = None,  maxVolumeToDeliver: 'Quantity' = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  baseFormulaType: 'CodeableConcept' = None,  baseFormulaProductName: str = None,  additiveType: 'CodeableConcept' = None,  additiveProductName: str = None,  caloricDensity: 'Quantity' = None,  routeofAdministration: 'CodeableConcept' = None,  administration: 'Administration' = None,  maxVolumeToDeliver: 'Quantity' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -372,8 +372,8 @@ class EnteralFormula(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -401,10 +401,10 @@ class NutritionOrder(DomainResource):
     :param str implicitRules: A set of rules under which this content was created
     :param str language: Language of the resource content
     :param 'Narrative' text: Text summary of the resource, for human interpretation
-    :param list['Resource'] contained: Contained, inline Resources
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored
-    :param list['Identifier'] identifier: Identifiers assigned to this order
+    :param 'Resource' contained: Contained, inline Resources
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored
+    :param 'Identifier' identifier: Identifiers assigned to this order
     :param str instantiatesCanonical: Instantiates FHIR protocol or definition
     :param str instantiatesUri: Instantiates external protocol or definition
     :param str instantiates: Instantiates protocol or definition
@@ -414,15 +414,15 @@ class NutritionOrder(DomainResource):
     :param 'Reference' encounter: The encounter associated with this nutrition order
     :param str dateTime: Date and time the nutrition order was requested
     :param 'Reference' orderer: Who ordered the diet, formula or nutritional supplement
-    :param list['Reference'] allergyIntolerance: List of the patient's food and nutrition-related allergies and intolerances
-    :param list['CodeableConcept'] foodPreferenceModifier: Order-specific modifier about the type of food that should be given
-    :param list['CodeableConcept'] excludeFoodModifier: Order-specific modifier about the type of food that should not be given
+    :param 'Reference' allergyIntolerance: List of the patient's food and nutrition-related allergies and intolerances
+    :param 'CodeableConcept' foodPreferenceModifier: Order-specific modifier about the type of food that should be given
+    :param 'CodeableConcept' excludeFoodModifier: Order-specific modifier about the type of food that should not be given
     :param 'OralDiet' oralDiet: Oral diet components
-    :param list['Supplement'] supplement: Supplement components
+    :param 'Supplement' supplement: Supplement components
     :param 'EnteralFormula' enteralFormula: Enteral formula components
-    :param list['Annotation'] note: Comments
+    :param 'Annotation' note: Comments
     """
-    def __init__(self, resourceType: str = "NutritionOrder",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  identifier: list['Identifier'] = None,  instantiatesCanonical: str = None,  instantiatesUri: str = None,  instantiates: str = None,  status: str = None,  intent: str = None,  patient: 'Reference' = None,  encounter: 'Reference' = None,  dateTime: str = None,  orderer: 'Reference' = None,  allergyIntolerance: list['Reference'] = None,  foodPreferenceModifier: list['CodeableConcept'] = None,  excludeFoodModifier: list['CodeableConcept'] = None,  oralDiet: 'OralDiet' = None,  supplement: list['Supplement'] = None,  enteralFormula: 'EnteralFormula' = None,  note: list['Annotation'] = None, ):
+    def __init__(self, resourceType: str = "NutritionOrder",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: 'Resource' = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  identifier: 'Identifier' = None,  instantiatesCanonical: str = None,  instantiatesUri: str = None,  instantiates: str = None,  status: str = None,  intent: str = None,  patient: 'Reference' = None,  encounter: 'Reference' = None,  dateTime: str = None,  orderer: 'Reference' = None,  allergyIntolerance: 'Reference' = None,  foodPreferenceModifier: 'CodeableConcept' = None,  excludeFoodModifier: 'CodeableConcept' = None,  oralDiet: 'OralDiet' = None,  supplement: 'Supplement' = None,  enteralFormula: 'EnteralFormula' = None,  note: 'Annotation' = None, ):
         self.resourceType: str = resourceType or "NutritionOrder"
         self.id: str = id 
         self.meta: 'Meta' = meta 
@@ -433,9 +433,9 @@ class NutritionOrder(DomainResource):
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
         self.identifier: list['Identifier'] = identifier or []
-        self.instantiatesCanonical: str = instantiatesCanonical or []
-        self.instantiatesUri: str = instantiatesUri or []
-        self.instantiates: str = instantiates or []
+        self.instantiatesCanonical: list[str] = instantiatesCanonical or []
+        self.instantiatesUri: list[str] = instantiatesUri or []
+        self.instantiates: list[str] = instantiates or []
         self.status: str = status 
         self.intent: str = intent 
         self.patient: 'Reference' = patient 
@@ -467,8 +467,8 @@ class NutritionOrder(DomainResource):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)

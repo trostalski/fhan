@@ -1,24 +1,24 @@
 """
 Generated class for Questionnaire. 
-Time: 2023-09-25 16:30:45
+Time: 2023-09-27 15:54:17
 """
 from importlib import import_module
 import inspect
 
-from fhan.models.R4.Identifier import *
-from fhan.models.R4.Quantity import *
 from fhan.models.R4.Attachment import *
+from fhan.models.R4.BackboneElement import *
 from fhan.models.R4.Meta import *
 from fhan.models.R4.UsageContext import *
 from fhan.models.R4.ContactDetail import *
-from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Quantity import *
 from fhan.models.R4.Period import *
+from fhan.models.R4.Resource import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Coding import *
 from fhan.models.R4.Extension import *
-from fhan.models.R4.Reference import *
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Resource import *
 from fhan.models.R4.Narrative import *
+from fhan.models.R4.Reference import *
 from fhan.models.R4.DomainResource import *
 
 
@@ -27,10 +27,10 @@ from fhan.models.R4.DomainResource import *
     
     
 
-class EnableWhen(ModelBase):
+class EnableWhen(BaseModel):
     """ A constraint indicating that this item should only be enabled (displayed/allow answers to be captured) when the specified condition is true.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str question: Question that determines whether item is enabled
     :param str operator: exists | = | != | > | < | >= | <=
     :param bool answerBoolean: Value for question comparison based on operator
@@ -44,7 +44,7 @@ class EnableWhen(ModelBase):
     :param 'Quantity' answerQuantity: Value for question comparison based on operator
     :param 'Reference' answerReference: Value for question comparison based on operator
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  question: str = None,  operator: str = None,  answerBoolean: bool = None,  answerDecimal: float = None,  answerInteger: int = None,  answerDate: str = None,  answerDateTime: str = None,  answerTime: str = None,  answerString: str = None,  answerCoding: 'Coding' = None,  answerQuantity: 'Quantity' = None,  answerReference: 'Reference' = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  question: str = None,  operator: str = None,  answerBoolean: bool = None,  answerDecimal: float = None,  answerInteger: int = None,  answerDate: str = None,  answerDateTime: str = None,  answerTime: str = None,  answerString: str = None,  answerCoding: 'Coding' = None,  answerQuantity: 'Quantity' = None,  answerReference: 'Reference' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -78,8 +78,8 @@ class EnableWhen(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -103,10 +103,10 @@ class EnableWhen(ModelBase):
     
     
 
-class AnswerOption(ModelBase):
+class AnswerOption(BaseModel):
     """ One of the permitted answers for a "choice" or "open-choice" question.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param int valueInteger: Answer value
     :param str valueDate: Answer value
     :param str valueTime: Answer value
@@ -115,7 +115,7 @@ class AnswerOption(ModelBase):
     :param 'Reference' valueReference: Answer value
     :param bool initialSelected: Whether option is selected by default
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  valueInteger: int = None,  valueDate: str = None,  valueTime: str = None,  valueString: str = None,  valueCoding: 'Coding' = None,  valueReference: 'Reference' = None,  initialSelected: bool = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  valueInteger: int = None,  valueDate: str = None,  valueTime: str = None,  valueString: str = None,  valueCoding: 'Coding' = None,  valueReference: 'Reference' = None,  initialSelected: bool = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -144,8 +144,8 @@ class AnswerOption(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -169,10 +169,10 @@ class AnswerOption(ModelBase):
     
     
 
-class Initial(ModelBase):
+class Initial(BaseModel):
     """ One or more values that should be pre-populated in the answer when initially rendering the questionnaire for user input.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param bool valueBoolean: Actual value for initializing the question
     :param float valueDecimal: Actual value for initializing the question
     :param int valueInteger: Actual value for initializing the question
@@ -186,7 +186,7 @@ class Initial(ModelBase):
     :param 'Quantity' valueQuantity: Actual value for initializing the question
     :param 'Reference' valueReference: Actual value for initializing the question
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  valueBoolean: bool = None,  valueDecimal: float = None,  valueInteger: int = None,  valueDate: str = None,  valueDateTime: str = None,  valueTime: str = None,  valueString: str = None,  valueUri: str = None,  valueAttachment: 'Attachment' = None,  valueCoding: 'Coding' = None,  valueQuantity: 'Quantity' = None,  valueReference: 'Reference' = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  valueBoolean: bool = None,  valueDecimal: float = None,  valueInteger: int = None,  valueDate: str = None,  valueDateTime: str = None,  valueTime: str = None,  valueString: str = None,  valueUri: str = None,  valueAttachment: 'Attachment' = None,  valueCoding: 'Coding' = None,  valueQuantity: 'Quantity' = None,  valueReference: 'Reference' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -220,8 +220,8 @@ class Initial(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -246,27 +246,27 @@ class Initial(ModelBase):
     
     
 
-class Item(ModelBase):
+class Item(BaseModel):
     """ A particular question, question grouping or display text that is part of the questionnaire.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str linkId: Unique id for item in questionnaire
     :param str definition: ElementDefinition - details for the item
-    :param list['Coding'] code: Corresponding concept for this item in a terminology
+    :param 'Coding' code: Corresponding concept for this item in a terminology
     :param str prefix: E.g. "1(a)", "2.5.3"
     :param str text: Primary text for the item
     :param str type: group | display | boolean | decimal | integer | date | dateTime +
-    :param list['EnableWhen'] enableWhen: Only allow data when
+    :param 'EnableWhen' enableWhen: Only allow data when
     :param str enableBehavior: all | any
     :param bool required: Whether the item must be included in data results
     :param bool repeats: Whether the item may repeat
     :param bool readOnly: Don't allow human editing
     :param int maxLength: No more than this many characters
     :param str answerValueSet: Valueset containing permitted answers
-    :param list['AnswerOption'] answerOption: Permitted answer
-    :param list['Initial'] initial: Initial value(s) when item is first rendered
+    :param 'AnswerOption' answerOption: Permitted answer
+    :param 'Initial' initial: Initial value(s) when item is first rendered
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  linkId: str = None,  definition: str = None,  code: list['Coding'] = None,  prefix: str = None,  text: str = None,  type: str = None,  enableWhen: list['EnableWhen'] = None,  enableBehavior: str = None,  required: bool = None,  repeats: bool = None,  readOnly: bool = None,  maxLength: int = None,  answerValueSet: str = None,  answerOption: list['AnswerOption'] = None,  initial: list['Initial'] = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  linkId: str = None,  definition: str = None,  code: 'Coding' = None,  prefix: str = None,  text: str = None,  type: str = None,  enableWhen: 'EnableWhen' = None,  enableBehavior: str = None,  required: bool = None,  repeats: bool = None,  readOnly: bool = None,  maxLength: int = None,  answerValueSet: str = None,  answerOption: 'AnswerOption' = None,  initial: 'Initial' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -303,8 +303,8 @@ class Item(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -332,11 +332,11 @@ class Questionnaire(DomainResource):
     :param str implicitRules: A set of rules under which this content was created
     :param str language: Language of the resource content
     :param 'Narrative' text: Text summary of the resource, for human interpretation
-    :param list['Resource'] contained: Contained, inline Resources
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored
+    :param 'Resource' contained: Contained, inline Resources
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored
     :param str url: Canonical identifier for this questionnaire, represented as a URI (globally unique)
-    :param list['Identifier'] identifier: Additional identifier for the questionnaire
+    :param 'Identifier' identifier: Additional identifier for the questionnaire
     :param str version: Business version of the questionnaire
     :param str name: Name for this questionnaire (computer friendly)
     :param str title: Name for this questionnaire (human friendly)
@@ -346,19 +346,19 @@ class Questionnaire(DomainResource):
     :param str subjectType: Resource that can be subject of QuestionnaireResponse
     :param str date: Date last changed
     :param str publisher: Name of the publisher (organization or individual)
-    :param list['ContactDetail'] contact: Contact details for the publisher
+    :param 'ContactDetail' contact: Contact details for the publisher
     :param str description: Natural language description of the questionnaire
-    :param list['UsageContext'] useContext: The context that the content is intended to support
-    :param list['CodeableConcept'] jurisdiction: Intended jurisdiction for questionnaire (if applicable)
+    :param 'UsageContext' useContext: The context that the content is intended to support
+    :param 'CodeableConcept' jurisdiction: Intended jurisdiction for questionnaire (if applicable)
     :param str purpose: Why this questionnaire is defined
     :param str copyright: Use and/or publishing restrictions
     :param str approvalDate: When the questionnaire was approved by publisher
     :param str lastReviewDate: When the questionnaire was last reviewed
     :param 'Period' effectivePeriod: When the questionnaire is expected to be used
-    :param list['Coding'] code: Concept that represents the overall questionnaire
-    :param list['Item'] item: Questions and sections within the Questionnaire
+    :param 'Coding' code: Concept that represents the overall questionnaire
+    :param 'Item' item: Questions and sections within the Questionnaire
     """
-    def __init__(self, resourceType: str = "Questionnaire",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  url: str = None,  identifier: list['Identifier'] = None,  version: str = None,  name: str = None,  title: str = None,  derivedFrom: str = None,  status: str = None,  experimental: bool = None,  subjectType: str = None,  date: str = None,  publisher: str = None,  contact: list['ContactDetail'] = None,  description: str = None,  useContext: list['UsageContext'] = None,  jurisdiction: list['CodeableConcept'] = None,  purpose: str = None,  copyright: str = None,  approvalDate: str = None,  lastReviewDate: str = None,  effectivePeriod: 'Period' = None,  code: list['Coding'] = None,  item: list['Item'] = None, ):
+    def __init__(self, resourceType: str = "Questionnaire",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: 'Resource' = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  url: str = None,  identifier: 'Identifier' = None,  version: str = None,  name: str = None,  title: str = None,  derivedFrom: str = None,  status: str = None,  experimental: bool = None,  subjectType: str = None,  date: str = None,  publisher: str = None,  contact: 'ContactDetail' = None,  description: str = None,  useContext: 'UsageContext' = None,  jurisdiction: 'CodeableConcept' = None,  purpose: str = None,  copyright: str = None,  approvalDate: str = None,  lastReviewDate: str = None,  effectivePeriod: 'Period' = None,  code: 'Coding' = None,  item: 'Item' = None, ):
         self.resourceType: str = resourceType or "Questionnaire"
         self.id: str = id 
         self.meta: 'Meta' = meta 
@@ -373,10 +373,10 @@ class Questionnaire(DomainResource):
         self.version: str = version 
         self.name: str = name 
         self.title: str = title 
-        self.derivedFrom: str = derivedFrom or []
+        self.derivedFrom: list[str] = derivedFrom or []
         self.status: str = status 
         self.experimental: bool = experimental 
-        self.subjectType: str = subjectType or []
+        self.subjectType: list[str] = subjectType or []
         self.date: str = date 
         self.publisher: str = publisher 
         self.contact: list['ContactDetail'] = contact or []
@@ -408,8 +408,8 @@ class Questionnaire(DomainResource):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)

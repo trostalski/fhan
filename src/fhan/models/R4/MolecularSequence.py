@@ -1,29 +1,29 @@
 """
 Generated class for MolecularSequence. 
-Time: 2023-09-25 16:30:45
+Time: 2023-09-27 15:54:17
 """
 from importlib import import_module
 import inspect
 
-from fhan.models.R4.Identifier import *
-from fhan.models.R4.Quantity import *
+from fhan.models.R4.BackboneElement import *
 from fhan.models.R4.Meta import *
+from fhan.models.R4.Quantity import *
+from fhan.models.R4.Resource import *
+from fhan.models.R4.Identifier import *
 from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Extension import *
-from fhan.models.R4.Reference import *
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Resource import *
 from fhan.models.R4.Narrative import *
+from fhan.models.R4.Reference import *
 from fhan.models.R4.DomainResource import *
 
 
     
     
 
-class ReferenceSeq(ModelBase):
+class ReferenceSeq(BaseModel):
     """ A sequence that is used as a reference to describe variants that are present in a sequence analyzed.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param 'CodeableConcept' chromosome: Chromosome containing genetic finding
     :param str genomeBuild: The Genome Build used for reference, following GRCh build versions e.g. 'GRCh 37'
     :param str orientation: sense | antisense
@@ -34,7 +34,7 @@ class ReferenceSeq(ModelBase):
     :param int windowStart: Start position of the window on the  reference sequence
     :param int windowEnd: End position of the window on the reference sequence
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  chromosome: 'CodeableConcept' = None,  genomeBuild: str = None,  orientation: str = None,  referenceSeqId: 'CodeableConcept' = None,  referenceSeqPointer: 'Reference' = None,  referenceSeqString: str = None,  strand: str = None,  windowStart: int = None,  windowEnd: int = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  chromosome: 'CodeableConcept' = None,  genomeBuild: str = None,  orientation: str = None,  referenceSeqId: 'CodeableConcept' = None,  referenceSeqPointer: 'Reference' = None,  referenceSeqString: str = None,  strand: str = None,  windowStart: int = None,  windowEnd: int = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -65,8 +65,8 @@ class ReferenceSeq(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -90,10 +90,10 @@ class ReferenceSeq(ModelBase):
     
     
 
-class Variant(ModelBase):
+class Variant(BaseModel):
     """ The definition of variant here originates from Sequence ontology ([variant_of](http://www.sequenceontology.org/browser/current_svn/term/variant_of)). This element can represent amino acid or nucleic sequence change(including insertion,deletion,SNP,etc.)  It can represent some complex mutation or segment variation with the assist of CIGAR string.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param int start: Start position of the variant on the  reference sequence
     :param int end: End position of the variant on the reference sequence
     :param str observedAllele: Allele that was observed
@@ -101,7 +101,7 @@ class Variant(ModelBase):
     :param str cigar: Extended CIGAR string for aligning the sequence with reference bases
     :param 'Reference' variantPointer: Pointer to observed variant information
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  start: int = None,  end: int = None,  observedAllele: str = None,  referenceAllele: str = None,  cigar: str = None,  variantPointer: 'Reference' = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  start: int = None,  end: int = None,  observedAllele: str = None,  referenceAllele: str = None,  cigar: str = None,  variantPointer: 'Reference' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -129,8 +129,8 @@ class Variant(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -156,10 +156,10 @@ class Variant(ModelBase):
     
     
 
-class Roc(ModelBase):
+class Roc(BaseModel):
     """ Receiver Operator Characteristic (ROC) Curve  to give sensitivity/specificity tradeoff.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param int score: Genotype quality score
     :param int numTP: Roc score true positive numbers
     :param int numFP: Roc score false positive numbers
@@ -168,17 +168,17 @@ class Roc(ModelBase):
     :param float sensitivity: Sensitivity of the GQ score
     :param float fMeasure: FScore of the GQ score
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  score: int = None,  numTP: int = None,  numFP: int = None,  numFN: int = None,  precision: float = None,  sensitivity: float = None,  fMeasure: float = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  score: int = None,  numTP: int = None,  numFP: int = None,  numFN: int = None,  precision: float = None,  sensitivity: float = None,  fMeasure: float = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
-        self.score: int = score or []
-        self.numTP: int = numTP or []
-        self.numFP: int = numFP or []
-        self.numFN: int = numFN or []
-        self.precision: float = precision or []
-        self.sensitivity: float = sensitivity or []
-        self.fMeasure: float = fMeasure or []
+        self.score: list[int] = score or []
+        self.numTP: list[int] = numTP or []
+        self.numFP: list[int] = numFP or []
+        self.numFN: list[int] = numFN or []
+        self.precision: list[float] = precision or []
+        self.sensitivity: list[float] = sensitivity or []
+        self.fMeasure: list[float] = fMeasure or []
         
 
     @classmethod
@@ -197,8 +197,8 @@ class Roc(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -223,10 +223,10 @@ class Roc(ModelBase):
     
     
 
-class Quality(ModelBase):
+class Quality(BaseModel):
     """ An experimental feature attribute that defines the quality of the feature in a quantitative way, such as a phred quality score ([SO:0001686](http://www.sequenceontology.org/browser/current_svn/term/SO:0001686)).:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str type: indel | snp | unknown
     :param 'CodeableConcept' standardSequence: Standard sequence for comparison
     :param int start: Start position of the sequence
@@ -243,7 +243,7 @@ class Quality(ModelBase):
     :param float fScore: F-score
     :param 'Roc' roc: Receiver Operator Characteristic (ROC) Curve
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  type: str = None,  standardSequence: 'CodeableConcept' = None,  start: int = None,  end: int = None,  score: 'Quantity' = None,  method: 'CodeableConcept' = None,  truthTP: float = None,  queryTP: float = None,  truthFN: float = None,  queryFP: float = None,  gtFP: float = None,  precision: float = None,  recall: float = None,  fScore: float = None,  roc: 'Roc' = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  type: str = None,  standardSequence: 'CodeableConcept' = None,  start: int = None,  end: int = None,  score: 'Quantity' = None,  method: 'CodeableConcept' = None,  truthTP: float = None,  queryTP: float = None,  truthFN: float = None,  queryFP: float = None,  gtFP: float = None,  precision: float = None,  recall: float = None,  fScore: float = None,  roc: 'Roc' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -280,8 +280,8 @@ class Quality(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -305,10 +305,10 @@ class Quality(ModelBase):
     
     
 
-class Repository(ModelBase):
+class Repository(BaseModel):
     """ Configurations of the external repository. The repository shall store target's observedSeq or records related with target's observedSeq.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str type: directlink | openapi | login | oauth | other
     :param str url: URI of the repository
     :param str name: Repository's name
@@ -316,7 +316,7 @@ class Repository(ModelBase):
     :param str variantsetId: Id of the variantset that used to call for variantset in repository
     :param str readsetId: Id of the read
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  type: str = None,  url: str = None,  name: str = None,  datasetId: str = None,  variantsetId: str = None,  readsetId: str = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  type: str = None,  url: str = None,  name: str = None,  datasetId: str = None,  variantsetId: str = None,  readsetId: str = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -344,8 +344,8 @@ class Repository(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -371,14 +371,14 @@ class Repository(ModelBase):
     
     
 
-class Outer(ModelBase):
+class Outer(BaseModel):
     """ Structural variant outer.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param int start: Structural variant outer start
     :param int end: Structural variant outer end
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  start: int = None,  end: int = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  start: int = None,  end: int = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -402,8 +402,8 @@ class Outer(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -427,14 +427,14 @@ class Outer(ModelBase):
     
     
 
-class Inner(ModelBase):
+class Inner(BaseModel):
     """ Structural variant inner.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param int start: Structural variant inner start
     :param int end: Structural variant inner end
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  start: int = None,  end: int = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  start: int = None,  end: int = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -458,8 +458,8 @@ class Inner(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -484,17 +484,17 @@ class Inner(ModelBase):
     
     
 
-class StructureVariant(ModelBase):
+class StructureVariant(BaseModel):
     """ Information about chromosome structure variation.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param 'CodeableConcept' variantType: Structural variant change type
     :param bool exact: Does the structural variant have base pair resolution breakpoints?
     :param int length: Structural variant length
     :param 'Outer' outer: Structural variant outer
     :param 'Inner' inner: Structural variant inner
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  variantType: 'CodeableConcept' = None,  exact: bool = None,  length: int = None,  outer: 'Outer' = None,  inner: 'Inner' = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  variantType: 'CodeableConcept' = None,  exact: bool = None,  length: int = None,  outer: 'Outer' = None,  inner: 'Inner' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -521,8 +521,8 @@ class StructureVariant(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -550,10 +550,10 @@ class MolecularSequence(DomainResource):
     :param str implicitRules: A set of rules under which this content was created
     :param str language: Language of the resource content
     :param 'Narrative' text: Text summary of the resource, for human interpretation
-    :param list['Resource'] contained: Contained, inline Resources
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored
-    :param list['Identifier'] identifier: Unique ID for this particular sequence. This is a FHIR-defined id
+    :param 'Resource' contained: Contained, inline Resources
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored
+    :param 'Identifier' identifier: Unique ID for this particular sequence. This is a FHIR-defined id
     :param str type: aa | dna | rna
     :param int coordinateSystem: Base number of coordinate system (0 for 0-based numbering or coordinates, inclusive start, exclusive end, 1 for 1-based numbering, inclusive start, inclusive end)
     :param 'Reference' patient: Who and/or what this is about
@@ -562,15 +562,15 @@ class MolecularSequence(DomainResource):
     :param 'Reference' performer: Who should be responsible for test result
     :param 'Quantity' quantity: The number of copies of the sequence of interest.  (RNASeq)
     :param 'ReferenceSeq' referenceSeq: A sequence used as reference
-    :param list['Variant'] variant: Variant in sequence
+    :param 'Variant' variant: Variant in sequence
     :param str observedSeq: Sequence that was observed
-    :param list['Quality'] quality: An set of value as quality of sequence
+    :param 'Quality' quality: An set of value as quality of sequence
     :param int readCoverage: Average number of reads representing a given nucleotide in the reconstructed sequence
-    :param list['Repository'] repository: External repository which contains detailed report related with observedSeq in this resource
-    :param list['Reference'] pointer: Pointer to next atomic sequence
-    :param list['StructureVariant'] structureVariant: Structural variant
+    :param 'Repository' repository: External repository which contains detailed report related with observedSeq in this resource
+    :param 'Reference' pointer: Pointer to next atomic sequence
+    :param 'StructureVariant' structureVariant: Structural variant
     """
-    def __init__(self, resourceType: str = "MolecularSequence",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  identifier: list['Identifier'] = None,  type: str = None,  coordinateSystem: int = None,  patient: 'Reference' = None,  specimen: 'Reference' = None,  device: 'Reference' = None,  performer: 'Reference' = None,  quantity: 'Quantity' = None,  referenceSeq: 'ReferenceSeq' = None,  variant: list['Variant'] = None,  observedSeq: str = None,  quality: list['Quality'] = None,  readCoverage: int = None,  repository: list['Repository'] = None,  pointer: list['Reference'] = None,  structureVariant: list['StructureVariant'] = None, ):
+    def __init__(self, resourceType: str = "MolecularSequence",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: 'Resource' = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  identifier: 'Identifier' = None,  type: str = None,  coordinateSystem: int = None,  patient: 'Reference' = None,  specimen: 'Reference' = None,  device: 'Reference' = None,  performer: 'Reference' = None,  quantity: 'Quantity' = None,  referenceSeq: 'ReferenceSeq' = None,  variant: 'Variant' = None,  observedSeq: str = None,  quality: 'Quality' = None,  readCoverage: int = None,  repository: 'Repository' = None,  pointer: 'Reference' = None,  structureVariant: 'StructureVariant' = None, ):
         self.resourceType: str = resourceType or "MolecularSequence"
         self.id: str = id 
         self.meta: 'Meta' = meta 
@@ -614,8 +614,8 @@ class MolecularSequence(DomainResource):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)

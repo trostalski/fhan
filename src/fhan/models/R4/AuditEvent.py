@@ -1,19 +1,19 @@
 """
 Generated class for AuditEvent. 
-Time: 2023-09-25 16:30:45
+Time: 2023-09-27 15:54:17
 """
 from importlib import import_module
 import inspect
 
-from fhan.models.R4.Meta import *
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Period import *
-from fhan.models.R4.Coding import *
-from fhan.models.R4.Extension import *
-from fhan.models.R4.Reference import *
 from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Meta import *
+from fhan.models.R4.Period import *
 from fhan.models.R4.Resource import *
+from fhan.models.R4.Coding import *
+from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Extension import *
 from fhan.models.R4.Narrative import *
+from fhan.models.R4.Reference import *
 from fhan.models.R4.DomainResource import *
 
 
@@ -22,14 +22,14 @@ from fhan.models.R4.DomainResource import *
     
     
 
-class Network(ModelBase):
+class Network(BaseModel):
     """ Logical network location for application activity, if the activity has a network location.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str address: Identifier for the network access point of the user device
     :param str type: The type of network access point
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  address: str = None,  type: str = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  address: str = None,  type: str = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -53,8 +53,8 @@ class Network(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -79,12 +79,12 @@ class Network(ModelBase):
     
     
 
-class Agent(ModelBase):
+class Agent(BaseModel):
     """ An actor taking an active role in the event or activity that is logged.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param 'CodeableConcept' type: How agent participated
-    :param list['CodeableConcept'] role: Agent role in the event
+    :param 'CodeableConcept' role: Agent role in the event
     :param 'Reference' who: Identifier of who
     :param str altId: Alternative User identity
     :param str name: Human friendly name for the agent
@@ -93,9 +93,9 @@ class Agent(ModelBase):
     :param str policy: Policy that authorized event
     :param 'Coding' media: Type of media
     :param 'Network' network: Logical network location for application activity
-    :param list['CodeableConcept'] purposeOfUse: Reason given for this user
+    :param 'CodeableConcept' purposeOfUse: Reason given for this user
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  type: 'CodeableConcept' = None,  role: list['CodeableConcept'] = None,  who: 'Reference' = None,  altId: str = None,  name: str = None,  requestor: bool = None,  location: 'Reference' = None,  policy: str = None,  media: 'Coding' = None,  network: 'Network' = None,  purposeOfUse: list['CodeableConcept'] = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  type: 'CodeableConcept' = None,  role: 'CodeableConcept' = None,  who: 'Reference' = None,  altId: str = None,  name: str = None,  requestor: bool = None,  location: 'Reference' = None,  policy: str = None,  media: 'Coding' = None,  network: 'Network' = None,  purposeOfUse: 'CodeableConcept' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -106,7 +106,7 @@ class Agent(ModelBase):
         self.name: str = name 
         self.requestor: bool = requestor 
         self.location: 'Reference' = location 
-        self.policy: str = policy or []
+        self.policy: list[str] = policy or []
         self.media: 'Coding' = media 
         self.network: 'Network' = network 
         self.purposeOfUse: list['CodeableConcept'] = purposeOfUse or []
@@ -128,8 +128,8 @@ class Agent(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -153,15 +153,15 @@ class Agent(ModelBase):
     
     
 
-class Source(ModelBase):
+class Source(BaseModel):
     """ The system that is reporting the event.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str site: Logical source location within the enterprise
     :param 'Reference' observer: The identity of source detecting the event
-    :param list['Coding'] type: The type of source where event originated
+    :param 'Coding' type: The type of source where event originated
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  site: str = None,  observer: 'Reference' = None,  type: list['Coding'] = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  site: str = None,  observer: 'Reference' = None,  type: 'Coding' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -186,8 +186,8 @@ class Source(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -213,15 +213,15 @@ class Source(ModelBase):
     
     
 
-class Detail(ModelBase):
+class Detail(BaseModel):
     """ Tagged value pairs for conveying additional information about the entity.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str type: Name of the property
     :param str valueString: Property value
     :param str valueBase64Binary: Property value
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  type: str = None,  valueString: str = None,  valueBase64Binary: str = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  type: str = None,  valueString: str = None,  valueBase64Binary: str = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -246,8 +246,8 @@ class Detail(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -272,21 +272,21 @@ class Detail(ModelBase):
     
     
 
-class Entity(ModelBase):
+class Entity(BaseModel):
     """ Specific instances of data or objects that have been accessed.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param 'Reference' what: Specific instance of resource
     :param 'Coding' type: Type of entity involved
     :param 'Coding' role: What role the entity played
     :param 'Coding' lifecycle: Life-cycle stage for the entity
-    :param list['Coding'] securityLabel: Security labels on the entity
+    :param 'Coding' securityLabel: Security labels on the entity
     :param str name: Descriptor for entity
     :param str description: Descriptive text
     :param str query: Query parameters
-    :param list['Detail'] detail: Additional Information about the entity
+    :param 'Detail' detail: Additional Information about the entity
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  what: 'Reference' = None,  type: 'Coding' = None,  role: 'Coding' = None,  lifecycle: 'Coding' = None,  securityLabel: list['Coding'] = None,  name: str = None,  description: str = None,  query: str = None,  detail: list['Detail'] = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  what: 'Reference' = None,  type: 'Coding' = None,  role: 'Coding' = None,  lifecycle: 'Coding' = None,  securityLabel: 'Coding' = None,  name: str = None,  description: str = None,  query: str = None,  detail: 'Detail' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -317,8 +317,8 @@ class Entity(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -346,22 +346,22 @@ class AuditEvent(DomainResource):
     :param str implicitRules: A set of rules under which this content was created
     :param str language: Language of the resource content
     :param 'Narrative' text: Text summary of the resource, for human interpretation
-    :param list['Resource'] contained: Contained, inline Resources
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored
+    :param 'Resource' contained: Contained, inline Resources
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored
     :param 'Coding' type: Type/identifier of event
-    :param list['Coding'] subtype: More specific type/id for the event
+    :param 'Coding' subtype: More specific type/id for the event
     :param str action: Type of action performed during the event
     :param 'Period' period: When the activity occurred
     :param str recorded: Time when the event was recorded
     :param str outcome: Whether the event succeeded or failed
     :param str outcomeDesc: Description of the event outcome
-    :param list['CodeableConcept'] purposeOfEvent: The purposeOfUse of the event
-    :param list['Agent'] agent: Actor involved in the event
+    :param 'CodeableConcept' purposeOfEvent: The purposeOfUse of the event
+    :param 'Agent' agent: Actor involved in the event
     :param 'Source' source: Audit Event Reporter
-    :param list['Entity'] entity: Data or objects used
+    :param 'Entity' entity: Data or objects used
     """
-    def __init__(self, resourceType: str = "AuditEvent",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  type: 'Coding' = None,  subtype: list['Coding'] = None,  action: str = None,  period: 'Period' = None,  recorded: str = None,  outcome: str = None,  outcomeDesc: str = None,  purposeOfEvent: list['CodeableConcept'] = None,  agent: list['Agent'] = None,  source: 'Source' = None,  entity: list['Entity'] = None, ):
+    def __init__(self, resourceType: str = "AuditEvent",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: 'Resource' = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  type: 'Coding' = None,  subtype: 'Coding' = None,  action: str = None,  period: 'Period' = None,  recorded: str = None,  outcome: str = None,  outcomeDesc: str = None,  purposeOfEvent: 'CodeableConcept' = None,  agent: 'Agent' = None,  source: 'Source' = None,  entity: 'Entity' = None, ):
         self.resourceType: str = resourceType or "AuditEvent"
         self.id: str = id 
         self.meta: 'Meta' = meta 
@@ -400,8 +400,8 @@ class AuditEvent(DomainResource):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)

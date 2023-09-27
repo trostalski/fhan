@@ -1,47 +1,47 @@
 """
 Generated class for Extension. 
-Time: 2023-09-25 16:30:45
+Time: 2023-09-27 15:54:17
 """
 from importlib import import_module
 import inspect
 
-from fhan.models.R4.ContactPoint import *
-from fhan.models.R4.Quantity import *
-from fhan.models.R4.Ratio import *
-from fhan.models.R4.Distance import *
-from fhan.models.R4.ContactDetail import *
-from fhan.models.R4.Timing import *
-from fhan.models.R4.Range import *
-from fhan.models.R4.RelatedArtifact import *
-from fhan.models.R4.Duration import *
-from fhan.models.R4.TriggerDefinition import *
-from fhan.models.R4.Attachment import *
-from fhan.models.R4.HumanName import *
-from fhan.models.R4.Coding import *
-from fhan.models.R4.Count import *
-from fhan.models.R4.Address import *
-from fhan.models.R4.Reference import *
-from fhan.models.R4.Contributor import *
-from fhan.models.R4.ParameterDefinition import *
-from fhan.models.R4.Annotation import *
-from fhan.models.R4.Signature import *
-from fhan.models.R4.Expression import *
 from fhan.models.R4.Age import *
-from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Coding import *
+from fhan.models.R4.ContactPoint import *
+from fhan.models.R4.Duration import *
+from fhan.models.R4.Period import *
+from fhan.models.R4.Address import *
+from fhan.models.R4.ContactDetail import *
+from fhan.models.R4.TriggerDefinition import *
 from fhan.models.R4.DataRequirement import *
-from fhan.models.R4.SampledData import *
+from fhan.models.R4.Annotation import *
+from fhan.models.R4.Quantity import *
+from fhan.models.R4.Signature import *
+from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.RelatedArtifact import *
+from fhan.models.R4.HumanName import *
+from fhan.models.R4.Dosage import *
+from fhan.models.R4.Reference import *
+from fhan.models.R4.Range import *
+from fhan.models.R4.Attachment import *
+from fhan.models.R4.Distance import *
+from fhan.models.R4.Expression import *
+from fhan.models.R4.Timing import *
+from fhan.models.R4.Money import *
 from fhan.models.R4.UsageContext import *
 from fhan.models.R4.Identifier import *
 from fhan.models.R4.Meta import *
-from fhan.models.R4.Period import *
-from fhan.models.R4.Money import *
-from fhan.models.R4.Dosage import *
-from fhan.models.generator_models import ModelBase
+from fhan.models.R4.SampledData import *
+from fhan.models.R4.Contributor import *
+from fhan.models.R4.Ratio import *
+from fhan.models.R4.Count import *
+from fhan.models.R4.ParameterDefinition import *
+from fhan.models.generator_models import BaseModel
 
-class Extension(ModelBase):
+class Extension(BaseModel):
     """ Base StructureDefinition for Extension Type: Optional Extension Element - found in all resources.
     :param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
+    :param 'Extension' extension: Additional content defined by implementations
     :param str url: identifies the meaning of the extension
     :param str valueBase64Binary: Value of extension
     :param bool valueBoolean: Value of extension
@@ -94,7 +94,7 @@ class Extension(ModelBase):
     :param 'Dosage' valueDosage: Value of extension
     :param 'Meta' valueMeta: Value of extension
     """
-    def __init__(self, resourceType: str = "Extension",  id: str = None,  extension: list['Extension'] = None,  url: str = None,  valueBase64Binary: str = None,  valueBoolean: bool = None,  valueCanonical: str = None,  valueCode: str = None,  valueDate: str = None,  valueDateTime: str = None,  valueDecimal: float = None,  valueId: str = None,  valueInstant: str = None,  valueInteger: int = None,  valueMarkdown: str = None,  valueOid: str = None,  valuePositiveInt: int = None,  valueString: str = None,  valueTime: str = None,  valueUnsignedInt: int = None,  valueUri: str = None,  valueUrl: str = None,  valueUuid: str = None,  valueAddress: 'Address' = None,  valueAge: 'Age' = None,  valueAnnotation: 'Annotation' = None,  valueAttachment: 'Attachment' = None,  valueCodeableConcept: 'CodeableConcept' = None,  valueCoding: 'Coding' = None,  valueContactPoint: 'ContactPoint' = None,  valueCount: 'Count' = None,  valueDistance: 'Distance' = None,  valueDuration: 'Duration' = None,  valueHumanName: 'HumanName' = None,  valueIdentifier: 'Identifier' = None,  valueMoney: 'Money' = None,  valuePeriod: 'Period' = None,  valueQuantity: 'Quantity' = None,  valueRange: 'Range' = None,  valueRatio: 'Ratio' = None,  valueReference: 'Reference' = None,  valueSampledData: 'SampledData' = None,  valueSignature: 'Signature' = None,  valueTiming: 'Timing' = None,  valueContactDetail: 'ContactDetail' = None,  valueContributor: 'Contributor' = None,  valueDataRequirement: 'DataRequirement' = None,  valueExpression: 'Expression' = None,  valueParameterDefinition: 'ParameterDefinition' = None,  valueRelatedArtifact: 'RelatedArtifact' = None,  valueTriggerDefinition: 'TriggerDefinition' = None,  valueUsageContext: 'UsageContext' = None,  valueDosage: 'Dosage' = None,  valueMeta: 'Meta' = None, ):
+    def __init__(self, resourceType: str = "Extension",  id: str = None,  extension: 'Extension' = None,  url: str = None,  valueBase64Binary: str = None,  valueBoolean: bool = None,  valueCanonical: str = None,  valueCode: str = None,  valueDate: str = None,  valueDateTime: str = None,  valueDecimal: float = None,  valueId: str = None,  valueInstant: str = None,  valueInteger: int = None,  valueMarkdown: str = None,  valueOid: str = None,  valuePositiveInt: int = None,  valueString: str = None,  valueTime: str = None,  valueUnsignedInt: int = None,  valueUri: str = None,  valueUrl: str = None,  valueUuid: str = None,  valueAddress: 'Address' = None,  valueAge: 'Age' = None,  valueAnnotation: 'Annotation' = None,  valueAttachment: 'Attachment' = None,  valueCodeableConcept: 'CodeableConcept' = None,  valueCoding: 'Coding' = None,  valueContactPoint: 'ContactPoint' = None,  valueCount: 'Count' = None,  valueDistance: 'Distance' = None,  valueDuration: 'Duration' = None,  valueHumanName: 'HumanName' = None,  valueIdentifier: 'Identifier' = None,  valueMoney: 'Money' = None,  valuePeriod: 'Period' = None,  valueQuantity: 'Quantity' = None,  valueRange: 'Range' = None,  valueRatio: 'Ratio' = None,  valueReference: 'Reference' = None,  valueSampledData: 'SampledData' = None,  valueSignature: 'Signature' = None,  valueTiming: 'Timing' = None,  valueContactDetail: 'ContactDetail' = None,  valueContributor: 'Contributor' = None,  valueDataRequirement: 'DataRequirement' = None,  valueExpression: 'Expression' = None,  valueParameterDefinition: 'ParameterDefinition' = None,  valueRelatedArtifact: 'RelatedArtifact' = None,  valueTriggerDefinition: 'TriggerDefinition' = None,  valueUsageContext: 'UsageContext' = None,  valueDosage: 'Dosage' = None,  valueMeta: 'Meta' = None, ):
         self.resourceType: str = resourceType or "Extension"
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
@@ -167,8 +167,8 @@ class Extension(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)

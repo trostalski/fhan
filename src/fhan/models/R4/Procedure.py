@@ -1,37 +1,37 @@
 """
 Generated class for Procedure. 
-Time: 2023-09-25 16:30:45
+Time: 2023-09-27 15:54:17
 """
 from importlib import import_module
 import inspect
 
-from fhan.models.R4.Identifier import *
+from fhan.models.R4.BackboneElement import *
 from fhan.models.R4.Meta import *
-from fhan.models.R4.Annotation import *
 from fhan.models.R4.Age import *
-from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Annotation import *
 from fhan.models.R4.Period import *
+from fhan.models.R4.Resource import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Range import *
 from fhan.models.R4.Extension import *
-from fhan.models.R4.Reference import *
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Resource import *
 from fhan.models.R4.Narrative import *
+from fhan.models.R4.Reference import *
 from fhan.models.R4.DomainResource import *
 
 
     
     
 
-class Performer(ModelBase):
+class Performer(BaseModel):
     """ Limited to "real" people rather than equipment.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param 'CodeableConcept' function: Type of performance
     :param 'Reference' actor: The reference to the practitioner
     :param 'Reference' onBehalfOf: Organization the device or practitioner was acting for
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  function: 'CodeableConcept' = None,  actor: 'Reference' = None,  onBehalfOf: 'Reference' = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  function: 'CodeableConcept' = None,  actor: 'Reference' = None,  onBehalfOf: 'Reference' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -56,8 +56,8 @@ class Performer(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -81,14 +81,14 @@ class Performer(ModelBase):
     
     
 
-class FocalDevice(ModelBase):
+class FocalDevice(BaseModel):
     """ A device that is implanted, removed or otherwise manipulated (calibration, battery replacement, fitting a prosthesis, attaching a wound-vac, etc.) as a focal portion of the Procedure.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param 'CodeableConcept' action: Kind of change to device
     :param 'Reference' manipulated: Device that was changed
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  action: 'CodeableConcept' = None,  manipulated: 'Reference' = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  action: 'CodeableConcept' = None,  manipulated: 'Reference' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -112,8 +112,8 @@ class FocalDevice(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -141,14 +141,14 @@ class Procedure(DomainResource):
     :param str implicitRules: A set of rules under which this content was created
     :param str language: Language of the resource content
     :param 'Narrative' text: Text summary of the resource, for human interpretation
-    :param list['Resource'] contained: Contained, inline Resources
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored
-    :param list['Identifier'] identifier: External Identifiers for this procedure
+    :param 'Resource' contained: Contained, inline Resources
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored
+    :param 'Identifier' identifier: External Identifiers for this procedure
     :param str instantiatesCanonical: Instantiates FHIR protocol or definition
     :param str instantiatesUri: Instantiates external protocol or definition
-    :param list['Reference'] basedOn: A request for this procedure
-    :param list['Reference'] partOf: Part of referenced event
+    :param 'Reference' basedOn: A request for this procedure
+    :param 'Reference' partOf: Part of referenced event
     :param str status: preparation | in-progress | not-done | on-hold | stopped | completed | entered-in-error | unknown
     :param 'CodeableConcept' statusReason: Reason for current status
     :param 'CodeableConcept' category: Classification of the procedure
@@ -162,22 +162,22 @@ class Procedure(DomainResource):
     :param 'Range' performedRange: When the procedure was performed
     :param 'Reference' recorder: Who recorded the procedure
     :param 'Reference' asserter: Person who asserts this procedure
-    :param list['Performer'] performer: The people who performed the procedure
+    :param 'Performer' performer: The people who performed the procedure
     :param 'Reference' location: Where the procedure happened
-    :param list['CodeableConcept'] reasonCode: Coded reason procedure performed
-    :param list['Reference'] reasonReference: The justification that the procedure was performed
-    :param list['CodeableConcept'] bodySite: Target body sites
+    :param 'CodeableConcept' reasonCode: Coded reason procedure performed
+    :param 'Reference' reasonReference: The justification that the procedure was performed
+    :param 'CodeableConcept' bodySite: Target body sites
     :param 'CodeableConcept' outcome: The result of procedure
-    :param list['Reference'] report: Any report resulting from the procedure
-    :param list['CodeableConcept'] complication: Complication following the procedure
-    :param list['Reference'] complicationDetail: A condition that is a result of the procedure
-    :param list['CodeableConcept'] followUp: Instructions for follow up
-    :param list['Annotation'] note: Additional information about the procedure
-    :param list['FocalDevice'] focalDevice: Manipulated, implanted, or removed device
-    :param list['Reference'] usedReference: Items used during procedure
-    :param list['CodeableConcept'] usedCode: Coded items used during the procedure
+    :param 'Reference' report: Any report resulting from the procedure
+    :param 'CodeableConcept' complication: Complication following the procedure
+    :param 'Reference' complicationDetail: A condition that is a result of the procedure
+    :param 'CodeableConcept' followUp: Instructions for follow up
+    :param 'Annotation' note: Additional information about the procedure
+    :param 'FocalDevice' focalDevice: Manipulated, implanted, or removed device
+    :param 'Reference' usedReference: Items used during procedure
+    :param 'CodeableConcept' usedCode: Coded items used during the procedure
     """
-    def __init__(self, resourceType: str = "Procedure",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  identifier: list['Identifier'] = None,  instantiatesCanonical: str = None,  instantiatesUri: str = None,  basedOn: list['Reference'] = None,  partOf: list['Reference'] = None,  status: str = None,  statusReason: 'CodeableConcept' = None,  category: 'CodeableConcept' = None,  code: 'CodeableConcept' = None,  subject: 'Reference' = None,  encounter: 'Reference' = None,  performedDateTime: str = None,  performedPeriod: 'Period' = None,  performedString: str = None,  performedAge: 'Age' = None,  performedRange: 'Range' = None,  recorder: 'Reference' = None,  asserter: 'Reference' = None,  performer: list['Performer'] = None,  location: 'Reference' = None,  reasonCode: list['CodeableConcept'] = None,  reasonReference: list['Reference'] = None,  bodySite: list['CodeableConcept'] = None,  outcome: 'CodeableConcept' = None,  report: list['Reference'] = None,  complication: list['CodeableConcept'] = None,  complicationDetail: list['Reference'] = None,  followUp: list['CodeableConcept'] = None,  note: list['Annotation'] = None,  focalDevice: list['FocalDevice'] = None,  usedReference: list['Reference'] = None,  usedCode: list['CodeableConcept'] = None, ):
+    def __init__(self, resourceType: str = "Procedure",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: 'Resource' = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  identifier: 'Identifier' = None,  instantiatesCanonical: str = None,  instantiatesUri: str = None,  basedOn: 'Reference' = None,  partOf: 'Reference' = None,  status: str = None,  statusReason: 'CodeableConcept' = None,  category: 'CodeableConcept' = None,  code: 'CodeableConcept' = None,  subject: 'Reference' = None,  encounter: 'Reference' = None,  performedDateTime: str = None,  performedPeriod: 'Period' = None,  performedString: str = None,  performedAge: 'Age' = None,  performedRange: 'Range' = None,  recorder: 'Reference' = None,  asserter: 'Reference' = None,  performer: 'Performer' = None,  location: 'Reference' = None,  reasonCode: 'CodeableConcept' = None,  reasonReference: 'Reference' = None,  bodySite: 'CodeableConcept' = None,  outcome: 'CodeableConcept' = None,  report: 'Reference' = None,  complication: 'CodeableConcept' = None,  complicationDetail: 'Reference' = None,  followUp: 'CodeableConcept' = None,  note: 'Annotation' = None,  focalDevice: 'FocalDevice' = None,  usedReference: 'Reference' = None,  usedCode: 'CodeableConcept' = None, ):
         self.resourceType: str = resourceType or "Procedure"
         self.id: str = id 
         self.meta: 'Meta' = meta 
@@ -188,8 +188,8 @@ class Procedure(DomainResource):
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
         self.identifier: list['Identifier'] = identifier or []
-        self.instantiatesCanonical: str = instantiatesCanonical or []
-        self.instantiatesUri: str = instantiatesUri or []
+        self.instantiatesCanonical: list[str] = instantiatesCanonical or []
+        self.instantiatesUri: list[str] = instantiatesUri or []
         self.basedOn: list['Reference'] = basedOn or []
         self.partOf: list['Reference'] = partOf or []
         self.status: str = status 
@@ -237,8 +237,8 @@ class Procedure(DomainResource):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)

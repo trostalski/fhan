@@ -1,34 +1,34 @@
 """
 Generated class for ClinicalImpression. 
-Time: 2023-09-25 16:30:45
+Time: 2023-09-27 15:54:17
 """
 from importlib import import_module
 import inspect
 
-from fhan.models.R4.Identifier import *
+from fhan.models.R4.BackboneElement import *
 from fhan.models.R4.Meta import *
 from fhan.models.R4.Annotation import *
-from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Period import *
-from fhan.models.R4.Extension import *
-from fhan.models.R4.Reference import *
-from fhan.models.R4.BackboneElement import *
 from fhan.models.R4.Resource import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Extension import *
 from fhan.models.R4.Narrative import *
+from fhan.models.R4.Reference import *
 from fhan.models.R4.DomainResource import *
 
 
     
     
 
-class Investigation(ModelBase):
+class Investigation(BaseModel):
     """ One or more sets of investigations (signs, symptoms, etc.). The actual grouping of investigations varies greatly depending on the type and context of the assessment. These investigations may include data generated during the assessment process, or data previously generated and recorded that is pertinent to the outcomes.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param 'CodeableConcept' code: A name/code for the set
-    :param list['Reference'] item: Record of a specific investigation
+    :param 'Reference' item: Record of a specific investigation
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  code: 'CodeableConcept' = None,  item: list['Reference'] = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  code: 'CodeableConcept' = None,  item: 'Reference' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -52,8 +52,8 @@ class Investigation(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -77,15 +77,15 @@ class Investigation(ModelBase):
     
     
 
-class Finding(ModelBase):
+class Finding(BaseModel):
     """ Specific findings or diagnoses that were considered likely or relevant to ongoing treatment.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param 'CodeableConcept' itemCodeableConcept: What was found
     :param 'Reference' itemReference: What was found
     :param str basis: Which investigations support finding
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  itemCodeableConcept: 'CodeableConcept' = None,  itemReference: 'Reference' = None,  basis: str = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  itemCodeableConcept: 'CodeableConcept' = None,  itemReference: 'Reference' = None,  basis: str = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -110,8 +110,8 @@ class Finding(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -139,10 +139,10 @@ class ClinicalImpression(DomainResource):
     :param str implicitRules: A set of rules under which this content was created
     :param str language: Language of the resource content
     :param 'Narrative' text: Text summary of the resource, for human interpretation
-    :param list['Resource'] contained: Contained, inline Resources
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored
-    :param list['Identifier'] identifier: Business identifier
+    :param 'Resource' contained: Contained, inline Resources
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored
+    :param 'Identifier' identifier: Business identifier
     :param str status: in-progress | completed | entered-in-error
     :param 'CodeableConcept' statusReason: Reason for current status
     :param 'CodeableConcept' code: Kind of assessment performed
@@ -154,17 +154,17 @@ class ClinicalImpression(DomainResource):
     :param str date: When the assessment was documented
     :param 'Reference' assessor: The clinician performing the assessment
     :param 'Reference' previous: Reference to last assessment
-    :param list['Reference'] problem: Relevant impressions of patient state
-    :param list['Investigation'] investigation: One or more sets of investigations (signs, symptoms, etc.)
+    :param 'Reference' problem: Relevant impressions of patient state
+    :param 'Investigation' investigation: One or more sets of investigations (signs, symptoms, etc.)
     :param str protocol: Clinical Protocol followed
     :param str summary: Summary of the assessment
-    :param list['Finding'] finding: Possible or likely findings and diagnoses
-    :param list['CodeableConcept'] prognosisCodeableConcept: Estimate of likely outcome
-    :param list['Reference'] prognosisReference: RiskAssessment expressing likely outcome
-    :param list['Reference'] supportingInfo: Information supporting the clinical impression
-    :param list['Annotation'] note: Comments made about the ClinicalImpression
+    :param 'Finding' finding: Possible or likely findings and diagnoses
+    :param 'CodeableConcept' prognosisCodeableConcept: Estimate of likely outcome
+    :param 'Reference' prognosisReference: RiskAssessment expressing likely outcome
+    :param 'Reference' supportingInfo: Information supporting the clinical impression
+    :param 'Annotation' note: Comments made about the ClinicalImpression
     """
-    def __init__(self, resourceType: str = "ClinicalImpression",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  identifier: list['Identifier'] = None,  status: str = None,  statusReason: 'CodeableConcept' = None,  code: 'CodeableConcept' = None,  description: str = None,  subject: 'Reference' = None,  encounter: 'Reference' = None,  effectiveDateTime: str = None,  effectivePeriod: 'Period' = None,  date: str = None,  assessor: 'Reference' = None,  previous: 'Reference' = None,  problem: list['Reference'] = None,  investigation: list['Investigation'] = None,  protocol: str = None,  summary: str = None,  finding: list['Finding'] = None,  prognosisCodeableConcept: list['CodeableConcept'] = None,  prognosisReference: list['Reference'] = None,  supportingInfo: list['Reference'] = None,  note: list['Annotation'] = None, ):
+    def __init__(self, resourceType: str = "ClinicalImpression",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: 'Resource' = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  identifier: 'Identifier' = None,  status: str = None,  statusReason: 'CodeableConcept' = None,  code: 'CodeableConcept' = None,  description: str = None,  subject: 'Reference' = None,  encounter: 'Reference' = None,  effectiveDateTime: str = None,  effectivePeriod: 'Period' = None,  date: str = None,  assessor: 'Reference' = None,  previous: 'Reference' = None,  problem: 'Reference' = None,  investigation: 'Investigation' = None,  protocol: str = None,  summary: str = None,  finding: 'Finding' = None,  prognosisCodeableConcept: 'CodeableConcept' = None,  prognosisReference: 'Reference' = None,  supportingInfo: 'Reference' = None,  note: 'Annotation' = None, ):
         self.resourceType: str = resourceType or "ClinicalImpression"
         self.id: str = id 
         self.meta: 'Meta' = meta 
@@ -188,7 +188,7 @@ class ClinicalImpression(DomainResource):
         self.previous: 'Reference' = previous 
         self.problem: list['Reference'] = problem or []
         self.investigation: list['Investigation'] = investigation or []
-        self.protocol: str = protocol or []
+        self.protocol: list[str] = protocol or []
         self.summary: str = summary 
         self.finding: list['Finding'] = finding or []
         self.prognosisCodeableConcept: list['CodeableConcept'] = prognosisCodeableConcept or []
@@ -213,8 +213,8 @@ class ClinicalImpression(DomainResource):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)

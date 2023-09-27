@@ -1,22 +1,22 @@
 """
 Generated class for Range. 
-Time: 2023-09-25 16:30:45
+Time: 2023-09-27 15:54:17
 """
 from importlib import import_module
 import inspect
 
 from fhan.models.R4.Quantity import *
 from fhan.models.R4.Extension import *
-from fhan.models.generator_models import ModelBase
+from fhan.models.generator_models import BaseModel
 
-class Range(ModelBase):
+class Range(BaseModel):
     """ Base StructureDefinition for Range Type: A set of ordered Quantities defined by a low and high limit.
     :param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
+    :param 'Extension' extension: Additional content defined by implementations
     :param 'Quantity' low: Low limit
     :param 'Quantity' high: High limit
     """
-    def __init__(self, resourceType: str = "Range",  id: str = None,  extension: list['Extension'] = None,  low: 'Quantity' = None,  high: 'Quantity' = None, ):
+    def __init__(self, resourceType: str = "Range",  id: str = None,  extension: 'Extension' = None,  low: 'Quantity' = None,  high: 'Quantity' = None, ):
         self.resourceType: str = resourceType or "Range"
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
@@ -40,8 +40,8 @@ class Range(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)

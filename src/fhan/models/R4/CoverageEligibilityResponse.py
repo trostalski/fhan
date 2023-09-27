@@ -1,20 +1,20 @@
 """
 Generated class for CoverageEligibilityResponse. 
-Time: 2023-09-25 16:30:45
+Time: 2023-09-27 15:54:17
 """
 from importlib import import_module
 import inspect
 
-from fhan.models.R4.Identifier import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Period import *
-from fhan.models.R4.Money import *
-from fhan.models.R4.Extension import *
-from fhan.models.R4.Reference import *
 from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Meta import *
+from fhan.models.R4.Money import *
+from fhan.models.R4.Period import *
 from fhan.models.R4.Resource import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Extension import *
 from fhan.models.R4.Narrative import *
+from fhan.models.R4.Reference import *
 from fhan.models.R4.DomainResource import *
 
 
@@ -25,10 +25,10 @@ from fhan.models.R4.DomainResource import *
     
     
 
-class Benefit(ModelBase):
+class Benefit(BaseModel):
     """ Benefits used to date.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param 'CodeableConcept' type: Benefit classification
     :param int allowedUnsignedInt: Benefits allowed
     :param str allowedString: Benefits allowed
@@ -37,7 +37,7 @@ class Benefit(ModelBase):
     :param str usedString: Benefits used
     :param 'Money' usedMoney: Benefits used
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  type: 'CodeableConcept' = None,  allowedUnsignedInt: int = None,  allowedString: str = None,  allowedMoney: 'Money' = None,  usedUnsignedInt: int = None,  usedString: str = None,  usedMoney: 'Money' = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  type: 'CodeableConcept' = None,  allowedUnsignedInt: int = None,  allowedString: str = None,  allowedMoney: 'Money' = None,  usedUnsignedInt: int = None,  usedString: str = None,  usedMoney: 'Money' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -66,8 +66,8 @@ class Benefit(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -92,13 +92,13 @@ class Benefit(ModelBase):
     
     
 
-class Item(ModelBase):
+class Item(BaseModel):
     """ Benefits and optionally current balances, and authorization details by category or service.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param 'CodeableConcept' category: Benefit classification
     :param 'CodeableConcept' productOrService: Billing, service, product, or drug code
-    :param list['CodeableConcept'] modifier: Product or service billing modifiers
+    :param 'CodeableConcept' modifier: Product or service billing modifiers
     :param 'Reference' provider: Performing practitioner
     :param bool excluded: Excluded from the plan
     :param str name: Short name for the benefit
@@ -106,12 +106,12 @@ class Item(ModelBase):
     :param 'CodeableConcept' network: In or out of network
     :param 'CodeableConcept' unit: Individual or family
     :param 'CodeableConcept' term: Annual or lifetime
-    :param list['Benefit'] benefit: Benefit Summary
+    :param 'Benefit' benefit: Benefit Summary
     :param bool authorizationRequired: Authorization required flag
-    :param list['CodeableConcept'] authorizationSupporting: Type of required supporting materials
+    :param 'CodeableConcept' authorizationSupporting: Type of required supporting materials
     :param str authorizationUrl: Preauthorization requirements endpoint
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  category: 'CodeableConcept' = None,  productOrService: 'CodeableConcept' = None,  modifier: list['CodeableConcept'] = None,  provider: 'Reference' = None,  excluded: bool = None,  name: str = None,  description: str = None,  network: 'CodeableConcept' = None,  unit: 'CodeableConcept' = None,  term: 'CodeableConcept' = None,  benefit: list['Benefit'] = None,  authorizationRequired: bool = None,  authorizationSupporting: list['CodeableConcept'] = None,  authorizationUrl: str = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  category: 'CodeableConcept' = None,  productOrService: 'CodeableConcept' = None,  modifier: 'CodeableConcept' = None,  provider: 'Reference' = None,  excluded: bool = None,  name: str = None,  description: str = None,  network: 'CodeableConcept' = None,  unit: 'CodeableConcept' = None,  term: 'CodeableConcept' = None,  benefit: 'Benefit' = None,  authorizationRequired: bool = None,  authorizationSupporting: 'CodeableConcept' = None,  authorizationUrl: str = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -147,8 +147,8 @@ class Item(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -173,16 +173,16 @@ class Item(ModelBase):
     
     
 
-class Insurance(ModelBase):
+class Insurance(BaseModel):
     """ Financial instruments for reimbursement for the health care products and services.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param 'Reference' coverage: Insurance information
     :param bool inforce: Coverage inforce indicator
     :param 'Period' benefitPeriod: When the benefits are applicable
-    :param list['Item'] item: Benefits and authorization details
+    :param 'Item' item: Benefits and authorization details
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  coverage: 'Reference' = None,  inforce: bool = None,  benefitPeriod: 'Period' = None,  item: list['Item'] = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  coverage: 'Reference' = None,  inforce: bool = None,  benefitPeriod: 'Period' = None,  item: 'Item' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -208,8 +208,8 @@ class Insurance(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -233,13 +233,13 @@ class Insurance(ModelBase):
     
     
 
-class Error(ModelBase):
+class Error(BaseModel):
     """ Errors encountered during the processing of the request.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param 'CodeableConcept' code: Error code detailing processing issues
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  code: 'CodeableConcept' = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  code: 'CodeableConcept' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -262,8 +262,8 @@ class Error(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -291,10 +291,10 @@ class CoverageEligibilityResponse(DomainResource):
     :param str implicitRules: A set of rules under which this content was created
     :param str language: Language of the resource content
     :param 'Narrative' text: Text summary of the resource, for human interpretation
-    :param list['Resource'] contained: Contained, inline Resources
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored
-    :param list['Identifier'] identifier: Business Identifier for coverage eligiblity request
+    :param 'Resource' contained: Contained, inline Resources
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored
+    :param 'Identifier' identifier: Business Identifier for coverage eligiblity request
     :param str status: active | cancelled | draft | entered-in-error
     :param str purpose: auth-requirements | benefits | discovery | validation
     :param 'Reference' patient: Intended recipient of products and services
@@ -306,12 +306,12 @@ class CoverageEligibilityResponse(DomainResource):
     :param str outcome: queued | complete | error | partial
     :param str disposition: Disposition Message
     :param 'Reference' insurer: Coverage issuer
-    :param list['Insurance'] insurance: Patient insurance information
+    :param 'Insurance' insurance: Patient insurance information
     :param str preAuthRef: Preauthorization reference
     :param 'CodeableConcept' form: Printed form identifier
-    :param list['Error'] error: Processing errors
+    :param 'Error' error: Processing errors
     """
-    def __init__(self, resourceType: str = "CoverageEligibilityResponse",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  identifier: list['Identifier'] = None,  status: str = None,  purpose: str = None,  patient: 'Reference' = None,  servicedDate: str = None,  servicedPeriod: 'Period' = None,  created: str = None,  requestor: 'Reference' = None,  request: 'Reference' = None,  outcome: str = None,  disposition: str = None,  insurer: 'Reference' = None,  insurance: list['Insurance'] = None,  preAuthRef: str = None,  form: 'CodeableConcept' = None,  error: list['Error'] = None, ):
+    def __init__(self, resourceType: str = "CoverageEligibilityResponse",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: 'Resource' = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  identifier: 'Identifier' = None,  status: str = None,  purpose: str = None,  patient: 'Reference' = None,  servicedDate: str = None,  servicedPeriod: 'Period' = None,  created: str = None,  requestor: 'Reference' = None,  request: 'Reference' = None,  outcome: str = None,  disposition: str = None,  insurer: 'Reference' = None,  insurance: 'Insurance' = None,  preAuthRef: str = None,  form: 'CodeableConcept' = None,  error: 'Error' = None, ):
         self.resourceType: str = resourceType or "CoverageEligibilityResponse"
         self.id: str = id 
         self.meta: 'Meta' = meta 
@@ -323,7 +323,7 @@ class CoverageEligibilityResponse(DomainResource):
         self.modifierExtension: list['Extension'] = modifierExtension or []
         self.identifier: list['Identifier'] = identifier or []
         self.status: str = status 
-        self.purpose: str = purpose or []
+        self.purpose: list[str] = purpose or []
         self.patient: 'Reference' = patient 
         self.servicedDate: str = servicedDate 
         self.servicedPeriod: 'Period' = servicedPeriod 
@@ -355,8 +355,8 @@ class CoverageEligibilityResponse(DomainResource):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)

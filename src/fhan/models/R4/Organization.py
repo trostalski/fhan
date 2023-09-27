@@ -1,37 +1,37 @@
 """
 Generated class for Organization. 
-Time: 2023-09-25 16:30:45
+Time: 2023-09-27 15:54:17
 """
 from importlib import import_module
 import inspect
 
-from fhan.models.R4.ContactPoint import *
-from fhan.models.R4.Identifier import *
+from fhan.models.R4.BackboneElement import *
 from fhan.models.R4.Meta import *
 from fhan.models.R4.HumanName import *
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Address import *
-from fhan.models.R4.Extension import *
-from fhan.models.R4.Reference import *
-from fhan.models.R4.BackboneElement import *
 from fhan.models.R4.Resource import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.ContactPoint import *
+from fhan.models.R4.Extension import *
 from fhan.models.R4.Narrative import *
+from fhan.models.R4.Address import *
+from fhan.models.R4.Reference import *
 from fhan.models.R4.DomainResource import *
 
 
     
     
 
-class Contact(ModelBase):
+class Contact(BaseModel):
     """ Contact for the organization for a certain purpose.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param 'CodeableConcept' purpose: The type of contact
     :param 'HumanName' name: A name associated with the contact
-    :param list['ContactPoint'] telecom: Contact details (telephone, email, etc.)  for a contact
+    :param 'ContactPoint' telecom: Contact details (telephone, email, etc.)  for a contact
     :param 'Address' address: Visiting or postal addresses for the contact
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  purpose: 'CodeableConcept' = None,  name: 'HumanName' = None,  telecom: list['ContactPoint'] = None,  address: 'Address' = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  purpose: 'CodeableConcept' = None,  name: 'HumanName' = None,  telecom: 'ContactPoint' = None,  address: 'Address' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -57,8 +57,8 @@ class Contact(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -86,21 +86,21 @@ class Organization(DomainResource):
     :param str implicitRules: A set of rules under which this content was created
     :param str language: Language of the resource content
     :param 'Narrative' text: Text summary of the resource, for human interpretation
-    :param list['Resource'] contained: Contained, inline Resources
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored
-    :param list['Identifier'] identifier: Identifies this organization  across multiple systems
+    :param 'Resource' contained: Contained, inline Resources
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored
+    :param 'Identifier' identifier: Identifies this organization  across multiple systems
     :param bool active: Whether the organization's record is still in active use
-    :param list['CodeableConcept'] type: Kind of organization
+    :param 'CodeableConcept' type: Kind of organization
     :param str name: Name used for the organization
     :param str alias: A list of alternate names that the organization is known as, or was known as in the past
-    :param list['ContactPoint'] telecom: A contact detail for the organization
-    :param list['Address'] address: An address for the organization
+    :param 'ContactPoint' telecom: A contact detail for the organization
+    :param 'Address' address: An address for the organization
     :param 'Reference' partOf: The organization of which this organization forms a part
-    :param list['Contact'] contact: Contact for the organization for a certain purpose
-    :param list['Reference'] endpoint: Technical endpoints providing access to services operated for the organization
+    :param 'Contact' contact: Contact for the organization for a certain purpose
+    :param 'Reference' endpoint: Technical endpoints providing access to services operated for the organization
     """
-    def __init__(self, resourceType: str = "Organization",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  identifier: list['Identifier'] = None,  active: bool = None,  type: list['CodeableConcept'] = None,  name: str = None,  alias: str = None,  telecom: list['ContactPoint'] = None,  address: list['Address'] = None,  partOf: 'Reference' = None,  contact: list['Contact'] = None,  endpoint: list['Reference'] = None, ):
+    def __init__(self, resourceType: str = "Organization",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: 'Resource' = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  identifier: 'Identifier' = None,  active: bool = None,  type: 'CodeableConcept' = None,  name: str = None,  alias: str = None,  telecom: 'ContactPoint' = None,  address: 'Address' = None,  partOf: 'Reference' = None,  contact: 'Contact' = None,  endpoint: 'Reference' = None, ):
         self.resourceType: str = resourceType or "Organization"
         self.id: str = id 
         self.meta: 'Meta' = meta 
@@ -114,7 +114,7 @@ class Organization(DomainResource):
         self.active: bool = active 
         self.type: list['CodeableConcept'] = type or []
         self.name: str = name 
-        self.alias: str = alias or []
+        self.alias: list[str] = alias or []
         self.telecom: list['ContactPoint'] = telecom or []
         self.address: list['Address'] = address or []
         self.partOf: 'Reference' = partOf 
@@ -138,8 +138,8 @@ class Organization(DomainResource):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)

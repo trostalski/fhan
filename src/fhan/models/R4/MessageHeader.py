@@ -1,35 +1,35 @@
 """
 Generated class for MessageHeader. 
-Time: 2023-09-25 16:30:45
+Time: 2023-09-27 15:54:17
 """
 from importlib import import_module
 import inspect
 
-from fhan.models.R4.ContactPoint import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Coding import *
-from fhan.models.R4.Extension import *
-from fhan.models.R4.Reference import *
 from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Meta import *
 from fhan.models.R4.Resource import *
+from fhan.models.R4.Coding import *
+from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.ContactPoint import *
+from fhan.models.R4.Extension import *
 from fhan.models.R4.Narrative import *
+from fhan.models.R4.Reference import *
 from fhan.models.R4.DomainResource import *
 
 
     
     
 
-class Destination(ModelBase):
+class Destination(BaseModel):
     """ The destination application which the message is intended for.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str name: Name of system
     :param 'Reference' target: Particular delivery destination within the destination
     :param str endpoint: Actual destination address or id
     :param 'Reference' receiver: Intended "real-world" recipient for the data
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  name: str = None,  target: 'Reference' = None,  endpoint: str = None,  receiver: 'Reference' = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  name: str = None,  target: 'Reference' = None,  endpoint: str = None,  receiver: 'Reference' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -55,8 +55,8 @@ class Destination(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -80,17 +80,17 @@ class Destination(ModelBase):
     
     
 
-class Source(ModelBase):
+class Source(BaseModel):
     """ The source application from which this message originated.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str name: Name of system
     :param str software: Name of software running the system
     :param str version: Version of software running
     :param 'ContactPoint' contact: Human contact for problems
     :param str endpoint: Actual message source address or id
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  name: str = None,  software: str = None,  version: str = None,  contact: 'ContactPoint' = None,  endpoint: str = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  name: str = None,  software: str = None,  version: str = None,  contact: 'ContactPoint' = None,  endpoint: str = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -117,8 +117,8 @@ class Source(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -142,15 +142,15 @@ class Source(ModelBase):
     
     
 
-class Response(ModelBase):
+class Response(BaseModel):
     """ Information about the message that this message is a response to.  Only present if this message is a response.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str identifier: Id of original message
     :param str code: ok | transient-error | fatal-error
     :param 'Reference' details: Specific list of hints/warnings/errors
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  identifier: str = None,  code: str = None,  details: 'Reference' = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  identifier: str = None,  code: str = None,  details: 'Reference' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -175,8 +175,8 @@ class Response(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -204,12 +204,12 @@ class MessageHeader(DomainResource):
     :param str implicitRules: A set of rules under which this content was created
     :param str language: Language of the resource content
     :param 'Narrative' text: Text summary of the resource, for human interpretation
-    :param list['Resource'] contained: Contained, inline Resources
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored
+    :param 'Resource' contained: Contained, inline Resources
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored
     :param 'Coding' eventCoding: Code for the event this message represents or link to event definition
     :param str eventUri: Code for the event this message represents or link to event definition
-    :param list['Destination'] destination: Message destination application(s)
+    :param 'Destination' destination: Message destination application(s)
     :param 'Reference' sender: Real world sender of the message
     :param 'Reference' enterer: The source of the data entry
     :param 'Reference' author: The source of the decision
@@ -217,10 +217,10 @@ class MessageHeader(DomainResource):
     :param 'Reference' responsible: Final responsibility for event
     :param 'CodeableConcept' reason: Cause of event
     :param 'Response' response: If this is a reply to prior message
-    :param list['Reference'] focus: The actual content of the message
+    :param 'Reference' focus: The actual content of the message
     :param str definition: Link to the definition for this message
     """
-    def __init__(self, resourceType: str = "MessageHeader",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  eventCoding: 'Coding' = None,  eventUri: str = None,  destination: list['Destination'] = None,  sender: 'Reference' = None,  enterer: 'Reference' = None,  author: 'Reference' = None,  source: 'Source' = None,  responsible: 'Reference' = None,  reason: 'CodeableConcept' = None,  response: 'Response' = None,  focus: list['Reference'] = None,  definition: str = None, ):
+    def __init__(self, resourceType: str = "MessageHeader",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: 'Resource' = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  eventCoding: 'Coding' = None,  eventUri: str = None,  destination: 'Destination' = None,  sender: 'Reference' = None,  enterer: 'Reference' = None,  author: 'Reference' = None,  source: 'Source' = None,  responsible: 'Reference' = None,  reason: 'CodeableConcept' = None,  response: 'Response' = None,  focus: 'Reference' = None,  definition: str = None, ):
         self.resourceType: str = resourceType or "MessageHeader"
         self.id: str = id 
         self.meta: 'Meta' = meta 
@@ -260,8 +260,8 @@ class MessageHeader(DomainResource):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)

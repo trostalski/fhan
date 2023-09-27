@@ -1,34 +1,34 @@
 """
 Generated class for Invoice. 
-Time: 2023-09-25 16:30:45
+Time: 2023-09-27 15:54:17
 """
 from importlib import import_module
 import inspect
 
-from fhan.models.R4.Identifier import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Annotation import *
-from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Money import *
-from fhan.models.R4.Extension import *
-from fhan.models.R4.Reference import *
 from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Meta import *
+from fhan.models.R4.Money import *
+from fhan.models.R4.Annotation import *
 from fhan.models.R4.Resource import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Extension import *
 from fhan.models.R4.Narrative import *
+from fhan.models.R4.Reference import *
 from fhan.models.R4.DomainResource import *
 
 
     
     
 
-class Participant(ModelBase):
+class Participant(BaseModel):
     """ Indicates who or what performed or participated in the charged service.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param 'CodeableConcept' role: Type of involvement in creation of this Invoice
     :param 'Reference' actor: Individual who was involved
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  role: 'CodeableConcept' = None,  actor: 'Reference' = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  role: 'CodeableConcept' = None,  actor: 'Reference' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -52,8 +52,8 @@ class Participant(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -79,16 +79,16 @@ class Participant(ModelBase):
     
     
 
-class PriceComponent(ModelBase):
+class PriceComponent(BaseModel):
     """ The price for a ChargeItem may be calculated as a base price with surcharges/deductions that apply in certain conditions. A ChargeItemDefinition resource that defines the prices, factors and conditions that apply to a billing code is currently under development. The priceComponent element can be used to offer transparency to the recipient of the Invoice as to how the prices have been calculated.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str type: base | surcharge | deduction | discount | tax | informational
     :param 'CodeableConcept' code: Code identifying the specific component
     :param float factor: Factor used for calculating this component
     :param 'Money' amount: Monetary amount associated with this component
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  type: str = None,  code: 'CodeableConcept' = None,  factor: float = None,  amount: 'Money' = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  type: str = None,  code: 'CodeableConcept' = None,  factor: float = None,  amount: 'Money' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -114,8 +114,8 @@ class PriceComponent(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -139,16 +139,16 @@ class PriceComponent(ModelBase):
     
     
 
-class TotalPriceComponent(ModelBase):
+class TotalPriceComponent(BaseModel):
     """ The price for a ChargeItem may be calculated as a base price with surcharges/deductions that apply in certain conditions. A ChargeItemDefinition resource that defines the prices, factors and conditions that apply to a billing code is currently under development. The priceComponent element can be used to offer transparency to the recipient of the Invoice as to how the prices have been calculated.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str type: base | surcharge | deduction | discount | tax | informational
     :param 'CodeableConcept' code: Code identifying the specific component
     :param float factor: Factor used for calculating this component
     :param 'Money' amount: Monetary amount associated with this component
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  type: str = None,  code: 'CodeableConcept' = None,  factor: float = None,  amount: 'Money' = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  type: str = None,  code: 'CodeableConcept' = None,  factor: float = None,  amount: 'Money' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -174,8 +174,8 @@ class TotalPriceComponent(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -200,17 +200,17 @@ class TotalPriceComponent(ModelBase):
     
     
 
-class LineItem(ModelBase):
+class LineItem(BaseModel):
     """ Each line item represents one charge for goods and services rendered. Details such as date, code and amount are found in the referenced ChargeItem resource.:param str id: Unique id for inter-element referencing
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param int sequence: Sequence number of line item
     :param 'Reference' chargeItemReference: Reference to ChargeItem containing details of this line item or an inline billing code
     :param 'CodeableConcept' chargeItemCodeableConcept: Reference to ChargeItem containing details of this line item or an inline billing code
-    :param list['PriceComponent'] priceComponent: Components of total line item price
-    :param list['TotalPriceComponent'] totalPriceComponent: Components of total line item price
+    :param 'PriceComponent' priceComponent: Components of total line item price
+    :param 'TotalPriceComponent' totalPriceComponent: Components of total line item price
     """
-    def __init__(self,  id: str = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  sequence: int = None,  chargeItemReference: 'Reference' = None,  chargeItemCodeableConcept: 'CodeableConcept' = None,  priceComponent: list['PriceComponent'] = None,  totalPriceComponent: list['TotalPriceComponent'] = None, ):
+    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  sequence: int = None,  chargeItemReference: 'Reference' = None,  chargeItemCodeableConcept: 'CodeableConcept' = None,  priceComponent: 'PriceComponent' = None,  totalPriceComponent: 'TotalPriceComponent' = None, ):
         self.id: str = id 
         self.extension: list['Extension'] = extension or []
         self.modifierExtension: list['Extension'] = modifierExtension or []
@@ -237,8 +237,8 @@ class LineItem(ModelBase):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)
@@ -266,26 +266,26 @@ class Invoice(DomainResource):
     :param str implicitRules: A set of rules under which this content was created
     :param str language: Language of the resource content
     :param 'Narrative' text: Text summary of the resource, for human interpretation
-    :param list['Resource'] contained: Contained, inline Resources
-    :param list['Extension'] extension: Additional content defined by implementations
-    :param list['Extension'] modifierExtension: Extensions that cannot be ignored
-    :param list['Identifier'] identifier: Business Identifier for item
+    :param 'Resource' contained: Contained, inline Resources
+    :param 'Extension' extension: Additional content defined by implementations
+    :param 'Extension' modifierExtension: Extensions that cannot be ignored
+    :param 'Identifier' identifier: Business Identifier for item
     :param str status: draft | issued | balanced | cancelled | entered-in-error
     :param str cancelledReason: Reason for cancellation of this Invoice
     :param 'CodeableConcept' type: Type of Invoice
     :param 'Reference' subject: Recipient(s) of goods and services
     :param 'Reference' recipient: Recipient of this invoice
     :param str date: Invoice date / posting date
-    :param list['Participant'] participant: Participant in creation of this Invoice
+    :param 'Participant' participant: Participant in creation of this Invoice
     :param 'Reference' issuer: Issuing Organization of Invoice
     :param 'Reference' account: Account that is being balanced
-    :param list['LineItem'] lineItem: Line items of this Invoice
+    :param 'LineItem' lineItem: Line items of this Invoice
     :param 'Money' totalNet: Net total of this Invoice
     :param 'Money' totalGross: Gross total of this Invoice
     :param str paymentTerms: Payment details
-    :param list['Annotation'] note: Comments made about the invoice
+    :param 'Annotation' note: Comments made about the invoice
     """
-    def __init__(self, resourceType: str = "Invoice",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: list['Resource'] = None,  extension: list['Extension'] = None,  modifierExtension: list['Extension'] = None,  identifier: list['Identifier'] = None,  status: str = None,  cancelledReason: str = None,  type: 'CodeableConcept' = None,  subject: 'Reference' = None,  recipient: 'Reference' = None,  date: str = None,  participant: list['Participant'] = None,  issuer: 'Reference' = None,  account: 'Reference' = None,  lineItem: list['LineItem'] = None,  totalNet: 'Money' = None,  totalGross: 'Money' = None,  paymentTerms: str = None,  note: list['Annotation'] = None, ):
+    def __init__(self, resourceType: str = "Invoice",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: 'Resource' = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  identifier: 'Identifier' = None,  status: str = None,  cancelledReason: str = None,  type: 'CodeableConcept' = None,  subject: 'Reference' = None,  recipient: 'Reference' = None,  date: str = None,  participant: 'Participant' = None,  issuer: 'Reference' = None,  account: 'Reference' = None,  lineItem: 'LineItem' = None,  totalNet: 'Money' = None,  totalGross: 'Money' = None,  paymentTerms: str = None,  note: 'Annotation' = None, ):
         self.resourceType: str = resourceType or "Invoice"
         self.id: str = id 
         self.meta: 'Meta' = meta 
@@ -328,8 +328,8 @@ class Invoice(DomainResource):
                     model_class = getattr(module, class_name)
                 except ModuleNotFoundError:
                     continue
-                # Check if the class is a subclass of ModelBase
-                if inspect.isclass(model_class) and issubclass(model_class, ModelBase):
+                # Check if the class is a subclass of BaseModel
+                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
                     # Recursively create an instance of the nested class
                     nested_instance = model_class.from_dict(value)
                     setattr(instance, key, nested_instance)

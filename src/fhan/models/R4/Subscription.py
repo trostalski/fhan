@@ -1,16 +1,13 @@
 """
 Generated class for Subscription. 
-Time: 2023-09-27 15:54:17
+Time: 2023-09-27 19:27:05
 """
-from importlib import import_module
-import inspect
-
+from fhan.models.R4.Extension import *
 from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.ContactPoint import *
 from fhan.models.R4.Meta import *
 from fhan.models.R4.Resource import *
-from fhan.models.R4.ContactPoint import *
-from fhan.models.R4.Extension import *
-from fhan.models.R4.Narrative import *
 from fhan.models.R4.DomainResource import *
 
 
@@ -19,131 +16,123 @@ from fhan.models.R4.DomainResource import *
 
 class Channel(BaseModel):
     """ Details where to send notifications when resources are received that meet the criteria.:param str id: Unique id for inter-element referencing
-    :param 'Extension' extension: Additional content defined by implementations
-    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param Extension extension: Additional content defined by implementations
+    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str type: rest-hook | websocket | email | sms | message
     :param str endpoint: Where the channel points to
     :param str payload: MIME type to send, or omit for no payload
     :param str header: Usage depends on the channel type
     """
-    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  type: str = None,  endpoint: str = None,  payload: str = None,  header: str = None, ):
-        self.id: str = id 
-        self.extension: list['Extension'] = extension or []
-        self.modifierExtension: list['Extension'] = modifierExtension or []
-        self.type: str = type 
-        self.endpoint: str = endpoint 
-        self.payload: str = payload 
-        self.header: list[str] = header or []
+    property_class_info = {
+        
+        
+        "extension": {"class_name": "Extension", "is_contained": False},
+        
+        
+        "modifierExtension": {"class_name": "Extension", "is_contained": False},
+        
+        
+        
+        
+        
+        }
+    def __init__(self,  id:  'str'  = None,  extension:  list['Extension']  = None,  modifierExtension:  list['Extension']  = None,  type:  'str'  = None,  endpoint:  'str'  = None,  payload:  'str'  = None,  header:  list['str']  = None, ):
+        self.id = id 
+        self.extension = extension or []
+        self.modifierExtension = modifierExtension or []
+        self.type = type 
+        self.endpoint = endpoint 
+        self.payload = payload 
+        self.header = header or []
         
 
     @classmethod
-    def from_dict(cls, data: dict) -> "Channel":
-        """Create a model instance from a dict. The instance is recursively
-        created by importing the classes for complex fhir types."""
-        instance = cls()
-        for key, value in data.items():
-            # if value is dict try to create complex type
-            if isinstance(value, dict):
-                class_name = key[0].upper() + key[1:]
-                models_path = ".".join(cls.__module__.split(".")[:-1])
-                import_path = f"{models_path}.{class_name}"
-                try:
-                    module = import_module(import_path)
-                    model_class = getattr(module, class_name)
-                except ModuleNotFoundError:
-                    continue
-                # Check if the class is a subclass of BaseModel
-                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
-                    # Recursively create an instance of the nested class
-                    nested_instance = model_class.from_dict(value)
-                    setattr(instance, key, nested_instance)
-            # if value is list recursively create instances of the list items
-            elif isinstance(value, list):
-                setattr(
-                    instance,
-                    key,
-                    [
-                        cls.from_dict(item) if isinstance(item, dict) else item
-                        for item in value
-                    ],
-                )
-            # else set the value
-            else:
-                setattr(instance, key, value)
+    def from_dict(cls, data: dict) -> "Subscription":
+        return super().from_dict(data)
+    
+    @classmethod
+    def from_obj(self, obj: object) -> "Subscription":
+        return super().from_obj(obj)
 
-        return instance
+    def as_dict(self) -> dict:
+        return super().as_dict()
 
 
 class Subscription(DomainResource):
     """ The subscription resource is used to define a push-based subscription from a server to another system. Once a subscription is registered with the server, the server checks every resource that is created or updated, and if the resource matches the given criteria, it sends a message on the defined "channel" so that another system can take an appropriate action.
     :param str id: Logical id of this artifact
-    :param 'Meta' meta: Metadata about the resource
+    :param Meta meta: Metadata about the resource
     :param str implicitRules: A set of rules under which this content was created
     :param str language: Language of the resource content
-    :param 'Narrative' text: Text summary of the resource, for human interpretation
-    :param 'Resource' contained: Contained, inline Resources
-    :param 'Extension' extension: Additional content defined by implementations
-    :param 'Extension' modifierExtension: Extensions that cannot be ignored
+    :param Narrative text: Text summary of the resource, for human interpretation
+    :param Resource contained: Contained, inline Resources
+    :param Extension extension: Additional content defined by implementations
+    :param Extension modifierExtension: Extensions that cannot be ignored
     :param str status: requested | active | error | off
-    :param 'ContactPoint' contact: Contact details for source (e.g. troubleshooting)
+    :param ContactPoint contact: Contact details for source (e.g. troubleshooting)
     :param str end: When to automatically delete the subscription
     :param str reason: Description of why this subscription was created
     :param str criteria: Rule for server push
     :param str error: Latest error note
-    :param 'Channel' channel: The channel on which to report matches to the criteria
+    :param Channel channel: The channel on which to report matches to the criteria
     """
-    def __init__(self, resourceType: str = "Subscription",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: 'Resource' = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  status: str = None,  contact: 'ContactPoint' = None,  end: str = None,  reason: str = None,  criteria: str = None,  error: str = None,  channel: 'Channel' = None, ):
-        self.resourceType: str = resourceType or "Subscription"
-        self.id: str = id 
-        self.meta: 'Meta' = meta 
-        self.implicitRules: str = implicitRules 
-        self.language: str = language 
-        self.text: 'Narrative' = text 
-        self.contained: list['Resource'] = contained or []
-        self.extension: list['Extension'] = extension or []
-        self.modifierExtension: list['Extension'] = modifierExtension or []
-        self.status: str = status 
-        self.contact: list['ContactPoint'] = contact or []
-        self.end: str = end 
-        self.reason: str = reason 
-        self.criteria: str = criteria 
-        self.error: str = error 
-        self.channel: 'Channel' = channel 
+    property_class_info = {
+        
+        
+        "meta": {"class_name": "Meta", "is_contained": False},
+        
+        
+        
+        
+        "text": {"class_name": "Narrative", "is_contained": False},
+        
+        
+        "contained": {"class_name": "Resource", "is_contained": False},
+        
+        
+        "extension": {"class_name": "Extension", "is_contained": False},
+        
+        
+        "modifierExtension": {"class_name": "Extension", "is_contained": False},
+        
+        
+        
+        "contact": {"class_name": "ContactPoint", "is_contained": False},
+        
+        
+        
+        
+        
+        
+        "channel": {"class_name": "Channel", "is_contained": True},
+        
+        }
+    def __init__(self, resourceType: str = None,  id:  'str'  = None,  meta:  'Meta'  = None,  implicitRules:  'str'  = None,  language:  'str'  = None,  text:  'Narrative'  = None,  contained:  list['Resource']  = None,  extension:  list['Extension']  = None,  modifierExtension:  list['Extension']  = None,  status:  'str'  = None,  contact:  list['ContactPoint']  = None,  end:  'str'  = None,  reason:  'str'  = None,  criteria:  'str'  = None,  error:  'str'  = None,  channel:  'Channel'  = None, ):
+        self.resourceType = resourceType or "Subscription"
+        self.id = id 
+        self.meta = meta 
+        self.implicitRules = implicitRules 
+        self.language = language 
+        self.text = text 
+        self.contained = contained or []
+        self.extension = extension or []
+        self.modifierExtension = modifierExtension or []
+        self.status = status 
+        self.contact = contact or []
+        self.end = end 
+        self.reason = reason 
+        self.criteria = criteria 
+        self.error = error 
+        self.channel = channel 
         
 
     @classmethod
     def from_dict(cls, data: dict) -> "Subscription":
-        """Create a model instance from a dict. The instance is recursively
-        created by importing the classes for complex fhir types."""
-        instance = cls()
-        for key, value in data.items():
-            # if value is dict try to create complex type
-            if isinstance(value, dict):
-                class_name = key[0].upper() + key[1:]
-                models_path = ".".join(cls.__module__.split(".")[:-1])
-                import_path = f"{models_path}.{class_name}"
-                try:
-                    module = import_module(import_path)
-                    model_class = getattr(module, class_name)
-                except ModuleNotFoundError:
-                    continue
-                # Check if the class is a subclass of BaseModel
-                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
-                    # Recursively create an instance of the nested class
-                    nested_instance = model_class.from_dict(value)
-                    setattr(instance, key, nested_instance)
-            # if value is list recursively create instances of the list items
-            elif isinstance(value, list):
-                setattr(
-                    instance,
-                    key,
-                    [
-                        cls.from_dict(item) if isinstance(item, dict) else item
-                        for item in value
-                    ],
-                )
-            # else set the value
-            else:
-                setattr(instance, key, value)
+        return super().from_dict(data)
+    
+    @classmethod
+    def from_obj(self, obj: object) -> "Subscription":
+        return super().from_obj(obj)
 
-        return instance
+    def as_dict(self) -> dict:
+        return super().as_dict()

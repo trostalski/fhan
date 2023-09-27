@@ -1,3 +1,6 @@
+from importlib import import_module
+import inspect
+import json
 from urllib.parse import urlparse
 from enum import Enum
 import os
@@ -6,6 +9,7 @@ from fhan.core.data_types import PYTHON_KEYWORDS
 from fhan.core.data_types import get_python_type_for_primitive, is_primitive_type
 from fhan.core.utils.path_utils import (
     is_choice_path,
+    remove_n_parts_from_end,
     replace_choice_string,
     get_nth_part,
     is_root_path,
@@ -22,8 +26,86 @@ class StructureDefinitionKinds(Enum):
 class BaseModel:
     """Base class for all generated models."""
 
+    property_class_info = {}
+
+    def __init__(self):
+        pass
+
+    @classmethod
+    def from_dict(cls, data: dict):
+        """Create a model instance from a dict. The instance is recursively
+        created by importing the classes for complex FHIR types."""
+        instance = cls()
+        models_path = remove_n_parts_from_end(cls.__module__, 1)
+
+        def handle_dict_value(key: str, value: dict):
+            # Capitalize the class name if it's not
+            if key not in cls.property_class_info:
+                setattr(instance, key, value)
+                return
+            class_name = instance.property_class_info[key]["class_name"]
+            is_contained = cls.property_class_info[key]["is_contained"]
+            if is_contained:
+                module = import_module(cls.__module__)
+                model_class = getattr(module, class_name)
+            else:
+                import_path = f"{models_path}.{class_name}"
+                module = import_module(import_path)
+                model_class = getattr(module, class_name)
+            nested_instance = model_class.from_dict(value)
+            return nested_instance
+
+        for key, value in data.items():
+            if isinstance(value, dict):  # complex type
+                nested_instance = handle_dict_value(key, value)
+                setattr(instance, key, nested_instance)
+            elif isinstance(value, list):
+                for item in value:
+                    if isinstance(item, dict):  # complex type
+                        # mutating mutable object no need to reassign
+                        if key not in cls.property_class_info:
+                            if hasattr(instance, key):
+                                getattr(instance, key).append(item)
+                            else:
+                                setattr(instance, key, [item])
+                            continue
+                        nested_instance = handle_dict_value(key, item)
+                        getattr(instance, key).append(nested_instance)
+                    else:  # primitive type
+                        getattr(instance, key).append(item)
+            else:  # primitive type
+                setattr(instance, key, value)
+
+        return instance
+
+    @classmethod
+    def from_obj(cls, data):
+        """Creates a model instance from an object or a dictionary."""
+        if isinstance(data, dict):
+            return cls.from_dict(data)
+        elif hasattr(data, "as_dict") and callable(data.as_dict):
+            return cls.from_dict(data.as_dict())
+        else:
+            raise ValueError(
+                "Invalid input object. Must be a dictionary or an object with an 'as_dict' method."
+            )
+
     def __repr__(self) -> str:
-        return f"{self.__class__.__name__}({self.__dict__})"
+        return f"{self.__class__.__name__}({self.as_dict()})"
+
+    def as_dict(self):
+        # from https://stackoverflow.com/questions/7963762/what-is-the-most-economical-way-to-convert-nested-python-objects-to-dictionaries
+        def serialize(obj):
+            if isinstance(obj, BaseModel):
+                return obj.as_dict()
+            elif isinstance(obj, (list, tuple)):
+                return [serialize(item) for item in obj]
+            elif isinstance(obj, dict):
+                return {key: serialize(value) for key, value in obj.items()}
+            else:
+                return obj  # Handle basic types
+
+        return serialize(self.__dict__)
 
 
 class GeneratorElement:
@@ -35,9 +117,15 @@ class GeneratorElement:
         name: str,
         type: str,
         children: list["GeneratorElement"] = None,
+        is_contained: bool = False,
     ):
         children = children or []
         self._element = element_definition
+        # the element is defined by referencng another element this means we dont have to resolve
+        # created a new class if its a contained element (its created by the referenced element)
+        self.is_referencing = (
+            element_definition.get("contentReference", None) is not None
+        )
         self.id = element_definition["id"]
         self.type = type
         self.path: str = element_definition["path"]
@@ -46,6 +134,7 @@ class GeneratorElement:
         self.is_primitive = is_primitive_type(self.type)
         self.description = element_definition.get("definition", "")
         self.short = element_definition.get("short", "")
+        self.is_contained = is_contained
         self.python_type = (
             get_python_type_for_primitive(self.type) if self.is_primitive else None
         )
@@ -67,7 +156,7 @@ class GeneratorElement:
         if self.is_primitive:  # primitive with python type
             return self.python_type.__name__
         else:
-            return f"'{self.type}'"
+            return f"{self.type}"
 
     def __eq__(self, __value: "GeneratorElement") -> bool:
         """Compares two GeneratorElements by their path, type, name and id.
@@ -118,7 +207,12 @@ class GeneratorStructureDefinition:
     def dependencies(self):
         """Unique list of dependencies for this StructureDefinition. Used to generate
         the import statements for the generated class."""
-        complex_types = [e.type for e in self.generator_elements if not e.is_primitive]
+        complex_types = [
+            e.type
+            for e in self.generator_elements
+            if not e.is_primitive
+            and not e.is_referencing  # handled by the referenced element
+        ]
         # avoid circles
         complex_types = [t for t in complex_types if t != self.type]
         return list(set(complex_types))
@@ -147,7 +241,9 @@ class GeneratorStructureDefinition:
         if not types:
             element = self._resolve_missing_type(element_definition)
             if element:
-                element_definition.update(element)
+                # Merge element and keep valies from element_definition
+                # More info: https://stackoverflow.com/questions/38987/how-do-i-merge-two-dictionaries-in-a-single-expression-in-python
+                element_definition = element | element_definition
                 types = element_definition.get("type", [])
 
         for type_info in types:
@@ -210,6 +306,13 @@ def _filter_contained_elements(
             continue
         seen_elements.append(element)  # Add the element to the set
         if element.type == "BackboneElement" or element.type == "Element":
+            if element.is_referencing:
+                # The element is defined by referencing another element, the class
+                # for the contained element is created by the referenced element
+                element.type = _capitalize_first_letter(element.name)
+                element.is_contained = True
+                defined_generator_elements.append(element)
+                continue
             children = [
                 e
                 for e in elements
@@ -223,6 +326,7 @@ def _filter_contained_elements(
                 name=element.name,
                 type=_capitalize_first_letter(element.name),
                 children=children,
+                is_contained=True,
             )
             contained_generator_elements.append(contained_element)
             # Contained Element is now defined (type is known, itself), its children are not

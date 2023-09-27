@@ -13,7 +13,7 @@ CONFIG_FILE_NAME = "fhan.ini"
 @dataclass
 class BaseSettings:
     package_name = "fhan"
-    default_fhir_version = "R4"
+    fhir_version = "R4"
     supported_fhir_versions = ["R4", "R4B", "R5"]
     fhir_version_package_urls = {
         "R4": "https://hl7.org/fhir/R4/hl7.fhir.r4.core.tgz",

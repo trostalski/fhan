@@ -1,22 +1,19 @@
 """
 Generated class for ResearchStudy. 
-Time: 2023-09-27 15:54:17
+Time: 2023-09-27 19:27:05
 """
-from importlib import import_module
-import inspect
-
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Meta import *
 from fhan.models.R4.ContactDetail import *
-from fhan.models.R4.Annotation import *
-from fhan.models.R4.Period import *
-from fhan.models.R4.Resource import *
-from fhan.models.R4.Identifier import *
 from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.RelatedArtifact import *
 from fhan.models.R4.Extension import *
+from fhan.models.R4.Annotation import *
+from fhan.models.R4.BackboneElement import *
 from fhan.models.R4.Narrative import *
 from fhan.models.R4.Reference import *
+from fhan.models.R4.Meta import *
+from fhan.models.R4.RelatedArtifact import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.Resource import *
+from fhan.models.R4.Period import *
 from fhan.models.R4.DomainResource import *
 
 
@@ -25,57 +22,45 @@ from fhan.models.R4.DomainResource import *
 
 class Arm(BaseModel):
     """ Describes an expected sequence of events for one of the participants of a study.  E.g. Exposure to drug A, wash-out, exposure to drug B, wash-out, follow-up.:param str id: Unique id for inter-element referencing
-    :param 'Extension' extension: Additional content defined by implementations
-    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param Extension extension: Additional content defined by implementations
+    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str name: Label for study arm
-    :param 'CodeableConcept' type: Categorization of study arm
+    :param CodeableConcept type: Categorization of study arm
     :param str description: Short explanation of study path
     """
-    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  name: str = None,  type: 'CodeableConcept' = None,  description: str = None, ):
-        self.id: str = id 
-        self.extension: list['Extension'] = extension or []
-        self.modifierExtension: list['Extension'] = modifierExtension or []
-        self.name: str = name 
-        self.type: 'CodeableConcept' = type 
-        self.description: str = description 
+    property_class_info = {
+        
+        
+        "extension": {"class_name": "Extension", "is_contained": False},
+        
+        
+        "modifierExtension": {"class_name": "Extension", "is_contained": False},
+        
+        
+        
+        "type": {"class_name": "CodeableConcept", "is_contained": False},
+        
+        
+        }
+    def __init__(self,  id:  'str'  = None,  extension:  list['Extension']  = None,  modifierExtension:  list['Extension']  = None,  name:  'str'  = None,  type:  'CodeableConcept'  = None,  description:  'str'  = None, ):
+        self.id = id 
+        self.extension = extension or []
+        self.modifierExtension = modifierExtension or []
+        self.name = name 
+        self.type = type 
+        self.description = description 
         
 
     @classmethod
-    def from_dict(cls, data: dict) -> "Arm":
-        """Create a model instance from a dict. The instance is recursively
-        created by importing the classes for complex fhir types."""
-        instance = cls()
-        for key, value in data.items():
-            # if value is dict try to create complex type
-            if isinstance(value, dict):
-                class_name = key[0].upper() + key[1:]
-                models_path = ".".join(cls.__module__.split(".")[:-1])
-                import_path = f"{models_path}.{class_name}"
-                try:
-                    module = import_module(import_path)
-                    model_class = getattr(module, class_name)
-                except ModuleNotFoundError:
-                    continue
-                # Check if the class is a subclass of BaseModel
-                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
-                    # Recursively create an instance of the nested class
-                    nested_instance = model_class.from_dict(value)
-                    setattr(instance, key, nested_instance)
-            # if value is list recursively create instances of the list items
-            elif isinstance(value, list):
-                setattr(
-                    instance,
-                    key,
-                    [
-                        cls.from_dict(item) if isinstance(item, dict) else item
-                        for item in value
-                    ],
-                )
-            # else set the value
-            else:
-                setattr(instance, key, value)
+    def from_dict(cls, data: dict) -> "ResearchStudy":
+        return super().from_dict(data)
+    
+    @classmethod
+    def from_obj(self, obj: object) -> "ResearchStudy":
+        return super().from_obj(obj)
 
-        return instance
+    def as_dict(self) -> dict:
+        return super().as_dict()
 
 
     
@@ -83,161 +68,208 @@ class Arm(BaseModel):
 
 class Objective(BaseModel):
     """ A goal that the study is aiming to achieve in terms of a scientific question to be answered by the analysis of data collected during the study.:param str id: Unique id for inter-element referencing
-    :param 'Extension' extension: Additional content defined by implementations
-    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param Extension extension: Additional content defined by implementations
+    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str name: Label for the objective
-    :param 'CodeableConcept' type: primary | secondary | exploratory
+    :param CodeableConcept type: primary | secondary | exploratory
     """
-    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  name: str = None,  type: 'CodeableConcept' = None, ):
-        self.id: str = id 
-        self.extension: list['Extension'] = extension or []
-        self.modifierExtension: list['Extension'] = modifierExtension or []
-        self.name: str = name 
-        self.type: 'CodeableConcept' = type 
+    property_class_info = {
+        
+        
+        "extension": {"class_name": "Extension", "is_contained": False},
+        
+        
+        "modifierExtension": {"class_name": "Extension", "is_contained": False},
+        
+        
+        
+        "type": {"class_name": "CodeableConcept", "is_contained": False},
+        
+        }
+    def __init__(self,  id:  'str'  = None,  extension:  list['Extension']  = None,  modifierExtension:  list['Extension']  = None,  name:  'str'  = None,  type:  'CodeableConcept'  = None, ):
+        self.id = id 
+        self.extension = extension or []
+        self.modifierExtension = modifierExtension or []
+        self.name = name 
+        self.type = type 
         
 
     @classmethod
-    def from_dict(cls, data: dict) -> "Objective":
-        """Create a model instance from a dict. The instance is recursively
-        created by importing the classes for complex fhir types."""
-        instance = cls()
-        for key, value in data.items():
-            # if value is dict try to create complex type
-            if isinstance(value, dict):
-                class_name = key[0].upper() + key[1:]
-                models_path = ".".join(cls.__module__.split(".")[:-1])
-                import_path = f"{models_path}.{class_name}"
-                try:
-                    module = import_module(import_path)
-                    model_class = getattr(module, class_name)
-                except ModuleNotFoundError:
-                    continue
-                # Check if the class is a subclass of BaseModel
-                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
-                    # Recursively create an instance of the nested class
-                    nested_instance = model_class.from_dict(value)
-                    setattr(instance, key, nested_instance)
-            # if value is list recursively create instances of the list items
-            elif isinstance(value, list):
-                setattr(
-                    instance,
-                    key,
-                    [
-                        cls.from_dict(item) if isinstance(item, dict) else item
-                        for item in value
-                    ],
-                )
-            # else set the value
-            else:
-                setattr(instance, key, value)
+    def from_dict(cls, data: dict) -> "ResearchStudy":
+        return super().from_dict(data)
+    
+    @classmethod
+    def from_obj(self, obj: object) -> "ResearchStudy":
+        return super().from_obj(obj)
 
-        return instance
+    def as_dict(self) -> dict:
+        return super().as_dict()
 
 
 class ResearchStudy(DomainResource):
     """ A process where a researcher or organization plans and then executes a series of steps intended to increase the field of healthcare-related knowledge.  This includes studies of safety, efficacy, comparative effectiveness and other information about medications, devices, therapies and other interventional and investigative techniques.  A ResearchStudy involves the gathering of information about human or animal subjects.
     :param str id: Logical id of this artifact
-    :param 'Meta' meta: Metadata about the resource
+    :param Meta meta: Metadata about the resource
     :param str implicitRules: A set of rules under which this content was created
     :param str language: Language of the resource content
-    :param 'Narrative' text: Text summary of the resource, for human interpretation
-    :param 'Resource' contained: Contained, inline Resources
-    :param 'Extension' extension: Additional content defined by implementations
-    :param 'Extension' modifierExtension: Extensions that cannot be ignored
-    :param 'Identifier' identifier: Business Identifier for study
+    :param Narrative text: Text summary of the resource, for human interpretation
+    :param Resource contained: Contained, inline Resources
+    :param Extension extension: Additional content defined by implementations
+    :param Extension modifierExtension: Extensions that cannot be ignored
+    :param Identifier identifier: Business Identifier for study
     :param str title: Name for this study
-    :param 'Reference' protocol: Steps followed in executing study
-    :param 'Reference' partOf: Part of larger study
+    :param Reference protocol: Steps followed in executing study
+    :param Reference partOf: Part of larger study
     :param str status: active | administratively-completed | approved | closed-to-accrual | closed-to-accrual-and-intervention | completed | disapproved | in-review | temporarily-closed-to-accrual | temporarily-closed-to-accrual-and-intervention | withdrawn
-    :param 'CodeableConcept' primaryPurposeType: treatment | prevention | diagnostic | supportive-care | screening | health-services-research | basic-science | device-feasibility
-    :param 'CodeableConcept' phase: n-a | early-phase-1 | phase-1 | phase-1-phase-2 | phase-2 | phase-2-phase-3 | phase-3 | phase-4
-    :param 'CodeableConcept' category: Classifications for the study
-    :param 'CodeableConcept' focus: Drugs, devices, etc. under study
-    :param 'CodeableConcept' condition: Condition being studied
-    :param 'ContactDetail' contact: Contact details for the study
-    :param 'RelatedArtifact' relatedArtifact: References and dependencies
-    :param 'CodeableConcept' keyword: Used to search for the study
-    :param 'CodeableConcept' location: Geographic region(s) for study
+    :param CodeableConcept primaryPurposeType: treatment | prevention | diagnostic | supportive-care | screening | health-services-research | basic-science | device-feasibility
+    :param CodeableConcept phase: n-a | early-phase-1 | phase-1 | phase-1-phase-2 | phase-2 | phase-2-phase-3 | phase-3 | phase-4
+    :param CodeableConcept category: Classifications for the study
+    :param CodeableConcept focus: Drugs, devices, etc. under study
+    :param CodeableConcept condition: Condition being studied
+    :param ContactDetail contact: Contact details for the study
+    :param RelatedArtifact relatedArtifact: References and dependencies
+    :param CodeableConcept keyword: Used to search for the study
+    :param CodeableConcept location: Geographic region(s) for study
     :param str description: What this is study doing
-    :param 'Reference' enrollment: Inclusion & exclusion criteria
-    :param 'Period' period: When the study began and ended
-    :param 'Reference' sponsor: Organization that initiates and is legally responsible for the study
-    :param 'Reference' principalInvestigator: Researcher who oversees multiple aspects of the study
-    :param 'Reference' site: Facility where study activities are conducted
-    :param 'CodeableConcept' reasonStopped: accrual-goal-met | closed-due-to-toxicity | closed-due-to-lack-of-study-progress | temporarily-closed-per-study-design
-    :param 'Annotation' note: Comments made about the study
-    :param 'Arm' arm: Defined path through the study for a subject
-    :param 'Objective' objective: A goal for the study
+    :param Reference enrollment: Inclusion & exclusion criteria
+    :param Period period: When the study began and ended
+    :param Reference sponsor: Organization that initiates and is legally responsible for the study
+    :param Reference principalInvestigator: Researcher who oversees multiple aspects of the study
+    :param Reference site: Facility where study activities are conducted
+    :param CodeableConcept reasonStopped: accrual-goal-met | closed-due-to-toxicity | closed-due-to-lack-of-study-progress | temporarily-closed-per-study-design
+    :param Annotation note: Comments made about the study
+    :param Arm arm: Defined path through the study for a subject
+    :param Objective objective: A goal for the study
     """
-    def __init__(self, resourceType: str = "ResearchStudy",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: 'Resource' = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  identifier: 'Identifier' = None,  title: str = None,  protocol: 'Reference' = None,  partOf: 'Reference' = None,  status: str = None,  primaryPurposeType: 'CodeableConcept' = None,  phase: 'CodeableConcept' = None,  category: 'CodeableConcept' = None,  focus: 'CodeableConcept' = None,  condition: 'CodeableConcept' = None,  contact: 'ContactDetail' = None,  relatedArtifact: 'RelatedArtifact' = None,  keyword: 'CodeableConcept' = None,  location: 'CodeableConcept' = None,  description: str = None,  enrollment: 'Reference' = None,  period: 'Period' = None,  sponsor: 'Reference' = None,  principalInvestigator: 'Reference' = None,  site: 'Reference' = None,  reasonStopped: 'CodeableConcept' = None,  note: 'Annotation' = None,  arm: 'Arm' = None,  objective: 'Objective' = None, ):
-        self.resourceType: str = resourceType or "ResearchStudy"
-        self.id: str = id 
-        self.meta: 'Meta' = meta 
-        self.implicitRules: str = implicitRules 
-        self.language: str = language 
-        self.text: 'Narrative' = text 
-        self.contained: list['Resource'] = contained or []
-        self.extension: list['Extension'] = extension or []
-        self.modifierExtension: list['Extension'] = modifierExtension or []
-        self.identifier: list['Identifier'] = identifier or []
-        self.title: str = title 
-        self.protocol: list['Reference'] = protocol or []
-        self.partOf: list['Reference'] = partOf or []
-        self.status: str = status 
-        self.primaryPurposeType: 'CodeableConcept' = primaryPurposeType 
-        self.phase: 'CodeableConcept' = phase 
-        self.category: list['CodeableConcept'] = category or []
-        self.focus: list['CodeableConcept'] = focus or []
-        self.condition: list['CodeableConcept'] = condition or []
-        self.contact: list['ContactDetail'] = contact or []
-        self.relatedArtifact: list['RelatedArtifact'] = relatedArtifact or []
-        self.keyword: list['CodeableConcept'] = keyword or []
-        self.location: list['CodeableConcept'] = location or []
-        self.description: str = description 
-        self.enrollment: list['Reference'] = enrollment or []
-        self.period: 'Period' = period 
-        self.sponsor: 'Reference' = sponsor 
-        self.principalInvestigator: 'Reference' = principalInvestigator 
-        self.site: list['Reference'] = site or []
-        self.reasonStopped: 'CodeableConcept' = reasonStopped 
-        self.note: list['Annotation'] = note or []
-        self.arm: list['Arm'] = arm or []
-        self.objective: list['Objective'] = objective or []
+    property_class_info = {
+        
+        
+        "meta": {"class_name": "Meta", "is_contained": False},
+        
+        
+        
+        
+        "text": {"class_name": "Narrative", "is_contained": False},
+        
+        
+        "contained": {"class_name": "Resource", "is_contained": False},
+        
+        
+        "extension": {"class_name": "Extension", "is_contained": False},
+        
+        
+        "modifierExtension": {"class_name": "Extension", "is_contained": False},
+        
+        
+        "identifier": {"class_name": "Identifier", "is_contained": False},
+        
+        
+        
+        "protocol": {"class_name": "Reference", "is_contained": False},
+        
+        
+        "partOf": {"class_name": "Reference", "is_contained": False},
+        
+        
+        
+        "primaryPurposeType": {"class_name": "CodeableConcept", "is_contained": False},
+        
+        
+        "phase": {"class_name": "CodeableConcept", "is_contained": False},
+        
+        
+        "category": {"class_name": "CodeableConcept", "is_contained": False},
+        
+        
+        "focus": {"class_name": "CodeableConcept", "is_contained": False},
+        
+        
+        "condition": {"class_name": "CodeableConcept", "is_contained": False},
+        
+        
+        "contact": {"class_name": "ContactDetail", "is_contained": False},
+        
+        
+        "relatedArtifact": {"class_name": "RelatedArtifact", "is_contained": False},
+        
+        
+        "keyword": {"class_name": "CodeableConcept", "is_contained": False},
+        
+        
+        "location": {"class_name": "CodeableConcept", "is_contained": False},
+        
+        
+        
+        "enrollment": {"class_name": "Reference", "is_contained": False},
+        
+        
+        "period": {"class_name": "Period", "is_contained": False},
+        
+        
+        "sponsor": {"class_name": "Reference", "is_contained": False},
+        
+        
+        "principalInvestigator": {"class_name": "Reference", "is_contained": False},
+        
+        
+        "site": {"class_name": "Reference", "is_contained": False},
+        
+        
+        "reasonStopped": {"class_name": "CodeableConcept", "is_contained": False},
+        
+        
+        "note": {"class_name": "Annotation", "is_contained": False},
+        
+        
+        "arm": {"class_name": "Arm", "is_contained": True},
+        
+        
+        "objective": {"class_name": "Objective", "is_contained": True},
+        
+        }
+    def __init__(self, resourceType: str = None,  id:  'str'  = None,  meta:  'Meta'  = None,  implicitRules:  'str'  = None,  language:  'str'  = None,  text:  'Narrative'  = None,  contained:  list['Resource']  = None,  extension:  list['Extension']  = None,  modifierExtension:  list['Extension']  = None,  identifier:  list['Identifier']  = None,  title:  'str'  = None,  protocol:  list['Reference']  = None,  partOf:  list['Reference']  = None,  status:  'str'  = None,  primaryPurposeType:  'CodeableConcept'  = None,  phase:  'CodeableConcept'  = None,  category:  list['CodeableConcept']  = None,  focus:  list['CodeableConcept']  = None,  condition:  list['CodeableConcept']  = None,  contact:  list['ContactDetail']  = None,  relatedArtifact:  list['RelatedArtifact']  = None,  keyword:  list['CodeableConcept']  = None,  location:  list['CodeableConcept']  = None,  description:  'str'  = None,  enrollment:  list['Reference']  = None,  period:  'Period'  = None,  sponsor:  'Reference'  = None,  principalInvestigator:  'Reference'  = None,  site:  list['Reference']  = None,  reasonStopped:  'CodeableConcept'  = None,  note:  list['Annotation']  = None,  arm:  list['Arm']  = None,  objective:  list['Objective']  = None, ):
+        self.resourceType = resourceType or "ResearchStudy"
+        self.id = id 
+        self.meta = meta 
+        self.implicitRules = implicitRules 
+        self.language = language 
+        self.text = text 
+        self.contained = contained or []
+        self.extension = extension or []
+        self.modifierExtension = modifierExtension or []
+        self.identifier = identifier or []
+        self.title = title 
+        self.protocol = protocol or []
+        self.partOf = partOf or []
+        self.status = status 
+        self.primaryPurposeType = primaryPurposeType 
+        self.phase = phase 
+        self.category = category or []
+        self.focus = focus or []
+        self.condition = condition or []
+        self.contact = contact or []
+        self.relatedArtifact = relatedArtifact or []
+        self.keyword = keyword or []
+        self.location = location or []
+        self.description = description 
+        self.enrollment = enrollment or []
+        self.period = period 
+        self.sponsor = sponsor 
+        self.principalInvestigator = principalInvestigator 
+        self.site = site or []
+        self.reasonStopped = reasonStopped 
+        self.note = note or []
+        self.arm = arm or []
+        self.objective = objective or []
         
 
     @classmethod
     def from_dict(cls, data: dict) -> "ResearchStudy":
-        """Create a model instance from a dict. The instance is recursively
-        created by importing the classes for complex fhir types."""
-        instance = cls()
-        for key, value in data.items():
-            # if value is dict try to create complex type
-            if isinstance(value, dict):
-                class_name = key[0].upper() + key[1:]
-                models_path = ".".join(cls.__module__.split(".")[:-1])
-                import_path = f"{models_path}.{class_name}"
-                try:
-                    module = import_module(import_path)
-                    model_class = getattr(module, class_name)
-                except ModuleNotFoundError:
-                    continue
-                # Check if the class is a subclass of BaseModel
-                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
-                    # Recursively create an instance of the nested class
-                    nested_instance = model_class.from_dict(value)
-                    setattr(instance, key, nested_instance)
-            # if value is list recursively create instances of the list items
-            elif isinstance(value, list):
-                setattr(
-                    instance,
-                    key,
-                    [
-                        cls.from_dict(item) if isinstance(item, dict) else item
-                        for item in value
-                    ],
-                )
-            # else set the value
-            else:
-                setattr(instance, key, value)
+        return super().from_dict(data)
+    
+    @classmethod
+    def from_obj(self, obj: object) -> "ResearchStudy":
+        return super().from_obj(obj)
 
-        return instance
+    def as_dict(self) -> dict:
+        return super().as_dict()

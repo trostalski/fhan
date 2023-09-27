@@ -1,19 +1,16 @@
 """
 Generated class for Appointment. 
-Time: 2023-09-27 15:54:17
+Time: 2023-09-27 19:27:05
 """
-from importlib import import_module
-import inspect
-
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Period import *
-from fhan.models.R4.Resource import *
-from fhan.models.R4.Identifier import *
 from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Extension import *
+from fhan.models.R4.BackboneElement import *
 from fhan.models.R4.Narrative import *
 from fhan.models.R4.Reference import *
+from fhan.models.R4.Meta import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.Resource import *
+from fhan.models.R4.Period import *
 from fhan.models.R4.DomainResource import *
 
 
@@ -22,163 +19,199 @@ from fhan.models.R4.DomainResource import *
 
 class Participant(BaseModel):
     """ List of participants involved in the appointment.:param str id: Unique id for inter-element referencing
-    :param 'Extension' extension: Additional content defined by implementations
-    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param 'CodeableConcept' type: Role of participant in the appointment
-    :param 'Reference' actor: Person, Location/HealthcareService or Device
+    :param Extension extension: Additional content defined by implementations
+    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param CodeableConcept type: Role of participant in the appointment
+    :param Reference actor: Person, Location/HealthcareService or Device
     :param str required: required | optional | information-only
     :param str status: accepted | declined | tentative | needs-action
-    :param 'Period' period: Participation period of the actor
+    :param Period period: Participation period of the actor
     """
-    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  type: 'CodeableConcept' = None,  actor: 'Reference' = None,  required: str = None,  status: str = None,  period: 'Period' = None, ):
-        self.id: str = id 
-        self.extension: list['Extension'] = extension or []
-        self.modifierExtension: list['Extension'] = modifierExtension or []
-        self.type: list['CodeableConcept'] = type or []
-        self.actor: 'Reference' = actor 
-        self.required: str = required 
-        self.status: str = status 
-        self.period: 'Period' = period 
+    property_class_info = {
+        
+        
+        "extension": {"class_name": "Extension", "is_contained": False},
+        
+        
+        "modifierExtension": {"class_name": "Extension", "is_contained": False},
+        
+        
+        "type": {"class_name": "CodeableConcept", "is_contained": False},
+        
+        
+        "actor": {"class_name": "Reference", "is_contained": False},
+        
+        
+        
+        
+        "period": {"class_name": "Period", "is_contained": False},
+        
+        }
+    def __init__(self,  id:  'str'  = None,  extension:  list['Extension']  = None,  modifierExtension:  list['Extension']  = None,  type:  list['CodeableConcept']  = None,  actor:  'Reference'  = None,  required:  'str'  = None,  status:  'str'  = None,  period:  'Period'  = None, ):
+        self.id = id 
+        self.extension = extension or []
+        self.modifierExtension = modifierExtension or []
+        self.type = type or []
+        self.actor = actor 
+        self.required = required 
+        self.status = status 
+        self.period = period 
         
 
     @classmethod
-    def from_dict(cls, data: dict) -> "Participant":
-        """Create a model instance from a dict. The instance is recursively
-        created by importing the classes for complex fhir types."""
-        instance = cls()
-        for key, value in data.items():
-            # if value is dict try to create complex type
-            if isinstance(value, dict):
-                class_name = key[0].upper() + key[1:]
-                models_path = ".".join(cls.__module__.split(".")[:-1])
-                import_path = f"{models_path}.{class_name}"
-                try:
-                    module = import_module(import_path)
-                    model_class = getattr(module, class_name)
-                except ModuleNotFoundError:
-                    continue
-                # Check if the class is a subclass of BaseModel
-                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
-                    # Recursively create an instance of the nested class
-                    nested_instance = model_class.from_dict(value)
-                    setattr(instance, key, nested_instance)
-            # if value is list recursively create instances of the list items
-            elif isinstance(value, list):
-                setattr(
-                    instance,
-                    key,
-                    [
-                        cls.from_dict(item) if isinstance(item, dict) else item
-                        for item in value
-                    ],
-                )
-            # else set the value
-            else:
-                setattr(instance, key, value)
+    def from_dict(cls, data: dict) -> "Appointment":
+        return super().from_dict(data)
+    
+    @classmethod
+    def from_obj(self, obj: object) -> "Appointment":
+        return super().from_obj(obj)
 
-        return instance
+    def as_dict(self) -> dict:
+        return super().as_dict()
 
 
 class Appointment(DomainResource):
     """ A booking of a healthcare event among patient(s), practitioner(s), related person(s) and/or device(s) for a specific date/time. This may result in one or more Encounter(s).
     :param str id: Logical id of this artifact
-    :param 'Meta' meta: Metadata about the resource
+    :param Meta meta: Metadata about the resource
     :param str implicitRules: A set of rules under which this content was created
     :param str language: Language of the resource content
-    :param 'Narrative' text: Text summary of the resource, for human interpretation
-    :param 'Resource' contained: Contained, inline Resources
-    :param 'Extension' extension: Additional content defined by implementations
-    :param 'Extension' modifierExtension: Extensions that cannot be ignored
-    :param 'Identifier' identifier: External Ids for this item
+    :param Narrative text: Text summary of the resource, for human interpretation
+    :param Resource contained: Contained, inline Resources
+    :param Extension extension: Additional content defined by implementations
+    :param Extension modifierExtension: Extensions that cannot be ignored
+    :param Identifier identifier: External Ids for this item
     :param str status: proposed | pending | booked | arrived | fulfilled | cancelled | noshow | entered-in-error | checked-in | waitlist
-    :param 'CodeableConcept' cancelationReason: The coded reason for the appointment being cancelled
-    :param 'CodeableConcept' serviceCategory: A broad categorization of the service that is to be performed during this appointment
-    :param 'CodeableConcept' serviceType: The specific service that is to be performed during this appointment
-    :param 'CodeableConcept' specialty: The specialty of a practitioner that would be required to perform the service requested in this appointment
-    :param 'CodeableConcept' appointmentType: The style of appointment or patient that has been booked in the slot (not service type)
-    :param 'CodeableConcept' reasonCode: Coded reason this appointment is scheduled
-    :param 'Reference' reasonReference: Reason the appointment is to take place (resource)
+    :param CodeableConcept cancelationReason: The coded reason for the appointment being cancelled
+    :param CodeableConcept serviceCategory: A broad categorization of the service that is to be performed during this appointment
+    :param CodeableConcept serviceType: The specific service that is to be performed during this appointment
+    :param CodeableConcept specialty: The specialty of a practitioner that would be required to perform the service requested in this appointment
+    :param CodeableConcept appointmentType: The style of appointment or patient that has been booked in the slot (not service type)
+    :param CodeableConcept reasonCode: Coded reason this appointment is scheduled
+    :param Reference reasonReference: Reason the appointment is to take place (resource)
     :param int priority: Used to make informed decisions if needing to re-prioritize
     :param str description: Shown on a subject line in a meeting request, or appointment list
-    :param 'Reference' supportingInformation: Additional information to support the appointment
+    :param Reference supportingInformation: Additional information to support the appointment
     :param str start: When appointment is to take place
     :param str end: When appointment is to conclude
     :param int minutesDuration: Can be less than start/end (e.g. estimate)
-    :param 'Reference' slot: The slots that this appointment is filling
+    :param Reference slot: The slots that this appointment is filling
     :param str created: The date that this appointment was initially created
     :param str comment: Additional comments
     :param str patientInstruction: Detailed information and instructions for the patient
-    :param 'Reference' basedOn: The service request this appointment is allocated to assess
-    :param 'Participant' participant: Participants involved in appointment
-    :param 'Period' requestedPeriod: Potential date/time interval(s) requested to allocate the appointment within
+    :param Reference basedOn: The service request this appointment is allocated to assess
+    :param Participant participant: Participants involved in appointment
+    :param Period requestedPeriod: Potential date/time interval(s) requested to allocate the appointment within
     """
-    def __init__(self, resourceType: str = "Appointment",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: 'Resource' = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  identifier: 'Identifier' = None,  status: str = None,  cancelationReason: 'CodeableConcept' = None,  serviceCategory: 'CodeableConcept' = None,  serviceType: 'CodeableConcept' = None,  specialty: 'CodeableConcept' = None,  appointmentType: 'CodeableConcept' = None,  reasonCode: 'CodeableConcept' = None,  reasonReference: 'Reference' = None,  priority: int = None,  description: str = None,  supportingInformation: 'Reference' = None,  start: str = None,  end: str = None,  minutesDuration: int = None,  slot: 'Reference' = None,  created: str = None,  comment: str = None,  patientInstruction: str = None,  basedOn: 'Reference' = None,  participant: 'Participant' = None,  requestedPeriod: 'Period' = None, ):
-        self.resourceType: str = resourceType or "Appointment"
-        self.id: str = id 
-        self.meta: 'Meta' = meta 
-        self.implicitRules: str = implicitRules 
-        self.language: str = language 
-        self.text: 'Narrative' = text 
-        self.contained: list['Resource'] = contained or []
-        self.extension: list['Extension'] = extension or []
-        self.modifierExtension: list['Extension'] = modifierExtension or []
-        self.identifier: list['Identifier'] = identifier or []
-        self.status: str = status 
-        self.cancelationReason: 'CodeableConcept' = cancelationReason 
-        self.serviceCategory: list['CodeableConcept'] = serviceCategory or []
-        self.serviceType: list['CodeableConcept'] = serviceType or []
-        self.specialty: list['CodeableConcept'] = specialty or []
-        self.appointmentType: 'CodeableConcept' = appointmentType 
-        self.reasonCode: list['CodeableConcept'] = reasonCode or []
-        self.reasonReference: list['Reference'] = reasonReference or []
-        self.priority: int = priority 
-        self.description: str = description 
-        self.supportingInformation: list['Reference'] = supportingInformation or []
-        self.start: str = start 
-        self.end: str = end 
-        self.minutesDuration: int = minutesDuration 
-        self.slot: list['Reference'] = slot or []
-        self.created: str = created 
-        self.comment: str = comment 
-        self.patientInstruction: str = patientInstruction 
-        self.basedOn: list['Reference'] = basedOn or []
-        self.participant: list['Participant'] = participant or []
-        self.requestedPeriod: list['Period'] = requestedPeriod or []
+    property_class_info = {
+        
+        
+        "meta": {"class_name": "Meta", "is_contained": False},
+        
+        
+        
+        
+        "text": {"class_name": "Narrative", "is_contained": False},
+        
+        
+        "contained": {"class_name": "Resource", "is_contained": False},
+        
+        
+        "extension": {"class_name": "Extension", "is_contained": False},
+        
+        
+        "modifierExtension": {"class_name": "Extension", "is_contained": False},
+        
+        
+        "identifier": {"class_name": "Identifier", "is_contained": False},
+        
+        
+        
+        "cancelationReason": {"class_name": "CodeableConcept", "is_contained": False},
+        
+        
+        "serviceCategory": {"class_name": "CodeableConcept", "is_contained": False},
+        
+        
+        "serviceType": {"class_name": "CodeableConcept", "is_contained": False},
+        
+        
+        "specialty": {"class_name": "CodeableConcept", "is_contained": False},
+        
+        
+        "appointmentType": {"class_name": "CodeableConcept", "is_contained": False},
+        
+        
+        "reasonCode": {"class_name": "CodeableConcept", "is_contained": False},
+        
+        
+        "reasonReference": {"class_name": "Reference", "is_contained": False},
+        
+        
+        
+        
+        "supportingInformation": {"class_name": "Reference", "is_contained": False},
+        
+        
+        
+        
+        
+        "slot": {"class_name": "Reference", "is_contained": False},
+        
+        
+        
+        
+        
+        "basedOn": {"class_name": "Reference", "is_contained": False},
+        
+        
+        "participant": {"class_name": "Participant", "is_contained": True},
+        
+        
+        "requestedPeriod": {"class_name": "Period", "is_contained": False},
+        
+        }
+    def __init__(self, resourceType: str = None,  id:  'str'  = None,  meta:  'Meta'  = None,  implicitRules:  'str'  = None,  language:  'str'  = None,  text:  'Narrative'  = None,  contained:  list['Resource']  = None,  extension:  list['Extension']  = None,  modifierExtension:  list['Extension']  = None,  identifier:  list['Identifier']  = None,  status:  'str'  = None,  cancelationReason:  'CodeableConcept'  = None,  serviceCategory:  list['CodeableConcept']  = None,  serviceType:  list['CodeableConcept']  = None,  specialty:  list['CodeableConcept']  = None,  appointmentType:  'CodeableConcept'  = None,  reasonCode:  list['CodeableConcept']  = None,  reasonReference:  list['Reference']  = None,  priority:  'int'  = None,  description:  'str'  = None,  supportingInformation:  list['Reference']  = None,  start:  'str'  = None,  end:  'str'  = None,  minutesDuration:  'int'  = None,  slot:  list['Reference']  = None,  created:  'str'  = None,  comment:  'str'  = None,  patientInstruction:  'str'  = None,  basedOn:  list['Reference']  = None,  participant:  list['Participant']  = None,  requestedPeriod:  list['Period']  = None, ):
+        self.resourceType = resourceType or "Appointment"
+        self.id = id 
+        self.meta = meta 
+        self.implicitRules = implicitRules 
+        self.language = language 
+        self.text = text 
+        self.contained = contained or []
+        self.extension = extension or []
+        self.modifierExtension = modifierExtension or []
+        self.identifier = identifier or []
+        self.status = status 
+        self.cancelationReason = cancelationReason 
+        self.serviceCategory = serviceCategory or []
+        self.serviceType = serviceType or []
+        self.specialty = specialty or []
+        self.appointmentType = appointmentType 
+        self.reasonCode = reasonCode or []
+        self.reasonReference = reasonReference or []
+        self.priority = priority 
+        self.description = description 
+        self.supportingInformation = supportingInformation or []
+        self.start = start 
+        self.end = end 
+        self.minutesDuration = minutesDuration 
+        self.slot = slot or []
+        self.created = created 
+        self.comment = comment 
+        self.patientInstruction = patientInstruction 
+        self.basedOn = basedOn or []
+        self.participant = participant or []
+        self.requestedPeriod = requestedPeriod or []
         
 
     @classmethod
     def from_dict(cls, data: dict) -> "Appointment":
-        """Create a model instance from a dict. The instance is recursively
-        created by importing the classes for complex fhir types."""
-        instance = cls()
-        for key, value in data.items():
-            # if value is dict try to create complex type
-            if isinstance(value, dict):
-                class_name = key[0].upper() + key[1:]
-                models_path = ".".join(cls.__module__.split(".")[:-1])
-                import_path = f"{models_path}.{class_name}"
-                try:
-                    module = import_module(import_path)
-                    model_class = getattr(module, class_name)
-                except ModuleNotFoundError:
-                    continue
-                # Check if the class is a subclass of BaseModel
-                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
-                    # Recursively create an instance of the nested class
-                    nested_instance = model_class.from_dict(value)
-                    setattr(instance, key, nested_instance)
-            # if value is list recursively create instances of the list items
-            elif isinstance(value, list):
-                setattr(
-                    instance,
-                    key,
-                    [
-                        cls.from_dict(item) if isinstance(item, dict) else item
-                        for item in value
-                    ],
-                )
-            # else set the value
-            else:
-                setattr(instance, key, value)
+        return super().from_dict(data)
+    
+    @classmethod
+    def from_obj(self, obj: object) -> "Appointment":
+        return super().from_obj(obj)
 
-        return instance
+    def as_dict(self) -> dict:
+        return super().as_dict()

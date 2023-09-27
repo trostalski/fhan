@@ -1,17 +1,14 @@
 """
 Generated class for TestReport. 
-Time: 2023-09-27 15:54:17
+Time: 2023-09-27 19:27:05
 """
-from importlib import import_module
-import inspect
-
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Resource import *
-from fhan.models.R4.Identifier import *
 from fhan.models.R4.Extension import *
+from fhan.models.R4.BackboneElement import *
 from fhan.models.R4.Narrative import *
 from fhan.models.R4.Reference import *
+from fhan.models.R4.Meta import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.Resource import *
 from fhan.models.R4.DomainResource import *
 
 
@@ -20,57 +17,43 @@ from fhan.models.R4.DomainResource import *
 
 class Participant(BaseModel):
     """ A participant in the test execution, either the execution engine, a client, or a server.:param str id: Unique id for inter-element referencing
-    :param 'Extension' extension: Additional content defined by implementations
-    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param Extension extension: Additional content defined by implementations
+    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str type: test-engine | client | server
     :param str uri: The uri of the participant. An absolute URL is preferred
     :param str display: The display name of the participant
     """
-    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  type: str = None,  uri: str = None,  display: str = None, ):
-        self.id: str = id 
-        self.extension: list['Extension'] = extension or []
-        self.modifierExtension: list['Extension'] = modifierExtension or []
-        self.type: str = type 
-        self.uri: str = uri 
-        self.display: str = display 
+    property_class_info = {
+        
+        
+        "extension": {"class_name": "Extension", "is_contained": False},
+        
+        
+        "modifierExtension": {"class_name": "Extension", "is_contained": False},
+        
+        
+        
+        
+        }
+    def __init__(self,  id:  'str'  = None,  extension:  list['Extension']  = None,  modifierExtension:  list['Extension']  = None,  type:  'str'  = None,  uri:  'str'  = None,  display:  'str'  = None, ):
+        self.id = id 
+        self.extension = extension or []
+        self.modifierExtension = modifierExtension or []
+        self.type = type 
+        self.uri = uri 
+        self.display = display 
         
 
     @classmethod
-    def from_dict(cls, data: dict) -> "Participant":
-        """Create a model instance from a dict. The instance is recursively
-        created by importing the classes for complex fhir types."""
-        instance = cls()
-        for key, value in data.items():
-            # if value is dict try to create complex type
-            if isinstance(value, dict):
-                class_name = key[0].upper() + key[1:]
-                models_path = ".".join(cls.__module__.split(".")[:-1])
-                import_path = f"{models_path}.{class_name}"
-                try:
-                    module = import_module(import_path)
-                    model_class = getattr(module, class_name)
-                except ModuleNotFoundError:
-                    continue
-                # Check if the class is a subclass of BaseModel
-                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
-                    # Recursively create an instance of the nested class
-                    nested_instance = model_class.from_dict(value)
-                    setattr(instance, key, nested_instance)
-            # if value is list recursively create instances of the list items
-            elif isinstance(value, list):
-                setattr(
-                    instance,
-                    key,
-                    [
-                        cls.from_dict(item) if isinstance(item, dict) else item
-                        for item in value
-                    ],
-                )
-            # else set the value
-            else:
-                setattr(instance, key, value)
+    def from_dict(cls, data: dict) -> "TestReport":
+        return super().from_dict(data)
+    
+    @classmethod
+    def from_obj(self, obj: object) -> "TestReport":
+        return super().from_obj(obj)
 
-        return instance
+    def as_dict(self) -> dict:
+        return super().as_dict()
 
 
     
@@ -82,57 +65,43 @@ class Participant(BaseModel):
 
 class Operation(BaseModel):
     """ The operation performed.:param str id: Unique id for inter-element referencing
-    :param 'Extension' extension: Additional content defined by implementations
-    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param Extension extension: Additional content defined by implementations
+    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str result: pass | skip | fail | warning | error
     :param str message: A message associated with the result
     :param str detail: A link to further details on the result
     """
-    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  result: str = None,  message: str = None,  detail: str = None, ):
-        self.id: str = id 
-        self.extension: list['Extension'] = extension or []
-        self.modifierExtension: list['Extension'] = modifierExtension or []
-        self.result: str = result 
-        self.message: str = message 
-        self.detail: str = detail 
+    property_class_info = {
+        
+        
+        "extension": {"class_name": "Extension", "is_contained": False},
+        
+        
+        "modifierExtension": {"class_name": "Extension", "is_contained": False},
+        
+        
+        
+        
+        }
+    def __init__(self,  id:  'str'  = None,  extension:  list['Extension']  = None,  modifierExtension:  list['Extension']  = None,  result:  'str'  = None,  message:  'str'  = None,  detail:  'str'  = None, ):
+        self.id = id 
+        self.extension = extension or []
+        self.modifierExtension = modifierExtension or []
+        self.result = result 
+        self.message = message 
+        self.detail = detail 
         
 
     @classmethod
-    def from_dict(cls, data: dict) -> "Operation":
-        """Create a model instance from a dict. The instance is recursively
-        created by importing the classes for complex fhir types."""
-        instance = cls()
-        for key, value in data.items():
-            # if value is dict try to create complex type
-            if isinstance(value, dict):
-                class_name = key[0].upper() + key[1:]
-                models_path = ".".join(cls.__module__.split(".")[:-1])
-                import_path = f"{models_path}.{class_name}"
-                try:
-                    module = import_module(import_path)
-                    model_class = getattr(module, class_name)
-                except ModuleNotFoundError:
-                    continue
-                # Check if the class is a subclass of BaseModel
-                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
-                    # Recursively create an instance of the nested class
-                    nested_instance = model_class.from_dict(value)
-                    setattr(instance, key, nested_instance)
-            # if value is list recursively create instances of the list items
-            elif isinstance(value, list):
-                setattr(
-                    instance,
-                    key,
-                    [
-                        cls.from_dict(item) if isinstance(item, dict) else item
-                        for item in value
-                    ],
-                )
-            # else set the value
-            else:
-                setattr(instance, key, value)
+    def from_dict(cls, data: dict) -> "TestReport":
+        return super().from_dict(data)
+    
+    @classmethod
+    def from_obj(self, obj: object) -> "TestReport":
+        return super().from_obj(obj)
 
-        return instance
+    def as_dict(self) -> dict:
+        return super().as_dict()
 
 
     
@@ -140,57 +109,43 @@ class Operation(BaseModel):
 
 class _assert(BaseModel):
     """ The results of the assertion performed on the previous operations.:param str id: Unique id for inter-element referencing
-    :param 'Extension' extension: Additional content defined by implementations
-    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param Extension extension: Additional content defined by implementations
+    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str result: pass | skip | fail | warning | error
     :param str message: A message associated with the result
     :param str detail: A link to further details on the result
     """
-    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  result: str = None,  message: str = None,  detail: str = None, ):
-        self.id: str = id 
-        self.extension: list['Extension'] = extension or []
-        self.modifierExtension: list['Extension'] = modifierExtension or []
-        self.result: str = result 
-        self.message: str = message 
-        self.detail: str = detail 
+    property_class_info = {
+        
+        
+        "extension": {"class_name": "Extension", "is_contained": False},
+        
+        
+        "modifierExtension": {"class_name": "Extension", "is_contained": False},
+        
+        
+        
+        
+        }
+    def __init__(self,  id:  'str'  = None,  extension:  list['Extension']  = None,  modifierExtension:  list['Extension']  = None,  result:  'str'  = None,  message:  'str'  = None,  detail:  'str'  = None, ):
+        self.id = id 
+        self.extension = extension or []
+        self.modifierExtension = modifierExtension or []
+        self.result = result 
+        self.message = message 
+        self.detail = detail 
         
 
     @classmethod
-    def from_dict(cls, data: dict) -> "_assert":
-        """Create a model instance from a dict. The instance is recursively
-        created by importing the classes for complex fhir types."""
-        instance = cls()
-        for key, value in data.items():
-            # if value is dict try to create complex type
-            if isinstance(value, dict):
-                class_name = key[0].upper() + key[1:]
-                models_path = ".".join(cls.__module__.split(".")[:-1])
-                import_path = f"{models_path}.{class_name}"
-                try:
-                    module = import_module(import_path)
-                    model_class = getattr(module, class_name)
-                except ModuleNotFoundError:
-                    continue
-                # Check if the class is a subclass of BaseModel
-                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
-                    # Recursively create an instance of the nested class
-                    nested_instance = model_class.from_dict(value)
-                    setattr(instance, key, nested_instance)
-            # if value is list recursively create instances of the list items
-            elif isinstance(value, list):
-                setattr(
-                    instance,
-                    key,
-                    [
-                        cls.from_dict(item) if isinstance(item, dict) else item
-                        for item in value
-                    ],
-                )
-            # else set the value
-            else:
-                setattr(instance, key, value)
+    def from_dict(cls, data: dict) -> "TestReport":
+        return super().from_dict(data)
+    
+    @classmethod
+    def from_obj(self, obj: object) -> "TestReport":
+        return super().from_obj(obj)
 
-        return instance
+    def as_dict(self) -> dict:
+        return super().as_dict()
 
 
   
@@ -199,55 +154,44 @@ class _assert(BaseModel):
 
 class Action(BaseModel):
     """ Action would contain either an operation or an assertion.:param str id: Unique id for inter-element referencing
-    :param 'Extension' extension: Additional content defined by implementations
-    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param 'Operation' operation: The operation to perform
-    :param '_assert' _assert: The assertion to perform
+    :param Extension extension: Additional content defined by implementations
+    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param Operation operation: The operation to perform
+    :param _assert _assert: The assertion to perform
     """
-    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  operation: 'Operation' = None,  _assert: '_assert' = None, ):
-        self.id: str = id 
-        self.extension: list['Extension'] = extension or []
-        self.modifierExtension: list['Extension'] = modifierExtension or []
-        self.operation: 'Operation' = operation 
-        self._assert: '_assert' = _assert 
+    property_class_info = {
+        
+        
+        "extension": {"class_name": "Extension", "is_contained": False},
+        
+        
+        "modifierExtension": {"class_name": "Extension", "is_contained": False},
+        
+        
+        "operation": {"class_name": "Operation", "is_contained": True},
+        
+        
+        "_assert": {"class_name": "_assert", "is_contained": True},
+        
+        }
+    def __init__(self,  id:  'str'  = None,  extension:  list['Extension']  = None,  modifierExtension:  list['Extension']  = None,  operation:  'Operation'  = None,  _assert:  '_assert'  = None, ):
+        self.id = id 
+        self.extension = extension or []
+        self.modifierExtension = modifierExtension or []
+        self.operation = operation 
+        self._assert = _assert 
         
 
     @classmethod
-    def from_dict(cls, data: dict) -> "Action":
-        """Create a model instance from a dict. The instance is recursively
-        created by importing the classes for complex fhir types."""
-        instance = cls()
-        for key, value in data.items():
-            # if value is dict try to create complex type
-            if isinstance(value, dict):
-                class_name = key[0].upper() + key[1:]
-                models_path = ".".join(cls.__module__.split(".")[:-1])
-                import_path = f"{models_path}.{class_name}"
-                try:
-                    module = import_module(import_path)
-                    model_class = getattr(module, class_name)
-                except ModuleNotFoundError:
-                    continue
-                # Check if the class is a subclass of BaseModel
-                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
-                    # Recursively create an instance of the nested class
-                    nested_instance = model_class.from_dict(value)
-                    setattr(instance, key, nested_instance)
-            # if value is list recursively create instances of the list items
-            elif isinstance(value, list):
-                setattr(
-                    instance,
-                    key,
-                    [
-                        cls.from_dict(item) if isinstance(item, dict) else item
-                        for item in value
-                    ],
-                )
-            # else set the value
-            else:
-                setattr(instance, key, value)
+    def from_dict(cls, data: dict) -> "TestReport":
+        return super().from_dict(data)
+    
+    @classmethod
+    def from_obj(self, obj: object) -> "TestReport":
+        return super().from_obj(obj)
 
-        return instance
+    def as_dict(self) -> dict:
+        return super().as_dict()
 
 
   
@@ -256,53 +200,39 @@ class Action(BaseModel):
 
 class Setup(BaseModel):
     """ The results of the series of required setup operations before the tests were executed.:param str id: Unique id for inter-element referencing
-    :param 'Extension' extension: Additional content defined by implementations
-    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param 'Action' action: A setup operation or assert that was executed
+    :param Extension extension: Additional content defined by implementations
+    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param Action action: A setup operation or assert that was executed
     """
-    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  action: 'Action' = None, ):
-        self.id: str = id 
-        self.extension: list['Extension'] = extension or []
-        self.modifierExtension: list['Extension'] = modifierExtension or []
-        self.action: list['Action'] = action or []
+    property_class_info = {
+        
+        
+        "extension": {"class_name": "Extension", "is_contained": False},
+        
+        
+        "modifierExtension": {"class_name": "Extension", "is_contained": False},
+        
+        
+        "action": {"class_name": "Action", "is_contained": True},
+        
+        }
+    def __init__(self,  id:  'str'  = None,  extension:  list['Extension']  = None,  modifierExtension:  list['Extension']  = None,  action:  list['Action']  = None, ):
+        self.id = id 
+        self.extension = extension or []
+        self.modifierExtension = modifierExtension or []
+        self.action = action or []
         
 
     @classmethod
-    def from_dict(cls, data: dict) -> "Setup":
-        """Create a model instance from a dict. The instance is recursively
-        created by importing the classes for complex fhir types."""
-        instance = cls()
-        for key, value in data.items():
-            # if value is dict try to create complex type
-            if isinstance(value, dict):
-                class_name = key[0].upper() + key[1:]
-                models_path = ".".join(cls.__module__.split(".")[:-1])
-                import_path = f"{models_path}.{class_name}"
-                try:
-                    module = import_module(import_path)
-                    model_class = getattr(module, class_name)
-                except ModuleNotFoundError:
-                    continue
-                # Check if the class is a subclass of BaseModel
-                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
-                    # Recursively create an instance of the nested class
-                    nested_instance = model_class.from_dict(value)
-                    setattr(instance, key, nested_instance)
-            # if value is list recursively create instances of the list items
-            elif isinstance(value, list):
-                setattr(
-                    instance,
-                    key,
-                    [
-                        cls.from_dict(item) if isinstance(item, dict) else item
-                        for item in value
-                    ],
-                )
-            # else set the value
-            else:
-                setattr(instance, key, value)
+    def from_dict(cls, data: dict) -> "TestReport":
+        return super().from_dict(data)
+    
+    @classmethod
+    def from_obj(self, obj: object) -> "TestReport":
+        return super().from_obj(obj)
 
-        return instance
+    def as_dict(self) -> dict:
+        return super().as_dict()
 
 
     
@@ -312,51 +242,44 @@ class Setup(BaseModel):
 
 class Action(BaseModel):
     """ Action would contain either an operation or an assertion.:param str id: Unique id for inter-element referencing
-    :param 'Extension' extension: Additional content defined by implementations
-    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param Extension extension: Additional content defined by implementations
+    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param Operation operation: The operation performed
+    :param _assert _assert: The assertion performed
     """
-    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None, ):
-        self.id: str = id 
-        self.extension: list['Extension'] = extension or []
-        self.modifierExtension: list['Extension'] = modifierExtension or []
+    property_class_info = {
+        
+        
+        "extension": {"class_name": "Extension", "is_contained": False},
+        
+        
+        "modifierExtension": {"class_name": "Extension", "is_contained": False},
+        
+        
+        "operation": {"class_name": "Operation", "is_contained": True},
+        
+        
+        "_assert": {"class_name": "_assert", "is_contained": True},
+        
+        }
+    def __init__(self,  id:  'str'  = None,  extension:  list['Extension']  = None,  modifierExtension:  list['Extension']  = None,  operation:  'Operation'  = None,  _assert:  '_assert'  = None, ):
+        self.id = id 
+        self.extension = extension or []
+        self.modifierExtension = modifierExtension or []
+        self.operation = operation 
+        self._assert = _assert 
         
 
     @classmethod
-    def from_dict(cls, data: dict) -> "Action":
-        """Create a model instance from a dict. The instance is recursively
-        created by importing the classes for complex fhir types."""
-        instance = cls()
-        for key, value in data.items():
-            # if value is dict try to create complex type
-            if isinstance(value, dict):
-                class_name = key[0].upper() + key[1:]
-                models_path = ".".join(cls.__module__.split(".")[:-1])
-                import_path = f"{models_path}.{class_name}"
-                try:
-                    module = import_module(import_path)
-                    model_class = getattr(module, class_name)
-                except ModuleNotFoundError:
-                    continue
-                # Check if the class is a subclass of BaseModel
-                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
-                    # Recursively create an instance of the nested class
-                    nested_instance = model_class.from_dict(value)
-                    setattr(instance, key, nested_instance)
-            # if value is list recursively create instances of the list items
-            elif isinstance(value, list):
-                setattr(
-                    instance,
-                    key,
-                    [
-                        cls.from_dict(item) if isinstance(item, dict) else item
-                        for item in value
-                    ],
-                )
-            # else set the value
-            else:
-                setattr(instance, key, value)
+    def from_dict(cls, data: dict) -> "TestReport":
+        return super().from_dict(data)
+    
+    @classmethod
+    def from_obj(self, obj: object) -> "TestReport":
+        return super().from_obj(obj)
 
-        return instance
+    def as_dict(self) -> dict:
+        return super().as_dict()
 
 
   
@@ -364,62 +287,54 @@ class Action(BaseModel):
     
 
 class Test(BaseModel):
-    """ A test executed from the test script.:param 'Reference' testScript: Reference to the  version-specific TestScript that was executed to produce this TestReport
+    """ A test executed from the test script.:param Reference testScript: Reference to the  version-specific TestScript that was executed to produce this TestReport
     :param str tester: Name of the tester producing this report (Organization or individual)
     :param str id: Unique id for inter-element referencing
-    :param 'Extension' extension: Additional content defined by implementations
-    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param Extension extension: Additional content defined by implementations
+    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str name: Tracking/logging name of this test
     :param str description: Tracking/reporting short description of the test
-    :param 'Action' action: A test operation or assert that was performed
+    :param Action action: A test operation or assert that was performed
     """
-    def __init__(self,  testScript: 'Reference' = None,  tester: str = None,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  name: str = None,  description: str = None,  action: 'Action' = None, ):
-        self.testScript: 'Reference' = testScript 
-        self.tester: str = tester 
-        self.id: str = id 
-        self.extension: list['Extension'] = extension or []
-        self.modifierExtension: list['Extension'] = modifierExtension or []
-        self.name: str = name 
-        self.description: str = description 
-        self.action: list['Action'] = action or []
+    property_class_info = {
+        
+        "testScript": {"class_name": "Reference", "is_contained": False},
+        
+        
+        
+        
+        "extension": {"class_name": "Extension", "is_contained": False},
+        
+        
+        "modifierExtension": {"class_name": "Extension", "is_contained": False},
+        
+        
+        
+        
+        "action": {"class_name": "Action", "is_contained": True},
+        
+        }
+    def __init__(self,  testScript:  'Reference'  = None,  tester:  'str'  = None,  id:  'str'  = None,  extension:  list['Extension']  = None,  modifierExtension:  list['Extension']  = None,  name:  'str'  = None,  description:  'str'  = None,  action:  list['Action']  = None, ):
+        self.testScript = testScript 
+        self.tester = tester 
+        self.id = id 
+        self.extension = extension or []
+        self.modifierExtension = modifierExtension or []
+        self.name = name 
+        self.description = description 
+        self.action = action or []
         
 
     @classmethod
-    def from_dict(cls, data: dict) -> "Test":
-        """Create a model instance from a dict. The instance is recursively
-        created by importing the classes for complex fhir types."""
-        instance = cls()
-        for key, value in data.items():
-            # if value is dict try to create complex type
-            if isinstance(value, dict):
-                class_name = key[0].upper() + key[1:]
-                models_path = ".".join(cls.__module__.split(".")[:-1])
-                import_path = f"{models_path}.{class_name}"
-                try:
-                    module = import_module(import_path)
-                    model_class = getattr(module, class_name)
-                except ModuleNotFoundError:
-                    continue
-                # Check if the class is a subclass of BaseModel
-                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
-                    # Recursively create an instance of the nested class
-                    nested_instance = model_class.from_dict(value)
-                    setattr(instance, key, nested_instance)
-            # if value is list recursively create instances of the list items
-            elif isinstance(value, list):
-                setattr(
-                    instance,
-                    key,
-                    [
-                        cls.from_dict(item) if isinstance(item, dict) else item
-                        for item in value
-                    ],
-                )
-            # else set the value
-            else:
-                setattr(instance, key, value)
+    def from_dict(cls, data: dict) -> "TestReport":
+        return super().from_dict(data)
+    
+    @classmethod
+    def from_obj(self, obj: object) -> "TestReport":
+        return super().from_obj(obj)
 
-        return instance
+    def as_dict(self) -> dict:
+        return super().as_dict()
 
 
     
@@ -429,51 +344,39 @@ class Test(BaseModel):
 
 class Action(BaseModel):
     """ The teardown action will only contain an operation.:param str id: Unique id for inter-element referencing
-    :param 'Extension' extension: Additional content defined by implementations
-    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param Extension extension: Additional content defined by implementations
+    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param Operation operation: The teardown operation performed
     """
-    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None, ):
-        self.id: str = id 
-        self.extension: list['Extension'] = extension or []
-        self.modifierExtension: list['Extension'] = modifierExtension or []
+    property_class_info = {
+        
+        
+        "extension": {"class_name": "Extension", "is_contained": False},
+        
+        
+        "modifierExtension": {"class_name": "Extension", "is_contained": False},
+        
+        
+        "operation": {"class_name": "Operation", "is_contained": True},
+        
+        }
+    def __init__(self,  id:  'str'  = None,  extension:  list['Extension']  = None,  modifierExtension:  list['Extension']  = None,  operation:  'Operation'  = None, ):
+        self.id = id 
+        self.extension = extension or []
+        self.modifierExtension = modifierExtension or []
+        self.operation = operation 
         
 
     @classmethod
-    def from_dict(cls, data: dict) -> "Action":
-        """Create a model instance from a dict. The instance is recursively
-        created by importing the classes for complex fhir types."""
-        instance = cls()
-        for key, value in data.items():
-            # if value is dict try to create complex type
-            if isinstance(value, dict):
-                class_name = key[0].upper() + key[1:]
-                models_path = ".".join(cls.__module__.split(".")[:-1])
-                import_path = f"{models_path}.{class_name}"
-                try:
-                    module = import_module(import_path)
-                    model_class = getattr(module, class_name)
-                except ModuleNotFoundError:
-                    continue
-                # Check if the class is a subclass of BaseModel
-                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
-                    # Recursively create an instance of the nested class
-                    nested_instance = model_class.from_dict(value)
-                    setattr(instance, key, nested_instance)
-            # if value is list recursively create instances of the list items
-            elif isinstance(value, list):
-                setattr(
-                    instance,
-                    key,
-                    [
-                        cls.from_dict(item) if isinstance(item, dict) else item
-                        for item in value
-                    ],
-                )
-            # else set the value
-            else:
-                setattr(instance, key, value)
+    def from_dict(cls, data: dict) -> "TestReport":
+        return super().from_dict(data)
+    
+    @classmethod
+    def from_obj(self, obj: object) -> "TestReport":
+        return super().from_obj(obj)
 
-        return instance
+    def as_dict(self) -> dict:
+        return super().as_dict()
 
 
   
@@ -482,135 +385,139 @@ class Action(BaseModel):
 
 class Teardown(BaseModel):
     """ The results of the series of operations required to clean up after all the tests were executed (successfully or otherwise).:param str id: Unique id for inter-element referencing
-    :param 'Extension' extension: Additional content defined by implementations
-    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param 'Action' action: One or more teardown operations performed
+    :param Extension extension: Additional content defined by implementations
+    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param Action action: One or more teardown operations performed
     """
-    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  action: 'Action' = None, ):
-        self.id: str = id 
-        self.extension: list['Extension'] = extension or []
-        self.modifierExtension: list['Extension'] = modifierExtension or []
-        self.action: list['Action'] = action or []
+    property_class_info = {
+        
+        
+        "extension": {"class_name": "Extension", "is_contained": False},
+        
+        
+        "modifierExtension": {"class_name": "Extension", "is_contained": False},
+        
+        
+        "action": {"class_name": "Action", "is_contained": True},
+        
+        }
+    def __init__(self,  id:  'str'  = None,  extension:  list['Extension']  = None,  modifierExtension:  list['Extension']  = None,  action:  list['Action']  = None, ):
+        self.id = id 
+        self.extension = extension or []
+        self.modifierExtension = modifierExtension or []
+        self.action = action or []
         
 
     @classmethod
-    def from_dict(cls, data: dict) -> "Teardown":
-        """Create a model instance from a dict. The instance is recursively
-        created by importing the classes for complex fhir types."""
-        instance = cls()
-        for key, value in data.items():
-            # if value is dict try to create complex type
-            if isinstance(value, dict):
-                class_name = key[0].upper() + key[1:]
-                models_path = ".".join(cls.__module__.split(".")[:-1])
-                import_path = f"{models_path}.{class_name}"
-                try:
-                    module = import_module(import_path)
-                    model_class = getattr(module, class_name)
-                except ModuleNotFoundError:
-                    continue
-                # Check if the class is a subclass of BaseModel
-                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
-                    # Recursively create an instance of the nested class
-                    nested_instance = model_class.from_dict(value)
-                    setattr(instance, key, nested_instance)
-            # if value is list recursively create instances of the list items
-            elif isinstance(value, list):
-                setattr(
-                    instance,
-                    key,
-                    [
-                        cls.from_dict(item) if isinstance(item, dict) else item
-                        for item in value
-                    ],
-                )
-            # else set the value
-            else:
-                setattr(instance, key, value)
+    def from_dict(cls, data: dict) -> "TestReport":
+        return super().from_dict(data)
+    
+    @classmethod
+    def from_obj(self, obj: object) -> "TestReport":
+        return super().from_obj(obj)
 
-        return instance
+    def as_dict(self) -> dict:
+        return super().as_dict()
 
 
 class TestReport(DomainResource):
     """ A summary of information based on the results of executing a TestScript.
     :param str id: Logical id of this artifact
-    :param 'Meta' meta: Metadata about the resource
+    :param Meta meta: Metadata about the resource
     :param str implicitRules: A set of rules under which this content was created
     :param str language: Language of the resource content
-    :param 'Narrative' text: Text summary of the resource, for human interpretation
-    :param 'Resource' contained: Contained, inline Resources
-    :param 'Extension' extension: Additional content defined by implementations
-    :param 'Extension' modifierExtension: Extensions that cannot be ignored
-    :param 'Identifier' identifier: External identifier
+    :param Narrative text: Text summary of the resource, for human interpretation
+    :param Resource contained: Contained, inline Resources
+    :param Extension extension: Additional content defined by implementations
+    :param Extension modifierExtension: Extensions that cannot be ignored
+    :param Identifier identifier: External identifier
     :param str name: Informal name of the executed TestScript
     :param str status: completed | in-progress | waiting | stopped | entered-in-error
-    :param 'Reference' testScript: Reference to the  version-specific TestScript that was executed to produce this TestReport
+    :param Reference testScript: Reference to the  version-specific TestScript that was executed to produce this TestReport
     :param str result: pass | fail | pending
     :param float score: The final score (percentage of tests passed) resulting from the execution of the TestScript
     :param str tester: Name of the tester producing this report (Organization or individual)
     :param str issued: When the TestScript was executed and this TestReport was generated
-    :param 'Participant' participant: A participant in the test execution, either the execution engine, a client, or a server
-    :param 'Setup' setup: The results of the series of required setup operations before the tests were executed
-    :param 'Test' test: A test executed from the test script
-    :param 'Teardown' teardown: The results of running the series of required clean up steps
+    :param Participant participant: A participant in the test execution, either the execution engine, a client, or a server
+    :param Setup setup: The results of the series of required setup operations before the tests were executed
+    :param Test test: A test executed from the test script
+    :param Teardown teardown: The results of running the series of required clean up steps
     """
-    def __init__(self, resourceType: str = "TestReport",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: 'Resource' = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  identifier: 'Identifier' = None,  name: str = None,  status: str = None,  testScript: 'Reference' = None,  result: str = None,  score: float = None,  tester: str = None,  issued: str = None,  participant: 'Participant' = None,  setup: 'Setup' = None,  test: 'Test' = None,  teardown: 'Teardown' = None, ):
-        self.resourceType: str = resourceType or "TestReport"
-        self.id: str = id 
-        self.meta: 'Meta' = meta 
-        self.implicitRules: str = implicitRules 
-        self.language: str = language 
-        self.text: 'Narrative' = text 
-        self.contained: list['Resource'] = contained or []
-        self.extension: list['Extension'] = extension or []
-        self.modifierExtension: list['Extension'] = modifierExtension or []
-        self.identifier: 'Identifier' = identifier 
-        self.name: str = name 
-        self.status: str = status 
-        self.testScript: 'Reference' = testScript 
-        self.result: str = result 
-        self.score: float = score 
-        self.tester: str = tester 
-        self.issued: str = issued 
-        self.participant: list['Participant'] = participant or []
-        self.setup: 'Setup' = setup 
-        self.test: list['Test'] = test or []
-        self.teardown: 'Teardown' = teardown 
+    property_class_info = {
+        
+        
+        "meta": {"class_name": "Meta", "is_contained": False},
+        
+        
+        
+        
+        "text": {"class_name": "Narrative", "is_contained": False},
+        
+        
+        "contained": {"class_name": "Resource", "is_contained": False},
+        
+        
+        "extension": {"class_name": "Extension", "is_contained": False},
+        
+        
+        "modifierExtension": {"class_name": "Extension", "is_contained": False},
+        
+        
+        "identifier": {"class_name": "Identifier", "is_contained": False},
+        
+        
+        
+        
+        "testScript": {"class_name": "Reference", "is_contained": False},
+        
+        
+        
+        
+        
+        
+        "participant": {"class_name": "Participant", "is_contained": True},
+        
+        
+        "setup": {"class_name": "Setup", "is_contained": True},
+        
+        
+        "test": {"class_name": "Test", "is_contained": True},
+        
+        
+        "teardown": {"class_name": "Teardown", "is_contained": True},
+        
+        }
+    def __init__(self, resourceType: str = None,  id:  'str'  = None,  meta:  'Meta'  = None,  implicitRules:  'str'  = None,  language:  'str'  = None,  text:  'Narrative'  = None,  contained:  list['Resource']  = None,  extension:  list['Extension']  = None,  modifierExtension:  list['Extension']  = None,  identifier:  'Identifier'  = None,  name:  'str'  = None,  status:  'str'  = None,  testScript:  'Reference'  = None,  result:  'str'  = None,  score:  'float'  = None,  tester:  'str'  = None,  issued:  'str'  = None,  participant:  list['Participant']  = None,  setup:  'Setup'  = None,  test:  list['Test']  = None,  teardown:  'Teardown'  = None, ):
+        self.resourceType = resourceType or "TestReport"
+        self.id = id 
+        self.meta = meta 
+        self.implicitRules = implicitRules 
+        self.language = language 
+        self.text = text 
+        self.contained = contained or []
+        self.extension = extension or []
+        self.modifierExtension = modifierExtension or []
+        self.identifier = identifier 
+        self.name = name 
+        self.status = status 
+        self.testScript = testScript 
+        self.result = result 
+        self.score = score 
+        self.tester = tester 
+        self.issued = issued 
+        self.participant = participant or []
+        self.setup = setup 
+        self.test = test or []
+        self.teardown = teardown 
         
 
     @classmethod
     def from_dict(cls, data: dict) -> "TestReport":
-        """Create a model instance from a dict. The instance is recursively
-        created by importing the classes for complex fhir types."""
-        instance = cls()
-        for key, value in data.items():
-            # if value is dict try to create complex type
-            if isinstance(value, dict):
-                class_name = key[0].upper() + key[1:]
-                models_path = ".".join(cls.__module__.split(".")[:-1])
-                import_path = f"{models_path}.{class_name}"
-                try:
-                    module = import_module(import_path)
-                    model_class = getattr(module, class_name)
-                except ModuleNotFoundError:
-                    continue
-                # Check if the class is a subclass of BaseModel
-                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
-                    # Recursively create an instance of the nested class
-                    nested_instance = model_class.from_dict(value)
-                    setattr(instance, key, nested_instance)
-            # if value is list recursively create instances of the list items
-            elif isinstance(value, list):
-                setattr(
-                    instance,
-                    key,
-                    [
-                        cls.from_dict(item) if isinstance(item, dict) else item
-                        for item in value
-                    ],
-                )
-            # else set the value
-            else:
-                setattr(instance, key, value)
+        return super().from_dict(data)
+    
+    @classmethod
+    def from_obj(self, obj: object) -> "TestReport":
+        return super().from_obj(obj)
 
-        return instance
+    def as_dict(self) -> dict:
+        return super().as_dict()

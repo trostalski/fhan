@@ -2,9 +2,6 @@
 Generated class for {{structure_definition.type}}. 
 Time: {{time}}
 """
-from importlib import import_module
-import inspect
-
 {% for dependency in structure_definition.dependencies -%}
 from fhan.models.{{dir_name}}.{{dependency}} import *
 {% endfor %}
@@ -16,9 +13,6 @@ from fhan.models.{{dir_name}}.{{structure_definition.base_class}} import *
 {% endif %}
 {% endif %}
 
-
-
-
 {%- macro render_contained_element(element) %}
 
 class {{ element.type }}({{ element.base_class }}):
@@ -27,50 +21,32 @@ class {{ element.type }}({{ element.base_class }}):
     :param {{ child.type_string }} {{ child.name }}: {{ child.short }}
     {% endfor -%}
     """
-    def __init__(self, {% for child in element.defined_children %} {{ child.name }}: {{ child.type_string }} = None, {% endfor %}):
+    # needed for complex properties where the element name is different from the class name
+    property_class_info = {
+        {% for child in element.defined_children -%}
+        {% if not child.is_primitive %}
+        "{{ child.name }}": {"class_name": "{{ child.type_string }}", "is_contained": {{ child.is_contained }}},
+        {% endif %}
+        {% endfor -%}
+    }
+    def __init__(self, {% for child in element.defined_children %} {{ child.name }}: {% if child.is_array %} list['{{ child.type_string }}'] {% else %} '{{child.type_string}}' {%endif%} = None, {% endfor %}):
         {% for child in element.defined_children %}
         {%- if child.is_array -%}
-        self.{{child.name}}: list[{{child.type_string}}] = {{child.name}} or []
+        self.{{child.name}} = {{child.name}} or []
         {%- else -%}
-        self.{{child.name}}: {{child.type_string}} = {{child.name}} {% endif %}
+        self.{{child.name}} = {{child.name}} {% endif %}
         {% endfor %}
 
     @classmethod
-    def from_dict(cls, data: dict) -> "{{ element.type }}":
-        """Create a model instance from a dict. The instance is recursively
-        created by importing the classes for complex fhir types."""
-        instance = cls()
-        for key, value in data.items():
-            # if value is dict try to create complex type
-            if isinstance(value, dict):
-                class_name = key[0].upper() + key[1:]
-                models_path = ".".join(cls.__module__.split(".")[:-1])
-                import_path = f"{models_path}.{class_name}"
-                try:
-                    module = import_module(import_path)
-                    model_class = getattr(module, class_name)
-                except ModuleNotFoundError:
-                    continue
-                # Check if the class is a subclass of BaseModel
-                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
-                    # Recursively create an instance of the nested class
-                    nested_instance = model_class.from_dict(value)
-                    setattr(instance, key, nested_instance)
-            # if value is list recursively create instances of the list items
-            elif isinstance(value, list):
-                setattr(
-                    instance,
-                    key,
-                    [
-                        cls.from_dict(item) if isinstance(item, dict) else item
-                        for item in value
-                    ],
-                )
-            # else set the value
-            else:
-                setattr(instance, key, value)
+    def from_dict(cls, data: dict) -> "{{structure_definition.type}}":
+        return super().from_dict(data)
+    
+    @classmethod
+    def from_obj(self, obj: object) -> "{{structure_definition.type}}":
+        return super().from_obj(obj)
 
-        return instance
+    def as_dict(self) -> dict:
+        return super().as_dict()
 {% endmacro -%}
 
 
@@ -91,48 +67,30 @@ class {{structure_definition.type}}{% if structure_definition.base_class %}({{st
     :param {{element.type_string}} {{element.name}}: {{element.short}}
     {% endfor -%}
     """
-    def __init__(self, resourceType: str = "{{structure_definition.type}}", {% for element in structure_definition.defined_elements %} {{element.name}}: {{element.type_string}} = None, {% endfor %}):
-        self.resourceType: str = resourceType or "{{structure_definition.type}}"
+    # needed for complex properties where the element name is different from the class name
+    property_class_info = {
+        {% for element in structure_definition.defined_elements -%}
+        {% if not element.is_primitive %}
+        "{{ element.name }}": {"class_name": "{{ element.type_string }}", "is_contained": {{ element.is_contained }}},
+        {% endif %}
+        {% endfor -%}
+    }
+    def __init__(self, resourceType: str = None, {% for element in structure_definition.defined_elements %} {{ element.name }}: {% if element.is_array %} list['{{ element.type_string }}'] {% else %} '{{element.type_string}}' {%endif%} = None, {% endfor %}):
+        self.resourceType = resourceType or "{{structure_definition.type}}"
         {% for element in structure_definition.defined_elements %}
         {%- if element.is_array -%}
-        self.{{element.name}}: list[{{element.type_string}}] = {{element.name}} or []
+        self.{{element.name}} = {{element.name}} or []
         {%- else -%}
-        self.{{element.name}}: {{element.type_string}} = {{element.name}} {% endif %}
+        self.{{element.name}} = {{element.name}} {% endif %}
         {% endfor %}
 
     @classmethod
     def from_dict(cls, data: dict) -> "{{structure_definition.type}}":
-        """Create a model instance from a dict. The instance is recursively
-        created by importing the classes for complex fhir types."""
-        instance = cls()
-        for key, value in data.items():
-            # if value is dict try to create complex type
-            if isinstance(value, dict):
-                class_name = key[0].upper() + key[1:]
-                models_path = ".".join(cls.__module__.split(".")[:-1])
-                import_path = f"{models_path}.{class_name}"
-                try:
-                    module = import_module(import_path)
-                    model_class = getattr(module, class_name)
-                except ModuleNotFoundError:
-                    continue
-                # Check if the class is a subclass of BaseModel
-                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
-                    # Recursively create an instance of the nested class
-                    nested_instance = model_class.from_dict(value)
-                    setattr(instance, key, nested_instance)
-            # if value is list recursively create instances of the list items
-            elif isinstance(value, list):
-                setattr(
-                    instance,
-                    key,
-                    [
-                        cls.from_dict(item) if isinstance(item, dict) else item
-                        for item in value
-                    ],
-                )
-            # else set the value
-            else:
-                setattr(instance, key, value)
+        return super().from_dict(data)
+    
+    @classmethod
+    def from_obj(self, obj: object) -> "{{structure_definition.type}}":
+        return super().from_obj(obj)
 
-        return instance
+    def as_dict(self) -> dict:
+        return super().as_dict()

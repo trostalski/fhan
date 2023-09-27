@@ -1,19 +1,16 @@
 """
 Generated class for DeviceMetric. 
-Time: 2023-09-27 15:54:17
+Time: 2023-09-27 19:27:05
 """
-from importlib import import_module
-import inspect
-
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Timing import *
-from fhan.models.R4.Resource import *
-from fhan.models.R4.Identifier import *
 from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Extension import *
+from fhan.models.R4.BackboneElement import *
 from fhan.models.R4.Narrative import *
 from fhan.models.R4.Reference import *
+from fhan.models.R4.Meta import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.Resource import *
+from fhan.models.R4.Timing import *
 from fhan.models.R4.DomainResource import *
 
 
@@ -22,135 +19,139 @@ from fhan.models.R4.DomainResource import *
 
 class Calibration(BaseModel):
     """ Describes the calibrations that have been performed or that are required to be performed.:param str id: Unique id for inter-element referencing
-    :param 'Extension' extension: Additional content defined by implementations
-    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param Extension extension: Additional content defined by implementations
+    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str type: unspecified | offset | gain | two-point
     :param str state: not-calibrated | calibration-required | calibrated | unspecified
     :param str time: Describes the time last calibration has been performed
     """
-    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  type: str = None,  state: str = None,  time: str = None, ):
-        self.id: str = id 
-        self.extension: list['Extension'] = extension or []
-        self.modifierExtension: list['Extension'] = modifierExtension or []
-        self.type: str = type 
-        self.state: str = state 
-        self.time: str = time 
+    property_class_info = {
+        
+        
+        "extension": {"class_name": "Extension", "is_contained": False},
+        
+        
+        "modifierExtension": {"class_name": "Extension", "is_contained": False},
+        
+        
+        
+        
+        }
+    def __init__(self,  id:  'str'  = None,  extension:  list['Extension']  = None,  modifierExtension:  list['Extension']  = None,  type:  'str'  = None,  state:  'str'  = None,  time:  'str'  = None, ):
+        self.id = id 
+        self.extension = extension or []
+        self.modifierExtension = modifierExtension or []
+        self.type = type 
+        self.state = state 
+        self.time = time 
         
 
     @classmethod
-    def from_dict(cls, data: dict) -> "Calibration":
-        """Create a model instance from a dict. The instance is recursively
-        created by importing the classes for complex fhir types."""
-        instance = cls()
-        for key, value in data.items():
-            # if value is dict try to create complex type
-            if isinstance(value, dict):
-                class_name = key[0].upper() + key[1:]
-                models_path = ".".join(cls.__module__.split(".")[:-1])
-                import_path = f"{models_path}.{class_name}"
-                try:
-                    module = import_module(import_path)
-                    model_class = getattr(module, class_name)
-                except ModuleNotFoundError:
-                    continue
-                # Check if the class is a subclass of BaseModel
-                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
-                    # Recursively create an instance of the nested class
-                    nested_instance = model_class.from_dict(value)
-                    setattr(instance, key, nested_instance)
-            # if value is list recursively create instances of the list items
-            elif isinstance(value, list):
-                setattr(
-                    instance,
-                    key,
-                    [
-                        cls.from_dict(item) if isinstance(item, dict) else item
-                        for item in value
-                    ],
-                )
-            # else set the value
-            else:
-                setattr(instance, key, value)
+    def from_dict(cls, data: dict) -> "DeviceMetric":
+        return super().from_dict(data)
+    
+    @classmethod
+    def from_obj(self, obj: object) -> "DeviceMetric":
+        return super().from_obj(obj)
 
-        return instance
+    def as_dict(self) -> dict:
+        return super().as_dict()
 
 
 class DeviceMetric(DomainResource):
     """ Describes a measurement, calculation or setting capability of a medical device.
     :param str id: Logical id of this artifact
-    :param 'Meta' meta: Metadata about the resource
+    :param Meta meta: Metadata about the resource
     :param str implicitRules: A set of rules under which this content was created
     :param str language: Language of the resource content
-    :param 'Narrative' text: Text summary of the resource, for human interpretation
-    :param 'Resource' contained: Contained, inline Resources
-    :param 'Extension' extension: Additional content defined by implementations
-    :param 'Extension' modifierExtension: Extensions that cannot be ignored
-    :param 'Identifier' identifier: Instance identifier
-    :param 'CodeableConcept' type: Identity of metric, for example Heart Rate or PEEP Setting
-    :param 'CodeableConcept' unit: Unit of Measure for the Metric
-    :param 'Reference' source: Describes the link to the source Device
-    :param 'Reference' parent: Describes the link to the parent Device
+    :param Narrative text: Text summary of the resource, for human interpretation
+    :param Resource contained: Contained, inline Resources
+    :param Extension extension: Additional content defined by implementations
+    :param Extension modifierExtension: Extensions that cannot be ignored
+    :param Identifier identifier: Instance identifier
+    :param CodeableConcept type: Identity of metric, for example Heart Rate or PEEP Setting
+    :param CodeableConcept unit: Unit of Measure for the Metric
+    :param Reference source: Describes the link to the source Device
+    :param Reference parent: Describes the link to the parent Device
     :param str operationalStatus: on | off | standby | entered-in-error
     :param str color: black | red | green | yellow | blue | magenta | cyan | white
     :param str category: measurement | setting | calculation | unspecified
-    :param 'Timing' measurementPeriod: Describes the measurement repetition time
-    :param 'Calibration' calibration: Describes the calibrations that have been performed or that are required to be performed
+    :param Timing measurementPeriod: Describes the measurement repetition time
+    :param Calibration calibration: Describes the calibrations that have been performed or that are required to be performed
     """
-    def __init__(self, resourceType: str = "DeviceMetric",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: 'Resource' = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  identifier: 'Identifier' = None,  type: 'CodeableConcept' = None,  unit: 'CodeableConcept' = None,  source: 'Reference' = None,  parent: 'Reference' = None,  operationalStatus: str = None,  color: str = None,  category: str = None,  measurementPeriod: 'Timing' = None,  calibration: 'Calibration' = None, ):
-        self.resourceType: str = resourceType or "DeviceMetric"
-        self.id: str = id 
-        self.meta: 'Meta' = meta 
-        self.implicitRules: str = implicitRules 
-        self.language: str = language 
-        self.text: 'Narrative' = text 
-        self.contained: list['Resource'] = contained or []
-        self.extension: list['Extension'] = extension or []
-        self.modifierExtension: list['Extension'] = modifierExtension or []
-        self.identifier: list['Identifier'] = identifier or []
-        self.type: 'CodeableConcept' = type 
-        self.unit: 'CodeableConcept' = unit 
-        self.source: 'Reference' = source 
-        self.parent: 'Reference' = parent 
-        self.operationalStatus: str = operationalStatus 
-        self.color: str = color 
-        self.category: str = category 
-        self.measurementPeriod: 'Timing' = measurementPeriod 
-        self.calibration: list['Calibration'] = calibration or []
+    property_class_info = {
+        
+        
+        "meta": {"class_name": "Meta", "is_contained": False},
+        
+        
+        
+        
+        "text": {"class_name": "Narrative", "is_contained": False},
+        
+        
+        "contained": {"class_name": "Resource", "is_contained": False},
+        
+        
+        "extension": {"class_name": "Extension", "is_contained": False},
+        
+        
+        "modifierExtension": {"class_name": "Extension", "is_contained": False},
+        
+        
+        "identifier": {"class_name": "Identifier", "is_contained": False},
+        
+        
+        "type": {"class_name": "CodeableConcept", "is_contained": False},
+        
+        
+        "unit": {"class_name": "CodeableConcept", "is_contained": False},
+        
+        
+        "source": {"class_name": "Reference", "is_contained": False},
+        
+        
+        "parent": {"class_name": "Reference", "is_contained": False},
+        
+        
+        
+        
+        
+        "measurementPeriod": {"class_name": "Timing", "is_contained": False},
+        
+        
+        "calibration": {"class_name": "Calibration", "is_contained": True},
+        
+        }
+    def __init__(self, resourceType: str = None,  id:  'str'  = None,  meta:  'Meta'  = None,  implicitRules:  'str'  = None,  language:  'str'  = None,  text:  'Narrative'  = None,  contained:  list['Resource']  = None,  extension:  list['Extension']  = None,  modifierExtension:  list['Extension']  = None,  identifier:  list['Identifier']  = None,  type:  'CodeableConcept'  = None,  unit:  'CodeableConcept'  = None,  source:  'Reference'  = None,  parent:  'Reference'  = None,  operationalStatus:  'str'  = None,  color:  'str'  = None,  category:  'str'  = None,  measurementPeriod:  'Timing'  = None,  calibration:  list['Calibration']  = None, ):
+        self.resourceType = resourceType or "DeviceMetric"
+        self.id = id 
+        self.meta = meta 
+        self.implicitRules = implicitRules 
+        self.language = language 
+        self.text = text 
+        self.contained = contained or []
+        self.extension = extension or []
+        self.modifierExtension = modifierExtension or []
+        self.identifier = identifier or []
+        self.type = type 
+        self.unit = unit 
+        self.source = source 
+        self.parent = parent 
+        self.operationalStatus = operationalStatus 
+        self.color = color 
+        self.category = category 
+        self.measurementPeriod = measurementPeriod 
+        self.calibration = calibration or []
         
 
     @classmethod
     def from_dict(cls, data: dict) -> "DeviceMetric":
-        """Create a model instance from a dict. The instance is recursively
-        created by importing the classes for complex fhir types."""
-        instance = cls()
-        for key, value in data.items():
-            # if value is dict try to create complex type
-            if isinstance(value, dict):
-                class_name = key[0].upper() + key[1:]
-                models_path = ".".join(cls.__module__.split(".")[:-1])
-                import_path = f"{models_path}.{class_name}"
-                try:
-                    module = import_module(import_path)
-                    model_class = getattr(module, class_name)
-                except ModuleNotFoundError:
-                    continue
-                # Check if the class is a subclass of BaseModel
-                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
-                    # Recursively create an instance of the nested class
-                    nested_instance = model_class.from_dict(value)
-                    setattr(instance, key, nested_instance)
-            # if value is list recursively create instances of the list items
-            elif isinstance(value, list):
-                setattr(
-                    instance,
-                    key,
-                    [
-                        cls.from_dict(item) if isinstance(item, dict) else item
-                        for item in value
-                    ],
-                )
-            # else set the value
-            else:
-                setattr(instance, key, value)
+        return super().from_dict(data)
+    
+    @classmethod
+    def from_obj(self, obj: object) -> "DeviceMetric":
+        return super().from_obj(obj)
 
-        return instance
+    def as_dict(self) -> dict:
+        return super().as_dict()

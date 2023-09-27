@@ -1,20 +1,17 @@
 """
 Generated class for SubstanceReferenceInformation. 
-Time: 2023-09-27 15:54:17
+Time: 2023-09-27 19:27:05
 """
-from importlib import import_module
-import inspect
-
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Quantity import *
-from fhan.models.R4.Resource import *
 from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Identifier import *
-from fhan.models.R4.Range import *
 from fhan.models.R4.Extension import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Range import *
 from fhan.models.R4.Narrative import *
+from fhan.models.R4.Quantity import *
 from fhan.models.R4.Reference import *
+from fhan.models.R4.Meta import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.Resource import *
 from fhan.models.R4.DomainResource import *
 
 
@@ -25,57 +22,49 @@ from fhan.models.R4.DomainResource import *
 
 class GeneElement(BaseModel):
     """ Todo.:param str id: Unique id for inter-element referencing
-    :param 'Extension' extension: Additional content defined by implementations
-    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param 'CodeableConcept' type: Todo
-    :param 'Identifier' element: Todo
-    :param 'Reference' source: Todo
+    :param Extension extension: Additional content defined by implementations
+    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param CodeableConcept type: Todo
+    :param Identifier element: Todo
+    :param Reference source: Todo
     """
-    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  type: 'CodeableConcept' = None,  element: 'Identifier' = None,  source: 'Reference' = None, ):
-        self.id: str = id 
-        self.extension: list['Extension'] = extension or []
-        self.modifierExtension: list['Extension'] = modifierExtension or []
-        self.type: 'CodeableConcept' = type 
-        self.element: 'Identifier' = element 
-        self.source: list['Reference'] = source or []
+    property_class_info = {
+        
+        
+        "extension": {"class_name": "Extension", "is_contained": False},
+        
+        
+        "modifierExtension": {"class_name": "Extension", "is_contained": False},
+        
+        
+        "type": {"class_name": "CodeableConcept", "is_contained": False},
+        
+        
+        "element": {"class_name": "Identifier", "is_contained": False},
+        
+        
+        "source": {"class_name": "Reference", "is_contained": False},
+        
+        }
+    def __init__(self,  id:  'str'  = None,  extension:  list['Extension']  = None,  modifierExtension:  list['Extension']  = None,  type:  'CodeableConcept'  = None,  element:  'Identifier'  = None,  source:  list['Reference']  = None, ):
+        self.id = id 
+        self.extension = extension or []
+        self.modifierExtension = modifierExtension or []
+        self.type = type 
+        self.element = element 
+        self.source = source or []
         
 
     @classmethod
-    def from_dict(cls, data: dict) -> "GeneElement":
-        """Create a model instance from a dict. The instance is recursively
-        created by importing the classes for complex fhir types."""
-        instance = cls()
-        for key, value in data.items():
-            # if value is dict try to create complex type
-            if isinstance(value, dict):
-                class_name = key[0].upper() + key[1:]
-                models_path = ".".join(cls.__module__.split(".")[:-1])
-                import_path = f"{models_path}.{class_name}"
-                try:
-                    module = import_module(import_path)
-                    model_class = getattr(module, class_name)
-                except ModuleNotFoundError:
-                    continue
-                # Check if the class is a subclass of BaseModel
-                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
-                    # Recursively create an instance of the nested class
-                    nested_instance = model_class.from_dict(value)
-                    setattr(instance, key, nested_instance)
-            # if value is list recursively create instances of the list items
-            elif isinstance(value, list):
-                setattr(
-                    instance,
-                    key,
-                    [
-                        cls.from_dict(item) if isinstance(item, dict) else item
-                        for item in value
-                    ],
-                )
-            # else set the value
-            else:
-                setattr(instance, key, value)
+    def from_dict(cls, data: dict) -> "SubstanceReferenceInformation":
+        return super().from_dict(data)
+    
+    @classmethod
+    def from_obj(self, obj: object) -> "SubstanceReferenceInformation":
+        return super().from_obj(obj)
 
-        return instance
+    def as_dict(self) -> dict:
+        return super().as_dict()
 
 
   
@@ -84,59 +73,54 @@ class GeneElement(BaseModel):
 
 class Gene(BaseModel):
     """ Todo.:param str id: Unique id for inter-element referencing
-    :param 'Extension' extension: Additional content defined by implementations
-    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param 'CodeableConcept' geneSequenceOrigin: Todo
-    :param 'CodeableConcept' gene: Todo
-    :param 'Reference' source: Todo
-    :param 'GeneElement' geneElement: Todo
+    :param Extension extension: Additional content defined by implementations
+    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param CodeableConcept geneSequenceOrigin: Todo
+    :param CodeableConcept gene: Todo
+    :param Reference source: Todo
+    :param GeneElement geneElement: Todo
     """
-    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  geneSequenceOrigin: 'CodeableConcept' = None,  gene: 'CodeableConcept' = None,  source: 'Reference' = None,  geneElement: 'GeneElement' = None, ):
-        self.id: str = id 
-        self.extension: list['Extension'] = extension or []
-        self.modifierExtension: list['Extension'] = modifierExtension or []
-        self.geneSequenceOrigin: 'CodeableConcept' = geneSequenceOrigin 
-        self.gene: 'CodeableConcept' = gene 
-        self.source: list['Reference'] = source or []
-        self.geneElement: list['GeneElement'] = geneElement or []
+    property_class_info = {
+        
+        
+        "extension": {"class_name": "Extension", "is_contained": False},
+        
+        
+        "modifierExtension": {"class_name": "Extension", "is_contained": False},
+        
+        
+        "geneSequenceOrigin": {"class_name": "CodeableConcept", "is_contained": False},
+        
+        
+        "gene": {"class_name": "CodeableConcept", "is_contained": False},
+        
+        
+        "source": {"class_name": "Reference", "is_contained": False},
+        
+        
+        "geneElement": {"class_name": "GeneElement", "is_contained": True},
+        
+        }
+    def __init__(self,  id:  'str'  = None,  extension:  list['Extension']  = None,  modifierExtension:  list['Extension']  = None,  geneSequenceOrigin:  'CodeableConcept'  = None,  gene:  'CodeableConcept'  = None,  source:  list['Reference']  = None,  geneElement:  list['GeneElement']  = None, ):
+        self.id = id 
+        self.extension = extension or []
+        self.modifierExtension = modifierExtension or []
+        self.geneSequenceOrigin = geneSequenceOrigin 
+        self.gene = gene 
+        self.source = source or []
+        self.geneElement = geneElement or []
         
 
     @classmethod
-    def from_dict(cls, data: dict) -> "Gene":
-        """Create a model instance from a dict. The instance is recursively
-        created by importing the classes for complex fhir types."""
-        instance = cls()
-        for key, value in data.items():
-            # if value is dict try to create complex type
-            if isinstance(value, dict):
-                class_name = key[0].upper() + key[1:]
-                models_path = ".".join(cls.__module__.split(".")[:-1])
-                import_path = f"{models_path}.{class_name}"
-                try:
-                    module = import_module(import_path)
-                    model_class = getattr(module, class_name)
-                except ModuleNotFoundError:
-                    continue
-                # Check if the class is a subclass of BaseModel
-                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
-                    # Recursively create an instance of the nested class
-                    nested_instance = model_class.from_dict(value)
-                    setattr(instance, key, nested_instance)
-            # if value is list recursively create instances of the list items
-            elif isinstance(value, list):
-                setattr(
-                    instance,
-                    key,
-                    [
-                        cls.from_dict(item) if isinstance(item, dict) else item
-                        for item in value
-                    ],
-                )
-            # else set the value
-            else:
-                setattr(instance, key, value)
+    def from_dict(cls, data: dict) -> "SubstanceReferenceInformation":
+        return super().from_dict(data)
+    
+    @classmethod
+    def from_obj(self, obj: object) -> "SubstanceReferenceInformation":
+        return super().from_obj(obj)
 
-        return instance
+    def as_dict(self) -> dict:
+        return super().as_dict()
 
 
     
@@ -144,59 +128,54 @@ class Gene(BaseModel):
 
 class Classification(BaseModel):
     """ Todo.:param str id: Unique id for inter-element referencing
-    :param 'Extension' extension: Additional content defined by implementations
-    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param 'CodeableConcept' domain: Todo
-    :param 'CodeableConcept' classification: Todo
-    :param 'CodeableConcept' subtype: Todo
-    :param 'Reference' source: Todo
+    :param Extension extension: Additional content defined by implementations
+    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param CodeableConcept domain: Todo
+    :param CodeableConcept classification: Todo
+    :param CodeableConcept subtype: Todo
+    :param Reference source: Todo
     """
-    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  domain: 'CodeableConcept' = None,  classification: 'CodeableConcept' = None,  subtype: 'CodeableConcept' = None,  source: 'Reference' = None, ):
-        self.id: str = id 
-        self.extension: list['Extension'] = extension or []
-        self.modifierExtension: list['Extension'] = modifierExtension or []
-        self.domain: 'CodeableConcept' = domain 
-        self.classification: 'CodeableConcept' = classification 
-        self.subtype: list['CodeableConcept'] = subtype or []
-        self.source: list['Reference'] = source or []
+    property_class_info = {
+        
+        
+        "extension": {"class_name": "Extension", "is_contained": False},
+        
+        
+        "modifierExtension": {"class_name": "Extension", "is_contained": False},
+        
+        
+        "domain": {"class_name": "CodeableConcept", "is_contained": False},
+        
+        
+        "classification": {"class_name": "CodeableConcept", "is_contained": False},
+        
+        
+        "subtype": {"class_name": "CodeableConcept", "is_contained": False},
+        
+        
+        "source": {"class_name": "Reference", "is_contained": False},
+        
+        }
+    def __init__(self,  id:  'str'  = None,  extension:  list['Extension']  = None,  modifierExtension:  list['Extension']  = None,  domain:  'CodeableConcept'  = None,  classification:  'CodeableConcept'  = None,  subtype:  list['CodeableConcept']  = None,  source:  list['Reference']  = None, ):
+        self.id = id 
+        self.extension = extension or []
+        self.modifierExtension = modifierExtension or []
+        self.domain = domain 
+        self.classification = classification 
+        self.subtype = subtype or []
+        self.source = source or []
         
 
     @classmethod
-    def from_dict(cls, data: dict) -> "Classification":
-        """Create a model instance from a dict. The instance is recursively
-        created by importing the classes for complex fhir types."""
-        instance = cls()
-        for key, value in data.items():
-            # if value is dict try to create complex type
-            if isinstance(value, dict):
-                class_name = key[0].upper() + key[1:]
-                models_path = ".".join(cls.__module__.split(".")[:-1])
-                import_path = f"{models_path}.{class_name}"
-                try:
-                    module = import_module(import_path)
-                    model_class = getattr(module, class_name)
-                except ModuleNotFoundError:
-                    continue
-                # Check if the class is a subclass of BaseModel
-                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
-                    # Recursively create an instance of the nested class
-                    nested_instance = model_class.from_dict(value)
-                    setattr(instance, key, nested_instance)
-            # if value is list recursively create instances of the list items
-            elif isinstance(value, list):
-                setattr(
-                    instance,
-                    key,
-                    [
-                        cls.from_dict(item) if isinstance(item, dict) else item
-                        for item in value
-                    ],
-                )
-            # else set the value
-            else:
-                setattr(instance, key, value)
+    def from_dict(cls, data: dict) -> "SubstanceReferenceInformation":
+        return super().from_dict(data)
+    
+    @classmethod
+    def from_obj(self, obj: object) -> "SubstanceReferenceInformation":
+        return super().from_obj(obj)
 
-        return instance
+    def as_dict(self) -> dict:
+        return super().as_dict()
 
 
     
@@ -204,137 +183,152 @@ class Classification(BaseModel):
 
 class Target(BaseModel):
     """ Todo.:param str id: Unique id for inter-element referencing
-    :param 'Extension' extension: Additional content defined by implementations
-    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param 'Identifier' target: Todo
-    :param 'CodeableConcept' type: Todo
-    :param 'CodeableConcept' interaction: Todo
-    :param 'CodeableConcept' organism: Todo
-    :param 'CodeableConcept' organismType: Todo
-    :param 'Quantity' amountQuantity: Todo
-    :param 'Range' amountRange: Todo
+    :param Extension extension: Additional content defined by implementations
+    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param Identifier target: Todo
+    :param CodeableConcept type: Todo
+    :param CodeableConcept interaction: Todo
+    :param CodeableConcept organism: Todo
+    :param CodeableConcept organismType: Todo
+    :param Quantity amountQuantity: Todo
+    :param Range amountRange: Todo
     :param str amountString: Todo
-    :param 'CodeableConcept' amountType: Todo
-    :param 'Reference' source: Todo
+    :param CodeableConcept amountType: Todo
+    :param Reference source: Todo
     """
-    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  target: 'Identifier' = None,  type: 'CodeableConcept' = None,  interaction: 'CodeableConcept' = None,  organism: 'CodeableConcept' = None,  organismType: 'CodeableConcept' = None,  amountQuantity: 'Quantity' = None,  amountRange: 'Range' = None,  amountString: str = None,  amountType: 'CodeableConcept' = None,  source: 'Reference' = None, ):
-        self.id: str = id 
-        self.extension: list['Extension'] = extension or []
-        self.modifierExtension: list['Extension'] = modifierExtension or []
-        self.target: 'Identifier' = target 
-        self.type: 'CodeableConcept' = type 
-        self.interaction: 'CodeableConcept' = interaction 
-        self.organism: 'CodeableConcept' = organism 
-        self.organismType: 'CodeableConcept' = organismType 
-        self.amountQuantity: 'Quantity' = amountQuantity 
-        self.amountRange: 'Range' = amountRange 
-        self.amountString: str = amountString 
-        self.amountType: 'CodeableConcept' = amountType 
-        self.source: list['Reference'] = source or []
+    property_class_info = {
+        
+        
+        "extension": {"class_name": "Extension", "is_contained": False},
+        
+        
+        "modifierExtension": {"class_name": "Extension", "is_contained": False},
+        
+        
+        "target": {"class_name": "Identifier", "is_contained": False},
+        
+        
+        "type": {"class_name": "CodeableConcept", "is_contained": False},
+        
+        
+        "interaction": {"class_name": "CodeableConcept", "is_contained": False},
+        
+        
+        "organism": {"class_name": "CodeableConcept", "is_contained": False},
+        
+        
+        "organismType": {"class_name": "CodeableConcept", "is_contained": False},
+        
+        
+        "amountQuantity": {"class_name": "Quantity", "is_contained": False},
+        
+        
+        "amountRange": {"class_name": "Range", "is_contained": False},
+        
+        
+        
+        "amountType": {"class_name": "CodeableConcept", "is_contained": False},
+        
+        
+        "source": {"class_name": "Reference", "is_contained": False},
+        
+        }
+    def __init__(self,  id:  'str'  = None,  extension:  list['Extension']  = None,  modifierExtension:  list['Extension']  = None,  target:  'Identifier'  = None,  type:  'CodeableConcept'  = None,  interaction:  'CodeableConcept'  = None,  organism:  'CodeableConcept'  = None,  organismType:  'CodeableConcept'  = None,  amountQuantity:  'Quantity'  = None,  amountRange:  'Range'  = None,  amountString:  'str'  = None,  amountType:  'CodeableConcept'  = None,  source:  list['Reference']  = None, ):
+        self.id = id 
+        self.extension = extension or []
+        self.modifierExtension = modifierExtension or []
+        self.target = target 
+        self.type = type 
+        self.interaction = interaction 
+        self.organism = organism 
+        self.organismType = organismType 
+        self.amountQuantity = amountQuantity 
+        self.amountRange = amountRange 
+        self.amountString = amountString 
+        self.amountType = amountType 
+        self.source = source or []
         
 
     @classmethod
-    def from_dict(cls, data: dict) -> "Target":
-        """Create a model instance from a dict. The instance is recursively
-        created by importing the classes for complex fhir types."""
-        instance = cls()
-        for key, value in data.items():
-            # if value is dict try to create complex type
-            if isinstance(value, dict):
-                class_name = key[0].upper() + key[1:]
-                models_path = ".".join(cls.__module__.split(".")[:-1])
-                import_path = f"{models_path}.{class_name}"
-                try:
-                    module = import_module(import_path)
-                    model_class = getattr(module, class_name)
-                except ModuleNotFoundError:
-                    continue
-                # Check if the class is a subclass of BaseModel
-                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
-                    # Recursively create an instance of the nested class
-                    nested_instance = model_class.from_dict(value)
-                    setattr(instance, key, nested_instance)
-            # if value is list recursively create instances of the list items
-            elif isinstance(value, list):
-                setattr(
-                    instance,
-                    key,
-                    [
-                        cls.from_dict(item) if isinstance(item, dict) else item
-                        for item in value
-                    ],
-                )
-            # else set the value
-            else:
-                setattr(instance, key, value)
+    def from_dict(cls, data: dict) -> "SubstanceReferenceInformation":
+        return super().from_dict(data)
+    
+    @classmethod
+    def from_obj(self, obj: object) -> "SubstanceReferenceInformation":
+        return super().from_obj(obj)
 
-        return instance
+    def as_dict(self) -> dict:
+        return super().as_dict()
 
 
 class SubstanceReferenceInformation(DomainResource):
     """ Todo.
     :param str id: Logical id of this artifact
-    :param 'Meta' meta: Metadata about the resource
+    :param Meta meta: Metadata about the resource
     :param str implicitRules: A set of rules under which this content was created
     :param str language: Language of the resource content
-    :param 'Narrative' text: Text summary of the resource, for human interpretation
-    :param 'Resource' contained: Contained, inline Resources
-    :param 'Extension' extension: Additional content defined by implementations
-    :param 'Extension' modifierExtension: Extensions that cannot be ignored
+    :param Narrative text: Text summary of the resource, for human interpretation
+    :param Resource contained: Contained, inline Resources
+    :param Extension extension: Additional content defined by implementations
+    :param Extension modifierExtension: Extensions that cannot be ignored
     :param str comment: Todo
-    :param 'Gene' gene: Todo
-    :param 'Classification' classification: Todo
-    :param 'Target' target: Todo
+    :param Gene gene: Todo
+    :param Classification classification: Todo
+    :param Target target: Todo
     """
-    def __init__(self, resourceType: str = "SubstanceReferenceInformation",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: 'Resource' = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  comment: str = None,  gene: 'Gene' = None,  classification: 'Classification' = None,  target: 'Target' = None, ):
-        self.resourceType: str = resourceType or "SubstanceReferenceInformation"
-        self.id: str = id 
-        self.meta: 'Meta' = meta 
-        self.implicitRules: str = implicitRules 
-        self.language: str = language 
-        self.text: 'Narrative' = text 
-        self.contained: list['Resource'] = contained or []
-        self.extension: list['Extension'] = extension or []
-        self.modifierExtension: list['Extension'] = modifierExtension or []
-        self.comment: str = comment 
-        self.gene: list['Gene'] = gene or []
-        self.classification: list['Classification'] = classification or []
-        self.target: list['Target'] = target or []
+    property_class_info = {
+        
+        
+        "meta": {"class_name": "Meta", "is_contained": False},
+        
+        
+        
+        
+        "text": {"class_name": "Narrative", "is_contained": False},
+        
+        
+        "contained": {"class_name": "Resource", "is_contained": False},
+        
+        
+        "extension": {"class_name": "Extension", "is_contained": False},
+        
+        
+        "modifierExtension": {"class_name": "Extension", "is_contained": False},
+        
+        
+        
+        "gene": {"class_name": "Gene", "is_contained": True},
+        
+        
+        "classification": {"class_name": "Classification", "is_contained": True},
+        
+        
+        "target": {"class_name": "Target", "is_contained": True},
+        
+        }
+    def __init__(self, resourceType: str = None,  id:  'str'  = None,  meta:  'Meta'  = None,  implicitRules:  'str'  = None,  language:  'str'  = None,  text:  'Narrative'  = None,  contained:  list['Resource']  = None,  extension:  list['Extension']  = None,  modifierExtension:  list['Extension']  = None,  comment:  'str'  = None,  gene:  list['Gene']  = None,  classification:  list['Classification']  = None,  target:  list['Target']  = None, ):
+        self.resourceType = resourceType or "SubstanceReferenceInformation"
+        self.id = id 
+        self.meta = meta 
+        self.implicitRules = implicitRules 
+        self.language = language 
+        self.text = text 
+        self.contained = contained or []
+        self.extension = extension or []
+        self.modifierExtension = modifierExtension or []
+        self.comment = comment 
+        self.gene = gene or []
+        self.classification = classification or []
+        self.target = target or []
         
 
     @classmethod
     def from_dict(cls, data: dict) -> "SubstanceReferenceInformation":
-        """Create a model instance from a dict. The instance is recursively
-        created by importing the classes for complex fhir types."""
-        instance = cls()
-        for key, value in data.items():
-            # if value is dict try to create complex type
-            if isinstance(value, dict):
-                class_name = key[0].upper() + key[1:]
-                models_path = ".".join(cls.__module__.split(".")[:-1])
-                import_path = f"{models_path}.{class_name}"
-                try:
-                    module = import_module(import_path)
-                    model_class = getattr(module, class_name)
-                except ModuleNotFoundError:
-                    continue
-                # Check if the class is a subclass of BaseModel
-                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
-                    # Recursively create an instance of the nested class
-                    nested_instance = model_class.from_dict(value)
-                    setattr(instance, key, nested_instance)
-            # if value is list recursively create instances of the list items
-            elif isinstance(value, list):
-                setattr(
-                    instance,
-                    key,
-                    [
-                        cls.from_dict(item) if isinstance(item, dict) else item
-                        for item in value
-                    ],
-                )
-            # else set the value
-            else:
-                setattr(instance, key, value)
+        return super().from_dict(data)
+    
+    @classmethod
+    def from_obj(self, obj: object) -> "SubstanceReferenceInformation":
+        return super().from_obj(obj)
 
-        return instance
+    def as_dict(self) -> dict:
+        return super().as_dict()

@@ -1,17 +1,14 @@
 """
 Generated class for MedicinalProductInteraction. 
-Time: 2023-09-27 15:54:17
+Time: 2023-09-27 19:27:05
 """
-from importlib import import_module
-import inspect
-
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Resource import *
 from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Extension import *
+from fhan.models.R4.BackboneElement import *
 from fhan.models.R4.Narrative import *
 from fhan.models.R4.Reference import *
+from fhan.models.R4.Meta import *
+from fhan.models.R4.Resource import *
 from fhan.models.R4.DomainResource import *
 
 
@@ -20,127 +17,129 @@ from fhan.models.R4.DomainResource import *
 
 class Interactant(BaseModel):
     """ The specific medication, food or laboratory test that interacts.:param str id: Unique id for inter-element referencing
-    :param 'Extension' extension: Additional content defined by implementations
-    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param 'Reference' itemReference: The specific medication, food or laboratory test that interacts
-    :param 'CodeableConcept' itemCodeableConcept: The specific medication, food or laboratory test that interacts
+    :param Extension extension: Additional content defined by implementations
+    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param Reference itemReference: The specific medication, food or laboratory test that interacts
+    :param CodeableConcept itemCodeableConcept: The specific medication, food or laboratory test that interacts
     """
-    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  itemReference: 'Reference' = None,  itemCodeableConcept: 'CodeableConcept' = None, ):
-        self.id: str = id 
-        self.extension: list['Extension'] = extension or []
-        self.modifierExtension: list['Extension'] = modifierExtension or []
-        self.itemReference: 'Reference' = itemReference 
-        self.itemCodeableConcept: 'CodeableConcept' = itemCodeableConcept 
+    property_class_info = {
+        
+        
+        "extension": {"class_name": "Extension", "is_contained": False},
+        
+        
+        "modifierExtension": {"class_name": "Extension", "is_contained": False},
+        
+        
+        "itemReference": {"class_name": "Reference", "is_contained": False},
+        
+        
+        "itemCodeableConcept": {"class_name": "CodeableConcept", "is_contained": False},
+        
+        }
+    def __init__(self,  id:  'str'  = None,  extension:  list['Extension']  = None,  modifierExtension:  list['Extension']  = None,  itemReference:  'Reference'  = None,  itemCodeableConcept:  'CodeableConcept'  = None, ):
+        self.id = id 
+        self.extension = extension or []
+        self.modifierExtension = modifierExtension or []
+        self.itemReference = itemReference 
+        self.itemCodeableConcept = itemCodeableConcept 
         
 
     @classmethod
-    def from_dict(cls, data: dict) -> "Interactant":
-        """Create a model instance from a dict. The instance is recursively
-        created by importing the classes for complex fhir types."""
-        instance = cls()
-        for key, value in data.items():
-            # if value is dict try to create complex type
-            if isinstance(value, dict):
-                class_name = key[0].upper() + key[1:]
-                models_path = ".".join(cls.__module__.split(".")[:-1])
-                import_path = f"{models_path}.{class_name}"
-                try:
-                    module = import_module(import_path)
-                    model_class = getattr(module, class_name)
-                except ModuleNotFoundError:
-                    continue
-                # Check if the class is a subclass of BaseModel
-                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
-                    # Recursively create an instance of the nested class
-                    nested_instance = model_class.from_dict(value)
-                    setattr(instance, key, nested_instance)
-            # if value is list recursively create instances of the list items
-            elif isinstance(value, list):
-                setattr(
-                    instance,
-                    key,
-                    [
-                        cls.from_dict(item) if isinstance(item, dict) else item
-                        for item in value
-                    ],
-                )
-            # else set the value
-            else:
-                setattr(instance, key, value)
+    def from_dict(cls, data: dict) -> "MedicinalProductInteraction":
+        return super().from_dict(data)
+    
+    @classmethod
+    def from_obj(self, obj: object) -> "MedicinalProductInteraction":
+        return super().from_obj(obj)
 
-        return instance
+    def as_dict(self) -> dict:
+        return super().as_dict()
 
 
 class MedicinalProductInteraction(DomainResource):
     """ The interactions of the medicinal product with other medicinal products, or other forms of interactions.
     :param str id: Logical id of this artifact
-    :param 'Meta' meta: Metadata about the resource
+    :param Meta meta: Metadata about the resource
     :param str implicitRules: A set of rules under which this content was created
     :param str language: Language of the resource content
-    :param 'Narrative' text: Text summary of the resource, for human interpretation
-    :param 'Resource' contained: Contained, inline Resources
-    :param 'Extension' extension: Additional content defined by implementations
-    :param 'Extension' modifierExtension: Extensions that cannot be ignored
-    :param 'Reference' subject: The medication for which this is a described interaction
+    :param Narrative text: Text summary of the resource, for human interpretation
+    :param Resource contained: Contained, inline Resources
+    :param Extension extension: Additional content defined by implementations
+    :param Extension modifierExtension: Extensions that cannot be ignored
+    :param Reference subject: The medication for which this is a described interaction
     :param str description: The interaction described
-    :param 'Interactant' interactant: The specific medication, food or laboratory test that interacts
-    :param 'CodeableConcept' type: The type of the interaction e.g. drug-drug interaction, drug-food interaction, drug-lab test interaction
-    :param 'CodeableConcept' effect: The effect of the interaction, for example "reduced gastric absorption of primary medication"
-    :param 'CodeableConcept' incidence: The incidence of the interaction, e.g. theoretical, observed
-    :param 'CodeableConcept' management: Actions for managing the interaction
+    :param Interactant interactant: The specific medication, food or laboratory test that interacts
+    :param CodeableConcept type: The type of the interaction e.g. drug-drug interaction, drug-food interaction, drug-lab test interaction
+    :param CodeableConcept effect: The effect of the interaction, for example "reduced gastric absorption of primary medication"
+    :param CodeableConcept incidence: The incidence of the interaction, e.g. theoretical, observed
+    :param CodeableConcept management: Actions for managing the interaction
     """
-    def __init__(self, resourceType: str = "MedicinalProductInteraction",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: 'Resource' = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  subject: 'Reference' = None,  description: str = None,  interactant: 'Interactant' = None,  type: 'CodeableConcept' = None,  effect: 'CodeableConcept' = None,  incidence: 'CodeableConcept' = None,  management: 'CodeableConcept' = None, ):
-        self.resourceType: str = resourceType or "MedicinalProductInteraction"
-        self.id: str = id 
-        self.meta: 'Meta' = meta 
-        self.implicitRules: str = implicitRules 
-        self.language: str = language 
-        self.text: 'Narrative' = text 
-        self.contained: list['Resource'] = contained or []
-        self.extension: list['Extension'] = extension or []
-        self.modifierExtension: list['Extension'] = modifierExtension or []
-        self.subject: list['Reference'] = subject or []
-        self.description: str = description 
-        self.interactant: list['Interactant'] = interactant or []
-        self.type: 'CodeableConcept' = type 
-        self.effect: 'CodeableConcept' = effect 
-        self.incidence: 'CodeableConcept' = incidence 
-        self.management: 'CodeableConcept' = management 
+    property_class_info = {
+        
+        
+        "meta": {"class_name": "Meta", "is_contained": False},
+        
+        
+        
+        
+        "text": {"class_name": "Narrative", "is_contained": False},
+        
+        
+        "contained": {"class_name": "Resource", "is_contained": False},
+        
+        
+        "extension": {"class_name": "Extension", "is_contained": False},
+        
+        
+        "modifierExtension": {"class_name": "Extension", "is_contained": False},
+        
+        
+        "subject": {"class_name": "Reference", "is_contained": False},
+        
+        
+        
+        "interactant": {"class_name": "Interactant", "is_contained": True},
+        
+        
+        "type": {"class_name": "CodeableConcept", "is_contained": False},
+        
+        
+        "effect": {"class_name": "CodeableConcept", "is_contained": False},
+        
+        
+        "incidence": {"class_name": "CodeableConcept", "is_contained": False},
+        
+        
+        "management": {"class_name": "CodeableConcept", "is_contained": False},
+        
+        }
+    def __init__(self, resourceType: str = None,  id:  'str'  = None,  meta:  'Meta'  = None,  implicitRules:  'str'  = None,  language:  'str'  = None,  text:  'Narrative'  = None,  contained:  list['Resource']  = None,  extension:  list['Extension']  = None,  modifierExtension:  list['Extension']  = None,  subject:  list['Reference']  = None,  description:  'str'  = None,  interactant:  list['Interactant']  = None,  type:  'CodeableConcept'  = None,  effect:  'CodeableConcept'  = None,  incidence:  'CodeableConcept'  = None,  management:  'CodeableConcept'  = None, ):
+        self.resourceType = resourceType or "MedicinalProductInteraction"
+        self.id = id 
+        self.meta = meta 
+        self.implicitRules = implicitRules 
+        self.language = language 
+        self.text = text 
+        self.contained = contained or []
+        self.extension = extension or []
+        self.modifierExtension = modifierExtension or []
+        self.subject = subject or []
+        self.description = description 
+        self.interactant = interactant or []
+        self.type = type 
+        self.effect = effect 
+        self.incidence = incidence 
+        self.management = management 
         
 
     @classmethod
     def from_dict(cls, data: dict) -> "MedicinalProductInteraction":
-        """Create a model instance from a dict. The instance is recursively
-        created by importing the classes for complex fhir types."""
-        instance = cls()
-        for key, value in data.items():
-            # if value is dict try to create complex type
-            if isinstance(value, dict):
-                class_name = key[0].upper() + key[1:]
-                models_path = ".".join(cls.__module__.split(".")[:-1])
-                import_path = f"{models_path}.{class_name}"
-                try:
-                    module = import_module(import_path)
-                    model_class = getattr(module, class_name)
-                except ModuleNotFoundError:
-                    continue
-                # Check if the class is a subclass of BaseModel
-                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
-                    # Recursively create an instance of the nested class
-                    nested_instance = model_class.from_dict(value)
-                    setattr(instance, key, nested_instance)
-            # if value is list recursively create instances of the list items
-            elif isinstance(value, list):
-                setattr(
-                    instance,
-                    key,
-                    [
-                        cls.from_dict(item) if isinstance(item, dict) else item
-                        for item in value
-                    ],
-                )
-            # else set the value
-            else:
-                setattr(instance, key, value)
+        return super().from_dict(data)
+    
+    @classmethod
+    def from_obj(self, obj: object) -> "MedicinalProductInteraction":
+        return super().from_obj(obj)
 
-        return instance
+    def as_dict(self) -> dict:
+        return super().as_dict()

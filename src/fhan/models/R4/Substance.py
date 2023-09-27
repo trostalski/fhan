@@ -1,20 +1,17 @@
 """
 Generated class for Substance. 
-Time: 2023-09-27 15:54:17
+Time: 2023-09-27 19:27:05
 """
-from importlib import import_module
-import inspect
-
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Quantity import *
-from fhan.models.R4.Resource import *
-from fhan.models.R4.Identifier import *
-from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Ratio import *
+from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Extension import *
+from fhan.models.R4.BackboneElement import *
 from fhan.models.R4.Narrative import *
+from fhan.models.R4.Quantity import *
 from fhan.models.R4.Reference import *
+from fhan.models.R4.Meta import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.Resource import *
 from fhan.models.R4.DomainResource import *
 
 
@@ -23,57 +20,47 @@ from fhan.models.R4.DomainResource import *
 
 class Instance(BaseModel):
     """ Substance may be used to describe a kind of substance, or a specific package/container of the substance: an instance.:param str id: Unique id for inter-element referencing
-    :param 'Extension' extension: Additional content defined by implementations
-    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param 'Identifier' identifier: Identifier of the package/container
+    :param Extension extension: Additional content defined by implementations
+    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param Identifier identifier: Identifier of the package/container
     :param str expiry: When no longer valid to use
-    :param 'Quantity' quantity: Amount of substance in the package
+    :param Quantity quantity: Amount of substance in the package
     """
-    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  identifier: 'Identifier' = None,  expiry: str = None,  quantity: 'Quantity' = None, ):
-        self.id: str = id 
-        self.extension: list['Extension'] = extension or []
-        self.modifierExtension: list['Extension'] = modifierExtension or []
-        self.identifier: 'Identifier' = identifier 
-        self.expiry: str = expiry 
-        self.quantity: 'Quantity' = quantity 
+    property_class_info = {
+        
+        
+        "extension": {"class_name": "Extension", "is_contained": False},
+        
+        
+        "modifierExtension": {"class_name": "Extension", "is_contained": False},
+        
+        
+        "identifier": {"class_name": "Identifier", "is_contained": False},
+        
+        
+        
+        "quantity": {"class_name": "Quantity", "is_contained": False},
+        
+        }
+    def __init__(self,  id:  'str'  = None,  extension:  list['Extension']  = None,  modifierExtension:  list['Extension']  = None,  identifier:  'Identifier'  = None,  expiry:  'str'  = None,  quantity:  'Quantity'  = None, ):
+        self.id = id 
+        self.extension = extension or []
+        self.modifierExtension = modifierExtension or []
+        self.identifier = identifier 
+        self.expiry = expiry 
+        self.quantity = quantity 
         
 
     @classmethod
-    def from_dict(cls, data: dict) -> "Instance":
-        """Create a model instance from a dict. The instance is recursively
-        created by importing the classes for complex fhir types."""
-        instance = cls()
-        for key, value in data.items():
-            # if value is dict try to create complex type
-            if isinstance(value, dict):
-                class_name = key[0].upper() + key[1:]
-                models_path = ".".join(cls.__module__.split(".")[:-1])
-                import_path = f"{models_path}.{class_name}"
-                try:
-                    module = import_module(import_path)
-                    model_class = getattr(module, class_name)
-                except ModuleNotFoundError:
-                    continue
-                # Check if the class is a subclass of BaseModel
-                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
-                    # Recursively create an instance of the nested class
-                    nested_instance = model_class.from_dict(value)
-                    setattr(instance, key, nested_instance)
-            # if value is list recursively create instances of the list items
-            elif isinstance(value, list):
-                setattr(
-                    instance,
-                    key,
-                    [
-                        cls.from_dict(item) if isinstance(item, dict) else item
-                        for item in value
-                    ],
-                )
-            # else set the value
-            else:
-                setattr(instance, key, value)
+    def from_dict(cls, data: dict) -> "Substance":
+        return super().from_dict(data)
+    
+    @classmethod
+    def from_obj(self, obj: object) -> "Substance":
+        return super().from_obj(obj)
 
-        return instance
+    def as_dict(self) -> dict:
+        return super().as_dict()
 
 
     
@@ -81,129 +68,132 @@ class Instance(BaseModel):
 
 class Ingredient(BaseModel):
     """ A substance can be composed of other substances.:param str id: Unique id for inter-element referencing
-    :param 'Extension' extension: Additional content defined by implementations
-    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param 'Ratio' quantity: Optional amount (concentration)
-    :param 'CodeableConcept' substanceCodeableConcept: A component of the substance
-    :param 'Reference' substanceReference: A component of the substance
+    :param Extension extension: Additional content defined by implementations
+    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param Ratio quantity: Optional amount (concentration)
+    :param CodeableConcept substanceCodeableConcept: A component of the substance
+    :param Reference substanceReference: A component of the substance
     """
-    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  quantity: 'Ratio' = None,  substanceCodeableConcept: 'CodeableConcept' = None,  substanceReference: 'Reference' = None, ):
-        self.id: str = id 
-        self.extension: list['Extension'] = extension or []
-        self.modifierExtension: list['Extension'] = modifierExtension or []
-        self.quantity: 'Ratio' = quantity 
-        self.substanceCodeableConcept: 'CodeableConcept' = substanceCodeableConcept 
-        self.substanceReference: 'Reference' = substanceReference 
+    property_class_info = {
+        
+        
+        "extension": {"class_name": "Extension", "is_contained": False},
+        
+        
+        "modifierExtension": {"class_name": "Extension", "is_contained": False},
+        
+        
+        "quantity": {"class_name": "Ratio", "is_contained": False},
+        
+        
+        "substanceCodeableConcept": {"class_name": "CodeableConcept", "is_contained": False},
+        
+        
+        "substanceReference": {"class_name": "Reference", "is_contained": False},
+        
+        }
+    def __init__(self,  id:  'str'  = None,  extension:  list['Extension']  = None,  modifierExtension:  list['Extension']  = None,  quantity:  'Ratio'  = None,  substanceCodeableConcept:  'CodeableConcept'  = None,  substanceReference:  'Reference'  = None, ):
+        self.id = id 
+        self.extension = extension or []
+        self.modifierExtension = modifierExtension or []
+        self.quantity = quantity 
+        self.substanceCodeableConcept = substanceCodeableConcept 
+        self.substanceReference = substanceReference 
         
 
     @classmethod
-    def from_dict(cls, data: dict) -> "Ingredient":
-        """Create a model instance from a dict. The instance is recursively
-        created by importing the classes for complex fhir types."""
-        instance = cls()
-        for key, value in data.items():
-            # if value is dict try to create complex type
-            if isinstance(value, dict):
-                class_name = key[0].upper() + key[1:]
-                models_path = ".".join(cls.__module__.split(".")[:-1])
-                import_path = f"{models_path}.{class_name}"
-                try:
-                    module = import_module(import_path)
-                    model_class = getattr(module, class_name)
-                except ModuleNotFoundError:
-                    continue
-                # Check if the class is a subclass of BaseModel
-                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
-                    # Recursively create an instance of the nested class
-                    nested_instance = model_class.from_dict(value)
-                    setattr(instance, key, nested_instance)
-            # if value is list recursively create instances of the list items
-            elif isinstance(value, list):
-                setattr(
-                    instance,
-                    key,
-                    [
-                        cls.from_dict(item) if isinstance(item, dict) else item
-                        for item in value
-                    ],
-                )
-            # else set the value
-            else:
-                setattr(instance, key, value)
+    def from_dict(cls, data: dict) -> "Substance":
+        return super().from_dict(data)
+    
+    @classmethod
+    def from_obj(self, obj: object) -> "Substance":
+        return super().from_obj(obj)
 
-        return instance
+    def as_dict(self) -> dict:
+        return super().as_dict()
 
 
 class Substance(DomainResource):
     """ A homogeneous material with a definite composition.
     :param str id: Logical id of this artifact
-    :param 'Meta' meta: Metadata about the resource
+    :param Meta meta: Metadata about the resource
     :param str implicitRules: A set of rules under which this content was created
     :param str language: Language of the resource content
-    :param 'Narrative' text: Text summary of the resource, for human interpretation
-    :param 'Resource' contained: Contained, inline Resources
-    :param 'Extension' extension: Additional content defined by implementations
-    :param 'Extension' modifierExtension: Extensions that cannot be ignored
-    :param 'Identifier' identifier: Unique identifier
+    :param Narrative text: Text summary of the resource, for human interpretation
+    :param Resource contained: Contained, inline Resources
+    :param Extension extension: Additional content defined by implementations
+    :param Extension modifierExtension: Extensions that cannot be ignored
+    :param Identifier identifier: Unique identifier
     :param str status: active | inactive | entered-in-error
-    :param 'CodeableConcept' category: What class/type of substance this is
-    :param 'CodeableConcept' code: What substance this is
+    :param CodeableConcept category: What class/type of substance this is
+    :param CodeableConcept code: What substance this is
     :param str description: Textual description of the substance, comments
-    :param 'Instance' instance: If this describes a specific package/container of the substance
-    :param 'Ingredient' ingredient: Composition information about the substance
+    :param Instance instance: If this describes a specific package/container of the substance
+    :param Ingredient ingredient: Composition information about the substance
     """
-    def __init__(self, resourceType: str = "Substance",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: 'Resource' = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  identifier: 'Identifier' = None,  status: str = None,  category: 'CodeableConcept' = None,  code: 'CodeableConcept' = None,  description: str = None,  instance: 'Instance' = None,  ingredient: 'Ingredient' = None, ):
-        self.resourceType: str = resourceType or "Substance"
-        self.id: str = id 
-        self.meta: 'Meta' = meta 
-        self.implicitRules: str = implicitRules 
-        self.language: str = language 
-        self.text: 'Narrative' = text 
-        self.contained: list['Resource'] = contained or []
-        self.extension: list['Extension'] = extension or []
-        self.modifierExtension: list['Extension'] = modifierExtension or []
-        self.identifier: list['Identifier'] = identifier or []
-        self.status: str = status 
-        self.category: list['CodeableConcept'] = category or []
-        self.code: 'CodeableConcept' = code 
-        self.description: str = description 
-        self.instance: list['Instance'] = instance or []
-        self.ingredient: list['Ingredient'] = ingredient or []
+    property_class_info = {
+        
+        
+        "meta": {"class_name": "Meta", "is_contained": False},
+        
+        
+        
+        
+        "text": {"class_name": "Narrative", "is_contained": False},
+        
+        
+        "contained": {"class_name": "Resource", "is_contained": False},
+        
+        
+        "extension": {"class_name": "Extension", "is_contained": False},
+        
+        
+        "modifierExtension": {"class_name": "Extension", "is_contained": False},
+        
+        
+        "identifier": {"class_name": "Identifier", "is_contained": False},
+        
+        
+        
+        "category": {"class_name": "CodeableConcept", "is_contained": False},
+        
+        
+        "code": {"class_name": "CodeableConcept", "is_contained": False},
+        
+        
+        
+        "instance": {"class_name": "Instance", "is_contained": True},
+        
+        
+        "ingredient": {"class_name": "Ingredient", "is_contained": True},
+        
+        }
+    def __init__(self, resourceType: str = None,  id:  'str'  = None,  meta:  'Meta'  = None,  implicitRules:  'str'  = None,  language:  'str'  = None,  text:  'Narrative'  = None,  contained:  list['Resource']  = None,  extension:  list['Extension']  = None,  modifierExtension:  list['Extension']  = None,  identifier:  list['Identifier']  = None,  status:  'str'  = None,  category:  list['CodeableConcept']  = None,  code:  'CodeableConcept'  = None,  description:  'str'  = None,  instance:  list['Instance']  = None,  ingredient:  list['Ingredient']  = None, ):
+        self.resourceType = resourceType or "Substance"
+        self.id = id 
+        self.meta = meta 
+        self.implicitRules = implicitRules 
+        self.language = language 
+        self.text = text 
+        self.contained = contained or []
+        self.extension = extension or []
+        self.modifierExtension = modifierExtension or []
+        self.identifier = identifier or []
+        self.status = status 
+        self.category = category or []
+        self.code = code 
+        self.description = description 
+        self.instance = instance or []
+        self.ingredient = ingredient or []
         
 
     @classmethod
     def from_dict(cls, data: dict) -> "Substance":
-        """Create a model instance from a dict. The instance is recursively
-        created by importing the classes for complex fhir types."""
-        instance = cls()
-        for key, value in data.items():
-            # if value is dict try to create complex type
-            if isinstance(value, dict):
-                class_name = key[0].upper() + key[1:]
-                models_path = ".".join(cls.__module__.split(".")[:-1])
-                import_path = f"{models_path}.{class_name}"
-                try:
-                    module = import_module(import_path)
-                    model_class = getattr(module, class_name)
-                except ModuleNotFoundError:
-                    continue
-                # Check if the class is a subclass of BaseModel
-                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
-                    # Recursively create an instance of the nested class
-                    nested_instance = model_class.from_dict(value)
-                    setattr(instance, key, nested_instance)
-            # if value is list recursively create instances of the list items
-            elif isinstance(value, list):
-                setattr(
-                    instance,
-                    key,
-                    [
-                        cls.from_dict(item) if isinstance(item, dict) else item
-                        for item in value
-                    ],
-                )
-            # else set the value
-            else:
-                setattr(instance, key, value)
+        return super().from_dict(data)
+    
+    @classmethod
+    def from_obj(self, obj: object) -> "Substance":
+        return super().from_obj(obj)
 
-        return instance
+    def as_dict(self) -> dict:
+        return super().as_dict()

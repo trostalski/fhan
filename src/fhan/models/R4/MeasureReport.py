@@ -1,20 +1,17 @@
 """
 Generated class for MeasureReport. 
-Time: 2023-09-27 15:54:17
+Time: 2023-09-27 19:27:05
 """
-from importlib import import_module
-import inspect
-
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Quantity import *
-from fhan.models.R4.Period import *
-from fhan.models.R4.Resource import *
-from fhan.models.R4.Identifier import *
 from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Extension import *
+from fhan.models.R4.BackboneElement import *
 from fhan.models.R4.Narrative import *
+from fhan.models.R4.Quantity import *
 from fhan.models.R4.Reference import *
+from fhan.models.R4.Meta import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.Resource import *
+from fhan.models.R4.Period import *
 from fhan.models.R4.DomainResource import *
 
 
@@ -25,57 +22,47 @@ from fhan.models.R4.DomainResource import *
 
 class Population(BaseModel):
     """ The populations that make up the population group, one for each type of population appropriate for the measure.:param str id: Unique id for inter-element referencing
-    :param 'Extension' extension: Additional content defined by implementations
-    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param 'CodeableConcept' code: initial-population | numerator | numerator-exclusion | denominator | denominator-exclusion | denominator-exception | measure-population | measure-population-exclusion | measure-observation
+    :param Extension extension: Additional content defined by implementations
+    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param CodeableConcept code: initial-population | numerator | numerator-exclusion | denominator | denominator-exclusion | denominator-exception | measure-population | measure-population-exclusion | measure-observation
     :param int count: Size of the population
-    :param 'Reference' subjectResults: For subject-list reports, the subject results in this population
+    :param Reference subjectResults: For subject-list reports, the subject results in this population
     """
-    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  code: 'CodeableConcept' = None,  count: int = None,  subjectResults: 'Reference' = None, ):
-        self.id: str = id 
-        self.extension: list['Extension'] = extension or []
-        self.modifierExtension: list['Extension'] = modifierExtension or []
-        self.code: 'CodeableConcept' = code 
-        self.count: int = count 
-        self.subjectResults: 'Reference' = subjectResults 
+    property_class_info = {
+        
+        
+        "extension": {"class_name": "Extension", "is_contained": False},
+        
+        
+        "modifierExtension": {"class_name": "Extension", "is_contained": False},
+        
+        
+        "code": {"class_name": "CodeableConcept", "is_contained": False},
+        
+        
+        
+        "subjectResults": {"class_name": "Reference", "is_contained": False},
+        
+        }
+    def __init__(self,  id:  'str'  = None,  extension:  list['Extension']  = None,  modifierExtension:  list['Extension']  = None,  code:  'CodeableConcept'  = None,  count:  'int'  = None,  subjectResults:  'Reference'  = None, ):
+        self.id = id 
+        self.extension = extension or []
+        self.modifierExtension = modifierExtension or []
+        self.code = code 
+        self.count = count 
+        self.subjectResults = subjectResults 
         
 
     @classmethod
-    def from_dict(cls, data: dict) -> "Population":
-        """Create a model instance from a dict. The instance is recursively
-        created by importing the classes for complex fhir types."""
-        instance = cls()
-        for key, value in data.items():
-            # if value is dict try to create complex type
-            if isinstance(value, dict):
-                class_name = key[0].upper() + key[1:]
-                models_path = ".".join(cls.__module__.split(".")[:-1])
-                import_path = f"{models_path}.{class_name}"
-                try:
-                    module = import_module(import_path)
-                    model_class = getattr(module, class_name)
-                except ModuleNotFoundError:
-                    continue
-                # Check if the class is a subclass of BaseModel
-                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
-                    # Recursively create an instance of the nested class
-                    nested_instance = model_class.from_dict(value)
-                    setattr(instance, key, nested_instance)
-            # if value is list recursively create instances of the list items
-            elif isinstance(value, list):
-                setattr(
-                    instance,
-                    key,
-                    [
-                        cls.from_dict(item) if isinstance(item, dict) else item
-                        for item in value
-                    ],
-                )
-            # else set the value
-            else:
-                setattr(instance, key, value)
+    def from_dict(cls, data: dict) -> "MeasureReport":
+        return super().from_dict(data)
+    
+    @classmethod
+    def from_obj(self, obj: object) -> "MeasureReport":
+        return super().from_obj(obj)
 
-        return instance
+    def as_dict(self) -> dict:
+        return super().as_dict()
 
 
     
@@ -87,55 +74,44 @@ class Population(BaseModel):
 
 class Component(BaseModel):
     """ A stratifier component value.:param str id: Unique id for inter-element referencing
-    :param 'Extension' extension: Additional content defined by implementations
-    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param 'CodeableConcept' code: What stratifier component of the group
-    :param 'CodeableConcept' value: The stratum component value, e.g. male
+    :param Extension extension: Additional content defined by implementations
+    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param CodeableConcept code: What stratifier component of the group
+    :param CodeableConcept value: The stratum component value, e.g. male
     """
-    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  code: 'CodeableConcept' = None,  value: 'CodeableConcept' = None, ):
-        self.id: str = id 
-        self.extension: list['Extension'] = extension or []
-        self.modifierExtension: list['Extension'] = modifierExtension or []
-        self.code: 'CodeableConcept' = code 
-        self.value: 'CodeableConcept' = value 
+    property_class_info = {
+        
+        
+        "extension": {"class_name": "Extension", "is_contained": False},
+        
+        
+        "modifierExtension": {"class_name": "Extension", "is_contained": False},
+        
+        
+        "code": {"class_name": "CodeableConcept", "is_contained": False},
+        
+        
+        "value": {"class_name": "CodeableConcept", "is_contained": False},
+        
+        }
+    def __init__(self,  id:  'str'  = None,  extension:  list['Extension']  = None,  modifierExtension:  list['Extension']  = None,  code:  'CodeableConcept'  = None,  value:  'CodeableConcept'  = None, ):
+        self.id = id 
+        self.extension = extension or []
+        self.modifierExtension = modifierExtension or []
+        self.code = code 
+        self.value = value 
         
 
     @classmethod
-    def from_dict(cls, data: dict) -> "Component":
-        """Create a model instance from a dict. The instance is recursively
-        created by importing the classes for complex fhir types."""
-        instance = cls()
-        for key, value in data.items():
-            # if value is dict try to create complex type
-            if isinstance(value, dict):
-                class_name = key[0].upper() + key[1:]
-                models_path = ".".join(cls.__module__.split(".")[:-1])
-                import_path = f"{models_path}.{class_name}"
-                try:
-                    module = import_module(import_path)
-                    model_class = getattr(module, class_name)
-                except ModuleNotFoundError:
-                    continue
-                # Check if the class is a subclass of BaseModel
-                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
-                    # Recursively create an instance of the nested class
-                    nested_instance = model_class.from_dict(value)
-                    setattr(instance, key, nested_instance)
-            # if value is list recursively create instances of the list items
-            elif isinstance(value, list):
-                setattr(
-                    instance,
-                    key,
-                    [
-                        cls.from_dict(item) if isinstance(item, dict) else item
-                        for item in value
-                    ],
-                )
-            # else set the value
-            else:
-                setattr(instance, key, value)
+    def from_dict(cls, data: dict) -> "MeasureReport":
+        return super().from_dict(data)
+    
+    @classmethod
+    def from_obj(self, obj: object) -> "MeasureReport":
+        return super().from_obj(obj)
 
-        return instance
+    def as_dict(self) -> dict:
+        return super().as_dict()
 
 
     
@@ -143,57 +119,47 @@ class Component(BaseModel):
 
 class Population(BaseModel):
     """ The populations that make up the stratum, one for each type of population appropriate to the measure.:param str id: Unique id for inter-element referencing
-    :param 'Extension' extension: Additional content defined by implementations
-    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param 'CodeableConcept' code: initial-population | numerator | numerator-exclusion | denominator | denominator-exclusion | denominator-exception | measure-population | measure-population-exclusion | measure-observation
+    :param Extension extension: Additional content defined by implementations
+    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param CodeableConcept code: initial-population | numerator | numerator-exclusion | denominator | denominator-exclusion | denominator-exception | measure-population | measure-population-exclusion | measure-observation
     :param int count: Size of the population
-    :param 'Reference' subjectResults: For subject-list reports, the subject results in this population
+    :param Reference subjectResults: For subject-list reports, the subject results in this population
     """
-    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  code: 'CodeableConcept' = None,  count: int = None,  subjectResults: 'Reference' = None, ):
-        self.id: str = id 
-        self.extension: list['Extension'] = extension or []
-        self.modifierExtension: list['Extension'] = modifierExtension or []
-        self.code: 'CodeableConcept' = code 
-        self.count: int = count 
-        self.subjectResults: 'Reference' = subjectResults 
+    property_class_info = {
+        
+        
+        "extension": {"class_name": "Extension", "is_contained": False},
+        
+        
+        "modifierExtension": {"class_name": "Extension", "is_contained": False},
+        
+        
+        "code": {"class_name": "CodeableConcept", "is_contained": False},
+        
+        
+        
+        "subjectResults": {"class_name": "Reference", "is_contained": False},
+        
+        }
+    def __init__(self,  id:  'str'  = None,  extension:  list['Extension']  = None,  modifierExtension:  list['Extension']  = None,  code:  'CodeableConcept'  = None,  count:  'int'  = None,  subjectResults:  'Reference'  = None, ):
+        self.id = id 
+        self.extension = extension or []
+        self.modifierExtension = modifierExtension or []
+        self.code = code 
+        self.count = count 
+        self.subjectResults = subjectResults 
         
 
     @classmethod
-    def from_dict(cls, data: dict) -> "Population":
-        """Create a model instance from a dict. The instance is recursively
-        created by importing the classes for complex fhir types."""
-        instance = cls()
-        for key, value in data.items():
-            # if value is dict try to create complex type
-            if isinstance(value, dict):
-                class_name = key[0].upper() + key[1:]
-                models_path = ".".join(cls.__module__.split(".")[:-1])
-                import_path = f"{models_path}.{class_name}"
-                try:
-                    module = import_module(import_path)
-                    model_class = getattr(module, class_name)
-                except ModuleNotFoundError:
-                    continue
-                # Check if the class is a subclass of BaseModel
-                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
-                    # Recursively create an instance of the nested class
-                    nested_instance = model_class.from_dict(value)
-                    setattr(instance, key, nested_instance)
-            # if value is list recursively create instances of the list items
-            elif isinstance(value, list):
-                setattr(
-                    instance,
-                    key,
-                    [
-                        cls.from_dict(item) if isinstance(item, dict) else item
-                        for item in value
-                    ],
-                )
-            # else set the value
-            else:
-                setattr(instance, key, value)
+    def from_dict(cls, data: dict) -> "MeasureReport":
+        return super().from_dict(data)
+    
+    @classmethod
+    def from_obj(self, obj: object) -> "MeasureReport":
+        return super().from_obj(obj)
 
-        return instance
+    def as_dict(self) -> dict:
+        return super().as_dict()
 
 
   
@@ -202,59 +168,54 @@ class Population(BaseModel):
 
 class Stratum(BaseModel):
     """ This element contains the results for a single stratum within the stratifier. For example, when stratifying on administrative gender, there will be four strata, one for each possible gender value.:param str id: Unique id for inter-element referencing
-    :param 'Extension' extension: Additional content defined by implementations
-    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param 'CodeableConcept' value: The stratum value, e.g. male
-    :param 'Component' component: Stratifier component values
-    :param 'Population' population: Population results in this stratum
-    :param 'Quantity' measureScore: What score this stratum achieved
+    :param Extension extension: Additional content defined by implementations
+    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param CodeableConcept value: The stratum value, e.g. male
+    :param Component component: Stratifier component values
+    :param Population population: Population results in this stratum
+    :param Quantity measureScore: What score this stratum achieved
     """
-    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  value: 'CodeableConcept' = None,  component: 'Component' = None,  population: 'Population' = None,  measureScore: 'Quantity' = None, ):
-        self.id: str = id 
-        self.extension: list['Extension'] = extension or []
-        self.modifierExtension: list['Extension'] = modifierExtension or []
-        self.value: 'CodeableConcept' = value 
-        self.component: list['Component'] = component or []
-        self.population: list['Population'] = population or []
-        self.measureScore: 'Quantity' = measureScore 
+    property_class_info = {
+        
+        
+        "extension": {"class_name": "Extension", "is_contained": False},
+        
+        
+        "modifierExtension": {"class_name": "Extension", "is_contained": False},
+        
+        
+        "value": {"class_name": "CodeableConcept", "is_contained": False},
+        
+        
+        "component": {"class_name": "Component", "is_contained": True},
+        
+        
+        "population": {"class_name": "Population", "is_contained": True},
+        
+        
+        "measureScore": {"class_name": "Quantity", "is_contained": False},
+        
+        }
+    def __init__(self,  id:  'str'  = None,  extension:  list['Extension']  = None,  modifierExtension:  list['Extension']  = None,  value:  'CodeableConcept'  = None,  component:  list['Component']  = None,  population:  list['Population']  = None,  measureScore:  'Quantity'  = None, ):
+        self.id = id 
+        self.extension = extension or []
+        self.modifierExtension = modifierExtension or []
+        self.value = value 
+        self.component = component or []
+        self.population = population or []
+        self.measureScore = measureScore 
         
 
     @classmethod
-    def from_dict(cls, data: dict) -> "Stratum":
-        """Create a model instance from a dict. The instance is recursively
-        created by importing the classes for complex fhir types."""
-        instance = cls()
-        for key, value in data.items():
-            # if value is dict try to create complex type
-            if isinstance(value, dict):
-                class_name = key[0].upper() + key[1:]
-                models_path = ".".join(cls.__module__.split(".")[:-1])
-                import_path = f"{models_path}.{class_name}"
-                try:
-                    module = import_module(import_path)
-                    model_class = getattr(module, class_name)
-                except ModuleNotFoundError:
-                    continue
-                # Check if the class is a subclass of BaseModel
-                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
-                    # Recursively create an instance of the nested class
-                    nested_instance = model_class.from_dict(value)
-                    setattr(instance, key, nested_instance)
-            # if value is list recursively create instances of the list items
-            elif isinstance(value, list):
-                setattr(
-                    instance,
-                    key,
-                    [
-                        cls.from_dict(item) if isinstance(item, dict) else item
-                        for item in value
-                    ],
-                )
-            # else set the value
-            else:
-                setattr(instance, key, value)
+    def from_dict(cls, data: dict) -> "MeasureReport":
+        return super().from_dict(data)
+    
+    @classmethod
+    def from_obj(self, obj: object) -> "MeasureReport":
+        return super().from_obj(obj)
 
-        return instance
+    def as_dict(self) -> dict:
+        return super().as_dict()
 
 
   
@@ -263,55 +224,44 @@ class Stratum(BaseModel):
 
 class Stratifier(BaseModel):
     """ When a measure includes multiple stratifiers, there will be a stratifier group for each stratifier defined by the measure.:param str id: Unique id for inter-element referencing
-    :param 'Extension' extension: Additional content defined by implementations
-    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param 'CodeableConcept' code: What stratifier of the group
-    :param 'Stratum' stratum: Stratum results, one for each unique value, or set of values, in the stratifier, or stratifier components
+    :param Extension extension: Additional content defined by implementations
+    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param CodeableConcept code: What stratifier of the group
+    :param Stratum stratum: Stratum results, one for each unique value, or set of values, in the stratifier, or stratifier components
     """
-    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  code: 'CodeableConcept' = None,  stratum: 'Stratum' = None, ):
-        self.id: str = id 
-        self.extension: list['Extension'] = extension or []
-        self.modifierExtension: list['Extension'] = modifierExtension or []
-        self.code: list['CodeableConcept'] = code or []
-        self.stratum: list['Stratum'] = stratum or []
+    property_class_info = {
+        
+        
+        "extension": {"class_name": "Extension", "is_contained": False},
+        
+        
+        "modifierExtension": {"class_name": "Extension", "is_contained": False},
+        
+        
+        "code": {"class_name": "CodeableConcept", "is_contained": False},
+        
+        
+        "stratum": {"class_name": "Stratum", "is_contained": True},
+        
+        }
+    def __init__(self,  id:  'str'  = None,  extension:  list['Extension']  = None,  modifierExtension:  list['Extension']  = None,  code:  list['CodeableConcept']  = None,  stratum:  list['Stratum']  = None, ):
+        self.id = id 
+        self.extension = extension or []
+        self.modifierExtension = modifierExtension or []
+        self.code = code or []
+        self.stratum = stratum or []
         
 
     @classmethod
-    def from_dict(cls, data: dict) -> "Stratifier":
-        """Create a model instance from a dict. The instance is recursively
-        created by importing the classes for complex fhir types."""
-        instance = cls()
-        for key, value in data.items():
-            # if value is dict try to create complex type
-            if isinstance(value, dict):
-                class_name = key[0].upper() + key[1:]
-                models_path = ".".join(cls.__module__.split(".")[:-1])
-                import_path = f"{models_path}.{class_name}"
-                try:
-                    module = import_module(import_path)
-                    model_class = getattr(module, class_name)
-                except ModuleNotFoundError:
-                    continue
-                # Check if the class is a subclass of BaseModel
-                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
-                    # Recursively create an instance of the nested class
-                    nested_instance = model_class.from_dict(value)
-                    setattr(instance, key, nested_instance)
-            # if value is list recursively create instances of the list items
-            elif isinstance(value, list):
-                setattr(
-                    instance,
-                    key,
-                    [
-                        cls.from_dict(item) if isinstance(item, dict) else item
-                        for item in value
-                    ],
-                )
-            # else set the value
-            else:
-                setattr(instance, key, value)
+    def from_dict(cls, data: dict) -> "MeasureReport":
+        return super().from_dict(data)
+    
+    @classmethod
+    def from_obj(self, obj: object) -> "MeasureReport":
+        return super().from_obj(obj)
 
-        return instance
+    def as_dict(self) -> dict:
+        return super().as_dict()
 
 
   
@@ -320,139 +270,153 @@ class Stratifier(BaseModel):
 
 class Group(BaseModel):
     """ The results of the calculation, one for each population group in the measure.:param str id: Unique id for inter-element referencing
-    :param 'Extension' extension: Additional content defined by implementations
-    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param 'CodeableConcept' code: Meaning of the group
-    :param 'Population' population: The populations in the group
-    :param 'Quantity' measureScore: What score this group achieved
-    :param 'Stratifier' stratifier: Stratification results
+    :param Extension extension: Additional content defined by implementations
+    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param CodeableConcept code: Meaning of the group
+    :param Population population: The populations in the group
+    :param Quantity measureScore: What score this group achieved
+    :param Stratifier stratifier: Stratification results
     """
-    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  code: 'CodeableConcept' = None,  population: 'Population' = None,  measureScore: 'Quantity' = None,  stratifier: 'Stratifier' = None, ):
-        self.id: str = id 
-        self.extension: list['Extension'] = extension or []
-        self.modifierExtension: list['Extension'] = modifierExtension or []
-        self.code: 'CodeableConcept' = code 
-        self.population: list['Population'] = population or []
-        self.measureScore: 'Quantity' = measureScore 
-        self.stratifier: list['Stratifier'] = stratifier or []
+    property_class_info = {
+        
+        
+        "extension": {"class_name": "Extension", "is_contained": False},
+        
+        
+        "modifierExtension": {"class_name": "Extension", "is_contained": False},
+        
+        
+        "code": {"class_name": "CodeableConcept", "is_contained": False},
+        
+        
+        "population": {"class_name": "Population", "is_contained": True},
+        
+        
+        "measureScore": {"class_name": "Quantity", "is_contained": False},
+        
+        
+        "stratifier": {"class_name": "Stratifier", "is_contained": True},
+        
+        }
+    def __init__(self,  id:  'str'  = None,  extension:  list['Extension']  = None,  modifierExtension:  list['Extension']  = None,  code:  'CodeableConcept'  = None,  population:  list['Population']  = None,  measureScore:  'Quantity'  = None,  stratifier:  list['Stratifier']  = None, ):
+        self.id = id 
+        self.extension = extension or []
+        self.modifierExtension = modifierExtension or []
+        self.code = code 
+        self.population = population or []
+        self.measureScore = measureScore 
+        self.stratifier = stratifier or []
         
 
     @classmethod
-    def from_dict(cls, data: dict) -> "Group":
-        """Create a model instance from a dict. The instance is recursively
-        created by importing the classes for complex fhir types."""
-        instance = cls()
-        for key, value in data.items():
-            # if value is dict try to create complex type
-            if isinstance(value, dict):
-                class_name = key[0].upper() + key[1:]
-                models_path = ".".join(cls.__module__.split(".")[:-1])
-                import_path = f"{models_path}.{class_name}"
-                try:
-                    module = import_module(import_path)
-                    model_class = getattr(module, class_name)
-                except ModuleNotFoundError:
-                    continue
-                # Check if the class is a subclass of BaseModel
-                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
-                    # Recursively create an instance of the nested class
-                    nested_instance = model_class.from_dict(value)
-                    setattr(instance, key, nested_instance)
-            # if value is list recursively create instances of the list items
-            elif isinstance(value, list):
-                setattr(
-                    instance,
-                    key,
-                    [
-                        cls.from_dict(item) if isinstance(item, dict) else item
-                        for item in value
-                    ],
-                )
-            # else set the value
-            else:
-                setattr(instance, key, value)
+    def from_dict(cls, data: dict) -> "MeasureReport":
+        return super().from_dict(data)
+    
+    @classmethod
+    def from_obj(self, obj: object) -> "MeasureReport":
+        return super().from_obj(obj)
 
-        return instance
+    def as_dict(self) -> dict:
+        return super().as_dict()
 
 
 class MeasureReport(DomainResource):
     """ The MeasureReport resource contains the results of the calculation of a measure; and optionally a reference to the resources involved in that calculation.
     :param str id: Logical id of this artifact
-    :param 'Meta' meta: Metadata about the resource
+    :param Meta meta: Metadata about the resource
     :param str implicitRules: A set of rules under which this content was created
     :param str language: Language of the resource content
-    :param 'Narrative' text: Text summary of the resource, for human interpretation
-    :param 'Resource' contained: Contained, inline Resources
-    :param 'Extension' extension: Additional content defined by implementations
-    :param 'Extension' modifierExtension: Extensions that cannot be ignored
-    :param 'Identifier' identifier: Additional identifier for the MeasureReport
+    :param Narrative text: Text summary of the resource, for human interpretation
+    :param Resource contained: Contained, inline Resources
+    :param Extension extension: Additional content defined by implementations
+    :param Extension modifierExtension: Extensions that cannot be ignored
+    :param Identifier identifier: Additional identifier for the MeasureReport
     :param str status: complete | pending | error
     :param str type: individual | subject-list | summary | data-collection
     :param str measure: What measure was calculated
-    :param 'Reference' subject: What individual(s) the report is for
+    :param Reference subject: What individual(s) the report is for
     :param str date: When the report was generated
-    :param 'Reference' reporter: Who is reporting the data
-    :param 'Period' period: What period the report covers
-    :param 'CodeableConcept' improvementNotation: increase | decrease
-    :param 'Group' group: Measure results for each group
-    :param 'Reference' evaluatedResource: What data was used to calculate the measure score
+    :param Reference reporter: Who is reporting the data
+    :param Period period: What period the report covers
+    :param CodeableConcept improvementNotation: increase | decrease
+    :param Group group: Measure results for each group
+    :param Reference evaluatedResource: What data was used to calculate the measure score
     """
-    def __init__(self, resourceType: str = "MeasureReport",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: 'Resource' = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  identifier: 'Identifier' = None,  status: str = None,  type: str = None,  measure: str = None,  subject: 'Reference' = None,  date: str = None,  reporter: 'Reference' = None,  period: 'Period' = None,  improvementNotation: 'CodeableConcept' = None,  group: 'Group' = None,  evaluatedResource: 'Reference' = None, ):
-        self.resourceType: str = resourceType or "MeasureReport"
-        self.id: str = id 
-        self.meta: 'Meta' = meta 
-        self.implicitRules: str = implicitRules 
-        self.language: str = language 
-        self.text: 'Narrative' = text 
-        self.contained: list['Resource'] = contained or []
-        self.extension: list['Extension'] = extension or []
-        self.modifierExtension: list['Extension'] = modifierExtension or []
-        self.identifier: list['Identifier'] = identifier or []
-        self.status: str = status 
-        self.type: str = type 
-        self.measure: str = measure 
-        self.subject: 'Reference' = subject 
-        self.date: str = date 
-        self.reporter: 'Reference' = reporter 
-        self.period: 'Period' = period 
-        self.improvementNotation: 'CodeableConcept' = improvementNotation 
-        self.group: list['Group'] = group or []
-        self.evaluatedResource: list['Reference'] = evaluatedResource or []
+    property_class_info = {
+        
+        
+        "meta": {"class_name": "Meta", "is_contained": False},
+        
+        
+        
+        
+        "text": {"class_name": "Narrative", "is_contained": False},
+        
+        
+        "contained": {"class_name": "Resource", "is_contained": False},
+        
+        
+        "extension": {"class_name": "Extension", "is_contained": False},
+        
+        
+        "modifierExtension": {"class_name": "Extension", "is_contained": False},
+        
+        
+        "identifier": {"class_name": "Identifier", "is_contained": False},
+        
+        
+        
+        
+        
+        "subject": {"class_name": "Reference", "is_contained": False},
+        
+        
+        
+        "reporter": {"class_name": "Reference", "is_contained": False},
+        
+        
+        "period": {"class_name": "Period", "is_contained": False},
+        
+        
+        "improvementNotation": {"class_name": "CodeableConcept", "is_contained": False},
+        
+        
+        "group": {"class_name": "Group", "is_contained": True},
+        
+        
+        "evaluatedResource": {"class_name": "Reference", "is_contained": False},
+        
+        }
+    def __init__(self, resourceType: str = None,  id:  'str'  = None,  meta:  'Meta'  = None,  implicitRules:  'str'  = None,  language:  'str'  = None,  text:  'Narrative'  = None,  contained:  list['Resource']  = None,  extension:  list['Extension']  = None,  modifierExtension:  list['Extension']  = None,  identifier:  list['Identifier']  = None,  status:  'str'  = None,  type:  'str'  = None,  measure:  'str'  = None,  subject:  'Reference'  = None,  date:  'str'  = None,  reporter:  'Reference'  = None,  period:  'Period'  = None,  improvementNotation:  'CodeableConcept'  = None,  group:  list['Group']  = None,  evaluatedResource:  list['Reference']  = None, ):
+        self.resourceType = resourceType or "MeasureReport"
+        self.id = id 
+        self.meta = meta 
+        self.implicitRules = implicitRules 
+        self.language = language 
+        self.text = text 
+        self.contained = contained or []
+        self.extension = extension or []
+        self.modifierExtension = modifierExtension or []
+        self.identifier = identifier or []
+        self.status = status 
+        self.type = type 
+        self.measure = measure 
+        self.subject = subject 
+        self.date = date 
+        self.reporter = reporter 
+        self.period = period 
+        self.improvementNotation = improvementNotation 
+        self.group = group or []
+        self.evaluatedResource = evaluatedResource or []
         
 
     @classmethod
     def from_dict(cls, data: dict) -> "MeasureReport":
-        """Create a model instance from a dict. The instance is recursively
-        created by importing the classes for complex fhir types."""
-        instance = cls()
-        for key, value in data.items():
-            # if value is dict try to create complex type
-            if isinstance(value, dict):
-                class_name = key[0].upper() + key[1:]
-                models_path = ".".join(cls.__module__.split(".")[:-1])
-                import_path = f"{models_path}.{class_name}"
-                try:
-                    module = import_module(import_path)
-                    model_class = getattr(module, class_name)
-                except ModuleNotFoundError:
-                    continue
-                # Check if the class is a subclass of BaseModel
-                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
-                    # Recursively create an instance of the nested class
-                    nested_instance = model_class.from_dict(value)
-                    setattr(instance, key, nested_instance)
-            # if value is list recursively create instances of the list items
-            elif isinstance(value, list):
-                setattr(
-                    instance,
-                    key,
-                    [
-                        cls.from_dict(item) if isinstance(item, dict) else item
-                        for item in value
-                    ],
-                )
-            # else set the value
-            else:
-                setattr(instance, key, value)
+        return super().from_dict(data)
+    
+    @classmethod
+    def from_obj(self, obj: object) -> "MeasureReport":
+        return super().from_obj(obj)
 
-        return instance
+    def as_dict(self) -> dict:
+        return super().as_dict()

@@ -1,20 +1,17 @@
 """
 Generated class for MessageDefinition. 
-Time: 2023-09-27 15:54:17
+Time: 2023-09-27 19:27:05
 """
-from importlib import import_module
-import inspect
-
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.UsageContext import *
 from fhan.models.R4.ContactDetail import *
-from fhan.models.R4.Resource import *
-from fhan.models.R4.Identifier import *
+from fhan.models.R4.UsageContext import *
 from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Coding import *
 from fhan.models.R4.Extension import *
+from fhan.models.R4.BackboneElement import *
 from fhan.models.R4.Narrative import *
+from fhan.models.R4.Meta import *
+from fhan.models.R4.Coding import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.Resource import *
 from fhan.models.R4.DomainResource import *
 
 
@@ -23,59 +20,46 @@ from fhan.models.R4.DomainResource import *
 
 class Focus(BaseModel):
     """ Identifies the resource (or resources) that are being addressed by the event.  For example, the Encounter for an admit message or two Account records for a merge.:param str id: Unique id for inter-element referencing
-    :param 'Extension' extension: Additional content defined by implementations
-    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param Extension extension: Additional content defined by implementations
+    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str code: Type of resource
     :param str profile: Profile that must be adhered to by focus
     :param int min: Minimum number of focuses of this type
     :param str max: Maximum number of focuses of this type
     """
-    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  code: str = None,  profile: str = None,  min: int = None,  max: str = None, ):
-        self.id: str = id 
-        self.extension: list['Extension'] = extension or []
-        self.modifierExtension: list['Extension'] = modifierExtension or []
-        self.code: str = code 
-        self.profile: str = profile 
-        self.min: int = min 
-        self.max: str = max 
+    property_class_info = {
+        
+        
+        "extension": {"class_name": "Extension", "is_contained": False},
+        
+        
+        "modifierExtension": {"class_name": "Extension", "is_contained": False},
+        
+        
+        
+        
+        
+        }
+    def __init__(self,  id:  'str'  = None,  extension:  list['Extension']  = None,  modifierExtension:  list['Extension']  = None,  code:  'str'  = None,  profile:  'str'  = None,  min:  'int'  = None,  max:  'str'  = None, ):
+        self.id = id 
+        self.extension = extension or []
+        self.modifierExtension = modifierExtension or []
+        self.code = code 
+        self.profile = profile 
+        self.min = min 
+        self.max = max 
         
 
     @classmethod
-    def from_dict(cls, data: dict) -> "Focus":
-        """Create a model instance from a dict. The instance is recursively
-        created by importing the classes for complex fhir types."""
-        instance = cls()
-        for key, value in data.items():
-            # if value is dict try to create complex type
-            if isinstance(value, dict):
-                class_name = key[0].upper() + key[1:]
-                models_path = ".".join(cls.__module__.split(".")[:-1])
-                import_path = f"{models_path}.{class_name}"
-                try:
-                    module = import_module(import_path)
-                    model_class = getattr(module, class_name)
-                except ModuleNotFoundError:
-                    continue
-                # Check if the class is a subclass of BaseModel
-                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
-                    # Recursively create an instance of the nested class
-                    nested_instance = model_class.from_dict(value)
-                    setattr(instance, key, nested_instance)
-            # if value is list recursively create instances of the list items
-            elif isinstance(value, list):
-                setattr(
-                    instance,
-                    key,
-                    [
-                        cls.from_dict(item) if isinstance(item, dict) else item
-                        for item in value
-                    ],
-                )
-            # else set the value
-            else:
-                setattr(instance, key, value)
+    def from_dict(cls, data: dict) -> "MessageDefinition":
+        return super().from_dict(data)
+    
+    @classmethod
+    def from_obj(self, obj: object) -> "MessageDefinition":
+        return super().from_obj(obj)
 
-        return instance
+    def as_dict(self) -> dict:
+        return super().as_dict()
 
 
     
@@ -83,69 +67,54 @@ class Focus(BaseModel):
 
 class AllowedResponse(BaseModel):
     """ Indicates what types of messages may be sent as an application-level response to this message.:param str id: Unique id for inter-element referencing
-    :param 'Extension' extension: Additional content defined by implementations
-    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param Extension extension: Additional content defined by implementations
+    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str message: Reference to allowed message definition response
     :param str situation: When should this response be used
     """
-    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  message: str = None,  situation: str = None, ):
-        self.id: str = id 
-        self.extension: list['Extension'] = extension or []
-        self.modifierExtension: list['Extension'] = modifierExtension or []
-        self.message: str = message 
-        self.situation: str = situation 
+    property_class_info = {
+        
+        
+        "extension": {"class_name": "Extension", "is_contained": False},
+        
+        
+        "modifierExtension": {"class_name": "Extension", "is_contained": False},
+        
+        
+        
+        }
+    def __init__(self,  id:  'str'  = None,  extension:  list['Extension']  = None,  modifierExtension:  list['Extension']  = None,  message:  'str'  = None,  situation:  'str'  = None, ):
+        self.id = id 
+        self.extension = extension or []
+        self.modifierExtension = modifierExtension or []
+        self.message = message 
+        self.situation = situation 
         
 
     @classmethod
-    def from_dict(cls, data: dict) -> "AllowedResponse":
-        """Create a model instance from a dict. The instance is recursively
-        created by importing the classes for complex fhir types."""
-        instance = cls()
-        for key, value in data.items():
-            # if value is dict try to create complex type
-            if isinstance(value, dict):
-                class_name = key[0].upper() + key[1:]
-                models_path = ".".join(cls.__module__.split(".")[:-1])
-                import_path = f"{models_path}.{class_name}"
-                try:
-                    module = import_module(import_path)
-                    model_class = getattr(module, class_name)
-                except ModuleNotFoundError:
-                    continue
-                # Check if the class is a subclass of BaseModel
-                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
-                    # Recursively create an instance of the nested class
-                    nested_instance = model_class.from_dict(value)
-                    setattr(instance, key, nested_instance)
-            # if value is list recursively create instances of the list items
-            elif isinstance(value, list):
-                setattr(
-                    instance,
-                    key,
-                    [
-                        cls.from_dict(item) if isinstance(item, dict) else item
-                        for item in value
-                    ],
-                )
-            # else set the value
-            else:
-                setattr(instance, key, value)
+    def from_dict(cls, data: dict) -> "MessageDefinition":
+        return super().from_dict(data)
+    
+    @classmethod
+    def from_obj(self, obj: object) -> "MessageDefinition":
+        return super().from_obj(obj)
 
-        return instance
+    def as_dict(self) -> dict:
+        return super().as_dict()
 
 
 class MessageDefinition(DomainResource):
     """ Defines the characteristics of a message that can be shared between systems, including the type of event that initiates the message, the content to be transmitted and what response(s), if any, are permitted.
     :param str id: Logical id of this artifact
-    :param 'Meta' meta: Metadata about the resource
+    :param Meta meta: Metadata about the resource
     :param str implicitRules: A set of rules under which this content was created
     :param str language: Language of the resource content
-    :param 'Narrative' text: Text summary of the resource, for human interpretation
-    :param 'Resource' contained: Contained, inline Resources
-    :param 'Extension' extension: Additional content defined by implementations
-    :param 'Extension' modifierExtension: Extensions that cannot be ignored
+    :param Narrative text: Text summary of the resource, for human interpretation
+    :param Resource contained: Contained, inline Resources
+    :param Extension extension: Additional content defined by implementations
+    :param Extension modifierExtension: Extensions that cannot be ignored
     :param str url: Business Identifier for a given MessageDefinition
-    :param 'Identifier' identifier: Primary key for the message definition on a given server
+    :param Identifier identifier: Primary key for the message definition on a given server
     :param str version: Business version of the message definition
     :param str name: Name for this message definition (computer friendly)
     :param str title: Name for this message definition (human friendly)
@@ -154,92 +123,125 @@ class MessageDefinition(DomainResource):
     :param bool experimental: For testing purposes, not real usage
     :param str date: Date last changed
     :param str publisher: Name of the publisher (organization or individual)
-    :param 'ContactDetail' contact: Contact details for the publisher
+    :param ContactDetail contact: Contact details for the publisher
     :param str description: Natural language description of the message definition
-    :param 'UsageContext' useContext: The context that the content is intended to support
-    :param 'CodeableConcept' jurisdiction: Intended jurisdiction for message definition (if applicable)
+    :param UsageContext useContext: The context that the content is intended to support
+    :param CodeableConcept jurisdiction: Intended jurisdiction for message definition (if applicable)
     :param str purpose: Why this message definition is defined
     :param str copyright: Use and/or publishing restrictions
     :param str base: Definition this one is based on
     :param str parent: Protocol/workflow this is part of
-    :param 'Coding' eventCoding: Event code  or link to the EventDefinition
+    :param Coding eventCoding: Event code  or link to the EventDefinition
     :param str eventUri: Event code  or link to the EventDefinition
     :param str category: consequence | currency | notification
-    :param 'Focus' focus: Resource(s) that are the subject of the event
+    :param Focus focus: Resource(s) that are the subject of the event
     :param str responseRequired: always | on-error | never | on-success
-    :param 'AllowedResponse' allowedResponse: Responses to this message
+    :param AllowedResponse allowedResponse: Responses to this message
     :param str graph: Canonical reference to a GraphDefinition
     """
-    def __init__(self, resourceType: str = "MessageDefinition",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: 'Resource' = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  url: str = None,  identifier: 'Identifier' = None,  version: str = None,  name: str = None,  title: str = None,  replaces: str = None,  status: str = None,  experimental: bool = None,  date: str = None,  publisher: str = None,  contact: 'ContactDetail' = None,  description: str = None,  useContext: 'UsageContext' = None,  jurisdiction: 'CodeableConcept' = None,  purpose: str = None,  copyright: str = None,  base: str = None,  parent: str = None,  eventCoding: 'Coding' = None,  eventUri: str = None,  category: str = None,  focus: 'Focus' = None,  responseRequired: str = None,  allowedResponse: 'AllowedResponse' = None,  graph: str = None, ):
-        self.resourceType: str = resourceType or "MessageDefinition"
-        self.id: str = id 
-        self.meta: 'Meta' = meta 
-        self.implicitRules: str = implicitRules 
-        self.language: str = language 
-        self.text: 'Narrative' = text 
-        self.contained: list['Resource'] = contained or []
-        self.extension: list['Extension'] = extension or []
-        self.modifierExtension: list['Extension'] = modifierExtension or []
-        self.url: str = url 
-        self.identifier: list['Identifier'] = identifier or []
-        self.version: str = version 
-        self.name: str = name 
-        self.title: str = title 
-        self.replaces: list[str] = replaces or []
-        self.status: str = status 
-        self.experimental: bool = experimental 
-        self.date: str = date 
-        self.publisher: str = publisher 
-        self.contact: list['ContactDetail'] = contact or []
-        self.description: str = description 
-        self.useContext: list['UsageContext'] = useContext or []
-        self.jurisdiction: list['CodeableConcept'] = jurisdiction or []
-        self.purpose: str = purpose 
-        self.copyright: str = copyright 
-        self.base: str = base 
-        self.parent: list[str] = parent or []
-        self.eventCoding: 'Coding' = eventCoding 
-        self.eventUri: str = eventUri 
-        self.category: str = category 
-        self.focus: list['Focus'] = focus or []
-        self.responseRequired: str = responseRequired 
-        self.allowedResponse: list['AllowedResponse'] = allowedResponse or []
-        self.graph: list[str] = graph or []
+    property_class_info = {
+        
+        
+        "meta": {"class_name": "Meta", "is_contained": False},
+        
+        
+        
+        
+        "text": {"class_name": "Narrative", "is_contained": False},
+        
+        
+        "contained": {"class_name": "Resource", "is_contained": False},
+        
+        
+        "extension": {"class_name": "Extension", "is_contained": False},
+        
+        
+        "modifierExtension": {"class_name": "Extension", "is_contained": False},
+        
+        
+        
+        "identifier": {"class_name": "Identifier", "is_contained": False},
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        "contact": {"class_name": "ContactDetail", "is_contained": False},
+        
+        
+        
+        "useContext": {"class_name": "UsageContext", "is_contained": False},
+        
+        
+        "jurisdiction": {"class_name": "CodeableConcept", "is_contained": False},
+        
+        
+        
+        
+        
+        
+        "eventCoding": {"class_name": "Coding", "is_contained": False},
+        
+        
+        
+        
+        "focus": {"class_name": "Focus", "is_contained": True},
+        
+        
+        
+        "allowedResponse": {"class_name": "AllowedResponse", "is_contained": True},
+        
+        
+        }
+    def __init__(self, resourceType: str = None,  id:  'str'  = None,  meta:  'Meta'  = None,  implicitRules:  'str'  = None,  language:  'str'  = None,  text:  'Narrative'  = None,  contained:  list['Resource']  = None,  extension:  list['Extension']  = None,  modifierExtension:  list['Extension']  = None,  url:  'str'  = None,  identifier:  list['Identifier']  = None,  version:  'str'  = None,  name:  'str'  = None,  title:  'str'  = None,  replaces:  list['str']  = None,  status:  'str'  = None,  experimental:  'bool'  = None,  date:  'str'  = None,  publisher:  'str'  = None,  contact:  list['ContactDetail']  = None,  description:  'str'  = None,  useContext:  list['UsageContext']  = None,  jurisdiction:  list['CodeableConcept']  = None,  purpose:  'str'  = None,  copyright:  'str'  = None,  base:  'str'  = None,  parent:  list['str']  = None,  eventCoding:  'Coding'  = None,  eventUri:  'str'  = None,  category:  'str'  = None,  focus:  list['Focus']  = None,  responseRequired:  'str'  = None,  allowedResponse:  list['AllowedResponse']  = None,  graph:  list['str']  = None, ):
+        self.resourceType = resourceType or "MessageDefinition"
+        self.id = id 
+        self.meta = meta 
+        self.implicitRules = implicitRules 
+        self.language = language 
+        self.text = text 
+        self.contained = contained or []
+        self.extension = extension or []
+        self.modifierExtension = modifierExtension or []
+        self.url = url 
+        self.identifier = identifier or []
+        self.version = version 
+        self.name = name 
+        self.title = title 
+        self.replaces = replaces or []
+        self.status = status 
+        self.experimental = experimental 
+        self.date = date 
+        self.publisher = publisher 
+        self.contact = contact or []
+        self.description = description 
+        self.useContext = useContext or []
+        self.jurisdiction = jurisdiction or []
+        self.purpose = purpose 
+        self.copyright = copyright 
+        self.base = base 
+        self.parent = parent or []
+        self.eventCoding = eventCoding 
+        self.eventUri = eventUri 
+        self.category = category 
+        self.focus = focus or []
+        self.responseRequired = responseRequired 
+        self.allowedResponse = allowedResponse or []
+        self.graph = graph or []
         
 
     @classmethod
     def from_dict(cls, data: dict) -> "MessageDefinition":
-        """Create a model instance from a dict. The instance is recursively
-        created by importing the classes for complex fhir types."""
-        instance = cls()
-        for key, value in data.items():
-            # if value is dict try to create complex type
-            if isinstance(value, dict):
-                class_name = key[0].upper() + key[1:]
-                models_path = ".".join(cls.__module__.split(".")[:-1])
-                import_path = f"{models_path}.{class_name}"
-                try:
-                    module = import_module(import_path)
-                    model_class = getattr(module, class_name)
-                except ModuleNotFoundError:
-                    continue
-                # Check if the class is a subclass of BaseModel
-                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
-                    # Recursively create an instance of the nested class
-                    nested_instance = model_class.from_dict(value)
-                    setattr(instance, key, nested_instance)
-            # if value is list recursively create instances of the list items
-            elif isinstance(value, list):
-                setattr(
-                    instance,
-                    key,
-                    [
-                        cls.from_dict(item) if isinstance(item, dict) else item
-                        for item in value
-                    ],
-                )
-            # else set the value
-            else:
-                setattr(instance, key, value)
+        return super().from_dict(data)
+    
+    @classmethod
+    def from_obj(self, obj: object) -> "MessageDefinition":
+        return super().from_obj(obj)
 
-        return instance
+    def as_dict(self) -> dict:
+        return super().as_dict()

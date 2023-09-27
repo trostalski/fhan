@@ -1,22 +1,19 @@
 """
 Generated class for AllergyIntolerance. 
-Time: 2023-09-27 15:54:17
+Time: 2023-09-27 19:27:05
 """
-from importlib import import_module
-import inspect
-
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Meta import *
+from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Extension import *
 from fhan.models.R4.Age import *
 from fhan.models.R4.Annotation import *
-from fhan.models.R4.Period import *
-from fhan.models.R4.Resource import *
-from fhan.models.R4.Identifier import *
-from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.BackboneElement import *
 from fhan.models.R4.Range import *
-from fhan.models.R4.Extension import *
 from fhan.models.R4.Narrative import *
 from fhan.models.R4.Reference import *
+from fhan.models.R4.Meta import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.Resource import *
+from fhan.models.R4.Period import *
 from fhan.models.R4.DomainResource import *
 
 
@@ -25,163 +22,201 @@ from fhan.models.R4.DomainResource import *
 
 class Reaction(BaseModel):
     """ Details about each adverse reaction event linked to exposure to the identified substance.:param str id: Unique id for inter-element referencing
-    :param 'Extension' extension: Additional content defined by implementations
-    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param 'CodeableConcept' substance: Specific substance or pharmaceutical product considered to be responsible for event
-    :param 'CodeableConcept' manifestation: Clinical symptoms/signs associated with the Event
+    :param Extension extension: Additional content defined by implementations
+    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param CodeableConcept substance: Specific substance or pharmaceutical product considered to be responsible for event
+    :param CodeableConcept manifestation: Clinical symptoms/signs associated with the Event
     :param str description: Description of the event as a whole
     :param str onset: Date(/time) when manifestations showed
     :param str severity: mild | moderate | severe (of event as a whole)
-    :param 'CodeableConcept' exposureRoute: How the subject was exposed to the substance
-    :param 'Annotation' note: Text about event not captured in other fields
+    :param CodeableConcept exposureRoute: How the subject was exposed to the substance
+    :param Annotation note: Text about event not captured in other fields
     """
-    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  substance: 'CodeableConcept' = None,  manifestation: 'CodeableConcept' = None,  description: str = None,  onset: str = None,  severity: str = None,  exposureRoute: 'CodeableConcept' = None,  note: 'Annotation' = None, ):
-        self.id: str = id 
-        self.extension: list['Extension'] = extension or []
-        self.modifierExtension: list['Extension'] = modifierExtension or []
-        self.substance: 'CodeableConcept' = substance 
-        self.manifestation: list['CodeableConcept'] = manifestation or []
-        self.description: str = description 
-        self.onset: str = onset 
-        self.severity: str = severity 
-        self.exposureRoute: 'CodeableConcept' = exposureRoute 
-        self.note: list['Annotation'] = note or []
+    property_class_info = {
+        
+        
+        "extension": {"class_name": "Extension", "is_contained": False},
+        
+        
+        "modifierExtension": {"class_name": "Extension", "is_contained": False},
+        
+        
+        "substance": {"class_name": "CodeableConcept", "is_contained": False},
+        
+        
+        "manifestation": {"class_name": "CodeableConcept", "is_contained": False},
+        
+        
+        
+        
+        
+        "exposureRoute": {"class_name": "CodeableConcept", "is_contained": False},
+        
+        
+        "note": {"class_name": "Annotation", "is_contained": False},
+        
+        }
+    def __init__(self,  id:  'str'  = None,  extension:  list['Extension']  = None,  modifierExtension:  list['Extension']  = None,  substance:  'CodeableConcept'  = None,  manifestation:  list['CodeableConcept']  = None,  description:  'str'  = None,  onset:  'str'  = None,  severity:  'str'  = None,  exposureRoute:  'CodeableConcept'  = None,  note:  list['Annotation']  = None, ):
+        self.id = id 
+        self.extension = extension or []
+        self.modifierExtension = modifierExtension or []
+        self.substance = substance 
+        self.manifestation = manifestation or []
+        self.description = description 
+        self.onset = onset 
+        self.severity = severity 
+        self.exposureRoute = exposureRoute 
+        self.note = note or []
         
 
     @classmethod
-    def from_dict(cls, data: dict) -> "Reaction":
-        """Create a model instance from a dict. The instance is recursively
-        created by importing the classes for complex fhir types."""
-        instance = cls()
-        for key, value in data.items():
-            # if value is dict try to create complex type
-            if isinstance(value, dict):
-                class_name = key[0].upper() + key[1:]
-                models_path = ".".join(cls.__module__.split(".")[:-1])
-                import_path = f"{models_path}.{class_name}"
-                try:
-                    module = import_module(import_path)
-                    model_class = getattr(module, class_name)
-                except ModuleNotFoundError:
-                    continue
-                # Check if the class is a subclass of BaseModel
-                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
-                    # Recursively create an instance of the nested class
-                    nested_instance = model_class.from_dict(value)
-                    setattr(instance, key, nested_instance)
-            # if value is list recursively create instances of the list items
-            elif isinstance(value, list):
-                setattr(
-                    instance,
-                    key,
-                    [
-                        cls.from_dict(item) if isinstance(item, dict) else item
-                        for item in value
-                    ],
-                )
-            # else set the value
-            else:
-                setattr(instance, key, value)
+    def from_dict(cls, data: dict) -> "AllergyIntolerance":
+        return super().from_dict(data)
+    
+    @classmethod
+    def from_obj(self, obj: object) -> "AllergyIntolerance":
+        return super().from_obj(obj)
 
-        return instance
+    def as_dict(self) -> dict:
+        return super().as_dict()
 
 
 class AllergyIntolerance(DomainResource):
     """ Risk of harmful or undesirable, physiological response which is unique to an individual and associated with exposure to a substance.
     :param str id: Logical id of this artifact
-    :param 'Meta' meta: Metadata about the resource
+    :param Meta meta: Metadata about the resource
     :param str implicitRules: A set of rules under which this content was created
     :param str language: Language of the resource content
-    :param 'Narrative' text: Text summary of the resource, for human interpretation
-    :param 'Resource' contained: Contained, inline Resources
-    :param 'Extension' extension: Additional content defined by implementations
-    :param 'Extension' modifierExtension: Extensions that cannot be ignored
-    :param 'Identifier' identifier: External ids for this item
-    :param 'CodeableConcept' clinicalStatus: active | inactive | resolved
-    :param 'CodeableConcept' verificationStatus: unconfirmed | confirmed | refuted | entered-in-error
+    :param Narrative text: Text summary of the resource, for human interpretation
+    :param Resource contained: Contained, inline Resources
+    :param Extension extension: Additional content defined by implementations
+    :param Extension modifierExtension: Extensions that cannot be ignored
+    :param Identifier identifier: External ids for this item
+    :param CodeableConcept clinicalStatus: active | inactive | resolved
+    :param CodeableConcept verificationStatus: unconfirmed | confirmed | refuted | entered-in-error
     :param str type: allergy | intolerance - Underlying mechanism (if known)
     :param str category: food | medication | environment | biologic
     :param str criticality: low | high | unable-to-assess
-    :param 'CodeableConcept' code: Code that identifies the allergy or intolerance
-    :param 'Reference' patient: Who the sensitivity is for
-    :param 'Reference' encounter: Encounter when the allergy or intolerance was asserted
+    :param CodeableConcept code: Code that identifies the allergy or intolerance
+    :param Reference patient: Who the sensitivity is for
+    :param Reference encounter: Encounter when the allergy or intolerance was asserted
     :param str onsetDateTime: When allergy or intolerance was identified
-    :param 'Age' onsetAge: When allergy or intolerance was identified
-    :param 'Period' onsetPeriod: When allergy or intolerance was identified
-    :param 'Range' onsetRange: When allergy or intolerance was identified
+    :param Age onsetAge: When allergy or intolerance was identified
+    :param Period onsetPeriod: When allergy or intolerance was identified
+    :param Range onsetRange: When allergy or intolerance was identified
     :param str onsetString: When allergy or intolerance was identified
     :param str recordedDate: Date first version of the resource instance was recorded
-    :param 'Reference' recorder: Who recorded the sensitivity
-    :param 'Reference' asserter: Source of the information about the allergy
+    :param Reference recorder: Who recorded the sensitivity
+    :param Reference asserter: Source of the information about the allergy
     :param str lastOccurrence: Date(/time) of last known occurrence of a reaction
-    :param 'Annotation' note: Additional text not captured in other fields
-    :param 'Reaction' reaction: Adverse Reaction Events linked to exposure to substance
+    :param Annotation note: Additional text not captured in other fields
+    :param Reaction reaction: Adverse Reaction Events linked to exposure to substance
     """
-    def __init__(self, resourceType: str = "AllergyIntolerance",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: 'Resource' = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  identifier: 'Identifier' = None,  clinicalStatus: 'CodeableConcept' = None,  verificationStatus: 'CodeableConcept' = None,  type: str = None,  category: str = None,  criticality: str = None,  code: 'CodeableConcept' = None,  patient: 'Reference' = None,  encounter: 'Reference' = None,  onsetDateTime: str = None,  onsetAge: 'Age' = None,  onsetPeriod: 'Period' = None,  onsetRange: 'Range' = None,  onsetString: str = None,  recordedDate: str = None,  recorder: 'Reference' = None,  asserter: 'Reference' = None,  lastOccurrence: str = None,  note: 'Annotation' = None,  reaction: 'Reaction' = None, ):
-        self.resourceType: str = resourceType or "AllergyIntolerance"
-        self.id: str = id 
-        self.meta: 'Meta' = meta 
-        self.implicitRules: str = implicitRules 
-        self.language: str = language 
-        self.text: 'Narrative' = text 
-        self.contained: list['Resource'] = contained or []
-        self.extension: list['Extension'] = extension or []
-        self.modifierExtension: list['Extension'] = modifierExtension or []
-        self.identifier: list['Identifier'] = identifier or []
-        self.clinicalStatus: 'CodeableConcept' = clinicalStatus 
-        self.verificationStatus: 'CodeableConcept' = verificationStatus 
-        self.type: str = type 
-        self.category: list[str] = category or []
-        self.criticality: str = criticality 
-        self.code: 'CodeableConcept' = code 
-        self.patient: 'Reference' = patient 
-        self.encounter: 'Reference' = encounter 
-        self.onsetDateTime: str = onsetDateTime 
-        self.onsetAge: 'Age' = onsetAge 
-        self.onsetPeriod: 'Period' = onsetPeriod 
-        self.onsetRange: 'Range' = onsetRange 
-        self.onsetString: str = onsetString 
-        self.recordedDate: str = recordedDate 
-        self.recorder: 'Reference' = recorder 
-        self.asserter: 'Reference' = asserter 
-        self.lastOccurrence: str = lastOccurrence 
-        self.note: list['Annotation'] = note or []
-        self.reaction: list['Reaction'] = reaction or []
+    property_class_info = {
+        
+        
+        "meta": {"class_name": "Meta", "is_contained": False},
+        
+        
+        
+        
+        "text": {"class_name": "Narrative", "is_contained": False},
+        
+        
+        "contained": {"class_name": "Resource", "is_contained": False},
+        
+        
+        "extension": {"class_name": "Extension", "is_contained": False},
+        
+        
+        "modifierExtension": {"class_name": "Extension", "is_contained": False},
+        
+        
+        "identifier": {"class_name": "Identifier", "is_contained": False},
+        
+        
+        "clinicalStatus": {"class_name": "CodeableConcept", "is_contained": False},
+        
+        
+        "verificationStatus": {"class_name": "CodeableConcept", "is_contained": False},
+        
+        
+        
+        
+        
+        "code": {"class_name": "CodeableConcept", "is_contained": False},
+        
+        
+        "patient": {"class_name": "Reference", "is_contained": False},
+        
+        
+        "encounter": {"class_name": "Reference", "is_contained": False},
+        
+        
+        
+        "onsetAge": {"class_name": "Age", "is_contained": False},
+        
+        
+        "onsetPeriod": {"class_name": "Period", "is_contained": False},
+        
+        
+        "onsetRange": {"class_name": "Range", "is_contained": False},
+        
+        
+        
+        
+        "recorder": {"class_name": "Reference", "is_contained": False},
+        
+        
+        "asserter": {"class_name": "Reference", "is_contained": False},
+        
+        
+        
+        "note": {"class_name": "Annotation", "is_contained": False},
+        
+        
+        "reaction": {"class_name": "Reaction", "is_contained": True},
+        
+        }
+    def __init__(self, resourceType: str = None,  id:  'str'  = None,  meta:  'Meta'  = None,  implicitRules:  'str'  = None,  language:  'str'  = None,  text:  'Narrative'  = None,  contained:  list['Resource']  = None,  extension:  list['Extension']  = None,  modifierExtension:  list['Extension']  = None,  identifier:  list['Identifier']  = None,  clinicalStatus:  'CodeableConcept'  = None,  verificationStatus:  'CodeableConcept'  = None,  type:  'str'  = None,  category:  list['str']  = None,  criticality:  'str'  = None,  code:  'CodeableConcept'  = None,  patient:  'Reference'  = None,  encounter:  'Reference'  = None,  onsetDateTime:  'str'  = None,  onsetAge:  'Age'  = None,  onsetPeriod:  'Period'  = None,  onsetRange:  'Range'  = None,  onsetString:  'str'  = None,  recordedDate:  'str'  = None,  recorder:  'Reference'  = None,  asserter:  'Reference'  = None,  lastOccurrence:  'str'  = None,  note:  list['Annotation']  = None,  reaction:  list['Reaction']  = None, ):
+        self.resourceType = resourceType or "AllergyIntolerance"
+        self.id = id 
+        self.meta = meta 
+        self.implicitRules = implicitRules 
+        self.language = language 
+        self.text = text 
+        self.contained = contained or []
+        self.extension = extension or []
+        self.modifierExtension = modifierExtension or []
+        self.identifier = identifier or []
+        self.clinicalStatus = clinicalStatus 
+        self.verificationStatus = verificationStatus 
+        self.type = type 
+        self.category = category or []
+        self.criticality = criticality 
+        self.code = code 
+        self.patient = patient 
+        self.encounter = encounter 
+        self.onsetDateTime = onsetDateTime 
+        self.onsetAge = onsetAge 
+        self.onsetPeriod = onsetPeriod 
+        self.onsetRange = onsetRange 
+        self.onsetString = onsetString 
+        self.recordedDate = recordedDate 
+        self.recorder = recorder 
+        self.asserter = asserter 
+        self.lastOccurrence = lastOccurrence 
+        self.note = note or []
+        self.reaction = reaction or []
         
 
     @classmethod
     def from_dict(cls, data: dict) -> "AllergyIntolerance":
-        """Create a model instance from a dict. The instance is recursively
-        created by importing the classes for complex fhir types."""
-        instance = cls()
-        for key, value in data.items():
-            # if value is dict try to create complex type
-            if isinstance(value, dict):
-                class_name = key[0].upper() + key[1:]
-                models_path = ".".join(cls.__module__.split(".")[:-1])
-                import_path = f"{models_path}.{class_name}"
-                try:
-                    module = import_module(import_path)
-                    model_class = getattr(module, class_name)
-                except ModuleNotFoundError:
-                    continue
-                # Check if the class is a subclass of BaseModel
-                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
-                    # Recursively create an instance of the nested class
-                    nested_instance = model_class.from_dict(value)
-                    setattr(instance, key, nested_instance)
-            # if value is list recursively create instances of the list items
-            elif isinstance(value, list):
-                setattr(
-                    instance,
-                    key,
-                    [
-                        cls.from_dict(item) if isinstance(item, dict) else item
-                        for item in value
-                    ],
-                )
-            # else set the value
-            else:
-                setattr(instance, key, value)
+        return super().from_dict(data)
+    
+    @classmethod
+    def from_obj(self, obj: object) -> "AllergyIntolerance":
+        return super().from_obj(obj)
 
-        return instance
+    def as_dict(self) -> dict:
+        return super().as_dict()

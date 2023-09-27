@@ -13,6 +13,9 @@ from fhan.views.view import View
 from fhan.models.generator_models import BaseModel
 from fhan.client.generated.get_resource_mixin import GetResourceMixin
 from fhan.client.generated.search_resource_mixin import SearchResourceMixin
+from fhan.core.settings import BaseSettings
+
+FHIR_VERSION = BaseSettings.fhir_version
 
 
 class BaseHttpHandler:
@@ -84,7 +87,7 @@ class GetHandler(BaseHttpHandler, GetResourceMixin):
         result = make_get_request(url=url, session=self._session).json()
         if as_object:
             klass = get_model_for_type(resource_type)
-            result = klass.from_dict(**result)
+            result = klass.from_dict(result)
         return result
 
     def PatientData(self, types: list[str]):
@@ -102,6 +105,6 @@ def get_model_for_type(resource_type: str) -> BaseModel:
     """
     Get the model for a resource type.
     """
-    module = import_module(f"fhan.models.{resource_type}")
+    module = import_module(f"fhan.models.{FHIR_VERSION}.{resource_type}")
     model = getattr(module, resource_type)
     return model

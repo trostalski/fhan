@@ -1,21 +1,18 @@
 """
 Generated class for SupplyDelivery. 
-Time: 2023-09-27 15:54:17
+Time: 2023-09-27 19:27:05
 """
-from importlib import import_module
-import inspect
-
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Meta import *
 from fhan.models.R4.Timing import *
-from fhan.models.R4.Quantity import *
-from fhan.models.R4.Period import *
-from fhan.models.R4.Resource import *
-from fhan.models.R4.Identifier import *
 from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Extension import *
+from fhan.models.R4.BackboneElement import *
 from fhan.models.R4.Narrative import *
+from fhan.models.R4.Quantity import *
 from fhan.models.R4.Reference import *
+from fhan.models.R4.Meta import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.Resource import *
+from fhan.models.R4.Period import *
 from fhan.models.R4.DomainResource import *
 
 
@@ -24,141 +21,162 @@ from fhan.models.R4.DomainResource import *
 
 class SuppliedItem(BaseModel):
     """ The item that is being delivered or has been supplied.:param str id: Unique id for inter-element referencing
-    :param 'Extension' extension: Additional content defined by implementations
-    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param 'Quantity' quantity: Amount dispensed
-    :param 'CodeableConcept' itemCodeableConcept: Medication, Substance, or Device supplied
-    :param 'Reference' itemReference: Medication, Substance, or Device supplied
+    :param Extension extension: Additional content defined by implementations
+    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param Quantity quantity: Amount dispensed
+    :param CodeableConcept itemCodeableConcept: Medication, Substance, or Device supplied
+    :param Reference itemReference: Medication, Substance, or Device supplied
     """
-    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  quantity: 'Quantity' = None,  itemCodeableConcept: 'CodeableConcept' = None,  itemReference: 'Reference' = None, ):
-        self.id: str = id 
-        self.extension: list['Extension'] = extension or []
-        self.modifierExtension: list['Extension'] = modifierExtension or []
-        self.quantity: 'Quantity' = quantity 
-        self.itemCodeableConcept: 'CodeableConcept' = itemCodeableConcept 
-        self.itemReference: 'Reference' = itemReference 
+    property_class_info = {
+        
+        
+        "extension": {"class_name": "Extension", "is_contained": False},
+        
+        
+        "modifierExtension": {"class_name": "Extension", "is_contained": False},
+        
+        
+        "quantity": {"class_name": "Quantity", "is_contained": False},
+        
+        
+        "itemCodeableConcept": {"class_name": "CodeableConcept", "is_contained": False},
+        
+        
+        "itemReference": {"class_name": "Reference", "is_contained": False},
+        
+        }
+    def __init__(self,  id:  'str'  = None,  extension:  list['Extension']  = None,  modifierExtension:  list['Extension']  = None,  quantity:  'Quantity'  = None,  itemCodeableConcept:  'CodeableConcept'  = None,  itemReference:  'Reference'  = None, ):
+        self.id = id 
+        self.extension = extension or []
+        self.modifierExtension = modifierExtension or []
+        self.quantity = quantity 
+        self.itemCodeableConcept = itemCodeableConcept 
+        self.itemReference = itemReference 
         
 
     @classmethod
-    def from_dict(cls, data: dict) -> "SuppliedItem":
-        """Create a model instance from a dict. The instance is recursively
-        created by importing the classes for complex fhir types."""
-        instance = cls()
-        for key, value in data.items():
-            # if value is dict try to create complex type
-            if isinstance(value, dict):
-                class_name = key[0].upper() + key[1:]
-                models_path = ".".join(cls.__module__.split(".")[:-1])
-                import_path = f"{models_path}.{class_name}"
-                try:
-                    module = import_module(import_path)
-                    model_class = getattr(module, class_name)
-                except ModuleNotFoundError:
-                    continue
-                # Check if the class is a subclass of BaseModel
-                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
-                    # Recursively create an instance of the nested class
-                    nested_instance = model_class.from_dict(value)
-                    setattr(instance, key, nested_instance)
-            # if value is list recursively create instances of the list items
-            elif isinstance(value, list):
-                setattr(
-                    instance,
-                    key,
-                    [
-                        cls.from_dict(item) if isinstance(item, dict) else item
-                        for item in value
-                    ],
-                )
-            # else set the value
-            else:
-                setattr(instance, key, value)
+    def from_dict(cls, data: dict) -> "SupplyDelivery":
+        return super().from_dict(data)
+    
+    @classmethod
+    def from_obj(self, obj: object) -> "SupplyDelivery":
+        return super().from_obj(obj)
 
-        return instance
+    def as_dict(self) -> dict:
+        return super().as_dict()
 
 
 class SupplyDelivery(DomainResource):
     """ Record of delivery of what is supplied.
     :param str id: Logical id of this artifact
-    :param 'Meta' meta: Metadata about the resource
+    :param Meta meta: Metadata about the resource
     :param str implicitRules: A set of rules under which this content was created
     :param str language: Language of the resource content
-    :param 'Narrative' text: Text summary of the resource, for human interpretation
-    :param 'Resource' contained: Contained, inline Resources
-    :param 'Extension' extension: Additional content defined by implementations
-    :param 'Extension' modifierExtension: Extensions that cannot be ignored
-    :param 'Identifier' identifier: External identifier
-    :param 'Reference' basedOn: Fulfills plan, proposal or order
-    :param 'Reference' partOf: Part of referenced event
+    :param Narrative text: Text summary of the resource, for human interpretation
+    :param Resource contained: Contained, inline Resources
+    :param Extension extension: Additional content defined by implementations
+    :param Extension modifierExtension: Extensions that cannot be ignored
+    :param Identifier identifier: External identifier
+    :param Reference basedOn: Fulfills plan, proposal or order
+    :param Reference partOf: Part of referenced event
     :param str status: in-progress | completed | abandoned | entered-in-error
-    :param 'Reference' patient: Patient for whom the item is supplied
-    :param 'CodeableConcept' type: Category of dispense event
-    :param 'SuppliedItem' suppliedItem: The item that is delivered or supplied
+    :param Reference patient: Patient for whom the item is supplied
+    :param CodeableConcept type: Category of dispense event
+    :param SuppliedItem suppliedItem: The item that is delivered or supplied
     :param str occurrenceDateTime: When event occurred
-    :param 'Period' occurrencePeriod: When event occurred
-    :param 'Timing' occurrenceTiming: When event occurred
-    :param 'Reference' supplier: Dispenser
-    :param 'Reference' destination: Where the Supply was sent
-    :param 'Reference' receiver: Who collected the Supply
+    :param Period occurrencePeriod: When event occurred
+    :param Timing occurrenceTiming: When event occurred
+    :param Reference supplier: Dispenser
+    :param Reference destination: Where the Supply was sent
+    :param Reference receiver: Who collected the Supply
     """
-    def __init__(self, resourceType: str = "SupplyDelivery",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: 'Resource' = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  identifier: 'Identifier' = None,  basedOn: 'Reference' = None,  partOf: 'Reference' = None,  status: str = None,  patient: 'Reference' = None,  type: 'CodeableConcept' = None,  suppliedItem: 'SuppliedItem' = None,  occurrenceDateTime: str = None,  occurrencePeriod: 'Period' = None,  occurrenceTiming: 'Timing' = None,  supplier: 'Reference' = None,  destination: 'Reference' = None,  receiver: 'Reference' = None, ):
-        self.resourceType: str = resourceType or "SupplyDelivery"
-        self.id: str = id 
-        self.meta: 'Meta' = meta 
-        self.implicitRules: str = implicitRules 
-        self.language: str = language 
-        self.text: 'Narrative' = text 
-        self.contained: list['Resource'] = contained or []
-        self.extension: list['Extension'] = extension or []
-        self.modifierExtension: list['Extension'] = modifierExtension or []
-        self.identifier: list['Identifier'] = identifier or []
-        self.basedOn: list['Reference'] = basedOn or []
-        self.partOf: list['Reference'] = partOf or []
-        self.status: str = status 
-        self.patient: 'Reference' = patient 
-        self.type: 'CodeableConcept' = type 
-        self.suppliedItem: 'SuppliedItem' = suppliedItem 
-        self.occurrenceDateTime: str = occurrenceDateTime 
-        self.occurrencePeriod: 'Period' = occurrencePeriod 
-        self.occurrenceTiming: 'Timing' = occurrenceTiming 
-        self.supplier: 'Reference' = supplier 
-        self.destination: 'Reference' = destination 
-        self.receiver: list['Reference'] = receiver or []
+    property_class_info = {
+        
+        
+        "meta": {"class_name": "Meta", "is_contained": False},
+        
+        
+        
+        
+        "text": {"class_name": "Narrative", "is_contained": False},
+        
+        
+        "contained": {"class_name": "Resource", "is_contained": False},
+        
+        
+        "extension": {"class_name": "Extension", "is_contained": False},
+        
+        
+        "modifierExtension": {"class_name": "Extension", "is_contained": False},
+        
+        
+        "identifier": {"class_name": "Identifier", "is_contained": False},
+        
+        
+        "basedOn": {"class_name": "Reference", "is_contained": False},
+        
+        
+        "partOf": {"class_name": "Reference", "is_contained": False},
+        
+        
+        
+        "patient": {"class_name": "Reference", "is_contained": False},
+        
+        
+        "type": {"class_name": "CodeableConcept", "is_contained": False},
+        
+        
+        "suppliedItem": {"class_name": "SuppliedItem", "is_contained": True},
+        
+        
+        
+        "occurrencePeriod": {"class_name": "Period", "is_contained": False},
+        
+        
+        "occurrenceTiming": {"class_name": "Timing", "is_contained": False},
+        
+        
+        "supplier": {"class_name": "Reference", "is_contained": False},
+        
+        
+        "destination": {"class_name": "Reference", "is_contained": False},
+        
+        
+        "receiver": {"class_name": "Reference", "is_contained": False},
+        
+        }
+    def __init__(self, resourceType: str = None,  id:  'str'  = None,  meta:  'Meta'  = None,  implicitRules:  'str'  = None,  language:  'str'  = None,  text:  'Narrative'  = None,  contained:  list['Resource']  = None,  extension:  list['Extension']  = None,  modifierExtension:  list['Extension']  = None,  identifier:  list['Identifier']  = None,  basedOn:  list['Reference']  = None,  partOf:  list['Reference']  = None,  status:  'str'  = None,  patient:  'Reference'  = None,  type:  'CodeableConcept'  = None,  suppliedItem:  'SuppliedItem'  = None,  occurrenceDateTime:  'str'  = None,  occurrencePeriod:  'Period'  = None,  occurrenceTiming:  'Timing'  = None,  supplier:  'Reference'  = None,  destination:  'Reference'  = None,  receiver:  list['Reference']  = None, ):
+        self.resourceType = resourceType or "SupplyDelivery"
+        self.id = id 
+        self.meta = meta 
+        self.implicitRules = implicitRules 
+        self.language = language 
+        self.text = text 
+        self.contained = contained or []
+        self.extension = extension or []
+        self.modifierExtension = modifierExtension or []
+        self.identifier = identifier or []
+        self.basedOn = basedOn or []
+        self.partOf = partOf or []
+        self.status = status 
+        self.patient = patient 
+        self.type = type 
+        self.suppliedItem = suppliedItem 
+        self.occurrenceDateTime = occurrenceDateTime 
+        self.occurrencePeriod = occurrencePeriod 
+        self.occurrenceTiming = occurrenceTiming 
+        self.supplier = supplier 
+        self.destination = destination 
+        self.receiver = receiver or []
         
 
     @classmethod
     def from_dict(cls, data: dict) -> "SupplyDelivery":
-        """Create a model instance from a dict. The instance is recursively
-        created by importing the classes for complex fhir types."""
-        instance = cls()
-        for key, value in data.items():
-            # if value is dict try to create complex type
-            if isinstance(value, dict):
-                class_name = key[0].upper() + key[1:]
-                models_path = ".".join(cls.__module__.split(".")[:-1])
-                import_path = f"{models_path}.{class_name}"
-                try:
-                    module = import_module(import_path)
-                    model_class = getattr(module, class_name)
-                except ModuleNotFoundError:
-                    continue
-                # Check if the class is a subclass of BaseModel
-                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
-                    # Recursively create an instance of the nested class
-                    nested_instance = model_class.from_dict(value)
-                    setattr(instance, key, nested_instance)
-            # if value is list recursively create instances of the list items
-            elif isinstance(value, list):
-                setattr(
-                    instance,
-                    key,
-                    [
-                        cls.from_dict(item) if isinstance(item, dict) else item
-                        for item in value
-                    ],
-                )
-            # else set the value
-            else:
-                setattr(instance, key, value)
+        return super().from_dict(data)
+    
+    @classmethod
+    def from_obj(self, obj: object) -> "SupplyDelivery":
+        return super().from_obj(obj)
 
-        return instance
+    def as_dict(self) -> dict:
+        return super().as_dict()

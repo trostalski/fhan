@@ -1,72 +1,58 @@
 """
 Generated class for HumanName. 
-Time: 2023-09-27 15:54:17
+Time: 2023-09-27 19:27:05
 """
-from importlib import import_module
-import inspect
-
-from fhan.models.R4.Period import *
 from fhan.models.R4.Extension import *
+from fhan.models.R4.Period import *
 from fhan.models.generator_models import BaseModel
 
 class HumanName(BaseModel):
     """ Base StructureDefinition for HumanName Type: A human's name with the ability to identify parts and usage.
     :param str id: Unique id for inter-element referencing
-    :param 'Extension' extension: Additional content defined by implementations
+    :param Extension extension: Additional content defined by implementations
     :param str use: usual | official | temp | nickname | anonymous | old | maiden
     :param str text: Text representation of the full name
     :param str family: Family name (often called 'Surname')
     :param str given: Given names (not always 'first'). Includes middle names
     :param str prefix: Parts that come before the name
     :param str suffix: Parts that come after the name
-    :param 'Period' period: Time period when name was/is in use
+    :param Period period: Time period when name was/is in use
     """
-    def __init__(self, resourceType: str = "HumanName",  id: str = None,  extension: 'Extension' = None,  use: str = None,  text: str = None,  family: str = None,  given: str = None,  prefix: str = None,  suffix: str = None,  period: 'Period' = None, ):
-        self.resourceType: str = resourceType or "HumanName"
-        self.id: str = id 
-        self.extension: list['Extension'] = extension or []
-        self.use: str = use 
-        self.text: str = text 
-        self.family: str = family 
-        self.given: list[str] = given or []
-        self.prefix: list[str] = prefix or []
-        self.suffix: list[str] = suffix or []
-        self.period: 'Period' = period 
+    property_class_info = {
+        
+        
+        "extension": {"class_name": "Extension", "is_contained": False},
+        
+        
+        
+        
+        
+        
+        
+        
+        "period": {"class_name": "Period", "is_contained": False},
+        
+        }
+    def __init__(self, resourceType: str = None,  id:  'str'  = None,  extension:  list['Extension']  = None,  use:  'str'  = None,  text:  'str'  = None,  family:  'str'  = None,  given:  list['str']  = None,  prefix:  list['str']  = None,  suffix:  list['str']  = None,  period:  'Period'  = None, ):
+        self.resourceType = resourceType or "HumanName"
+        self.id = id 
+        self.extension = extension or []
+        self.use = use 
+        self.text = text 
+        self.family = family 
+        self.given = given or []
+        self.prefix = prefix or []
+        self.suffix = suffix or []
+        self.period = period 
         
 
     @classmethod
     def from_dict(cls, data: dict) -> "HumanName":
-        """Create a model instance from a dict. The instance is recursively
-        created by importing the classes for complex fhir types."""
-        instance = cls()
-        for key, value in data.items():
-            # if value is dict try to create complex type
-            if isinstance(value, dict):
-                class_name = key[0].upper() + key[1:]
-                models_path = ".".join(cls.__module__.split(".")[:-1])
-                import_path = f"{models_path}.{class_name}"
-                try:
-                    module = import_module(import_path)
-                    model_class = getattr(module, class_name)
-                except ModuleNotFoundError:
-                    continue
-                # Check if the class is a subclass of BaseModel
-                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
-                    # Recursively create an instance of the nested class
-                    nested_instance = model_class.from_dict(value)
-                    setattr(instance, key, nested_instance)
-            # if value is list recursively create instances of the list items
-            elif isinstance(value, list):
-                setattr(
-                    instance,
-                    key,
-                    [
-                        cls.from_dict(item) if isinstance(item, dict) else item
-                        for item in value
-                    ],
-                )
-            # else set the value
-            else:
-                setattr(instance, key, value)
+        return super().from_dict(data)
+    
+    @classmethod
+    def from_obj(self, obj: object) -> "HumanName":
+        return super().from_obj(obj)
 
-        return instance
+    def as_dict(self) -> dict:
+        return super().as_dict()

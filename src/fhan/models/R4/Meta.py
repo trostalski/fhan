@@ -1,10 +1,7 @@
 """
 Generated class for Meta. 
-Time: 2023-09-27 15:54:17
+Time: 2023-09-27 19:27:05
 """
-from importlib import import_module
-import inspect
-
 from fhan.models.R4.Coding import *
 from fhan.models.R4.Extension import *
 from fhan.models.generator_models import BaseModel
@@ -12,59 +9,49 @@ from fhan.models.generator_models import BaseModel
 class Meta(BaseModel):
     """ Base StructureDefinition for Meta Type: The metadata about a resource. This is content in the resource that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource.
     :param str id: Unique id for inter-element referencing
-    :param 'Extension' extension: Additional content defined by implementations
+    :param Extension extension: Additional content defined by implementations
     :param str versionId: Version specific identifier
     :param str lastUpdated: When the resource version last changed
     :param str source: Identifies where the resource comes from
     :param str profile: Profiles this resource claims to conform to
-    :param 'Coding' security: Security Labels applied to this resource
-    :param 'Coding' tag: Tags applied to this resource
+    :param Coding security: Security Labels applied to this resource
+    :param Coding tag: Tags applied to this resource
     """
-    def __init__(self, resourceType: str = "Meta",  id: str = None,  extension: 'Extension' = None,  versionId: str = None,  lastUpdated: str = None,  source: str = None,  profile: str = None,  security: 'Coding' = None,  tag: 'Coding' = None, ):
-        self.resourceType: str = resourceType or "Meta"
-        self.id: str = id 
-        self.extension: list['Extension'] = extension or []
-        self.versionId: str = versionId 
-        self.lastUpdated: str = lastUpdated 
-        self.source: str = source 
-        self.profile: list[str] = profile or []
-        self.security: list['Coding'] = security or []
-        self.tag: list['Coding'] = tag or []
+    property_class_info = {
+        
+        
+        "extension": {"class_name": "Extension", "is_contained": False},
+        
+        
+        
+        
+        
+        
+        "security": {"class_name": "Coding", "is_contained": False},
+        
+        
+        "tag": {"class_name": "Coding", "is_contained": False},
+        
+        }
+    def __init__(self, resourceType: str = None,  id:  'str'  = None,  extension:  list['Extension']  = None,  versionId:  'str'  = None,  lastUpdated:  'str'  = None,  source:  'str'  = None,  profile:  list['str']  = None,  security:  list['Coding']  = None,  tag:  list['Coding']  = None, ):
+        self.resourceType = resourceType or "Meta"
+        self.id = id 
+        self.extension = extension or []
+        self.versionId = versionId 
+        self.lastUpdated = lastUpdated 
+        self.source = source 
+        self.profile = profile or []
+        self.security = security or []
+        self.tag = tag or []
         
 
     @classmethod
     def from_dict(cls, data: dict) -> "Meta":
-        """Create a model instance from a dict. The instance is recursively
-        created by importing the classes for complex fhir types."""
-        instance = cls()
-        for key, value in data.items():
-            # if value is dict try to create complex type
-            if isinstance(value, dict):
-                class_name = key[0].upper() + key[1:]
-                models_path = ".".join(cls.__module__.split(".")[:-1])
-                import_path = f"{models_path}.{class_name}"
-                try:
-                    module = import_module(import_path)
-                    model_class = getattr(module, class_name)
-                except ModuleNotFoundError:
-                    continue
-                # Check if the class is a subclass of BaseModel
-                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
-                    # Recursively create an instance of the nested class
-                    nested_instance = model_class.from_dict(value)
-                    setattr(instance, key, nested_instance)
-            # if value is list recursively create instances of the list items
-            elif isinstance(value, list):
-                setattr(
-                    instance,
-                    key,
-                    [
-                        cls.from_dict(item) if isinstance(item, dict) else item
-                        for item in value
-                    ],
-                )
-            # else set the value
-            else:
-                setattr(instance, key, value)
+        return super().from_dict(data)
+    
+    @classmethod
+    def from_obj(self, obj: object) -> "Meta":
+        return super().from_obj(obj)
 
-        return instance
+    def as_dict(self) -> dict:
+        return super().as_dict()

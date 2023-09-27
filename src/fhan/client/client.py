@@ -8,7 +8,7 @@ from fhan.models.R4.CapabilityStatement import CapabilityStatement
 
 logger = logging.getLogger(__name__)
 
-DEFAULT_FHIR_VERSION = ClientSettings.default_fhir_version
+DEFAULT_FHIR_VERSION = ClientSettings.fhir_version
 
 
 class ServerMetadata:

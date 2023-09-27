@@ -1,19 +1,16 @@
 """
 Generated class for DetectedIssue. 
-Time: 2023-09-27 15:54:17
+Time: 2023-09-27 19:27:05
 """
-from importlib import import_module
-import inspect
-
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Period import *
-from fhan.models.R4.Resource import *
-from fhan.models.R4.Identifier import *
 from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Extension import *
+from fhan.models.R4.BackboneElement import *
 from fhan.models.R4.Narrative import *
 from fhan.models.R4.Reference import *
+from fhan.models.R4.Meta import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.Resource import *
+from fhan.models.R4.Period import *
 from fhan.models.R4.DomainResource import *
 
 
@@ -22,55 +19,44 @@ from fhan.models.R4.DomainResource import *
 
 class Evidence(BaseModel):
     """ Supporting evidence or manifestations that provide the basis for identifying the detected issue such as a GuidanceResponse or MeasureReport.:param str id: Unique id for inter-element referencing
-    :param 'Extension' extension: Additional content defined by implementations
-    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param 'CodeableConcept' code: Manifestation
-    :param 'Reference' detail: Supporting information
+    :param Extension extension: Additional content defined by implementations
+    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param CodeableConcept code: Manifestation
+    :param Reference detail: Supporting information
     """
-    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  code: 'CodeableConcept' = None,  detail: 'Reference' = None, ):
-        self.id: str = id 
-        self.extension: list['Extension'] = extension or []
-        self.modifierExtension: list['Extension'] = modifierExtension or []
-        self.code: list['CodeableConcept'] = code or []
-        self.detail: list['Reference'] = detail or []
+    property_class_info = {
+        
+        
+        "extension": {"class_name": "Extension", "is_contained": False},
+        
+        
+        "modifierExtension": {"class_name": "Extension", "is_contained": False},
+        
+        
+        "code": {"class_name": "CodeableConcept", "is_contained": False},
+        
+        
+        "detail": {"class_name": "Reference", "is_contained": False},
+        
+        }
+    def __init__(self,  id:  'str'  = None,  extension:  list['Extension']  = None,  modifierExtension:  list['Extension']  = None,  code:  list['CodeableConcept']  = None,  detail:  list['Reference']  = None, ):
+        self.id = id 
+        self.extension = extension or []
+        self.modifierExtension = modifierExtension or []
+        self.code = code or []
+        self.detail = detail or []
         
 
     @classmethod
-    def from_dict(cls, data: dict) -> "Evidence":
-        """Create a model instance from a dict. The instance is recursively
-        created by importing the classes for complex fhir types."""
-        instance = cls()
-        for key, value in data.items():
-            # if value is dict try to create complex type
-            if isinstance(value, dict):
-                class_name = key[0].upper() + key[1:]
-                models_path = ".".join(cls.__module__.split(".")[:-1])
-                import_path = f"{models_path}.{class_name}"
-                try:
-                    module = import_module(import_path)
-                    model_class = getattr(module, class_name)
-                except ModuleNotFoundError:
-                    continue
-                # Check if the class is a subclass of BaseModel
-                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
-                    # Recursively create an instance of the nested class
-                    nested_instance = model_class.from_dict(value)
-                    setattr(instance, key, nested_instance)
-            # if value is list recursively create instances of the list items
-            elif isinstance(value, list):
-                setattr(
-                    instance,
-                    key,
-                    [
-                        cls.from_dict(item) if isinstance(item, dict) else item
-                        for item in value
-                    ],
-                )
-            # else set the value
-            else:
-                setattr(instance, key, value)
+    def from_dict(cls, data: dict) -> "DetectedIssue":
+        return super().from_dict(data)
+    
+    @classmethod
+    def from_obj(self, obj: object) -> "DetectedIssue":
+        return super().from_obj(obj)
 
-        return instance
+    def as_dict(self) -> dict:
+        return super().as_dict()
 
 
     
@@ -78,141 +64,154 @@ class Evidence(BaseModel):
 
 class Mitigation(BaseModel):
     """ Indicates an action that has been taken or is committed to reduce or eliminate the likelihood of the risk identified by the detected issue from manifesting.  Can also reflect an observation of known mitigating factors that may reduce/eliminate the need for any action.:param str id: Unique id for inter-element referencing
-    :param 'Extension' extension: Additional content defined by implementations
-    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param 'CodeableConcept' action: What mitigation?
+    :param Extension extension: Additional content defined by implementations
+    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param CodeableConcept action: What mitigation?
     :param str date: Date committed
-    :param 'Reference' author: Who is committing?
+    :param Reference author: Who is committing?
     """
-    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  action: 'CodeableConcept' = None,  date: str = None,  author: 'Reference' = None, ):
-        self.id: str = id 
-        self.extension: list['Extension'] = extension or []
-        self.modifierExtension: list['Extension'] = modifierExtension or []
-        self.action: 'CodeableConcept' = action 
-        self.date: str = date 
-        self.author: 'Reference' = author 
+    property_class_info = {
+        
+        
+        "extension": {"class_name": "Extension", "is_contained": False},
+        
+        
+        "modifierExtension": {"class_name": "Extension", "is_contained": False},
+        
+        
+        "action": {"class_name": "CodeableConcept", "is_contained": False},
+        
+        
+        
+        "author": {"class_name": "Reference", "is_contained": False},
+        
+        }
+    def __init__(self,  id:  'str'  = None,  extension:  list['Extension']  = None,  modifierExtension:  list['Extension']  = None,  action:  'CodeableConcept'  = None,  date:  'str'  = None,  author:  'Reference'  = None, ):
+        self.id = id 
+        self.extension = extension or []
+        self.modifierExtension = modifierExtension or []
+        self.action = action 
+        self.date = date 
+        self.author = author 
         
 
     @classmethod
-    def from_dict(cls, data: dict) -> "Mitigation":
-        """Create a model instance from a dict. The instance is recursively
-        created by importing the classes for complex fhir types."""
-        instance = cls()
-        for key, value in data.items():
-            # if value is dict try to create complex type
-            if isinstance(value, dict):
-                class_name = key[0].upper() + key[1:]
-                models_path = ".".join(cls.__module__.split(".")[:-1])
-                import_path = f"{models_path}.{class_name}"
-                try:
-                    module = import_module(import_path)
-                    model_class = getattr(module, class_name)
-                except ModuleNotFoundError:
-                    continue
-                # Check if the class is a subclass of BaseModel
-                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
-                    # Recursively create an instance of the nested class
-                    nested_instance = model_class.from_dict(value)
-                    setattr(instance, key, nested_instance)
-            # if value is list recursively create instances of the list items
-            elif isinstance(value, list):
-                setattr(
-                    instance,
-                    key,
-                    [
-                        cls.from_dict(item) if isinstance(item, dict) else item
-                        for item in value
-                    ],
-                )
-            # else set the value
-            else:
-                setattr(instance, key, value)
+    def from_dict(cls, data: dict) -> "DetectedIssue":
+        return super().from_dict(data)
+    
+    @classmethod
+    def from_obj(self, obj: object) -> "DetectedIssue":
+        return super().from_obj(obj)
 
-        return instance
+    def as_dict(self) -> dict:
+        return super().as_dict()
 
 
 class DetectedIssue(DomainResource):
     """ Indicates an actual or potential clinical issue with or between one or more active or proposed clinical actions for a patient; e.g. Drug-drug interaction, Ineffective treatment frequency, Procedure-condition conflict, etc.
     :param str id: Logical id of this artifact
-    :param 'Meta' meta: Metadata about the resource
+    :param Meta meta: Metadata about the resource
     :param str implicitRules: A set of rules under which this content was created
     :param str language: Language of the resource content
-    :param 'Narrative' text: Text summary of the resource, for human interpretation
-    :param 'Resource' contained: Contained, inline Resources
-    :param 'Extension' extension: Additional content defined by implementations
-    :param 'Extension' modifierExtension: Extensions that cannot be ignored
-    :param 'Identifier' identifier: Unique id for the detected issue
+    :param Narrative text: Text summary of the resource, for human interpretation
+    :param Resource contained: Contained, inline Resources
+    :param Extension extension: Additional content defined by implementations
+    :param Extension modifierExtension: Extensions that cannot be ignored
+    :param Identifier identifier: Unique id for the detected issue
     :param str status: registered | preliminary | final | amended +
-    :param 'CodeableConcept' code: Issue Category, e.g. drug-drug, duplicate therapy, etc.
+    :param CodeableConcept code: Issue Category, e.g. drug-drug, duplicate therapy, etc.
     :param str severity: high | moderate | low
-    :param 'Reference' patient: Associated patient
+    :param Reference patient: Associated patient
     :param str identifiedDateTime: When identified
-    :param 'Period' identifiedPeriod: When identified
-    :param 'Reference' author: The provider or device that identified the issue
-    :param 'Reference' implicated: Problem resource
-    :param 'Evidence' evidence: Supporting evidence
+    :param Period identifiedPeriod: When identified
+    :param Reference author: The provider or device that identified the issue
+    :param Reference implicated: Problem resource
+    :param Evidence evidence: Supporting evidence
     :param str detail: Description and context
     :param str reference: Authority for issue
-    :param 'Mitigation' mitigation: Step taken to address
+    :param Mitigation mitigation: Step taken to address
     """
-    def __init__(self, resourceType: str = "DetectedIssue",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: 'Resource' = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  identifier: 'Identifier' = None,  status: str = None,  code: 'CodeableConcept' = None,  severity: str = None,  patient: 'Reference' = None,  identifiedDateTime: str = None,  identifiedPeriod: 'Period' = None,  author: 'Reference' = None,  implicated: 'Reference' = None,  evidence: 'Evidence' = None,  detail: str = None,  reference: str = None,  mitigation: 'Mitigation' = None, ):
-        self.resourceType: str = resourceType or "DetectedIssue"
-        self.id: str = id 
-        self.meta: 'Meta' = meta 
-        self.implicitRules: str = implicitRules 
-        self.language: str = language 
-        self.text: 'Narrative' = text 
-        self.contained: list['Resource'] = contained or []
-        self.extension: list['Extension'] = extension or []
-        self.modifierExtension: list['Extension'] = modifierExtension or []
-        self.identifier: list['Identifier'] = identifier or []
-        self.status: str = status 
-        self.code: 'CodeableConcept' = code 
-        self.severity: str = severity 
-        self.patient: 'Reference' = patient 
-        self.identifiedDateTime: str = identifiedDateTime 
-        self.identifiedPeriod: 'Period' = identifiedPeriod 
-        self.author: 'Reference' = author 
-        self.implicated: list['Reference'] = implicated or []
-        self.evidence: list['Evidence'] = evidence or []
-        self.detail: str = detail 
-        self.reference: str = reference 
-        self.mitigation: list['Mitigation'] = mitigation or []
+    property_class_info = {
+        
+        
+        "meta": {"class_name": "Meta", "is_contained": False},
+        
+        
+        
+        
+        "text": {"class_name": "Narrative", "is_contained": False},
+        
+        
+        "contained": {"class_name": "Resource", "is_contained": False},
+        
+        
+        "extension": {"class_name": "Extension", "is_contained": False},
+        
+        
+        "modifierExtension": {"class_name": "Extension", "is_contained": False},
+        
+        
+        "identifier": {"class_name": "Identifier", "is_contained": False},
+        
+        
+        
+        "code": {"class_name": "CodeableConcept", "is_contained": False},
+        
+        
+        
+        "patient": {"class_name": "Reference", "is_contained": False},
+        
+        
+        
+        "identifiedPeriod": {"class_name": "Period", "is_contained": False},
+        
+        
+        "author": {"class_name": "Reference", "is_contained": False},
+        
+        
+        "implicated": {"class_name": "Reference", "is_contained": False},
+        
+        
+        "evidence": {"class_name": "Evidence", "is_contained": True},
+        
+        
+        
+        
+        "mitigation": {"class_name": "Mitigation", "is_contained": True},
+        
+        }
+    def __init__(self, resourceType: str = None,  id:  'str'  = None,  meta:  'Meta'  = None,  implicitRules:  'str'  = None,  language:  'str'  = None,  text:  'Narrative'  = None,  contained:  list['Resource']  = None,  extension:  list['Extension']  = None,  modifierExtension:  list['Extension']  = None,  identifier:  list['Identifier']  = None,  status:  'str'  = None,  code:  'CodeableConcept'  = None,  severity:  'str'  = None,  patient:  'Reference'  = None,  identifiedDateTime:  'str'  = None,  identifiedPeriod:  'Period'  = None,  author:  'Reference'  = None,  implicated:  list['Reference']  = None,  evidence:  list['Evidence']  = None,  detail:  'str'  = None,  reference:  'str'  = None,  mitigation:  list['Mitigation']  = None, ):
+        self.resourceType = resourceType or "DetectedIssue"
+        self.id = id 
+        self.meta = meta 
+        self.implicitRules = implicitRules 
+        self.language = language 
+        self.text = text 
+        self.contained = contained or []
+        self.extension = extension or []
+        self.modifierExtension = modifierExtension or []
+        self.identifier = identifier or []
+        self.status = status 
+        self.code = code 
+        self.severity = severity 
+        self.patient = patient 
+        self.identifiedDateTime = identifiedDateTime 
+        self.identifiedPeriod = identifiedPeriod 
+        self.author = author 
+        self.implicated = implicated or []
+        self.evidence = evidence or []
+        self.detail = detail 
+        self.reference = reference 
+        self.mitigation = mitigation or []
         
 
     @classmethod
     def from_dict(cls, data: dict) -> "DetectedIssue":
-        """Create a model instance from a dict. The instance is recursively
-        created by importing the classes for complex fhir types."""
-        instance = cls()
-        for key, value in data.items():
-            # if value is dict try to create complex type
-            if isinstance(value, dict):
-                class_name = key[0].upper() + key[1:]
-                models_path = ".".join(cls.__module__.split(".")[:-1])
-                import_path = f"{models_path}.{class_name}"
-                try:
-                    module = import_module(import_path)
-                    model_class = getattr(module, class_name)
-                except ModuleNotFoundError:
-                    continue
-                # Check if the class is a subclass of BaseModel
-                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
-                    # Recursively create an instance of the nested class
-                    nested_instance = model_class.from_dict(value)
-                    setattr(instance, key, nested_instance)
-            # if value is list recursively create instances of the list items
-            elif isinstance(value, list):
-                setattr(
-                    instance,
-                    key,
-                    [
-                        cls.from_dict(item) if isinstance(item, dict) else item
-                        for item in value
-                    ],
-                )
-            # else set the value
-            else:
-                setattr(instance, key, value)
+        return super().from_dict(data)
+    
+    @classmethod
+    def from_obj(self, obj: object) -> "DetectedIssue":
+        return super().from_obj(obj)
 
-        return instance
+    def as_dict(self) -> dict:
+        return super().as_dict()

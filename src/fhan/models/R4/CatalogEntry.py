@@ -1,19 +1,16 @@
 """
 Generated class for CatalogEntry. 
-Time: 2023-09-27 15:54:17
+Time: 2023-09-27 19:27:05
 """
-from importlib import import_module
-import inspect
-
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Period import *
-from fhan.models.R4.Resource import *
-from fhan.models.R4.Identifier import *
 from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Extension import *
+from fhan.models.R4.BackboneElement import *
 from fhan.models.R4.Narrative import *
 from fhan.models.R4.Reference import *
+from fhan.models.R4.Meta import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.Resource import *
+from fhan.models.R4.Period import *
 from fhan.models.R4.DomainResource import *
 
 
@@ -22,139 +19,151 @@ from fhan.models.R4.DomainResource import *
 
 class RelatedEntry(BaseModel):
     """ Used for example, to point to a substance, or to a device used to administer a medication.:param str id: Unique id for inter-element referencing
-    :param 'Extension' extension: Additional content defined by implementations
-    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param Extension extension: Additional content defined by implementations
+    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str relationtype: triggers | is-replaced-by
-    :param 'Reference' item: The reference to the related item
+    :param Reference item: The reference to the related item
     """
-    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  relationtype: str = None,  item: 'Reference' = None, ):
-        self.id: str = id 
-        self.extension: list['Extension'] = extension or []
-        self.modifierExtension: list['Extension'] = modifierExtension or []
-        self.relationtype: str = relationtype 
-        self.item: 'Reference' = item 
+    property_class_info = {
+        
+        
+        "extension": {"class_name": "Extension", "is_contained": False},
+        
+        
+        "modifierExtension": {"class_name": "Extension", "is_contained": False},
+        
+        
+        
+        "item": {"class_name": "Reference", "is_contained": False},
+        
+        }
+    def __init__(self,  id:  'str'  = None,  extension:  list['Extension']  = None,  modifierExtension:  list['Extension']  = None,  relationtype:  'str'  = None,  item:  'Reference'  = None, ):
+        self.id = id 
+        self.extension = extension or []
+        self.modifierExtension = modifierExtension or []
+        self.relationtype = relationtype 
+        self.item = item 
         
 
     @classmethod
-    def from_dict(cls, data: dict) -> "RelatedEntry":
-        """Create a model instance from a dict. The instance is recursively
-        created by importing the classes for complex fhir types."""
-        instance = cls()
-        for key, value in data.items():
-            # if value is dict try to create complex type
-            if isinstance(value, dict):
-                class_name = key[0].upper() + key[1:]
-                models_path = ".".join(cls.__module__.split(".")[:-1])
-                import_path = f"{models_path}.{class_name}"
-                try:
-                    module = import_module(import_path)
-                    model_class = getattr(module, class_name)
-                except ModuleNotFoundError:
-                    continue
-                # Check if the class is a subclass of BaseModel
-                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
-                    # Recursively create an instance of the nested class
-                    nested_instance = model_class.from_dict(value)
-                    setattr(instance, key, nested_instance)
-            # if value is list recursively create instances of the list items
-            elif isinstance(value, list):
-                setattr(
-                    instance,
-                    key,
-                    [
-                        cls.from_dict(item) if isinstance(item, dict) else item
-                        for item in value
-                    ],
-                )
-            # else set the value
-            else:
-                setattr(instance, key, value)
+    def from_dict(cls, data: dict) -> "CatalogEntry":
+        return super().from_dict(data)
+    
+    @classmethod
+    def from_obj(self, obj: object) -> "CatalogEntry":
+        return super().from_obj(obj)
 
-        return instance
+    def as_dict(self) -> dict:
+        return super().as_dict()
 
 
 class CatalogEntry(DomainResource):
     """ Catalog entries are wrappers that contextualize items included in a catalog.
     :param str id: Logical id of this artifact
-    :param 'Meta' meta: Metadata about the resource
+    :param Meta meta: Metadata about the resource
     :param str implicitRules: A set of rules under which this content was created
     :param str language: Language of the resource content
-    :param 'Narrative' text: Text summary of the resource, for human interpretation
-    :param 'Resource' contained: Contained, inline Resources
-    :param 'Extension' extension: Additional content defined by implementations
-    :param 'Extension' modifierExtension: Extensions that cannot be ignored
-    :param 'Identifier' identifier: Unique identifier of the catalog item
-    :param 'CodeableConcept' type: The type of item - medication, device, service, protocol or other
+    :param Narrative text: Text summary of the resource, for human interpretation
+    :param Resource contained: Contained, inline Resources
+    :param Extension extension: Additional content defined by implementations
+    :param Extension modifierExtension: Extensions that cannot be ignored
+    :param Identifier identifier: Unique identifier of the catalog item
+    :param CodeableConcept type: The type of item - medication, device, service, protocol or other
     :param bool orderable: Whether the entry represents an orderable item
-    :param 'Reference' referencedItem: The item that is being defined
-    :param 'Identifier' additionalIdentifier: Any additional identifier(s) for the catalog item, in the same granularity or concept
-    :param 'CodeableConcept' classification: Classification (category or class) of the item entry
+    :param Reference referencedItem: The item that is being defined
+    :param Identifier additionalIdentifier: Any additional identifier(s) for the catalog item, in the same granularity or concept
+    :param CodeableConcept classification: Classification (category or class) of the item entry
     :param str status: draft | active | retired | unknown
-    :param 'Period' validityPeriod: The time period in which this catalog entry is expected to be active
+    :param Period validityPeriod: The time period in which this catalog entry is expected to be active
     :param str validTo: The date until which this catalog entry is expected to be active
     :param str lastUpdated: When was this catalog last updated
-    :param 'CodeableConcept' additionalCharacteristic: Additional characteristics of the catalog entry
-    :param 'CodeableConcept' additionalClassification: Additional classification of the catalog entry
-    :param 'RelatedEntry' relatedEntry: An item that this catalog entry is related to
+    :param CodeableConcept additionalCharacteristic: Additional characteristics of the catalog entry
+    :param CodeableConcept additionalClassification: Additional classification of the catalog entry
+    :param RelatedEntry relatedEntry: An item that this catalog entry is related to
     """
-    def __init__(self, resourceType: str = "CatalogEntry",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: 'Resource' = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  identifier: 'Identifier' = None,  type: 'CodeableConcept' = None,  orderable: bool = None,  referencedItem: 'Reference' = None,  additionalIdentifier: 'Identifier' = None,  classification: 'CodeableConcept' = None,  status: str = None,  validityPeriod: 'Period' = None,  validTo: str = None,  lastUpdated: str = None,  additionalCharacteristic: 'CodeableConcept' = None,  additionalClassification: 'CodeableConcept' = None,  relatedEntry: 'RelatedEntry' = None, ):
-        self.resourceType: str = resourceType or "CatalogEntry"
-        self.id: str = id 
-        self.meta: 'Meta' = meta 
-        self.implicitRules: str = implicitRules 
-        self.language: str = language 
-        self.text: 'Narrative' = text 
-        self.contained: list['Resource'] = contained or []
-        self.extension: list['Extension'] = extension or []
-        self.modifierExtension: list['Extension'] = modifierExtension or []
-        self.identifier: list['Identifier'] = identifier or []
-        self.type: 'CodeableConcept' = type 
-        self.orderable: bool = orderable 
-        self.referencedItem: 'Reference' = referencedItem 
-        self.additionalIdentifier: list['Identifier'] = additionalIdentifier or []
-        self.classification: list['CodeableConcept'] = classification or []
-        self.status: str = status 
-        self.validityPeriod: 'Period' = validityPeriod 
-        self.validTo: str = validTo 
-        self.lastUpdated: str = lastUpdated 
-        self.additionalCharacteristic: list['CodeableConcept'] = additionalCharacteristic or []
-        self.additionalClassification: list['CodeableConcept'] = additionalClassification or []
-        self.relatedEntry: list['RelatedEntry'] = relatedEntry or []
+    property_class_info = {
+        
+        
+        "meta": {"class_name": "Meta", "is_contained": False},
+        
+        
+        
+        
+        "text": {"class_name": "Narrative", "is_contained": False},
+        
+        
+        "contained": {"class_name": "Resource", "is_contained": False},
+        
+        
+        "extension": {"class_name": "Extension", "is_contained": False},
+        
+        
+        "modifierExtension": {"class_name": "Extension", "is_contained": False},
+        
+        
+        "identifier": {"class_name": "Identifier", "is_contained": False},
+        
+        
+        "type": {"class_name": "CodeableConcept", "is_contained": False},
+        
+        
+        
+        "referencedItem": {"class_name": "Reference", "is_contained": False},
+        
+        
+        "additionalIdentifier": {"class_name": "Identifier", "is_contained": False},
+        
+        
+        "classification": {"class_name": "CodeableConcept", "is_contained": False},
+        
+        
+        
+        "validityPeriod": {"class_name": "Period", "is_contained": False},
+        
+        
+        
+        
+        "additionalCharacteristic": {"class_name": "CodeableConcept", "is_contained": False},
+        
+        
+        "additionalClassification": {"class_name": "CodeableConcept", "is_contained": False},
+        
+        
+        "relatedEntry": {"class_name": "RelatedEntry", "is_contained": True},
+        
+        }
+    def __init__(self, resourceType: str = None,  id:  'str'  = None,  meta:  'Meta'  = None,  implicitRules:  'str'  = None,  language:  'str'  = None,  text:  'Narrative'  = None,  contained:  list['Resource']  = None,  extension:  list['Extension']  = None,  modifierExtension:  list['Extension']  = None,  identifier:  list['Identifier']  = None,  type:  'CodeableConcept'  = None,  orderable:  'bool'  = None,  referencedItem:  'Reference'  = None,  additionalIdentifier:  list['Identifier']  = None,  classification:  list['CodeableConcept']  = None,  status:  'str'  = None,  validityPeriod:  'Period'  = None,  validTo:  'str'  = None,  lastUpdated:  'str'  = None,  additionalCharacteristic:  list['CodeableConcept']  = None,  additionalClassification:  list['CodeableConcept']  = None,  relatedEntry:  list['RelatedEntry']  = None, ):
+        self.resourceType = resourceType or "CatalogEntry"
+        self.id = id 
+        self.meta = meta 
+        self.implicitRules = implicitRules 
+        self.language = language 
+        self.text = text 
+        self.contained = contained or []
+        self.extension = extension or []
+        self.modifierExtension = modifierExtension or []
+        self.identifier = identifier or []
+        self.type = type 
+        self.orderable = orderable 
+        self.referencedItem = referencedItem 
+        self.additionalIdentifier = additionalIdentifier or []
+        self.classification = classification or []
+        self.status = status 
+        self.validityPeriod = validityPeriod 
+        self.validTo = validTo 
+        self.lastUpdated = lastUpdated 
+        self.additionalCharacteristic = additionalCharacteristic or []
+        self.additionalClassification = additionalClassification or []
+        self.relatedEntry = relatedEntry or []
         
 
     @classmethod
     def from_dict(cls, data: dict) -> "CatalogEntry":
-        """Create a model instance from a dict. The instance is recursively
-        created by importing the classes for complex fhir types."""
-        instance = cls()
-        for key, value in data.items():
-            # if value is dict try to create complex type
-            if isinstance(value, dict):
-                class_name = key[0].upper() + key[1:]
-                models_path = ".".join(cls.__module__.split(".")[:-1])
-                import_path = f"{models_path}.{class_name}"
-                try:
-                    module = import_module(import_path)
-                    model_class = getattr(module, class_name)
-                except ModuleNotFoundError:
-                    continue
-                # Check if the class is a subclass of BaseModel
-                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
-                    # Recursively create an instance of the nested class
-                    nested_instance = model_class.from_dict(value)
-                    setattr(instance, key, nested_instance)
-            # if value is list recursively create instances of the list items
-            elif isinstance(value, list):
-                setattr(
-                    instance,
-                    key,
-                    [
-                        cls.from_dict(item) if isinstance(item, dict) else item
-                        for item in value
-                    ],
-                )
-            # else set the value
-            else:
-                setattr(instance, key, value)
+        return super().from_dict(data)
+    
+    @classmethod
+    def from_obj(self, obj: object) -> "CatalogEntry":
+        return super().from_obj(obj)
 
-        return instance
+    def as_dict(self) -> dict:
+        return super().as_dict()

@@ -1,19 +1,16 @@
 """
 Generated class for BiologicallyDerivedProduct. 
-Time: 2023-09-27 15:54:17
+Time: 2023-09-27 19:27:05
 """
-from importlib import import_module
-import inspect
-
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Period import *
-from fhan.models.R4.Resource import *
-from fhan.models.R4.Identifier import *
 from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Extension import *
+from fhan.models.R4.BackboneElement import *
 from fhan.models.R4.Narrative import *
 from fhan.models.R4.Reference import *
+from fhan.models.R4.Meta import *
+from fhan.models.R4.Identifier import *
+from fhan.models.R4.Resource import *
+from fhan.models.R4.Period import *
 from fhan.models.R4.DomainResource import *
 
 
@@ -22,59 +19,52 @@ from fhan.models.R4.DomainResource import *
 
 class Collection(BaseModel):
     """ How this product was collected.:param str id: Unique id for inter-element referencing
-    :param 'Extension' extension: Additional content defined by implementations
-    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
-    :param 'Reference' collector: Individual performing collection
-    :param 'Reference' source: Who is product from
+    :param Extension extension: Additional content defined by implementations
+    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param Reference collector: Individual performing collection
+    :param Reference source: Who is product from
     :param str collectedDateTime: Time of product collection
-    :param 'Period' collectedPeriod: Time of product collection
+    :param Period collectedPeriod: Time of product collection
     """
-    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  collector: 'Reference' = None,  source: 'Reference' = None,  collectedDateTime: str = None,  collectedPeriod: 'Period' = None, ):
-        self.id: str = id 
-        self.extension: list['Extension'] = extension or []
-        self.modifierExtension: list['Extension'] = modifierExtension or []
-        self.collector: 'Reference' = collector 
-        self.source: 'Reference' = source 
-        self.collectedDateTime: str = collectedDateTime 
-        self.collectedPeriod: 'Period' = collectedPeriod 
+    property_class_info = {
+        
+        
+        "extension": {"class_name": "Extension", "is_contained": False},
+        
+        
+        "modifierExtension": {"class_name": "Extension", "is_contained": False},
+        
+        
+        "collector": {"class_name": "Reference", "is_contained": False},
+        
+        
+        "source": {"class_name": "Reference", "is_contained": False},
+        
+        
+        
+        "collectedPeriod": {"class_name": "Period", "is_contained": False},
+        
+        }
+    def __init__(self,  id:  'str'  = None,  extension:  list['Extension']  = None,  modifierExtension:  list['Extension']  = None,  collector:  'Reference'  = None,  source:  'Reference'  = None,  collectedDateTime:  'str'  = None,  collectedPeriod:  'Period'  = None, ):
+        self.id = id 
+        self.extension = extension or []
+        self.modifierExtension = modifierExtension or []
+        self.collector = collector 
+        self.source = source 
+        self.collectedDateTime = collectedDateTime 
+        self.collectedPeriod = collectedPeriod 
         
 
     @classmethod
-    def from_dict(cls, data: dict) -> "Collection":
-        """Create a model instance from a dict. The instance is recursively
-        created by importing the classes for complex fhir types."""
-        instance = cls()
-        for key, value in data.items():
-            # if value is dict try to create complex type
-            if isinstance(value, dict):
-                class_name = key[0].upper() + key[1:]
-                models_path = ".".join(cls.__module__.split(".")[:-1])
-                import_path = f"{models_path}.{class_name}"
-                try:
-                    module = import_module(import_path)
-                    model_class = getattr(module, class_name)
-                except ModuleNotFoundError:
-                    continue
-                # Check if the class is a subclass of BaseModel
-                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
-                    # Recursively create an instance of the nested class
-                    nested_instance = model_class.from_dict(value)
-                    setattr(instance, key, nested_instance)
-            # if value is list recursively create instances of the list items
-            elif isinstance(value, list):
-                setattr(
-                    instance,
-                    key,
-                    [
-                        cls.from_dict(item) if isinstance(item, dict) else item
-                        for item in value
-                    ],
-                )
-            # else set the value
-            else:
-                setattr(instance, key, value)
+    def from_dict(cls, data: dict) -> "BiologicallyDerivedProduct":
+        return super().from_dict(data)
+    
+    @classmethod
+    def from_obj(self, obj: object) -> "BiologicallyDerivedProduct":
+        return super().from_obj(obj)
 
-        return instance
+    def as_dict(self) -> dict:
+        return super().as_dict()
 
 
     
@@ -82,61 +72,55 @@ class Collection(BaseModel):
 
 class Processing(BaseModel):
     """ Any processing of the product during collection that does not change the fundamental nature of the product. For example adding anti-coagulants during the collection of Peripheral Blood Stem Cells.:param str id: Unique id for inter-element referencing
-    :param 'Extension' extension: Additional content defined by implementations
-    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param Extension extension: Additional content defined by implementations
+    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str description: Description of of processing
-    :param 'CodeableConcept' procedure: Procesing code
-    :param 'Reference' additive: Substance added during processing
+    :param CodeableConcept procedure: Procesing code
+    :param Reference additive: Substance added during processing
     :param str timeDateTime: Time of processing
-    :param 'Period' timePeriod: Time of processing
+    :param Period timePeriod: Time of processing
     """
-    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  description: str = None,  procedure: 'CodeableConcept' = None,  additive: 'Reference' = None,  timeDateTime: str = None,  timePeriod: 'Period' = None, ):
-        self.id: str = id 
-        self.extension: list['Extension'] = extension or []
-        self.modifierExtension: list['Extension'] = modifierExtension or []
-        self.description: str = description 
-        self.procedure: 'CodeableConcept' = procedure 
-        self.additive: 'Reference' = additive 
-        self.timeDateTime: str = timeDateTime 
-        self.timePeriod: 'Period' = timePeriod 
+    property_class_info = {
+        
+        
+        "extension": {"class_name": "Extension", "is_contained": False},
+        
+        
+        "modifierExtension": {"class_name": "Extension", "is_contained": False},
+        
+        
+        
+        "procedure": {"class_name": "CodeableConcept", "is_contained": False},
+        
+        
+        "additive": {"class_name": "Reference", "is_contained": False},
+        
+        
+        
+        "timePeriod": {"class_name": "Period", "is_contained": False},
+        
+        }
+    def __init__(self,  id:  'str'  = None,  extension:  list['Extension']  = None,  modifierExtension:  list['Extension']  = None,  description:  'str'  = None,  procedure:  'CodeableConcept'  = None,  additive:  'Reference'  = None,  timeDateTime:  'str'  = None,  timePeriod:  'Period'  = None, ):
+        self.id = id 
+        self.extension = extension or []
+        self.modifierExtension = modifierExtension or []
+        self.description = description 
+        self.procedure = procedure 
+        self.additive = additive 
+        self.timeDateTime = timeDateTime 
+        self.timePeriod = timePeriod 
         
 
     @classmethod
-    def from_dict(cls, data: dict) -> "Processing":
-        """Create a model instance from a dict. The instance is recursively
-        created by importing the classes for complex fhir types."""
-        instance = cls()
-        for key, value in data.items():
-            # if value is dict try to create complex type
-            if isinstance(value, dict):
-                class_name = key[0].upper() + key[1:]
-                models_path = ".".join(cls.__module__.split(".")[:-1])
-                import_path = f"{models_path}.{class_name}"
-                try:
-                    module = import_module(import_path)
-                    model_class = getattr(module, class_name)
-                except ModuleNotFoundError:
-                    continue
-                # Check if the class is a subclass of BaseModel
-                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
-                    # Recursively create an instance of the nested class
-                    nested_instance = model_class.from_dict(value)
-                    setattr(instance, key, nested_instance)
-            # if value is list recursively create instances of the list items
-            elif isinstance(value, list):
-                setattr(
-                    instance,
-                    key,
-                    [
-                        cls.from_dict(item) if isinstance(item, dict) else item
-                        for item in value
-                    ],
-                )
-            # else set the value
-            else:
-                setattr(instance, key, value)
+    def from_dict(cls, data: dict) -> "BiologicallyDerivedProduct":
+        return super().from_dict(data)
+    
+    @classmethod
+    def from_obj(self, obj: object) -> "BiologicallyDerivedProduct":
+        return super().from_obj(obj)
 
-        return instance
+    def as_dict(self) -> dict:
+        return super().as_dict()
 
 
     
@@ -144,57 +128,45 @@ class Processing(BaseModel):
 
 class Manipulation(BaseModel):
     """ Any manipulation of product post-collection that is intended to alter the product.  For example a buffy-coat enrichment or CD8 reduction of Peripheral Blood Stem Cells to make it more suitable for infusion.:param str id: Unique id for inter-element referencing
-    :param 'Extension' extension: Additional content defined by implementations
-    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param Extension extension: Additional content defined by implementations
+    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str description: Description of manipulation
     :param str timeDateTime: Time of manipulation
-    :param 'Period' timePeriod: Time of manipulation
+    :param Period timePeriod: Time of manipulation
     """
-    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  description: str = None,  timeDateTime: str = None,  timePeriod: 'Period' = None, ):
-        self.id: str = id 
-        self.extension: list['Extension'] = extension or []
-        self.modifierExtension: list['Extension'] = modifierExtension or []
-        self.description: str = description 
-        self.timeDateTime: str = timeDateTime 
-        self.timePeriod: 'Period' = timePeriod 
+    property_class_info = {
+        
+        
+        "extension": {"class_name": "Extension", "is_contained": False},
+        
+        
+        "modifierExtension": {"class_name": "Extension", "is_contained": False},
+        
+        
+        
+        
+        "timePeriod": {"class_name": "Period", "is_contained": False},
+        
+        }
+    def __init__(self,  id:  'str'  = None,  extension:  list['Extension']  = None,  modifierExtension:  list['Extension']  = None,  description:  'str'  = None,  timeDateTime:  'str'  = None,  timePeriod:  'Period'  = None, ):
+        self.id = id 
+        self.extension = extension or []
+        self.modifierExtension = modifierExtension or []
+        self.description = description 
+        self.timeDateTime = timeDateTime 
+        self.timePeriod = timePeriod 
         
 
     @classmethod
-    def from_dict(cls, data: dict) -> "Manipulation":
-        """Create a model instance from a dict. The instance is recursively
-        created by importing the classes for complex fhir types."""
-        instance = cls()
-        for key, value in data.items():
-            # if value is dict try to create complex type
-            if isinstance(value, dict):
-                class_name = key[0].upper() + key[1:]
-                models_path = ".".join(cls.__module__.split(".")[:-1])
-                import_path = f"{models_path}.{class_name}"
-                try:
-                    module = import_module(import_path)
-                    model_class = getattr(module, class_name)
-                except ModuleNotFoundError:
-                    continue
-                # Check if the class is a subclass of BaseModel
-                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
-                    # Recursively create an instance of the nested class
-                    nested_instance = model_class.from_dict(value)
-                    setattr(instance, key, nested_instance)
-            # if value is list recursively create instances of the list items
-            elif isinstance(value, list):
-                setattr(
-                    instance,
-                    key,
-                    [
-                        cls.from_dict(item) if isinstance(item, dict) else item
-                        for item in value
-                    ],
-                )
-            # else set the value
-            else:
-                setattr(instance, key, value)
+    def from_dict(cls, data: dict) -> "BiologicallyDerivedProduct":
+        return super().from_dict(data)
+    
+    @classmethod
+    def from_obj(self, obj: object) -> "BiologicallyDerivedProduct":
+        return super().from_obj(obj)
 
-        return instance
+    def as_dict(self) -> dict:
+        return super().as_dict()
 
 
     
@@ -202,140 +174,150 @@ class Manipulation(BaseModel):
 
 class Storage(BaseModel):
     """ Product storage.:param str id: Unique id for inter-element referencing
-    :param 'Extension' extension: Additional content defined by implementations
-    :param 'Extension' modifierExtension: Extensions that cannot be ignored even if unrecognized
+    :param Extension extension: Additional content defined by implementations
+    :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str description: Description of storage
     :param float temperature: Storage temperature
     :param str scale: farenheit | celsius | kelvin
-    :param 'Period' duration: Storage timeperiod
+    :param Period duration: Storage timeperiod
     """
-    def __init__(self,  id: str = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  description: str = None,  temperature: float = None,  scale: str = None,  duration: 'Period' = None, ):
-        self.id: str = id 
-        self.extension: list['Extension'] = extension or []
-        self.modifierExtension: list['Extension'] = modifierExtension or []
-        self.description: str = description 
-        self.temperature: float = temperature 
-        self.scale: str = scale 
-        self.duration: 'Period' = duration 
+    property_class_info = {
+        
+        
+        "extension": {"class_name": "Extension", "is_contained": False},
+        
+        
+        "modifierExtension": {"class_name": "Extension", "is_contained": False},
+        
+        
+        
+        
+        
+        "duration": {"class_name": "Period", "is_contained": False},
+        
+        }
+    def __init__(self,  id:  'str'  = None,  extension:  list['Extension']  = None,  modifierExtension:  list['Extension']  = None,  description:  'str'  = None,  temperature:  'float'  = None,  scale:  'str'  = None,  duration:  'Period'  = None, ):
+        self.id = id 
+        self.extension = extension or []
+        self.modifierExtension = modifierExtension or []
+        self.description = description 
+        self.temperature = temperature 
+        self.scale = scale 
+        self.duration = duration 
         
 
     @classmethod
-    def from_dict(cls, data: dict) -> "Storage":
-        """Create a model instance from a dict. The instance is recursively
-        created by importing the classes for complex fhir types."""
-        instance = cls()
-        for key, value in data.items():
-            # if value is dict try to create complex type
-            if isinstance(value, dict):
-                class_name = key[0].upper() + key[1:]
-                models_path = ".".join(cls.__module__.split(".")[:-1])
-                import_path = f"{models_path}.{class_name}"
-                try:
-                    module = import_module(import_path)
-                    model_class = getattr(module, class_name)
-                except ModuleNotFoundError:
-                    continue
-                # Check if the class is a subclass of BaseModel
-                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
-                    # Recursively create an instance of the nested class
-                    nested_instance = model_class.from_dict(value)
-                    setattr(instance, key, nested_instance)
-            # if value is list recursively create instances of the list items
-            elif isinstance(value, list):
-                setattr(
-                    instance,
-                    key,
-                    [
-                        cls.from_dict(item) if isinstance(item, dict) else item
-                        for item in value
-                    ],
-                )
-            # else set the value
-            else:
-                setattr(instance, key, value)
+    def from_dict(cls, data: dict) -> "BiologicallyDerivedProduct":
+        return super().from_dict(data)
+    
+    @classmethod
+    def from_obj(self, obj: object) -> "BiologicallyDerivedProduct":
+        return super().from_obj(obj)
 
-        return instance
+    def as_dict(self) -> dict:
+        return super().as_dict()
 
 
 class BiologicallyDerivedProduct(DomainResource):
     """ A material substance originating from a biological entity intended to be transplanted or infused
 into another (possibly the same) biological entity.
     :param str id: Logical id of this artifact
-    :param 'Meta' meta: Metadata about the resource
+    :param Meta meta: Metadata about the resource
     :param str implicitRules: A set of rules under which this content was created
     :param str language: Language of the resource content
-    :param 'Narrative' text: Text summary of the resource, for human interpretation
-    :param 'Resource' contained: Contained, inline Resources
-    :param 'Extension' extension: Additional content defined by implementations
-    :param 'Extension' modifierExtension: Extensions that cannot be ignored
-    :param 'Identifier' identifier: External ids for this item
+    :param Narrative text: Text summary of the resource, for human interpretation
+    :param Resource contained: Contained, inline Resources
+    :param Extension extension: Additional content defined by implementations
+    :param Extension modifierExtension: Extensions that cannot be ignored
+    :param Identifier identifier: External ids for this item
     :param str productCategory: organ | tissue | fluid | cells | biologicalAgent
-    :param 'CodeableConcept' productCode: What this biologically derived product is
+    :param CodeableConcept productCode: What this biologically derived product is
     :param str status: available | unavailable
-    :param 'Reference' request: Procedure request
+    :param Reference request: Procedure request
     :param int quantity: The amount of this biologically derived product
-    :param 'Reference' parent: BiologicallyDerivedProduct parent
-    :param 'Collection' collection: How this product was collected
-    :param 'Processing' processing: Any processing of the product during collection
-    :param 'Manipulation' manipulation: Any manipulation of product post-collection
-    :param 'Storage' storage: Product storage
+    :param Reference parent: BiologicallyDerivedProduct parent
+    :param Collection collection: How this product was collected
+    :param Processing processing: Any processing of the product during collection
+    :param Manipulation manipulation: Any manipulation of product post-collection
+    :param Storage storage: Product storage
     """
-    def __init__(self, resourceType: str = "BiologicallyDerivedProduct",  id: str = None,  meta: 'Meta' = None,  implicitRules: str = None,  language: str = None,  text: 'Narrative' = None,  contained: 'Resource' = None,  extension: 'Extension' = None,  modifierExtension: 'Extension' = None,  identifier: 'Identifier' = None,  productCategory: str = None,  productCode: 'CodeableConcept' = None,  status: str = None,  request: 'Reference' = None,  quantity: int = None,  parent: 'Reference' = None,  collection: 'Collection' = None,  processing: 'Processing' = None,  manipulation: 'Manipulation' = None,  storage: 'Storage' = None, ):
-        self.resourceType: str = resourceType or "BiologicallyDerivedProduct"
-        self.id: str = id 
-        self.meta: 'Meta' = meta 
-        self.implicitRules: str = implicitRules 
-        self.language: str = language 
-        self.text: 'Narrative' = text 
-        self.contained: list['Resource'] = contained or []
-        self.extension: list['Extension'] = extension or []
-        self.modifierExtension: list['Extension'] = modifierExtension or []
-        self.identifier: list['Identifier'] = identifier or []
-        self.productCategory: str = productCategory 
-        self.productCode: 'CodeableConcept' = productCode 
-        self.status: str = status 
-        self.request: list['Reference'] = request or []
-        self.quantity: int = quantity 
-        self.parent: list['Reference'] = parent or []
-        self.collection: 'Collection' = collection 
-        self.processing: list['Processing'] = processing or []
-        self.manipulation: 'Manipulation' = manipulation 
-        self.storage: list['Storage'] = storage or []
+    property_class_info = {
+        
+        
+        "meta": {"class_name": "Meta", "is_contained": False},
+        
+        
+        
+        
+        "text": {"class_name": "Narrative", "is_contained": False},
+        
+        
+        "contained": {"class_name": "Resource", "is_contained": False},
+        
+        
+        "extension": {"class_name": "Extension", "is_contained": False},
+        
+        
+        "modifierExtension": {"class_name": "Extension", "is_contained": False},
+        
+        
+        "identifier": {"class_name": "Identifier", "is_contained": False},
+        
+        
+        
+        "productCode": {"class_name": "CodeableConcept", "is_contained": False},
+        
+        
+        
+        "request": {"class_name": "Reference", "is_contained": False},
+        
+        
+        
+        "parent": {"class_name": "Reference", "is_contained": False},
+        
+        
+        "collection": {"class_name": "Collection", "is_contained": True},
+        
+        
+        "processing": {"class_name": "Processing", "is_contained": True},
+        
+        
+        "manipulation": {"class_name": "Manipulation", "is_contained": True},
+        
+        
+        "storage": {"class_name": "Storage", "is_contained": True},
+        
+        }
+    def __init__(self, resourceType: str = None,  id:  'str'  = None,  meta:  'Meta'  = None,  implicitRules:  'str'  = None,  language:  'str'  = None,  text:  'Narrative'  = None,  contained:  list['Resource']  = None,  extension:  list['Extension']  = None,  modifierExtension:  list['Extension']  = None,  identifier:  list['Identifier']  = None,  productCategory:  'str'  = None,  productCode:  'CodeableConcept'  = None,  status:  'str'  = None,  request:  list['Reference']  = None,  quantity:  'int'  = None,  parent:  list['Reference']  = None,  collection:  'Collection'  = None,  processing:  list['Processing']  = None,  manipulation:  'Manipulation'  = None,  storage:  list['Storage']  = None, ):
+        self.resourceType = resourceType or "BiologicallyDerivedProduct"
+        self.id = id 
+        self.meta = meta 
+        self.implicitRules = implicitRules 
+        self.language = language 
+        self.text = text 
+        self.contained = contained or []
+        self.extension = extension or []
+        self.modifierExtension = modifierExtension or []
+        self.identifier = identifier or []
+        self.productCategory = productCategory 
+        self.productCode = productCode 
+        self.status = status 
+        self.request = request or []
+        self.quantity = quantity 
+        self.parent = parent or []
+        self.collection = collection 
+        self.processing = processing or []
+        self.manipulation = manipulation 
+        self.storage = storage or []
         
 
     @classmethod
     def from_dict(cls, data: dict) -> "BiologicallyDerivedProduct":
-        """Create a model instance from a dict. The instance is recursively
-        created by importing the classes for complex fhir types."""
-        instance = cls()
-        for key, value in data.items():
-            # if value is dict try to create complex type
-            if isinstance(value, dict):
-                class_name = key[0].upper() + key[1:]
-                models_path = ".".join(cls.__module__.split(".")[:-1])
-                import_path = f"{models_path}.{class_name}"
-                try:
-                    module = import_module(import_path)
-                    model_class = getattr(module, class_name)
-                except ModuleNotFoundError:
-                    continue
-                # Check if the class is a subclass of BaseModel
-                if inspect.isclass(model_class) and issubclass(model_class, BaseModel):
-                    # Recursively create an instance of the nested class
-                    nested_instance = model_class.from_dict(value)
-                    setattr(instance, key, nested_instance)
-            # if value is list recursively create instances of the list items
-            elif isinstance(value, list):
-                setattr(
-                    instance,
-                    key,
-                    [
-                        cls.from_dict(item) if isinstance(item, dict) else item
-                        for item in value
-                    ],
-                )
-            # else set the value
-            else:
-                setattr(instance, key, value)
+        return super().from_dict(data)
+    
+    @classmethod
+    def from_obj(self, obj: object) -> "BiologicallyDerivedProduct":
+        return super().from_obj(obj)
 
-        return instance
+    def as_dict(self) -> dict:
+        return super().as_dict()

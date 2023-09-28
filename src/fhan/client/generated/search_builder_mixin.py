@@ -6,7 +6,9 @@ from fhan.client.generated.search_builder import ActivityDefinitionSearchBuilder
 
 from fhan.client.generated.search_builder import ActorDefinitionSearchBuilder
 
-from fhan.client.generated.search_builder import AdministrableProductDefinitionSearchBuilder
+from fhan.client.generated.search_builder import (
+    AdministrableProductDefinitionSearchBuilder,
+)
 
 from fhan.client.generated.search_builder import AdverseEventSearchBuilder
 
@@ -26,7 +28,9 @@ from fhan.client.generated.search_builder import BinarySearchBuilder
 
 from fhan.client.generated.search_builder import BiologicallyDerivedProductSearchBuilder
 
-from fhan.client.generated.search_builder import BiologicallyDerivedProductDispenseSearchBuilder
+from fhan.client.generated.search_builder import (
+    BiologicallyDerivedProductDispenseSearchBuilder,
+)
 
 from fhan.client.generated.search_builder import BodyStructureSearchBuilder
 
@@ -76,7 +80,9 @@ from fhan.client.generated.search_builder import CoverageSearchBuilder
 
 from fhan.client.generated.search_builder import CoverageEligibilityRequestSearchBuilder
 
-from fhan.client.generated.search_builder import CoverageEligibilityResponseSearchBuilder
+from fhan.client.generated.search_builder import (
+    CoverageEligibilityResponseSearchBuilder,
+)
 
 from fhan.client.generated.search_builder import DetectedIssueSearchBuilder
 
@@ -288,7 +294,9 @@ from fhan.client.generated.search_builder import SubstancePolymerSearchBuilder
 
 from fhan.client.generated.search_builder import SubstanceProteinSearchBuilder
 
-from fhan.client.generated.search_builder import SubstanceReferenceInformationSearchBuilder
+from fhan.client.generated.search_builder import (
+    SubstanceReferenceInformationSearchBuilder,
+)
 
 from fhan.client.generated.search_builder import SubstanceSourceMaterialSearchBuilder
 
@@ -316,9 +324,10 @@ from fhan.client.generated.search_builder import VisionPrescriptionSearchBuilder
 
 
 class SearchBuilderMixin:
-    """This mixin class provides the SearchBuilder class 
+    """This mixin class provides the SearchBuilder class
     with getter methods for each resource type.
     """
+
     def __init__(self):
         pass
 
@@ -332,7 +341,9 @@ class SearchBuilderMixin:
         return ActorDefinitionSearchBuilder(search_string=self.search_string)
 
     def AdministrableProductDefinition(self):
-        return AdministrableProductDefinitionSearchBuilder(search_string=self.search_string)
+        return AdministrableProductDefinitionSearchBuilder(
+            search_string=self.search_string
+        )
 
     def AdverseEvent(self):
         return AdverseEventSearchBuilder(search_string=self.search_string)
@@ -362,7 +373,9 @@ class SearchBuilderMixin:
         return BiologicallyDerivedProductSearchBuilder(search_string=self.search_string)
 
     def BiologicallyDerivedProductDispense(self):
-        return BiologicallyDerivedProductDispenseSearchBuilder(search_string=self.search_string)
+        return BiologicallyDerivedProductDispenseSearchBuilder(
+            search_string=self.search_string
+        )
 
     def BodyStructure(self):
         return BodyStructureSearchBuilder(search_string=self.search_string)
@@ -437,7 +450,9 @@ class SearchBuilderMixin:
         return CoverageEligibilityRequestSearchBuilder(search_string=self.search_string)
 
     def CoverageEligibilityResponse(self):
-        return CoverageEligibilityResponseSearchBuilder(search_string=self.search_string)
+        return CoverageEligibilityResponseSearchBuilder(
+            search_string=self.search_string
+        )
 
     def DetectedIssue(self):
         return DetectedIssueSearchBuilder(search_string=self.search_string)
@@ -755,7 +770,9 @@ class SearchBuilderMixin:
         return SubstanceProteinSearchBuilder(search_string=self.search_string)
 
     def SubstanceReferenceInformation(self):
-        return SubstanceReferenceInformationSearchBuilder(search_string=self.search_string)
+        return SubstanceReferenceInformationSearchBuilder(
+            search_string=self.search_string
+        )
 
     def SubstanceSourceMaterial(self):
         return SubstanceSourceMaterialSearchBuilder(search_string=self.search_string)

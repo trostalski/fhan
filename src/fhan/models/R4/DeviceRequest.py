@@ -18,11 +18,8 @@ from fhan.models.R4.Period import *
 from fhan.models.R4.DomainResource import *
 
 
-    
-    
-
 class Parameter(BaseModel):
-    """ Specific parameters for the ordered item.  For example, the prism value for lenses.:param str id: Unique id for inter-element referencing
+    """Specific parameters for the ordered item.  For example, the prism value for lenses.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param CodeableConcept code: Device detail
@@ -31,43 +28,43 @@ class Parameter(BaseModel):
     :param Range valueRange: Value of detail
     :param bool valueBoolean: Value of detail
     """
+
     property_class_info = {
-        
-        
         "extension": {"class_name": "Extension", "is_contained": False},
-        
-        
         "modifierExtension": {"class_name": "Extension", "is_contained": False},
-        
-        
         "code": {"class_name": "CodeableConcept", "is_contained": False},
-        
-        
-        "valueCodeableConcept": {"class_name": "CodeableConcept", "is_contained": False},
-        
-        
+        "valueCodeableConcept": {
+            "class_name": "CodeableConcept",
+            "is_contained": False,
+        },
         "valueQuantity": {"class_name": "Quantity", "is_contained": False},
-        
-        
         "valueRange": {"class_name": "Range", "is_contained": False},
-        
-        
-        }
-    def __init__(self,  id:  'str'  = None,  extension:  list['Extension']  = None,  modifierExtension:  list['Extension']  = None,  code:  'CodeableConcept'  = None,  valueCodeableConcept:  'CodeableConcept'  = None,  valueQuantity:  'Quantity'  = None,  valueRange:  'Range'  = None,  valueBoolean:  'bool'  = None, ):
-        self.id = id 
+    }
+
+    def __init__(
+        self,
+        id: "str" = None,
+        extension: list["Extension"] = None,
+        modifierExtension: list["Extension"] = None,
+        code: "CodeableConcept" = None,
+        valueCodeableConcept: "CodeableConcept" = None,
+        valueQuantity: "Quantity" = None,
+        valueRange: "Range" = None,
+        valueBoolean: "bool" = None,
+    ):
+        self.id = id
         self.extension = extension or []
         self.modifierExtension = modifierExtension or []
-        self.code = code 
-        self.valueCodeableConcept = valueCodeableConcept 
-        self.valueQuantity = valueQuantity 
-        self.valueRange = valueRange 
-        self.valueBoolean = valueBoolean 
-        
+        self.code = code
+        self.valueCodeableConcept = valueCodeableConcept
+        self.valueQuantity = valueQuantity
+        self.valueRange = valueRange
+        self.valueBoolean = valueBoolean
 
     @classmethod
     def from_dict(cls, data: dict) -> "DeviceRequest":
         return super().from_dict(data)
-    
+
     @classmethod
     def from_obj(self, obj: object) -> "DeviceRequest":
         return super().from_obj(obj)
@@ -77,7 +74,7 @@ class Parameter(BaseModel):
 
 
 class DeviceRequest(DomainResource):
-    """ Represents a request for a patient to employ a medical device. The device may be an implantable device, or an external assistive device, such as a walker.
+    """Represents a request for a patient to employ a medical device. The device may be an implantable device, or an external assistive device, such as a walker.
     :param str id: Logical id of this artifact
     :param Meta meta: Metadata about the resource
     :param str implicitRules: A set of rules under which this content was created
@@ -114,100 +111,80 @@ class DeviceRequest(DomainResource):
     :param Annotation note: Notes or comments
     :param Reference relevantHistory: Request provenance
     """
+
     property_class_info = {
-        
-        
         "meta": {"class_name": "Meta", "is_contained": False},
-        
-        
-        
-        
         "text": {"class_name": "Narrative", "is_contained": False},
-        
-        
         "contained": {"class_name": "Resource", "is_contained": False},
-        
-        
         "extension": {"class_name": "Extension", "is_contained": False},
-        
-        
         "modifierExtension": {"class_name": "Extension", "is_contained": False},
-        
-        
         "identifier": {"class_name": "Identifier", "is_contained": False},
-        
-        
-        
-        
         "basedOn": {"class_name": "Reference", "is_contained": False},
-        
-        
         "priorRequest": {"class_name": "Reference", "is_contained": False},
-        
-        
         "groupIdentifier": {"class_name": "Identifier", "is_contained": False},
-        
-        
-        
-        
-        
         "codeReference": {"class_name": "Reference", "is_contained": False},
-        
-        
         "codeCodeableConcept": {"class_name": "CodeableConcept", "is_contained": False},
-        
-        
         "parameter": {"class_name": "Parameter", "is_contained": True},
-        
-        
         "subject": {"class_name": "Reference", "is_contained": False},
-        
-        
         "encounter": {"class_name": "Reference", "is_contained": False},
-        
-        
-        
         "occurrencePeriod": {"class_name": "Period", "is_contained": False},
-        
-        
         "occurrenceTiming": {"class_name": "Timing", "is_contained": False},
-        
-        
-        
         "requester": {"class_name": "Reference", "is_contained": False},
-        
-        
         "performerType": {"class_name": "CodeableConcept", "is_contained": False},
-        
-        
         "performer": {"class_name": "Reference", "is_contained": False},
-        
-        
         "reasonCode": {"class_name": "CodeableConcept", "is_contained": False},
-        
-        
         "reasonReference": {"class_name": "Reference", "is_contained": False},
-        
-        
         "insurance": {"class_name": "Reference", "is_contained": False},
-        
-        
         "supportingInfo": {"class_name": "Reference", "is_contained": False},
-        
-        
         "note": {"class_name": "Annotation", "is_contained": False},
-        
-        
         "relevantHistory": {"class_name": "Reference", "is_contained": False},
-        
-        }
-    def __init__(self, resourceType: str = None,  id:  'str'  = None,  meta:  'Meta'  = None,  implicitRules:  'str'  = None,  language:  'str'  = None,  text:  'Narrative'  = None,  contained:  list['Resource']  = None,  extension:  list['Extension']  = None,  modifierExtension:  list['Extension']  = None,  identifier:  list['Identifier']  = None,  instantiatesCanonical:  list['str']  = None,  instantiatesUri:  list['str']  = None,  basedOn:  list['Reference']  = None,  priorRequest:  list['Reference']  = None,  groupIdentifier:  'Identifier'  = None,  status:  'str'  = None,  intent:  'str'  = None,  priority:  'str'  = None,  codeReference:  'Reference'  = None,  codeCodeableConcept:  'CodeableConcept'  = None,  parameter:  list['Parameter']  = None,  subject:  'Reference'  = None,  encounter:  'Reference'  = None,  occurrenceDateTime:  'str'  = None,  occurrencePeriod:  'Period'  = None,  occurrenceTiming:  'Timing'  = None,  authoredOn:  'str'  = None,  requester:  'Reference'  = None,  performerType:  'CodeableConcept'  = None,  performer:  'Reference'  = None,  reasonCode:  list['CodeableConcept']  = None,  reasonReference:  list['Reference']  = None,  insurance:  list['Reference']  = None,  supportingInfo:  list['Reference']  = None,  note:  list['Annotation']  = None,  relevantHistory:  list['Reference']  = None, ):
+    }
+
+    def __init__(
+        self,
+        resourceType: str = None,
+        id: "str" = None,
+        meta: "Meta" = None,
+        implicitRules: "str" = None,
+        language: "str" = None,
+        text: "Narrative" = None,
+        contained: list["Resource"] = None,
+        extension: list["Extension"] = None,
+        modifierExtension: list["Extension"] = None,
+        identifier: list["Identifier"] = None,
+        instantiatesCanonical: list["str"] = None,
+        instantiatesUri: list["str"] = None,
+        basedOn: list["Reference"] = None,
+        priorRequest: list["Reference"] = None,
+        groupIdentifier: "Identifier" = None,
+        status: "str" = None,
+        intent: "str" = None,
+        priority: "str" = None,
+        codeReference: "Reference" = None,
+        codeCodeableConcept: "CodeableConcept" = None,
+        parameter: list["Parameter"] = None,
+        subject: "Reference" = None,
+        encounter: "Reference" = None,
+        occurrenceDateTime: "str" = None,
+        occurrencePeriod: "Period" = None,
+        occurrenceTiming: "Timing" = None,
+        authoredOn: "str" = None,
+        requester: "Reference" = None,
+        performerType: "CodeableConcept" = None,
+        performer: "Reference" = None,
+        reasonCode: list["CodeableConcept"] = None,
+        reasonReference: list["Reference"] = None,
+        insurance: list["Reference"] = None,
+        supportingInfo: list["Reference"] = None,
+        note: list["Annotation"] = None,
+        relevantHistory: list["Reference"] = None,
+    ):
         self.resourceType = resourceType or "DeviceRequest"
-        self.id = id 
-        self.meta = meta 
-        self.implicitRules = implicitRules 
-        self.language = language 
-        self.text = text 
+        self.id = id
+        self.meta = meta
+        self.implicitRules = implicitRules
+        self.language = language
+        self.text = text
         self.contained = contained or []
         self.extension = extension or []
         self.modifierExtension = modifierExtension or []
@@ -216,34 +193,33 @@ class DeviceRequest(DomainResource):
         self.instantiatesUri = instantiatesUri or []
         self.basedOn = basedOn or []
         self.priorRequest = priorRequest or []
-        self.groupIdentifier = groupIdentifier 
-        self.status = status 
-        self.intent = intent 
-        self.priority = priority 
-        self.codeReference = codeReference 
-        self.codeCodeableConcept = codeCodeableConcept 
+        self.groupIdentifier = groupIdentifier
+        self.status = status
+        self.intent = intent
+        self.priority = priority
+        self.codeReference = codeReference
+        self.codeCodeableConcept = codeCodeableConcept
         self.parameter = parameter or []
-        self.subject = subject 
-        self.encounter = encounter 
-        self.occurrenceDateTime = occurrenceDateTime 
-        self.occurrencePeriod = occurrencePeriod 
-        self.occurrenceTiming = occurrenceTiming 
-        self.authoredOn = authoredOn 
-        self.requester = requester 
-        self.performerType = performerType 
-        self.performer = performer 
+        self.subject = subject
+        self.encounter = encounter
+        self.occurrenceDateTime = occurrenceDateTime
+        self.occurrencePeriod = occurrencePeriod
+        self.occurrenceTiming = occurrenceTiming
+        self.authoredOn = authoredOn
+        self.requester = requester
+        self.performerType = performerType
+        self.performer = performer
         self.reasonCode = reasonCode or []
         self.reasonReference = reasonReference or []
         self.insurance = insurance or []
         self.supportingInfo = supportingInfo or []
         self.note = note or []
         self.relevantHistory = relevantHistory or []
-        
 
     @classmethod
     def from_dict(cls, data: dict) -> "DeviceRequest":
         return super().from_dict(data)
-    
+
     @classmethod
     def from_obj(self, obj: object) -> "DeviceRequest":
         return super().from_obj(obj)

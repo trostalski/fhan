@@ -15,7 +15,7 @@ from fhan.models.R4.DomainResource import *
 
 
 class GuidanceResponse(DomainResource):
-    """ A guidance response is the formal response to a guidance request, including any output parameters returned by the evaluation, as well as the description of any proposed actions to be taken.
+    """A guidance response is the formal response to a guidance request, including any output parameters returned by the evaluation, as well as the description of any proposed actions to be taken.
     :param str id: Logical id of this artifact
     :param Meta meta: Metadata about the resource
     :param str implicitRules: A set of rules under which this content was created
@@ -42,102 +42,91 @@ class GuidanceResponse(DomainResource):
     :param Reference result: Proposed actions, if any
     :param DataRequirement dataRequirement: Additional required data
     """
+
     property_class_info = {
-        
-        
         "meta": {"class_name": "Meta", "is_contained": False},
-        
-        
-        
-        
         "text": {"class_name": "Narrative", "is_contained": False},
-        
-        
         "contained": {"class_name": "Resource", "is_contained": False},
-        
-        
         "extension": {"class_name": "Extension", "is_contained": False},
-        
-        
         "modifierExtension": {"class_name": "Extension", "is_contained": False},
-        
-        
         "requestIdentifier": {"class_name": "Identifier", "is_contained": False},
-        
-        
         "identifier": {"class_name": "Identifier", "is_contained": False},
-        
-        
-        
-        
-        "moduleCodeableConcept": {"class_name": "CodeableConcept", "is_contained": False},
-        
-        
-        
+        "moduleCodeableConcept": {
+            "class_name": "CodeableConcept",
+            "is_contained": False,
+        },
         "subject": {"class_name": "Reference", "is_contained": False},
-        
-        
         "encounter": {"class_name": "Reference", "is_contained": False},
-        
-        
-        
         "performer": {"class_name": "Reference", "is_contained": False},
-        
-        
         "reasonCode": {"class_name": "CodeableConcept", "is_contained": False},
-        
-        
         "reasonReference": {"class_name": "Reference", "is_contained": False},
-        
-        
         "note": {"class_name": "Annotation", "is_contained": False},
-        
-        
         "evaluationMessage": {"class_name": "Reference", "is_contained": False},
-        
-        
         "outputParameters": {"class_name": "Reference", "is_contained": False},
-        
-        
         "result": {"class_name": "Reference", "is_contained": False},
-        
-        
         "dataRequirement": {"class_name": "DataRequirement", "is_contained": False},
-        
-        }
-    def __init__(self, resourceType: str = None,  id:  'str'  = None,  meta:  'Meta'  = None,  implicitRules:  'str'  = None,  language:  'str'  = None,  text:  'Narrative'  = None,  contained:  list['Resource']  = None,  extension:  list['Extension']  = None,  modifierExtension:  list['Extension']  = None,  requestIdentifier:  'Identifier'  = None,  identifier:  list['Identifier']  = None,  moduleUri:  'str'  = None,  moduleCanonical:  'str'  = None,  moduleCodeableConcept:  'CodeableConcept'  = None,  status:  'str'  = None,  subject:  'Reference'  = None,  encounter:  'Reference'  = None,  occurrenceDateTime:  'str'  = None,  performer:  'Reference'  = None,  reasonCode:  list['CodeableConcept']  = None,  reasonReference:  list['Reference']  = None,  note:  list['Annotation']  = None,  evaluationMessage:  list['Reference']  = None,  outputParameters:  'Reference'  = None,  result:  'Reference'  = None,  dataRequirement:  list['DataRequirement']  = None, ):
+    }
+
+    def __init__(
+        self,
+        resourceType: str = None,
+        id: "str" = None,
+        meta: "Meta" = None,
+        implicitRules: "str" = None,
+        language: "str" = None,
+        text: "Narrative" = None,
+        contained: list["Resource"] = None,
+        extension: list["Extension"] = None,
+        modifierExtension: list["Extension"] = None,
+        requestIdentifier: "Identifier" = None,
+        identifier: list["Identifier"] = None,
+        moduleUri: "str" = None,
+        moduleCanonical: "str" = None,
+        moduleCodeableConcept: "CodeableConcept" = None,
+        status: "str" = None,
+        subject: "Reference" = None,
+        encounter: "Reference" = None,
+        occurrenceDateTime: "str" = None,
+        performer: "Reference" = None,
+        reasonCode: list["CodeableConcept"] = None,
+        reasonReference: list["Reference"] = None,
+        note: list["Annotation"] = None,
+        evaluationMessage: list["Reference"] = None,
+        outputParameters: "Reference" = None,
+        result: "Reference" = None,
+        dataRequirement: list["DataRequirement"] = None,
+    ):
         self.resourceType = resourceType or "GuidanceResponse"
-        self.id = id 
-        self.meta = meta 
-        self.implicitRules = implicitRules 
-        self.language = language 
-        self.text = text 
+        self.id = id
+        self.meta = meta
+        self.implicitRules = implicitRules
+        self.language = language
+        self.text = text
         self.contained = contained or []
         self.extension = extension or []
         self.modifierExtension = modifierExtension or []
-        self.requestIdentifier = requestIdentifier 
+        self.requestIdentifier = requestIdentifier
         self.identifier = identifier or []
-        self.moduleUri = moduleUri 
-        self.moduleCanonical = moduleCanonical 
-        self.moduleCodeableConcept = moduleCodeableConcept 
-        self.status = status 
-        self.subject = subject 
-        self.encounter = encounter 
-        self.occurrenceDateTime = occurrenceDateTime 
-        self.performer = performer 
+        self.moduleUri = moduleUri
+        self.moduleCanonical = moduleCanonical
+        self.moduleCodeableConcept = moduleCodeableConcept
+        self.status = status
+        self.subject = subject
+        self.encounter = encounter
+        self.occurrenceDateTime = occurrenceDateTime
+        self.performer = performer
         self.reasonCode = reasonCode or []
         self.reasonReference = reasonReference or []
         self.note = note or []
         self.evaluationMessage = evaluationMessage or []
-        self.outputParameters = outputParameters 
-        self.result = result 
+        self.outputParameters = outputParameters
+        self.result = result
         self.dataRequirement = dataRequirement or []
-        
 
     @classmethod
     def from_dict(cls, data: dict) -> "GuidanceResponse":
         return super().from_dict(data)
-    
+
     @classmethod
     def from_obj(self, obj: object) -> "GuidanceResponse":
         return super().from_obj(obj)

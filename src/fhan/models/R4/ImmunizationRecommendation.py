@@ -13,43 +13,38 @@ from fhan.models.R4.Resource import *
 from fhan.models.R4.DomainResource import *
 
 
-    
-        
-    
-    
-
 class DateCriterion(BaseModel):
-    """ Vaccine date recommendations.  For example, earliest date to administer, latest date to administer, etc.:param str id: Unique id for inter-element referencing
+    """Vaccine date recommendations.  For example, earliest date to administer, latest date to administer, etc.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param CodeableConcept code: Type of date
     :param str value: Recommended date
     """
+
     property_class_info = {
-        
-        
         "extension": {"class_name": "Extension", "is_contained": False},
-        
-        
         "modifierExtension": {"class_name": "Extension", "is_contained": False},
-        
-        
         "code": {"class_name": "CodeableConcept", "is_contained": False},
-        
-        
-        }
-    def __init__(self,  id:  'str'  = None,  extension:  list['Extension']  = None,  modifierExtension:  list['Extension']  = None,  code:  'CodeableConcept'  = None,  value:  'str'  = None, ):
-        self.id = id 
+    }
+
+    def __init__(
+        self,
+        id: "str" = None,
+        extension: list["Extension"] = None,
+        modifierExtension: list["Extension"] = None,
+        code: "CodeableConcept" = None,
+        value: "str" = None,
+    ):
+        self.id = id
         self.extension = extension or []
         self.modifierExtension = modifierExtension or []
-        self.code = code 
-        self.value = value 
-        
+        self.code = code
+        self.value = value
 
     @classmethod
     def from_dict(cls, data: dict) -> "ImmunizationRecommendation":
         return super().from_dict(data)
-    
+
     @classmethod
     def from_obj(self, obj: object) -> "ImmunizationRecommendation":
         return super().from_obj(obj)
@@ -58,12 +53,8 @@ class DateCriterion(BaseModel):
         return super().as_dict()
 
 
-  
-    
-    
-
 class Recommendation(BaseModel):
-    """ Vaccine administration recommendations.:param str id: Unique id for inter-element referencing
+    """Vaccine administration recommendations.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param CodeableConcept vaccineCode: Vaccine  or vaccine group recommendation applies to
@@ -81,69 +72,68 @@ class Recommendation(BaseModel):
     :param Reference supportingImmunization: Past immunizations supporting recommendation
     :param Reference supportingPatientInformation: Patient observations supporting recommendation
     """
+
     property_class_info = {
-        
-        
         "extension": {"class_name": "Extension", "is_contained": False},
-        
-        
         "modifierExtension": {"class_name": "Extension", "is_contained": False},
-        
-        
         "vaccineCode": {"class_name": "CodeableConcept", "is_contained": False},
-        
-        
         "targetDisease": {"class_name": "CodeableConcept", "is_contained": False},
-        
-        
-        "contraindicatedVaccineCode": {"class_name": "CodeableConcept", "is_contained": False},
-        
-        
+        "contraindicatedVaccineCode": {
+            "class_name": "CodeableConcept",
+            "is_contained": False,
+        },
         "forecastStatus": {"class_name": "CodeableConcept", "is_contained": False},
-        
-        
         "forecastReason": {"class_name": "CodeableConcept", "is_contained": False},
-        
-        
         "dateCriterion": {"class_name": "DateCriterion", "is_contained": True},
-        
-        
-        
-        
-        
-        
-        
-        
         "supportingImmunization": {"class_name": "Reference", "is_contained": False},
-        
-        
-        "supportingPatientInformation": {"class_name": "Reference", "is_contained": False},
-        
-        }
-    def __init__(self,  id:  'str'  = None,  extension:  list['Extension']  = None,  modifierExtension:  list['Extension']  = None,  vaccineCode:  list['CodeableConcept']  = None,  targetDisease:  'CodeableConcept'  = None,  contraindicatedVaccineCode:  list['CodeableConcept']  = None,  forecastStatus:  'CodeableConcept'  = None,  forecastReason:  list['CodeableConcept']  = None,  dateCriterion:  list['DateCriterion']  = None,  description:  'str'  = None,  series:  'str'  = None,  doseNumberPositiveInt:  'int'  = None,  doseNumberString:  'str'  = None,  seriesDosesPositiveInt:  'int'  = None,  seriesDosesString:  'str'  = None,  supportingImmunization:  list['Reference']  = None,  supportingPatientInformation:  list['Reference']  = None, ):
-        self.id = id 
+        "supportingPatientInformation": {
+            "class_name": "Reference",
+            "is_contained": False,
+        },
+    }
+
+    def __init__(
+        self,
+        id: "str" = None,
+        extension: list["Extension"] = None,
+        modifierExtension: list["Extension"] = None,
+        vaccineCode: list["CodeableConcept"] = None,
+        targetDisease: "CodeableConcept" = None,
+        contraindicatedVaccineCode: list["CodeableConcept"] = None,
+        forecastStatus: "CodeableConcept" = None,
+        forecastReason: list["CodeableConcept"] = None,
+        dateCriterion: list["DateCriterion"] = None,
+        description: "str" = None,
+        series: "str" = None,
+        doseNumberPositiveInt: "int" = None,
+        doseNumberString: "str" = None,
+        seriesDosesPositiveInt: "int" = None,
+        seriesDosesString: "str" = None,
+        supportingImmunization: list["Reference"] = None,
+        supportingPatientInformation: list["Reference"] = None,
+    ):
+        self.id = id
         self.extension = extension or []
         self.modifierExtension = modifierExtension or []
         self.vaccineCode = vaccineCode or []
-        self.targetDisease = targetDisease 
+        self.targetDisease = targetDisease
         self.contraindicatedVaccineCode = contraindicatedVaccineCode or []
-        self.forecastStatus = forecastStatus 
+        self.forecastStatus = forecastStatus
         self.forecastReason = forecastReason or []
         self.dateCriterion = dateCriterion or []
-        self.description = description 
-        self.series = series 
-        self.doseNumberPositiveInt = doseNumberPositiveInt 
-        self.doseNumberString = doseNumberString 
-        self.seriesDosesPositiveInt = seriesDosesPositiveInt 
-        self.seriesDosesString = seriesDosesString 
+        self.description = description
+        self.series = series
+        self.doseNumberPositiveInt = doseNumberPositiveInt
+        self.doseNumberString = doseNumberString
+        self.seriesDosesPositiveInt = seriesDosesPositiveInt
+        self.seriesDosesString = seriesDosesString
         self.supportingImmunization = supportingImmunization or []
         self.supportingPatientInformation = supportingPatientInformation or []
-        
 
     @classmethod
     def from_dict(cls, data: dict) -> "ImmunizationRecommendation":
         return super().from_dict(data)
-    
+
     @classmethod
     def from_obj(self, obj: object) -> "ImmunizationRecommendation":
         return super().from_obj(obj)
@@ -153,7 +143,7 @@ class Recommendation(BaseModel):
 
 
 class ImmunizationRecommendation(DomainResource):
-    """ A patient's point-in-time set of recommendations (i.e. forecasting) according to a published schedule with optional supporting justification.
+    """A patient's point-in-time set of recommendations (i.e. forecasting) according to a published schedule with optional supporting justification.
     :param str id: Logical id of this artifact
     :param Meta meta: Metadata about the resource
     :param str implicitRules: A set of rules under which this content was created
@@ -168,60 +158,55 @@ class ImmunizationRecommendation(DomainResource):
     :param Reference authority: Who is responsible for protocol
     :param Recommendation recommendation: Vaccine administration recommendations
     """
+
     property_class_info = {
-        
-        
         "meta": {"class_name": "Meta", "is_contained": False},
-        
-        
-        
-        
         "text": {"class_name": "Narrative", "is_contained": False},
-        
-        
         "contained": {"class_name": "Resource", "is_contained": False},
-        
-        
         "extension": {"class_name": "Extension", "is_contained": False},
-        
-        
         "modifierExtension": {"class_name": "Extension", "is_contained": False},
-        
-        
         "identifier": {"class_name": "Identifier", "is_contained": False},
-        
-        
         "patient": {"class_name": "Reference", "is_contained": False},
-        
-        
-        
         "authority": {"class_name": "Reference", "is_contained": False},
-        
-        
         "recommendation": {"class_name": "Recommendation", "is_contained": True},
-        
-        }
-    def __init__(self, resourceType: str = None,  id:  'str'  = None,  meta:  'Meta'  = None,  implicitRules:  'str'  = None,  language:  'str'  = None,  text:  'Narrative'  = None,  contained:  list['Resource']  = None,  extension:  list['Extension']  = None,  modifierExtension:  list['Extension']  = None,  identifier:  list['Identifier']  = None,  patient:  'Reference'  = None,  date:  'str'  = None,  authority:  'Reference'  = None,  recommendation:  list['Recommendation']  = None, ):
+    }
+
+    def __init__(
+        self,
+        resourceType: str = None,
+        id: "str" = None,
+        meta: "Meta" = None,
+        implicitRules: "str" = None,
+        language: "str" = None,
+        text: "Narrative" = None,
+        contained: list["Resource"] = None,
+        extension: list["Extension"] = None,
+        modifierExtension: list["Extension"] = None,
+        identifier: list["Identifier"] = None,
+        patient: "Reference" = None,
+        date: "str" = None,
+        authority: "Reference" = None,
+        recommendation: list["Recommendation"] = None,
+    ):
         self.resourceType = resourceType or "ImmunizationRecommendation"
-        self.id = id 
-        self.meta = meta 
-        self.implicitRules = implicitRules 
-        self.language = language 
-        self.text = text 
+        self.id = id
+        self.meta = meta
+        self.implicitRules = implicitRules
+        self.language = language
+        self.text = text
         self.contained = contained or []
         self.extension = extension or []
         self.modifierExtension = modifierExtension or []
         self.identifier = identifier or []
-        self.patient = patient 
-        self.date = date 
-        self.authority = authority 
+        self.patient = patient
+        self.date = date
+        self.authority = authority
         self.recommendation = recommendation or []
-        
 
     @classmethod
     def from_dict(cls, data: dict) -> "ImmunizationRecommendation":
         return super().from_dict(data)
-    
+
     @classmethod
     def from_obj(self, obj: object) -> "ImmunizationRecommendation":
         return super().from_obj(obj)

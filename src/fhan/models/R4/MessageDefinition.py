@@ -15,11 +15,8 @@ from fhan.models.R4.Resource import *
 from fhan.models.R4.DomainResource import *
 
 
-    
-    
-
 class Focus(BaseModel):
-    """ Identifies the resource (or resources) that are being addressed by the event.  For example, the Encounter for an admit message or two Account records for a merge.:param str id: Unique id for inter-element referencing
+    """Identifies the resource (or resources) that are being addressed by the event.  For example, the Encounter for an admit message or two Account records for a merge.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str code: Type of resource
@@ -27,33 +24,34 @@ class Focus(BaseModel):
     :param int min: Minimum number of focuses of this type
     :param str max: Maximum number of focuses of this type
     """
+
     property_class_info = {
-        
-        
         "extension": {"class_name": "Extension", "is_contained": False},
-        
-        
         "modifierExtension": {"class_name": "Extension", "is_contained": False},
-        
-        
-        
-        
-        
-        }
-    def __init__(self,  id:  'str'  = None,  extension:  list['Extension']  = None,  modifierExtension:  list['Extension']  = None,  code:  'str'  = None,  profile:  'str'  = None,  min:  'int'  = None,  max:  'str'  = None, ):
-        self.id = id 
+    }
+
+    def __init__(
+        self,
+        id: "str" = None,
+        extension: list["Extension"] = None,
+        modifierExtension: list["Extension"] = None,
+        code: "str" = None,
+        profile: "str" = None,
+        min: "int" = None,
+        max: "str" = None,
+    ):
+        self.id = id
         self.extension = extension or []
         self.modifierExtension = modifierExtension or []
-        self.code = code 
-        self.profile = profile 
-        self.min = min 
-        self.max = max 
-        
+        self.code = code
+        self.profile = profile
+        self.min = min
+        self.max = max
 
     @classmethod
     def from_dict(cls, data: dict) -> "MessageDefinition":
         return super().from_dict(data)
-    
+
     @classmethod
     def from_obj(self, obj: object) -> "MessageDefinition":
         return super().from_obj(obj)
@@ -62,39 +60,37 @@ class Focus(BaseModel):
         return super().as_dict()
 
 
-    
-    
-
 class AllowedResponse(BaseModel):
-    """ Indicates what types of messages may be sent as an application-level response to this message.:param str id: Unique id for inter-element referencing
+    """Indicates what types of messages may be sent as an application-level response to this message.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str message: Reference to allowed message definition response
     :param str situation: When should this response be used
     """
+
     property_class_info = {
-        
-        
         "extension": {"class_name": "Extension", "is_contained": False},
-        
-        
         "modifierExtension": {"class_name": "Extension", "is_contained": False},
-        
-        
-        
-        }
-    def __init__(self,  id:  'str'  = None,  extension:  list['Extension']  = None,  modifierExtension:  list['Extension']  = None,  message:  'str'  = None,  situation:  'str'  = None, ):
-        self.id = id 
+    }
+
+    def __init__(
+        self,
+        id: "str" = None,
+        extension: list["Extension"] = None,
+        modifierExtension: list["Extension"] = None,
+        message: "str" = None,
+        situation: "str" = None,
+    ):
+        self.id = id
         self.extension = extension or []
         self.modifierExtension = modifierExtension or []
-        self.message = message 
-        self.situation = situation 
-        
+        self.message = message
+        self.situation = situation
 
     @classmethod
     def from_dict(cls, data: dict) -> "MessageDefinition":
         return super().from_dict(data)
-    
+
     @classmethod
     def from_obj(self, obj: object) -> "MessageDefinition":
         return super().from_obj(obj)
@@ -104,7 +100,7 @@ class AllowedResponse(BaseModel):
 
 
 class MessageDefinition(DomainResource):
-    """ Defines the characteristics of a message that can be shared between systems, including the type of event that initiates the message, the content to be transmitted and what response(s), if any, are permitted.
+    """Defines the characteristics of a message that can be shared between systems, including the type of event that initiates the message, the content to be transmitted and what response(s), if any, are permitted.
     :param str id: Logical id of this artifact
     :param Meta meta: Metadata about the resource
     :param str implicitRules: A set of rules under which this content was created
@@ -139,106 +135,98 @@ class MessageDefinition(DomainResource):
     :param AllowedResponse allowedResponse: Responses to this message
     :param str graph: Canonical reference to a GraphDefinition
     """
+
     property_class_info = {
-        
-        
         "meta": {"class_name": "Meta", "is_contained": False},
-        
-        
-        
-        
         "text": {"class_name": "Narrative", "is_contained": False},
-        
-        
         "contained": {"class_name": "Resource", "is_contained": False},
-        
-        
         "extension": {"class_name": "Extension", "is_contained": False},
-        
-        
         "modifierExtension": {"class_name": "Extension", "is_contained": False},
-        
-        
-        
         "identifier": {"class_name": "Identifier", "is_contained": False},
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
         "contact": {"class_name": "ContactDetail", "is_contained": False},
-        
-        
-        
         "useContext": {"class_name": "UsageContext", "is_contained": False},
-        
-        
         "jurisdiction": {"class_name": "CodeableConcept", "is_contained": False},
-        
-        
-        
-        
-        
-        
         "eventCoding": {"class_name": "Coding", "is_contained": False},
-        
-        
-        
-        
         "focus": {"class_name": "Focus", "is_contained": True},
-        
-        
-        
         "allowedResponse": {"class_name": "AllowedResponse", "is_contained": True},
-        
-        
-        }
-    def __init__(self, resourceType: str = None,  id:  'str'  = None,  meta:  'Meta'  = None,  implicitRules:  'str'  = None,  language:  'str'  = None,  text:  'Narrative'  = None,  contained:  list['Resource']  = None,  extension:  list['Extension']  = None,  modifierExtension:  list['Extension']  = None,  url:  'str'  = None,  identifier:  list['Identifier']  = None,  version:  'str'  = None,  name:  'str'  = None,  title:  'str'  = None,  replaces:  list['str']  = None,  status:  'str'  = None,  experimental:  'bool'  = None,  date:  'str'  = None,  publisher:  'str'  = None,  contact:  list['ContactDetail']  = None,  description:  'str'  = None,  useContext:  list['UsageContext']  = None,  jurisdiction:  list['CodeableConcept']  = None,  purpose:  'str'  = None,  copyright:  'str'  = None,  base:  'str'  = None,  parent:  list['str']  = None,  eventCoding:  'Coding'  = None,  eventUri:  'str'  = None,  category:  'str'  = None,  focus:  list['Focus']  = None,  responseRequired:  'str'  = None,  allowedResponse:  list['AllowedResponse']  = None,  graph:  list['str']  = None, ):
+    }
+
+    def __init__(
+        self,
+        resourceType: str = None,
+        id: "str" = None,
+        meta: "Meta" = None,
+        implicitRules: "str" = None,
+        language: "str" = None,
+        text: "Narrative" = None,
+        contained: list["Resource"] = None,
+        extension: list["Extension"] = None,
+        modifierExtension: list["Extension"] = None,
+        url: "str" = None,
+        identifier: list["Identifier"] = None,
+        version: "str" = None,
+        name: "str" = None,
+        title: "str" = None,
+        replaces: list["str"] = None,
+        status: "str" = None,
+        experimental: "bool" = None,
+        date: "str" = None,
+        publisher: "str" = None,
+        contact: list["ContactDetail"] = None,
+        description: "str" = None,
+        useContext: list["UsageContext"] = None,
+        jurisdiction: list["CodeableConcept"] = None,
+        purpose: "str" = None,
+        copyright: "str" = None,
+        base: "str" = None,
+        parent: list["str"] = None,
+        eventCoding: "Coding" = None,
+        eventUri: "str" = None,
+        category: "str" = None,
+        focus: list["Focus"] = None,
+        responseRequired: "str" = None,
+        allowedResponse: list["AllowedResponse"] = None,
+        graph: list["str"] = None,
+    ):
         self.resourceType = resourceType or "MessageDefinition"
-        self.id = id 
-        self.meta = meta 
-        self.implicitRules = implicitRules 
-        self.language = language 
-        self.text = text 
+        self.id = id
+        self.meta = meta
+        self.implicitRules = implicitRules
+        self.language = language
+        self.text = text
         self.contained = contained or []
         self.extension = extension or []
         self.modifierExtension = modifierExtension or []
-        self.url = url 
+        self.url = url
         self.identifier = identifier or []
-        self.version = version 
-        self.name = name 
-        self.title = title 
+        self.version = version
+        self.name = name
+        self.title = title
         self.replaces = replaces or []
-        self.status = status 
-        self.experimental = experimental 
-        self.date = date 
-        self.publisher = publisher 
+        self.status = status
+        self.experimental = experimental
+        self.date = date
+        self.publisher = publisher
         self.contact = contact or []
-        self.description = description 
+        self.description = description
         self.useContext = useContext or []
         self.jurisdiction = jurisdiction or []
-        self.purpose = purpose 
-        self.copyright = copyright 
-        self.base = base 
+        self.purpose = purpose
+        self.copyright = copyright
+        self.base = base
         self.parent = parent or []
-        self.eventCoding = eventCoding 
-        self.eventUri = eventUri 
-        self.category = category 
+        self.eventCoding = eventCoding
+        self.eventUri = eventUri
+        self.category = category
         self.focus = focus or []
-        self.responseRequired = responseRequired 
+        self.responseRequired = responseRequired
         self.allowedResponse = allowedResponse or []
         self.graph = graph or []
-        
 
     @classmethod
     def from_dict(cls, data: dict) -> "MessageDefinition":
         return super().from_dict(data)
-    
+
     @classmethod
     def from_obj(self, obj: object) -> "MessageDefinition":
         return super().from_obj(obj)

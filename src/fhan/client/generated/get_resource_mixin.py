@@ -164,7 +164,9 @@ from fhan.models.R4.MedicinalProduct import MedicinalProduct
 
 from fhan.models.R4.MedicinalProductAuthorization import MedicinalProductAuthorization
 
-from fhan.models.R4.MedicinalProductContraindication import MedicinalProductContraindication
+from fhan.models.R4.MedicinalProductContraindication import (
+    MedicinalProductContraindication,
+)
 
 from fhan.models.R4.MedicinalProductIndication import MedicinalProductIndication
 
@@ -178,7 +180,9 @@ from fhan.models.R4.MedicinalProductPackaged import MedicinalProductPackaged
 
 from fhan.models.R4.MedicinalProductPharmaceutical import MedicinalProductPharmaceutical
 
-from fhan.models.R4.MedicinalProductUndesirableEffect import MedicinalProductUndesirableEffect
+from fhan.models.R4.MedicinalProductUndesirableEffect import (
+    MedicinalProductUndesirableEffect,
+)
 
 from fhan.models.R4.MessageDefinition import MessageDefinition
 
@@ -290,10 +294,12 @@ from fhan.models.R4.VerificationResult import VerificationResult
 
 from fhan.models.R4.VisionPrescription import VisionPrescription
 
+
 class GetResourceMixin:
     """This mixin class provides the GetHandler with methods for each
     resource type. The methods are syntactic sugar for the _get method.
     """
+
     def __init__(self):
         pass
 

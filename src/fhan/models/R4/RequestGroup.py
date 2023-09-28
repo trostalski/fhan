@@ -21,43 +21,38 @@ from fhan.models.R4.Duration import *
 from fhan.models.R4.DomainResource import *
 
 
-    
-        
-    
-    
-
 class Condition(BaseModel):
-    """ An expression that describes applicability criteria, or start/stop conditions for the action.:param str id: Unique id for inter-element referencing
+    """An expression that describes applicability criteria, or start/stop conditions for the action.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str kind: applicability | start | stop
     :param Expression expression: Boolean-valued expression
     """
+
     property_class_info = {
-        
-        
         "extension": {"class_name": "Extension", "is_contained": False},
-        
-        
         "modifierExtension": {"class_name": "Extension", "is_contained": False},
-        
-        
-        
         "expression": {"class_name": "Expression", "is_contained": False},
-        
-        }
-    def __init__(self,  id:  'str'  = None,  extension:  list['Extension']  = None,  modifierExtension:  list['Extension']  = None,  kind:  'str'  = None,  expression:  'Expression'  = None, ):
-        self.id = id 
+    }
+
+    def __init__(
+        self,
+        id: "str" = None,
+        extension: list["Extension"] = None,
+        modifierExtension: list["Extension"] = None,
+        kind: "str" = None,
+        expression: "Expression" = None,
+    ):
+        self.id = id
         self.extension = extension or []
         self.modifierExtension = modifierExtension or []
-        self.kind = kind 
-        self.expression = expression 
-        
+        self.kind = kind
+        self.expression = expression
 
     @classmethod
     def from_dict(cls, data: dict) -> "RequestGroup":
         return super().from_dict(data)
-    
+
     @classmethod
     def from_obj(self, obj: object) -> "RequestGroup":
         return super().from_obj(obj)
@@ -66,11 +61,8 @@ class Condition(BaseModel):
         return super().as_dict()
 
 
-    
-    
-
 class RelatedAction(BaseModel):
-    """ A relationship to another action such as "before" or "30-60 minutes after start of".:param str id: Unique id for inter-element referencing
+    """A relationship to another action such as "before" or "30-60 minutes after start of".:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str actionId: What action this is related to
@@ -78,37 +70,36 @@ class RelatedAction(BaseModel):
     :param Duration offsetDuration: Time offset for the relationship
     :param Range offsetRange: Time offset for the relationship
     """
+
     property_class_info = {
-        
-        
         "extension": {"class_name": "Extension", "is_contained": False},
-        
-        
         "modifierExtension": {"class_name": "Extension", "is_contained": False},
-        
-        
-        
-        
         "offsetDuration": {"class_name": "Duration", "is_contained": False},
-        
-        
         "offsetRange": {"class_name": "Range", "is_contained": False},
-        
-        }
-    def __init__(self,  id:  'str'  = None,  extension:  list['Extension']  = None,  modifierExtension:  list['Extension']  = None,  actionId:  'str'  = None,  relationship:  'str'  = None,  offsetDuration:  'Duration'  = None,  offsetRange:  'Range'  = None, ):
-        self.id = id 
+    }
+
+    def __init__(
+        self,
+        id: "str" = None,
+        extension: list["Extension"] = None,
+        modifierExtension: list["Extension"] = None,
+        actionId: "str" = None,
+        relationship: "str" = None,
+        offsetDuration: "Duration" = None,
+        offsetRange: "Range" = None,
+    ):
+        self.id = id
         self.extension = extension or []
         self.modifierExtension = modifierExtension or []
-        self.actionId = actionId 
-        self.relationship = relationship 
-        self.offsetDuration = offsetDuration 
-        self.offsetRange = offsetRange 
-        
+        self.actionId = actionId
+        self.relationship = relationship
+        self.offsetDuration = offsetDuration
+        self.offsetRange = offsetRange
 
     @classmethod
     def from_dict(cls, data: dict) -> "RequestGroup":
         return super().from_dict(data)
-    
+
     @classmethod
     def from_obj(self, obj: object) -> "RequestGroup":
         return super().from_obj(obj)
@@ -117,12 +108,8 @@ class RelatedAction(BaseModel):
         return super().as_dict()
 
 
-  
-    
-    
-
 class Action(BaseModel):
-    """ The actions, if any, produced by the evaluation of the artifact.:param str id: Unique id for inter-element referencing
+    """The actions, if any, produced by the evaluation of the artifact.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str prefix: User-visible prefix for the action (e.g. 1. or A.)
@@ -150,99 +137,87 @@ class Action(BaseModel):
     :param Reference resource: The target of the action
     :param Action action: Sub action
     """
+
     property_class_info = {
-        
-        
         "extension": {"class_name": "Extension", "is_contained": False},
-        
-        
         "modifierExtension": {"class_name": "Extension", "is_contained": False},
-        
-        
-        
-        
-        
-        
-        
         "code": {"class_name": "CodeableConcept", "is_contained": False},
-        
-        
         "documentation": {"class_name": "RelatedArtifact", "is_contained": False},
-        
-        
         "condition": {"class_name": "Condition", "is_contained": True},
-        
-        
         "relatedAction": {"class_name": "RelatedAction", "is_contained": True},
-        
-        
-        
         "timingAge": {"class_name": "Age", "is_contained": False},
-        
-        
         "timingPeriod": {"class_name": "Period", "is_contained": False},
-        
-        
         "timingDuration": {"class_name": "Duration", "is_contained": False},
-        
-        
         "timingRange": {"class_name": "Range", "is_contained": False},
-        
-        
         "timingTiming": {"class_name": "Timing", "is_contained": False},
-        
-        
         "participant": {"class_name": "Reference", "is_contained": False},
-        
-        
         "type": {"class_name": "CodeableConcept", "is_contained": False},
-        
-        
-        
-        
-        
-        
-        
         "resource": {"class_name": "Reference", "is_contained": False},
-        
-        
         "action": {"class_name": "Action", "is_contained": True},
-        
-        }
-    def __init__(self,  id:  'str'  = None,  extension:  list['Extension']  = None,  modifierExtension:  list['Extension']  = None,  prefix:  'str'  = None,  title:  'str'  = None,  description:  'str'  = None,  textEquivalent:  'str'  = None,  priority:  'str'  = None,  code:  list['CodeableConcept']  = None,  documentation:  list['RelatedArtifact']  = None,  condition:  list['Condition']  = None,  relatedAction:  list['RelatedAction']  = None,  timingDateTime:  'str'  = None,  timingAge:  'Age'  = None,  timingPeriod:  'Period'  = None,  timingDuration:  'Duration'  = None,  timingRange:  'Range'  = None,  timingTiming:  'Timing'  = None,  participant:  list['Reference']  = None,  type:  'CodeableConcept'  = None,  groupingBehavior:  'str'  = None,  selectionBehavior:  'str'  = None,  requiredBehavior:  'str'  = None,  precheckBehavior:  'str'  = None,  cardinalityBehavior:  'str'  = None,  resource:  'Reference'  = None,  action:  list['Action']  = None, ):
-        self.id = id 
+    }
+
+    def __init__(
+        self,
+        id: "str" = None,
+        extension: list["Extension"] = None,
+        modifierExtension: list["Extension"] = None,
+        prefix: "str" = None,
+        title: "str" = None,
+        description: "str" = None,
+        textEquivalent: "str" = None,
+        priority: "str" = None,
+        code: list["CodeableConcept"] = None,
+        documentation: list["RelatedArtifact"] = None,
+        condition: list["Condition"] = None,
+        relatedAction: list["RelatedAction"] = None,
+        timingDateTime: "str" = None,
+        timingAge: "Age" = None,
+        timingPeriod: "Period" = None,
+        timingDuration: "Duration" = None,
+        timingRange: "Range" = None,
+        timingTiming: "Timing" = None,
+        participant: list["Reference"] = None,
+        type: "CodeableConcept" = None,
+        groupingBehavior: "str" = None,
+        selectionBehavior: "str" = None,
+        requiredBehavior: "str" = None,
+        precheckBehavior: "str" = None,
+        cardinalityBehavior: "str" = None,
+        resource: "Reference" = None,
+        action: list["Action"] = None,
+    ):
+        self.id = id
         self.extension = extension or []
         self.modifierExtension = modifierExtension or []
-        self.prefix = prefix 
-        self.title = title 
-        self.description = description 
-        self.textEquivalent = textEquivalent 
-        self.priority = priority 
+        self.prefix = prefix
+        self.title = title
+        self.description = description
+        self.textEquivalent = textEquivalent
+        self.priority = priority
         self.code = code or []
         self.documentation = documentation or []
         self.condition = condition or []
         self.relatedAction = relatedAction or []
-        self.timingDateTime = timingDateTime 
-        self.timingAge = timingAge 
-        self.timingPeriod = timingPeriod 
-        self.timingDuration = timingDuration 
-        self.timingRange = timingRange 
-        self.timingTiming = timingTiming 
+        self.timingDateTime = timingDateTime
+        self.timingAge = timingAge
+        self.timingPeriod = timingPeriod
+        self.timingDuration = timingDuration
+        self.timingRange = timingRange
+        self.timingTiming = timingTiming
         self.participant = participant or []
-        self.type = type 
-        self.groupingBehavior = groupingBehavior 
-        self.selectionBehavior = selectionBehavior 
-        self.requiredBehavior = requiredBehavior 
-        self.precheckBehavior = precheckBehavior 
-        self.cardinalityBehavior = cardinalityBehavior 
-        self.resource = resource 
+        self.type = type
+        self.groupingBehavior = groupingBehavior
+        self.selectionBehavior = selectionBehavior
+        self.requiredBehavior = requiredBehavior
+        self.precheckBehavior = precheckBehavior
+        self.cardinalityBehavior = cardinalityBehavior
+        self.resource = resource
         self.action = action or []
-        
 
     @classmethod
     def from_dict(cls, data: dict) -> "RequestGroup":
         return super().from_dict(data)
-    
+
     @classmethod
     def from_obj(self, obj: object) -> "RequestGroup":
         return super().from_obj(obj)
@@ -252,7 +227,7 @@ class Action(BaseModel):
 
 
 class RequestGroup(DomainResource):
-    """ A group of related requests that can be used to capture intended activities that have inter-dependencies such as "give this medication after that one".
+    """A group of related requests that can be used to capture intended activities that have inter-dependencies such as "give this medication after that one".
     :param str id: Logical id of this artifact
     :param Meta meta: Metadata about the resource
     :param str implicitRules: A set of rules under which this content was created
@@ -280,75 +255,63 @@ class RequestGroup(DomainResource):
     :param Annotation note: Additional notes about the response
     :param Action action: Proposed actions, if any
     """
+
     property_class_info = {
-        
-        
         "meta": {"class_name": "Meta", "is_contained": False},
-        
-        
-        
-        
         "text": {"class_name": "Narrative", "is_contained": False},
-        
-        
         "contained": {"class_name": "Resource", "is_contained": False},
-        
-        
         "extension": {"class_name": "Extension", "is_contained": False},
-        
-        
         "modifierExtension": {"class_name": "Extension", "is_contained": False},
-        
-        
         "identifier": {"class_name": "Identifier", "is_contained": False},
-        
-        
-        
-        
         "basedOn": {"class_name": "Reference", "is_contained": False},
-        
-        
         "replaces": {"class_name": "Reference", "is_contained": False},
-        
-        
         "groupIdentifier": {"class_name": "Identifier", "is_contained": False},
-        
-        
-        
-        
-        
         "code": {"class_name": "CodeableConcept", "is_contained": False},
-        
-        
         "subject": {"class_name": "Reference", "is_contained": False},
-        
-        
         "encounter": {"class_name": "Reference", "is_contained": False},
-        
-        
-        
         "author": {"class_name": "Reference", "is_contained": False},
-        
-        
         "reasonCode": {"class_name": "CodeableConcept", "is_contained": False},
-        
-        
         "reasonReference": {"class_name": "Reference", "is_contained": False},
-        
-        
         "note": {"class_name": "Annotation", "is_contained": False},
-        
-        
         "action": {"class_name": "Action", "is_contained": True},
-        
-        }
-    def __init__(self, resourceType: str = None,  id:  'str'  = None,  meta:  'Meta'  = None,  implicitRules:  'str'  = None,  language:  'str'  = None,  text:  'Narrative'  = None,  contained:  list['Resource']  = None,  extension:  list['Extension']  = None,  modifierExtension:  list['Extension']  = None,  identifier:  list['Identifier']  = None,  instantiatesCanonical:  list['str']  = None,  instantiatesUri:  list['str']  = None,  basedOn:  list['Reference']  = None,  replaces:  list['Reference']  = None,  groupIdentifier:  'Identifier'  = None,  status:  'str'  = None,  intent:  'str'  = None,  priority:  'str'  = None,  code:  'CodeableConcept'  = None,  subject:  'Reference'  = None,  encounter:  'Reference'  = None,  authoredOn:  'str'  = None,  author:  'Reference'  = None,  reasonCode:  list['CodeableConcept']  = None,  reasonReference:  list['Reference']  = None,  note:  list['Annotation']  = None,  action:  list['Action']  = None, ):
+    }
+
+    def __init__(
+        self,
+        resourceType: str = None,
+        id: "str" = None,
+        meta: "Meta" = None,
+        implicitRules: "str" = None,
+        language: "str" = None,
+        text: "Narrative" = None,
+        contained: list["Resource"] = None,
+        extension: list["Extension"] = None,
+        modifierExtension: list["Extension"] = None,
+        identifier: list["Identifier"] = None,
+        instantiatesCanonical: list["str"] = None,
+        instantiatesUri: list["str"] = None,
+        basedOn: list["Reference"] = None,
+        replaces: list["Reference"] = None,
+        groupIdentifier: "Identifier" = None,
+        status: "str" = None,
+        intent: "str" = None,
+        priority: "str" = None,
+        code: "CodeableConcept" = None,
+        subject: "Reference" = None,
+        encounter: "Reference" = None,
+        authoredOn: "str" = None,
+        author: "Reference" = None,
+        reasonCode: list["CodeableConcept"] = None,
+        reasonReference: list["Reference"] = None,
+        note: list["Annotation"] = None,
+        action: list["Action"] = None,
+    ):
         self.resourceType = resourceType or "RequestGroup"
-        self.id = id 
-        self.meta = meta 
-        self.implicitRules = implicitRules 
-        self.language = language 
-        self.text = text 
+        self.id = id
+        self.meta = meta
+        self.implicitRules = implicitRules
+        self.language = language
+        self.text = text
         self.contained = contained or []
         self.extension = extension or []
         self.modifierExtension = modifierExtension or []
@@ -357,25 +320,24 @@ class RequestGroup(DomainResource):
         self.instantiatesUri = instantiatesUri or []
         self.basedOn = basedOn or []
         self.replaces = replaces or []
-        self.groupIdentifier = groupIdentifier 
-        self.status = status 
-        self.intent = intent 
-        self.priority = priority 
-        self.code = code 
-        self.subject = subject 
-        self.encounter = encounter 
-        self.authoredOn = authoredOn 
-        self.author = author 
+        self.groupIdentifier = groupIdentifier
+        self.status = status
+        self.intent = intent
+        self.priority = priority
+        self.code = code
+        self.subject = subject
+        self.encounter = encounter
+        self.authoredOn = authoredOn
+        self.author = author
         self.reasonCode = reasonCode or []
         self.reasonReference = reasonReference or []
         self.note = note or []
         self.action = action or []
-        
 
     @classmethod
     def from_dict(cls, data: dict) -> "RequestGroup":
         return super().from_dict(data)
-    
+
     @classmethod
     def from_obj(self, obj: object) -> "RequestGroup":
         return super().from_obj(obj)

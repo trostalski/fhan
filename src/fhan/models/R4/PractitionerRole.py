@@ -15,11 +15,8 @@ from fhan.models.R4.Period import *
 from fhan.models.R4.DomainResource import *
 
 
-    
-    
-
 class AvailableTime(BaseModel):
-    """ A collection of times the practitioner is available or performing this role at the location and/or healthcareservice.:param str id: Unique id for inter-element referencing
+    """A collection of times the practitioner is available or performing this role at the location and/or healthcareservice.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str daysOfWeek: mon | tue | wed | thu | fri | sat | sun
@@ -27,33 +24,34 @@ class AvailableTime(BaseModel):
     :param str availableStartTime: Opening time of day (ignored if allDay = true)
     :param str availableEndTime: Closing time of day (ignored if allDay = true)
     """
+
     property_class_info = {
-        
-        
         "extension": {"class_name": "Extension", "is_contained": False},
-        
-        
         "modifierExtension": {"class_name": "Extension", "is_contained": False},
-        
-        
-        
-        
-        
-        }
-    def __init__(self,  id:  'str'  = None,  extension:  list['Extension']  = None,  modifierExtension:  list['Extension']  = None,  daysOfWeek:  list['str']  = None,  allDay:  'bool'  = None,  availableStartTime:  'str'  = None,  availableEndTime:  'str'  = None, ):
-        self.id = id 
+    }
+
+    def __init__(
+        self,
+        id: "str" = None,
+        extension: list["Extension"] = None,
+        modifierExtension: list["Extension"] = None,
+        daysOfWeek: list["str"] = None,
+        allDay: "bool" = None,
+        availableStartTime: "str" = None,
+        availableEndTime: "str" = None,
+    ):
+        self.id = id
         self.extension = extension or []
         self.modifierExtension = modifierExtension or []
         self.daysOfWeek = daysOfWeek or []
-        self.allDay = allDay 
-        self.availableStartTime = availableStartTime 
-        self.availableEndTime = availableEndTime 
-        
+        self.allDay = allDay
+        self.availableStartTime = availableStartTime
+        self.availableEndTime = availableEndTime
 
     @classmethod
     def from_dict(cls, data: dict) -> "PractitionerRole":
         return super().from_dict(data)
-    
+
     @classmethod
     def from_obj(self, obj: object) -> "PractitionerRole":
         return super().from_obj(obj)
@@ -62,41 +60,38 @@ class AvailableTime(BaseModel):
         return super().as_dict()
 
 
-    
-    
-
 class NotAvailable(BaseModel):
-    """ The practitioner is not available or performing this role during this period of time due to the provided reason.:param str id: Unique id for inter-element referencing
+    """The practitioner is not available or performing this role during this period of time due to the provided reason.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str description: Reason presented to the user explaining why time not available
     :param Period during: Service not available from this date
     """
+
     property_class_info = {
-        
-        
         "extension": {"class_name": "Extension", "is_contained": False},
-        
-        
         "modifierExtension": {"class_name": "Extension", "is_contained": False},
-        
-        
-        
         "during": {"class_name": "Period", "is_contained": False},
-        
-        }
-    def __init__(self,  id:  'str'  = None,  extension:  list['Extension']  = None,  modifierExtension:  list['Extension']  = None,  description:  'str'  = None,  during:  'Period'  = None, ):
-        self.id = id 
+    }
+
+    def __init__(
+        self,
+        id: "str" = None,
+        extension: list["Extension"] = None,
+        modifierExtension: list["Extension"] = None,
+        description: "str" = None,
+        during: "Period" = None,
+    ):
+        self.id = id
         self.extension = extension or []
         self.modifierExtension = modifierExtension or []
-        self.description = description 
-        self.during = during 
-        
+        self.description = description
+        self.during = during
 
     @classmethod
     def from_dict(cls, data: dict) -> "PractitionerRole":
         return super().from_dict(data)
-    
+
     @classmethod
     def from_obj(self, obj: object) -> "PractitionerRole":
         return super().from_obj(obj)
@@ -106,7 +101,7 @@ class NotAvailable(BaseModel):
 
 
 class PractitionerRole(DomainResource):
-    """ A specific set of Roles/Locations/specialties/services that a practitioner may perform at an organization for a period of time.
+    """A specific set of Roles/Locations/specialties/services that a practitioner may perform at an organization for a period of time.
     :param str id: Logical id of this artifact
     :param Meta meta: Metadata about the resource
     :param str implicitRules: A set of rules under which this content was created
@@ -130,79 +125,67 @@ class PractitionerRole(DomainResource):
     :param str availabilityExceptions: Description of availability exceptions
     :param Reference endpoint: Technical endpoints providing access to services operated for the practitioner with this role
     """
+
     property_class_info = {
-        
-        
         "meta": {"class_name": "Meta", "is_contained": False},
-        
-        
-        
-        
         "text": {"class_name": "Narrative", "is_contained": False},
-        
-        
         "contained": {"class_name": "Resource", "is_contained": False},
-        
-        
         "extension": {"class_name": "Extension", "is_contained": False},
-        
-        
         "modifierExtension": {"class_name": "Extension", "is_contained": False},
-        
-        
         "identifier": {"class_name": "Identifier", "is_contained": False},
-        
-        
-        
         "period": {"class_name": "Period", "is_contained": False},
-        
-        
         "practitioner": {"class_name": "Reference", "is_contained": False},
-        
-        
         "organization": {"class_name": "Reference", "is_contained": False},
-        
-        
         "code": {"class_name": "CodeableConcept", "is_contained": False},
-        
-        
         "specialty": {"class_name": "CodeableConcept", "is_contained": False},
-        
-        
         "location": {"class_name": "Reference", "is_contained": False},
-        
-        
         "healthcareService": {"class_name": "Reference", "is_contained": False},
-        
-        
         "telecom": {"class_name": "ContactPoint", "is_contained": False},
-        
-        
         "availableTime": {"class_name": "AvailableTime", "is_contained": True},
-        
-        
         "notAvailable": {"class_name": "NotAvailable", "is_contained": True},
-        
-        
-        
         "endpoint": {"class_name": "Reference", "is_contained": False},
-        
-        }
-    def __init__(self, resourceType: str = None,  id:  'str'  = None,  meta:  'Meta'  = None,  implicitRules:  'str'  = None,  language:  'str'  = None,  text:  'Narrative'  = None,  contained:  list['Resource']  = None,  extension:  list['Extension']  = None,  modifierExtension:  list['Extension']  = None,  identifier:  list['Identifier']  = None,  active:  'bool'  = None,  period:  'Period'  = None,  practitioner:  'Reference'  = None,  organization:  'Reference'  = None,  code:  list['CodeableConcept']  = None,  specialty:  list['CodeableConcept']  = None,  location:  list['Reference']  = None,  healthcareService:  list['Reference']  = None,  telecom:  list['ContactPoint']  = None,  availableTime:  list['AvailableTime']  = None,  notAvailable:  list['NotAvailable']  = None,  availabilityExceptions:  'str'  = None,  endpoint:  list['Reference']  = None, ):
+    }
+
+    def __init__(
+        self,
+        resourceType: str = None,
+        id: "str" = None,
+        meta: "Meta" = None,
+        implicitRules: "str" = None,
+        language: "str" = None,
+        text: "Narrative" = None,
+        contained: list["Resource"] = None,
+        extension: list["Extension"] = None,
+        modifierExtension: list["Extension"] = None,
+        identifier: list["Identifier"] = None,
+        active: "bool" = None,
+        period: "Period" = None,
+        practitioner: "Reference" = None,
+        organization: "Reference" = None,
+        code: list["CodeableConcept"] = None,
+        specialty: list["CodeableConcept"] = None,
+        location: list["Reference"] = None,
+        healthcareService: list["Reference"] = None,
+        telecom: list["ContactPoint"] = None,
+        availableTime: list["AvailableTime"] = None,
+        notAvailable: list["NotAvailable"] = None,
+        availabilityExceptions: "str" = None,
+        endpoint: list["Reference"] = None,
+    ):
         self.resourceType = resourceType or "PractitionerRole"
-        self.id = id 
-        self.meta = meta 
-        self.implicitRules = implicitRules 
-        self.language = language 
-        self.text = text 
+        self.id = id
+        self.meta = meta
+        self.implicitRules = implicitRules
+        self.language = language
+        self.text = text
         self.contained = contained or []
         self.extension = extension or []
         self.modifierExtension = modifierExtension or []
         self.identifier = identifier or []
-        self.active = active 
-        self.period = period 
-        self.practitioner = practitioner 
-        self.organization = organization 
+        self.active = active
+        self.period = period
+        self.practitioner = practitioner
+        self.organization = organization
         self.code = code or []
         self.specialty = specialty or []
         self.location = location or []
@@ -210,14 +193,13 @@ class PractitionerRole(DomainResource):
         self.telecom = telecom or []
         self.availableTime = availableTime or []
         self.notAvailable = notAvailable or []
-        self.availabilityExceptions = availabilityExceptions 
+        self.availabilityExceptions = availabilityExceptions
         self.endpoint = endpoint or []
-        
 
     @classmethod
     def from_dict(cls, data: dict) -> "PractitionerRole":
         return super().from_dict(data)
-    
+
     @classmethod
     def from_obj(self, obj: object) -> "PractitionerRole":
         return super().from_obj(obj)

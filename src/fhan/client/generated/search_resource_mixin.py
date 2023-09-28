@@ -1,10 +1,12 @@
 # generated at 2023-09-27 15:41:52.826922 from /Users/tillrostalski/Git/fhan/src/fhan/client/scripts/create_from_template.py
 from fhan.client.search_bundle import SearchBundle
 
+
 class SearchResourceMixin:
     """This mixin class provides the SearchHandler with methods for each
     resource type. The methods are syntactic sugar for the _search method.
     """
+
     def __init__(self):
         pass
 

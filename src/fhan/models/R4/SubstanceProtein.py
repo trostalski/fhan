@@ -13,11 +13,8 @@ from fhan.models.R4.Resource import *
 from fhan.models.R4.DomainResource import *
 
 
-    
-    
-
 class Subunit(BaseModel):
-    """ This subclause refers to the description of each subunit constituting the SubstanceProtein. A subunit is a linear sequence of amino acids linked through peptide bonds. The Subunit information shall be provided when the finished SubstanceProtein is a complex of multiple sequences; subunits are not used to delineate domains within a single sequence. Subunits are listed in order of decreasing length; sequences of the same length will be ordered by decreasing molecular weight; subunits that have identical sequences will be repeated multiple times.:param str id: Unique id for inter-element referencing
+    """This subclause refers to the description of each subunit constituting the SubstanceProtein. A subunit is a linear sequence of amino acids linked through peptide bonds. The Subunit information shall be provided when the finished SubstanceProtein is a complex of multiple sequences; subunits are not used to delineate domains within a single sequence. Subunits are listed in order of decreasing length; sequences of the same length will be ordered by decreasing molecular weight; subunits that have identical sequences will be repeated multiple times.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param int subunit: Index of primary sequences of amino acids linked through peptide bonds in order of decreasing length. Sequences of the same length will be ordered by molecular weight. Subunits that have identical sequences will be repeated and have sequential subscripts
@@ -29,47 +26,45 @@ class Subunit(BaseModel):
     :param Identifier cTerminalModificationId: Unique identifier for molecular fragment modification based on the ISO 11238 Substance ID
     :param str cTerminalModification: The modification at the C-terminal shall be specified
     """
+
     property_class_info = {
-        
-        
         "extension": {"class_name": "Extension", "is_contained": False},
-        
-        
         "modifierExtension": {"class_name": "Extension", "is_contained": False},
-        
-        
-        
-        
-        
         "sequenceAttachment": {"class_name": "Attachment", "is_contained": False},
-        
-        
         "nTerminalModificationId": {"class_name": "Identifier", "is_contained": False},
-        
-        
-        
         "cTerminalModificationId": {"class_name": "Identifier", "is_contained": False},
-        
-        
-        }
-    def __init__(self,  id:  'str'  = None,  extension:  list['Extension']  = None,  modifierExtension:  list['Extension']  = None,  subunit:  'int'  = None,  sequence:  'str'  = None,  length:  'int'  = None,  sequenceAttachment:  'Attachment'  = None,  nTerminalModificationId:  'Identifier'  = None,  nTerminalModification:  'str'  = None,  cTerminalModificationId:  'Identifier'  = None,  cTerminalModification:  'str'  = None, ):
-        self.id = id 
+    }
+
+    def __init__(
+        self,
+        id: "str" = None,
+        extension: list["Extension"] = None,
+        modifierExtension: list["Extension"] = None,
+        subunit: "int" = None,
+        sequence: "str" = None,
+        length: "int" = None,
+        sequenceAttachment: "Attachment" = None,
+        nTerminalModificationId: "Identifier" = None,
+        nTerminalModification: "str" = None,
+        cTerminalModificationId: "Identifier" = None,
+        cTerminalModification: "str" = None,
+    ):
+        self.id = id
         self.extension = extension or []
         self.modifierExtension = modifierExtension or []
-        self.subunit = subunit 
-        self.sequence = sequence 
-        self.length = length 
-        self.sequenceAttachment = sequenceAttachment 
-        self.nTerminalModificationId = nTerminalModificationId 
-        self.nTerminalModification = nTerminalModification 
-        self.cTerminalModificationId = cTerminalModificationId 
-        self.cTerminalModification = cTerminalModification 
-        
+        self.subunit = subunit
+        self.sequence = sequence
+        self.length = length
+        self.sequenceAttachment = sequenceAttachment
+        self.nTerminalModificationId = nTerminalModificationId
+        self.nTerminalModification = nTerminalModification
+        self.cTerminalModificationId = cTerminalModificationId
+        self.cTerminalModification = cTerminalModification
 
     @classmethod
     def from_dict(cls, data: dict) -> "SubstanceProtein":
         return super().from_dict(data)
-    
+
     @classmethod
     def from_obj(self, obj: object) -> "SubstanceProtein":
         return super().from_obj(obj)
@@ -79,7 +74,7 @@ class Subunit(BaseModel):
 
 
 class SubstanceProtein(DomainResource):
-    """ A SubstanceProtein is defined as a single unit of a linear amino acid sequence, or a combination of subunits that are either covalently linked or have a defined invariant stoichiometric relationship. This includes all synthetic, recombinant and purified SubstanceProteins of defined sequence, whether the use is therapeutic or prophylactic. This set of elements will be used to describe albumins, coagulation factors, cytokines, growth factors, peptide/SubstanceProtein hormones, enzymes, toxins, toxoids, recombinant vaccines, and immunomodulators.
+    """A SubstanceProtein is defined as a single unit of a linear amino acid sequence, or a combination of subunits that are either covalently linked or have a defined invariant stoichiometric relationship. This includes all synthetic, recombinant and purified SubstanceProteins of defined sequence, whether the use is therapeutic or prophylactic. This set of elements will be used to describe albumins, coagulation factors, cytokines, growth factors, peptide/SubstanceProtein hormones, enzymes, toxins, toxoids, recombinant vaccines, and immunomodulators.
     :param str id: Logical id of this artifact
     :param Meta meta: Metadata about the resource
     :param str implicitRules: A set of rules under which this content was created
@@ -93,54 +88,51 @@ class SubstanceProtein(DomainResource):
     :param str disulfideLinkage: The disulphide bond between two cysteine residues either on the same subunit or on two different subunits shall be described. The position of the disulfide bonds in the SubstanceProtein shall be listed in increasing order of subunit number and position within subunit followed by the abbreviation of the amino acids involved. The disulfide linkage positions shall actually contain the amino acid Cysteine at the respective positions
     :param Subunit subunit: This subclause refers to the description of each subunit constituting the SubstanceProtein. A subunit is a linear sequence of amino acids linked through peptide bonds. The Subunit information shall be provided when the finished SubstanceProtein is a complex of multiple sequences; subunits are not used to delineate domains within a single sequence. Subunits are listed in order of decreasing length; sequences of the same length will be ordered by decreasing molecular weight; subunits that have identical sequences will be repeated multiple times
     """
+
     property_class_info = {
-        
-        
         "meta": {"class_name": "Meta", "is_contained": False},
-        
-        
-        
-        
         "text": {"class_name": "Narrative", "is_contained": False},
-        
-        
         "contained": {"class_name": "Resource", "is_contained": False},
-        
-        
         "extension": {"class_name": "Extension", "is_contained": False},
-        
-        
         "modifierExtension": {"class_name": "Extension", "is_contained": False},
-        
-        
         "sequenceType": {"class_name": "CodeableConcept", "is_contained": False},
-        
-        
-        
-        
         "subunit": {"class_name": "Subunit", "is_contained": True},
-        
-        }
-    def __init__(self, resourceType: str = None,  id:  'str'  = None,  meta:  'Meta'  = None,  implicitRules:  'str'  = None,  language:  'str'  = None,  text:  'Narrative'  = None,  contained:  list['Resource']  = None,  extension:  list['Extension']  = None,  modifierExtension:  list['Extension']  = None,  sequenceType:  'CodeableConcept'  = None,  numberOfSubunits:  'int'  = None,  disulfideLinkage:  list['str']  = None,  subunit:  list['Subunit']  = None, ):
+    }
+
+    def __init__(
+        self,
+        resourceType: str = None,
+        id: "str" = None,
+        meta: "Meta" = None,
+        implicitRules: "str" = None,
+        language: "str" = None,
+        text: "Narrative" = None,
+        contained: list["Resource"] = None,
+        extension: list["Extension"] = None,
+        modifierExtension: list["Extension"] = None,
+        sequenceType: "CodeableConcept" = None,
+        numberOfSubunits: "int" = None,
+        disulfideLinkage: list["str"] = None,
+        subunit: list["Subunit"] = None,
+    ):
         self.resourceType = resourceType or "SubstanceProtein"
-        self.id = id 
-        self.meta = meta 
-        self.implicitRules = implicitRules 
-        self.language = language 
-        self.text = text 
+        self.id = id
+        self.meta = meta
+        self.implicitRules = implicitRules
+        self.language = language
+        self.text = text
         self.contained = contained or []
         self.extension = extension or []
         self.modifierExtension = modifierExtension or []
-        self.sequenceType = sequenceType 
-        self.numberOfSubunits = numberOfSubunits 
+        self.sequenceType = sequenceType
+        self.numberOfSubunits = numberOfSubunits
         self.disulfideLinkage = disulfideLinkage or []
         self.subunit = subunit or []
-        
 
     @classmethod
     def from_dict(cls, data: dict) -> "SubstanceProtein":
         return super().from_dict(data)
-    
+
     @classmethod
     def from_obj(self, obj: object) -> "SubstanceProtein":
         return super().from_obj(obj)

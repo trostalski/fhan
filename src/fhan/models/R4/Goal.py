@@ -18,11 +18,8 @@ from fhan.models.R4.Duration import *
 from fhan.models.R4.DomainResource import *
 
 
-    
-    
-
 class Target(BaseModel):
-    """ Indicates what should be done by when.:param str id: Unique id for inter-element referencing
+    """Indicates what should be done by when.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param CodeableConcept measure: The parameter whose value is being tracked
@@ -36,57 +33,55 @@ class Target(BaseModel):
     :param str dueDate: Reach goal on or before
     :param Duration dueDuration: Reach goal on or before
     """
+
     property_class_info = {
-        
-        
         "extension": {"class_name": "Extension", "is_contained": False},
-        
-        
         "modifierExtension": {"class_name": "Extension", "is_contained": False},
-        
-        
         "measure": {"class_name": "CodeableConcept", "is_contained": False},
-        
-        
         "detailQuantity": {"class_name": "Quantity", "is_contained": False},
-        
-        
         "detailRange": {"class_name": "Range", "is_contained": False},
-        
-        
-        "detailCodeableConcept": {"class_name": "CodeableConcept", "is_contained": False},
-        
-        
-        
-        
-        
+        "detailCodeableConcept": {
+            "class_name": "CodeableConcept",
+            "is_contained": False,
+        },
         "detailRatio": {"class_name": "Ratio", "is_contained": False},
-        
-        
-        
         "dueDuration": {"class_name": "Duration", "is_contained": False},
-        
-        }
-    def __init__(self,  id:  'str'  = None,  extension:  list['Extension']  = None,  modifierExtension:  list['Extension']  = None,  measure:  'CodeableConcept'  = None,  detailQuantity:  'Quantity'  = None,  detailRange:  'Range'  = None,  detailCodeableConcept:  'CodeableConcept'  = None,  detailString:  'str'  = None,  detailBoolean:  'bool'  = None,  detailInteger:  'int'  = None,  detailRatio:  'Ratio'  = None,  dueDate:  'str'  = None,  dueDuration:  'Duration'  = None, ):
-        self.id = id 
+    }
+
+    def __init__(
+        self,
+        id: "str" = None,
+        extension: list["Extension"] = None,
+        modifierExtension: list["Extension"] = None,
+        measure: "CodeableConcept" = None,
+        detailQuantity: "Quantity" = None,
+        detailRange: "Range" = None,
+        detailCodeableConcept: "CodeableConcept" = None,
+        detailString: "str" = None,
+        detailBoolean: "bool" = None,
+        detailInteger: "int" = None,
+        detailRatio: "Ratio" = None,
+        dueDate: "str" = None,
+        dueDuration: "Duration" = None,
+    ):
+        self.id = id
         self.extension = extension or []
         self.modifierExtension = modifierExtension or []
-        self.measure = measure 
-        self.detailQuantity = detailQuantity 
-        self.detailRange = detailRange 
-        self.detailCodeableConcept = detailCodeableConcept 
-        self.detailString = detailString 
-        self.detailBoolean = detailBoolean 
-        self.detailInteger = detailInteger 
-        self.detailRatio = detailRatio 
-        self.dueDate = dueDate 
-        self.dueDuration = dueDuration 
-        
+        self.measure = measure
+        self.detailQuantity = detailQuantity
+        self.detailRange = detailRange
+        self.detailCodeableConcept = detailCodeableConcept
+        self.detailString = detailString
+        self.detailBoolean = detailBoolean
+        self.detailInteger = detailInteger
+        self.detailRatio = detailRatio
+        self.dueDate = dueDate
+        self.dueDuration = dueDuration
 
     @classmethod
     def from_dict(cls, data: dict) -> "Goal":
         return super().from_dict(data)
-    
+
     @classmethod
     def from_obj(self, obj: object) -> "Goal":
         return super().from_obj(obj)
@@ -96,7 +91,7 @@ class Target(BaseModel):
 
 
 class Goal(DomainResource):
-    """ Describes the intended objective(s) for a patient, group or organization care, for example, weight loss, restoring an activity of daily living, obtaining herd immunity via immunization, meeting a process improvement objective, etc.
+    """Describes the intended objective(s) for a patient, group or organization care, for example, weight loss, restoring an activity of daily living, obtaining herd immunity via immunization, meeting a process improvement objective, etc.
     :param str id: Logical id of this artifact
     :param Meta meta: Metadata about the resource
     :param str implicitRules: A set of rules under which this content was created
@@ -123,102 +118,91 @@ class Goal(DomainResource):
     :param CodeableConcept outcomeCode: What result was achieved regarding the goal?
     :param Reference outcomeReference: Observation that resulted from goal
     """
+
     property_class_info = {
-        
-        
         "meta": {"class_name": "Meta", "is_contained": False},
-        
-        
-        
-        
         "text": {"class_name": "Narrative", "is_contained": False},
-        
-        
         "contained": {"class_name": "Resource", "is_contained": False},
-        
-        
         "extension": {"class_name": "Extension", "is_contained": False},
-        
-        
         "modifierExtension": {"class_name": "Extension", "is_contained": False},
-        
-        
         "identifier": {"class_name": "Identifier", "is_contained": False},
-        
-        
-        
         "achievementStatus": {"class_name": "CodeableConcept", "is_contained": False},
-        
-        
         "category": {"class_name": "CodeableConcept", "is_contained": False},
-        
-        
         "priority": {"class_name": "CodeableConcept", "is_contained": False},
-        
-        
         "description": {"class_name": "CodeableConcept", "is_contained": False},
-        
-        
         "subject": {"class_name": "Reference", "is_contained": False},
-        
-        
-        
-        "startCodeableConcept": {"class_name": "CodeableConcept", "is_contained": False},
-        
-        
+        "startCodeableConcept": {
+            "class_name": "CodeableConcept",
+            "is_contained": False,
+        },
         "target": {"class_name": "Target", "is_contained": True},
-        
-        
-        
-        
         "expressedBy": {"class_name": "Reference", "is_contained": False},
-        
-        
         "addresses": {"class_name": "Reference", "is_contained": False},
-        
-        
         "note": {"class_name": "Annotation", "is_contained": False},
-        
-        
         "outcomeCode": {"class_name": "CodeableConcept", "is_contained": False},
-        
-        
         "outcomeReference": {"class_name": "Reference", "is_contained": False},
-        
-        }
-    def __init__(self, resourceType: str = None,  id:  'str'  = None,  meta:  'Meta'  = None,  implicitRules:  'str'  = None,  language:  'str'  = None,  text:  'Narrative'  = None,  contained:  list['Resource']  = None,  extension:  list['Extension']  = None,  modifierExtension:  list['Extension']  = None,  identifier:  list['Identifier']  = None,  lifecycleStatus:  'str'  = None,  achievementStatus:  'CodeableConcept'  = None,  category:  list['CodeableConcept']  = None,  priority:  'CodeableConcept'  = None,  description:  'CodeableConcept'  = None,  subject:  'Reference'  = None,  startDate:  'str'  = None,  startCodeableConcept:  'CodeableConcept'  = None,  target:  list['Target']  = None,  statusDate:  'str'  = None,  statusReason:  'str'  = None,  expressedBy:  'Reference'  = None,  addresses:  list['Reference']  = None,  note:  list['Annotation']  = None,  outcomeCode:  list['CodeableConcept']  = None,  outcomeReference:  list['Reference']  = None, ):
+    }
+
+    def __init__(
+        self,
+        resourceType: str = None,
+        id: "str" = None,
+        meta: "Meta" = None,
+        implicitRules: "str" = None,
+        language: "str" = None,
+        text: "Narrative" = None,
+        contained: list["Resource"] = None,
+        extension: list["Extension"] = None,
+        modifierExtension: list["Extension"] = None,
+        identifier: list["Identifier"] = None,
+        lifecycleStatus: "str" = None,
+        achievementStatus: "CodeableConcept" = None,
+        category: list["CodeableConcept"] = None,
+        priority: "CodeableConcept" = None,
+        description: "CodeableConcept" = None,
+        subject: "Reference" = None,
+        startDate: "str" = None,
+        startCodeableConcept: "CodeableConcept" = None,
+        target: list["Target"] = None,
+        statusDate: "str" = None,
+        statusReason: "str" = None,
+        expressedBy: "Reference" = None,
+        addresses: list["Reference"] = None,
+        note: list["Annotation"] = None,
+        outcomeCode: list["CodeableConcept"] = None,
+        outcomeReference: list["Reference"] = None,
+    ):
         self.resourceType = resourceType or "Goal"
-        self.id = id 
-        self.meta = meta 
-        self.implicitRules = implicitRules 
-        self.language = language 
-        self.text = text 
+        self.id = id
+        self.meta = meta
+        self.implicitRules = implicitRules
+        self.language = language
+        self.text = text
         self.contained = contained or []
         self.extension = extension or []
         self.modifierExtension = modifierExtension or []
         self.identifier = identifier or []
-        self.lifecycleStatus = lifecycleStatus 
-        self.achievementStatus = achievementStatus 
+        self.lifecycleStatus = lifecycleStatus
+        self.achievementStatus = achievementStatus
         self.category = category or []
-        self.priority = priority 
-        self.description = description 
-        self.subject = subject 
-        self.startDate = startDate 
-        self.startCodeableConcept = startCodeableConcept 
+        self.priority = priority
+        self.description = description
+        self.subject = subject
+        self.startDate = startDate
+        self.startCodeableConcept = startCodeableConcept
         self.target = target or []
-        self.statusDate = statusDate 
-        self.statusReason = statusReason 
-        self.expressedBy = expressedBy 
+        self.statusDate = statusDate
+        self.statusReason = statusReason
+        self.expressedBy = expressedBy
         self.addresses = addresses or []
         self.note = note or []
         self.outcomeCode = outcomeCode or []
         self.outcomeReference = outcomeReference or []
-        
 
     @classmethod
     def from_dict(cls, data: dict) -> "Goal":
         return super().from_dict(data)
-    
+
     @classmethod
     def from_obj(self, obj: object) -> "Goal":
         return super().from_obj(obj)

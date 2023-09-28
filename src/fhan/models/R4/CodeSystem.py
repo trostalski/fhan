@@ -15,11 +15,8 @@ from fhan.models.R4.Resource import *
 from fhan.models.R4.DomainResource import *
 
 
-    
-    
-
 class Filter(BaseModel):
-    """ A filter that can be used in a value set compose statement when selecting concepts using a filter.:param str id: Unique id for inter-element referencing
+    """A filter that can be used in a value set compose statement when selecting concepts using a filter.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str code: Code that identifies the filter
@@ -27,33 +24,34 @@ class Filter(BaseModel):
     :param str operator: = | is-a | descendent-of | is-not-a | regex | in | not-in | generalizes | exists
     :param str value: What to use for the value
     """
+
     property_class_info = {
-        
-        
         "extension": {"class_name": "Extension", "is_contained": False},
-        
-        
         "modifierExtension": {"class_name": "Extension", "is_contained": False},
-        
-        
-        
-        
-        
-        }
-    def __init__(self,  id:  'str'  = None,  extension:  list['Extension']  = None,  modifierExtension:  list['Extension']  = None,  code:  'str'  = None,  description:  'str'  = None,  operator:  list['str']  = None,  value:  'str'  = None, ):
-        self.id = id 
+    }
+
+    def __init__(
+        self,
+        id: "str" = None,
+        extension: list["Extension"] = None,
+        modifierExtension: list["Extension"] = None,
+        code: "str" = None,
+        description: "str" = None,
+        operator: list["str"] = None,
+        value: "str" = None,
+    ):
+        self.id = id
         self.extension = extension or []
         self.modifierExtension = modifierExtension or []
-        self.code = code 
-        self.description = description 
+        self.code = code
+        self.description = description
         self.operator = operator or []
-        self.value = value 
-        
+        self.value = value
 
     @classmethod
     def from_dict(cls, data: dict) -> "CodeSystem":
         return super().from_dict(data)
-    
+
     @classmethod
     def from_obj(self, obj: object) -> "CodeSystem":
         return super().from_obj(obj)
@@ -62,11 +60,8 @@ class Filter(BaseModel):
         return super().as_dict()
 
 
-    
-    
-
 class Property(BaseModel):
-    """ A property defines an additional slot through which additional information can be provided about a concept.:param str id: Unique id for inter-element referencing
+    """A property defines an additional slot through which additional information can be provided about a concept.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str code: Identifies the property on the concepts, and when referred to in operations
@@ -74,33 +69,34 @@ class Property(BaseModel):
     :param str description: Why the property is defined, and/or what it conveys
     :param str type: code | Coding | string | integer | boolean | dateTime | decimal
     """
+
     property_class_info = {
-        
-        
         "extension": {"class_name": "Extension", "is_contained": False},
-        
-        
         "modifierExtension": {"class_name": "Extension", "is_contained": False},
-        
-        
-        
-        
-        
-        }
-    def __init__(self,  id:  'str'  = None,  extension:  list['Extension']  = None,  modifierExtension:  list['Extension']  = None,  code:  'str'  = None,  uri:  'str'  = None,  description:  'str'  = None,  type:  'str'  = None, ):
-        self.id = id 
+    }
+
+    def __init__(
+        self,
+        id: "str" = None,
+        extension: list["Extension"] = None,
+        modifierExtension: list["Extension"] = None,
+        code: "str" = None,
+        uri: "str" = None,
+        description: "str" = None,
+        type: "str" = None,
+    ):
+        self.id = id
         self.extension = extension or []
         self.modifierExtension = modifierExtension or []
-        self.code = code 
-        self.uri = uri 
-        self.description = description 
-        self.type = type 
-        
+        self.code = code
+        self.uri = uri
+        self.description = description
+        self.type = type
 
     @classmethod
     def from_dict(cls, data: dict) -> "CodeSystem":
         return super().from_dict(data)
-    
+
     @classmethod
     def from_obj(self, obj: object) -> "CodeSystem":
         return super().from_obj(obj)
@@ -109,46 +105,41 @@ class Property(BaseModel):
         return super().as_dict()
 
 
-    
-        
-    
-    
-
 class Designation(BaseModel):
-    """ Additional representations for the concept - other languages, aliases, specialized purposes, used for particular purposes, etc.:param str id: Unique id for inter-element referencing
+    """Additional representations for the concept - other languages, aliases, specialized purposes, used for particular purposes, etc.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str language: Human language of the designation
     :param Coding use: Details how this designation would be used
     :param str value: The text value for this designation
     """
+
     property_class_info = {
-        
-        
         "extension": {"class_name": "Extension", "is_contained": False},
-        
-        
         "modifierExtension": {"class_name": "Extension", "is_contained": False},
-        
-        
-        
         "use": {"class_name": "Coding", "is_contained": False},
-        
-        
-        }
-    def __init__(self,  id:  'str'  = None,  extension:  list['Extension']  = None,  modifierExtension:  list['Extension']  = None,  language:  'str'  = None,  use:  'Coding'  = None,  value:  'str'  = None, ):
-        self.id = id 
+    }
+
+    def __init__(
+        self,
+        id: "str" = None,
+        extension: list["Extension"] = None,
+        modifierExtension: list["Extension"] = None,
+        language: "str" = None,
+        use: "Coding" = None,
+        value: "str" = None,
+    ):
+        self.id = id
         self.extension = extension or []
         self.modifierExtension = modifierExtension or []
-        self.language = language 
-        self.use = use 
-        self.value = value 
-        
+        self.language = language
+        self.use = use
+        self.value = value
 
     @classmethod
     def from_dict(cls, data: dict) -> "CodeSystem":
         return super().from_dict(data)
-    
+
     @classmethod
     def from_obj(self, obj: object) -> "CodeSystem":
         return super().from_obj(obj)
@@ -157,11 +148,8 @@ class Designation(BaseModel):
         return super().as_dict()
 
 
-    
-    
-
 class Property(BaseModel):
-    """ A property value for this concept.:param str id: Unique id for inter-element referencing
+    """A property value for this concept.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str code: Reference to CodeSystem.property.code
@@ -173,43 +161,43 @@ class Property(BaseModel):
     :param str valueDateTime: Value of the property for this concept
     :param float valueDecimal: Value of the property for this concept
     """
+
     property_class_info = {
-        
-        
         "extension": {"class_name": "Extension", "is_contained": False},
-        
-        
         "modifierExtension": {"class_name": "Extension", "is_contained": False},
-        
-        
-        
-        
         "valueCoding": {"class_name": "Coding", "is_contained": False},
-        
-        
-        
-        
-        
-        
-        }
-    def __init__(self,  id:  'str'  = None,  extension:  list['Extension']  = None,  modifierExtension:  list['Extension']  = None,  code:  'str'  = None,  valueCode:  'str'  = None,  valueCoding:  'Coding'  = None,  valueString:  'str'  = None,  valueInteger:  'int'  = None,  valueBoolean:  'bool'  = None,  valueDateTime:  'str'  = None,  valueDecimal:  'float'  = None, ):
-        self.id = id 
+    }
+
+    def __init__(
+        self,
+        id: "str" = None,
+        extension: list["Extension"] = None,
+        modifierExtension: list["Extension"] = None,
+        code: "str" = None,
+        valueCode: "str" = None,
+        valueCoding: "Coding" = None,
+        valueString: "str" = None,
+        valueInteger: "int" = None,
+        valueBoolean: "bool" = None,
+        valueDateTime: "str" = None,
+        valueDecimal: "float" = None,
+    ):
+        self.id = id
         self.extension = extension or []
         self.modifierExtension = modifierExtension or []
-        self.code = code 
-        self.valueCode = valueCode 
-        self.valueCoding = valueCoding 
-        self.valueString = valueString 
-        self.valueInteger = valueInteger 
-        self.valueBoolean = valueBoolean 
-        self.valueDateTime = valueDateTime 
-        self.valueDecimal = valueDecimal 
-        
+        self.code = code
+        self.valueCode = valueCode
+        self.valueCoding = valueCoding
+        self.valueString = valueString
+        self.valueInteger = valueInteger
+        self.valueBoolean = valueBoolean
+        self.valueDateTime = valueDateTime
+        self.valueDecimal = valueDecimal
 
     @classmethod
     def from_dict(cls, data: dict) -> "CodeSystem":
         return super().from_dict(data)
-    
+
     @classmethod
     def from_obj(self, obj: object) -> "CodeSystem":
         return super().from_obj(obj)
@@ -218,12 +206,8 @@ class Property(BaseModel):
         return super().as_dict()
 
 
-  
-    
-    
-
 class Concept(BaseModel):
-    """ Concepts that are in the code system. The concept definitions are inherently hierarchical, but the definitions must be consulted to determine what the meanings of the hierarchical relationships are.:param str id: Unique id for inter-element referencing
+    """Concepts that are in the code system. The concept definitions are inherently hierarchical, but the definitions must be consulted to determine what the meanings of the hierarchical relationships are.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str code: Code that identifies concept
@@ -233,43 +217,41 @@ class Concept(BaseModel):
     :param Property property: Property value for the concept
     :param Concept concept: Child Concepts (is-a/contains/categorizes)
     """
+
     property_class_info = {
-        
-        
         "extension": {"class_name": "Extension", "is_contained": False},
-        
-        
         "modifierExtension": {"class_name": "Extension", "is_contained": False},
-        
-        
-        
-        
-        
         "designation": {"class_name": "Designation", "is_contained": True},
-        
-        
         "property": {"class_name": "Property", "is_contained": True},
-        
-        
         "concept": {"class_name": "Concept", "is_contained": True},
-        
-        }
-    def __init__(self,  id:  'str'  = None,  extension:  list['Extension']  = None,  modifierExtension:  list['Extension']  = None,  code:  'str'  = None,  display:  'str'  = None,  definition:  'str'  = None,  designation:  list['Designation']  = None,  property:  list['Property']  = None,  concept:  list['Concept']  = None, ):
-        self.id = id 
+    }
+
+    def __init__(
+        self,
+        id: "str" = None,
+        extension: list["Extension"] = None,
+        modifierExtension: list["Extension"] = None,
+        code: "str" = None,
+        display: "str" = None,
+        definition: "str" = None,
+        designation: list["Designation"] = None,
+        property: list["Property"] = None,
+        concept: list["Concept"] = None,
+    ):
+        self.id = id
         self.extension = extension or []
         self.modifierExtension = modifierExtension or []
-        self.code = code 
-        self.display = display 
-        self.definition = definition 
+        self.code = code
+        self.display = display
+        self.definition = definition
         self.designation = designation or []
         self.property = property or []
         self.concept = concept or []
-        
 
     @classmethod
     def from_dict(cls, data: dict) -> "CodeSystem":
         return super().from_dict(data)
-    
+
     @classmethod
     def from_obj(self, obj: object) -> "CodeSystem":
         return super().from_obj(obj)
@@ -279,7 +261,7 @@ class Concept(BaseModel):
 
 
 class CodeSystem(DomainResource):
-    """ The CodeSystem resource is used to declare the existence of and describe a code system or code system supplement and its key properties, and optionally define a part or all of its content.
+    """The CodeSystem resource is used to declare the existence of and describe a code system or code system supplement and its key properties, and optionally define a part or all of its content.
     :param str id: Logical id of this artifact
     :param Meta meta: Metadata about the resource
     :param str implicitRules: A set of rules under which this content was created
@@ -315,108 +297,100 @@ class CodeSystem(DomainResource):
     :param Property property: Additional information supplied about each concept
     :param Concept concept: Concepts in the code system
     """
+
     property_class_info = {
-        
-        
         "meta": {"class_name": "Meta", "is_contained": False},
-        
-        
-        
-        
         "text": {"class_name": "Narrative", "is_contained": False},
-        
-        
         "contained": {"class_name": "Resource", "is_contained": False},
-        
-        
         "extension": {"class_name": "Extension", "is_contained": False},
-        
-        
         "modifierExtension": {"class_name": "Extension", "is_contained": False},
-        
-        
-        
         "identifier": {"class_name": "Identifier", "is_contained": False},
-        
-        
-        
-        
-        
-        
-        
-        
-        
         "contact": {"class_name": "ContactDetail", "is_contained": False},
-        
-        
-        
         "useContext": {"class_name": "UsageContext", "is_contained": False},
-        
-        
         "jurisdiction": {"class_name": "CodeableConcept", "is_contained": False},
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
         "filter": {"class_name": "Filter", "is_contained": True},
-        
-        
         "property": {"class_name": "Property", "is_contained": True},
-        
-        
         "concept": {"class_name": "Concept", "is_contained": True},
-        
-        }
-    def __init__(self, resourceType: str = None,  id:  'str'  = None,  meta:  'Meta'  = None,  implicitRules:  'str'  = None,  language:  'str'  = None,  text:  'Narrative'  = None,  contained:  list['Resource']  = None,  extension:  list['Extension']  = None,  modifierExtension:  list['Extension']  = None,  url:  'str'  = None,  identifier:  list['Identifier']  = None,  version:  'str'  = None,  name:  'str'  = None,  title:  'str'  = None,  status:  'str'  = None,  experimental:  'bool'  = None,  date:  'str'  = None,  publisher:  'str'  = None,  contact:  list['ContactDetail']  = None,  description:  'str'  = None,  useContext:  list['UsageContext']  = None,  jurisdiction:  list['CodeableConcept']  = None,  purpose:  'str'  = None,  copyright:  'str'  = None,  caseSensitive:  'bool'  = None,  valueSet:  'str'  = None,  hierarchyMeaning:  'str'  = None,  compositional:  'bool'  = None,  versionNeeded:  'bool'  = None,  content:  'str'  = None,  supplements:  'str'  = None,  count:  'int'  = None,  filter:  list['Filter']  = None,  property:  list['Property']  = None,  concept:  list['Concept']  = None, ):
+    }
+
+    def __init__(
+        self,
+        resourceType: str = None,
+        id: "str" = None,
+        meta: "Meta" = None,
+        implicitRules: "str" = None,
+        language: "str" = None,
+        text: "Narrative" = None,
+        contained: list["Resource"] = None,
+        extension: list["Extension"] = None,
+        modifierExtension: list["Extension"] = None,
+        url: "str" = None,
+        identifier: list["Identifier"] = None,
+        version: "str" = None,
+        name: "str" = None,
+        title: "str" = None,
+        status: "str" = None,
+        experimental: "bool" = None,
+        date: "str" = None,
+        publisher: "str" = None,
+        contact: list["ContactDetail"] = None,
+        description: "str" = None,
+        useContext: list["UsageContext"] = None,
+        jurisdiction: list["CodeableConcept"] = None,
+        purpose: "str" = None,
+        copyright: "str" = None,
+        caseSensitive: "bool" = None,
+        valueSet: "str" = None,
+        hierarchyMeaning: "str" = None,
+        compositional: "bool" = None,
+        versionNeeded: "bool" = None,
+        content: "str" = None,
+        supplements: "str" = None,
+        count: "int" = None,
+        filter: list["Filter"] = None,
+        property: list["Property"] = None,
+        concept: list["Concept"] = None,
+    ):
         self.resourceType = resourceType or "CodeSystem"
-        self.id = id 
-        self.meta = meta 
-        self.implicitRules = implicitRules 
-        self.language = language 
-        self.text = text 
+        self.id = id
+        self.meta = meta
+        self.implicitRules = implicitRules
+        self.language = language
+        self.text = text
         self.contained = contained or []
         self.extension = extension or []
         self.modifierExtension = modifierExtension or []
-        self.url = url 
+        self.url = url
         self.identifier = identifier or []
-        self.version = version 
-        self.name = name 
-        self.title = title 
-        self.status = status 
-        self.experimental = experimental 
-        self.date = date 
-        self.publisher = publisher 
+        self.version = version
+        self.name = name
+        self.title = title
+        self.status = status
+        self.experimental = experimental
+        self.date = date
+        self.publisher = publisher
         self.contact = contact or []
-        self.description = description 
+        self.description = description
         self.useContext = useContext or []
         self.jurisdiction = jurisdiction or []
-        self.purpose = purpose 
-        self.copyright = copyright 
-        self.caseSensitive = caseSensitive 
-        self.valueSet = valueSet 
-        self.hierarchyMeaning = hierarchyMeaning 
-        self.compositional = compositional 
-        self.versionNeeded = versionNeeded 
-        self.content = content 
-        self.supplements = supplements 
-        self.count = count 
+        self.purpose = purpose
+        self.copyright = copyright
+        self.caseSensitive = caseSensitive
+        self.valueSet = valueSet
+        self.hierarchyMeaning = hierarchyMeaning
+        self.compositional = compositional
+        self.versionNeeded = versionNeeded
+        self.content = content
+        self.supplements = supplements
+        self.count = count
         self.filter = filter or []
         self.property = property or []
         self.concept = concept or []
-        
 
     @classmethod
     def from_dict(cls, data: dict) -> "CodeSystem":
         return super().from_dict(data)
-    
+
     @classmethod
     def from_obj(self, obj: object) -> "CodeSystem":
         return super().from_obj(obj)

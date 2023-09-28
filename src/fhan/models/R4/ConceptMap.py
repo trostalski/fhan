@@ -14,17 +14,8 @@ from fhan.models.R4.Resource import *
 from fhan.models.R4.DomainResource import *
 
 
-    
-        
-    
-        
-    
-        
-    
-    
-
 class DependsOn(BaseModel):
-    """ A set of additional dependencies for this mapping to hold. This mapping is only applicable if the specified element can be resolved, and it has the specified value.:param str id: Unique id for inter-element referencing
+    """A set of additional dependencies for this mapping to hold. This mapping is only applicable if the specified element can be resolved, and it has the specified value.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str property: Reference to property mapping depends on
@@ -32,33 +23,34 @@ class DependsOn(BaseModel):
     :param str value: Value of the referenced element
     :param str display: Display for the code (if value is a code)
     """
+
     property_class_info = {
-        
-        
         "extension": {"class_name": "Extension", "is_contained": False},
-        
-        
         "modifierExtension": {"class_name": "Extension", "is_contained": False},
-        
-        
-        
-        
-        
-        }
-    def __init__(self,  id:  'str'  = None,  extension:  list['Extension']  = None,  modifierExtension:  list['Extension']  = None,  property:  'str'  = None,  system:  'str'  = None,  value:  'str'  = None,  display:  'str'  = None, ):
-        self.id = id 
+    }
+
+    def __init__(
+        self,
+        id: "str" = None,
+        extension: list["Extension"] = None,
+        modifierExtension: list["Extension"] = None,
+        property: "str" = None,
+        system: "str" = None,
+        value: "str" = None,
+        display: "str" = None,
+    ):
+        self.id = id
         self.extension = extension or []
         self.modifierExtension = modifierExtension or []
-        self.property = property 
-        self.system = system 
-        self.value = value 
-        self.display = display 
-        
+        self.property = property
+        self.system = system
+        self.value = value
+        self.display = display
 
     @classmethod
     def from_dict(cls, data: dict) -> "ConceptMap":
         return super().from_dict(data)
-    
+
     @classmethod
     def from_obj(self, obj: object) -> "ConceptMap":
         return super().from_obj(obj)
@@ -67,12 +59,8 @@ class DependsOn(BaseModel):
         return super().as_dict()
 
 
-  
-    
-    
-
 class Target(BaseModel):
-    """ A concept from the target value set that this concept maps to.:param str id: Unique id for inter-element referencing
+    """A concept from the target value set that this concept maps to.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str code: Code that identifies the target element
@@ -82,41 +70,40 @@ class Target(BaseModel):
     :param DependsOn dependsOn: Other elements required for this mapping (from context)
     :param Product product: Other concepts that this mapping also produces
     """
+
     property_class_info = {
-        
-        
         "extension": {"class_name": "Extension", "is_contained": False},
-        
-        
         "modifierExtension": {"class_name": "Extension", "is_contained": False},
-        
-        
-        
-        
-        
-        
         "dependsOn": {"class_name": "DependsOn", "is_contained": True},
-        
-        
         "product": {"class_name": "Product", "is_contained": True},
-        
-        }
-    def __init__(self,  id:  'str'  = None,  extension:  list['Extension']  = None,  modifierExtension:  list['Extension']  = None,  code:  'str'  = None,  display:  'str'  = None,  equivalence:  'str'  = None,  comment:  'str'  = None,  dependsOn:  list['DependsOn']  = None,  product:  list['Product']  = None, ):
-        self.id = id 
+    }
+
+    def __init__(
+        self,
+        id: "str" = None,
+        extension: list["Extension"] = None,
+        modifierExtension: list["Extension"] = None,
+        code: "str" = None,
+        display: "str" = None,
+        equivalence: "str" = None,
+        comment: "str" = None,
+        dependsOn: list["DependsOn"] = None,
+        product: list["Product"] = None,
+    ):
+        self.id = id
         self.extension = extension or []
         self.modifierExtension = modifierExtension or []
-        self.code = code 
-        self.display = display 
-        self.equivalence = equivalence 
-        self.comment = comment 
+        self.code = code
+        self.display = display
+        self.equivalence = equivalence
+        self.comment = comment
         self.dependsOn = dependsOn or []
         self.product = product or []
-        
 
     @classmethod
     def from_dict(cls, data: dict) -> "ConceptMap":
         return super().from_dict(data)
-    
+
     @classmethod
     def from_obj(self, obj: object) -> "ConceptMap":
         return super().from_obj(obj)
@@ -125,45 +112,41 @@ class Target(BaseModel):
         return super().as_dict()
 
 
-  
-    
-    
-
 class Element(BaseModel):
-    """ Mappings for an individual concept in the source to one or more concepts in the target.:param str id: Unique id for inter-element referencing
+    """Mappings for an individual concept in the source to one or more concepts in the target.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str code: Identifies element being mapped
     :param str display: Display for the code
     :param Target target: Concept in target system for element
     """
+
     property_class_info = {
-        
-        
         "extension": {"class_name": "Extension", "is_contained": False},
-        
-        
         "modifierExtension": {"class_name": "Extension", "is_contained": False},
-        
-        
-        
-        
         "target": {"class_name": "Target", "is_contained": True},
-        
-        }
-    def __init__(self,  id:  'str'  = None,  extension:  list['Extension']  = None,  modifierExtension:  list['Extension']  = None,  code:  'str'  = None,  display:  'str'  = None,  target:  list['Target']  = None, ):
-        self.id = id 
+    }
+
+    def __init__(
+        self,
+        id: "str" = None,
+        extension: list["Extension"] = None,
+        modifierExtension: list["Extension"] = None,
+        code: "str" = None,
+        display: "str" = None,
+        target: list["Target"] = None,
+    ):
+        self.id = id
         self.extension = extension or []
         self.modifierExtension = modifierExtension or []
-        self.code = code 
-        self.display = display 
+        self.code = code
+        self.display = display
         self.target = target or []
-        
 
     @classmethod
     def from_dict(cls, data: dict) -> "ConceptMap":
         return super().from_dict(data)
-    
+
     @classmethod
     def from_obj(self, obj: object) -> "ConceptMap":
         return super().from_obj(obj)
@@ -172,11 +155,8 @@ class Element(BaseModel):
         return super().as_dict()
 
 
-    
-    
-
 class Unmapped(BaseModel):
-    """ What to do when there is no mapping for the source concept. "Unmapped" does not include codes that are unmatched, and the unmapped element is ignored in a code is specified to have equivalence = unmatched.:param str id: Unique id for inter-element referencing
+    """What to do when there is no mapping for the source concept. "Unmapped" does not include codes that are unmatched, and the unmapped element is ignored in a code is specified to have equivalence = unmatched.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str mode: provided | fixed | other-map
@@ -184,33 +164,34 @@ class Unmapped(BaseModel):
     :param str display: Display for the code
     :param str url: canonical reference to an additional ConceptMap to use for mapping if the source concept is unmapped
     """
+
     property_class_info = {
-        
-        
         "extension": {"class_name": "Extension", "is_contained": False},
-        
-        
         "modifierExtension": {"class_name": "Extension", "is_contained": False},
-        
-        
-        
-        
-        
-        }
-    def __init__(self,  id:  'str'  = None,  extension:  list['Extension']  = None,  modifierExtension:  list['Extension']  = None,  mode:  'str'  = None,  code:  'str'  = None,  display:  'str'  = None,  url:  'str'  = None, ):
-        self.id = id 
+    }
+
+    def __init__(
+        self,
+        id: "str" = None,
+        extension: list["Extension"] = None,
+        modifierExtension: list["Extension"] = None,
+        mode: "str" = None,
+        code: "str" = None,
+        display: "str" = None,
+        url: "str" = None,
+    ):
+        self.id = id
         self.extension = extension or []
         self.modifierExtension = modifierExtension or []
-        self.mode = mode 
-        self.code = code 
-        self.display = display 
-        self.url = url 
-        
+        self.mode = mode
+        self.code = code
+        self.display = display
+        self.url = url
 
     @classmethod
     def from_dict(cls, data: dict) -> "ConceptMap":
         return super().from_dict(data)
-    
+
     @classmethod
     def from_obj(self, obj: object) -> "ConceptMap":
         return super().from_obj(obj)
@@ -219,12 +200,8 @@ class Unmapped(BaseModel):
         return super().as_dict()
 
 
-  
-    
-    
-
 class Group(BaseModel):
-    """ A group of mappings that all have the same source and target system.:param str id: Unique id for inter-element referencing
+    """A group of mappings that all have the same source and target system.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str source: Source system where concepts to be mapped are defined
@@ -234,41 +211,40 @@ class Group(BaseModel):
     :param Element element: Mappings for a concept from the source set
     :param Unmapped unmapped: What to do when there is no mapping for the source concept
     """
+
     property_class_info = {
-        
-        
         "extension": {"class_name": "Extension", "is_contained": False},
-        
-        
         "modifierExtension": {"class_name": "Extension", "is_contained": False},
-        
-        
-        
-        
-        
-        
         "element": {"class_name": "Element", "is_contained": True},
-        
-        
         "unmapped": {"class_name": "Unmapped", "is_contained": True},
-        
-        }
-    def __init__(self,  id:  'str'  = None,  extension:  list['Extension']  = None,  modifierExtension:  list['Extension']  = None,  source:  'str'  = None,  sourceVersion:  'str'  = None,  target:  'str'  = None,  targetVersion:  'str'  = None,  element:  list['Element']  = None,  unmapped:  'Unmapped'  = None, ):
-        self.id = id 
+    }
+
+    def __init__(
+        self,
+        id: "str" = None,
+        extension: list["Extension"] = None,
+        modifierExtension: list["Extension"] = None,
+        source: "str" = None,
+        sourceVersion: "str" = None,
+        target: "str" = None,
+        targetVersion: "str" = None,
+        element: list["Element"] = None,
+        unmapped: "Unmapped" = None,
+    ):
+        self.id = id
         self.extension = extension or []
         self.modifierExtension = modifierExtension or []
-        self.source = source 
-        self.sourceVersion = sourceVersion 
-        self.target = target 
-        self.targetVersion = targetVersion 
+        self.source = source
+        self.sourceVersion = sourceVersion
+        self.target = target
+        self.targetVersion = targetVersion
         self.element = element or []
-        self.unmapped = unmapped 
-        
+        self.unmapped = unmapped
 
     @classmethod
     def from_dict(cls, data: dict) -> "ConceptMap":
         return super().from_dict(data)
-    
+
     @classmethod
     def from_obj(self, obj: object) -> "ConceptMap":
         return super().from_obj(obj)
@@ -278,7 +254,7 @@ class Group(BaseModel):
 
 
 class ConceptMap(DomainResource):
-    """ A statement of relationships from one set of concepts to one or more other concepts - either concepts in code systems, or data element/data element concepts, or classes in class models.
+    """A statement of relationships from one set of concepts to one or more other concepts - either concepts in code systems, or data element/data element concepts, or classes in class models.
     :param str id: Logical id of this artifact
     :param Meta meta: Metadata about the resource
     :param str implicitRules: A set of rules under which this content was created
@@ -308,92 +284,86 @@ class ConceptMap(DomainResource):
     :param str targetCanonical: The target value set which provides context for the mappings
     :param Group group: Same source and target systems
     """
+
     property_class_info = {
-        
-        
         "meta": {"class_name": "Meta", "is_contained": False},
-        
-        
-        
-        
         "text": {"class_name": "Narrative", "is_contained": False},
-        
-        
         "contained": {"class_name": "Resource", "is_contained": False},
-        
-        
         "extension": {"class_name": "Extension", "is_contained": False},
-        
-        
         "modifierExtension": {"class_name": "Extension", "is_contained": False},
-        
-        
-        
         "identifier": {"class_name": "Identifier", "is_contained": False},
-        
-        
-        
-        
-        
-        
-        
-        
-        
         "contact": {"class_name": "ContactDetail", "is_contained": False},
-        
-        
-        
         "useContext": {"class_name": "UsageContext", "is_contained": False},
-        
-        
         "jurisdiction": {"class_name": "CodeableConcept", "is_contained": False},
-        
-        
-        
-        
-        
-        
-        
-        
         "group": {"class_name": "Group", "is_contained": True},
-        
-        }
-    def __init__(self, resourceType: str = None,  id:  'str'  = None,  meta:  'Meta'  = None,  implicitRules:  'str'  = None,  language:  'str'  = None,  text:  'Narrative'  = None,  contained:  list['Resource']  = None,  extension:  list['Extension']  = None,  modifierExtension:  list['Extension']  = None,  url:  'str'  = None,  identifier:  'Identifier'  = None,  version:  'str'  = None,  name:  'str'  = None,  title:  'str'  = None,  status:  'str'  = None,  experimental:  'bool'  = None,  date:  'str'  = None,  publisher:  'str'  = None,  contact:  list['ContactDetail']  = None,  description:  'str'  = None,  useContext:  list['UsageContext']  = None,  jurisdiction:  list['CodeableConcept']  = None,  purpose:  'str'  = None,  copyright:  'str'  = None,  sourceUri:  'str'  = None,  sourceCanonical:  'str'  = None,  targetUri:  'str'  = None,  targetCanonical:  'str'  = None,  group:  list['Group']  = None, ):
+    }
+
+    def __init__(
+        self,
+        resourceType: str = None,
+        id: "str" = None,
+        meta: "Meta" = None,
+        implicitRules: "str" = None,
+        language: "str" = None,
+        text: "Narrative" = None,
+        contained: list["Resource"] = None,
+        extension: list["Extension"] = None,
+        modifierExtension: list["Extension"] = None,
+        url: "str" = None,
+        identifier: "Identifier" = None,
+        version: "str" = None,
+        name: "str" = None,
+        title: "str" = None,
+        status: "str" = None,
+        experimental: "bool" = None,
+        date: "str" = None,
+        publisher: "str" = None,
+        contact: list["ContactDetail"] = None,
+        description: "str" = None,
+        useContext: list["UsageContext"] = None,
+        jurisdiction: list["CodeableConcept"] = None,
+        purpose: "str" = None,
+        copyright: "str" = None,
+        sourceUri: "str" = None,
+        sourceCanonical: "str" = None,
+        targetUri: "str" = None,
+        targetCanonical: "str" = None,
+        group: list["Group"] = None,
+    ):
         self.resourceType = resourceType or "ConceptMap"
-        self.id = id 
-        self.meta = meta 
-        self.implicitRules = implicitRules 
-        self.language = language 
-        self.text = text 
+        self.id = id
+        self.meta = meta
+        self.implicitRules = implicitRules
+        self.language = language
+        self.text = text
         self.contained = contained or []
         self.extension = extension or []
         self.modifierExtension = modifierExtension or []
-        self.url = url 
-        self.identifier = identifier 
-        self.version = version 
-        self.name = name 
-        self.title = title 
-        self.status = status 
-        self.experimental = experimental 
-        self.date = date 
-        self.publisher = publisher 
+        self.url = url
+        self.identifier = identifier
+        self.version = version
+        self.name = name
+        self.title = title
+        self.status = status
+        self.experimental = experimental
+        self.date = date
+        self.publisher = publisher
         self.contact = contact or []
-        self.description = description 
+        self.description = description
         self.useContext = useContext or []
         self.jurisdiction = jurisdiction or []
-        self.purpose = purpose 
-        self.copyright = copyright 
-        self.sourceUri = sourceUri 
-        self.sourceCanonical = sourceCanonical 
-        self.targetUri = targetUri 
-        self.targetCanonical = targetCanonical 
+        self.purpose = purpose
+        self.copyright = copyright
+        self.sourceUri = sourceUri
+        self.sourceCanonical = sourceCanonical
+        self.targetUri = targetUri
+        self.targetCanonical = targetCanonical
         self.group = group or []
-        
 
     @classmethod
     def from_dict(cls, data: dict) -> "ConceptMap":
         return super().from_dict(data)
-    
+
     @classmethod
     def from_obj(self, obj: object) -> "ConceptMap":
         return super().from_obj(obj)

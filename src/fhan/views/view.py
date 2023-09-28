@@ -12,7 +12,6 @@ from fhan.views.view_definition import ViewDefinition, validate_view_definition
 logger = logging.getLogger(__name__)
 
 
-@dataclasses.dataclass
 class ViewResult:
     """Result from a view execution.
 
@@ -21,13 +20,21 @@ class ViewResult:
             from the view definition and the values are lists of values.
     """
 
-    table_dict: dict
+    def __init__(self, view_definition: ViewDefinition, table: dict[str, list[str]]):
+        self.view_definition = view_definition
+        self.table = table
 
     def to_dataframe(self):
         """
         Returns the view result as a pandas dataframe.
         """
-        return DataFrame(self.table_dict, columns=self.table_dict.keys())
+        return DataFrame(self.table, columns=self.table.keys())
+
+    def to_row_lists(self):
+        """
+        Returns the view result as a list of lists of rows.
+        """
+        return [dict(zip(self.table, t)) for t in zip(*self.table.values())]
 
 
 class View:
@@ -46,21 +53,29 @@ class View:
         self._constraint_fns = self._get_constraint_fns()
         self._select_aliases = self._get_select_aliases()
 
-        self._view_result = None
-
         if fhir_input:
             self._get_collection_from_input(fhir_input)
 
-    @property
-    def result(self):
-        return self._view_result
+    def execute(self) -> ViewResult:
+        """
+        Execute the view.
+        """
+        self._apply_constraints()  # filters the _resource_collection
+        select_result = self._apply_selects()  # returns a list of dicts
+        execution_result = {
+            alias: select_result[i] for i, alias in enumerate(self._select_aliases)
+        }  # returns a dict with the aliases as keys and lists of values as values
+        view_result = ViewResult(
+            view_definition=self._view_definition, table=execution_result
+        )
+        return view_result
 
     def __call__(self, fhir_input: dict) -> ViewResult:
         """
         Executes the view definition on fhir input.
         """
         self._resource_collection = self._get_collection_from_input(fhir_input)
-        view_result = self._execute()
+        view_result = self.execute()
         return view_result
 
     def _get_collection_from_input(self, fhir_input: dict):
@@ -83,20 +98,6 @@ class View:
             lambda x: x["resourceType"] == self._resource
         )
         return resource_collection
-
-    def _execute(self) -> ViewResult:
-        """
-        Execute the view.
-        """
-        self._apply_constraints()  # filters the _resource_collection
-        select_result = self._apply_selects()  # returns a list of dicts
-
-        execution_result = {
-            alias: select_result[i] for i, alias in enumerate(self._select_aliases)
-        }  # returns a dict with the aliases as keys and lists of values as values
-        view_result = ViewResult(table_dict=execution_result)
-        self._view_result = view_result
-        return view_result
 
     def _apply_constraints(self) -> None:
         """

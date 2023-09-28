@@ -24,6 +24,13 @@ class ViewResult:
         self.view_definition = view_definition
         self.table = table
 
+    @property
+    def columns(self):
+        """
+        Returns the columns of the view result.
+        """
+        return list(self.table.keys())
+
     def to_dataframe(self):
         """
         Returns the view result as a pandas dataframe.

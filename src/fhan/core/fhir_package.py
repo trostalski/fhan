@@ -21,7 +21,7 @@ class FhirPackageLoader:
         self,
         url: str = None,
         version: Literal["R4", "R4B", "R5"] = None,
-    ):
+    ) -> "FhirPackage":
         """Loads a FHIR package for a specified FHIR version."""
         if not url and not version:
             raise ValueError("Either version or url must be specified.")

@@ -131,14 +131,14 @@ def validate_view_definition(view_definition: ViewDefinition):
         errors.append("View definition must have a select.")
     if view_definition.where:
         for constraint in view_definition.where:
-            if "path" not in constraint:
+            if not constraint.path:
                 errors.append(
                     f"All where clauses must contain `path` fields. Got {constraint}."
                 )
-            if not isinstance(constraint["path"], str):
+            if not isinstance(constraint.path, str):
                 errors.append(
                     "The `path` field in a where clause must be strings."
-                    f' Got {constraint["path"]}.'
+                    f" Got {constraint.path}."
                 )
     if errors:
         raise Exception("\n".join(errors))

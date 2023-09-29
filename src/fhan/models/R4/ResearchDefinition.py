@@ -1,23 +1,23 @@
 """
 Generated class for ResearchDefinition. 
-Time: 2023-09-27 19:27:05
+Time: 2023-09-29 13:03:34
 """
-from fhan.models.R4.ContactDetail import *
+from fhan.models.R4.Extension import *
+from fhan.models.R4.RelatedArtifact import *
+from fhan.models.R4.Resource import *
 from fhan.models.R4.UsageContext import *
 from fhan.models.R4.CodeableConcept import *
-from fhan.models.R4.Extension import *
 from fhan.models.R4.Narrative import *
 from fhan.models.R4.Reference import *
+from fhan.models.R4.ContactDetail import *
 from fhan.models.R4.Meta import *
-from fhan.models.R4.RelatedArtifact import *
-from fhan.models.R4.Identifier import *
-from fhan.models.R4.Resource import *
 from fhan.models.R4.Period import *
+from fhan.models.R4.Identifier import *
 from fhan.models.R4.DomainResource import *
 
 
 class ResearchDefinition(DomainResource):
-    """The ResearchDefinition resource describes the conditional state (population and any exposures being compared within the population) and outcome (if specified) that the knowledge (evidence, assertion, recommendation) is about.
+    """ The ResearchDefinition resource describes the conditional state (population and any exposures being compared within the population) and outcome (if specified) that the knowledge (evidence, assertion, recommendation) is about.
     :param str id: Logical id of this artifact
     :param Meta meta: Metadata about the resource
     :param str implicitRules: A set of rules under which this content was created
@@ -62,115 +62,130 @@ class ResearchDefinition(DomainResource):
     :param Reference exposureAlternative: What alternative exposure state?
     :param Reference outcome: What outcome?
     """
-
+    # needed for complex properties where the element name is different from the class name
     property_class_info = {
+        
+        
         "meta": {"class_name": "Meta", "is_contained": False},
+        
+        
+        
+        
         "text": {"class_name": "Narrative", "is_contained": False},
+        
+        
         "contained": {"class_name": "Resource", "is_contained": False},
+        
+        
         "extension": {"class_name": "Extension", "is_contained": False},
+        
+        
         "modifierExtension": {"class_name": "Extension", "is_contained": False},
+        
+        
+        
         "identifier": {"class_name": "Identifier", "is_contained": False},
-        "subjectCodeableConcept": {
-            "class_name": "CodeableConcept",
-            "is_contained": False,
-        },
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        "subjectCodeableConcept": {"class_name": "CodeableConcept", "is_contained": False},
+        
+        
         "subjectReference": {"class_name": "Reference", "is_contained": False},
+        
+        
+        
+        
         "contact": {"class_name": "ContactDetail", "is_contained": False},
+        
+        
+        
+        
         "useContext": {"class_name": "UsageContext", "is_contained": False},
+        
+        
         "jurisdiction": {"class_name": "CodeableConcept", "is_contained": False},
+        
+        
+        
+        
+        
+        
+        
         "effectivePeriod": {"class_name": "Period", "is_contained": False},
+        
+        
         "topic": {"class_name": "CodeableConcept", "is_contained": False},
+        
+        
         "author": {"class_name": "ContactDetail", "is_contained": False},
+        
+        
         "editor": {"class_name": "ContactDetail", "is_contained": False},
+        
+        
         "reviewer": {"class_name": "ContactDetail", "is_contained": False},
+        
+        
         "endorser": {"class_name": "ContactDetail", "is_contained": False},
+        
+        
         "relatedArtifact": {"class_name": "RelatedArtifact", "is_contained": False},
+        
+        
+        
         "population": {"class_name": "Reference", "is_contained": False},
+        
+        
         "exposure": {"class_name": "Reference", "is_contained": False},
+        
+        
         "exposureAlternative": {"class_name": "Reference", "is_contained": False},
+        
+        
         "outcome": {"class_name": "Reference", "is_contained": False},
-    }
-
-    def __init__(
-        self,
-        resourceType: str = None,
-        id: "str" = None,
-        meta: "Meta" = None,
-        implicitRules: "str" = None,
-        language: "str" = None,
-        text: "Narrative" = None,
-        contained: list["Resource"] = None,
-        extension: list["Extension"] = None,
-        modifierExtension: list["Extension"] = None,
-        url: "str" = None,
-        identifier: list["Identifier"] = None,
-        version: "str" = None,
-        name: "str" = None,
-        title: "str" = None,
-        shortTitle: "str" = None,
-        subtitle: "str" = None,
-        status: "str" = None,
-        experimental: "bool" = None,
-        subjectCodeableConcept: "CodeableConcept" = None,
-        subjectReference: "Reference" = None,
-        date: "str" = None,
-        publisher: "str" = None,
-        contact: list["ContactDetail"] = None,
-        description: "str" = None,
-        comment: list["str"] = None,
-        useContext: list["UsageContext"] = None,
-        jurisdiction: list["CodeableConcept"] = None,
-        purpose: "str" = None,
-        usage: "str" = None,
-        copyright: "str" = None,
-        approvalDate: "str" = None,
-        lastReviewDate: "str" = None,
-        effectivePeriod: "Period" = None,
-        topic: list["CodeableConcept"] = None,
-        author: list["ContactDetail"] = None,
-        editor: list["ContactDetail"] = None,
-        reviewer: list["ContactDetail"] = None,
-        endorser: list["ContactDetail"] = None,
-        relatedArtifact: list["RelatedArtifact"] = None,
-        library: list["str"] = None,
-        population: "Reference" = None,
-        exposure: "Reference" = None,
-        exposureAlternative: "Reference" = None,
-        outcome: "Reference" = None,
-    ):
+        
+        }
+    def __init__(self, resourceType: str = None,  id:  'str'  = None,  meta:  'Meta'  = None,  implicitRules:  'str'  = None,  language:  'str'  = None,  text:  'Narrative'  = None,  contained:  list['Resource']  = None,  extension:  list['Extension']  = None,  modifierExtension:  list['Extension']  = None,  url:  'str'  = None,  identifier:  list['Identifier']  = None,  version:  'str'  = None,  name:  'str'  = None,  title:  'str'  = None,  shortTitle:  'str'  = None,  subtitle:  'str'  = None,  status:  'str'  = None,  experimental:  'bool'  = None,  subjectCodeableConcept:  'CodeableConcept'  = None,  subjectReference:  'Reference'  = None,  date:  'str'  = None,  publisher:  'str'  = None,  contact:  list['ContactDetail']  = None,  description:  'str'  = None,  comment:  list['str']  = None,  useContext:  list['UsageContext']  = None,  jurisdiction:  list['CodeableConcept']  = None,  purpose:  'str'  = None,  usage:  'str'  = None,  copyright:  'str'  = None,  approvalDate:  'str'  = None,  lastReviewDate:  'str'  = None,  effectivePeriod:  'Period'  = None,  topic:  list['CodeableConcept']  = None,  author:  list['ContactDetail']  = None,  editor:  list['ContactDetail']  = None,  reviewer:  list['ContactDetail']  = None,  endorser:  list['ContactDetail']  = None,  relatedArtifact:  list['RelatedArtifact']  = None,  library:  list['str']  = None,  population:  'Reference'  = None,  exposure:  'Reference'  = None,  exposureAlternative:  'Reference'  = None,  outcome:  'Reference'  = None, ):
         self.resourceType = resourceType or "ResearchDefinition"
-        self.id = id
-        self.meta = meta
-        self.implicitRules = implicitRules
-        self.language = language
-        self.text = text
+        self.id = id 
+        self.meta = meta 
+        self.implicitRules = implicitRules 
+        self.language = language 
+        self.text = text 
         self.contained = contained or []
         self.extension = extension or []
         self.modifierExtension = modifierExtension or []
-        self.url = url
+        self.url = url 
         self.identifier = identifier or []
-        self.version = version
-        self.name = name
-        self.title = title
-        self.shortTitle = shortTitle
-        self.subtitle = subtitle
-        self.status = status
-        self.experimental = experimental
-        self.subjectCodeableConcept = subjectCodeableConcept
-        self.subjectReference = subjectReference
-        self.date = date
-        self.publisher = publisher
+        self.version = version 
+        self.name = name 
+        self.title = title 
+        self.shortTitle = shortTitle 
+        self.subtitle = subtitle 
+        self.status = status 
+        self.experimental = experimental 
+        self.subjectCodeableConcept = subjectCodeableConcept 
+        self.subjectReference = subjectReference 
+        self.date = date 
+        self.publisher = publisher 
         self.contact = contact or []
-        self.description = description
+        self.description = description 
         self.comment = comment or []
         self.useContext = useContext or []
         self.jurisdiction = jurisdiction or []
-        self.purpose = purpose
-        self.usage = usage
-        self.copyright = copyright
-        self.approvalDate = approvalDate
-        self.lastReviewDate = lastReviewDate
-        self.effectivePeriod = effectivePeriod
+        self.purpose = purpose 
+        self.usage = usage 
+        self.copyright = copyright 
+        self.approvalDate = approvalDate 
+        self.lastReviewDate = lastReviewDate 
+        self.effectivePeriod = effectivePeriod 
         self.topic = topic or []
         self.author = author or []
         self.editor = editor or []
@@ -178,15 +193,16 @@ class ResearchDefinition(DomainResource):
         self.endorser = endorser or []
         self.relatedArtifact = relatedArtifact or []
         self.library = library or []
-        self.population = population
-        self.exposure = exposure
-        self.exposureAlternative = exposureAlternative
-        self.outcome = outcome
+        self.population = population 
+        self.exposure = exposure 
+        self.exposureAlternative = exposureAlternative 
+        self.outcome = outcome 
+        
 
     @classmethod
     def from_dict(cls, data: dict) -> "ResearchDefinition":
         return super().from_dict(data)
-
+    
     @classmethod
     def from_obj(self, obj: object) -> "ResearchDefinition":
         return super().from_obj(obj)

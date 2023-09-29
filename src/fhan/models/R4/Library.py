@@ -1,26 +1,26 @@
 """
 Generated class for Library. 
-Time: 2023-09-27 19:27:05
+Time: 2023-09-29 13:03:34
 """
-from fhan.models.R4.ContactDetail import *
-from fhan.models.R4.UsageContext import *
-from fhan.models.R4.ParameterDefinition import *
-from fhan.models.R4.DataRequirement import *
-from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Extension import *
-from fhan.models.R4.Narrative import *
-from fhan.models.R4.Attachment import *
-from fhan.models.R4.Reference import *
-from fhan.models.R4.Meta import *
 from fhan.models.R4.RelatedArtifact import *
-from fhan.models.R4.Identifier import *
 from fhan.models.R4.Resource import *
+from fhan.models.R4.UsageContext import *
+from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.DataRequirement import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Reference import *
+from fhan.models.R4.ParameterDefinition import *
+from fhan.models.R4.ContactDetail import *
+from fhan.models.R4.Attachment import *
+from fhan.models.R4.Meta import *
 from fhan.models.R4.Period import *
+from fhan.models.R4.Identifier import *
 from fhan.models.R4.DomainResource import *
 
 
 class Library(DomainResource):
-    """The Library resource is a general-purpose container for knowledge asset definitions. It can be used to describe and expose existing knowledge assets such as logic libraries and information model descriptions, as well as to describe a collection of knowledge assets.
+    """ The Library resource is a general-purpose container for knowledge asset definitions. It can be used to describe and expose existing knowledge assets such as logic libraries and information model descriptions, as well as to describe a collection of knowledge assets.
     :param str id: Logical id of this artifact
     :param Meta meta: Metadata about the resource
     :param str implicitRules: A set of rules under which this content was created
@@ -62,111 +62,126 @@ class Library(DomainResource):
     :param DataRequirement dataRequirement: What data is referenced by this library
     :param Attachment content: Contents of the library, either embedded or referenced
     """
-
+    # needed for complex properties where the element name is different from the class name
     property_class_info = {
+        
+        
         "meta": {"class_name": "Meta", "is_contained": False},
+        
+        
+        
+        
         "text": {"class_name": "Narrative", "is_contained": False},
+        
+        
         "contained": {"class_name": "Resource", "is_contained": False},
+        
+        
         "extension": {"class_name": "Extension", "is_contained": False},
+        
+        
         "modifierExtension": {"class_name": "Extension", "is_contained": False},
+        
+        
+        
         "identifier": {"class_name": "Identifier", "is_contained": False},
+        
+        
+        
+        
+        
+        
+        
+        
         "type": {"class_name": "CodeableConcept", "is_contained": False},
-        "subjectCodeableConcept": {
-            "class_name": "CodeableConcept",
-            "is_contained": False,
-        },
+        
+        
+        "subjectCodeableConcept": {"class_name": "CodeableConcept", "is_contained": False},
+        
+        
         "subjectReference": {"class_name": "Reference", "is_contained": False},
+        
+        
+        
+        
         "contact": {"class_name": "ContactDetail", "is_contained": False},
+        
+        
+        
         "useContext": {"class_name": "UsageContext", "is_contained": False},
+        
+        
         "jurisdiction": {"class_name": "CodeableConcept", "is_contained": False},
+        
+        
+        
+        
+        
+        
+        
         "effectivePeriod": {"class_name": "Period", "is_contained": False},
+        
+        
         "topic": {"class_name": "CodeableConcept", "is_contained": False},
+        
+        
         "author": {"class_name": "ContactDetail", "is_contained": False},
+        
+        
         "editor": {"class_name": "ContactDetail", "is_contained": False},
+        
+        
         "reviewer": {"class_name": "ContactDetail", "is_contained": False},
+        
+        
         "endorser": {"class_name": "ContactDetail", "is_contained": False},
+        
+        
         "relatedArtifact": {"class_name": "RelatedArtifact", "is_contained": False},
+        
+        
         "parameter": {"class_name": "ParameterDefinition", "is_contained": False},
+        
+        
         "dataRequirement": {"class_name": "DataRequirement", "is_contained": False},
+        
+        
         "content": {"class_name": "Attachment", "is_contained": False},
-    }
-
-    def __init__(
-        self,
-        resourceType: str = None,
-        id: "str" = None,
-        meta: "Meta" = None,
-        implicitRules: "str" = None,
-        language: "str" = None,
-        text: "Narrative" = None,
-        contained: list["Resource"] = None,
-        extension: list["Extension"] = None,
-        modifierExtension: list["Extension"] = None,
-        url: "str" = None,
-        identifier: list["Identifier"] = None,
-        version: "str" = None,
-        name: "str" = None,
-        title: "str" = None,
-        subtitle: "str" = None,
-        status: "str" = None,
-        experimental: "bool" = None,
-        type: "CodeableConcept" = None,
-        subjectCodeableConcept: "CodeableConcept" = None,
-        subjectReference: "Reference" = None,
-        date: "str" = None,
-        publisher: "str" = None,
-        contact: list["ContactDetail"] = None,
-        description: "str" = None,
-        useContext: list["UsageContext"] = None,
-        jurisdiction: list["CodeableConcept"] = None,
-        purpose: "str" = None,
-        usage: "str" = None,
-        copyright: "str" = None,
-        approvalDate: "str" = None,
-        lastReviewDate: "str" = None,
-        effectivePeriod: "Period" = None,
-        topic: list["CodeableConcept"] = None,
-        author: list["ContactDetail"] = None,
-        editor: list["ContactDetail"] = None,
-        reviewer: list["ContactDetail"] = None,
-        endorser: list["ContactDetail"] = None,
-        relatedArtifact: list["RelatedArtifact"] = None,
-        parameter: list["ParameterDefinition"] = None,
-        dataRequirement: list["DataRequirement"] = None,
-        content: list["Attachment"] = None,
-    ):
+        
+        }
+    def __init__(self, resourceType: str = None,  id:  'str'  = None,  meta:  'Meta'  = None,  implicitRules:  'str'  = None,  language:  'str'  = None,  text:  'Narrative'  = None,  contained:  list['Resource']  = None,  extension:  list['Extension']  = None,  modifierExtension:  list['Extension']  = None,  url:  'str'  = None,  identifier:  list['Identifier']  = None,  version:  'str'  = None,  name:  'str'  = None,  title:  'str'  = None,  subtitle:  'str'  = None,  status:  'str'  = None,  experimental:  'bool'  = None,  type:  'CodeableConcept'  = None,  subjectCodeableConcept:  'CodeableConcept'  = None,  subjectReference:  'Reference'  = None,  date:  'str'  = None,  publisher:  'str'  = None,  contact:  list['ContactDetail']  = None,  description:  'str'  = None,  useContext:  list['UsageContext']  = None,  jurisdiction:  list['CodeableConcept']  = None,  purpose:  'str'  = None,  usage:  'str'  = None,  copyright:  'str'  = None,  approvalDate:  'str'  = None,  lastReviewDate:  'str'  = None,  effectivePeriod:  'Period'  = None,  topic:  list['CodeableConcept']  = None,  author:  list['ContactDetail']  = None,  editor:  list['ContactDetail']  = None,  reviewer:  list['ContactDetail']  = None,  endorser:  list['ContactDetail']  = None,  relatedArtifact:  list['RelatedArtifact']  = None,  parameter:  list['ParameterDefinition']  = None,  dataRequirement:  list['DataRequirement']  = None,  content:  list['Attachment']  = None, ):
         self.resourceType = resourceType or "Library"
-        self.id = id
-        self.meta = meta
-        self.implicitRules = implicitRules
-        self.language = language
-        self.text = text
+        self.id = id 
+        self.meta = meta 
+        self.implicitRules = implicitRules 
+        self.language = language 
+        self.text = text 
         self.contained = contained or []
         self.extension = extension or []
         self.modifierExtension = modifierExtension or []
-        self.url = url
+        self.url = url 
         self.identifier = identifier or []
-        self.version = version
-        self.name = name
-        self.title = title
-        self.subtitle = subtitle
-        self.status = status
-        self.experimental = experimental
-        self.type = type
-        self.subjectCodeableConcept = subjectCodeableConcept
-        self.subjectReference = subjectReference
-        self.date = date
-        self.publisher = publisher
+        self.version = version 
+        self.name = name 
+        self.title = title 
+        self.subtitle = subtitle 
+        self.status = status 
+        self.experimental = experimental 
+        self.type = type 
+        self.subjectCodeableConcept = subjectCodeableConcept 
+        self.subjectReference = subjectReference 
+        self.date = date 
+        self.publisher = publisher 
         self.contact = contact or []
-        self.description = description
+        self.description = description 
         self.useContext = useContext or []
         self.jurisdiction = jurisdiction or []
-        self.purpose = purpose
-        self.usage = usage
-        self.copyright = copyright
-        self.approvalDate = approvalDate
-        self.lastReviewDate = lastReviewDate
-        self.effectivePeriod = effectivePeriod
+        self.purpose = purpose 
+        self.usage = usage 
+        self.copyright = copyright 
+        self.approvalDate = approvalDate 
+        self.lastReviewDate = lastReviewDate 
+        self.effectivePeriod = effectivePeriod 
         self.topic = topic or []
         self.author = author or []
         self.editor = editor or []
@@ -176,11 +191,12 @@ class Library(DomainResource):
         self.parameter = parameter or []
         self.dataRequirement = dataRequirement or []
         self.content = content or []
+        
 
     @classmethod
     def from_dict(cls, data: dict) -> "Library":
         return super().from_dict(data)
-
+    
     @classmethod
     def from_obj(self, obj: object) -> "Library":
         return super().from_obj(obj)

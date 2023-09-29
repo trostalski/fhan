@@ -1,6 +1,5 @@
 from typing import Any
 import logging
-import dataclasses
 
 from fhirpathpy import compile
 from pandas import DataFrame
@@ -140,8 +139,8 @@ class View:
         constraint_fns = []
         if not self._view_definition.where:
             return constraint_fns
-        for constraint in self._view_definition["where"]:
-            path = constraint["path"]
+        for constraint in self._view_definition.where:
+            path = constraint.path
             fn = compile(path)
             constraint_fns.append(fn)
         return constraint_fns

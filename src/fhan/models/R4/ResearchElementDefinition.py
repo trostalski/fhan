@@ -1,28 +1,31 @@
 """
 Generated class for ResearchElementDefinition. 
-Time: 2023-09-27 19:27:05
+Time: 2023-09-29 13:03:34
 """
-from fhan.models.R4.ContactDetail import *
-from fhan.models.R4.Duration import *
-from fhan.models.R4.Timing import *
-from fhan.models.R4.UsageContext import *
-from fhan.models.R4.DataRequirement import *
-from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Extension import *
+from fhan.models.R4.Duration import *
+from fhan.models.R4.RelatedArtifact import *
+from fhan.models.R4.Resource import *
+from fhan.models.R4.UsageContext import *
+from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Expression import *
+from fhan.models.R4.DataRequirement import *
 from fhan.models.R4.Narrative import *
 from fhan.models.R4.Reference import *
+from fhan.models.R4.ContactDetail import *
+from fhan.models.R4.Expression import *
 from fhan.models.R4.Meta import *
-from fhan.models.R4.RelatedArtifact import *
-from fhan.models.R4.Identifier import *
-from fhan.models.R4.Resource import *
 from fhan.models.R4.Period import *
+from fhan.models.R4.Timing import *
+from fhan.models.R4.Identifier import *
 from fhan.models.R4.DomainResource import *
 
 
+    
+    
+
 class Characteristic(BaseModel):
-    """A characteristic that defines the members of the research element. Multiple characteristics are applied with "and" semantics.:param str id: Unique id for inter-element referencing
+    """ A characteristic that defines the members of the research element. Multiple characteristics are applied with "and" semantics.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param CodeableConcept definitionCodeableConcept: What code or expression defines members?
@@ -47,96 +50,94 @@ class Characteristic(BaseModel):
     :param Duration participantEffectiveTimeFromStart: Observation time from study start
     :param str participantEffectiveGroupMeasure: mean | median | mean-of-mean | mean-of-median | median-of-mean | median-of-median
     """
-
+    # needed for complex properties where the element name is different from the class name
     property_class_info = {
+        
+        
         "extension": {"class_name": "Extension", "is_contained": False},
+        
+        
         "modifierExtension": {"class_name": "Extension", "is_contained": False},
-        "definitionCodeableConcept": {
-            "class_name": "CodeableConcept",
-            "is_contained": False,
-        },
+        
+        
+        "definitionCodeableConcept": {"class_name": "CodeableConcept", "is_contained": False},
+        
+        
+        
         "definitionExpression": {"class_name": "Expression", "is_contained": False},
-        "definitionDataRequirement": {
-            "class_name": "DataRequirement",
-            "is_contained": False,
-        },
+        
+        
+        "definitionDataRequirement": {"class_name": "DataRequirement", "is_contained": False},
+        
+        
         "usageContext": {"class_name": "UsageContext", "is_contained": False},
+        
+        
+        
         "unitOfMeasure": {"class_name": "CodeableConcept", "is_contained": False},
+        
+        
+        
+        
         "studyEffectivePeriod": {"class_name": "Period", "is_contained": False},
+        
+        
         "studyEffectiveDuration": {"class_name": "Duration", "is_contained": False},
+        
+        
         "studyEffectiveTiming": {"class_name": "Timing", "is_contained": False},
-        "studyEffectiveTimeFromStart": {
-            "class_name": "Duration",
-            "is_contained": False,
-        },
+        
+        
+        "studyEffectiveTimeFromStart": {"class_name": "Duration", "is_contained": False},
+        
+        
+        
+        
+        
         "participantEffectivePeriod": {"class_name": "Period", "is_contained": False},
-        "participantEffectiveDuration": {
-            "class_name": "Duration",
-            "is_contained": False,
-        },
+        
+        
+        "participantEffectiveDuration": {"class_name": "Duration", "is_contained": False},
+        
+        
         "participantEffectiveTiming": {"class_name": "Timing", "is_contained": False},
-        "participantEffectiveTimeFromStart": {
-            "class_name": "Duration",
-            "is_contained": False,
-        },
-    }
-
-    def __init__(
-        self,
-        id: "str" = None,
-        extension: list["Extension"] = None,
-        modifierExtension: list["Extension"] = None,
-        definitionCodeableConcept: "CodeableConcept" = None,
-        definitionCanonical: "str" = None,
-        definitionExpression: "Expression" = None,
-        definitionDataRequirement: "DataRequirement" = None,
-        usageContext: list["UsageContext"] = None,
-        exclude: "bool" = None,
-        unitOfMeasure: "CodeableConcept" = None,
-        studyEffectiveDescription: "str" = None,
-        studyEffectiveDateTime: "str" = None,
-        studyEffectivePeriod: "Period" = None,
-        studyEffectiveDuration: "Duration" = None,
-        studyEffectiveTiming: "Timing" = None,
-        studyEffectiveTimeFromStart: "Duration" = None,
-        studyEffectiveGroupMeasure: "str" = None,
-        participantEffectiveDescription: "str" = None,
-        participantEffectiveDateTime: "str" = None,
-        participantEffectivePeriod: "Period" = None,
-        participantEffectiveDuration: "Duration" = None,
-        participantEffectiveTiming: "Timing" = None,
-        participantEffectiveTimeFromStart: "Duration" = None,
-        participantEffectiveGroupMeasure: "str" = None,
-    ):
-        self.id = id
+        
+        
+        "participantEffectiveTimeFromStart": {"class_name": "Duration", "is_contained": False},
+        
+        
+        }
+    def __init__(self,  id:  'str'  = None,  extension:  list['Extension']  = None,  modifierExtension:  list['Extension']  = None,  definitionCodeableConcept:  'CodeableConcept'  = None,  definitionCanonical:  'str'  = None,  definitionExpression:  'Expression'  = None,  definitionDataRequirement:  'DataRequirement'  = None,  usageContext:  list['UsageContext']  = None,  exclude:  'bool'  = None,  unitOfMeasure:  'CodeableConcept'  = None,  studyEffectiveDescription:  'str'  = None,  studyEffectiveDateTime:  'str'  = None,  studyEffectivePeriod:  'Period'  = None,  studyEffectiveDuration:  'Duration'  = None,  studyEffectiveTiming:  'Timing'  = None,  studyEffectiveTimeFromStart:  'Duration'  = None,  studyEffectiveGroupMeasure:  'str'  = None,  participantEffectiveDescription:  'str'  = None,  participantEffectiveDateTime:  'str'  = None,  participantEffectivePeriod:  'Period'  = None,  participantEffectiveDuration:  'Duration'  = None,  participantEffectiveTiming:  'Timing'  = None,  participantEffectiveTimeFromStart:  'Duration'  = None,  participantEffectiveGroupMeasure:  'str'  = None, ):
+        self.id = id 
         self.extension = extension or []
         self.modifierExtension = modifierExtension or []
-        self.definitionCodeableConcept = definitionCodeableConcept
-        self.definitionCanonical = definitionCanonical
-        self.definitionExpression = definitionExpression
-        self.definitionDataRequirement = definitionDataRequirement
+        self.definitionCodeableConcept = definitionCodeableConcept 
+        self.definitionCanonical = definitionCanonical 
+        self.definitionExpression = definitionExpression 
+        self.definitionDataRequirement = definitionDataRequirement 
         self.usageContext = usageContext or []
-        self.exclude = exclude
-        self.unitOfMeasure = unitOfMeasure
-        self.studyEffectiveDescription = studyEffectiveDescription
-        self.studyEffectiveDateTime = studyEffectiveDateTime
-        self.studyEffectivePeriod = studyEffectivePeriod
-        self.studyEffectiveDuration = studyEffectiveDuration
-        self.studyEffectiveTiming = studyEffectiveTiming
-        self.studyEffectiveTimeFromStart = studyEffectiveTimeFromStart
-        self.studyEffectiveGroupMeasure = studyEffectiveGroupMeasure
-        self.participantEffectiveDescription = participantEffectiveDescription
-        self.participantEffectiveDateTime = participantEffectiveDateTime
-        self.participantEffectivePeriod = participantEffectivePeriod
-        self.participantEffectiveDuration = participantEffectiveDuration
-        self.participantEffectiveTiming = participantEffectiveTiming
-        self.participantEffectiveTimeFromStart = participantEffectiveTimeFromStart
-        self.participantEffectiveGroupMeasure = participantEffectiveGroupMeasure
+        self.exclude = exclude 
+        self.unitOfMeasure = unitOfMeasure 
+        self.studyEffectiveDescription = studyEffectiveDescription 
+        self.studyEffectiveDateTime = studyEffectiveDateTime 
+        self.studyEffectivePeriod = studyEffectivePeriod 
+        self.studyEffectiveDuration = studyEffectiveDuration 
+        self.studyEffectiveTiming = studyEffectiveTiming 
+        self.studyEffectiveTimeFromStart = studyEffectiveTimeFromStart 
+        self.studyEffectiveGroupMeasure = studyEffectiveGroupMeasure 
+        self.participantEffectiveDescription = participantEffectiveDescription 
+        self.participantEffectiveDateTime = participantEffectiveDateTime 
+        self.participantEffectivePeriod = participantEffectivePeriod 
+        self.participantEffectiveDuration = participantEffectiveDuration 
+        self.participantEffectiveTiming = participantEffectiveTiming 
+        self.participantEffectiveTimeFromStart = participantEffectiveTimeFromStart 
+        self.participantEffectiveGroupMeasure = participantEffectiveGroupMeasure 
+        
 
     @classmethod
     def from_dict(cls, data: dict) -> "ResearchElementDefinition":
         return super().from_dict(data)
-
+    
     @classmethod
     def from_obj(self, obj: object) -> "ResearchElementDefinition":
         return super().from_obj(obj)
@@ -146,7 +147,7 @@ class Characteristic(BaseModel):
 
 
 class ResearchElementDefinition(DomainResource):
-    """The ResearchElementDefinition resource describes a "PICO" element that knowledge (evidence, assertion, recommendation) is about.
+    """ The ResearchElementDefinition resource describes a "PICO" element that knowledge (evidence, assertion, recommendation) is about.
     :param str id: Logical id of this artifact
     :param Meta meta: Metadata about the resource
     :param str implicitRules: A set of rules under which this content was created
@@ -190,111 +191,123 @@ class ResearchElementDefinition(DomainResource):
     :param str variableType: dichotomous | continuous | descriptive
     :param Characteristic characteristic: What defines the members of the research element
     """
-
+    # needed for complex properties where the element name is different from the class name
     property_class_info = {
+        
+        
         "meta": {"class_name": "Meta", "is_contained": False},
+        
+        
+        
+        
         "text": {"class_name": "Narrative", "is_contained": False},
+        
+        
         "contained": {"class_name": "Resource", "is_contained": False},
+        
+        
         "extension": {"class_name": "Extension", "is_contained": False},
+        
+        
         "modifierExtension": {"class_name": "Extension", "is_contained": False},
+        
+        
+        
         "identifier": {"class_name": "Identifier", "is_contained": False},
-        "subjectCodeableConcept": {
-            "class_name": "CodeableConcept",
-            "is_contained": False,
-        },
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        "subjectCodeableConcept": {"class_name": "CodeableConcept", "is_contained": False},
+        
+        
         "subjectReference": {"class_name": "Reference", "is_contained": False},
+        
+        
+        
+        
         "contact": {"class_name": "ContactDetail", "is_contained": False},
+        
+        
+        
+        
         "useContext": {"class_name": "UsageContext", "is_contained": False},
+        
+        
         "jurisdiction": {"class_name": "CodeableConcept", "is_contained": False},
+        
+        
+        
+        
+        
+        
+        
         "effectivePeriod": {"class_name": "Period", "is_contained": False},
+        
+        
         "topic": {"class_name": "CodeableConcept", "is_contained": False},
+        
+        
         "author": {"class_name": "ContactDetail", "is_contained": False},
+        
+        
         "editor": {"class_name": "ContactDetail", "is_contained": False},
+        
+        
         "reviewer": {"class_name": "ContactDetail", "is_contained": False},
+        
+        
         "endorser": {"class_name": "ContactDetail", "is_contained": False},
+        
+        
         "relatedArtifact": {"class_name": "RelatedArtifact", "is_contained": False},
+        
+        
+        
+        
+        
         "characteristic": {"class_name": "Characteristic", "is_contained": True},
-    }
-
-    def __init__(
-        self,
-        resourceType: str = None,
-        id: "str" = None,
-        meta: "Meta" = None,
-        implicitRules: "str" = None,
-        language: "str" = None,
-        text: "Narrative" = None,
-        contained: list["Resource"] = None,
-        extension: list["Extension"] = None,
-        modifierExtension: list["Extension"] = None,
-        url: "str" = None,
-        identifier: list["Identifier"] = None,
-        version: "str" = None,
-        name: "str" = None,
-        title: "str" = None,
-        shortTitle: "str" = None,
-        subtitle: "str" = None,
-        status: "str" = None,
-        experimental: "bool" = None,
-        subjectCodeableConcept: "CodeableConcept" = None,
-        subjectReference: "Reference" = None,
-        date: "str" = None,
-        publisher: "str" = None,
-        contact: list["ContactDetail"] = None,
-        description: "str" = None,
-        comment: list["str"] = None,
-        useContext: list["UsageContext"] = None,
-        jurisdiction: list["CodeableConcept"] = None,
-        purpose: "str" = None,
-        usage: "str" = None,
-        copyright: "str" = None,
-        approvalDate: "str" = None,
-        lastReviewDate: "str" = None,
-        effectivePeriod: "Period" = None,
-        topic: list["CodeableConcept"] = None,
-        author: list["ContactDetail"] = None,
-        editor: list["ContactDetail"] = None,
-        reviewer: list["ContactDetail"] = None,
-        endorser: list["ContactDetail"] = None,
-        relatedArtifact: list["RelatedArtifact"] = None,
-        library: list["str"] = None,
-        type: "str" = None,
-        variableType: "str" = None,
-        characteristic: list["Characteristic"] = None,
-    ):
+        
+        }
+    def __init__(self, resourceType: str = None,  id:  'str'  = None,  meta:  'Meta'  = None,  implicitRules:  'str'  = None,  language:  'str'  = None,  text:  'Narrative'  = None,  contained:  list['Resource']  = None,  extension:  list['Extension']  = None,  modifierExtension:  list['Extension']  = None,  url:  'str'  = None,  identifier:  list['Identifier']  = None,  version:  'str'  = None,  name:  'str'  = None,  title:  'str'  = None,  shortTitle:  'str'  = None,  subtitle:  'str'  = None,  status:  'str'  = None,  experimental:  'bool'  = None,  subjectCodeableConcept:  'CodeableConcept'  = None,  subjectReference:  'Reference'  = None,  date:  'str'  = None,  publisher:  'str'  = None,  contact:  list['ContactDetail']  = None,  description:  'str'  = None,  comment:  list['str']  = None,  useContext:  list['UsageContext']  = None,  jurisdiction:  list['CodeableConcept']  = None,  purpose:  'str'  = None,  usage:  'str'  = None,  copyright:  'str'  = None,  approvalDate:  'str'  = None,  lastReviewDate:  'str'  = None,  effectivePeriod:  'Period'  = None,  topic:  list['CodeableConcept']  = None,  author:  list['ContactDetail']  = None,  editor:  list['ContactDetail']  = None,  reviewer:  list['ContactDetail']  = None,  endorser:  list['ContactDetail']  = None,  relatedArtifact:  list['RelatedArtifact']  = None,  library:  list['str']  = None,  type:  'str'  = None,  variableType:  'str'  = None,  characteristic:  list['Characteristic']  = None, ):
         self.resourceType = resourceType or "ResearchElementDefinition"
-        self.id = id
-        self.meta = meta
-        self.implicitRules = implicitRules
-        self.language = language
-        self.text = text
+        self.id = id 
+        self.meta = meta 
+        self.implicitRules = implicitRules 
+        self.language = language 
+        self.text = text 
         self.contained = contained or []
         self.extension = extension or []
         self.modifierExtension = modifierExtension or []
-        self.url = url
+        self.url = url 
         self.identifier = identifier or []
-        self.version = version
-        self.name = name
-        self.title = title
-        self.shortTitle = shortTitle
-        self.subtitle = subtitle
-        self.status = status
-        self.experimental = experimental
-        self.subjectCodeableConcept = subjectCodeableConcept
-        self.subjectReference = subjectReference
-        self.date = date
-        self.publisher = publisher
+        self.version = version 
+        self.name = name 
+        self.title = title 
+        self.shortTitle = shortTitle 
+        self.subtitle = subtitle 
+        self.status = status 
+        self.experimental = experimental 
+        self.subjectCodeableConcept = subjectCodeableConcept 
+        self.subjectReference = subjectReference 
+        self.date = date 
+        self.publisher = publisher 
         self.contact = contact or []
-        self.description = description
+        self.description = description 
         self.comment = comment or []
         self.useContext = useContext or []
         self.jurisdiction = jurisdiction or []
-        self.purpose = purpose
-        self.usage = usage
-        self.copyright = copyright
-        self.approvalDate = approvalDate
-        self.lastReviewDate = lastReviewDate
-        self.effectivePeriod = effectivePeriod
+        self.purpose = purpose 
+        self.usage = usage 
+        self.copyright = copyright 
+        self.approvalDate = approvalDate 
+        self.lastReviewDate = lastReviewDate 
+        self.effectivePeriod = effectivePeriod 
         self.topic = topic or []
         self.author = author or []
         self.editor = editor or []
@@ -302,14 +315,15 @@ class ResearchElementDefinition(DomainResource):
         self.endorser = endorser or []
         self.relatedArtifact = relatedArtifact or []
         self.library = library or []
-        self.type = type
-        self.variableType = variableType
+        self.type = type 
+        self.variableType = variableType 
         self.characteristic = characteristic or []
+        
 
     @classmethod
     def from_dict(cls, data: dict) -> "ResearchElementDefinition":
         return super().from_dict(data)
-
+    
     @classmethod
     def from_obj(self, obj: object) -> "ResearchElementDefinition":
         return super().from_obj(obj)

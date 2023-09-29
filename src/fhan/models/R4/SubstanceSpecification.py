@@ -1,24 +1,27 @@
 """
 Generated class for SubstanceSpecification. 
-Time: 2023-09-27 19:27:05
+Time: 2023-09-29 13:03:34
 """
-from fhan.models.R4.Attachment import *
-from fhan.models.R4.Ratio import *
-from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Extension import *
-from fhan.models.R4.BackboneElement import *
-from fhan.models.R4.Range import *
-from fhan.models.R4.Narrative import *
 from fhan.models.R4.Quantity import *
-from fhan.models.R4.Reference import *
-from fhan.models.R4.Meta import *
-from fhan.models.R4.Identifier import *
 from fhan.models.R4.Resource import *
+from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Range import *
+from fhan.models.R4.Ratio import *
+from fhan.models.R4.Narrative import *
+from fhan.models.R4.Reference import *
+from fhan.models.R4.Attachment import *
+from fhan.models.R4.Meta import *
+from fhan.models.R4.BackboneElement import *
+from fhan.models.R4.Identifier import *
 from fhan.models.R4.DomainResource import *
 
 
+    
+    
+
 class Moiety(BaseModel):
-    """Moiety, for structural modifications.:param str id: Unique id for inter-element referencing
+    """ Moiety, for structural modifications.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param CodeableConcept role: Role that the moiety is playing
@@ -30,47 +33,52 @@ class Moiety(BaseModel):
     :param Quantity amountQuantity: Quantitative value for this moiety
     :param str amountString: Quantitative value for this moiety
     """
-
+    # needed for complex properties where the element name is different from the class name
     property_class_info = {
+        
+        
         "extension": {"class_name": "Extension", "is_contained": False},
+        
+        
         "modifierExtension": {"class_name": "Extension", "is_contained": False},
+        
+        
         "role": {"class_name": "CodeableConcept", "is_contained": False},
+        
+        
         "identifier": {"class_name": "Identifier", "is_contained": False},
+        
+        
+        
         "stereochemistry": {"class_name": "CodeableConcept", "is_contained": False},
+        
+        
         "opticalActivity": {"class_name": "CodeableConcept", "is_contained": False},
+        
+        
+        
         "amountQuantity": {"class_name": "Quantity", "is_contained": False},
-    }
-
-    def __init__(
-        self,
-        id: "str" = None,
-        extension: list["Extension"] = None,
-        modifierExtension: list["Extension"] = None,
-        role: "CodeableConcept" = None,
-        identifier: "Identifier" = None,
-        name: "str" = None,
-        stereochemistry: "CodeableConcept" = None,
-        opticalActivity: "CodeableConcept" = None,
-        molecularFormula: "str" = None,
-        amountQuantity: "Quantity" = None,
-        amountString: "str" = None,
-    ):
-        self.id = id
+        
+        
+        }
+    def __init__(self,  id:  'str'  = None,  extension:  list['Extension']  = None,  modifierExtension:  list['Extension']  = None,  role:  'CodeableConcept'  = None,  identifier:  'Identifier'  = None,  name:  'str'  = None,  stereochemistry:  'CodeableConcept'  = None,  opticalActivity:  'CodeableConcept'  = None,  molecularFormula:  'str'  = None,  amountQuantity:  'Quantity'  = None,  amountString:  'str'  = None, ):
+        self.id = id 
         self.extension = extension or []
         self.modifierExtension = modifierExtension or []
-        self.role = role
-        self.identifier = identifier
-        self.name = name
-        self.stereochemistry = stereochemistry
-        self.opticalActivity = opticalActivity
-        self.molecularFormula = molecularFormula
-        self.amountQuantity = amountQuantity
-        self.amountString = amountString
+        self.role = role 
+        self.identifier = identifier 
+        self.name = name 
+        self.stereochemistry = stereochemistry 
+        self.opticalActivity = opticalActivity 
+        self.molecularFormula = molecularFormula 
+        self.amountQuantity = amountQuantity 
+        self.amountString = amountString 
+        
 
     @classmethod
     def from_dict(cls, data: dict) -> "SubstanceSpecification":
         return super().from_dict(data)
-
+    
     @classmethod
     def from_obj(self, obj: object) -> "SubstanceSpecification":
         return super().from_obj(obj)
@@ -79,8 +87,11 @@ class Moiety(BaseModel):
         return super().as_dict()
 
 
+    
+    
+
 class Property(BaseModel):
-    """General specifications for this substance, including how it is related to other substances.:param str id: Unique id for inter-element referencing
+    """ General specifications for this substance, including how it is related to other substances.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param CodeableConcept category: A category for this property, e.g. Physical, Chemical, Enzymatic
@@ -91,51 +102,50 @@ class Property(BaseModel):
     :param Quantity amountQuantity: Quantitative value for this property
     :param str amountString: Quantitative value for this property
     """
-
+    # needed for complex properties where the element name is different from the class name
     property_class_info = {
+        
+        
         "extension": {"class_name": "Extension", "is_contained": False},
+        
+        
         "modifierExtension": {"class_name": "Extension", "is_contained": False},
+        
+        
         "category": {"class_name": "CodeableConcept", "is_contained": False},
+        
+        
         "code": {"class_name": "CodeableConcept", "is_contained": False},
-        "definingSubstanceReference": {
-            "class_name": "Reference",
-            "is_contained": False,
-        },
-        "definingSubstanceCodeableConcept": {
-            "class_name": "CodeableConcept",
-            "is_contained": False,
-        },
+        
+        
+        
+        "definingSubstanceReference": {"class_name": "Reference", "is_contained": False},
+        
+        
+        "definingSubstanceCodeableConcept": {"class_name": "CodeableConcept", "is_contained": False},
+        
+        
         "amountQuantity": {"class_name": "Quantity", "is_contained": False},
-    }
-
-    def __init__(
-        self,
-        id: "str" = None,
-        extension: list["Extension"] = None,
-        modifierExtension: list["Extension"] = None,
-        category: "CodeableConcept" = None,
-        code: "CodeableConcept" = None,
-        parameters: "str" = None,
-        definingSubstanceReference: "Reference" = None,
-        definingSubstanceCodeableConcept: "CodeableConcept" = None,
-        amountQuantity: "Quantity" = None,
-        amountString: "str" = None,
-    ):
-        self.id = id
+        
+        
+        }
+    def __init__(self,  id:  'str'  = None,  extension:  list['Extension']  = None,  modifierExtension:  list['Extension']  = None,  category:  'CodeableConcept'  = None,  code:  'CodeableConcept'  = None,  parameters:  'str'  = None,  definingSubstanceReference:  'Reference'  = None,  definingSubstanceCodeableConcept:  'CodeableConcept'  = None,  amountQuantity:  'Quantity'  = None,  amountString:  'str'  = None, ):
+        self.id = id 
         self.extension = extension or []
         self.modifierExtension = modifierExtension or []
-        self.category = category
-        self.code = code
-        self.parameters = parameters
-        self.definingSubstanceReference = definingSubstanceReference
-        self.definingSubstanceCodeableConcept = definingSubstanceCodeableConcept
-        self.amountQuantity = amountQuantity
-        self.amountString = amountString
+        self.category = category 
+        self.code = code 
+        self.parameters = parameters 
+        self.definingSubstanceReference = definingSubstanceReference 
+        self.definingSubstanceCodeableConcept = definingSubstanceCodeableConcept 
+        self.amountQuantity = amountQuantity 
+        self.amountString = amountString 
+        
 
     @classmethod
     def from_dict(cls, data: dict) -> "SubstanceSpecification":
         return super().from_dict(data)
-
+    
     @classmethod
     def from_obj(self, obj: object) -> "SubstanceSpecification":
         return super().from_obj(obj)
@@ -144,43 +154,53 @@ class Property(BaseModel):
         return super().as_dict()
 
 
+    
+        
+    
+        
+    
+    
+
 class MolecularWeight(BaseModel):
-    """The molecular weight or weight range (for proteins, polymers or nucleic acids).:param str id: Unique id for inter-element referencing
+    """ The molecular weight or weight range (for proteins, polymers or nucleic acids).:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param CodeableConcept method: The method by which the molecular weight was determined
     :param CodeableConcept type: Type of molecular weight such as exact, average (also known as. number average), weight average
     :param Quantity amount: Used to capture quantitative values for a variety of elements. If only limits are given, the arithmetic mean would be the average. If only a single definite value for a given element is given, it would be captured in this field
     """
-
+    # needed for complex properties where the element name is different from the class name
     property_class_info = {
+        
+        
         "extension": {"class_name": "Extension", "is_contained": False},
+        
+        
         "modifierExtension": {"class_name": "Extension", "is_contained": False},
+        
+        
         "method": {"class_name": "CodeableConcept", "is_contained": False},
+        
+        
         "type": {"class_name": "CodeableConcept", "is_contained": False},
+        
+        
         "amount": {"class_name": "Quantity", "is_contained": False},
-    }
-
-    def __init__(
-        self,
-        id: "str" = None,
-        extension: list["Extension"] = None,
-        modifierExtension: list["Extension"] = None,
-        method: "CodeableConcept" = None,
-        type: "CodeableConcept" = None,
-        amount: "Quantity" = None,
-    ):
-        self.id = id
+        
+        }
+    def __init__(self,  id:  'str'  = None,  extension:  list['Extension']  = None,  modifierExtension:  list['Extension']  = None,  method:  'CodeableConcept'  = None,  type:  'CodeableConcept'  = None,  amount:  'Quantity'  = None, ):
+        self.id = id 
         self.extension = extension or []
         self.modifierExtension = modifierExtension or []
-        self.method = method
-        self.type = type
-        self.amount = amount
+        self.method = method 
+        self.type = type 
+        self.amount = amount 
+        
 
     @classmethod
     def from_dict(cls, data: dict) -> "SubstanceSpecification":
         return super().from_dict(data)
-
+    
     @classmethod
     def from_obj(self, obj: object) -> "SubstanceSpecification":
         return super().from_obj(obj)
@@ -189,8 +209,12 @@ class MolecularWeight(BaseModel):
         return super().as_dict()
 
 
+  
+    
+    
+
 class Isotope(BaseModel):
-    """Applicable for single substances that contain a radionuclide or a non-natural isotopic ratio.:param str id: Unique id for inter-element referencing
+    """ Applicable for single substances that contain a radionuclide or a non-natural isotopic ratio.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param Identifier identifier: Substance identifier for each non-natural or radioisotope
@@ -199,41 +223,46 @@ class Isotope(BaseModel):
     :param Quantity halfLife: Half life - for a non-natural nuclide
     :param MolecularWeight molecularWeight: The molecular weight or weight range (for proteins, polymers or nucleic acids)
     """
-
+    # needed for complex properties where the element name is different from the class name
     property_class_info = {
+        
+        
         "extension": {"class_name": "Extension", "is_contained": False},
+        
+        
         "modifierExtension": {"class_name": "Extension", "is_contained": False},
+        
+        
         "identifier": {"class_name": "Identifier", "is_contained": False},
+        
+        
         "name": {"class_name": "CodeableConcept", "is_contained": False},
+        
+        
         "substitution": {"class_name": "CodeableConcept", "is_contained": False},
+        
+        
         "halfLife": {"class_name": "Quantity", "is_contained": False},
+        
+        
         "molecularWeight": {"class_name": "MolecularWeight", "is_contained": True},
-    }
-
-    def __init__(
-        self,
-        id: "str" = None,
-        extension: list["Extension"] = None,
-        modifierExtension: list["Extension"] = None,
-        identifier: "Identifier" = None,
-        name: "CodeableConcept" = None,
-        substitution: "CodeableConcept" = None,
-        halfLife: "Quantity" = None,
-        molecularWeight: "MolecularWeight" = None,
-    ):
-        self.id = id
+        
+        }
+    def __init__(self,  id:  'str'  = None,  extension:  list['Extension']  = None,  modifierExtension:  list['Extension']  = None,  identifier:  'Identifier'  = None,  name:  'CodeableConcept'  = None,  substitution:  'CodeableConcept'  = None,  halfLife:  'Quantity'  = None,  molecularWeight:  'MolecularWeight'  = None, ):
+        self.id = id 
         self.extension = extension or []
         self.modifierExtension = modifierExtension or []
-        self.identifier = identifier
-        self.name = name
-        self.substitution = substitution
-        self.halfLife = halfLife
-        self.molecularWeight = molecularWeight
+        self.identifier = identifier 
+        self.name = name 
+        self.substitution = substitution 
+        self.halfLife = halfLife 
+        self.molecularWeight = molecularWeight 
+        
 
     @classmethod
     def from_dict(cls, data: dict) -> "SubstanceSpecification":
         return super().from_dict(data)
-
+    
     @classmethod
     def from_obj(self, obj: object) -> "SubstanceSpecification":
         return super().from_obj(obj)
@@ -242,42 +271,47 @@ class Isotope(BaseModel):
         return super().as_dict()
 
 
+    
+    
+
 class Representation(BaseModel):
-    """Molecular structural representation.:param str id: Unique id for inter-element referencing
+    """ Molecular structural representation.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param CodeableConcept type: The type of structure (e.g. Full, Partial, Representative)
     :param str representation: The structural representation as text string in a format e.g. InChI, SMILES, MOLFILE, CDX
     :param Attachment attachment: An attached file with the structural representation
     """
-
+    # needed for complex properties where the element name is different from the class name
     property_class_info = {
+        
+        
         "extension": {"class_name": "Extension", "is_contained": False},
+        
+        
         "modifierExtension": {"class_name": "Extension", "is_contained": False},
+        
+        
         "type": {"class_name": "CodeableConcept", "is_contained": False},
+        
+        
+        
         "attachment": {"class_name": "Attachment", "is_contained": False},
-    }
-
-    def __init__(
-        self,
-        id: "str" = None,
-        extension: list["Extension"] = None,
-        modifierExtension: list["Extension"] = None,
-        type: "CodeableConcept" = None,
-        representation: "str" = None,
-        attachment: "Attachment" = None,
-    ):
-        self.id = id
+        
+        }
+    def __init__(self,  id:  'str'  = None,  extension:  list['Extension']  = None,  modifierExtension:  list['Extension']  = None,  type:  'CodeableConcept'  = None,  representation:  'str'  = None,  attachment:  'Attachment'  = None, ):
+        self.id = id 
         self.extension = extension or []
         self.modifierExtension = modifierExtension or []
-        self.type = type
-        self.representation = representation
-        self.attachment = attachment
+        self.type = type 
+        self.representation = representation 
+        self.attachment = attachment 
+        
 
     @classmethod
     def from_dict(cls, data: dict) -> "SubstanceSpecification":
         return super().from_dict(data)
-
+    
     @classmethod
     def from_obj(self, obj: object) -> "SubstanceSpecification":
         return super().from_obj(obj)
@@ -286,8 +320,12 @@ class Representation(BaseModel):
         return super().as_dict()
 
 
+  
+    
+    
+
 class Structure(BaseModel):
-    """Structural information.:param str id: Unique id for inter-element referencing
+    """ Structural information.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param CodeableConcept stereochemistry: Stereochemistry type
@@ -299,48 +337,54 @@ class Structure(BaseModel):
     :param Reference source: Supporting literature
     :param Representation representation: Molecular structural representation
     """
-
+    # needed for complex properties where the element name is different from the class name
     property_class_info = {
+        
+        
         "extension": {"class_name": "Extension", "is_contained": False},
+        
+        
         "modifierExtension": {"class_name": "Extension", "is_contained": False},
+        
+        
         "stereochemistry": {"class_name": "CodeableConcept", "is_contained": False},
+        
+        
         "opticalActivity": {"class_name": "CodeableConcept", "is_contained": False},
+        
+        
+        
+        
         "isotope": {"class_name": "Isotope", "is_contained": True},
+        
+        
         "molecularWeight": {"class_name": "MolecularWeight", "is_contained": True},
+        
+        
         "source": {"class_name": "Reference", "is_contained": False},
+        
+        
         "representation": {"class_name": "Representation", "is_contained": True},
-    }
-
-    def __init__(
-        self,
-        id: "str" = None,
-        extension: list["Extension"] = None,
-        modifierExtension: list["Extension"] = None,
-        stereochemistry: "CodeableConcept" = None,
-        opticalActivity: "CodeableConcept" = None,
-        molecularFormula: "str" = None,
-        molecularFormulaByMoiety: "str" = None,
-        isotope: list["Isotope"] = None,
-        molecularWeight: "MolecularWeight" = None,
-        source: list["Reference"] = None,
-        representation: list["Representation"] = None,
-    ):
-        self.id = id
+        
+        }
+    def __init__(self,  id:  'str'  = None,  extension:  list['Extension']  = None,  modifierExtension:  list['Extension']  = None,  stereochemistry:  'CodeableConcept'  = None,  opticalActivity:  'CodeableConcept'  = None,  molecularFormula:  'str'  = None,  molecularFormulaByMoiety:  'str'  = None,  isotope:  list['Isotope']  = None,  molecularWeight:  'MolecularWeight'  = None,  source:  list['Reference']  = None,  representation:  list['Representation']  = None, ):
+        self.id = id 
         self.extension = extension or []
         self.modifierExtension = modifierExtension or []
-        self.stereochemistry = stereochemistry
-        self.opticalActivity = opticalActivity
-        self.molecularFormula = molecularFormula
-        self.molecularFormulaByMoiety = molecularFormulaByMoiety
+        self.stereochemistry = stereochemistry 
+        self.opticalActivity = opticalActivity 
+        self.molecularFormula = molecularFormula 
+        self.molecularFormulaByMoiety = molecularFormulaByMoiety 
         self.isotope = isotope or []
-        self.molecularWeight = molecularWeight
+        self.molecularWeight = molecularWeight 
         self.source = source or []
         self.representation = representation or []
+        
 
     @classmethod
     def from_dict(cls, data: dict) -> "SubstanceSpecification":
         return super().from_dict(data)
-
+    
     @classmethod
     def from_obj(self, obj: object) -> "SubstanceSpecification":
         return super().from_obj(obj)
@@ -349,8 +393,11 @@ class Structure(BaseModel):
         return super().as_dict()
 
 
+    
+    
+
 class Code(BaseModel):
-    """Codes associated with the substance.:param str id: Unique id for inter-element referencing
+    """ Codes associated with the substance.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param CodeableConcept code: The specific code
@@ -359,39 +406,42 @@ class Code(BaseModel):
     :param str comment: Any comment can be provided in this field, if necessary
     :param Reference source: Supporting literature
     """
-
+    # needed for complex properties where the element name is different from the class name
     property_class_info = {
+        
+        
         "extension": {"class_name": "Extension", "is_contained": False},
+        
+        
         "modifierExtension": {"class_name": "Extension", "is_contained": False},
+        
+        
         "code": {"class_name": "CodeableConcept", "is_contained": False},
+        
+        
         "status": {"class_name": "CodeableConcept", "is_contained": False},
+        
+        
+        
+        
         "source": {"class_name": "Reference", "is_contained": False},
-    }
-
-    def __init__(
-        self,
-        id: "str" = None,
-        extension: list["Extension"] = None,
-        modifierExtension: list["Extension"] = None,
-        code: "CodeableConcept" = None,
-        status: "CodeableConcept" = None,
-        statusDate: "str" = None,
-        comment: "str" = None,
-        source: list["Reference"] = None,
-    ):
-        self.id = id
+        
+        }
+    def __init__(self,  id:  'str'  = None,  extension:  list['Extension']  = None,  modifierExtension:  list['Extension']  = None,  code:  'CodeableConcept'  = None,  status:  'CodeableConcept'  = None,  statusDate:  'str'  = None,  comment:  'str'  = None,  source:  list['Reference']  = None, ):
+        self.id = id 
         self.extension = extension or []
         self.modifierExtension = modifierExtension or []
-        self.code = code
-        self.status = status
-        self.statusDate = statusDate
-        self.comment = comment
+        self.code = code 
+        self.status = status 
+        self.statusDate = statusDate 
+        self.comment = comment 
         self.source = source or []
+        
 
     @classmethod
     def from_dict(cls, data: dict) -> "SubstanceSpecification":
         return super().from_dict(data)
-
+    
     @classmethod
     def from_obj(self, obj: object) -> "SubstanceSpecification":
         return super().from_obj(obj)
@@ -400,42 +450,49 @@ class Code(BaseModel):
         return super().as_dict()
 
 
+    
+        
+    
+    
+
 class Official(BaseModel):
-    """Details of the official nature of this name.:param str id: Unique id for inter-element referencing
+    """ Details of the official nature of this name.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param CodeableConcept authority: Which authority uses this official name
     :param CodeableConcept status: The status of the official name
     :param str date: Date of official name change
     """
-
+    # needed for complex properties where the element name is different from the class name
     property_class_info = {
+        
+        
         "extension": {"class_name": "Extension", "is_contained": False},
+        
+        
         "modifierExtension": {"class_name": "Extension", "is_contained": False},
+        
+        
         "authority": {"class_name": "CodeableConcept", "is_contained": False},
+        
+        
         "status": {"class_name": "CodeableConcept", "is_contained": False},
-    }
-
-    def __init__(
-        self,
-        id: "str" = None,
-        extension: list["Extension"] = None,
-        modifierExtension: list["Extension"] = None,
-        authority: "CodeableConcept" = None,
-        status: "CodeableConcept" = None,
-        date: "str" = None,
-    ):
-        self.id = id
+        
+        
+        }
+    def __init__(self,  id:  'str'  = None,  extension:  list['Extension']  = None,  modifierExtension:  list['Extension']  = None,  authority:  'CodeableConcept'  = None,  status:  'CodeableConcept'  = None,  date:  'str'  = None, ):
+        self.id = id 
         self.extension = extension or []
         self.modifierExtension = modifierExtension or []
-        self.authority = authority
-        self.status = status
-        self.date = date
+        self.authority = authority 
+        self.status = status 
+        self.date = date 
+        
 
     @classmethod
     def from_dict(cls, data: dict) -> "SubstanceSpecification":
         return super().from_dict(data)
-
+    
     @classmethod
     def from_obj(self, obj: object) -> "SubstanceSpecification":
         return super().from_obj(obj)
@@ -444,8 +501,12 @@ class Official(BaseModel):
         return super().as_dict()
 
 
+  
+    
+    
+
 class Name(BaseModel):
-    """Names applicable to this substance.:param str id: Unique id for inter-element referencing
+    """ Names applicable to this substance.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str name: The actual name
@@ -460,45 +521,53 @@ class Name(BaseModel):
     :param Official official: Details of the official nature of this name
     :param Reference source: Supporting literature
     """
-
+    # needed for complex properties where the element name is different from the class name
     property_class_info = {
+        
+        
         "extension": {"class_name": "Extension", "is_contained": False},
+        
+        
         "modifierExtension": {"class_name": "Extension", "is_contained": False},
+        
+        
+        
         "type": {"class_name": "CodeableConcept", "is_contained": False},
+        
+        
         "status": {"class_name": "CodeableConcept", "is_contained": False},
+        
+        
+        
         "language": {"class_name": "CodeableConcept", "is_contained": False},
+        
+        
         "domain": {"class_name": "CodeableConcept", "is_contained": False},
+        
+        
         "jurisdiction": {"class_name": "CodeableConcept", "is_contained": False},
+        
+        
         "synonym": {"class_name": "Synonym", "is_contained": True},
+        
+        
         "translation": {"class_name": "Translation", "is_contained": True},
+        
+        
         "official": {"class_name": "Official", "is_contained": True},
+        
+        
         "source": {"class_name": "Reference", "is_contained": False},
-    }
-
-    def __init__(
-        self,
-        id: "str" = None,
-        extension: list["Extension"] = None,
-        modifierExtension: list["Extension"] = None,
-        name: "str" = None,
-        type: "CodeableConcept" = None,
-        status: "CodeableConcept" = None,
-        preferred: "bool" = None,
-        language: list["CodeableConcept"] = None,
-        domain: list["CodeableConcept"] = None,
-        jurisdiction: list["CodeableConcept"] = None,
-        synonym: list["Synonym"] = None,
-        translation: list["Translation"] = None,
-        official: list["Official"] = None,
-        source: list["Reference"] = None,
-    ):
-        self.id = id
+        
+        }
+    def __init__(self,  id:  'str'  = None,  extension:  list['Extension']  = None,  modifierExtension:  list['Extension']  = None,  name:  'str'  = None,  type:  'CodeableConcept'  = None,  status:  'CodeableConcept'  = None,  preferred:  'bool'  = None,  language:  list['CodeableConcept']  = None,  domain:  list['CodeableConcept']  = None,  jurisdiction:  list['CodeableConcept']  = None,  synonym:  list['Synonym']  = None,  translation:  list['Translation']  = None,  official:  list['Official']  = None,  source:  list['Reference']  = None, ):
+        self.id = id 
         self.extension = extension or []
         self.modifierExtension = modifierExtension or []
-        self.name = name
-        self.type = type
-        self.status = status
-        self.preferred = preferred
+        self.name = name 
+        self.type = type 
+        self.status = status 
+        self.preferred = preferred 
         self.language = language or []
         self.domain = domain or []
         self.jurisdiction = jurisdiction or []
@@ -506,11 +575,12 @@ class Name(BaseModel):
         self.translation = translation or []
         self.official = official or []
         self.source = source or []
+        
 
     @classmethod
     def from_dict(cls, data: dict) -> "SubstanceSpecification":
         return super().from_dict(data)
-
+    
     @classmethod
     def from_obj(self, obj: object) -> "SubstanceSpecification":
         return super().from_obj(obj)
@@ -519,8 +589,11 @@ class Name(BaseModel):
         return super().as_dict()
 
 
+    
+    
+
 class Relationship(BaseModel):
-    """A link between this substance and another, with details of the relationship.:param str id: Unique id for inter-element referencing
+    """ A link between this substance and another, with details of the relationship.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param Reference substanceReference: A pointer to another substance, as a resource or just a representational code
@@ -535,60 +608,66 @@ class Relationship(BaseModel):
     :param CodeableConcept amountType: An operator for the amount, for example "average", "approximately", "less than"
     :param Reference source: Supporting literature
     """
-
+    # needed for complex properties where the element name is different from the class name
     property_class_info = {
+        
+        
         "extension": {"class_name": "Extension", "is_contained": False},
+        
+        
         "modifierExtension": {"class_name": "Extension", "is_contained": False},
+        
+        
         "substanceReference": {"class_name": "Reference", "is_contained": False},
-        "substanceCodeableConcept": {
-            "class_name": "CodeableConcept",
-            "is_contained": False,
-        },
+        
+        
+        "substanceCodeableConcept": {"class_name": "CodeableConcept", "is_contained": False},
+        
+        
         "relationship": {"class_name": "CodeableConcept", "is_contained": False},
+        
+        
+        
         "amountQuantity": {"class_name": "Quantity", "is_contained": False},
+        
+        
         "amountRange": {"class_name": "Range", "is_contained": False},
+        
+        
         "amountRatio": {"class_name": "Ratio", "is_contained": False},
+        
+        
+        
         "amountRatioLowLimit": {"class_name": "Ratio", "is_contained": False},
+        
+        
         "amountType": {"class_name": "CodeableConcept", "is_contained": False},
+        
+        
         "source": {"class_name": "Reference", "is_contained": False},
-    }
-
-    def __init__(
-        self,
-        id: "str" = None,
-        extension: list["Extension"] = None,
-        modifierExtension: list["Extension"] = None,
-        substanceReference: "Reference" = None,
-        substanceCodeableConcept: "CodeableConcept" = None,
-        relationship: "CodeableConcept" = None,
-        isDefining: "bool" = None,
-        amountQuantity: "Quantity" = None,
-        amountRange: "Range" = None,
-        amountRatio: "Ratio" = None,
-        amountString: "str" = None,
-        amountRatioLowLimit: "Ratio" = None,
-        amountType: "CodeableConcept" = None,
-        source: list["Reference"] = None,
-    ):
-        self.id = id
+        
+        }
+    def __init__(self,  id:  'str'  = None,  extension:  list['Extension']  = None,  modifierExtension:  list['Extension']  = None,  substanceReference:  'Reference'  = None,  substanceCodeableConcept:  'CodeableConcept'  = None,  relationship:  'CodeableConcept'  = None,  isDefining:  'bool'  = None,  amountQuantity:  'Quantity'  = None,  amountRange:  'Range'  = None,  amountRatio:  'Ratio'  = None,  amountString:  'str'  = None,  amountRatioLowLimit:  'Ratio'  = None,  amountType:  'CodeableConcept'  = None,  source:  list['Reference']  = None, ):
+        self.id = id 
         self.extension = extension or []
         self.modifierExtension = modifierExtension or []
-        self.substanceReference = substanceReference
-        self.substanceCodeableConcept = substanceCodeableConcept
-        self.relationship = relationship
-        self.isDefining = isDefining
-        self.amountQuantity = amountQuantity
-        self.amountRange = amountRange
-        self.amountRatio = amountRatio
-        self.amountString = amountString
-        self.amountRatioLowLimit = amountRatioLowLimit
-        self.amountType = amountType
+        self.substanceReference = substanceReference 
+        self.substanceCodeableConcept = substanceCodeableConcept 
+        self.relationship = relationship 
+        self.isDefining = isDefining 
+        self.amountQuantity = amountQuantity 
+        self.amountRange = amountRange 
+        self.amountRatio = amountRatio 
+        self.amountString = amountString 
+        self.amountRatioLowLimit = amountRatioLowLimit 
+        self.amountType = amountType 
         self.source = source or []
+        
 
     @classmethod
     def from_dict(cls, data: dict) -> "SubstanceSpecification":
         return super().from_dict(data)
-
+    
     @classmethod
     def from_obj(self, obj: object) -> "SubstanceSpecification":
         return super().from_obj(obj)
@@ -598,7 +677,7 @@ class Relationship(BaseModel):
 
 
 class SubstanceSpecification(DomainResource):
-    """The detailed description of a substance, typically at a level beyond what is used for prescribing.
+    """ The detailed description of a substance, typically at a level beyond what is used for prescribing.
     :param str id: Logical id of this artifact
     :param Meta meta: Metadata about the resource
     :param str implicitRules: A set of rules under which this content was created
@@ -627,96 +706,115 @@ class SubstanceSpecification(DomainResource):
     :param Reference protein: Data items specific to proteins
     :param Reference sourceMaterial: Material or taxonomic/anatomical source for the substance
     """
-
+    # needed for complex properties where the element name is different from the class name
     property_class_info = {
+        
+        
         "meta": {"class_name": "Meta", "is_contained": False},
+        
+        
+        
+        
         "text": {"class_name": "Narrative", "is_contained": False},
+        
+        
         "contained": {"class_name": "Resource", "is_contained": False},
+        
+        
         "extension": {"class_name": "Extension", "is_contained": False},
+        
+        
         "modifierExtension": {"class_name": "Extension", "is_contained": False},
+        
+        
         "identifier": {"class_name": "Identifier", "is_contained": False},
+        
+        
         "type": {"class_name": "CodeableConcept", "is_contained": False},
+        
+        
         "status": {"class_name": "CodeableConcept", "is_contained": False},
+        
+        
         "domain": {"class_name": "CodeableConcept", "is_contained": False},
+        
+        
+        
         "source": {"class_name": "Reference", "is_contained": False},
+        
+        
+        
         "moiety": {"class_name": "Moiety", "is_contained": True},
+        
+        
         "property": {"class_name": "Property", "is_contained": True},
+        
+        
         "referenceInformation": {"class_name": "Reference", "is_contained": False},
+        
+        
         "structure": {"class_name": "Structure", "is_contained": True},
+        
+        
         "code": {"class_name": "Code", "is_contained": True},
+        
+        
         "name": {"class_name": "Name", "is_contained": True},
+        
+        
         "molecularWeight": {"class_name": "MolecularWeight", "is_contained": True},
+        
+        
         "relationship": {"class_name": "Relationship", "is_contained": True},
+        
+        
         "nucleicAcid": {"class_name": "Reference", "is_contained": False},
+        
+        
         "polymer": {"class_name": "Reference", "is_contained": False},
+        
+        
         "protein": {"class_name": "Reference", "is_contained": False},
+        
+        
         "sourceMaterial": {"class_name": "Reference", "is_contained": False},
-    }
-
-    def __init__(
-        self,
-        resourceType: str = None,
-        id: "str" = None,
-        meta: "Meta" = None,
-        implicitRules: "str" = None,
-        language: "str" = None,
-        text: "Narrative" = None,
-        contained: list["Resource"] = None,
-        extension: list["Extension"] = None,
-        modifierExtension: list["Extension"] = None,
-        identifier: "Identifier" = None,
-        type: "CodeableConcept" = None,
-        status: "CodeableConcept" = None,
-        domain: "CodeableConcept" = None,
-        description: "str" = None,
-        source: list["Reference"] = None,
-        comment: "str" = None,
-        moiety: list["Moiety"] = None,
-        property: list["Property"] = None,
-        referenceInformation: "Reference" = None,
-        structure: "Structure" = None,
-        code: list["Code"] = None,
-        name: list["Name"] = None,
-        molecularWeight: list["MolecularWeight"] = None,
-        relationship: list["Relationship"] = None,
-        nucleicAcid: "Reference" = None,
-        polymer: "Reference" = None,
-        protein: "Reference" = None,
-        sourceMaterial: "Reference" = None,
-    ):
+        
+        }
+    def __init__(self, resourceType: str = None,  id:  'str'  = None,  meta:  'Meta'  = None,  implicitRules:  'str'  = None,  language:  'str'  = None,  text:  'Narrative'  = None,  contained:  list['Resource']  = None,  extension:  list['Extension']  = None,  modifierExtension:  list['Extension']  = None,  identifier:  'Identifier'  = None,  type:  'CodeableConcept'  = None,  status:  'CodeableConcept'  = None,  domain:  'CodeableConcept'  = None,  description:  'str'  = None,  source:  list['Reference']  = None,  comment:  'str'  = None,  moiety:  list['Moiety']  = None,  property:  list['Property']  = None,  referenceInformation:  'Reference'  = None,  structure:  'Structure'  = None,  code:  list['Code']  = None,  name:  list['Name']  = None,  molecularWeight:  list['MolecularWeight']  = None,  relationship:  list['Relationship']  = None,  nucleicAcid:  'Reference'  = None,  polymer:  'Reference'  = None,  protein:  'Reference'  = None,  sourceMaterial:  'Reference'  = None, ):
         self.resourceType = resourceType or "SubstanceSpecification"
-        self.id = id
-        self.meta = meta
-        self.implicitRules = implicitRules
-        self.language = language
-        self.text = text
+        self.id = id 
+        self.meta = meta 
+        self.implicitRules = implicitRules 
+        self.language = language 
+        self.text = text 
         self.contained = contained or []
         self.extension = extension or []
         self.modifierExtension = modifierExtension or []
-        self.identifier = identifier
-        self.type = type
-        self.status = status
-        self.domain = domain
-        self.description = description
+        self.identifier = identifier 
+        self.type = type 
+        self.status = status 
+        self.domain = domain 
+        self.description = description 
         self.source = source or []
-        self.comment = comment
+        self.comment = comment 
         self.moiety = moiety or []
         self.property = property or []
-        self.referenceInformation = referenceInformation
-        self.structure = structure
+        self.referenceInformation = referenceInformation 
+        self.structure = structure 
         self.code = code or []
         self.name = name or []
         self.molecularWeight = molecularWeight or []
         self.relationship = relationship or []
-        self.nucleicAcid = nucleicAcid
-        self.polymer = polymer
-        self.protein = protein
-        self.sourceMaterial = sourceMaterial
+        self.nucleicAcid = nucleicAcid 
+        self.polymer = polymer 
+        self.protein = protein 
+        self.sourceMaterial = sourceMaterial 
+        
 
     @classmethod
     def from_dict(cls, data: dict) -> "SubstanceSpecification":
         return super().from_dict(data)
-
+    
     @classmethod
     def from_obj(self, obj: object) -> "SubstanceSpecification":
         return super().from_obj(obj)

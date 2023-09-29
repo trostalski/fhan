@@ -29,4 +29,5 @@ class ClientSettings(BaseSettings):
 class GeneratorSettings(BaseSettings):
     template_dir = "./templates"
     output_dir = "./"
-    template_names = ["structure_definition_model.j2"]
+    structure_definition_template_name = "structure_definition_model.j2"
+    model_init_template_name = "model_init.j2"

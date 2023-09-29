@@ -62,10 +62,14 @@ class View:
         if fhir_input:
             self._get_collection_from_input(fhir_input)
 
-    def execute(self) -> ViewResult:
+    def execute(self, fhir_input: dict = None) -> ViewResult:
         """
         Execute the view.
         """
+        if fhir_input:
+            self._resource_collection = self._get_collection_from_input(fhir_input)
+        if not self._resource_collection:
+            raise ValueError("No fhir data provided.")
         self._apply_constraints()  # filters the _resource_collection
         select_result = self._apply_selects()  # returns a list of dicts
         execution_result = {

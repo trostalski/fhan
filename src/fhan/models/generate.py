@@ -14,7 +14,6 @@ logger = logging.getLogger(__name__)
 
 TEMLPATE_DIR = GeneratorSettings.template_dir
 OUTPUT_DIR = GeneratorSettings.output_dir
-TEMPLATE_NAMES = GeneratorSettings.template_names
 SUPPORTED_FHIR_VERSIONS = GeneratorSettings.supported_fhir_versions
 
 
@@ -41,39 +40,64 @@ class ModelGenerator:
         self._template_dir = template_dir or TEMLPATE_DIR
         self._template_dir = get_full_path_to_dir(self._template_dir)
 
-        self._template_names = template_names or TEMPLATE_NAMES
+        self._structure_def_model_template = (
+            GeneratorSettings.structure_definition_template_name
+        )
+        self._model_init_template = GeneratorSettings.model_init_template_name
+        self.generator_struc_defs = [
+            GeneratorStructureDefinition(sd)
+            for sd in self._package.structure_definitions
+        ]
 
     def generate_model_classes(self):
         """Create the python classes for the FHIR package."""
         logger.info("Generating model classes for %s", self._package.name)
         logger.info("Output dir: %s", self._output_dir)
         self._generate_structure_definition_classes()
+        self._generate_model_init()
 
     def _generate_structure_definition_classes(self):
         """Generate the python classes for the StructureDefinitions in the FHIR package."""
-        generator_struc_defs = [
-            GeneratorStructureDefinition(sd)
-            for sd in self._package.structure_definitions
-        ]
         env = Environment(loader=FileSystemLoader(searchpath=self._template_dir))
-        for template_name in self._template_names:
-            template = env.get_template(template_name)
-            for structure_definition in generator_struc_defs:
-                if (
-                    not structure_definition.has_snapshot  # no elemnns present
-                    or structure_definition.is_primitive
-                    or not structure_definition.is_base  # TODO: add support for Extensions and non-base classes
-                ):
-                    continue
-                model_code = template.render(
-                    structure_definition=structure_definition,
-                    base_class="",
-                    dir_name=self._package.name,
-                    time=datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-                )
-                output_file = f"{self._output_dir}/{structure_definition.type}.py"
-                with open(output_file, "w") as f:
-                    f.write(model_code)
+        template = env.get_template(self._structure_def_model_template)
+        for structure_definition in self.generator_struc_defs:
+            if (
+                not structure_definition.has_snapshot  # no elemnns present
+                or structure_definition.is_primitive
+                or not structure_definition.is_base  # TODO: add support for Extensions and non-base classes
+            ):
+                continue
+            model_code = template.render(
+                structure_definition=structure_definition,
+                base_class="",
+                dir_name=self._package.name,
+                time=datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+                source_file=__file__,
+            )
+            output_file = f"{self._output_dir}/{structure_definition.type}.py"
+            with open(output_file, "w") as f:
+                f.write(model_code)
+
+    def _generate_model_init(self):
+        env = Environment(loader=FileSystemLoader(searchpath=self._template_dir))
+        template = env.get_template(self._model_init_template)
+        klasses = []
+        for structure_definition in self.generator_struc_defs:
+            if (
+                not structure_definition.has_snapshot  # no elemnns present
+                or structure_definition.is_primitive
+                or not structure_definition.is_base  # TODO: add support for Extensions and non-base classes
+            ):
+                continue
+            klasses.append(structure_definition.type)
+        model_init_code = template.render(
+            time=datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+            source_file=__file__,
+            klasses=klasses,
+        )
+        output_file = f"{self._output_dir}/__init__.py"
+        with open(output_file, "w") as f:
+            f.write(model_init_code)
 
 
 def get_full_path_to_dir(dir: str):

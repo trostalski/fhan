@@ -1,9 +1,9 @@
 """
 Generated class for DomainResource. 
-Time: 2023-09-29 13:03:34
+Time: 2023-09-29 20:34:26
 """
-from fhan.models.R4.Resource import *
 from fhan.models.R4.Meta import *
+from fhan.models.R4.Resource import *
 from fhan.models.R4.Extension import *
 from fhan.models.R4.Narrative import *
 from fhan.models.R4.Resource import *

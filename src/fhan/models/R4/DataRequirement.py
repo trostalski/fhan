@@ -1,14 +1,14 @@
 """
 Generated class for DataRequirement. 
-Time: 2023-09-29 13:03:34
+Time: 2023-09-29 20:34:26
 """
 from fhan.models.R4.Extension import *
-from fhan.models.R4.CodeableConcept import *
 from fhan.models.R4.Reference import *
-from fhan.models.R4.Coding import *
 from fhan.models.R4.Element import *
-from fhan.models.R4.Period import *
 from fhan.models.R4.Duration import *
+from fhan.models.R4.CodeableConcept import *
+from fhan.models.R4.Period import *
+from fhan.models.R4.Coding import *
 from fhan.models.generator_models import BaseModel
 
     

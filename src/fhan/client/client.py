@@ -211,6 +211,6 @@ class Client:
         return CapabilityStatement.from_dict(metadata)
 
     def _load_package(self):
-        return FhirPackageLoader().load_package(
+        return FhirPackageLoader().load_package_from_version(
             version=self._fhir_version,
         )

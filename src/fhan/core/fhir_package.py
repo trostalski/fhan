@@ -1,14 +1,55 @@
 import logging
-from typing import BinaryIO, Iterator, Literal, Tuple
+import os
+from typing import Any, BinaryIO, Collection, Iterator, Literal, Optional, Tuple
 import json
 import tarfile
 import requests
 import io
+import time
+from dataclasses import dataclass, field
 
 from fhan.core.settings import BaseSettings
 
 
 logger = logging.getLogger(__name__)
+
+
+@dataclass(frozen=True)
+class IgDependency:
+    """The URL and version of a package dependency."""
+
+    url: str
+    version: str
+
+
+@dataclass(frozen=True)
+class PackageMaintainer:
+    """The name and email of a package maintainer."""
+
+    name: str
+    email: str
+
+
+@dataclass(frozen=True)
+class PackageInfo:
+    """Metadata parsed from a package's package.json file.
+    See documentation for the package.json file at:
+    https://confluence.hl7.org/pages/viewpage.action?pageId=35718629#NPMPackageSpecification-Packagemanifest
+    """
+
+    name: str
+    version: str
+    description: Optional[str] = None
+    canonical: Optional[str] = None
+    title: Optional[str] = None
+    url: Optional[str] = None
+    fhirVersions: Optional[list[str]] = None
+    dependencies: tuple["IgDependency"] = ()
+    keywords: tuple[str] = ()
+    author: Optional[str] = None
+    maintainers: tuple["PackageMaintainer"] = ()
+    jurisdiction: Optional[str] = None
+    license: Optional[str] = None
 
 
 class FhirPackageLoader:
@@ -17,32 +58,28 @@ class FhirPackageLoader:
     def __init__(self):
         pass
 
-    def load_package(
-        self,
-        url: str = None,
-        version: Literal["R4", "R4B", "R5"] = None,
-    ) -> "FhirPackage":
+    def load_package_from_version(self, version: Literal["R4", "R4B", "R5"]):
         """Loads a FHIR package for a specified FHIR version."""
-        if not url and not version:
-            raise ValueError("Either version or url must be specified.")
-        if url:
-            url = url
-        elif version:
-            version_urls = BaseSettings.fhir_version_package_urls
-            if version not in version_urls:
-                raise ValueError(
-                    f"Unsupported version: {version}. Supported versions: {version_urls.keys()}"
-                )
-            url = version_urls[version]
-        return self._load_package_from_npm(url, name=version)
+        version_urls = BaseSettings.fhir_version_package_urls
+        if version not in version_urls:
+            raise ValueError(
+                f"Unsupported version: {version}. Supported versions: {version_urls.keys()}"
+            )
+        url = version_urls[version]
+        return self.load_package_from_npm(url, name=version)
 
-    def _load_package_from_npm(self, url: str, name: str = None):
+    def load_package_from_npm(self, url: str, name: str = None):
         """Loads a FHIR npm package from an URL."""
         with requests.get(url, stream=True) as res:
             res.raise_for_status()
             package_bytes = res.content
             package_buffer = io.BytesIO(package_bytes)
         return FhirPackage.from_npm_file(npm_file=package_buffer, name=name)
+
+    def load_from_simplifier(self, name: str, version: str):
+        """Loads a FHIR npm package from simplifier.net."""
+        url = f"https://packages.simplifier.net/{name}/{version}"
+        return self.load_package_from_npm(url, name=name)
 
 
 class FhirPackage:
@@ -51,6 +88,7 @@ class FhirPackage:
 
     def __init__(
         self,
+        package_info: PackageInfo,
         code_systems: list[dict],
         search_parameters: list[dict],
         structure_definitions: list[dict],
@@ -58,6 +96,7 @@ class FhirPackage:
         capability_statements: list[dict],
         name: str = None,
     ):
+        self.package_info = package_info
         self.code_systems = code_systems
         self.search_parameters = search_parameters
         self.structure_definitions = structure_definitions
@@ -68,6 +107,7 @@ class FhirPackage:
     @classmethod
     def from_npm_file(cls, npm_file: BinaryIO, name: str = None):
         """Loads a FHIR package from a `.tar.gz` or `.tgz` file following NPM conventions."""
+        package_info = None
         code_systems = []
         search_parameters = []
         structure_definitions = []
@@ -76,6 +116,8 @@ class FhirPackage:
         for filename, content in _read_fhir_package_npm(npm_file):
             content_json = json.loads(content)
             resource_type = content_json.get("resourceType")
+            if os.path.basename(filename) == "package.json":
+                package_info = _parse_package_info(content_json)
             if resource_type == "CodeSystem":
                 code_systems.append(content_json)
             elif resource_type == "SearchParameter":
@@ -91,6 +133,7 @@ class FhirPackage:
                 continue
 
         return cls(
+            package_info,
             code_systems,
             search_parameters,
             structure_definitions,
@@ -138,3 +181,41 @@ def _read_fhir_package_npm(npm_file: BinaryIO) -> Iterator[Tuple[str, str]]:
             else:
                 # logger.info("Skipping  entry: %s.", member.name)
                 continue
+
+
+def _parse_package_info(json_obj: dict[str, Any]) -> "PackageInfo":
+    """Creates an PackageInfo object given the contents of a package.json file."""
+    return PackageInfo(
+        name=json_obj["name"],
+        version=json_obj["version"],
+        canonical=json_obj.get("canonical"),
+        title=json_obj.get("title"),
+        description=json_obj.get("description"),
+        dependencies=tuple(
+            IgDependency(url=url, version=version)
+            for url, version in json_obj.get("dependencies", {}).items()
+        ),
+        author=json_obj.get("author"),
+        fhirVersions=json_obj.get("fhirVersions"),
+        jurisdiction=json_obj.get("jurisdiction"),
+        keywords=json_obj.get("keywords"),
+        license=json_obj.get("license"),
+        maintainers=tuple(
+            PackageMaintainer(name=name, email=email)
+            for name, email in json_obj.get("maintainers", {}).items()
+        ),
+        url=json_obj.get("url"),
+    )
+
+
+if __name__ == "__main__":
+    start_time = time.time()
+    loader = FhirPackageLoader()
+    package = loader.load_from_simplifier(
+        name="kbv.mio.patientenkurzakte", version="1.0.0"
+    )
+    end_time = time.time()
+    print(
+        f"Loaded package with {len(package.structure_definitions)} structure definitions in {end_time - start_time} seconds."
+    )
+    print(package.package_info)

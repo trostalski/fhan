@@ -4,6 +4,7 @@ import logging
 
 from fhan.models.generate import ModelGenerator
 from fhan.core.fhir_package import FhirPackageLoader
+from fhan.core.settings import BaseSettings
 
 logger = logging.getLogger(__name__)
 
@@ -26,7 +27,7 @@ def generate(
 ):
     """Generate models from FHIR packages."""
     package_loader = FhirPackageLoader()
-    package = package_loader.load_package(version=version)
+    package = package_loader.load_package_from_version(version=version)
     generator = ModelGenerator(package=package)
     generator.generate_model_classes()
 

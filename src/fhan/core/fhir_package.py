@@ -6,7 +6,7 @@ import tarfile
 import requests
 import io
 import time
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 
 from fhan.core.settings import BaseSettings
 
@@ -44,10 +44,10 @@ class PackageInfo:
     title: Optional[str] = None
     url: Optional[str] = None
     fhirVersions: Optional[list[str]] = None
-    dependencies: tuple["IgDependency"] = ()
+    dependencies: Collection["IgDependency"] = ()
     keywords: tuple[str] = ()
     author: Optional[str] = None
-    maintainers: tuple["PackageMaintainer"] = ()
+    maintainers: list["PackageMaintainer"] = ()
     jurisdiction: Optional[str] = None
     license: Optional[str] = None
 
@@ -117,6 +117,7 @@ class FhirPackage:
             content_json = json.loads(content)
             resource_type = content_json.get("resourceType")
             if os.path.basename(filename) == "package.json":
+                print(content_json)
                 package_info = _parse_package_info(content_json)
             if resource_type == "CodeSystem":
                 code_systems.append(content_json)
@@ -200,10 +201,12 @@ def _parse_package_info(json_obj: dict[str, Any]) -> "PackageInfo":
         jurisdiction=json_obj.get("jurisdiction"),
         keywords=json_obj.get("keywords"),
         license=json_obj.get("license"),
-        maintainers=tuple(
-            PackageMaintainer(name=name, email=email)
-            for name, email in json_obj.get("maintainers", {}).items()
-        ),
+        maintainers=[
+            PackageMaintainer(
+                name=maintainer.get("name", ""), email=maintainer.get("email", "")
+            )
+            for maintainer in json_obj.get("maintainers", [])
+        ],
         url=json_obj.get("url"),
     )
 
@@ -212,7 +215,7 @@ if __name__ == "__main__":
     start_time = time.time()
     loader = FhirPackageLoader()
     package = loader.load_from_simplifier(
-        name="kbv.mio.patientenkurzakte", version="1.0.0"
+        name="de.medizininformatikinitiative.kerndatensatz.patho", version="1.0.0"
     )
     end_time = time.time()
     print(

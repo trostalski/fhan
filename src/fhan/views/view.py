@@ -1,4 +1,4 @@
-from typing import Any
+from typing import Any, Union
 import logging
 
 from fhirpathpy import compile
@@ -44,7 +44,9 @@ class ViewResult:
 
 
 class View:
-    def __init__(self, view_definition: ViewDefinition | dict, fhir_input: dict = None):
+    def __init__(
+        self, view_definition: Union[ViewDefinition, dict], fhir_input: dict = None
+    ):
         """
         Main class for sql on FHIR views.
         """

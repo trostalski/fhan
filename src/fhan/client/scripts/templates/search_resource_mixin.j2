@@ -1,4 +1,5 @@
 # generated at {{ time }} from {{ source_script }}
+from typing import Union
 from {{ model_import_path }} import SearchBundle
 
 class SearchResourceMixin:
@@ -12,7 +13,7 @@ class SearchResourceMixin:
         self,
         search: str = None,
         as_object: bool = False,
-    ) -> dict | SearchBundle:
+    ) -> Union[dict, SearchBundle]:
         """Search for {{ resource_type }}s. The search string is passed
         directly to the API."""
         return self._search("{{ resource_type }}", search, as_object)

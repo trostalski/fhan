@@ -1,9 +1,9 @@
 from importlib import import_module
-from typing import Any
+from typing import Any, Literal, Optional, Union
 import requests
 import logging
+
 from fhan.client.generated.get_resource_mixin import GetResourceMixin
-from fhan.client.generated.search_resource_mixin import SearchResourceMixin
 from fhan.client.search_builder import SearchBuilder
 from fhan.client.search_bundle import SearchBundle
 
@@ -14,14 +14,13 @@ from fhan.client.utils.http_utils import (
     join_urls,
 )
 from fhan.core.fhir_package import FhirPackageLoader
+from fhan.core.fhir_types import _ResourceType
 from fhan.core.settings import ClientSettings
 from fhan.models.R4.CapabilityStatement import CapabilityStatement
 from fhan.models.generator_models import BaseModel
-from fhan.views.view import View
 
 logger = logging.getLogger(__name__)
-
-FHIR_VERSION = ClientSettings.fhir_version
+FHIR_VERSION = "R4"
 
 
 class ServerMetadata:
@@ -61,114 +60,6 @@ class ServerMetadata:
         self.available_revincludes = available_revincludes
 
 
-class BaseHttpHandler:
-    def __init__(
-        self,
-        session: requests.Session,
-        base_url: str,
-        metadata: ServerMetadata,
-    ):
-        super().__init__()
-        self._session = session
-        self._base_url = base_url
-        self.metadata = metadata
-
-    def __call__(self, url: str = "") -> Any:
-        """Make a GET request relative from the base URL with
-        a custom url. E.g.: client.get("Patient/1")"""
-
-        url = join_urls(self._base_url, url)
-        response = make_get_request(url, session=self._session)
-        return response.json()
-
-
-class SearchHandler(BaseHttpHandler, SearchResourceMixin):
-    """Handles all search functionality."""
-
-    def __init__(
-        self,
-        session: requests.Session,
-        metadata: ServerMetadata,
-        base_url: str,
-    ):
-        super().__init__(
-            session=session,
-            base_url=base_url,
-            metadata=metadata,
-        )
-
-    def _search(self, resource_type: str, search: str, as_object: bool = False):
-        url = build_fhir_search_url(
-            base_url=self._base_url, resource_type=resource_type, search=search
-        )
-        result = make_get_request(url=url, session=self._session).json()
-        if as_object:
-            result = SearchBundle(result)
-        return result
-
-    def PatientView(self, patient_id: str, resource: str, view: View):
-        """
-        Create a view on resources on a patient.
-        """
-        # Get all patient revincludes available for the target resource from the server
-        all_patient_revincludes: list[str] = self.metadata.available_revincludes[
-            "Patient"
-        ]
-        filtered_revincludes = [
-            r for r in all_patient_revincludes if r.startswith(resource)
-        ]
-
-        # Iteratively build the search string
-        sb = SearchBuilder().Patient().param(value="_id").eq(value=patient_id)
-        for revinclude in filtered_revincludes:
-            sb = sb.AND().revinclude(value=revinclude, modifier="iterate")
-        search_string = sb.build()
-
-        # Execute the search and build the view
-        search_bundle = self._search(resource_type="Patient", search=search_string)
-        view_res = view(search_bundle)
-        return view_res
-
-
-class GetHandler(BaseHttpHandler, GetResourceMixin):
-    def __init__(
-        self,
-        session: requests.Session,
-        base_url: str,
-        metadata: ServerMetadata,
-    ):
-        super().__init__(session=session, base_url=base_url, metadata=metadata)
-
-    def _get(
-        self,
-        resource_type: str,
-        id: str | list[str] | None = None,
-        as_object: bool = False,
-    ):
-        url = build_fhir_get_url(
-            base_url=self._base_url, resource_type=resource_type, id=id
-        )
-        result = make_get_request(url=url, session=self._session).json()
-        if as_object:
-            klass = get_model_for_type(resource_type)
-            result = klass.from_dict(result)
-        return result
-
-    def PatientData(self, types: list[str]):
-        """
-        Get all resources of the specified types for a patient.
-        """
-
-
-def get_model_for_type(resource_type: str) -> BaseModel:
-    """
-    Get the model for a resource type.
-    """
-    module = import_module(f"fhan.models.{FHIR_VERSION}.{resource_type}")
-    model = getattr(module, resource_type)
-    return model
-
-
 class Client:
     """
     Client for interacting with a FHIR server.
@@ -186,27 +77,106 @@ class Client:
     ):
         self._base_url = base_url if not base_url.endswith("/") else base_url[:-1]
         self._fhir_version = fhir_version
-        self._sesssion = requests.Session()
+        self._session = requests.Session()
         self.metadata = ServerMetadata(self._get_metadata())
-        self.get = GetHandler(
-            session=self._sesssion,
-            base_url=self._base_url,
-            metadata=self.metadata,
-        )
-        self.search = SearchHandler(
-            session=self._sesssion,
-            base_url=self._base_url,
-            metadata=self.metadata,
-        )
 
         if load_package:
             self.package = self._load_package()
         else:
             self.package = None
 
+    def get(
+        self,
+        resource_type: Literal[_ResourceType],
+        id: Optional[Union[str, list[str]]] = None,
+        search_params: Optional[dict] = None,
+        search_string: Optional[str] = None,
+        pages: Optional[int] = 1,
+        as_object: Optional[bool] = False,
+        count: Optional[int] = None,
+        elements: Optional[list[str]] = None,
+        include: Optional[list[str]] = None,
+        revinclude: Optional[list[str]] = None,
+        total: Optional[str] = None,
+        url: Optional[str] = None,
+    ) -> Union[dict, SearchBundle, BaseModel]:
+        """
+        The return type is a resource only when a single id is specified.
+        In every other case, the return type is a search bundle.
+        """
+        if url:
+            return make_get_request(url=url, session=self._session).json()
+        is_search = search_params or search_string or isinstance(id, list) or not id
+        if is_search:
+            search_string = search_string or ""
+            kwarg_params = _get_params_from_kwargs(
+                count=count,
+                elements=elements,
+                include=include,
+                revinclude=revinclude,
+                total=total,
+            )
+            # overwrite search params with kwargs
+            search_params = {**kwarg_params, **(search_params or {})}
+            # add search params to search string
+            search_string += _get_string_from_search_params(search_params) or ""
+            return self._search(
+                resource_type=resource_type,
+                search=search_string,
+                pages=pages,
+                as_object=as_object,
+            )
+        else:
+            return self._get(
+                resource_type=resource_type,
+                id=id,
+                as_object=as_object,
+            )
+
+    def _get(
+        self,
+        resource_type: str,
+        id: str,
+        as_object: bool = False,
+    ):
+        url = build_fhir_get_url(
+            base_url=self._base_url, resource_type=resource_type, id=id
+        )
+        result = make_get_request(url=url, session=self._session).json()
+        if as_object:
+            klass = _get_model_for_type(resource_type)
+            result = klass.from_dict(result)
+        return result
+
+    def _search(
+        self,
+        resource_type: str,
+        search: str,
+        pages: Optional[int] = 1,
+        as_object: bool = False,
+    ):
+        url = build_fhir_search_url(
+            base_url=self._base_url, resource_type=resource_type, search=search
+        )
+        result = make_get_request(url=url, session=self._session).json()
+        while pages > 1 or pages == -1:
+            next_link = _get_next_link(result)
+            if next_link:
+                next_page = make_get_request(
+                    url=next_link, session=self._session
+                ).json()
+                result["entry"] += next_page["entry"]
+                if pages > 0:  # -1 means all pages
+                    pages -= 1
+            else:
+                break
+        if as_object:
+            result = SearchBundle(result)
+        return result
+
     def _get_metadata(self):
         metadata = make_get_request(
-            url=join_urls(self._base_url, "metadata"), session=self._sesssion
+            url=join_urls(self._base_url, "metadata"), session=self._session
         ).json()
         return CapabilityStatement.from_dict(metadata)
 
@@ -214,3 +184,41 @@ class Client:
         return FhirPackageLoader().load_package_from_version(
             version=self._fhir_version,
         )
+
+
+def _get_params_from_kwargs(**kwargs):
+    params = {}
+    for key, value in kwargs.items():
+        if value:
+            params[f"_{key}"] = value
+    return params
+
+
+def _get_string_from_search_params(search_params: Optional[dict]):
+    if not search_params:
+        return None
+    search_string = ""
+    for key, value in search_params.items():
+        search_string += f"{key}={value}&"
+    return search_string[:-1]
+
+
+def _get_model_for_type(resource_type: str) -> BaseModel:
+    """
+    Get the model for a resource type.
+    """
+    module = import_module(f"fhan.models.{FHIR_VERSION}.{resource_type}")
+    model = getattr(module, resource_type)
+    return model
+
+
+def _get_next_link(bundle: dict) -> Optional[str]:
+    """
+    Get the next link from a bundle.
+    """
+    if "link" not in bundle:
+        return None
+    for link in bundle["link"]:
+        if link["relation"] == "next":
+            return link["url"]
+    return None

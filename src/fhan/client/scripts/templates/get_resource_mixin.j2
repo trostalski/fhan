@@ -1,4 +1,5 @@
 # generated at {{ time }} from {{ source_script }}
+from typing import Union
 {% for resource_type in resource_types %}
 from {{ model_import_path }}.{{resource_type}} import {{ resource_type }}
 {% endfor %}
@@ -13,6 +14,6 @@ class GetResourceMixin:
         self,
         id: str,
         as_object: bool = False,
-    ) -> dict | {{ resource_type }}:
+    ) -> Union[dict, {{ resource_type }}]:
         return self._get("{{ resource_type }}", id, as_object)
 {% endfor %}

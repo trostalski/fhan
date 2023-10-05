@@ -1,5 +1,10 @@
+import os
+from typing import Optional, Union
 import requests
-from urllib.parse import urljoin
+
+from dotenv import load_dotenv
+
+load_dotenv()
 
 
 def join_urls(*args):
@@ -11,9 +16,9 @@ def join_urls(*args):
 
 def make_get_request(
     url: str,
-    session: requests.Session | None = None,
-    params: dict | None = None,
-    headers: dict | None = None,
+    session: Optional[requests.Session] = None,
+    params: Optional[dict] = None,
+    headers: Optional[dict] = None,
 ) -> requests.Response:
     """
     Make a GET request to a URL.

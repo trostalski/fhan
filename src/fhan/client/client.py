@@ -1,12 +1,10 @@
 from importlib import import_module
-from typing import Any, Literal, Optional, Union
+from typing import Literal, Optional, Union
 import requests
 import logging
 
-from fhan.client.generated.get_resource_mixin import GetResourceMixin
-from fhan.client.search_builder import SearchBuilder
-from fhan.client.search_bundle import SearchBundle
 
+from fhan.client.search_bundle import SearchBundle
 from fhan.client.utils.http_utils import (
     build_fhir_get_url,
     build_fhir_search_url,
@@ -15,7 +13,6 @@ from fhan.client.utils.http_utils import (
 )
 from fhan.core.fhir_package import FhirPackageLoader
 from fhan.core.fhir_types import _ResourceType
-from fhan.core.settings import ClientSettings
 from fhan.models.R4.CapabilityStatement import CapabilityStatement
 from fhan.models.generator_models import BaseModel
 

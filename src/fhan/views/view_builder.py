@@ -6,7 +6,7 @@ from fhan.views.view_definition import (
     ViewDefinitionWhere,
     validate_view_definition,
 )
-from fhan.core.types import _ResourceType
+from fhan.core.fhir_types import _ResourceType
 
 
 class ViewBuilder:

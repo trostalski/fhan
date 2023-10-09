@@ -1,6 +1,6 @@
 [project]
 name = "fhan"
-version = "0.1.0"
+version = "0.1.1"
 description = "Add your description here"
 authors = [{ name = "Till Rostalski", email = "tillrostalski@gmail.com" }]
 dependencies = [
@@ -11,6 +11,8 @@ dependencies = [
     "fhirpathpy>=0.2.2",
     "pandas>=2.0.3",
     "dacite>=1.8.1",
+    "python-dotenv>=1.0.0",
+    "docker>=6.1.3",
 ]
 readme = "README.md"
 requires-python = ">= 3.8"

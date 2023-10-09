@@ -1,5 +1,10 @@
+import os
+from typing import Optional, Union
 import requests
-from urllib.parse import urljoin
+
+from dotenv import load_dotenv
+
+load_dotenv()
 
 
 def join_urls(*args):
@@ -9,11 +14,62 @@ def join_urls(*args):
     return "/".join(map(lambda x: str(x).rstrip("/"), args))
 
 
+def make_put_request(
+    url: str,
+    session: Optional[requests.Session] = None,
+    data: Optional[dict] = None,
+    headers: Optional[dict] = None,
+    raise_for_status: Optional[bool] = True,
+) -> requests.Response:
+    """
+    Make a PUT request to a URL.
+    """
+    if data is None:
+        data = {}
+    if headers is None:
+        headers = {}
+
+    if session:
+        response = session.put(url, json=data, headers=headers)
+    else:
+        response = requests.put(url, json=data, headers=headers)
+
+    if raise_for_status:
+        response.raise_for_status()
+    return response
+
+
+def make_post_request(
+    url: str,
+    session: Optional[requests.Session] = None,
+    data: Optional[dict] = None,
+    headers: Optional[dict] = None,
+    raise_for_status: Optional[bool] = True,
+) -> requests.Response:
+    """
+    Make a POST request to a URL.
+    """
+    if data is None:
+        data = {}
+    if headers is None:
+        headers = {}
+
+    if session:
+        response = session.post(url, json=data, headers=headers)
+    else:
+        response = requests.post(url, json=data, headers=headers)
+
+    if raise_for_status:
+        response.raise_for_status()
+    return response
+
+
 def make_get_request(
     url: str,
-    session: requests.Session | None = None,
-    params: dict | None = None,
-    headers: dict | None = None,
+    session: Optional[requests.Session] = None,
+    params: Optional[dict] = None,
+    headers: Optional[dict] = None,
+    raise_for_status: Optional[bool] = True,
 ) -> requests.Response:
     """
     Make a GET request to a URL.
@@ -28,7 +84,8 @@ def make_get_request(
     else:
         response = requests.get(url, params=params, headers=headers)
 
-    response.raise_for_status()
+    if raise_for_status:
+        response.raise_for_status()
     return response
 
 

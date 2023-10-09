@@ -117,7 +117,6 @@ class FhirPackage:
             content_json = json.loads(content)
             resource_type = content_json.get("resourceType")
             if os.path.basename(filename) == "package.json":
-                print(content_json)
                 package_info = _parse_package_info(content_json)
             if resource_type == "CodeSystem":
                 code_systems.append(content_json)

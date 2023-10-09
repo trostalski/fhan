@@ -11,5 +11,5 @@ class SearchBuilderMixin:
         pass
 {% for resource_type in resource_types %}
     def {{ resource_type }}(self):
-        return {{ resource_type }}SearchBuilder(search_string=self.search_string)
+        return {{ resource_type }}SearchBuilder(search_string=f"{{resource_type}}?")
 {% endfor %}

@@ -19,6 +19,7 @@ def make_put_request(
     session: Optional[requests.Session] = None,
     data: Optional[dict] = None,
     headers: Optional[dict] = None,
+    raise_for_status: Optional[bool] = True,
 ) -> requests.Response:
     """
     Make a PUT request to a URL.
@@ -33,7 +34,8 @@ def make_put_request(
     else:
         response = requests.put(url, json=data, headers=headers)
 
-    response.raise_for_status()
+    if raise_for_status:
+        response.raise_for_status()
     return response
 
 
@@ -42,6 +44,7 @@ def make_post_request(
     session: Optional[requests.Session] = None,
     data: Optional[dict] = None,
     headers: Optional[dict] = None,
+    raise_for_status: Optional[bool] = True,
 ) -> requests.Response:
     """
     Make a POST request to a URL.
@@ -56,7 +59,8 @@ def make_post_request(
     else:
         response = requests.post(url, json=data, headers=headers)
 
-    response.raise_for_status()
+    if raise_for_status:
+        response.raise_for_status()
     return response
 
 
@@ -65,6 +69,7 @@ def make_get_request(
     session: Optional[requests.Session] = None,
     params: Optional[dict] = None,
     headers: Optional[dict] = None,
+    raise_for_status: Optional[bool] = True,
 ) -> requests.Response:
     """
     Make a GET request to a URL.
@@ -79,7 +84,8 @@ def make_get_request(
     else:
         response = requests.get(url, params=params, headers=headers)
 
-    response.raise_for_status()
+    if raise_for_status:
+        response.raise_for_status()
     return response
 
 

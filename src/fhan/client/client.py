@@ -1,7 +1,12 @@
 from importlib import import_module
 from typing import Literal, Optional, Union
-import requests
 import logging
+
+from dotenv import load_dotenv
+import requests
+from requests.exceptions import HTTPError
+from fhan.client.auth import Auth
+from fhan.client.exceptions import AuthenticationError
 
 
 from fhan.client.search_bundle import SearchBundle
@@ -18,6 +23,8 @@ from fhan.models.generator_models import BaseModel
 
 logger = logging.getLogger(__name__)
 FHIR_VERSION = "R4"
+
+load_dotenv()
 
 
 class ServerMetadata:
@@ -70,17 +77,13 @@ class Client:
         self,
         base_url: str,
         fhir_version: str = FHIR_VERSION,
-        load_package: bool = False,
+        auth_method: Literal["basic", "bearer", "cookie"] = "cookie",
     ):
         self._base_url = base_url if not base_url.endswith("/") else base_url[:-1]
         self._fhir_version = fhir_version
         self._session = requests.Session()
-        self.metadata = ServerMetadata(self._get_metadata())
-
-        if load_package:
-            self.package = self._load_package()
-        else:
-            self.package = None
+        self.auth = Auth(method=auth_method, base_url=base_url, session=self._session)
+        self._try_get_metadata()
 
     def get(
         self,
@@ -171,16 +174,32 @@ class Client:
             result = SearchBundle(result)
         return result
 
-    def _get_metadata(self):
-        metadata = make_get_request(
-            url=join_urls(self._base_url, "metadata"), session=self._session
-        ).json()
-        return CapabilityStatement.from_dict(metadata)
+    import logging
 
-    def _load_package(self):
-        return FhirPackageLoader().load_package_from_version(
-            version=self._fhir_version,
+    def _try_get_metadata(self, num_try: int = 0):
+        if num_try > 3:
+            raise AuthenticationError("Could not authenticate.")
+        metadata_res = make_get_request(
+            url=join_urls(self._base_url, "metadata"),
+            session=self._session,
+            raise_for_status=False,
         )
+
+        if metadata_res.status_code == 200:
+            self.metadata = ServerMetadata(
+                CapabilityStatement.from_dict(metadata_res.json())
+            )
+        elif metadata_res.status_code == 401:
+            logging.warning("Server requires authentication")
+            logging.warning(f"Trying to authenticate. Auth method: {self.auth.method}")
+            self.auth.authenticate()
+            if self.auth.is_authenticated:
+                logging.info("Authentication successful")
+                self._try_get_metadata(num_try=num_try + 1)
+            else:
+                logging.error("Authentication failed")
+        else:
+            metadata_res.raise_for_status()
 
 
 def _get_params_from_kwargs(**kwargs):

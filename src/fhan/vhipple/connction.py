@@ -22,7 +22,7 @@ class VhippleConnection(object):
         self.session = Session()
 
     def connect(self):
-        self.vhipple_url = "http://localhost:8001/api/v1"
+        self.vhipple_url = "http://localhost:8000/api/v1"
 
     def close(self):
         pass

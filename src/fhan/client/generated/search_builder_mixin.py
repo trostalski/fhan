@@ -1,4 +1,4 @@
-# generated at 2023-10-05 16:18:57.481882 from /Users/tillrostalski/Git/fhan/src/fhan/client/scripts/create_from_template.py
+# generated at 2023-10-10 10:57:20.304823 from /Users/tillrostalski/Git/fhan/src/fhan/client/scripts/create_from_template.py
 
 from fhan.client.generated.search_builder import AccountSearchBuilder
 
@@ -6,7 +6,9 @@ from fhan.client.generated.search_builder import ActivityDefinitionSearchBuilder
 
 from fhan.client.generated.search_builder import ActorDefinitionSearchBuilder
 
-from fhan.client.generated.search_builder import AdministrableProductDefinitionSearchBuilder
+from fhan.client.generated.search_builder import (
+    AdministrableProductDefinitionSearchBuilder,
+)
 
 from fhan.client.generated.search_builder import AdverseEventSearchBuilder
 
@@ -26,7 +28,9 @@ from fhan.client.generated.search_builder import BinarySearchBuilder
 
 from fhan.client.generated.search_builder import BiologicallyDerivedProductSearchBuilder
 
-from fhan.client.generated.search_builder import BiologicallyDerivedProductDispenseSearchBuilder
+from fhan.client.generated.search_builder import (
+    BiologicallyDerivedProductDispenseSearchBuilder,
+)
 
 from fhan.client.generated.search_builder import BodyStructureSearchBuilder
 
@@ -76,7 +80,9 @@ from fhan.client.generated.search_builder import CoverageSearchBuilder
 
 from fhan.client.generated.search_builder import CoverageEligibilityRequestSearchBuilder
 
-from fhan.client.generated.search_builder import CoverageEligibilityResponseSearchBuilder
+from fhan.client.generated.search_builder import (
+    CoverageEligibilityResponseSearchBuilder,
+)
 
 from fhan.client.generated.search_builder import DetectedIssueSearchBuilder
 
@@ -288,7 +294,9 @@ from fhan.client.generated.search_builder import SubstancePolymerSearchBuilder
 
 from fhan.client.generated.search_builder import SubstanceProteinSearchBuilder
 
-from fhan.client.generated.search_builder import SubstanceReferenceInformationSearchBuilder
+from fhan.client.generated.search_builder import (
+    SubstanceReferenceInformationSearchBuilder,
+)
 
 from fhan.client.generated.search_builder import SubstanceSourceMaterialSearchBuilder
 
@@ -316,479 +324,480 @@ from fhan.client.generated.search_builder import VisionPrescriptionSearchBuilder
 
 
 class SearchBuilderMixin:
-    """This mixin class provides the SearchBuilder class 
+    """This mixin class provides the SearchBuilder class
     with getter methods for each resource type.
     """
+
     def __init__(self):
         pass
 
     def Account(self):
-        return AccountSearchBuilder(search_string=f"Account?")
+        return AccountSearchBuilder(search_string="")
 
     def ActivityDefinition(self):
-        return ActivityDefinitionSearchBuilder(search_string=f"ActivityDefinition?")
+        return ActivityDefinitionSearchBuilder(search_string="")
 
     def ActorDefinition(self):
-        return ActorDefinitionSearchBuilder(search_string=f"ActorDefinition?")
+        return ActorDefinitionSearchBuilder(search_string="")
 
     def AdministrableProductDefinition(self):
-        return AdministrableProductDefinitionSearchBuilder(search_string=f"AdministrableProductDefinition?")
+        return AdministrableProductDefinitionSearchBuilder(search_string="")
 
     def AdverseEvent(self):
-        return AdverseEventSearchBuilder(search_string=f"AdverseEvent?")
+        return AdverseEventSearchBuilder(search_string="")
 
     def AllergyIntolerance(self):
-        return AllergyIntoleranceSearchBuilder(search_string=f"AllergyIntolerance?")
+        return AllergyIntoleranceSearchBuilder(search_string="")
 
     def Appointment(self):
-        return AppointmentSearchBuilder(search_string=f"Appointment?")
+        return AppointmentSearchBuilder(search_string="")
 
     def AppointmentResponse(self):
-        return AppointmentResponseSearchBuilder(search_string=f"AppointmentResponse?")
+        return AppointmentResponseSearchBuilder(search_string="")
 
     def ArtifactAssessment(self):
-        return ArtifactAssessmentSearchBuilder(search_string=f"ArtifactAssessment?")
+        return ArtifactAssessmentSearchBuilder(search_string="")
 
     def AuditEvent(self):
-        return AuditEventSearchBuilder(search_string=f"AuditEvent?")
+        return AuditEventSearchBuilder(search_string="")
 
     def Basic(self):
-        return BasicSearchBuilder(search_string=f"Basic?")
+        return BasicSearchBuilder(search_string="")
 
     def Binary(self):
-        return BinarySearchBuilder(search_string=f"Binary?")
+        return BinarySearchBuilder(search_string="")
 
     def BiologicallyDerivedProduct(self):
-        return BiologicallyDerivedProductSearchBuilder(search_string=f"BiologicallyDerivedProduct?")
+        return BiologicallyDerivedProductSearchBuilder(search_string="")
 
     def BiologicallyDerivedProductDispense(self):
-        return BiologicallyDerivedProductDispenseSearchBuilder(search_string=f"BiologicallyDerivedProductDispense?")
+        return BiologicallyDerivedProductDispenseSearchBuilder(search_string="")
 
     def BodyStructure(self):
-        return BodyStructureSearchBuilder(search_string=f"BodyStructure?")
+        return BodyStructureSearchBuilder(search_string="")
 
     def Bundle(self):
-        return BundleSearchBuilder(search_string=f"Bundle?")
+        return BundleSearchBuilder(search_string="")
 
     def CapabilityStatement(self):
-        return CapabilityStatementSearchBuilder(search_string=f"CapabilityStatement?")
+        return CapabilityStatementSearchBuilder(search_string="")
 
     def CarePlan(self):
-        return CarePlanSearchBuilder(search_string=f"CarePlan?")
+        return CarePlanSearchBuilder(search_string="")
 
     def CareTeam(self):
-        return CareTeamSearchBuilder(search_string=f"CareTeam?")
+        return CareTeamSearchBuilder(search_string="")
 
     def ChargeItem(self):
-        return ChargeItemSearchBuilder(search_string=f"ChargeItem?")
+        return ChargeItemSearchBuilder(search_string="")
 
     def ChargeItemDefinition(self):
-        return ChargeItemDefinitionSearchBuilder(search_string=f"ChargeItemDefinition?")
+        return ChargeItemDefinitionSearchBuilder(search_string="")
 
     def Citation(self):
-        return CitationSearchBuilder(search_string=f"Citation?")
+        return CitationSearchBuilder(search_string="")
 
     def Claim(self):
-        return ClaimSearchBuilder(search_string=f"Claim?")
+        return ClaimSearchBuilder(search_string="")
 
     def ClaimResponse(self):
-        return ClaimResponseSearchBuilder(search_string=f"ClaimResponse?")
+        return ClaimResponseSearchBuilder(search_string="")
 
     def ClinicalImpression(self):
-        return ClinicalImpressionSearchBuilder(search_string=f"ClinicalImpression?")
+        return ClinicalImpressionSearchBuilder(search_string="")
 
     def ClinicalUseDefinition(self):
-        return ClinicalUseDefinitionSearchBuilder(search_string=f"ClinicalUseDefinition?")
+        return ClinicalUseDefinitionSearchBuilder(search_string="")
 
     def CodeSystem(self):
-        return CodeSystemSearchBuilder(search_string=f"CodeSystem?")
+        return CodeSystemSearchBuilder(search_string="")
 
     def Communication(self):
-        return CommunicationSearchBuilder(search_string=f"Communication?")
+        return CommunicationSearchBuilder(search_string="")
 
     def CommunicationRequest(self):
-        return CommunicationRequestSearchBuilder(search_string=f"CommunicationRequest?")
+        return CommunicationRequestSearchBuilder(search_string="")
 
     def CompartmentDefinition(self):
-        return CompartmentDefinitionSearchBuilder(search_string=f"CompartmentDefinition?")
+        return CompartmentDefinitionSearchBuilder(search_string="")
 
     def Composition(self):
-        return CompositionSearchBuilder(search_string=f"Composition?")
+        return CompositionSearchBuilder(search_string="")
 
     def ConceptMap(self):
-        return ConceptMapSearchBuilder(search_string=f"ConceptMap?")
+        return ConceptMapSearchBuilder(search_string="")
 
     def Condition(self):
-        return ConditionSearchBuilder(search_string=f"Condition?")
+        return ConditionSearchBuilder(search_string="")
 
     def ConditionDefinition(self):
-        return ConditionDefinitionSearchBuilder(search_string=f"ConditionDefinition?")
+        return ConditionDefinitionSearchBuilder(search_string="")
 
     def Consent(self):
-        return ConsentSearchBuilder(search_string=f"Consent?")
+        return ConsentSearchBuilder(search_string="")
 
     def Contract(self):
-        return ContractSearchBuilder(search_string=f"Contract?")
+        return ContractSearchBuilder(search_string="")
 
     def Coverage(self):
-        return CoverageSearchBuilder(search_string=f"Coverage?")
+        return CoverageSearchBuilder(search_string="")
 
     def CoverageEligibilityRequest(self):
-        return CoverageEligibilityRequestSearchBuilder(search_string=f"CoverageEligibilityRequest?")
+        return CoverageEligibilityRequestSearchBuilder(search_string="")
 
     def CoverageEligibilityResponse(self):
-        return CoverageEligibilityResponseSearchBuilder(search_string=f"CoverageEligibilityResponse?")
+        return CoverageEligibilityResponseSearchBuilder(search_string="")
 
     def DetectedIssue(self):
-        return DetectedIssueSearchBuilder(search_string=f"DetectedIssue?")
+        return DetectedIssueSearchBuilder(search_string="")
 
     def Device(self):
-        return DeviceSearchBuilder(search_string=f"Device?")
+        return DeviceSearchBuilder(search_string="")
 
     def DeviceAssociation(self):
-        return DeviceAssociationSearchBuilder(search_string=f"DeviceAssociation?")
+        return DeviceAssociationSearchBuilder(search_string="")
 
     def DeviceDefinition(self):
-        return DeviceDefinitionSearchBuilder(search_string=f"DeviceDefinition?")
+        return DeviceDefinitionSearchBuilder(search_string="")
 
     def DeviceDispense(self):
-        return DeviceDispenseSearchBuilder(search_string=f"DeviceDispense?")
+        return DeviceDispenseSearchBuilder(search_string="")
 
     def DeviceMetric(self):
-        return DeviceMetricSearchBuilder(search_string=f"DeviceMetric?")
+        return DeviceMetricSearchBuilder(search_string="")
 
     def DeviceRequest(self):
-        return DeviceRequestSearchBuilder(search_string=f"DeviceRequest?")
+        return DeviceRequestSearchBuilder(search_string="")
 
     def DeviceUsage(self):
-        return DeviceUsageSearchBuilder(search_string=f"DeviceUsage?")
+        return DeviceUsageSearchBuilder(search_string="")
 
     def DiagnosticReport(self):
-        return DiagnosticReportSearchBuilder(search_string=f"DiagnosticReport?")
+        return DiagnosticReportSearchBuilder(search_string="")
 
     def DocumentReference(self):
-        return DocumentReferenceSearchBuilder(search_string=f"DocumentReference?")
+        return DocumentReferenceSearchBuilder(search_string="")
 
     def Encounter(self):
-        return EncounterSearchBuilder(search_string=f"Encounter?")
+        return EncounterSearchBuilder(search_string="")
 
     def EncounterHistory(self):
-        return EncounterHistorySearchBuilder(search_string=f"EncounterHistory?")
+        return EncounterHistorySearchBuilder(search_string="")
 
     def Endpoint(self):
-        return EndpointSearchBuilder(search_string=f"Endpoint?")
+        return EndpointSearchBuilder(search_string="")
 
     def EnrollmentRequest(self):
-        return EnrollmentRequestSearchBuilder(search_string=f"EnrollmentRequest?")
+        return EnrollmentRequestSearchBuilder(search_string="")
 
     def EnrollmentResponse(self):
-        return EnrollmentResponseSearchBuilder(search_string=f"EnrollmentResponse?")
+        return EnrollmentResponseSearchBuilder(search_string="")
 
     def EpisodeOfCare(self):
-        return EpisodeOfCareSearchBuilder(search_string=f"EpisodeOfCare?")
+        return EpisodeOfCareSearchBuilder(search_string="")
 
     def EventDefinition(self):
-        return EventDefinitionSearchBuilder(search_string=f"EventDefinition?")
+        return EventDefinitionSearchBuilder(search_string="")
 
     def Evidence(self):
-        return EvidenceSearchBuilder(search_string=f"Evidence?")
+        return EvidenceSearchBuilder(search_string="")
 
     def EvidenceReport(self):
-        return EvidenceReportSearchBuilder(search_string=f"EvidenceReport?")
+        return EvidenceReportSearchBuilder(search_string="")
 
     def EvidenceVariable(self):
-        return EvidenceVariableSearchBuilder(search_string=f"EvidenceVariable?")
+        return EvidenceVariableSearchBuilder(search_string="")
 
     def ExampleScenario(self):
-        return ExampleScenarioSearchBuilder(search_string=f"ExampleScenario?")
+        return ExampleScenarioSearchBuilder(search_string="")
 
     def ExplanationOfBenefit(self):
-        return ExplanationOfBenefitSearchBuilder(search_string=f"ExplanationOfBenefit?")
+        return ExplanationOfBenefitSearchBuilder(search_string="")
 
     def FamilyMemberHistory(self):
-        return FamilyMemberHistorySearchBuilder(search_string=f"FamilyMemberHistory?")
+        return FamilyMemberHistorySearchBuilder(search_string="")
 
     def Flag(self):
-        return FlagSearchBuilder(search_string=f"Flag?")
+        return FlagSearchBuilder(search_string="")
 
     def FormularyItem(self):
-        return FormularyItemSearchBuilder(search_string=f"FormularyItem?")
+        return FormularyItemSearchBuilder(search_string="")
 
     def GenomicStudy(self):
-        return GenomicStudySearchBuilder(search_string=f"GenomicStudy?")
+        return GenomicStudySearchBuilder(search_string="")
 
     def Goal(self):
-        return GoalSearchBuilder(search_string=f"Goal?")
+        return GoalSearchBuilder(search_string="")
 
     def GraphDefinition(self):
-        return GraphDefinitionSearchBuilder(search_string=f"GraphDefinition?")
+        return GraphDefinitionSearchBuilder(search_string="")
 
     def Group(self):
-        return GroupSearchBuilder(search_string=f"Group?")
+        return GroupSearchBuilder(search_string="")
 
     def GuidanceResponse(self):
-        return GuidanceResponseSearchBuilder(search_string=f"GuidanceResponse?")
+        return GuidanceResponseSearchBuilder(search_string="")
 
     def HealthcareService(self):
-        return HealthcareServiceSearchBuilder(search_string=f"HealthcareService?")
+        return HealthcareServiceSearchBuilder(search_string="")
 
     def ImagingSelection(self):
-        return ImagingSelectionSearchBuilder(search_string=f"ImagingSelection?")
+        return ImagingSelectionSearchBuilder(search_string="")
 
     def ImagingStudy(self):
-        return ImagingStudySearchBuilder(search_string=f"ImagingStudy?")
+        return ImagingStudySearchBuilder(search_string="")
 
     def Immunization(self):
-        return ImmunizationSearchBuilder(search_string=f"Immunization?")
+        return ImmunizationSearchBuilder(search_string="")
 
     def ImmunizationEvaluation(self):
-        return ImmunizationEvaluationSearchBuilder(search_string=f"ImmunizationEvaluation?")
+        return ImmunizationEvaluationSearchBuilder(search_string="")
 
     def ImmunizationRecommendation(self):
-        return ImmunizationRecommendationSearchBuilder(search_string=f"ImmunizationRecommendation?")
+        return ImmunizationRecommendationSearchBuilder(search_string="")
 
     def ImplementationGuide(self):
-        return ImplementationGuideSearchBuilder(search_string=f"ImplementationGuide?")
+        return ImplementationGuideSearchBuilder(search_string="")
 
     def Ingredient(self):
-        return IngredientSearchBuilder(search_string=f"Ingredient?")
+        return IngredientSearchBuilder(search_string="")
 
     def InsurancePlan(self):
-        return InsurancePlanSearchBuilder(search_string=f"InsurancePlan?")
+        return InsurancePlanSearchBuilder(search_string="")
 
     def InventoryItem(self):
-        return InventoryItemSearchBuilder(search_string=f"InventoryItem?")
+        return InventoryItemSearchBuilder(search_string="")
 
     def InventoryReport(self):
-        return InventoryReportSearchBuilder(search_string=f"InventoryReport?")
+        return InventoryReportSearchBuilder(search_string="")
 
     def Invoice(self):
-        return InvoiceSearchBuilder(search_string=f"Invoice?")
+        return InvoiceSearchBuilder(search_string="")
 
     def Library(self):
-        return LibrarySearchBuilder(search_string=f"Library?")
+        return LibrarySearchBuilder(search_string="")
 
     def Linkage(self):
-        return LinkageSearchBuilder(search_string=f"Linkage?")
+        return LinkageSearchBuilder(search_string="")
 
     def List(self):
-        return ListSearchBuilder(search_string=f"List?")
+        return ListSearchBuilder(search_string="")
 
     def Location(self):
-        return LocationSearchBuilder(search_string=f"Location?")
+        return LocationSearchBuilder(search_string="")
 
     def ManufacturedItemDefinition(self):
-        return ManufacturedItemDefinitionSearchBuilder(search_string=f"ManufacturedItemDefinition?")
+        return ManufacturedItemDefinitionSearchBuilder(search_string="")
 
     def Measure(self):
-        return MeasureSearchBuilder(search_string=f"Measure?")
+        return MeasureSearchBuilder(search_string="")
 
     def MeasureReport(self):
-        return MeasureReportSearchBuilder(search_string=f"MeasureReport?")
+        return MeasureReportSearchBuilder(search_string="")
 
     def Medication(self):
-        return MedicationSearchBuilder(search_string=f"Medication?")
+        return MedicationSearchBuilder(search_string="")
 
     def MedicationAdministration(self):
-        return MedicationAdministrationSearchBuilder(search_string=f"MedicationAdministration?")
+        return MedicationAdministrationSearchBuilder(search_string="")
 
     def MedicationDispense(self):
-        return MedicationDispenseSearchBuilder(search_string=f"MedicationDispense?")
+        return MedicationDispenseSearchBuilder(search_string="")
 
     def MedicationKnowledge(self):
-        return MedicationKnowledgeSearchBuilder(search_string=f"MedicationKnowledge?")
+        return MedicationKnowledgeSearchBuilder(search_string="")
 
     def MedicationRequest(self):
-        return MedicationRequestSearchBuilder(search_string=f"MedicationRequest?")
+        return MedicationRequestSearchBuilder(search_string="")
 
     def MedicationStatement(self):
-        return MedicationStatementSearchBuilder(search_string=f"MedicationStatement?")
+        return MedicationStatementSearchBuilder(search_string="")
 
     def MedicinalProductDefinition(self):
-        return MedicinalProductDefinitionSearchBuilder(search_string=f"MedicinalProductDefinition?")
+        return MedicinalProductDefinitionSearchBuilder(search_string="")
 
     def MessageDefinition(self):
-        return MessageDefinitionSearchBuilder(search_string=f"MessageDefinition?")
+        return MessageDefinitionSearchBuilder(search_string="")
 
     def MessageHeader(self):
-        return MessageHeaderSearchBuilder(search_string=f"MessageHeader?")
+        return MessageHeaderSearchBuilder(search_string="")
 
     def MolecularSequence(self):
-        return MolecularSequenceSearchBuilder(search_string=f"MolecularSequence?")
+        return MolecularSequenceSearchBuilder(search_string="")
 
     def NamingSystem(self):
-        return NamingSystemSearchBuilder(search_string=f"NamingSystem?")
+        return NamingSystemSearchBuilder(search_string="")
 
     def NutritionIntake(self):
-        return NutritionIntakeSearchBuilder(search_string=f"NutritionIntake?")
+        return NutritionIntakeSearchBuilder(search_string="")
 
     def NutritionOrder(self):
-        return NutritionOrderSearchBuilder(search_string=f"NutritionOrder?")
+        return NutritionOrderSearchBuilder(search_string="")
 
     def NutritionProduct(self):
-        return NutritionProductSearchBuilder(search_string=f"NutritionProduct?")
+        return NutritionProductSearchBuilder(search_string="")
 
     def Observation(self):
-        return ObservationSearchBuilder(search_string=f"Observation?")
+        return ObservationSearchBuilder(search_string="")
 
     def ObservationDefinition(self):
-        return ObservationDefinitionSearchBuilder(search_string=f"ObservationDefinition?")
+        return ObservationDefinitionSearchBuilder(search_string="")
 
     def OperationDefinition(self):
-        return OperationDefinitionSearchBuilder(search_string=f"OperationDefinition?")
+        return OperationDefinitionSearchBuilder(search_string="")
 
     def OperationOutcome(self):
-        return OperationOutcomeSearchBuilder(search_string=f"OperationOutcome?")
+        return OperationOutcomeSearchBuilder(search_string="")
 
     def Organization(self):
-        return OrganizationSearchBuilder(search_string=f"Organization?")
+        return OrganizationSearchBuilder(search_string="")
 
     def OrganizationAffiliation(self):
-        return OrganizationAffiliationSearchBuilder(search_string=f"OrganizationAffiliation?")
+        return OrganizationAffiliationSearchBuilder(search_string="")
 
     def PackagedProductDefinition(self):
-        return PackagedProductDefinitionSearchBuilder(search_string=f"PackagedProductDefinition?")
+        return PackagedProductDefinitionSearchBuilder(search_string="")
 
     def Patient(self):
-        return PatientSearchBuilder(search_string=f"Patient?")
+        return PatientSearchBuilder(search_string="")
 
     def PaymentNotice(self):
-        return PaymentNoticeSearchBuilder(search_string=f"PaymentNotice?")
+        return PaymentNoticeSearchBuilder(search_string="")
 
     def PaymentReconciliation(self):
-        return PaymentReconciliationSearchBuilder(search_string=f"PaymentReconciliation?")
+        return PaymentReconciliationSearchBuilder(search_string="")
 
     def Permission(self):
-        return PermissionSearchBuilder(search_string=f"Permission?")
+        return PermissionSearchBuilder(search_string="")
 
     def Person(self):
-        return PersonSearchBuilder(search_string=f"Person?")
+        return PersonSearchBuilder(search_string="")
 
     def PlanDefinition(self):
-        return PlanDefinitionSearchBuilder(search_string=f"PlanDefinition?")
+        return PlanDefinitionSearchBuilder(search_string="")
 
     def Practitioner(self):
-        return PractitionerSearchBuilder(search_string=f"Practitioner?")
+        return PractitionerSearchBuilder(search_string="")
 
     def PractitionerRole(self):
-        return PractitionerRoleSearchBuilder(search_string=f"PractitionerRole?")
+        return PractitionerRoleSearchBuilder(search_string="")
 
     def Procedure(self):
-        return ProcedureSearchBuilder(search_string=f"Procedure?")
+        return ProcedureSearchBuilder(search_string="")
 
     def Provenance(self):
-        return ProvenanceSearchBuilder(search_string=f"Provenance?")
+        return ProvenanceSearchBuilder(search_string="")
 
     def Questionnaire(self):
-        return QuestionnaireSearchBuilder(search_string=f"Questionnaire?")
+        return QuestionnaireSearchBuilder(search_string="")
 
     def QuestionnaireResponse(self):
-        return QuestionnaireResponseSearchBuilder(search_string=f"QuestionnaireResponse?")
+        return QuestionnaireResponseSearchBuilder(search_string="")
 
     def RegulatedAuthorization(self):
-        return RegulatedAuthorizationSearchBuilder(search_string=f"RegulatedAuthorization?")
+        return RegulatedAuthorizationSearchBuilder(search_string="")
 
     def RelatedPerson(self):
-        return RelatedPersonSearchBuilder(search_string=f"RelatedPerson?")
+        return RelatedPersonSearchBuilder(search_string="")
 
     def RequestOrchestration(self):
-        return RequestOrchestrationSearchBuilder(search_string=f"RequestOrchestration?")
+        return RequestOrchestrationSearchBuilder(search_string="")
 
     def Requirements(self):
-        return RequirementsSearchBuilder(search_string=f"Requirements?")
+        return RequirementsSearchBuilder(search_string="")
 
     def ResearchStudy(self):
-        return ResearchStudySearchBuilder(search_string=f"ResearchStudy?")
+        return ResearchStudySearchBuilder(search_string="")
 
     def ResearchSubject(self):
-        return ResearchSubjectSearchBuilder(search_string=f"ResearchSubject?")
+        return ResearchSubjectSearchBuilder(search_string="")
 
     def RiskAssessment(self):
-        return RiskAssessmentSearchBuilder(search_string=f"RiskAssessment?")
+        return RiskAssessmentSearchBuilder(search_string="")
 
     def Schedule(self):
-        return ScheduleSearchBuilder(search_string=f"Schedule?")
+        return ScheduleSearchBuilder(search_string="")
 
     def SearchParameter(self):
-        return SearchParameterSearchBuilder(search_string=f"SearchParameter?")
+        return SearchParameterSearchBuilder(search_string="")
 
     def ServiceRequest(self):
-        return ServiceRequestSearchBuilder(search_string=f"ServiceRequest?")
+        return ServiceRequestSearchBuilder(search_string="")
 
     def Slot(self):
-        return SlotSearchBuilder(search_string=f"Slot?")
+        return SlotSearchBuilder(search_string="")
 
     def Specimen(self):
-        return SpecimenSearchBuilder(search_string=f"Specimen?")
+        return SpecimenSearchBuilder(search_string="")
 
     def SpecimenDefinition(self):
-        return SpecimenDefinitionSearchBuilder(search_string=f"SpecimenDefinition?")
+        return SpecimenDefinitionSearchBuilder(search_string="")
 
     def StructureDefinition(self):
-        return StructureDefinitionSearchBuilder(search_string=f"StructureDefinition?")
+        return StructureDefinitionSearchBuilder(search_string="")
 
     def StructureMap(self):
-        return StructureMapSearchBuilder(search_string=f"StructureMap?")
+        return StructureMapSearchBuilder(search_string="")
 
     def Subscription(self):
-        return SubscriptionSearchBuilder(search_string=f"Subscription?")
+        return SubscriptionSearchBuilder(search_string="")
 
     def SubscriptionStatus(self):
-        return SubscriptionStatusSearchBuilder(search_string=f"SubscriptionStatus?")
+        return SubscriptionStatusSearchBuilder(search_string="")
 
     def SubscriptionTopic(self):
-        return SubscriptionTopicSearchBuilder(search_string=f"SubscriptionTopic?")
+        return SubscriptionTopicSearchBuilder(search_string="")
 
     def Substance(self):
-        return SubstanceSearchBuilder(search_string=f"Substance?")
+        return SubstanceSearchBuilder(search_string="")
 
     def SubstanceDefinition(self):
-        return SubstanceDefinitionSearchBuilder(search_string=f"SubstanceDefinition?")
+        return SubstanceDefinitionSearchBuilder(search_string="")
 
     def SubstanceNucleicAcid(self):
-        return SubstanceNucleicAcidSearchBuilder(search_string=f"SubstanceNucleicAcid?")
+        return SubstanceNucleicAcidSearchBuilder(search_string="")
 
     def SubstancePolymer(self):
-        return SubstancePolymerSearchBuilder(search_string=f"SubstancePolymer?")
+        return SubstancePolymerSearchBuilder(search_string="")
 
     def SubstanceProtein(self):
-        return SubstanceProteinSearchBuilder(search_string=f"SubstanceProtein?")
+        return SubstanceProteinSearchBuilder(search_string="")
 
     def SubstanceReferenceInformation(self):
-        return SubstanceReferenceInformationSearchBuilder(search_string=f"SubstanceReferenceInformation?")
+        return SubstanceReferenceInformationSearchBuilder(search_string="")
 
     def SubstanceSourceMaterial(self):
-        return SubstanceSourceMaterialSearchBuilder(search_string=f"SubstanceSourceMaterial?")
+        return SubstanceSourceMaterialSearchBuilder(search_string="")
 
     def SupplyDelivery(self):
-        return SupplyDeliverySearchBuilder(search_string=f"SupplyDelivery?")
+        return SupplyDeliverySearchBuilder(search_string="")
 
     def SupplyRequest(self):
-        return SupplyRequestSearchBuilder(search_string=f"SupplyRequest?")
+        return SupplyRequestSearchBuilder(search_string="")
 
     def Task(self):
-        return TaskSearchBuilder(search_string=f"Task?")
+        return TaskSearchBuilder(search_string="")
 
     def TerminologyCapabilities(self):
-        return TerminologyCapabilitiesSearchBuilder(search_string=f"TerminologyCapabilities?")
+        return TerminologyCapabilitiesSearchBuilder(search_string="")
 
     def TestPlan(self):
-        return TestPlanSearchBuilder(search_string=f"TestPlan?")
+        return TestPlanSearchBuilder(search_string="")
 
     def TestReport(self):
-        return TestReportSearchBuilder(search_string=f"TestReport?")
+        return TestReportSearchBuilder(search_string="")
 
     def TestScript(self):
-        return TestScriptSearchBuilder(search_string=f"TestScript?")
+        return TestScriptSearchBuilder(search_string="")
 
     def Transport(self):
-        return TransportSearchBuilder(search_string=f"Transport?")
+        return TransportSearchBuilder(search_string="")
 
     def ValueSet(self):
-        return ValueSetSearchBuilder(search_string=f"ValueSet?")
+        return ValueSetSearchBuilder(search_string="")
 
     def VerificationResult(self):
-        return VerificationResultSearchBuilder(search_string=f"VerificationResult?")
+        return VerificationResultSearchBuilder(search_string="")
 
     def VisionPrescription(self):
-        return VisionPrescriptionSearchBuilder(search_string=f"VisionPrescription?")
+        return VisionPrescriptionSearchBuilder(search_string="")

@@ -27,6 +27,7 @@ dev-dependencies = [
     "black>=23.9.1",
     "mkdocs-material>=9.4.2",
     "mkdocstrings>=0.23.0",
+    "jupyter>=1.0.0",
 ]
 
 [tool.hatch.metadata]

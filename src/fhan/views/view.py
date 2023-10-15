@@ -42,6 +42,12 @@ class ViewResult:
         """
         return [dict(zip(self.table, t)) for t in zip(*self.table.values())]
 
+    def __getitem__(self, key):
+        """
+        Returns the column from the view result.
+        """
+        return self.table[key]
+
 
 class View:
     def __init__(
@@ -185,7 +191,8 @@ def _unnest_fp_result(fp_result: list) -> Any:
     elif len(fp_result) == 1:
         fp_result = fp_result[0]
     elif len(fp_result) > 1:
-        logger.warning(
+        # TODO: how to handle lists
+        logger.info(
             f"Select function returned more than one result: {fp_result}. "
             "Keeping list."
         )

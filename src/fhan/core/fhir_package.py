@@ -9,6 +9,7 @@ import time
 from dataclasses import dataclass
 
 from fhan.core.settings import BaseSettings
+from fhan.core.exceptions import FhirContextException
 
 
 logger = logging.getLogger(__name__)
@@ -58,15 +59,17 @@ class FhirPackageLoader:
     def __init__(self):
         pass
 
-    def load_package_from_version(self, version: Literal["R4", "R4B", "R5"]):
+    def load_package_from_version(
+        self, fhir_version: Literal["R4", "R4B", "R5"]
+    ) -> "FhirPackage":
         """Loads a FHIR package for a specified FHIR version."""
         version_urls = BaseSettings.fhir_version_package_urls
-        if version not in version_urls:
-            raise ValueError(
-                f"Unsupported version: {version}. Supported versions: {version_urls.keys()}"
+        if fhir_version not in version_urls:
+            raise FhirContextException(
+                f"Unsupported version: {fhir_version}. Supported versions: {version_urls.keys()}"
             )
-        url = version_urls[version]
-        return self.load_package_from_npm(url, name=version)
+        url = version_urls[fhir_version]
+        return self.load_package_from_npm(url, name=fhir_version)
 
     def load_package_from_npm(self, url: str, name: str = None):
         """Loads a FHIR npm package from an URL."""
@@ -164,6 +167,16 @@ class FhirPackage:
     def logical_structure_definitions(self):
         return self._get_structure_definitions_by_kind("logical")
 
+    @property
+    def base_capability_statement(self) -> Optional[dict]:
+        """Packages might contain multiple capability statements.
+        This method returns the base capability statement identified by the id.
+        """
+        for cs in self.capability_statements:
+            if cs["id"] == "base":
+                return cs
+        return None
+
     def _get_structure_definitions_by_kind(
         self, kind: Literal["resource", "complex-type", "primitive-type", "logical"]
     ):
@@ -177,7 +190,8 @@ def _read_fhir_package_npm(npm_file: BinaryIO) -> Iterator[Tuple[str, str]]:
             if member.name.endswith(".json"):
                 content = f.extractfile(member)
                 if content is not None:
-                    yield member.name, content.read().decode("utf-8")
+                    # using utf-8-sig to remove dealing with BOM, https://stackoverflow.com/questions/57152985/what-is-the-difference-between-utf-8-and-utf-8-sig
+                    yield member.name, content.read().decode("utf-8-sig")
             else:
                 # logger.info("Skipping  entry: %s.", member.name)
                 continue
@@ -211,13 +225,6 @@ def _parse_package_info(json_obj: dict[str, Any]) -> "PackageInfo":
 
 
 if __name__ == "__main__":
-    start_time = time.time()
     loader = FhirPackageLoader()
-    package = loader.load_from_simplifier(
-        name="de.medizininformatikinitiative.kerndatensatz.patho", version="1.0.0"
-    )
-    end_time = time.time()
-    print(
-        f"Loaded package with {len(package.structure_definitions)} structure definitions in {end_time - start_time} seconds."
-    )
-    print(package.package_info)
+    package = loader.load_from_simplifier(name="hl7.fhir.us.mcode", version="2.1.0")
+    print("PACKAFGE: ", package)

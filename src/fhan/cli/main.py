@@ -27,7 +27,7 @@ def generate(
 ):
     """Generate models from FHIR packages."""
     package_loader = FhirPackageLoader()
-    package = package_loader.load_package_from_version(version=version)
+    package = package_loader.load_package_from_version(fhir_version=version)
     generator = ModelGenerator(package=package)
     generator.generate_model_classes()
 

@@ -5,7 +5,7 @@ from fhirpathpy import evaluate
 
 
 class SearchBundle:
-    def __init__(self, bundle: dict):
+    def __init__(self, bundle: dict, search_string: str = None):
         self.bundle = bundle
         self.resources = [e["resource"] for e in bundle["entry"]]
 
@@ -13,7 +13,7 @@ class SearchBundle:
         return f"SearchBundle({self.bundle})"
 
     @property
-    def resouce_count(self) -> int:
+    def size(self) -> int:
         return len(self.resources)
 
     def get_resources(self, resource_type: Literal[_ResourceType]):

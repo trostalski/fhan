@@ -6,7 +6,6 @@ from datetime import datetime
 from dataclasses import dataclass
 
 from fhan.core.fhir_package import FhirPackageLoader
-from fhan.core.settings import ClientSettings
 
 MODIFIER_CODE_SYSTEM_URL = "http://hl7.org/fhir/search-modifier-code"
 COMPARATOR_CODE_SYSTEM_URL = "http://hl7.org/fhir/search-comparator"
@@ -26,7 +25,7 @@ def get_template(template_name: str):
 
 def get_resource_types_from_struc_defs(version: str):
     loader = FhirPackageLoader()
-    package = loader.load_package_from_version(version=version)
+    package = loader.load_package_from_version(fhir_version=version)
     structure_definition = package.structure_definitions
     resource_types = [
         sd["type"] for sd in structure_definition if sd["kind"] == "resource"
@@ -37,7 +36,7 @@ def get_resource_types_from_struc_defs(version: str):
 
 def get_resource_types_from_cap_stat(version: str):
     loader = FhirPackageLoader()
-    package = loader.load_package_from_version(version=version)
+    package = loader.load_package_from_version(fhir_version=version)
     base_cap_stat = [cs for cs in package.capability_statements if cs["id"] == "base"][
         0
     ]
@@ -62,7 +61,7 @@ def create_search_builder(
 
     template = get_template(template_name=template_name)
     loader = FhirPackageLoader()
-    package = loader.load_package_from_version(version=version)
+    package = loader.load_package_from_version(fhir_version=version)
     # extract comparators, modifiers and params from package
     base_cap_statement = [
         cs for cs in package.capability_statements if cs["id"] == "base"

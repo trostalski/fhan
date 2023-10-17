@@ -1,5 +1,5 @@
 from importlib import import_module
-from typing import Literal, Optional, Union
+from typing import Any, Literal, Optional, Union, List, Dict
 import logging
 
 from dotenv import load_dotenv
@@ -11,6 +11,7 @@ from fhan.core.exceptions import AuthenticationError
 from fhan.client.search_bundle import SearchBundle
 from fhan.core.fhir_package import FhirPackage, FhirPackageLoader
 from fhan.core.fhir_types import _ResourceType
+from fhan.core.utils.fhir_utils import is_bundle
 from fhan.models.R4.CapabilityStatement import CapabilityStatement
 from fhan.models.generator_models import BaseModel
 from fhan.client.utils.http_utils import (
@@ -103,58 +104,97 @@ class Client:
 
     def get(
         self,
-        resource_type: Optional[Literal[_ResourceType]] = None,
-        id: Optional[Union[str, list[str]]] = None,
-        search_params: Optional[dict] = None,
+        resource_type: Optional[str] = None,
+        id: Optional[Union[str, List[str]]] = None,
+        search_params: Optional[Dict[str, str]] = None,
         search_string: Optional[str] = None,
         pages: Optional[int] = 1,
         as_object: Optional[bool] = False,
         count: Optional[int] = None,
-        elements: Optional[list[str]] = None,
-        include: Optional[list[str]] = None,
-        revinclude: Optional[list[str]] = None,
+        elements: Optional[List[str]] = None,
+        include: Optional[List[str]] = None,
+        revinclude: Optional[List[str]] = None,
         total: Optional[str] = None,
         url: Optional[str] = None,
         raise_for_status: Optional[bool] = True,
-    ) -> Union[dict, SearchBundle, BaseModel]:
+    ) -> Union[Dict, "SearchBundle", "BaseModel"]:
         """
         The return type is a resource only when a single id is specified.
         In every other case, the return type is a search bundle.
         """
         if url:
-            return make_get_request(url=url, session=self._session).json()
-        is_search = search_params or search_string or isinstance(id, list) or not id
-        if is_search:
-            search_string = search_string or ""
-            if isinstance(id, list):
-                search_string += f"_id={','.join(id)}"
-            elif isinstance(id, str):
-                search_string += f"_id={id}"
-            kwarg_params = _get_params_from_kwargs(
-                count=count,
-                elements=elements,
-                include=include,
-                revinclude=revinclude,
-                total=total,
+            result = self._get_result_from_url(url)
+        elif self._is_search_request(id, search_params, search_string):
+            search_string = self._build_search_string(id, search_string)
+            search_params = self._merge_search_params(
+                count, elements, include, revinclude, total, search_params
             )
-            # overwrite search params with kwargs
-            search_params = {**kwarg_params, **(search_params or {})}
-            # add search params to search string
-            search_string += _get_string_from_search_params(search_params) or ""
-            return self._search(
-                resource_type=resource_type,
-                search_string=search_string,
-                pages=pages,
-                as_object=as_object,
-                raise_for_status=raise_for_status,
+            search_string += self._convert_params_to_string(search_params)
+            result = self._execute_search(
+                resource_type, search_string, pages, raise_for_status
             )
         else:
-            return self._get(
-                resource_type=resource_type,
-                id=id,
-                as_object=as_object,
-                raise_for_status=raise_for_status,
-            )
+            result = self._get_resource_by_id(resource_type, id, raise_for_status)
+
+        return self._process_result(result, resource_type, as_object)
+
+    def _get_result_from_url(self, url: str) -> Dict:
+        url = join_urls(self._base_url, url)
+        return make_get_request(url=url, session=self._session).json()
+
+    def _is_search_request(self, id, search_params, search_string) -> bool:
+        return search_params or search_string or isinstance(id, List) or not id
+
+    def _build_search_string(self, id, search_string) -> str:
+        search_string = search_string or ""
+        if isinstance(id, list):
+            search_string += f"_id={','.join(id)}"
+        elif isinstance(id, str):
+            search_string += f"_id={id}"
+        return search_string
+
+    def _merge_search_params(
+        self, count, elements, include, revinclude, total, search_params
+    ) -> Dict:
+        kwarg_params = _get_params_from_kwargs(
+            count=count,
+            elements=elements,
+            include=include,
+            revinclude=revinclude,
+            total=total,
+        )
+        return {**kwarg_params, **(search_params or {})}
+
+    def _execute_search(self, resource_type, search_string, pages, raise_for_status):
+        return self._search(
+            resource_type=resource_type,
+            search_string=search_string,
+            pages=pages,
+            raise_for_status=raise_for_status,
+        )
+
+    def _get_resource_by_id(self, resource_type, id, raise_for_status):
+        return self._get(
+            resource_type=resource_type,
+            id=id,
+            raise_for_status=raise_for_status,
+        )
+
+    def _process_result(self, result, resource_type, as_object):
+        if as_object:
+            if is_bundle(result):
+                return SearchBundle(result)
+            if not resource_type:
+                resource_type = result["resourceType"]
+            klass = _get_model_for_type(resource_type)
+            return klass.from_dict(result)
+        return result
+
+    def _convert_params_to_string(self, params: Dict[str, Any]) -> str:
+        """
+        Convert a dictionary of search parameters into a query string.
+        """
+        return "&".join([f"{key}={value}" for key, value in params.items()])
 
     def filter_available_search_params(
         self, resource_type: _ResourceType, param_name: Literal["revinclude", "include"]
@@ -212,7 +252,6 @@ class Client:
         self,
         resource_type: str,
         id: str,
-        as_object: bool = False,
         raise_for_status: bool = True,
     ):
         url = build_fhir_get_url(
@@ -221,9 +260,7 @@ class Client:
         result = make_get_request(
             url=url, session=self._session, raise_for_status=raise_for_status
         ).json()
-        if as_object:
-            klass = _get_model_for_type(resource_type)
-            result = klass.from_dict(result)
+
         return result
 
     def _search(
@@ -231,7 +268,6 @@ class Client:
         resource_type: str,
         search_string: str,
         pages: Optional[int] = 1,
-        as_object: bool = False,
         raise_for_status: bool = True,
     ):
         url = build_fhir_search_url(
@@ -252,8 +288,6 @@ class Client:
                     pages -= 1
             else:
                 break
-        if as_object:
-            result = SearchBundle(result)
         return result
 
     def _load_fhir_package(
@@ -305,15 +339,6 @@ def _get_params_from_kwargs(**kwargs):
         if value:
             params[f"_{key}"] = value
     return params
-
-
-def _get_string_from_search_params(search_params: Optional[dict]):
-    if not search_params:
-        return None
-    search_string = ""
-    for key, value in search_params.items():
-        search_string += f"{key}={value}&"
-    return search_string[:-1]
 
 
 def _get_model_for_type(resource_type: str) -> BaseModel:

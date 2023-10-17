@@ -14,3 +14,4 @@ wheels/
 
 # tmp files for debugging
 tmp.py
+tmp.ipynb

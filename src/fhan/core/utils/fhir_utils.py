@@ -1,4 +1,6 @@
 def is_bundle(input: dict):
+    if not isinstance(input, dict):
+        return False
     return "resourceType" in input and input["resourceType"] == "Bundle"
 
 

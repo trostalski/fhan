@@ -283,7 +283,7 @@ class Client:
                     url=next_link, session=self._session
                 ).json()
                 next_link = _get_next_link(next_page, self._base_url)
-                result["entry"] += next_page["entry"]
+                result["entry"] += next_page.get("entry", [])
                 if pages > 0:  # -1 means all pages
                     pages -= 1
             else:

@@ -30,10 +30,8 @@ class SearchBundle(Generic[_ResourceType]):
     def size(self) -> int:
         return len(self.resources)
 
-    def get_resources(self, resource_type: str = None) -> List[_ResourceType]:
-        if resource_type:
-            return [r for r in self.resources if r["resourceType"] == resource_type]
-        return self.resources
+    def get_resources_by_type(self, resource_type: str) -> List[_ResourceType]:
+        return [r for r in self.resources if r["resourceType"] == resource_type]
 
     def get_path(self, path: str) -> Any:
         if not path.startswith("entry.resource"):

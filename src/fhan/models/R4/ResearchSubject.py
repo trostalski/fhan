@@ -13,7 +13,7 @@ from fhan.models.R4.DomainResource import *
 
 
 class ResearchSubject(DomainResource):
-    """ A physical entity which is the primary unit of operational and/or administrative interest in a study.
+    """A physical entity which is the primary unit of operational and/or administrative interest in a study.
     :param str id: Logical id of this artifact
     :param Meta meta: Metadata about the resource
     :param str implicitRules: A set of rules under which this content was created
@@ -31,69 +31,63 @@ class ResearchSubject(DomainResource):
     :param str actualArm: What path was followed
     :param Reference consent: Agreement to participate in study
     """
+
     # needed for complex properties where the element name is different from the class name
     property_class_info = {
-        
-        
         "meta": {"class_name": "Meta", "is_contained": False},
-        
-        
-        
-        
         "text": {"class_name": "Narrative", "is_contained": False},
-        
-        
         "contained": {"class_name": "Resource", "is_contained": False},
-        
-        
         "extension": {"class_name": "Extension", "is_contained": False},
-        
-        
         "modifierExtension": {"class_name": "Extension", "is_contained": False},
-        
-        
         "identifier": {"class_name": "Identifier", "is_contained": False},
-        
-        
-        
         "period": {"class_name": "Period", "is_contained": False},
-        
-        
         "study": {"class_name": "Reference", "is_contained": False},
-        
-        
         "individual": {"class_name": "Reference", "is_contained": False},
-        
-        
-        
-        
         "consent": {"class_name": "Reference", "is_contained": False},
-        
-        }
-    def __init__(self, resourceType: str = None,  id:  'str'  = None,  meta:  'Meta'  = None,  implicitRules:  'str'  = None,  language:  'str'  = None,  text:  'Narrative'  = None,  contained:  list['Resource']  = None,  extension:  list['Extension']  = None,  modifierExtension:  list['Extension']  = None,  identifier:  list['Identifier']  = None,  status:  'str'  = None,  period:  'Period'  = None,  study:  'Reference'  = None,  individual:  'Reference'  = None,  assignedArm:  'str'  = None,  actualArm:  'str'  = None,  consent:  'Reference'  = None, ):
+    }
+
+    def __init__(
+        self,
+        resourceType: str = None,
+        id: "str" = None,
+        meta: "Meta" = None,
+        implicitRules: "str" = None,
+        language: "str" = None,
+        text: "Narrative" = None,
+        contained: list["Resource"] = None,
+        extension: list["Extension"] = None,
+        modifierExtension: list["Extension"] = None,
+        identifier: list["Identifier"] = None,
+        status: "str" = None,
+        period: "Period" = None,
+        study: "Reference" = None,
+        individual: "Reference" = None,
+        assignedArm: "str" = None,
+        actualArm: "str" = None,
+        consent: "Reference" = None,
+    ):
         self.resourceType = resourceType or "ResearchSubject"
-        self.id = id 
-        self.meta = meta 
-        self.implicitRules = implicitRules 
-        self.language = language 
-        self.text = text 
+        self.id = id
+        self.meta = meta
+        self.implicitRules = implicitRules
+        self.language = language
+        self.text = text
         self.contained = contained or []
         self.extension = extension or []
         self.modifierExtension = modifierExtension or []
         self.identifier = identifier or []
-        self.status = status 
-        self.period = period 
-        self.study = study 
-        self.individual = individual 
-        self.assignedArm = assignedArm 
-        self.actualArm = actualArm 
-        self.consent = consent 
-        
+        self.status = status
+        self.period = period
+        self.study = study
+        self.individual = individual
+        self.assignedArm = assignedArm
+        self.actualArm = actualArm
+        self.consent = consent
 
     @classmethod
     def from_dict(cls, data: dict) -> "ResearchSubject":
         return super().from_dict(data)
-    
+
     @classmethod
     def from_obj(self, obj: object) -> "ResearchSubject":
         return super().from_obj(obj)

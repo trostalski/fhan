@@ -4,16 +4,14 @@ from fhirpathpy import evaluate
 
 from fhan.core.utils.fhir_utils import is_bundle, is_empty_bundle
 
-_ResourceType = TypeVar("_ResourceType")
 
-
-class SearchBundle(Generic[_ResourceType]):
+class SearchBundle:
     def __init__(self, bundle: Dict[str, Any], search_string: str = None):
         if not is_bundle(bundle):
             raise ValueError("Invalid bundle provided to SearchBundle.")
         self.bundle = bundle
         if not is_empty_bundle(bundle):
-            self.resources: List[_ResourceType] = [
+            self.resources: List[dict] = [
                 e["resource"] for e in bundle["entry"] if "resource" in e
             ]
         else:
@@ -30,7 +28,7 @@ class SearchBundle(Generic[_ResourceType]):
     def size(self) -> int:
         return len(self.resources)
 
-    def get_resources_by_type(self, resource_type: str) -> List[_ResourceType]:
+    def get_resources_by_type(self, resource_type: str) -> List[dict]:
         return [r for r in self.resources if r["resourceType"] == resource_type]
 
     def get_path(self, path: str) -> Any:

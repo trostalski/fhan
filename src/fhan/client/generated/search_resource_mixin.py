@@ -2,10 +2,12 @@
 from typing import Union
 from fhan.client.search_bundle import SearchBundle
 
+
 class SearchResourceMixin:
     """This mixin class provides the SearchHandler with methods for each
     resource type. The methods are syntactic sugar for the _search method.
     """
+
     def __init__(self):
         pass
 

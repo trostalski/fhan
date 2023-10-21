@@ -18,43 +18,41 @@ from fhan.models.R4.Reference import *
 from fhan.models.R4.DomainResource import *
 
 
-    
-    
-
 class SampleSize(BaseModel):
-    """ A description of the size of the sample involved in the synthesis.:param str id: Unique id for inter-element referencing
+    """A description of the size of the sample involved in the synthesis.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str description: Description of sample size
     :param int numberOfStudies: How many studies?
     :param int numberOfParticipants: How many participants?
     """
+
     # needed for complex properties where the element name is different from the class name
     property_class_info = {
-        
-        
         "extension": {"class_name": "Extension", "is_contained": False},
-        
-        
         "modifierExtension": {"class_name": "Extension", "is_contained": False},
-        
-        
-        
-        
-        }
-    def __init__(self,  id:  'str'  = None,  extension:  list['Extension']  = None,  modifierExtension:  list['Extension']  = None,  description:  'str'  = None,  numberOfStudies:  'int'  = None,  numberOfParticipants:  'int'  = None, ):
-        self.id = id 
+    }
+
+    def __init__(
+        self,
+        id: "str" = None,
+        extension: list["Extension"] = None,
+        modifierExtension: list["Extension"] = None,
+        description: "str" = None,
+        numberOfStudies: "int" = None,
+        numberOfParticipants: "int" = None,
+    ):
+        self.id = id
         self.extension = extension or []
         self.modifierExtension = modifierExtension or []
-        self.description = description 
-        self.numberOfStudies = numberOfStudies 
-        self.numberOfParticipants = numberOfParticipants 
-        
+        self.description = description
+        self.numberOfStudies = numberOfStudies
+        self.numberOfParticipants = numberOfParticipants
 
     @classmethod
     def from_dict(cls, data: dict) -> "RiskEvidenceSynthesis":
         return super().from_dict(data)
-    
+
     @classmethod
     def from_obj(self, obj: object) -> "RiskEvidenceSynthesis":
         return super().from_obj(obj)
@@ -63,13 +61,8 @@ class SampleSize(BaseModel):
         return super().as_dict()
 
 
-    
-        
-    
-    
-
 class PrecisionEstimate(BaseModel):
-    """ A description of the precision of the estimate for the effect.:param str id: Unique id for inter-element referencing
+    """A description of the precision of the estimate for the effect.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param CodeableConcept type: Type of precision estimate
@@ -77,36 +70,36 @@ class PrecisionEstimate(BaseModel):
     :param float _from: Lower bound
     :param float to: Upper bound
     """
+
     # needed for complex properties where the element name is different from the class name
     property_class_info = {
-        
-        
         "extension": {"class_name": "Extension", "is_contained": False},
-        
-        
         "modifierExtension": {"class_name": "Extension", "is_contained": False},
-        
-        
         "type": {"class_name": "CodeableConcept", "is_contained": False},
-        
-        
-        
-        
-        }
-    def __init__(self,  id:  'str'  = None,  extension:  list['Extension']  = None,  modifierExtension:  list['Extension']  = None,  type:  'CodeableConcept'  = None,  level:  'float'  = None,  _from:  'float'  = None,  to:  'float'  = None, ):
-        self.id = id 
+    }
+
+    def __init__(
+        self,
+        id: "str" = None,
+        extension: list["Extension"] = None,
+        modifierExtension: list["Extension"] = None,
+        type: "CodeableConcept" = None,
+        level: "float" = None,
+        _from: "float" = None,
+        to: "float" = None,
+    ):
+        self.id = id
         self.extension = extension or []
         self.modifierExtension = modifierExtension or []
-        self.type = type 
-        self.level = level 
-        self._from = _from 
-        self.to = to 
-        
+        self.type = type
+        self.level = level
+        self._from = _from
+        self.to = to
 
     @classmethod
     def from_dict(cls, data: dict) -> "RiskEvidenceSynthesis":
         return super().from_dict(data)
-    
+
     @classmethod
     def from_obj(self, obj: object) -> "RiskEvidenceSynthesis":
         return super().from_obj(obj)
@@ -115,12 +108,8 @@ class PrecisionEstimate(BaseModel):
         return super().as_dict()
 
 
-  
-    
-    
-
 class RiskEstimate(BaseModel):
-    """ The estimated risk of the outcome.:param str id: Unique id for inter-element referencing
+    """The estimated risk of the outcome.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str description: Description of risk estimate
@@ -131,46 +120,44 @@ class RiskEstimate(BaseModel):
     :param int numeratorCount: Number with the outcome
     :param PrecisionEstimate precisionEstimate: How precise the estimate is
     """
+
     # needed for complex properties where the element name is different from the class name
     property_class_info = {
-        
-        
         "extension": {"class_name": "Extension", "is_contained": False},
-        
-        
         "modifierExtension": {"class_name": "Extension", "is_contained": False},
-        
-        
-        
         "type": {"class_name": "CodeableConcept", "is_contained": False},
-        
-        
-        
         "unitOfMeasure": {"class_name": "CodeableConcept", "is_contained": False},
-        
-        
-        
-        
         "precisionEstimate": {"class_name": "PrecisionEstimate", "is_contained": True},
-        
-        }
-    def __init__(self,  id:  'str'  = None,  extension:  list['Extension']  = None,  modifierExtension:  list['Extension']  = None,  description:  'str'  = None,  type:  'CodeableConcept'  = None,  value:  'float'  = None,  unitOfMeasure:  'CodeableConcept'  = None,  denominatorCount:  'int'  = None,  numeratorCount:  'int'  = None,  precisionEstimate:  list['PrecisionEstimate']  = None, ):
-        self.id = id 
+    }
+
+    def __init__(
+        self,
+        id: "str" = None,
+        extension: list["Extension"] = None,
+        modifierExtension: list["Extension"] = None,
+        description: "str" = None,
+        type: "CodeableConcept" = None,
+        value: "float" = None,
+        unitOfMeasure: "CodeableConcept" = None,
+        denominatorCount: "int" = None,
+        numeratorCount: "int" = None,
+        precisionEstimate: list["PrecisionEstimate"] = None,
+    ):
+        self.id = id
         self.extension = extension or []
         self.modifierExtension = modifierExtension or []
-        self.description = description 
-        self.type = type 
-        self.value = value 
-        self.unitOfMeasure = unitOfMeasure 
-        self.denominatorCount = denominatorCount 
-        self.numeratorCount = numeratorCount 
+        self.description = description
+        self.type = type
+        self.value = value
+        self.unitOfMeasure = unitOfMeasure
+        self.denominatorCount = denominatorCount
+        self.numeratorCount = numeratorCount
         self.precisionEstimate = precisionEstimate or []
-        
 
     @classmethod
     def from_dict(cls, data: dict) -> "RiskEvidenceSynthesis":
         return super().from_dict(data)
-    
+
     @classmethod
     def from_obj(self, obj: object) -> "RiskEvidenceSynthesis":
         return super().from_obj(obj)
@@ -179,51 +166,44 @@ class RiskEstimate(BaseModel):
         return super().as_dict()
 
 
-    
-        
-    
-    
-
 class CertaintySubcomponent(BaseModel):
-    """ A description of a component of the overall certainty.:param str id: Unique id for inter-element referencing
+    """A description of a component of the overall certainty.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param CodeableConcept type: Type of subcomponent of certainty rating
     :param CodeableConcept rating: Subcomponent certainty rating
     :param Annotation note: Used for footnotes or explanatory notes
     """
+
     # needed for complex properties where the element name is different from the class name
     property_class_info = {
-        
-        
         "extension": {"class_name": "Extension", "is_contained": False},
-        
-        
         "modifierExtension": {"class_name": "Extension", "is_contained": False},
-        
-        
         "type": {"class_name": "CodeableConcept", "is_contained": False},
-        
-        
         "rating": {"class_name": "CodeableConcept", "is_contained": False},
-        
-        
         "note": {"class_name": "Annotation", "is_contained": False},
-        
-        }
-    def __init__(self,  id:  'str'  = None,  extension:  list['Extension']  = None,  modifierExtension:  list['Extension']  = None,  type:  'CodeableConcept'  = None,  rating:  list['CodeableConcept']  = None,  note:  list['Annotation']  = None, ):
-        self.id = id 
+    }
+
+    def __init__(
+        self,
+        id: "str" = None,
+        extension: list["Extension"] = None,
+        modifierExtension: list["Extension"] = None,
+        type: "CodeableConcept" = None,
+        rating: list["CodeableConcept"] = None,
+        note: list["Annotation"] = None,
+    ):
+        self.id = id
         self.extension = extension or []
         self.modifierExtension = modifierExtension or []
-        self.type = type 
+        self.type = type
         self.rating = rating or []
         self.note = note or []
-        
 
     @classmethod
     def from_dict(cls, data: dict) -> "RiskEvidenceSynthesis":
         return super().from_dict(data)
-    
+
     @classmethod
     def from_obj(self, obj: object) -> "RiskEvidenceSynthesis":
         return super().from_obj(obj)
@@ -232,50 +212,47 @@ class CertaintySubcomponent(BaseModel):
         return super().as_dict()
 
 
-  
-    
-    
-
 class Certainty(BaseModel):
-    """ A description of the certainty of the risk estimate.:param str id: Unique id for inter-element referencing
+    """A description of the certainty of the risk estimate.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param CodeableConcept rating: Certainty rating
     :param Annotation note: Used for footnotes or explanatory notes
     :param CertaintySubcomponent certaintySubcomponent: A component that contributes to the overall certainty
     """
+
     # needed for complex properties where the element name is different from the class name
     property_class_info = {
-        
-        
         "extension": {"class_name": "Extension", "is_contained": False},
-        
-        
         "modifierExtension": {"class_name": "Extension", "is_contained": False},
-        
-        
         "rating": {"class_name": "CodeableConcept", "is_contained": False},
-        
-        
         "note": {"class_name": "Annotation", "is_contained": False},
-        
-        
-        "certaintySubcomponent": {"class_name": "CertaintySubcomponent", "is_contained": True},
-        
-        }
-    def __init__(self,  id:  'str'  = None,  extension:  list['Extension']  = None,  modifierExtension:  list['Extension']  = None,  rating:  list['CodeableConcept']  = None,  note:  list['Annotation']  = None,  certaintySubcomponent:  list['CertaintySubcomponent']  = None, ):
-        self.id = id 
+        "certaintySubcomponent": {
+            "class_name": "CertaintySubcomponent",
+            "is_contained": True,
+        },
+    }
+
+    def __init__(
+        self,
+        id: "str" = None,
+        extension: list["Extension"] = None,
+        modifierExtension: list["Extension"] = None,
+        rating: list["CodeableConcept"] = None,
+        note: list["Annotation"] = None,
+        certaintySubcomponent: list["CertaintySubcomponent"] = None,
+    ):
+        self.id = id
         self.extension = extension or []
         self.modifierExtension = modifierExtension or []
         self.rating = rating or []
         self.note = note or []
         self.certaintySubcomponent = certaintySubcomponent or []
-        
 
     @classmethod
     def from_dict(cls, data: dict) -> "RiskEvidenceSynthesis":
         return super().from_dict(data)
-    
+
     @classmethod
     def from_obj(self, obj: object) -> "RiskEvidenceSynthesis":
         return super().from_obj(obj)
@@ -285,7 +262,7 @@ class Certainty(BaseModel):
 
 
 class RiskEvidenceSynthesis(DomainResource):
-    """ The RiskEvidenceSynthesis resource describes the likelihood of an outcome in a population plus exposure state where the risk estimate is derived from a combination of research studies.
+    """The RiskEvidenceSynthesis resource describes the likelihood of an outcome in a population plus exposure state where the risk estimate is derived from a combination of research studies.
     :param str id: Logical id of this artifact
     :param Meta meta: Metadata about the resource
     :param str implicitRules: A set of rules under which this content was created
@@ -326,145 +303,124 @@ class RiskEvidenceSynthesis(DomainResource):
     :param RiskEstimate riskEstimate: What was the estimated risk
     :param Certainty certainty: How certain is the risk
     """
+
     # needed for complex properties where the element name is different from the class name
     property_class_info = {
-        
-        
         "meta": {"class_name": "Meta", "is_contained": False},
-        
-        
-        
-        
         "text": {"class_name": "Narrative", "is_contained": False},
-        
-        
         "contained": {"class_name": "Resource", "is_contained": False},
-        
-        
         "extension": {"class_name": "Extension", "is_contained": False},
-        
-        
         "modifierExtension": {"class_name": "Extension", "is_contained": False},
-        
-        
-        
         "identifier": {"class_name": "Identifier", "is_contained": False},
-        
-        
-        
-        
-        
-        
-        
-        
         "contact": {"class_name": "ContactDetail", "is_contained": False},
-        
-        
-        
         "note": {"class_name": "Annotation", "is_contained": False},
-        
-        
         "useContext": {"class_name": "UsageContext", "is_contained": False},
-        
-        
         "jurisdiction": {"class_name": "CodeableConcept", "is_contained": False},
-        
-        
-        
-        
-        
         "effectivePeriod": {"class_name": "Period", "is_contained": False},
-        
-        
         "topic": {"class_name": "CodeableConcept", "is_contained": False},
-        
-        
         "author": {"class_name": "ContactDetail", "is_contained": False},
-        
-        
         "editor": {"class_name": "ContactDetail", "is_contained": False},
-        
-        
         "reviewer": {"class_name": "ContactDetail", "is_contained": False},
-        
-        
         "endorser": {"class_name": "ContactDetail", "is_contained": False},
-        
-        
         "relatedArtifact": {"class_name": "RelatedArtifact", "is_contained": False},
-        
-        
         "synthesisType": {"class_name": "CodeableConcept", "is_contained": False},
-        
-        
         "studyType": {"class_name": "CodeableConcept", "is_contained": False},
-        
-        
         "population": {"class_name": "Reference", "is_contained": False},
-        
-        
         "exposure": {"class_name": "Reference", "is_contained": False},
-        
-        
         "outcome": {"class_name": "Reference", "is_contained": False},
-        
-        
         "sampleSize": {"class_name": "SampleSize", "is_contained": True},
-        
-        
         "riskEstimate": {"class_name": "RiskEstimate", "is_contained": True},
-        
-        
         "certainty": {"class_name": "Certainty", "is_contained": True},
-        
-        }
-    def __init__(self, resourceType: str = None,  id:  'str'  = None,  meta:  'Meta'  = None,  implicitRules:  'str'  = None,  language:  'str'  = None,  text:  'Narrative'  = None,  contained:  list['Resource']  = None,  extension:  list['Extension']  = None,  modifierExtension:  list['Extension']  = None,  url:  'str'  = None,  identifier:  list['Identifier']  = None,  version:  'str'  = None,  name:  'str'  = None,  title:  'str'  = None,  status:  'str'  = None,  date:  'str'  = None,  publisher:  'str'  = None,  contact:  list['ContactDetail']  = None,  description:  'str'  = None,  note:  list['Annotation']  = None,  useContext:  list['UsageContext']  = None,  jurisdiction:  list['CodeableConcept']  = None,  copyright:  'str'  = None,  approvalDate:  'str'  = None,  lastReviewDate:  'str'  = None,  effectivePeriod:  'Period'  = None,  topic:  list['CodeableConcept']  = None,  author:  list['ContactDetail']  = None,  editor:  list['ContactDetail']  = None,  reviewer:  list['ContactDetail']  = None,  endorser:  list['ContactDetail']  = None,  relatedArtifact:  list['RelatedArtifact']  = None,  synthesisType:  'CodeableConcept'  = None,  studyType:  'CodeableConcept'  = None,  population:  'Reference'  = None,  exposure:  'Reference'  = None,  outcome:  'Reference'  = None,  sampleSize:  'SampleSize'  = None,  riskEstimate:  'RiskEstimate'  = None,  certainty:  list['Certainty']  = None, ):
+    }
+
+    def __init__(
+        self,
+        resourceType: str = None,
+        id: "str" = None,
+        meta: "Meta" = None,
+        implicitRules: "str" = None,
+        language: "str" = None,
+        text: "Narrative" = None,
+        contained: list["Resource"] = None,
+        extension: list["Extension"] = None,
+        modifierExtension: list["Extension"] = None,
+        url: "str" = None,
+        identifier: list["Identifier"] = None,
+        version: "str" = None,
+        name: "str" = None,
+        title: "str" = None,
+        status: "str" = None,
+        date: "str" = None,
+        publisher: "str" = None,
+        contact: list["ContactDetail"] = None,
+        description: "str" = None,
+        note: list["Annotation"] = None,
+        useContext: list["UsageContext"] = None,
+        jurisdiction: list["CodeableConcept"] = None,
+        copyright: "str" = None,
+        approvalDate: "str" = None,
+        lastReviewDate: "str" = None,
+        effectivePeriod: "Period" = None,
+        topic: list["CodeableConcept"] = None,
+        author: list["ContactDetail"] = None,
+        editor: list["ContactDetail"] = None,
+        reviewer: list["ContactDetail"] = None,
+        endorser: list["ContactDetail"] = None,
+        relatedArtifact: list["RelatedArtifact"] = None,
+        synthesisType: "CodeableConcept" = None,
+        studyType: "CodeableConcept" = None,
+        population: "Reference" = None,
+        exposure: "Reference" = None,
+        outcome: "Reference" = None,
+        sampleSize: "SampleSize" = None,
+        riskEstimate: "RiskEstimate" = None,
+        certainty: list["Certainty"] = None,
+    ):
         self.resourceType = resourceType or "RiskEvidenceSynthesis"
-        self.id = id 
-        self.meta = meta 
-        self.implicitRules = implicitRules 
-        self.language = language 
-        self.text = text 
+        self.id = id
+        self.meta = meta
+        self.implicitRules = implicitRules
+        self.language = language
+        self.text = text
         self.contained = contained or []
         self.extension = extension or []
         self.modifierExtension = modifierExtension or []
-        self.url = url 
+        self.url = url
         self.identifier = identifier or []
-        self.version = version 
-        self.name = name 
-        self.title = title 
-        self.status = status 
-        self.date = date 
-        self.publisher = publisher 
+        self.version = version
+        self.name = name
+        self.title = title
+        self.status = status
+        self.date = date
+        self.publisher = publisher
         self.contact = contact or []
-        self.description = description 
+        self.description = description
         self.note = note or []
         self.useContext = useContext or []
         self.jurisdiction = jurisdiction or []
-        self.copyright = copyright 
-        self.approvalDate = approvalDate 
-        self.lastReviewDate = lastReviewDate 
-        self.effectivePeriod = effectivePeriod 
+        self.copyright = copyright
+        self.approvalDate = approvalDate
+        self.lastReviewDate = lastReviewDate
+        self.effectivePeriod = effectivePeriod
         self.topic = topic or []
         self.author = author or []
         self.editor = editor or []
         self.reviewer = reviewer or []
         self.endorser = endorser or []
         self.relatedArtifact = relatedArtifact or []
-        self.synthesisType = synthesisType 
-        self.studyType = studyType 
-        self.population = population 
-        self.exposure = exposure 
-        self.outcome = outcome 
-        self.sampleSize = sampleSize 
-        self.riskEstimate = riskEstimate 
+        self.synthesisType = synthesisType
+        self.studyType = studyType
+        self.population = population
+        self.exposure = exposure
+        self.outcome = outcome
+        self.sampleSize = sampleSize
+        self.riskEstimate = riskEstimate
         self.certainty = certainty or []
-        
 
     @classmethod
     def from_dict(cls, data: dict) -> "RiskEvidenceSynthesis":
         return super().from_dict(data)
-    
+
     @classmethod
     def from_obj(self, obj: object) -> "RiskEvidenceSynthesis":
         return super().from_obj(obj)

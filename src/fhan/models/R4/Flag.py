@@ -14,7 +14,7 @@ from fhan.models.R4.DomainResource import *
 
 
 class Flag(DomainResource):
-    """ Prospective warnings of potential issues when providing care to the patient.
+    """Prospective warnings of potential issues when providing care to the patient.
     :param str id: Logical id of this artifact
     :param Meta meta: Metadata about the resource
     :param str implicitRules: A set of rules under which this content was created
@@ -32,73 +32,65 @@ class Flag(DomainResource):
     :param Reference encounter: Alert relevant during encounter
     :param Reference author: Flag creator
     """
+
     # needed for complex properties where the element name is different from the class name
     property_class_info = {
-        
-        
         "meta": {"class_name": "Meta", "is_contained": False},
-        
-        
-        
-        
         "text": {"class_name": "Narrative", "is_contained": False},
-        
-        
         "contained": {"class_name": "Resource", "is_contained": False},
-        
-        
         "extension": {"class_name": "Extension", "is_contained": False},
-        
-        
         "modifierExtension": {"class_name": "Extension", "is_contained": False},
-        
-        
         "identifier": {"class_name": "Identifier", "is_contained": False},
-        
-        
-        
         "category": {"class_name": "CodeableConcept", "is_contained": False},
-        
-        
         "code": {"class_name": "CodeableConcept", "is_contained": False},
-        
-        
         "subject": {"class_name": "Reference", "is_contained": False},
-        
-        
         "period": {"class_name": "Period", "is_contained": False},
-        
-        
         "encounter": {"class_name": "Reference", "is_contained": False},
-        
-        
         "author": {"class_name": "Reference", "is_contained": False},
-        
-        }
-    def __init__(self, resourceType: str = None,  id:  'str'  = None,  meta:  'Meta'  = None,  implicitRules:  'str'  = None,  language:  'str'  = None,  text:  'Narrative'  = None,  contained:  list['Resource']  = None,  extension:  list['Extension']  = None,  modifierExtension:  list['Extension']  = None,  identifier:  list['Identifier']  = None,  status:  'str'  = None,  category:  list['CodeableConcept']  = None,  code:  'CodeableConcept'  = None,  subject:  'Reference'  = None,  period:  'Period'  = None,  encounter:  'Reference'  = None,  author:  'Reference'  = None, ):
+    }
+
+    def __init__(
+        self,
+        resourceType: str = None,
+        id: "str" = None,
+        meta: "Meta" = None,
+        implicitRules: "str" = None,
+        language: "str" = None,
+        text: "Narrative" = None,
+        contained: list["Resource"] = None,
+        extension: list["Extension"] = None,
+        modifierExtension: list["Extension"] = None,
+        identifier: list["Identifier"] = None,
+        status: "str" = None,
+        category: list["CodeableConcept"] = None,
+        code: "CodeableConcept" = None,
+        subject: "Reference" = None,
+        period: "Period" = None,
+        encounter: "Reference" = None,
+        author: "Reference" = None,
+    ):
         self.resourceType = resourceType or "Flag"
-        self.id = id 
-        self.meta = meta 
-        self.implicitRules = implicitRules 
-        self.language = language 
-        self.text = text 
+        self.id = id
+        self.meta = meta
+        self.implicitRules = implicitRules
+        self.language = language
+        self.text = text
         self.contained = contained or []
         self.extension = extension or []
         self.modifierExtension = modifierExtension or []
         self.identifier = identifier or []
-        self.status = status 
+        self.status = status
         self.category = category or []
-        self.code = code 
-        self.subject = subject 
-        self.period = period 
-        self.encounter = encounter 
-        self.author = author 
-        
+        self.code = code
+        self.subject = subject
+        self.period = period
+        self.encounter = encounter
+        self.author = author
 
     @classmethod
     def from_dict(cls, data: dict) -> "Flag":
         return super().from_dict(data)
-    
+
     @classmethod
     def from_obj(self, obj: object) -> "Flag":
         return super().from_obj(obj)

@@ -16,42 +16,39 @@ from fhan.models.R4.Reference import *
 from fhan.models.R4.DomainResource import *
 
 
-    
-    
-
 class Eligibility(BaseModel):
-    """ Does this service have specific eligibility requirements that need to be met in order to use the service?:param str id: Unique id for inter-element referencing
+    """Does this service have specific eligibility requirements that need to be met in order to use the service?:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param CodeableConcept code: Coded value for the eligibility
     :param str comment: Describes the eligibility conditions for the service
     """
+
     # needed for complex properties where the element name is different from the class name
     property_class_info = {
-        
-        
         "extension": {"class_name": "Extension", "is_contained": False},
-        
-        
         "modifierExtension": {"class_name": "Extension", "is_contained": False},
-        
-        
         "code": {"class_name": "CodeableConcept", "is_contained": False},
-        
-        
-        }
-    def __init__(self,  id:  'str'  = None,  extension:  list['Extension']  = None,  modifierExtension:  list['Extension']  = None,  code:  'CodeableConcept'  = None,  comment:  'str'  = None, ):
-        self.id = id 
+    }
+
+    def __init__(
+        self,
+        id: "str" = None,
+        extension: list["Extension"] = None,
+        modifierExtension: list["Extension"] = None,
+        code: "CodeableConcept" = None,
+        comment: "str" = None,
+    ):
+        self.id = id
         self.extension = extension or []
         self.modifierExtension = modifierExtension or []
-        self.code = code 
-        self.comment = comment 
-        
+        self.code = code
+        self.comment = comment
 
     @classmethod
     def from_dict(cls, data: dict) -> "HealthcareService":
         return super().from_dict(data)
-    
+
     @classmethod
     def from_obj(self, obj: object) -> "HealthcareService":
         return super().from_obj(obj)
@@ -60,11 +57,8 @@ class Eligibility(BaseModel):
         return super().as_dict()
 
 
-    
-    
-
 class AvailableTime(BaseModel):
-    """ A collection of times that the Service Site is available.:param str id: Unique id for inter-element referencing
+    """A collection of times that the Service Site is available.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str daysOfWeek: mon | tue | wed | thu | fri | sat | sun
@@ -72,34 +66,35 @@ class AvailableTime(BaseModel):
     :param str availableStartTime: Opening time of day (ignored if allDay = true)
     :param str availableEndTime: Closing time of day (ignored if allDay = true)
     """
+
     # needed for complex properties where the element name is different from the class name
     property_class_info = {
-        
-        
         "extension": {"class_name": "Extension", "is_contained": False},
-        
-        
         "modifierExtension": {"class_name": "Extension", "is_contained": False},
-        
-        
-        
-        
-        
-        }
-    def __init__(self,  id:  'str'  = None,  extension:  list['Extension']  = None,  modifierExtension:  list['Extension']  = None,  daysOfWeek:  list['str']  = None,  allDay:  'bool'  = None,  availableStartTime:  'str'  = None,  availableEndTime:  'str'  = None, ):
-        self.id = id 
+    }
+
+    def __init__(
+        self,
+        id: "str" = None,
+        extension: list["Extension"] = None,
+        modifierExtension: list["Extension"] = None,
+        daysOfWeek: list["str"] = None,
+        allDay: "bool" = None,
+        availableStartTime: "str" = None,
+        availableEndTime: "str" = None,
+    ):
+        self.id = id
         self.extension = extension or []
         self.modifierExtension = modifierExtension or []
         self.daysOfWeek = daysOfWeek or []
-        self.allDay = allDay 
-        self.availableStartTime = availableStartTime 
-        self.availableEndTime = availableEndTime 
-        
+        self.allDay = allDay
+        self.availableStartTime = availableStartTime
+        self.availableEndTime = availableEndTime
 
     @classmethod
     def from_dict(cls, data: dict) -> "HealthcareService":
         return super().from_dict(data)
-    
+
     @classmethod
     def from_obj(self, obj: object) -> "HealthcareService":
         return super().from_obj(obj)
@@ -108,42 +103,39 @@ class AvailableTime(BaseModel):
         return super().as_dict()
 
 
-    
-    
-
 class NotAvailable(BaseModel):
-    """ The HealthcareService is not available during this period of time due to the provided reason.:param str id: Unique id for inter-element referencing
+    """The HealthcareService is not available during this period of time due to the provided reason.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str description: Reason presented to the user explaining why time not available
     :param Period during: Service not available from this date
     """
+
     # needed for complex properties where the element name is different from the class name
     property_class_info = {
-        
-        
         "extension": {"class_name": "Extension", "is_contained": False},
-        
-        
         "modifierExtension": {"class_name": "Extension", "is_contained": False},
-        
-        
-        
         "during": {"class_name": "Period", "is_contained": False},
-        
-        }
-    def __init__(self,  id:  'str'  = None,  extension:  list['Extension']  = None,  modifierExtension:  list['Extension']  = None,  description:  'str'  = None,  during:  'Period'  = None, ):
-        self.id = id 
+    }
+
+    def __init__(
+        self,
+        id: "str" = None,
+        extension: list["Extension"] = None,
+        modifierExtension: list["Extension"] = None,
+        description: "str" = None,
+        during: "Period" = None,
+    ):
+        self.id = id
         self.extension = extension or []
         self.modifierExtension = modifierExtension or []
-        self.description = description 
-        self.during = during 
-        
+        self.description = description
+        self.during = during
 
     @classmethod
     def from_dict(cls, data: dict) -> "HealthcareService":
         return super().from_dict(data)
-    
+
     @classmethod
     def from_obj(self, obj: object) -> "HealthcareService":
         return super().from_obj(obj)
@@ -153,7 +145,7 @@ class NotAvailable(BaseModel):
 
 
 class HealthcareService(DomainResource):
-    """ The details of a healthcare service available at a location.
+    """The details of a healthcare service available at a location.
     :param str id: Logical id of this artifact
     :param Meta meta: Metadata about the resource
     :param str implicitRules: A set of rules under which this content was created
@@ -187,108 +179,93 @@ class HealthcareService(DomainResource):
     :param str availabilityExceptions: Description of availability exceptions
     :param Reference endpoint: Technical endpoints providing access to electronic services operated for the healthcare service
     """
+
     # needed for complex properties where the element name is different from the class name
     property_class_info = {
-        
-        
         "meta": {"class_name": "Meta", "is_contained": False},
-        
-        
-        
-        
         "text": {"class_name": "Narrative", "is_contained": False},
-        
-        
         "contained": {"class_name": "Resource", "is_contained": False},
-        
-        
         "extension": {"class_name": "Extension", "is_contained": False},
-        
-        
         "modifierExtension": {"class_name": "Extension", "is_contained": False},
-        
-        
         "identifier": {"class_name": "Identifier", "is_contained": False},
-        
-        
-        
         "providedBy": {"class_name": "Reference", "is_contained": False},
-        
-        
         "category": {"class_name": "CodeableConcept", "is_contained": False},
-        
-        
         "type": {"class_name": "CodeableConcept", "is_contained": False},
-        
-        
         "specialty": {"class_name": "CodeableConcept", "is_contained": False},
-        
-        
         "location": {"class_name": "Reference", "is_contained": False},
-        
-        
-        
-        
-        
         "photo": {"class_name": "Attachment", "is_contained": False},
-        
-        
         "telecom": {"class_name": "ContactPoint", "is_contained": False},
-        
-        
         "coverageArea": {"class_name": "Reference", "is_contained": False},
-        
-        
-        "serviceProvisionCode": {"class_name": "CodeableConcept", "is_contained": False},
-        
-        
+        "serviceProvisionCode": {
+            "class_name": "CodeableConcept",
+            "is_contained": False,
+        },
         "eligibility": {"class_name": "Eligibility", "is_contained": True},
-        
-        
         "program": {"class_name": "CodeableConcept", "is_contained": False},
-        
-        
         "characteristic": {"class_name": "CodeableConcept", "is_contained": False},
-        
-        
         "communication": {"class_name": "CodeableConcept", "is_contained": False},
-        
-        
         "referralMethod": {"class_name": "CodeableConcept", "is_contained": False},
-        
-        
-        
         "availableTime": {"class_name": "AvailableTime", "is_contained": True},
-        
-        
         "notAvailable": {"class_name": "NotAvailable", "is_contained": True},
-        
-        
-        
         "endpoint": {"class_name": "Reference", "is_contained": False},
-        
-        }
-    def __init__(self, resourceType: str = None,  id:  'str'  = None,  meta:  'Meta'  = None,  implicitRules:  'str'  = None,  language:  'str'  = None,  text:  'Narrative'  = None,  contained:  list['Resource']  = None,  extension:  list['Extension']  = None,  modifierExtension:  list['Extension']  = None,  identifier:  list['Identifier']  = None,  active:  'bool'  = None,  providedBy:  'Reference'  = None,  category:  list['CodeableConcept']  = None,  type:  list['CodeableConcept']  = None,  specialty:  list['CodeableConcept']  = None,  location:  list['Reference']  = None,  name:  'str'  = None,  comment:  'str'  = None,  extraDetails:  'str'  = None,  photo:  'Attachment'  = None,  telecom:  list['ContactPoint']  = None,  coverageArea:  list['Reference']  = None,  serviceProvisionCode:  list['CodeableConcept']  = None,  eligibility:  list['Eligibility']  = None,  program:  list['CodeableConcept']  = None,  characteristic:  list['CodeableConcept']  = None,  communication:  list['CodeableConcept']  = None,  referralMethod:  list['CodeableConcept']  = None,  appointmentRequired:  'bool'  = None,  availableTime:  list['AvailableTime']  = None,  notAvailable:  list['NotAvailable']  = None,  availabilityExceptions:  'str'  = None,  endpoint:  list['Reference']  = None, ):
+    }
+
+    def __init__(
+        self,
+        resourceType: str = None,
+        id: "str" = None,
+        meta: "Meta" = None,
+        implicitRules: "str" = None,
+        language: "str" = None,
+        text: "Narrative" = None,
+        contained: list["Resource"] = None,
+        extension: list["Extension"] = None,
+        modifierExtension: list["Extension"] = None,
+        identifier: list["Identifier"] = None,
+        active: "bool" = None,
+        providedBy: "Reference" = None,
+        category: list["CodeableConcept"] = None,
+        type: list["CodeableConcept"] = None,
+        specialty: list["CodeableConcept"] = None,
+        location: list["Reference"] = None,
+        name: "str" = None,
+        comment: "str" = None,
+        extraDetails: "str" = None,
+        photo: "Attachment" = None,
+        telecom: list["ContactPoint"] = None,
+        coverageArea: list["Reference"] = None,
+        serviceProvisionCode: list["CodeableConcept"] = None,
+        eligibility: list["Eligibility"] = None,
+        program: list["CodeableConcept"] = None,
+        characteristic: list["CodeableConcept"] = None,
+        communication: list["CodeableConcept"] = None,
+        referralMethod: list["CodeableConcept"] = None,
+        appointmentRequired: "bool" = None,
+        availableTime: list["AvailableTime"] = None,
+        notAvailable: list["NotAvailable"] = None,
+        availabilityExceptions: "str" = None,
+        endpoint: list["Reference"] = None,
+    ):
         self.resourceType = resourceType or "HealthcareService"
-        self.id = id 
-        self.meta = meta 
-        self.implicitRules = implicitRules 
-        self.language = language 
-        self.text = text 
+        self.id = id
+        self.meta = meta
+        self.implicitRules = implicitRules
+        self.language = language
+        self.text = text
         self.contained = contained or []
         self.extension = extension or []
         self.modifierExtension = modifierExtension or []
         self.identifier = identifier or []
-        self.active = active 
-        self.providedBy = providedBy 
+        self.active = active
+        self.providedBy = providedBy
         self.category = category or []
         self.type = type or []
         self.specialty = specialty or []
         self.location = location or []
-        self.name = name 
-        self.comment = comment 
-        self.extraDetails = extraDetails 
-        self.photo = photo 
+        self.name = name
+        self.comment = comment
+        self.extraDetails = extraDetails
+        self.photo = photo
         self.telecom = telecom or []
         self.coverageArea = coverageArea or []
         self.serviceProvisionCode = serviceProvisionCode or []
@@ -297,17 +274,16 @@ class HealthcareService(DomainResource):
         self.characteristic = characteristic or []
         self.communication = communication or []
         self.referralMethod = referralMethod or []
-        self.appointmentRequired = appointmentRequired 
+        self.appointmentRequired = appointmentRequired
         self.availableTime = availableTime or []
         self.notAvailable = notAvailable or []
-        self.availabilityExceptions = availabilityExceptions 
+        self.availabilityExceptions = availabilityExceptions
         self.endpoint = endpoint or []
-        
 
     @classmethod
     def from_dict(cls, data: dict) -> "HealthcareService":
         return super().from_dict(data)
-    
+
     @classmethod
     def from_obj(self, obj: object) -> "HealthcareService":
         return super().from_obj(obj)

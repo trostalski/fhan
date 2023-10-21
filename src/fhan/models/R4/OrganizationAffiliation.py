@@ -15,7 +15,7 @@ from fhan.models.R4.DomainResource import *
 
 
 class OrganizationAffiliation(DomainResource):
-    """ Defines an affiliation/assotiation/relationship between 2 distinct oganizations, that is not a part-of relationship/sub-division relationship.
+    """Defines an affiliation/assotiation/relationship between 2 distinct oganizations, that is not a part-of relationship/sub-division relationship.
     :param str id: Logical id of this artifact
     :param Meta meta: Metadata about the resource
     :param str implicitRules: A set of rules under which this content was created
@@ -37,76 +37,65 @@ class OrganizationAffiliation(DomainResource):
     :param ContactPoint telecom: Contact details at the participatingOrganization relevant to this Affiliation
     :param Reference endpoint: Technical endpoints providing access to services operated for this role
     """
+
     # needed for complex properties where the element name is different from the class name
     property_class_info = {
-        
-        
         "meta": {"class_name": "Meta", "is_contained": False},
-        
-        
-        
-        
         "text": {"class_name": "Narrative", "is_contained": False},
-        
-        
         "contained": {"class_name": "Resource", "is_contained": False},
-        
-        
         "extension": {"class_name": "Extension", "is_contained": False},
-        
-        
         "modifierExtension": {"class_name": "Extension", "is_contained": False},
-        
-        
         "identifier": {"class_name": "Identifier", "is_contained": False},
-        
-        
-        
         "period": {"class_name": "Period", "is_contained": False},
-        
-        
         "organization": {"class_name": "Reference", "is_contained": False},
-        
-        
         "participatingOrganization": {"class_name": "Reference", "is_contained": False},
-        
-        
         "network": {"class_name": "Reference", "is_contained": False},
-        
-        
         "code": {"class_name": "CodeableConcept", "is_contained": False},
-        
-        
         "specialty": {"class_name": "CodeableConcept", "is_contained": False},
-        
-        
         "location": {"class_name": "Reference", "is_contained": False},
-        
-        
         "healthcareService": {"class_name": "Reference", "is_contained": False},
-        
-        
         "telecom": {"class_name": "ContactPoint", "is_contained": False},
-        
-        
         "endpoint": {"class_name": "Reference", "is_contained": False},
-        
-        }
-    def __init__(self, resourceType: str = None,  id:  'str'  = None,  meta:  'Meta'  = None,  implicitRules:  'str'  = None,  language:  'str'  = None,  text:  'Narrative'  = None,  contained:  list['Resource']  = None,  extension:  list['Extension']  = None,  modifierExtension:  list['Extension']  = None,  identifier:  list['Identifier']  = None,  active:  'bool'  = None,  period:  'Period'  = None,  organization:  'Reference'  = None,  participatingOrganization:  'Reference'  = None,  network:  list['Reference']  = None,  code:  list['CodeableConcept']  = None,  specialty:  list['CodeableConcept']  = None,  location:  list['Reference']  = None,  healthcareService:  list['Reference']  = None,  telecom:  list['ContactPoint']  = None,  endpoint:  list['Reference']  = None, ):
+    }
+
+    def __init__(
+        self,
+        resourceType: str = None,
+        id: "str" = None,
+        meta: "Meta" = None,
+        implicitRules: "str" = None,
+        language: "str" = None,
+        text: "Narrative" = None,
+        contained: list["Resource"] = None,
+        extension: list["Extension"] = None,
+        modifierExtension: list["Extension"] = None,
+        identifier: list["Identifier"] = None,
+        active: "bool" = None,
+        period: "Period" = None,
+        organization: "Reference" = None,
+        participatingOrganization: "Reference" = None,
+        network: list["Reference"] = None,
+        code: list["CodeableConcept"] = None,
+        specialty: list["CodeableConcept"] = None,
+        location: list["Reference"] = None,
+        healthcareService: list["Reference"] = None,
+        telecom: list["ContactPoint"] = None,
+        endpoint: list["Reference"] = None,
+    ):
         self.resourceType = resourceType or "OrganizationAffiliation"
-        self.id = id 
-        self.meta = meta 
-        self.implicitRules = implicitRules 
-        self.language = language 
-        self.text = text 
+        self.id = id
+        self.meta = meta
+        self.implicitRules = implicitRules
+        self.language = language
+        self.text = text
         self.contained = contained or []
         self.extension = extension or []
         self.modifierExtension = modifierExtension or []
         self.identifier = identifier or []
-        self.active = active 
-        self.period = period 
-        self.organization = organization 
-        self.participatingOrganization = participatingOrganization 
+        self.active = active
+        self.period = period
+        self.organization = organization
+        self.participatingOrganization = participatingOrganization
         self.network = network or []
         self.code = code or []
         self.specialty = specialty or []
@@ -114,12 +103,11 @@ class OrganizationAffiliation(DomainResource):
         self.healthcareService = healthcareService or []
         self.telecom = telecom or []
         self.endpoint = endpoint or []
-        
 
     @classmethod
     def from_dict(cls, data: dict) -> "OrganizationAffiliation":
         return super().from_dict(data)
-    
+
     @classmethod
     def from_obj(self, obj: object) -> "OrganizationAffiliation":
         return super().from_obj(obj)

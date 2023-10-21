@@ -39,11 +39,8 @@ from fhan.models.R4.Age import *
 from fhan.models.R4.DomainResource import *
 
 
-    
-    
-
 class Parameter(BaseModel):
-    """ A parameter passed to or received from the operation.:param str id: Unique id for inter-element referencing
+    """A parameter passed to or received from the operation.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param str name: Name from the definition
@@ -100,198 +97,181 @@ class Parameter(BaseModel):
     :param Resource resource: If parameter is a whole resource
     :param Part part: Named part of a multi-part parameter
     """
+
     # needed for complex properties where the element name is different from the class name
     property_class_info = {
-        
-        
         "extension": {"class_name": "Extension", "is_contained": False},
-        
-        
         "modifierExtension": {"class_name": "Extension", "is_contained": False},
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
         "valueAddress": {"class_name": "Address", "is_contained": False},
-        
-        
         "valueAge": {"class_name": "Age", "is_contained": False},
-        
-        
         "valueAnnotation": {"class_name": "Annotation", "is_contained": False},
-        
-        
         "valueAttachment": {"class_name": "Attachment", "is_contained": False},
-        
-        
-        "valueCodeableConcept": {"class_name": "CodeableConcept", "is_contained": False},
-        
-        
+        "valueCodeableConcept": {
+            "class_name": "CodeableConcept",
+            "is_contained": False,
+        },
         "valueCoding": {"class_name": "Coding", "is_contained": False},
-        
-        
         "valueContactPoint": {"class_name": "ContactPoint", "is_contained": False},
-        
-        
         "valueCount": {"class_name": "Count", "is_contained": False},
-        
-        
         "valueDistance": {"class_name": "Distance", "is_contained": False},
-        
-        
         "valueDuration": {"class_name": "Duration", "is_contained": False},
-        
-        
         "valueHumanName": {"class_name": "HumanName", "is_contained": False},
-        
-        
         "valueIdentifier": {"class_name": "Identifier", "is_contained": False},
-        
-        
         "valueMoney": {"class_name": "Money", "is_contained": False},
-        
-        
         "valuePeriod": {"class_name": "Period", "is_contained": False},
-        
-        
         "valueQuantity": {"class_name": "Quantity", "is_contained": False},
-        
-        
         "valueRange": {"class_name": "Range", "is_contained": False},
-        
-        
         "valueRatio": {"class_name": "Ratio", "is_contained": False},
-        
-        
         "valueReference": {"class_name": "Reference", "is_contained": False},
-        
-        
         "valueSampledData": {"class_name": "SampledData", "is_contained": False},
-        
-        
         "valueSignature": {"class_name": "Signature", "is_contained": False},
-        
-        
         "valueTiming": {"class_name": "Timing", "is_contained": False},
-        
-        
         "valueContactDetail": {"class_name": "ContactDetail", "is_contained": False},
-        
-        
         "valueContributor": {"class_name": "Contributor", "is_contained": False},
-        
-        
-        "valueDataRequirement": {"class_name": "DataRequirement", "is_contained": False},
-        
-        
+        "valueDataRequirement": {
+            "class_name": "DataRequirement",
+            "is_contained": False,
+        },
         "valueExpression": {"class_name": "Expression", "is_contained": False},
-        
-        
-        "valueParameterDefinition": {"class_name": "ParameterDefinition", "is_contained": False},
-        
-        
-        "valueRelatedArtifact": {"class_name": "RelatedArtifact", "is_contained": False},
-        
-        
-        "valueTriggerDefinition": {"class_name": "TriggerDefinition", "is_contained": False},
-        
-        
+        "valueParameterDefinition": {
+            "class_name": "ParameterDefinition",
+            "is_contained": False,
+        },
+        "valueRelatedArtifact": {
+            "class_name": "RelatedArtifact",
+            "is_contained": False,
+        },
+        "valueTriggerDefinition": {
+            "class_name": "TriggerDefinition",
+            "is_contained": False,
+        },
         "valueUsageContext": {"class_name": "UsageContext", "is_contained": False},
-        
-        
         "valueDosage": {"class_name": "Dosage", "is_contained": False},
-        
-        
         "valueMeta": {"class_name": "Meta", "is_contained": False},
-        
-        
         "resource": {"class_name": "Resource", "is_contained": False},
-        
-        
         "part": {"class_name": "Part", "is_contained": True},
-        
-        }
-    def __init__(self,  id:  'str'  = None,  extension:  list['Extension']  = None,  modifierExtension:  list['Extension']  = None,  name:  'str'  = None,  valueBase64Binary:  'str'  = None,  valueBoolean:  'bool'  = None,  valueCanonical:  'str'  = None,  valueCode:  'str'  = None,  valueDate:  'str'  = None,  valueDateTime:  'str'  = None,  valueDecimal:  'float'  = None,  valueId:  'str'  = None,  valueInstant:  'str'  = None,  valueInteger:  'int'  = None,  valueMarkdown:  'str'  = None,  valueOid:  'str'  = None,  valuePositiveInt:  'int'  = None,  valueString:  'str'  = None,  valueTime:  'str'  = None,  valueUnsignedInt:  'int'  = None,  valueUri:  'str'  = None,  valueUrl:  'str'  = None,  valueUuid:  'str'  = None,  valueAddress:  'Address'  = None,  valueAge:  'Age'  = None,  valueAnnotation:  'Annotation'  = None,  valueAttachment:  'Attachment'  = None,  valueCodeableConcept:  'CodeableConcept'  = None,  valueCoding:  'Coding'  = None,  valueContactPoint:  'ContactPoint'  = None,  valueCount:  'Count'  = None,  valueDistance:  'Distance'  = None,  valueDuration:  'Duration'  = None,  valueHumanName:  'HumanName'  = None,  valueIdentifier:  'Identifier'  = None,  valueMoney:  'Money'  = None,  valuePeriod:  'Period'  = None,  valueQuantity:  'Quantity'  = None,  valueRange:  'Range'  = None,  valueRatio:  'Ratio'  = None,  valueReference:  'Reference'  = None,  valueSampledData:  'SampledData'  = None,  valueSignature:  'Signature'  = None,  valueTiming:  'Timing'  = None,  valueContactDetail:  'ContactDetail'  = None,  valueContributor:  'Contributor'  = None,  valueDataRequirement:  'DataRequirement'  = None,  valueExpression:  'Expression'  = None,  valueParameterDefinition:  'ParameterDefinition'  = None,  valueRelatedArtifact:  'RelatedArtifact'  = None,  valueTriggerDefinition:  'TriggerDefinition'  = None,  valueUsageContext:  'UsageContext'  = None,  valueDosage:  'Dosage'  = None,  valueMeta:  'Meta'  = None,  resource:  'Resource'  = None,  part:  list['Part']  = None, ):
-        self.id = id 
+    }
+
+    def __init__(
+        self,
+        id: "str" = None,
+        extension: list["Extension"] = None,
+        modifierExtension: list["Extension"] = None,
+        name: "str" = None,
+        valueBase64Binary: "str" = None,
+        valueBoolean: "bool" = None,
+        valueCanonical: "str" = None,
+        valueCode: "str" = None,
+        valueDate: "str" = None,
+        valueDateTime: "str" = None,
+        valueDecimal: "float" = None,
+        valueId: "str" = None,
+        valueInstant: "str" = None,
+        valueInteger: "int" = None,
+        valueMarkdown: "str" = None,
+        valueOid: "str" = None,
+        valuePositiveInt: "int" = None,
+        valueString: "str" = None,
+        valueTime: "str" = None,
+        valueUnsignedInt: "int" = None,
+        valueUri: "str" = None,
+        valueUrl: "str" = None,
+        valueUuid: "str" = None,
+        valueAddress: "Address" = None,
+        valueAge: "Age" = None,
+        valueAnnotation: "Annotation" = None,
+        valueAttachment: "Attachment" = None,
+        valueCodeableConcept: "CodeableConcept" = None,
+        valueCoding: "Coding" = None,
+        valueContactPoint: "ContactPoint" = None,
+        valueCount: "Count" = None,
+        valueDistance: "Distance" = None,
+        valueDuration: "Duration" = None,
+        valueHumanName: "HumanName" = None,
+        valueIdentifier: "Identifier" = None,
+        valueMoney: "Money" = None,
+        valuePeriod: "Period" = None,
+        valueQuantity: "Quantity" = None,
+        valueRange: "Range" = None,
+        valueRatio: "Ratio" = None,
+        valueReference: "Reference" = None,
+        valueSampledData: "SampledData" = None,
+        valueSignature: "Signature" = None,
+        valueTiming: "Timing" = None,
+        valueContactDetail: "ContactDetail" = None,
+        valueContributor: "Contributor" = None,
+        valueDataRequirement: "DataRequirement" = None,
+        valueExpression: "Expression" = None,
+        valueParameterDefinition: "ParameterDefinition" = None,
+        valueRelatedArtifact: "RelatedArtifact" = None,
+        valueTriggerDefinition: "TriggerDefinition" = None,
+        valueUsageContext: "UsageContext" = None,
+        valueDosage: "Dosage" = None,
+        valueMeta: "Meta" = None,
+        resource: "Resource" = None,
+        part: list["Part"] = None,
+    ):
+        self.id = id
         self.extension = extension or []
         self.modifierExtension = modifierExtension or []
-        self.name = name 
-        self.valueBase64Binary = valueBase64Binary 
-        self.valueBoolean = valueBoolean 
-        self.valueCanonical = valueCanonical 
-        self.valueCode = valueCode 
-        self.valueDate = valueDate 
-        self.valueDateTime = valueDateTime 
-        self.valueDecimal = valueDecimal 
-        self.valueId = valueId 
-        self.valueInstant = valueInstant 
-        self.valueInteger = valueInteger 
-        self.valueMarkdown = valueMarkdown 
-        self.valueOid = valueOid 
-        self.valuePositiveInt = valuePositiveInt 
-        self.valueString = valueString 
-        self.valueTime = valueTime 
-        self.valueUnsignedInt = valueUnsignedInt 
-        self.valueUri = valueUri 
-        self.valueUrl = valueUrl 
-        self.valueUuid = valueUuid 
-        self.valueAddress = valueAddress 
-        self.valueAge = valueAge 
-        self.valueAnnotation = valueAnnotation 
-        self.valueAttachment = valueAttachment 
-        self.valueCodeableConcept = valueCodeableConcept 
-        self.valueCoding = valueCoding 
-        self.valueContactPoint = valueContactPoint 
-        self.valueCount = valueCount 
-        self.valueDistance = valueDistance 
-        self.valueDuration = valueDuration 
-        self.valueHumanName = valueHumanName 
-        self.valueIdentifier = valueIdentifier 
-        self.valueMoney = valueMoney 
-        self.valuePeriod = valuePeriod 
-        self.valueQuantity = valueQuantity 
-        self.valueRange = valueRange 
-        self.valueRatio = valueRatio 
-        self.valueReference = valueReference 
-        self.valueSampledData = valueSampledData 
-        self.valueSignature = valueSignature 
-        self.valueTiming = valueTiming 
-        self.valueContactDetail = valueContactDetail 
-        self.valueContributor = valueContributor 
-        self.valueDataRequirement = valueDataRequirement 
-        self.valueExpression = valueExpression 
-        self.valueParameterDefinition = valueParameterDefinition 
-        self.valueRelatedArtifact = valueRelatedArtifact 
-        self.valueTriggerDefinition = valueTriggerDefinition 
-        self.valueUsageContext = valueUsageContext 
-        self.valueDosage = valueDosage 
-        self.valueMeta = valueMeta 
-        self.resource = resource 
+        self.name = name
+        self.valueBase64Binary = valueBase64Binary
+        self.valueBoolean = valueBoolean
+        self.valueCanonical = valueCanonical
+        self.valueCode = valueCode
+        self.valueDate = valueDate
+        self.valueDateTime = valueDateTime
+        self.valueDecimal = valueDecimal
+        self.valueId = valueId
+        self.valueInstant = valueInstant
+        self.valueInteger = valueInteger
+        self.valueMarkdown = valueMarkdown
+        self.valueOid = valueOid
+        self.valuePositiveInt = valuePositiveInt
+        self.valueString = valueString
+        self.valueTime = valueTime
+        self.valueUnsignedInt = valueUnsignedInt
+        self.valueUri = valueUri
+        self.valueUrl = valueUrl
+        self.valueUuid = valueUuid
+        self.valueAddress = valueAddress
+        self.valueAge = valueAge
+        self.valueAnnotation = valueAnnotation
+        self.valueAttachment = valueAttachment
+        self.valueCodeableConcept = valueCodeableConcept
+        self.valueCoding = valueCoding
+        self.valueContactPoint = valueContactPoint
+        self.valueCount = valueCount
+        self.valueDistance = valueDistance
+        self.valueDuration = valueDuration
+        self.valueHumanName = valueHumanName
+        self.valueIdentifier = valueIdentifier
+        self.valueMoney = valueMoney
+        self.valuePeriod = valuePeriod
+        self.valueQuantity = valueQuantity
+        self.valueRange = valueRange
+        self.valueRatio = valueRatio
+        self.valueReference = valueReference
+        self.valueSampledData = valueSampledData
+        self.valueSignature = valueSignature
+        self.valueTiming = valueTiming
+        self.valueContactDetail = valueContactDetail
+        self.valueContributor = valueContributor
+        self.valueDataRequirement = valueDataRequirement
+        self.valueExpression = valueExpression
+        self.valueParameterDefinition = valueParameterDefinition
+        self.valueRelatedArtifact = valueRelatedArtifact
+        self.valueTriggerDefinition = valueTriggerDefinition
+        self.valueUsageContext = valueUsageContext
+        self.valueDosage = valueDosage
+        self.valueMeta = valueMeta
+        self.resource = resource
         self.part = part or []
-        
 
     @classmethod
     def from_dict(cls, data: dict) -> "Parameters":
         return super().from_dict(data)
-    
+
     @classmethod
     def from_obj(self, obj: object) -> "Parameters":
         return super().from_obj(obj)
@@ -301,38 +281,40 @@ class Parameter(BaseModel):
 
 
 class Parameters(DomainResource):
-    """ This resource is a non-persisted resource used to pass information into and back from an [operation](operations.html). It has no other use, and there is no RESTful endpoint associated with it.
+    """This resource is a non-persisted resource used to pass information into and back from an [operation](operations.html). It has no other use, and there is no RESTful endpoint associated with it.
     :param str id: Logical id of this artifact
     :param Meta meta: Metadata about the resource
     :param str implicitRules: A set of rules under which this content was created
     :param str language: Language of the resource content
     :param Parameter parameter: Operation Parameter
     """
+
     # needed for complex properties where the element name is different from the class name
     property_class_info = {
-        
-        
         "meta": {"class_name": "Meta", "is_contained": False},
-        
-        
-        
-        
         "parameter": {"class_name": "Parameter", "is_contained": True},
-        
-        }
-    def __init__(self, resourceType: str = None,  id:  'str'  = None,  meta:  'Meta'  = None,  implicitRules:  'str'  = None,  language:  'str'  = None,  parameter:  list['Parameter']  = None, ):
+    }
+
+    def __init__(
+        self,
+        resourceType: str = None,
+        id: "str" = None,
+        meta: "Meta" = None,
+        implicitRules: "str" = None,
+        language: "str" = None,
+        parameter: list["Parameter"] = None,
+    ):
         self.resourceType = resourceType or "Parameters"
-        self.id = id 
-        self.meta = meta 
-        self.implicitRules = implicitRules 
-        self.language = language 
+        self.id = id
+        self.meta = meta
+        self.implicitRules = implicitRules
+        self.language = language
         self.parameter = parameter or []
-        
 
     @classmethod
     def from_dict(cls, data: dict) -> "Parameters":
         return super().from_dict(data)
-    
+
     @classmethod
     def from_obj(self, obj: object) -> "Parameters":
         return super().from_obj(obj)

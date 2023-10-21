@@ -18,42 +18,39 @@ from fhan.models.R4.Reference import *
 from fhan.models.R4.DomainResource import *
 
 
-    
-    
-
 class Communication(BaseModel):
-    """ A language which may be used to communicate with about the patient's health.:param str id: Unique id for inter-element referencing
+    """A language which may be used to communicate with about the patient's health.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param CodeableConcept language: The language which can be used to communicate with the patient about his or her health
     :param bool preferred: Language preference indicator
     """
+
     # needed for complex properties where the element name is different from the class name
     property_class_info = {
-        
-        
         "extension": {"class_name": "Extension", "is_contained": False},
-        
-        
         "modifierExtension": {"class_name": "Extension", "is_contained": False},
-        
-        
         "language": {"class_name": "CodeableConcept", "is_contained": False},
-        
-        
-        }
-    def __init__(self,  id:  'str'  = None,  extension:  list['Extension']  = None,  modifierExtension:  list['Extension']  = None,  language:  'CodeableConcept'  = None,  preferred:  'bool'  = None, ):
-        self.id = id 
+    }
+
+    def __init__(
+        self,
+        id: "str" = None,
+        extension: list["Extension"] = None,
+        modifierExtension: list["Extension"] = None,
+        language: "CodeableConcept" = None,
+        preferred: "bool" = None,
+    ):
+        self.id = id
         self.extension = extension or []
         self.modifierExtension = modifierExtension or []
-        self.language = language 
-        self.preferred = preferred 
-        
+        self.language = language
+        self.preferred = preferred
 
     @classmethod
     def from_dict(cls, data: dict) -> "RelatedPerson":
         return super().from_dict(data)
-    
+
     @classmethod
     def from_obj(self, obj: object) -> "RelatedPerson":
         return super().from_obj(obj)
@@ -63,7 +60,7 @@ class Communication(BaseModel):
 
 
 class RelatedPerson(DomainResource):
-    """ Information about a person that is involved in the care for a patient, but who is not the target of healthcare, nor has a formal responsibility in the care process.
+    """Information about a person that is involved in the care for a patient, but who is not the target of healthcare, nor has a formal responsibility in the care process.
     :param str id: Logical id of this artifact
     :param Meta meta: Metadata about the resource
     :param str implicitRules: A set of rules under which this content was created
@@ -85,85 +82,75 @@ class RelatedPerson(DomainResource):
     :param Period period: Period of time that this relationship is considered valid
     :param Communication communication: A language which may be used to communicate with about the patient's health
     """
+
     # needed for complex properties where the element name is different from the class name
     property_class_info = {
-        
-        
         "meta": {"class_name": "Meta", "is_contained": False},
-        
-        
-        
-        
         "text": {"class_name": "Narrative", "is_contained": False},
-        
-        
         "contained": {"class_name": "Resource", "is_contained": False},
-        
-        
         "extension": {"class_name": "Extension", "is_contained": False},
-        
-        
         "modifierExtension": {"class_name": "Extension", "is_contained": False},
-        
-        
         "identifier": {"class_name": "Identifier", "is_contained": False},
-        
-        
-        
         "patient": {"class_name": "Reference", "is_contained": False},
-        
-        
         "relationship": {"class_name": "CodeableConcept", "is_contained": False},
-        
-        
         "name": {"class_name": "HumanName", "is_contained": False},
-        
-        
         "telecom": {"class_name": "ContactPoint", "is_contained": False},
-        
-        
-        
-        
         "address": {"class_name": "Address", "is_contained": False},
-        
-        
         "photo": {"class_name": "Attachment", "is_contained": False},
-        
-        
         "period": {"class_name": "Period", "is_contained": False},
-        
-        
         "communication": {"class_name": "Communication", "is_contained": True},
-        
-        }
-    def __init__(self, resourceType: str = None,  id:  'str'  = None,  meta:  'Meta'  = None,  implicitRules:  'str'  = None,  language:  'str'  = None,  text:  'Narrative'  = None,  contained:  list['Resource']  = None,  extension:  list['Extension']  = None,  modifierExtension:  list['Extension']  = None,  identifier:  list['Identifier']  = None,  active:  'bool'  = None,  patient:  'Reference'  = None,  relationship:  list['CodeableConcept']  = None,  name:  list['HumanName']  = None,  telecom:  list['ContactPoint']  = None,  gender:  'str'  = None,  birthDate:  'str'  = None,  address:  list['Address']  = None,  photo:  list['Attachment']  = None,  period:  'Period'  = None,  communication:  list['Communication']  = None, ):
+    }
+
+    def __init__(
+        self,
+        resourceType: str = None,
+        id: "str" = None,
+        meta: "Meta" = None,
+        implicitRules: "str" = None,
+        language: "str" = None,
+        text: "Narrative" = None,
+        contained: list["Resource"] = None,
+        extension: list["Extension"] = None,
+        modifierExtension: list["Extension"] = None,
+        identifier: list["Identifier"] = None,
+        active: "bool" = None,
+        patient: "Reference" = None,
+        relationship: list["CodeableConcept"] = None,
+        name: list["HumanName"] = None,
+        telecom: list["ContactPoint"] = None,
+        gender: "str" = None,
+        birthDate: "str" = None,
+        address: list["Address"] = None,
+        photo: list["Attachment"] = None,
+        period: "Period" = None,
+        communication: list["Communication"] = None,
+    ):
         self.resourceType = resourceType or "RelatedPerson"
-        self.id = id 
-        self.meta = meta 
-        self.implicitRules = implicitRules 
-        self.language = language 
-        self.text = text 
+        self.id = id
+        self.meta = meta
+        self.implicitRules = implicitRules
+        self.language = language
+        self.text = text
         self.contained = contained or []
         self.extension = extension or []
         self.modifierExtension = modifierExtension or []
         self.identifier = identifier or []
-        self.active = active 
-        self.patient = patient 
+        self.active = active
+        self.patient = patient
         self.relationship = relationship or []
         self.name = name or []
         self.telecom = telecom or []
-        self.gender = gender 
-        self.birthDate = birthDate 
+        self.gender = gender
+        self.birthDate = birthDate
         self.address = address or []
         self.photo = photo or []
-        self.period = period 
+        self.period = period
         self.communication = communication or []
-        
 
     @classmethod
     def from_dict(cls, data: dict) -> "RelatedPerson":
         return super().from_dict(data)
-    
+
     @classmethod
     def from_obj(self, obj: object) -> "RelatedPerson":
         return super().from_obj(obj)

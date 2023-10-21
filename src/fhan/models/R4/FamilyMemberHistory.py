@@ -17,11 +17,8 @@ from fhan.models.R4.Reference import *
 from fhan.models.R4.DomainResource import *
 
 
-    
-    
-
 class Condition(BaseModel):
-    """ The significant Conditions (or condition) that the family member had. This is a repeating section to allow a system to represent more than one condition per resource, though there is nothing stopping multiple resources - one per condition.:param str id: Unique id for inter-element referencing
+    """The significant Conditions (or condition) that the family member had. This is a repeating section to allow a system to represent more than one condition per resource, though there is nothing stopping multiple resources - one per condition.:param str id: Unique id for inter-element referencing
     :param Extension extension: Additional content defined by implementations
     :param Extension modifierExtension: Extensions that cannot be ignored even if unrecognized
     :param CodeableConcept code: Condition suffered by relation
@@ -33,54 +30,49 @@ class Condition(BaseModel):
     :param str onsetString: When condition first manifested
     :param Annotation note: Extra information about condition
     """
+
     # needed for complex properties where the element name is different from the class name
     property_class_info = {
-        
-        
         "extension": {"class_name": "Extension", "is_contained": False},
-        
-        
         "modifierExtension": {"class_name": "Extension", "is_contained": False},
-        
-        
         "code": {"class_name": "CodeableConcept", "is_contained": False},
-        
-        
         "outcome": {"class_name": "CodeableConcept", "is_contained": False},
-        
-        
-        
         "onsetAge": {"class_name": "Age", "is_contained": False},
-        
-        
         "onsetRange": {"class_name": "Range", "is_contained": False},
-        
-        
         "onsetPeriod": {"class_name": "Period", "is_contained": False},
-        
-        
-        
         "note": {"class_name": "Annotation", "is_contained": False},
-        
-        }
-    def __init__(self,  id:  'str'  = None,  extension:  list['Extension']  = None,  modifierExtension:  list['Extension']  = None,  code:  'CodeableConcept'  = None,  outcome:  'CodeableConcept'  = None,  contributedToDeath:  'bool'  = None,  onsetAge:  'Age'  = None,  onsetRange:  'Range'  = None,  onsetPeriod:  'Period'  = None,  onsetString:  'str'  = None,  note:  list['Annotation']  = None, ):
-        self.id = id 
+    }
+
+    def __init__(
+        self,
+        id: "str" = None,
+        extension: list["Extension"] = None,
+        modifierExtension: list["Extension"] = None,
+        code: "CodeableConcept" = None,
+        outcome: "CodeableConcept" = None,
+        contributedToDeath: "bool" = None,
+        onsetAge: "Age" = None,
+        onsetRange: "Range" = None,
+        onsetPeriod: "Period" = None,
+        onsetString: "str" = None,
+        note: list["Annotation"] = None,
+    ):
+        self.id = id
         self.extension = extension or []
         self.modifierExtension = modifierExtension or []
-        self.code = code 
-        self.outcome = outcome 
-        self.contributedToDeath = contributedToDeath 
-        self.onsetAge = onsetAge 
-        self.onsetRange = onsetRange 
-        self.onsetPeriod = onsetPeriod 
-        self.onsetString = onsetString 
+        self.code = code
+        self.outcome = outcome
+        self.contributedToDeath = contributedToDeath
+        self.onsetAge = onsetAge
+        self.onsetRange = onsetRange
+        self.onsetPeriod = onsetPeriod
+        self.onsetString = onsetString
         self.note = note or []
-        
 
     @classmethod
     def from_dict(cls, data: dict) -> "FamilyMemberHistory":
         return super().from_dict(data)
-    
+
     @classmethod
     def from_obj(self, obj: object) -> "FamilyMemberHistory":
         return super().from_obj(obj)
@@ -90,7 +82,7 @@ class Condition(BaseModel):
 
 
 class FamilyMemberHistory(DomainResource):
-    """ Significant health conditions for a person related to the patient relevant in the context of care for the patient.
+    """Significant health conditions for a person related to the patient relevant in the context of care for the patient.
     :param str id: Logical id of this artifact
     :param Meta meta: Metadata about the resource
     :param str implicitRules: A set of rules under which this content was created
@@ -126,123 +118,108 @@ class FamilyMemberHistory(DomainResource):
     :param Annotation note: General note about related person
     :param Condition condition: Condition that the related person had
     """
+
     # needed for complex properties where the element name is different from the class name
     property_class_info = {
-        
-        
         "meta": {"class_name": "Meta", "is_contained": False},
-        
-        
-        
-        
         "text": {"class_name": "Narrative", "is_contained": False},
-        
-        
         "contained": {"class_name": "Resource", "is_contained": False},
-        
-        
         "extension": {"class_name": "Extension", "is_contained": False},
-        
-        
         "modifierExtension": {"class_name": "Extension", "is_contained": False},
-        
-        
         "identifier": {"class_name": "Identifier", "is_contained": False},
-        
-        
-        
-        
-        
         "dataAbsentReason": {"class_name": "CodeableConcept", "is_contained": False},
-        
-        
         "patient": {"class_name": "Reference", "is_contained": False},
-        
-        
-        
-        
         "relationship": {"class_name": "CodeableConcept", "is_contained": False},
-        
-        
         "sex": {"class_name": "CodeableConcept", "is_contained": False},
-        
-        
         "bornPeriod": {"class_name": "Period", "is_contained": False},
-        
-        
-        
-        
         "ageAge": {"class_name": "Age", "is_contained": False},
-        
-        
         "ageRange": {"class_name": "Range", "is_contained": False},
-        
-        
-        
-        
-        
         "deceasedAge": {"class_name": "Age", "is_contained": False},
-        
-        
         "deceasedRange": {"class_name": "Range", "is_contained": False},
-        
-        
-        
-        
         "reasonCode": {"class_name": "CodeableConcept", "is_contained": False},
-        
-        
         "reasonReference": {"class_name": "Reference", "is_contained": False},
-        
-        
         "note": {"class_name": "Annotation", "is_contained": False},
-        
-        
         "condition": {"class_name": "Condition", "is_contained": True},
-        
-        }
-    def __init__(self, resourceType: str = None,  id:  'str'  = None,  meta:  'Meta'  = None,  implicitRules:  'str'  = None,  language:  'str'  = None,  text:  'Narrative'  = None,  contained:  list['Resource']  = None,  extension:  list['Extension']  = None,  modifierExtension:  list['Extension']  = None,  identifier:  list['Identifier']  = None,  instantiatesCanonical:  list['str']  = None,  instantiatesUri:  list['str']  = None,  status:  'str'  = None,  dataAbsentReason:  'CodeableConcept'  = None,  patient:  'Reference'  = None,  date:  'str'  = None,  name:  'str'  = None,  relationship:  'CodeableConcept'  = None,  sex:  'CodeableConcept'  = None,  bornPeriod:  'Period'  = None,  bornDate:  'str'  = None,  bornString:  'str'  = None,  ageAge:  'Age'  = None,  ageRange:  'Range'  = None,  ageString:  'str'  = None,  estimatedAge:  'bool'  = None,  deceasedBoolean:  'bool'  = None,  deceasedAge:  'Age'  = None,  deceasedRange:  'Range'  = None,  deceasedDate:  'str'  = None,  deceasedString:  'str'  = None,  reasonCode:  list['CodeableConcept']  = None,  reasonReference:  list['Reference']  = None,  note:  list['Annotation']  = None,  condition:  list['Condition']  = None, ):
+    }
+
+    def __init__(
+        self,
+        resourceType: str = None,
+        id: "str" = None,
+        meta: "Meta" = None,
+        implicitRules: "str" = None,
+        language: "str" = None,
+        text: "Narrative" = None,
+        contained: list["Resource"] = None,
+        extension: list["Extension"] = None,
+        modifierExtension: list["Extension"] = None,
+        identifier: list["Identifier"] = None,
+        instantiatesCanonical: list["str"] = None,
+        instantiatesUri: list["str"] = None,
+        status: "str" = None,
+        dataAbsentReason: "CodeableConcept" = None,
+        patient: "Reference" = None,
+        date: "str" = None,
+        name: "str" = None,
+        relationship: "CodeableConcept" = None,
+        sex: "CodeableConcept" = None,
+        bornPeriod: "Period" = None,
+        bornDate: "str" = None,
+        bornString: "str" = None,
+        ageAge: "Age" = None,
+        ageRange: "Range" = None,
+        ageString: "str" = None,
+        estimatedAge: "bool" = None,
+        deceasedBoolean: "bool" = None,
+        deceasedAge: "Age" = None,
+        deceasedRange: "Range" = None,
+        deceasedDate: "str" = None,
+        deceasedString: "str" = None,
+        reasonCode: list["CodeableConcept"] = None,
+        reasonReference: list["Reference"] = None,
+        note: list["Annotation"] = None,
+        condition: list["Condition"] = None,
+    ):
         self.resourceType = resourceType or "FamilyMemberHistory"
-        self.id = id 
-        self.meta = meta 
-        self.implicitRules = implicitRules 
-        self.language = language 
-        self.text = text 
+        self.id = id
+        self.meta = meta
+        self.implicitRules = implicitRules
+        self.language = language
+        self.text = text
         self.contained = contained or []
         self.extension = extension or []
         self.modifierExtension = modifierExtension or []
         self.identifier = identifier or []
         self.instantiatesCanonical = instantiatesCanonical or []
         self.instantiatesUri = instantiatesUri or []
-        self.status = status 
-        self.dataAbsentReason = dataAbsentReason 
-        self.patient = patient 
-        self.date = date 
-        self.name = name 
-        self.relationship = relationship 
-        self.sex = sex 
-        self.bornPeriod = bornPeriod 
-        self.bornDate = bornDate 
-        self.bornString = bornString 
-        self.ageAge = ageAge 
-        self.ageRange = ageRange 
-        self.ageString = ageString 
-        self.estimatedAge = estimatedAge 
-        self.deceasedBoolean = deceasedBoolean 
-        self.deceasedAge = deceasedAge 
-        self.deceasedRange = deceasedRange 
-        self.deceasedDate = deceasedDate 
-        self.deceasedString = deceasedString 
+        self.status = status
+        self.dataAbsentReason = dataAbsentReason
+        self.patient = patient
+        self.date = date
+        self.name = name
+        self.relationship = relationship
+        self.sex = sex
+        self.bornPeriod = bornPeriod
+        self.bornDate = bornDate
+        self.bornString = bornString
+        self.ageAge = ageAge
+        self.ageRange = ageRange
+        self.ageString = ageString
+        self.estimatedAge = estimatedAge
+        self.deceasedBoolean = deceasedBoolean
+        self.deceasedAge = deceasedAge
+        self.deceasedRange = deceasedRange
+        self.deceasedDate = deceasedDate
+        self.deceasedString = deceasedString
         self.reasonCode = reasonCode or []
         self.reasonReference = reasonReference or []
         self.note = note or []
         self.condition = condition or []
-        
 
     @classmethod
     def from_dict(cls, data: dict) -> "FamilyMemberHistory":
         return super().from_dict(data)
-    
+
     @classmethod
     def from_obj(self, obj: object) -> "FamilyMemberHistory":
         return super().from_obj(obj)

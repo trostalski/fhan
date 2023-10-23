@@ -9,6 +9,7 @@ import requests
 
 from cachetools import Cache
 from fhan.client.auth import Auth
+from fhan.client.metadata import ServerMetadata
 from fhan.core.exceptions import AuthenticationException
 from fhan.client.search_bundle import SearchBundle
 from fhan.core.fhir_package import FhirPackage, FhirPackageLoader
@@ -19,7 +20,7 @@ from fhan.models.generator_models import BaseModel
 from fhan.client.utils.http_utils import (
     build_fhir_get_url,
     build_fhir_search_url,
-    make_get_request,
+    _make_get_request,
     join_urls,
 )
 
@@ -27,43 +28,6 @@ logger = logging.getLogger(__name__)
 FHIR_VERSION = "R4"
 
 load_dotenv()
-
-
-class ServerMetadata:
-    """
-    Parses the metadata from a FHIR server.
-    """
-
-    def __init__(self, cap_statement: CapabilityStatement):
-        self._cap_statement = cap_statement
-        self._set_available_functionality()
-
-    def _set_available_functionality(
-        self,
-    ) -> None:
-        available_resource_types = []
-        available_search_params = {}
-        available_includes = {}
-        available_revincludes = {}
-        rests = self._cap_statement.rest
-        for rest in rests:
-            for resource in rest.resource:
-                available_resource_types.append(resource.type)
-                available_search_params[resource.type] = [
-                    sp.name for sp in resource.searchParam
-                ]
-                available_includes[resource.type] = [
-                    inc.replace(".", ":") for inc in resource.searchInclude
-                ]
-                available_revincludes[resource.type] = [
-                    revinc.replace(".", ":") for revinc in resource.searchRevInclude
-                ]
-        available_resource_types = list(set(available_resource_types))
-
-        self.available_resource_types = available_resource_types
-        self.available_search_params = available_search_params
-        self.available_includes = available_includes
-        self.available_revincludes = available_revincludes
 
 
 class Client:
@@ -89,6 +53,7 @@ class Client:
         password: Optional[str] = None,
         login_url: Optional[str] = None,
         token: Optional[str] = None,
+        token_type: Optional[str] = None,
     ):
         self._base_url = base_url if not base_url.endswith("/") else base_url[:-1]
         self._session = requests.Session()
@@ -103,11 +68,12 @@ class Client:
             cache_ttl=cache_ttl,
             cache_maxsize=cache_maxsize,
         )
-        self.authenticate(
+        self.try_authenticate(
             auth_method=auth_method,
             username=username,
             password=password,
             token=token,
+            token_type=token_type,
             login_url=login_url,
         )
 
@@ -124,13 +90,22 @@ class Client:
         self.use_cache = use_cache
         if self.use_cache:
             # TODO: Add support for other cache types
+            logger.warning("Using Cache. Custom headers will not be added to requests!")
             self.cache = (
                 TTLCache(maxsize=cache_maxsize, ttl=cache_ttl) if not cache else cache
             )
         else:
             self.cache = None
 
-    def authenticate(self, auth_method, username, password, token, login_url):
+    def try_authenticate(
+        self,
+        auth_method: str,
+        username: str,
+        password: str,
+        token: str,
+        token_type: str,
+        login_url: str,
+    ):
         self.auth = Auth(
             method=auth_method,
             base_url=self._base_url,
@@ -138,19 +113,19 @@ class Client:
             username=username,
             password=password,
             token=token,
+            token_type=token_type,
             login_url=login_url,
         )
         try:
             self.auth.authenticate()
             self._get_metadata()
+            self.auth.is_authenticated = True
         except AuthenticationException as e:
-            logging.warning(
-                "Client is not authenticated. Can not interact with server."
-            )
+            logging.warning("Client is not authenticated.")
 
     def test_connection(self):
         try:
-            make_get_request(
+            _make_get_request(
                 url=self._base_url,
                 session=self._session,
                 raise_for_status=True,
@@ -180,14 +155,24 @@ class Client:
         total: Optional[str] = None,
         url: Optional[str] = None,
         raise_for_status: Optional[bool] = False,
+        headers: Optional[Dict[str, str]] = None,
+        token: Optional[str] = None,
+        token_type: Optional[str] = "Bearer",
     ) -> Union[Dict, "SearchBundle", "BaseModel"]:
         """
         The return type is a resource only when a single id is specified.
         In every other case, the return type is a search bundle.
         """
+        headers = headers or {}
+        if token:
+            headers["Authorization"] = f"{token_type} {token}"
         if url:
             result = self._get_result_from_url(
-                url=url, raise_for_status=raise_for_status
+                url=url,
+                raise_for_status=raise_for_status,
+                headers=headers,
+                token=token,
+                token_type=token_type,
             )
         elif self._is_search_request(
             id=id, search_params=search_params, search_string=search_string
@@ -200,21 +185,44 @@ class Client:
             )
             search_string += self._convert_params_to_string(search_params)
             result = self._execute_search(
-                resource_type, search_string, pages, raise_for_status
+                resource_type=resource_type,
+                search_string=search_string,
+                pages=pages,
+                raise_for_status=raise_for_status,
+                headers=headers,
+                token=token,
+                token_type=token_type,
             )
         else:
-            result = self._get_resource_by_id(resource_type, id, raise_for_status)
+            result = self._get_resource_by_id(
+                resource_type=resource_type,
+                id=id,
+                raise_for_status=raise_for_status,
+                headers=headers,
+                token=token,
+                token_type=token_type,
+            )
 
         return self._process_result(result, resource_type, as_object)
 
-    def _get_result_from_url(self, url: str, raise_for_status: bool = False) -> Dict:
+    def _get_result_from_url(
+        self,
+        url: str,
+        raise_for_status: bool,
+        headers: Optional[Dict[str, str]],
+        token: Optional[str],
+        token_type: Optional[str],
+    ) -> Dict:
         url = join_urls(self._base_url, url)
-        return make_get_request(
+        return _make_get_request(
             url=url,
             session=self._session,
             raise_for_status=raise_for_status,
+            headers=headers,
             cache=self.cache,
             use_cache=self.use_cache,
+            token=token,
+            token_type=token_type,
         )
 
     def _is_search_request(self, id, search_params, search_string) -> bool:
@@ -240,19 +248,42 @@ class Client:
         )
         return {**kwarg_params, **(search_params or {})}
 
-    def _execute_search(self, resource_type, search_string, pages, raise_for_status):
+    def _execute_search(
+        self,
+        resource_type,
+        search_string,
+        pages,
+        raise_for_status,
+        headers,
+        token,
+        token_type,
+    ):
         return self._search(
             resource_type=resource_type,
             search_string=search_string,
+            headers=headers,
             pages=pages,
             raise_for_status=raise_for_status,
+            token=token,
+            token_type=token_type,
         )
 
-    def _get_resource_by_id(self, resource_type, id, raise_for_status):
+    def _get_resource_by_id(
+        self,
+        resource_type: str,
+        id: str,
+        raise_for_status: bool,
+        headers: Dict[str, str],
+        token: Optional[str],
+        token_type: Optional[str],
+    ):
         return self._get(
             resource_type=resource_type,
             id=id,
             raise_for_status=raise_for_status,
+            headers=headers,
+            token=token,
+            token_type=token_type,
         )
 
     def _process_result(self, result, resource_type, as_object):
@@ -327,17 +358,23 @@ class Client:
         self,
         resource_type: str,
         id: str,
-        raise_for_status: bool = True,
+        raise_for_status: bool,
+        headers: Optional[Dict[str, str]],
+        token: Optional[str],
+        token_type: Optional[str],
     ):
         url = build_fhir_get_url(
             base_url=self._base_url, resource_type=resource_type, id=id
         )
-        result = make_get_request(
+        result = _make_get_request(
             url=url,
             session=self._session,
             raise_for_status=raise_for_status,
+            headers=headers,
             cache=self.cache,
             use_cache=self.use_cache,
+            token=token,
+            token_type=token_type,
         )
 
         return result
@@ -346,26 +383,33 @@ class Client:
         self,
         resource_type: str,
         search_string: str,
-        pages: Optional[int] = 1,
-        raise_for_status: bool = True,
+        pages: Optional[int],
+        raise_for_status: bool,
+        headers: Optional[Dict[str, str]],
+        token: Optional[str],
+        token_type: Optional[str],
     ):
         url = build_fhir_search_url(
             base_url=self._base_url, resource_type=resource_type, search=search_string
         )
-        result = make_get_request(
+        result = _make_get_request(
             url=url,
             session=self._session,
             raise_for_status=raise_for_status,
+            headers=headers,
             cache=self.cache,
             use_cache=self.use_cache,
+            token=token,
+            token_type=token_type,
         )
         next_link = _get_next_link(result, self._base_url)
         while pages > 1 or pages == -1:
             if next_link:
-                next_page = make_get_request(
+                next_page = _make_get_request(
                     url=next_link,
                     session=self._session,
                     raise_for_status=raise_for_status,
+                    headers=headers,
                     cache=self.cache,
                     use_cache=self.use_cache,
                 )
@@ -378,7 +422,7 @@ class Client:
         return result
 
     def _load_fhir_package(
-        self, fhir_version: Optional[str] = None, package_name: Optional[str] = None
+        self, fhir_version: Optional[str], package_name: Optional[str]
     ) -> FhirPackage:
         """
         Load the FHIR package for the specified FHIR version.
@@ -390,7 +434,7 @@ class Client:
         return package
 
     def _get_metadata(self, num_try: int = 0):
-        metadata = make_get_request(
+        metadata = _make_get_request(
             url=join_urls(self._base_url, "metadata"),
             session=self._session,
             raise_for_status=True,

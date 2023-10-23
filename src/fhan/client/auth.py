@@ -18,6 +18,7 @@ class Auth:
         username: Optional[str] = None,
         password: Optional[str] = None,
         token: Optional[str] = None,
+        token_type: Optional[str] = "Bearer",
         login_url: Optional[str] = None,
     ):
         self.is_authenticated = False

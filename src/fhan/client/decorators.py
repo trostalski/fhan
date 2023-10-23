@@ -20,6 +20,7 @@ def conditional_cache(func):
     def wrapper(*args, **kwargs):
         use_cache = kwargs.pop("use_cache", False)
         cache = kwargs.pop("cache", None)
+        headers = kwargs.pop("headers", None)
         if use_cache:
             nonlocal cached_func
             if cached_func is None:

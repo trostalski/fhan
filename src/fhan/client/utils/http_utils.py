@@ -9,7 +9,7 @@ from fhan.client.decorators import conditional_cache
 from fhan.client.utils.issue_types import ISSUE_TYPES
 from fhan.core.exceptions import NotFoundException, OperationOutcomeException
 from fhan.core.utils.fhir_utils import safe_get
-from fhan.models.R4 import OperationOutcome
+from fhan.models.R4 import OperationOutcome, DetectedIssue
 
 
 load_dotenv()
@@ -73,27 +73,28 @@ def make_post_request(
 
 
 @conditional_cache
-def make_get_request(
+def _make_get_request(
     url: str,
-    session: Optional[requests.Session] = None,
-    params: Optional[dict] = None,
+    session: Optional[requests.Session],
+    raise_for_status: Optional[bool],
+    token: Optional[str] = None,
+    token_type: Optional[str] = None,
     headers: Optional[dict] = None,
-    raise_for_status: Optional[bool] = True,
-    use_cache: bool = False,  # used for conditional_cache decorator
+    use_cache: bool = None,  # used for conditional_cache decorator
     cache: Optional[TTLCache] = None,  # used for conditional_cache decorator
 ) -> dict:
     """
     Make a GET request to a URL.
     """
-    if params is None:
-        params = {}
     if headers is None:
         headers = {}
 
+    if token:
+        headers["Authorization"] = f"{token_type} {token}"
     if session:
-        response = session.get(url, params=params, headers=headers)
+        response = session.get(url, headers=headers)
     else:
-        response = requests.get(url, params=params, headers=headers)
+        response = requests.get(url, headers=headers)
 
     if raise_for_status:
         response.raise_for_status()
@@ -134,6 +135,21 @@ def build_fhir_search_url(
 def handle_operation_outcome(operation_outcome: OperationOutcome):
     issues = operation_outcome.issue
 
+    def get_error_text(issue: DetectedIssue):
+        text = []
+        if issue.code in ISSUE_TYPES:
+            text.append(ISSUE_TYPES[issue.code]["display"])
+        details = (
+            safe_get(issue, "details", "text")
+            or safe_get(issue, "diagnostics")
+            or safe_get(issue, "details", "coding", 0, "display")
+        )
+        if details:
+            text.append(details)
+        if len(text) == 0:
+            text.append("Unknown Error")
+        return " ".join(text)
+
     for issue in issues:
         if issue.code == "success":
             logging.info("OperationOutcome success.")
@@ -141,20 +157,15 @@ def handle_operation_outcome(operation_outcome: OperationOutcome):
             raise NotFoundException("Resource not found. Check the request URL.")
         elif issue.code == "invalid":
             # Create a utility function to fetch error text
-            def get_error_text():
-                return (
-                    safe_get(issue, "details", "text")
-                    or safe_get(issue, "diagnostics")
-                    or safe_get(issue, "details", "coding", 0, "display")
-                )
 
             error_text = get_error_text()
-            raise OperationOutcomeException(error_text or "Unknown Error")
+            raise OperationOutcomeException(error_text)
         elif issue.code in ISSUE_TYPES:
-            raise OperationOutcomeException(ISSUE_TYPES[issue.code]["display"])
+            error_text = get_error_text(issue)
+            raise OperationOutcomeException(error_text)
         else:
             logging.error(
-                f"Unknown issue code: {issue.code}.\nOperation Outcome: {operation_outcome}"
+                f"Unknown issue code: {issue.code}.\nOperation Outcome: {operation_outcome.as_dict()}"
             )
             raise OperationOutcomeException("Unknown Error")
 

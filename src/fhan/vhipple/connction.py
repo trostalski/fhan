@@ -3,7 +3,7 @@ from requests import Session
 
 from fhan.client.utils.http_utils import (
     join_urls,
-    make_get_request,
+    _make_get_request,
     make_post_request,
     make_put_request,
 )
@@ -29,7 +29,7 @@ class VhippleConnection(object):
 
     def _get(self, endpoint, params=None):
         url = join_urls(self.vhipple_url, endpoint)
-        return make_get_request(url, session=self.session, params=params)
+        return _make_get_request(url, session=self.session, params=params)
 
     def _post(self, endpoint, data=None, headers=None):
         url = join_urls(self.vhipple_url, endpoint)

@@ -92,12 +92,10 @@ class Client:
     ):
         self._base_url = base_url if not base_url.endswith("/") else base_url[:-1]
         self._session = requests.Session()
-        self.test_connection()
         self._fhir_version = fhir_version
-        self._package_context: Optional[FhirPackage] = (
-            None
-            if not load_package_context
-            else self._load_fhir_package(fhir_version=fhir_version)
+        self.test_connection()
+        self._init_context(
+            fhir_version=fhir_version, load_package_context=load_package_context
         )
         self._init_cache(
             use_cache=use_cache,
@@ -111,6 +109,13 @@ class Client:
             password=password,
             token=token,
             login_url=login_url,
+        )
+
+    def _init_context(self, fhir_version: str, load_package_context: bool):
+        self._package_context: Optional[FhirPackage] = (
+            None
+            if not load_package_context
+            else self._load_fhir_package(fhir_version=fhir_version)
         )
 
     def _init_cache(
@@ -139,7 +144,6 @@ class Client:
             self.auth.authenticate()
             self._get_metadata()
         except AuthenticationException as e:
-            print(e)
             logging.warning(
                 "Client is not authenticated. Can not interact with server."
             )

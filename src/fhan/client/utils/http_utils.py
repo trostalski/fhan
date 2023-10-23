@@ -1,8 +1,11 @@
 import os
 from typing import Optional, Union
+from cachetools import TTLCache
 import requests
 
 from dotenv import load_dotenv
+
+from fhan.client.decorators import conditional_cache
 
 load_dotenv()
 
@@ -64,12 +67,15 @@ def make_post_request(
     return response
 
 
+@conditional_cache
 def make_get_request(
     url: str,
     session: Optional[requests.Session] = None,
     params: Optional[dict] = None,
     headers: Optional[dict] = None,
     raise_for_status: Optional[bool] = True,
+    use_cache: bool = False,
+    cache: Optional[TTLCache] = None,
 ) -> requests.Response:
     """
     Make a GET request to a URL.

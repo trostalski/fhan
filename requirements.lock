@@ -8,6 +8,7 @@
 
 -e file:.
 antlr4-python3-runtime==4.8
+cachetools==5.3.1
 certifi==2023.7.22
 charset-normalizer==3.2.0
 click==8.1.7

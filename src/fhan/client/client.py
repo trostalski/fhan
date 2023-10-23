@@ -1,6 +1,7 @@
 from importlib import import_module
 from typing import Any, Literal, Optional, Union, List, Dict
 import logging
+from cachetools import TTLCache
 
 from dotenv import load_dotenv
 from urllib.parse import urljoin
@@ -79,6 +80,10 @@ class Client:
         fhir_version: str = FHIR_VERSION,
         load_package_context: bool = False,
         auth_method: Literal["basic", "bearer", "cookie"] = "cookie",
+        cache=None,
+        use_cache: bool = False,
+        cache_ttl: int = 300,  # 5 minutes
+        cache_maxsize: int = 100,
     ):
         self._base_url = base_url if not base_url.endswith("/") else base_url[:-1]
         self._session = requests.Session()
@@ -90,12 +95,24 @@ class Client:
             else self._load_fhir_package(fhir_version=fhir_version)
         )
         self.auth = Auth(method=auth_method, base_url=base_url, session=self._session)
+        self.use_cache = use_cache
+        if self.use_cache:
+            # A default size for cache (like 100) might be set; adjust as needed
+            self.cache = (
+                TTLCache(maxsize=cache_maxsize, ttl=cache_ttl) if not cache else cache
+            )
+        else:
+            self.cache = None
         self._try_get_metadata()
 
     def ping(self):
         try:
             make_get_request(
-                url=self._base_url, session=self._session, raise_for_status=False
+                url=self._base_url,
+                session=self._session,
+                raise_for_status=False,
+                cache=None,
+                use_cache=False,
             )
         except requests.exceptions.ConnectionError:
             raise ConnectionError(
@@ -123,9 +140,15 @@ class Client:
         In every other case, the return type is a search bundle.
         """
         if url:
-            result = self._get_result_from_url(url)
-        elif self._is_search_request(id, search_params, search_string):
-            search_string = self._build_search_string(id, search_string)
+            result = self._get_result_from_url(
+                url=url, raise_for_status=raise_for_status
+            )
+        elif self._is_search_request(
+            id=id, search_params=search_params, search_string=search_string
+        ):
+            search_string = self._build_search_string(
+                id=id, search_string=search_string
+            )
             search_params = self._merge_search_params(
                 count, elements, include, revinclude, total, search_params
             )
@@ -138,9 +161,15 @@ class Client:
 
         return self._process_result(result, resource_type, as_object)
 
-    def _get_result_from_url(self, url: str) -> Dict:
+    def _get_result_from_url(self, url: str, raise_for_status: bool = False) -> Dict:
         url = join_urls(self._base_url, url)
-        return make_get_request(url=url, session=self._session).json()
+        return make_get_request(
+            url=url,
+            session=self._session,
+            raise_for_status=raise_for_status,
+            cache=self.cache,
+            use_cache=self.use_cache,
+        ).json()
 
     def _is_search_request(self, id, search_params, search_string) -> bool:
         return search_params or search_string or isinstance(id, List) or not id
@@ -258,7 +287,11 @@ class Client:
             base_url=self._base_url, resource_type=resource_type, id=id
         )
         result = make_get_request(
-            url=url, session=self._session, raise_for_status=raise_for_status
+            url=url,
+            session=self._session,
+            raise_for_status=raise_for_status,
+            cache=self.cache,
+            use_cache=self.use_cache,
         ).json()
 
         return result
@@ -274,13 +307,21 @@ class Client:
             base_url=self._base_url, resource_type=resource_type, search=search_string
         )
         result = make_get_request(
-            url=url, session=self._session, raise_for_status=raise_for_status
+            url=url,
+            session=self._session,
+            raise_for_status=raise_for_status,
+            cache=self.cache,
+            use_cache=self.use_cache,
         ).json()
         next_link = _get_next_link(result, self._base_url)
         while pages > 1 or pages == -1:
             if next_link:
                 next_page = make_get_request(
-                    url=next_link, session=self._session
+                    url=next_link,
+                    session=self._session,
+                    raise_for_status=raise_for_status,
+                    cache=self.cache,
+                    use_cache=self.use_cache,
                 ).json()
                 next_link = _get_next_link(next_page, self._base_url)
                 result["entry"] += next_page.get("entry", [])
@@ -303,12 +344,15 @@ class Client:
         return package
 
     def _try_get_metadata(self, num_try: int = 0):
+        print("Trying to get metadata")
         if num_try > 3:
             raise AuthenticationError("Could not authenticate.")
         metadata_res = make_get_request(
             url=join_urls(self._base_url, "metadata"),
             session=self._session,
             raise_for_status=False,
+            cache=None,
+            use_cache=False,
         )
 
         if metadata_res.status_code == 200:

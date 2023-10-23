@@ -7,6 +7,7 @@ from dotenv import load_dotenv
 from urllib.parse import urljoin
 import requests
 
+from cachetools import Cache
 from fhan.client.auth import Auth
 from fhan.core.exceptions import AuthenticationException
 from fhan.client.search_bundle import SearchBundle
@@ -80,14 +81,14 @@ class Client:
         fhir_version: str = FHIR_VERSION,
         load_package_context: bool = False,
         auth_method: Literal["basic", "bearer", "cookie"] = "cookie",
-        cache=None,
         use_cache: bool = False,
+        cache: Cache = None,
         cache_ttl: int = 300,  # 5 minutes
         cache_maxsize: int = 128,
         username: Optional[str] = None,
         password: Optional[str] = None,
-        token: Optional[str] = None,
         login_url: Optional[str] = None,
+        token: Optional[str] = None,
     ):
         self._base_url = base_url if not base_url.endswith("/") else base_url[:-1]
         self._session = requests.Session()
@@ -98,24 +99,50 @@ class Client:
             if not load_package_context
             else self._load_fhir_package(fhir_version=fhir_version)
         )
+        self._init_cache(
+            use_cache=use_cache,
+            cache=cache,
+            cache_ttl=cache_ttl,
+            cache_maxsize=cache_maxsize,
+        )
+        self.authenticate(
+            auth_method=auth_method,
+            username=username,
+            password=password,
+            token=token,
+            login_url=login_url,
+        )
+
+    def _init_cache(
+        self, use_cache: bool, cache: Cache, cache_ttl: int, cache_maxsize: int
+    ):
+        self.use_cache = use_cache
+        if self.use_cache:
+            # TODO: Add support for other cache types
+            self.cache = (
+                TTLCache(maxsize=cache_maxsize, ttl=cache_ttl) if not cache else cache
+            )
+        else:
+            self.cache = None
+
+    def authenticate(self, auth_method, username, password, token, login_url):
         self.auth = Auth(
             method=auth_method,
-            base_url=base_url,
+            base_url=self._base_url,
             session=self._session,
             username=username,
             password=password,
             token=token,
             login_url=login_url,
         )
-        self.use_cache = use_cache
-        if self.use_cache:
-            # A default size for cache (like 100) might be set; adjust as needed
-            self.cache = (
-                TTLCache(maxsize=cache_maxsize, ttl=cache_ttl) if not cache else cache
+        try:
+            self.auth.authenticate()
+            self._get_metadata()
+        except AuthenticationException as e:
+            print(e)
+            logging.warning(
+                "Client is not authenticated. Can not interact with server."
             )
-        else:
-            self.cache = None
-        self._try_get_metadata()
 
     def test_connection(self):
         try:
@@ -358,35 +385,20 @@ class Client:
         package = loader.load_package_from_version(fhir_version=fhir_version)
         return package
 
-    def _try_get_metadata(self, num_try: int = 0):
-        if num_try > 3:
-            raise AuthenticationException(
-                "Could not authenticate. Check your credentials."
-            )
-        try:
-            metadata = make_get_request(
-                url=join_urls(self._base_url, "metadata"),
-                session=self._session,
-                raise_for_status=True,
-                cache=None,
-                use_cache=False,
-            )
-            if self._package_context:
-                metadata = {
-                    **metadata,
-                    **self._package_context.base_capability_statement,
-                }
-            self.metadata = ServerMetadata(CapabilityStatement.from_dict(metadata))
-        except Exception:
-            logging.warning("Server requires authentication")
-            logging.warning(f"Trying to authenticate. Auth method: {self.auth.method}")
-            self.auth.authenticate()
-            if self.auth.is_authenticated:
-                logging.info("Authentication successful")
-                self._try_get_metadata(num_try=num_try + 1)
-            else:
-                logging.error("Authentication failed")
-                raise AuthenticationException("Authentication failed.")
+    def _get_metadata(self, num_try: int = 0):
+        metadata = make_get_request(
+            url=join_urls(self._base_url, "metadata"),
+            session=self._session,
+            raise_for_status=True,
+            cache=None,
+            use_cache=False,
+        )
+        if self._package_context:
+            metadata = {
+                **metadata,
+                **self._package_context.base_capability_statement,
+            }
+        self.metadata = ServerMetadata(CapabilityStatement.from_dict(metadata))
 
     def invalidate_cache(self):
         """

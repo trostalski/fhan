@@ -4,6 +4,8 @@ from typing import Literal, Optional
 from requests import Session
 from dotenv import load_dotenv
 
+from fhan.core.exceptions import AuthenticationException
+
 load_dotenv()
 
 
@@ -34,7 +36,7 @@ class Auth:
 
     def _basic_auth(self):
         if not self.username or not self.password or not self.url:
-            raise ValueError(
+            raise AuthenticationException(
                 "Username, password, and URL are required for basic authentication"
             )
 
@@ -48,7 +50,9 @@ class Auth:
 
     def _bearer_auth(self):
         if not self.token or not self.login_url:
-            raise ValueError("Token and URL are required for bearer authentication")
+            raise AuthenticationException(
+                "Token and URL are required for bearer authentication"
+            )
 
         headers = {"Authorization": f"Bearer {self.token}"}
 
@@ -62,8 +66,8 @@ class Auth:
 
     def _cookie_auth(self):
         if not self.username or not self.password or not self.login_url:
-            raise ValueError(
-                "Username, password, and login URL are required for cookie authentication"
+            raise AuthenticationException(
+                "Username, password, and login URL are required for cookie authentication."
             )
 
         # Perform login to get the cookie token using the session

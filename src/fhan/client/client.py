@@ -8,7 +8,7 @@ from urllib.parse import urljoin
 import requests
 
 from fhan.client.auth import Auth
-from fhan.core.exceptions import AuthenticationError
+from fhan.core.exceptions import AuthenticationException
 from fhan.client.search_bundle import SearchBundle
 from fhan.core.fhir_package import FhirPackage, FhirPackageLoader
 from fhan.core.fhir_types import _ResourceType
@@ -83,11 +83,11 @@ class Client:
         cache=None,
         use_cache: bool = False,
         cache_ttl: int = 300,  # 5 minutes
-        cache_maxsize: int = 100,
+        cache_maxsize: int = 128,
     ):
         self._base_url = base_url if not base_url.endswith("/") else base_url[:-1]
         self._session = requests.Session()
-        self.ping()
+        self.test_connection()
         self._fhir_version = fhir_version
         self._package_context: Optional[FhirPackage] = (
             None
@@ -105,12 +105,12 @@ class Client:
             self.cache = None
         self._try_get_metadata()
 
-    def ping(self):
+    def test_connection(self):
         try:
             make_get_request(
                 url=self._base_url,
                 session=self._session,
-                raise_for_status=False,
+                raise_for_status=True,
                 cache=None,
                 use_cache=False,
             )
@@ -118,6 +118,9 @@ class Client:
             raise ConnectionError(
                 f"Could not connect to server. Make sure the URL is correct: {self._base_url}"
             )
+        except Exception:
+            # Silently ignore all other exceptions
+            pass
 
     def get(
         self,
@@ -133,7 +136,7 @@ class Client:
         revinclude: Optional[List[str]] = None,
         total: Optional[str] = None,
         url: Optional[str] = None,
-        raise_for_status: Optional[bool] = True,
+        raise_for_status: Optional[bool] = False,
     ) -> Union[Dict, "SearchBundle", "BaseModel"]:
         """
         The return type is a resource only when a single id is specified.
@@ -169,7 +172,7 @@ class Client:
             raise_for_status=raise_for_status,
             cache=self.cache,
             use_cache=self.use_cache,
-        ).json()
+        )
 
     def _is_search_request(self, id, search_params, search_string) -> bool:
         return search_params or search_string or isinstance(id, List) or not id
@@ -292,7 +295,7 @@ class Client:
             raise_for_status=raise_for_status,
             cache=self.cache,
             use_cache=self.use_cache,
-        ).json()
+        )
 
         return result
 
@@ -312,7 +315,7 @@ class Client:
             raise_for_status=raise_for_status,
             cache=self.cache,
             use_cache=self.use_cache,
-        ).json()
+        )
         next_link = _get_next_link(result, self._base_url)
         while pages > 1 or pages == -1:
             if next_link:
@@ -322,7 +325,7 @@ class Client:
                     raise_for_status=raise_for_status,
                     cache=self.cache,
                     use_cache=self.use_cache,
-                ).json()
+                )
                 next_link = _get_next_link(next_page, self._base_url)
                 result["entry"] += next_page.get("entry", [])
                 if pages > 0:  # -1 means all pages
@@ -344,27 +347,25 @@ class Client:
         return package
 
     def _try_get_metadata(self, num_try: int = 0):
-        print("Trying to get metadata")
         if num_try > 3:
-            raise AuthenticationError("Could not authenticate.")
-        metadata_res = make_get_request(
-            url=join_urls(self._base_url, "metadata"),
-            session=self._session,
-            raise_for_status=False,
-            cache=None,
-            use_cache=False,
-        )
-
-        if metadata_res.status_code == 200:
-            metadata = metadata_res.json()
-            # merge with package context
+            raise AuthenticationException(
+                "Could not authenticate. Check your credentials."
+            )
+        try:
+            metadata = make_get_request(
+                url=join_urls(self._base_url, "metadata"),
+                session=self._session,
+                raise_for_status=True,
+                cache=None,
+                use_cache=False,
+            )
             if self._package_context:
                 metadata = {
                     **metadata,
                     **self._package_context.base_capability_statement,
                 }
             self.metadata = ServerMetadata(CapabilityStatement.from_dict(metadata))
-        elif metadata_res.status_code == 401:
+        except Exception:
             logging.warning("Server requires authentication")
             logging.warning(f"Trying to authenticate. Auth method: {self.auth.method}")
             self.auth.authenticate()
@@ -373,8 +374,14 @@ class Client:
                 self._try_get_metadata(num_try=num_try + 1)
             else:
                 logging.error("Authentication failed")
-        else:
-            metadata_res.raise_for_status()
+                raise AuthenticationException("Authentication failed.")
+
+    def invalidate_cache(self):
+        """
+        Invalidates (clears) the cache.
+        """
+        if self.cache:
+            self.cache.clear()
 
 
 def _get_params_from_kwargs(**kwargs):

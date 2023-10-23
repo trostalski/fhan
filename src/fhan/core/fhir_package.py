@@ -227,4 +227,3 @@ def _parse_package_info(json_obj: dict[str, Any]) -> "PackageInfo":
 if __name__ == "__main__":
     loader = FhirPackageLoader()
     package = loader.load_from_simplifier(name="hl7.fhir.us.mcode", version="2.1.0")
-    print("PACKAFGE: ", package)

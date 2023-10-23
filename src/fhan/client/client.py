@@ -84,6 +84,10 @@ class Client:
         use_cache: bool = False,
         cache_ttl: int = 300,  # 5 minutes
         cache_maxsize: int = 128,
+        username: Optional[str] = None,
+        password: Optional[str] = None,
+        token: Optional[str] = None,
+        login_url: Optional[str] = None,
     ):
         self._base_url = base_url if not base_url.endswith("/") else base_url[:-1]
         self._session = requests.Session()
@@ -94,7 +98,15 @@ class Client:
             if not load_package_context
             else self._load_fhir_package(fhir_version=fhir_version)
         )
-        self.auth = Auth(method=auth_method, base_url=base_url, session=self._session)
+        self.auth = Auth(
+            method=auth_method,
+            base_url=base_url,
+            session=self._session,
+            username=username,
+            password=password,
+            token=token,
+            login_url=login_url,
+        )
         self.use_cache = use_cache
         if self.use_cache:
             # A default size for cache (like 100) might be set; adjust as needed

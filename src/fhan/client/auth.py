@@ -15,14 +15,18 @@ class Auth:
         method: Literal["basic", "bearer", "cookie"] = "cookie",
         base_url: Optional[str] = None,
         session: Optional[Session] = None,
+        username: Optional[str] = None,
+        password: Optional[str] = None,
+        token: Optional[str] = None,
+        login_url: Optional[str] = None,
     ):
         self.is_authenticated = False
         self.session = session
         self.method = method
-        self.username = os.getenv("USERNAME", None)
-        self.password = os.getenv("PASSWORD", None)
-        self.token = os.getenv("TOKEN", None)
-        self.login_url = os.getenv("LOGIN_URL", base_url)
+        self.username = username or os.getenv("USERNAME", None)
+        self.password = password or os.getenv("PASSWORD", None)
+        self.token = token or os.getenv("TOKEN", None)
+        self.login_url = login_url or os.getenv("LOGIN_URL", base_url)
 
     def authenticate(self):
         if self.method == "basic":

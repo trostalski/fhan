@@ -27,7 +27,7 @@ class Auth:
         self.username = username or os.getenv("USERNAME", None)
         self.password = password or os.getenv("PASSWORD", None)
         self.token = token or os.getenv("TOKEN", None)
-        self.login_url = login_url or os.getenv("LOGIN_URL", base_url)
+        self.login_url = login_url or os.getenv("LOGIN_URL", None)
 
     def authenticate(self):
         if self.method == "basic":
@@ -79,12 +79,8 @@ class Auth:
         login_data = {"username": self.username, "password": self.password}
         response = self.session.post(self.login_url, data=login_data)
 
-        if response.status_code == 200:
-            self.is_authenticated = True
-        else:
+        if not response.ok or not response.cookies:
+            # TODO - handle this better, a redirect might be used and other cookies might be set...
             self.is_authenticated = False
-
-    def __call__(self):
-        if not self.is_authenticated:
-            self.authenticate()
-        return self.is_authenticated
+        else:
+            self.is_authenticated = True

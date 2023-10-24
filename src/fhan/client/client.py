@@ -44,6 +44,7 @@ class Client:
         base_url: str,
         fhir_version: str = FHIR_VERSION,
         load_package_context: bool = False,
+        authenticate: bool = True,
         auth_method: Literal["basic", "bearer", "cookie"] = "cookie",
         use_cache: bool = False,
         cache: Cache = None,
@@ -55,6 +56,8 @@ class Client:
         token: Optional[str] = None,
         token_type: Optional[str] = None,
     ):
+        if not base_url:
+            raise ValueError("Base URL is required.")
         self._base_url = base_url if not base_url.endswith("/") else base_url[:-1]
         self._session = requests.Session()
         self._fhir_version = fhir_version
@@ -68,14 +71,17 @@ class Client:
             cache_ttl=cache_ttl,
             cache_maxsize=cache_maxsize,
         )
-        self.try_authenticate(
-            auth_method=auth_method,
-            username=username,
-            password=password,
-            token=token,
-            token_type=token_type,
-            login_url=login_url,
-        )
+        if authenticate:
+            self.try_authenticate(
+                auth_method=auth_method,
+                username=username,
+                password=password,
+                token=token,
+                token_type=token_type,
+                login_url=login_url,
+            )
+        else:
+            self._get_metadata()
 
     def _init_context(self, fhir_version: str, load_package_context: bool):
         self._package_context: Optional[FhirPackage] = (
@@ -121,6 +127,7 @@ class Client:
             self._get_metadata()
             self.auth.is_authenticated = True
         except AuthenticationException as e:
+            self.auth.is_authenticated = False
             logging.warning("Client is not authenticated.")
 
     def test_connection(self):

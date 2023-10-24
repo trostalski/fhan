@@ -3,8 +3,6 @@ import logging
 
 logger = logging.getLogger(__name__)
 
-CONFIG_FILE_NAME = "fhan.ini"
-
 
 @dataclass
 class BaseSettings:
@@ -20,9 +18,7 @@ class BaseSettings:
 
 @dataclass
 class ClientSettings(BaseSettings):
-    server_base_url = None
-    available_resources = None
-    available_search_params = None
+    pass
 
 
 @dataclass

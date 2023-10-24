@@ -61,6 +61,7 @@ class Client:
         self._base_url = base_url if not base_url.endswith("/") else base_url[:-1]
         self._session = requests.Session()
         self._fhir_version = fhir_version
+        self.metadata = None
         self.test_connection()
         self._init_context(
             fhir_version=fhir_version, load_package_context=load_package_context
@@ -72,7 +73,7 @@ class Client:
             cache_maxsize=cache_maxsize,
         )
         if authenticate:
-            self.try_authenticate(
+            self.authenticate(
                 auth_method=auth_method,
                 username=username,
                 password=password,
@@ -80,8 +81,6 @@ class Client:
                 token_type=token_type,
                 login_url=login_url,
             )
-        else:
-            self._get_metadata()
 
     def _init_context(self, fhir_version: str, load_package_context: bool):
         self._package_context: Optional[FhirPackage] = (
@@ -103,18 +102,17 @@ class Client:
         else:
             self.cache = None
 
-    def try_authenticate(
+    def authenticate(
         self,
-        auth_method: str,
-        username: str,
-        password: str,
-        token: str,
-        token_type: str,
-        login_url: str,
-    ):
+        username: str = None,
+        password: str = None,
+        token: str = None,
+        token_type: str = "Bearer",
+        login_url: str = None,
+        auth_method: Literal["basic", "bearer", "cookie"] = "cookie",
+    ) -> bool:
         self.auth = Auth(
             method=auth_method,
-            base_url=self._base_url,
             session=self._session,
             username=username,
             password=password,
@@ -122,13 +120,8 @@ class Client:
             token_type=token_type,
             login_url=login_url,
         )
-        try:
-            self.auth.authenticate()
-            self._get_metadata()
-            self.auth.is_authenticated = True
-        except AuthenticationException as e:
-            self.auth.is_authenticated = False
-            logging.warning("Client is not authenticated.")
+        self.auth.authenticate()
+        self._get_metadata()
 
     def test_connection(self):
         try:
@@ -417,6 +410,8 @@ class Client:
                     session=self._session,
                     raise_for_status=raise_for_status,
                     headers=headers,
+                    token=token,
+                    token_type=token_type,
                     cache=self.cache,
                     use_cache=self.use_cache,
                 )
@@ -444,7 +439,7 @@ class Client:
         metadata = _make_get_request(
             url=join_urls(self._base_url, "metadata"),
             session=self._session,
-            raise_for_status=True,
+            raise_for_status=False,
             cache=None,
             use_cache=False,
         )

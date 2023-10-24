@@ -13,7 +13,6 @@ class Auth:
     def __init__(
         self,
         method: Literal["basic", "bearer", "cookie"] = "cookie",
-        base_url: Optional[str] = None,
         session: Optional[Session] = None,
         username: Optional[str] = None,
         password: Optional[str] = None,
@@ -27,6 +26,7 @@ class Auth:
         self.username = username or os.getenv("USERNAME", None)
         self.password = password or os.getenv("PASSWORD", None)
         self.token = token or os.getenv("TOKEN", None)
+        self.token_type = token_type
         self.login_url = login_url or os.getenv("LOGIN_URL", None)
 
     def authenticate(self):
@@ -46,12 +46,7 @@ class Auth:
             )
 
         # Perform basic authentication using the session
-        response = self.session.get(self.url, auth=(self.username, self.password))
-
-        if response.status_code == 200:
-            self.is_authenticated = True
-        else:
-            self.is_authenticated = False
+        self.session.get(self.url, auth=(self.username, self.password))
 
     def _bearer_auth(self):
         if not self.token or not self.login_url:
@@ -59,15 +54,10 @@ class Auth:
                 "Token and URL are required for bearer authentication"
             )
 
-        headers = {"Authorization": f"Bearer {self.token}"}
+        headers = {"Authorization": f"{self.token_type} {self.token}"}
 
         # Perform bearer authentication using the session
-        response = self.session.get(self.url, headers=headers)
-
-        if response.status_code == 200:
-            self.is_authenticated = True
-        else:
-            self.is_authenticated = False
+        self.session.get(self.url, headers=headers)
 
     def _cookie_auth(self):
         if not self.username or not self.password or not self.login_url:
@@ -77,10 +67,4 @@ class Auth:
 
         # Perform login to get the cookie token using the session
         login_data = {"username": self.username, "password": self.password}
-        response = self.session.post(self.login_url, data=login_data)
-
-        if not response.ok or not response.cookies:
-            # TODO - handle this better, a redirect might be used and other cookies might be set...
-            self.is_authenticated = False
-        else:
-            self.is_authenticated = True
+        self.session.post(self.login_url, data=login_data)

@@ -7,7 +7,11 @@ from dotenv import load_dotenv
 
 from fhan.client.decorators import conditional_cache
 from fhan.client.utils.issue_types import ISSUE_TYPES
-from fhan.core.exceptions import NotFoundException, OperationOutcomeException
+from fhan.core.exceptions import (
+    AuthenticationException,
+    NotFoundException,
+    OperationOutcomeException,
+)
 from fhan.core.utils.fhir_utils import safe_get
 from fhan.models.R4 import OperationOutcome, DetectedIssue
 
@@ -138,35 +142,28 @@ def handle_operation_outcome(operation_outcome: OperationOutcome):
     def get_error_text(issue: DetectedIssue):
         text = []
         if issue.code in ISSUE_TYPES:
-            text.append(ISSUE_TYPES[issue.code]["display"])
+            text.append("Code: " + ISSUE_TYPES[issue.code]["display"])
         details = (
             safe_get(issue, "details", "text")
             or safe_get(issue, "diagnostics")
             or safe_get(issue, "details", "coding", 0, "display")
         )
         if details:
-            text.append(details)
+            text.append("Details: " + details)
         if len(text) == 0:
-            text.append("Unknown Error")
-        return " ".join(text)
+            text.append(issue.code)
+        return ". ".join(text)
 
     for issue in issues:
+        error_text = get_error_text(issue)
         if issue.code == "success":
             logging.info("OperationOutcome success.")
-        if issue.code == "not-found":
-            raise NotFoundException("Resource not found. Check the request URL.")
-        elif issue.code == "invalid":
-            # Create a utility function to fetch error text
-
-            error_text = get_error_text()
-            raise OperationOutcomeException(error_text)
         elif issue.code in ISSUE_TYPES:
-            error_text = get_error_text(issue)
-            raise OperationOutcomeException(error_text)
+            raise_exc = ISSUE_TYPES[issue.code]["raise"]
+            raise raise_exc(error_text)
         else:
             logging.error(
                 f"Unknown issue code: {issue.code}.\nOperation Outcome: {operation_outcome.as_dict()}"
             )
-            raise OperationOutcomeException("Unknown Error")
-
+            raise OperationOutcomeException(error_text)
     return operation_outcome

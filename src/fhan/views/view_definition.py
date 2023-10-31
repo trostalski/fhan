@@ -1,11 +1,11 @@
 import dataclasses
-from typing import Any, Literal
+from typing import Any, Literal, Optional
 
 from fhirpathpy import compile
 
 
 @dataclasses.dataclass
-class ViewDefinitionConstant:
+class Constant:
     """Constant that can be used in FHIRPath expressions.
 
     Args:
@@ -18,21 +18,18 @@ class ViewDefinitionConstant:
 
 
 @dataclasses.dataclass
-class ViewDefinitionSelect:
-    """Defines the content of a column within the view.
+class Tag:
+    name: str
+    value: str
 
-    Args:
-        path (str): FHIRPath expression that creates a column and defines its content.
-        alias (str, optional): Column alias produced in the output.
-        forEach (str, optional): Creates a row for each of the elements in the given expression.
-        forEachOrNull (str, optional): Same as forEach, but will produce a row with null values if the collection is empty.
-    """
 
+@dataclasses.dataclass
+class Column:
     path: str
-    alias: str = None
-    forEach: str = None
-    forEachOrNull: str = None
-    # spec also defines union
+    name: str
+    description: Optional[str] = None
+    collection: Optional[bool] = None
+    type: Optional[str] = None
 
     def is_valid(self):
         """
@@ -52,7 +49,24 @@ class ViewDefinitionSelect:
 
 
 @dataclasses.dataclass
-class ViewDefinitionWhere:
+class Select:
+    """Defines the content of a column within the view.
+
+    Args:
+        path (str): FHIRPath expression that creates a column and defines its content.
+        alias (str, optional): Column alias produced in the output.
+        forEach (str, optional): Creates a row for each of the elements in the given expression.
+        forEachOrNull (str, optional): Same as forEach, but will produce a row with null values if the collection is empty.
+    """
+
+    column: Column
+    forEach: Optional[str] = None
+    forEachOrNull: Optional[str] = None
+    unionAll: Optional["Select"] = None
+
+
+@dataclasses.dataclass
+class Where:
     """Zero or more FHIRPath constraints to filter resourses for the view.
 
     Args:
@@ -96,9 +110,9 @@ class ViewDefinition:
     description: str = None
     copyright: str = None
     resourceVersion: str = None
-    constant: list[ViewDefinitionConstant] = None
-    select: list[ViewDefinitionSelect] = None
-    where: list[ViewDefinitionWhere] = None
+    constant: list[Constant] = None
+    select: list[Select] = None
+    where: list[Where] = None
 
     def validate(self):
         """

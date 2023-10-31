@@ -1,9 +1,11 @@
 from fhan.views.view import View
 from fhan.views.view_definition import (
+    Column,
+    Tag,
     ViewDefinition,
-    ViewDefinitionConstant,
-    ViewDefinitionSelect,
-    ViewDefinitionWhere,
+    Constant,
+    Select,
+    Where,
     validate_view_definition,
 )
 from fhan.core.fhir_types import _ResourceType
@@ -37,20 +39,34 @@ class ViewBuilder:
     def constant(self):
         return self._view_definition.constant
 
-    def add_select(self, path: str, alias: str = None):
-        select = ViewDefinitionSelect(path=path, alias=alias)
+    def add_select_column(
+        self,
+        path: str,
+        name: str = None,
+        description: str = None,
+        type: str = None,
+        tag_name: str = None,
+        tag_value: str = None,
+    ):
+        tag = Tag(name=tag_name, value=tag_value)
+        column = Column(
+            path=path,
+            name=name,
+            description=description,
+            type=type,
+            tag=tag,
+        )
+        select = Select(column=column)
         self._view_definition.select.append(select)
         return self
 
     def add_where(self, path: str, description: str = None):
-        where = ViewDefinitionWhere(path=path, description=description)
+        where = Where(path=path, description=description)
         self._view_definition.where.append(where)
         return self
 
     def add_constant(self, path: str, value: str, description: str = None):
-        constant = ViewDefinitionConstant(
-            path=path, value=value, description=description
-        )
+        constant = Constant(path=path, value=value, description=description)
         self._view_definition.constant.append(constant)
         return self
 

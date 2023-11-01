@@ -10,7 +10,7 @@ import requests
 from cachetools import Cache
 from fhan.client.auth import Auth
 from fhan.client.metadata import ServerMetadata
-from fhan.core.exceptions import AuthenticationException
+from fhan.core.exceptions import AuthenticationException, OperationOutcomeException
 from fhan.client.search_bundle import SearchBundle
 from fhan.core.fhir_package import FhirPackage, FhirPackageLoader
 from fhan.core.fhir_types import _ResourceType
@@ -62,10 +62,10 @@ class Client:
         self._session = requests.Session()
         self._fhir_version = fhir_version
         self.metadata = None
+        self._package_context = None
         self.test_connection()
-        self._init_context(
-            fhir_version=fhir_version, load_package_context=load_package_context
-        )
+        if load_package_context:
+            self._init_context(fhir_version=fhir_version)
         self._init_cache(
             use_cache=use_cache,
             cache=cache,
@@ -82,11 +82,9 @@ class Client:
                 login_url=login_url,
             )
 
-    def _init_context(self, fhir_version: str, load_package_context: bool):
-        self._package_context: Optional[FhirPackage] = (
-            None
-            if not load_package_context
-            else self._load_fhir_package(fhir_version=fhir_version)
+    def _init_context(self, fhir_version: str):
+        self._package_context: Optional[FhirPackage] = self._load_fhir_package(
+            fhir_version=fhir_version
         )
 
     def _init_cache(
@@ -166,6 +164,9 @@ class Client:
         headers = headers or {}
         if token:
             headers["Authorization"] = f"{token_type} {token}"
+        search_params = self._merge_search_params(
+            count, elements, include, revinclude, total, search_params
+        )
         if url:
             result = self._get_result_from_url(
                 url=url,
@@ -180,9 +181,8 @@ class Client:
             search_string = self._build_search_string(
                 id=id, search_string=search_string
             )
-            search_params = self._merge_search_params(
-                count, elements, include, revinclude, total, search_params
-            )
+            if search_string:
+                search_string += "&"
             search_string += self._convert_params_to_string(search_params)
             result = self._execute_search(
                 resource_type=resource_type,
@@ -320,24 +320,23 @@ class Client:
                 f"Invalid parameter name: {param_name}.\nSupported parameters are: 'revinclude', 'include'"
             )
         for param in possible_params:
-            response_resource = self._search(
-                resource_type=resource_type,
-                search_string=f"_{param_name}={param}",
-                pages=1,
-                raise_for_status=False,
-            )
-            response_type = response_resource["resourceType"]
-            if response_type == "OperationOutcome":
-                continue
-            elif response_type == "Bundle":
+            try:
+                response_resource = self._search(
+                    resource_type=resource_type,
+                    search_string=f"_{param_name}={param}",
+                    pages=1,
+                    raise_for_status=False,
+                )
                 valid_params.append(param)
+            except OperationOutcomeException as e:
+                continue
         if param_name == "revinclude":
             self.metadata.available_revincludes[resource_type] = valid_params
         elif param_name == "include":
             self.metadata.available_includes[resource_type] = valid_params
 
     def get_patient_data(
-        self, patient_id: str, pages: Optional[int] = 1, as_object: bool = False
+        self, patient_id: str, pages: Optional[int] = -1, as_object: bool = False
     ):
         possible_revincludes = self.metadata.available_revincludes["Patient"]
         search_string = f"_id={patient_id}"
@@ -346,12 +345,12 @@ class Client:
             if c > 10:
                 break
             search_string += f"&_revinclude={revinclude}"
-        res = self._search(
+        res = self.get(
             resource_type="Patient",
             search_string=search_string,
             pages=pages,
-            as_object=as_object,
         )
+        res = self._process_result(res, "Patient", as_object)
         return res
 
     def _get(
@@ -383,11 +382,11 @@ class Client:
         self,
         resource_type: str,
         search_string: str,
-        pages: Optional[int],
-        raise_for_status: bool,
-        headers: Optional[Dict[str, str]],
-        token: Optional[str],
-        token_type: Optional[str],
+        pages: Optional[int] = 1,
+        raise_for_status: bool = False,
+        headers: Optional[Dict[str, str]] = None,
+        token: Optional[str] = None,
+        token_type: Optional[str] = "Bearer",
     ):
         url = build_fhir_search_url(
             base_url=self._base_url, resource_type=resource_type, search=search_string
@@ -424,7 +423,7 @@ class Client:
         return result
 
     def _load_fhir_package(
-        self, fhir_version: Optional[str], package_name: Optional[str]
+        self, fhir_version: Optional[str], package_name: Optional[str] = None
     ) -> FhirPackage:
         """
         Load the FHIR package for the specified FHIR version.

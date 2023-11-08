@@ -8,8 +8,6 @@ from dotenv import load_dotenv
 from fhan.client.decorators import conditional_cache
 from fhan.client.utils.issue_types import ISSUE_TYPES
 from fhan.core.exceptions import (
-    AuthenticationException,
-    NotFoundException,
     OperationOutcomeException,
 )
 from fhan.core.utils.fhir_utils import safe_get

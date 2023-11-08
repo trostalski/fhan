@@ -24,9 +24,7 @@ from fhan.client.utils.http_utils import (
     join_urls,
 )
 
-logger = logging.getLogger(__name__)
 FHIR_VERSION = "R4"
-
 load_dotenv()
 
 
@@ -55,23 +53,28 @@ class Client:
         login_url: Optional[str] = None,
         token: Optional[str] = None,
         token_type: Optional[str] = None,
+        logging_level: Optional[str] = "INFO",
     ):
         if not base_url:
             raise ValueError("Base URL is required.")
         self._base_url = base_url if not base_url.endswith("/") else base_url[:-1]
         self._session = requests.Session()
         self._fhir_version = fhir_version
+        # context
         self.metadata = None
         self._package_context = None
         self.test_connection()
         if load_package_context:
             self._init_context(fhir_version=fhir_version)
+        # cache
         self._init_cache(
             use_cache=use_cache,
             cache=cache,
             cache_ttl=cache_ttl,
             cache_maxsize=cache_maxsize,
         )
+        # auth
+        self.token = token
         if authenticate:
             self.authenticate(
                 auth_method=auth_method,
@@ -93,7 +96,6 @@ class Client:
         self.use_cache = use_cache
         if self.use_cache:
             # TODO: Add support for other cache types
-            logger.warning("Using Cache. Custom headers will not be added to requests!")
             self.cache = (
                 TTLCache(maxsize=cache_maxsize, ttl=cache_ttl) if not cache else cache
             )
@@ -162,6 +164,7 @@ class Client:
         In every other case, the return type is a search bundle.
         """
         headers = headers or {}
+        token = token or self.token
         if token:
             headers["Authorization"] = f"{token_type} {token}"
         search_params = self._merge_search_params(

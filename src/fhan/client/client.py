@@ -142,7 +142,7 @@ class Client:
 
     def get(
         self,
-        resource_type: Optional[str] = None,
+        resource_type: Optional[_ResourceType] = None,
         id: Optional[Union[str, List[str]]] = None,
         search_params: Optional[Dict[str, str]] = None,
         search_string: Optional[str] = None,

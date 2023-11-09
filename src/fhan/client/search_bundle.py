@@ -37,4 +37,6 @@ class SearchBundle:
         return evaluate(self.bundle, path)
 
     def get_paths(self, paths: List[str]) -> List[Any]:
+        if isinstance(paths, str):
+            paths = [paths]
         return [self.get_path(path) for path in paths]

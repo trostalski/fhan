@@ -34,7 +34,7 @@ client = Client("https://hapi.fhir.org/baseR4/", authenticate=False)
 Get a Resource by id:
 
 ```python
-client.get("Condition", "1")
+client.get("Condition", "39238")
 ```
 
 Search for resources:

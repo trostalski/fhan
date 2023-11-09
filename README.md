@@ -1,6 +1,6 @@
 # Fhan
 
-Fhan is a small [FHIR](https://www.hl7.org/fhir/overview.html) query client with a focus on usability.
+Fhan is a small [FHIR](https://www.hl7.org/fhir/overview.html) query client with a focus on performance and usability.
 
 ```python
 from fhan.client import Client
@@ -42,6 +42,16 @@ Search for resources:
 ```python
 client.get("Observation", search_params={"code":"8310-5"}, count=20)
 ```
+
+## Features
+- Intelligent Autocomplete
+- Integrated Metadata and Package Context Management
+- `SearchBuilder` for Incremental Search Query Construction
+- Seamless Authentication
+- Efficient Caching Mechanism
+- Object-Oriented FHIR Resources
+- FHIR Views Integration ([link](https://build.fhir.org/ig/FHIR/sql-on-fhir-v2/))
+- `ViewBuilder` for Robust View Construction
 
 ## Authentication
 

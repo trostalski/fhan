@@ -53,4 +53,5 @@ Currently, Fhan supports a limited set of authentication methods. Contributions 
 
 ## Other Tools
 
+- Fhan is using [rye](https://github.com/mitsuhiko/rye) for managing packages.
 - Use [Fhir-Views](https://fhir-views.vercel.app/) to inspect FHIR Bundles.

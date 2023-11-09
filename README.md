@@ -12,20 +12,23 @@ print(patients)
 
 ## Installation
 
-Import the package
+To get started with Fhan, install it using pip:
 
 ```shell
 pip install fhan
 ```
 
-## Usage
+## Basic Usage
 
-Import and instantiate the client Class:
+Check out the [example notebooks](./examples).
+
+After installation, you can begin using Fhan to query FHIR resources:
 
 ```python
 from fhan.client import Client
 
-client = Client("https://hapi.fhir.org/baseR4/")
+# The server is public and does not require authentication
+client = Client("https://hapi.fhir.org/baseR4/", authenticate=False)
 ```
 
 Get a Resource by id:
@@ -40,6 +43,14 @@ Search for resources:
 client.get("Observation", search_params={"code":"8310-5"}, count=20)
 ```
 
+## Authentication
+
+For servers that require authentication:
+
+Copy `.env.example` to `.env`.
+Fill in your authentication details in the .env file.
+Currently, Fhan supports a limited set of authentication methods. Contributions to expand authentication support are welcome!
+
 ## Other Tools
 
-- Use [Fhir-Views](https://fhir-views.vercel.app/) to inspect FHIR Bundles-
+- Use [Fhir-Views](https://fhir-views.vercel.app/) to inspect FHIR Bundles.

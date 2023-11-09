@@ -1,0 +1,1 @@
+sed '/-e/d' requirements.lock > requirements.txt

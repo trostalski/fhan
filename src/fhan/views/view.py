@@ -1,14 +1,10 @@
 from typing import Any, Union
-import logging
 
 from fhirpathpy import compile
 from pandas import DataFrame
-from dacite import from_dict
 
 from fhan.views.resource_collection import ResourceCollection
-from fhan.views.view_definition import ViewDefinition, validate_view_definition
-
-logger = logging.getLogger(__name__)
+from fhan.views.view_definition import ViewDefinition
 
 
 class ViewResult:
@@ -57,15 +53,15 @@ class View:
         Main class for sql on FHIR views.
         """
         if isinstance(view_definition, dict):
-            view_definition = from_dict(data_class=ViewDefinition, data=view_definition)
-        validate_view_definition(view_definition)
-        self._fhir_input = fhir_input
+            view_definition = ViewDefinition.from_dict(view_definition)
+        view_definition.validate()
+
         self._view_definition = view_definition
+        self._fhir_input = fhir_input
         self._resource = view_definition.resource
 
-        self._select_fns = self._get_select_fns()
+        self._select_fns, self._select_names = self._get_select_fns_and_names()
         self._constraint_fns = self._get_constraint_fns()
-        self._select_aliases = self._get_select_aliases()
 
         if fhir_input:
             self._get_collection_from_input(fhir_input)
@@ -81,7 +77,7 @@ class View:
         self._apply_constraints()  # filters the _resource_collection
         select_result = self._apply_selects()  # returns a list of dicts
         execution_result = {
-            alias: select_result[i] for i, alias in enumerate(self._select_aliases)
+            alias: select_result[i] for i, alias in enumerate(self._select_names)
         }  # returns a dict with the aliases as keys and lists of values as values
         view_result = ViewResult(
             view_definition=self._view_definition, table=execution_result
@@ -96,7 +92,7 @@ class View:
         view_result = self.execute()
         return view_result
 
-    def _get_collection_from_input(self, fhir_input: dict):
+    def _get_collection_from_input(self, fhir_input: dict | ResourceCollection | list):
         """
         Get the resource collection from the input.
         """
@@ -108,6 +104,8 @@ class View:
         elif isinstance(fhir_input, dict):
             if fhir_input["resourceType"] == "Bundle":
                 resource_collection = ResourceCollection.from_bundle(fhir_input)
+            else:
+                resource_collection = ResourceCollection([fhir_input])
         else:
             raise ValueError(
                 "Input must be a list of resources, a bundle or a ResourceCollection."
@@ -157,26 +155,20 @@ class View:
             constraint_fns.append(fn)
         return constraint_fns
 
-    def _get_select_fns(self) -> list:
+    def _get_select_fns_and_names(self) -> tuple[list, list]:
         """
         Get the select functions from the view definition.
         """
         select_fns = []
+        select_names = []
         for select in self._view_definition.select:
-            path = select.path
-            fn = compile(path)
-            select_fns.append(fn)
-        return select_fns
-
-    def _get_select_aliases(self) -> list:
-        """
-        Get the select aliases from the view definition.
-        """
-        select_aliases = []
-        for select in self._view_definition.select:
-            alias = select.alias or select.path
-            select_aliases.append(alias)
-        return select_aliases
+            for col in select.column:
+                path = col.path
+                name = col.name
+                fn = compile(path)
+                select_fns.append(fn)
+                select_names.append(name)
+        return select_fns, select_names
 
 
 def _unnest_fp_result(fp_result: list) -> Any:
@@ -192,8 +184,5 @@ def _unnest_fp_result(fp_result: list) -> Any:
         fp_result = fp_result[0]
     elif len(fp_result) > 1:
         # TODO: how to handle lists
-        logger.info(
-            f"Select function returned more than one result: {fp_result}. "
-            "Keeping list."
-        )
+        pass
     return fp_result

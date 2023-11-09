@@ -12,7 +12,7 @@ from fhan.core.fhir_types import _ResourceType
 
 
 class ViewBuilder:
-    """View builder to construct ViewDefinition objects. This should
+    """View builder to construct View objects. This should
     enable incremental view construction and validation.
     """
 
@@ -56,7 +56,8 @@ class ViewBuilder:
             type=type,
             tag=tag,
         )
-        select = Select(column=column)
+        tag = Tag(name=tag_name, value=tag_value)
+        select = Select(column=[column])
         self._view_definition.select.append(select)
         return self
 
@@ -65,8 +66,8 @@ class ViewBuilder:
         self._view_definition.where.append(where)
         return self
 
-    def add_constant(self, path: str, value: str, description: str = None):
-        constant = Constant(path=path, value=value, description=description)
+    def add_constant(self, name: str, value: str):
+        constant = Constant(name=name, value=value)
         self._view_definition.constant.append(constant)
         return self
 

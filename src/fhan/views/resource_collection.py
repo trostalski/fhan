@@ -12,7 +12,7 @@ class ResourceCollection:
         resources = []
         if bundle.get("entry"):
             resources = [
-                entry["resource"] for entry in bundle["entry"] if entry["resource"]
+                entry["resource"] for entry in bundle["entry"] if "resource" in entry
             ]
         return cls(resources)
 

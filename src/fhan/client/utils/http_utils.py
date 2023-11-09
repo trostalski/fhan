@@ -21,7 +21,9 @@ def join_urls(*args):
     """
     Join multiple URLs together.
     """
-    return "/".join(map(lambda x: str(x).rstrip("/"), args))
+    parts = [arg.strip("/") for arg in args if arg is not None]
+    url = "/".join(parts)
+    return url.rstrip("/")
 
 
 def make_put_request(

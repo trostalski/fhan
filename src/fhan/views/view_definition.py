@@ -1,7 +1,9 @@
 import dataclasses
 from typing import Any, Literal, Optional
-
+from dacite import from_dict
 from fhirpathpy import compile
+
+from fhan.core.exceptions import InvalidFhirPathException
 
 
 @dataclasses.dataclass
@@ -30,11 +32,19 @@ class Column:
     description: Optional[str] = None
     collection: Optional[bool] = None
     type: Optional[str] = None
+    tag: Optional[Tag] = None
+
+    def __post_init__(self):
+        # Assign the path to name if name is not provided
+        if not self.name:
+            self.name = self.path
 
     def is_valid(self):
         """
-        Validate the fhirpath of the where path.
+        Validate the fhirpath of the select path.
         """
+        if not self.path or not self.name:
+            return False
         try:
             validate_fhir_path(self.path)
             return True
@@ -45,6 +55,10 @@ class Column:
         """
         Validate the fhirpath of the select path.
         """
+        if not self.path:
+            raise Exception("Column must have a path.")
+        if not self.name:
+            raise Exception("Column must have a name.")
         validate_fhir_path(self.path)
 
 
@@ -53,16 +67,22 @@ class Select:
     """Defines the content of a column within the view.
 
     Args:
-        path (str): FHIRPath expression that creates a column and defines its content.
-        alias (str, optional): Column alias produced in the output.
-        forEach (str, optional): Creates a row for each of the elements in the given expression.
-        forEachOrNull (str, optional): Same as forEach, but will produce a row with null values if the collection is empty.
+        column (list[Column]): A column to be produced in the resulting table.
     """
 
-    column: Column
-    forEach: Optional[str] = None
-    forEachOrNull: Optional[str] = None
-    unionAll: Optional["Select"] = None
+    column: list[Column]
+
+    def validate(self):
+        """
+        Validate the fhirpath of the select path.
+        """
+        for column in self.column:
+            column.validate()
+
+    # TODO: These are not implemented yet.
+    # forEach: Optional[str] = None
+    # forEachOrNull: Optional[str] = None
+    # unionAll: Optional["Select"] = None
 
 
 @dataclasses.dataclass
@@ -81,6 +101,8 @@ class Where:
         """
         Validate the fhirpath of the where path.
         """
+        if not self.path:
+            return False
         try:
             validate_fhir_path(self.path)
             return True
@@ -91,6 +113,8 @@ class Where:
         """
         Validate the fhirpath of the where path.
         """
+        if not self.path:
+            raise Exception("Where clause must have a path.")
         validate_fhir_path(self.path)
 
 
@@ -113,6 +137,12 @@ class ViewDefinition:
     constant: list[Constant] = None
     select: list[Select] = None
     where: list[Where] = None
+
+    @classmethod
+    def from_dict(cls, data: dict):
+        vd = from_dict(data_class=cls, data=data)
+        vd.validate()
+        return vd
 
     def validate(self):
         """
@@ -143,6 +173,31 @@ def validate_view_definition(view_definition: ViewDefinition):
         errors.append("View definition must have a resource.")
     if not view_definition.select:
         errors.append("View definition must have a select.")
+    for select in view_definition.select:
+        for column in select.column:
+            if not column.path:
+                errors.append(
+                    f"All select clauses must contain `path` fields. Got {column}."
+                )
+            if not isinstance(column.path, str):
+                errors.append(
+                    "The `path` field in a select clause must be strings."
+                    f" Got {column.path}."
+                )
+            if not column.name:
+                errors.append(
+                    f"All select clauses must contain `name` fields. Got {column}."
+                )
+            if not isinstance(column.name, str):
+                errors.append(
+                    "The `name` field in a select clause must be strings."
+                    f" Got {column.name}."
+                )
+            if not column.is_valid():
+                errors.append(
+                    f"The `path` field in a select clause must be valid FHIRPath."
+                    f" Got {column.path}."
+                )
     if view_definition.where:
         for constraint in view_definition.where:
             if not constraint.path:
@@ -159,4 +214,9 @@ def validate_view_definition(view_definition: ViewDefinition):
 
 
 def validate_fhir_path(fhirpath: str):
-    compile(fhirpath)
+    try:
+        compile(fhirpath)
+    except Exception as e:
+        raise InvalidFhirPathException(
+            f"Invalid FHIRPath expression: {fhirpath}. Error: {e}"
+        )

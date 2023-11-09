@@ -23,3 +23,7 @@ class FhirContextException(BaseException):
 
 class UnknownSearchParameterException(BaseException):
     """Raised when a search parameter is not known."""
+
+
+class InvalidFhirPathException(BaseException):
+    """Raised when a FHIRPath expression is not valid."""

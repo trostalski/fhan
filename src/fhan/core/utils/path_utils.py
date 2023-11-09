@@ -23,6 +23,8 @@ def get_path_length(path: str):
 
 
 def is_root_path(path: str):
+    if not path:
+        return False
     return "." not in path
 
 

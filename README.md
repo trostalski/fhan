@@ -5,7 +5,7 @@ Fhan is a small [FHIR](https://www.hl7.org/fhir/overview.html) query client with
 ```python
 from fhan.client import Client
 
-client = Client(base_url="http://hapi.fhir.org/baseR4/")
+client = Client(base_url="http://hapi.fhir.org/baseR4/", authenticate=False)
 patients = client.get("Patient", count=1)
 print(patients)
 ```

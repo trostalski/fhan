@@ -20,7 +20,7 @@ pip install fhan
 
 ## Basic Usage
 
-Check out the [example notebooks](./examples).
+**Check out the [example notebooks](./examples).**
 
 After installation, you can begin using Fhan to query FHIR resources:
 

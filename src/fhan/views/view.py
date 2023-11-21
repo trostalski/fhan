@@ -64,7 +64,7 @@ class View:
         self._constraint_fns = self._get_constraint_fns()
 
         if fhir_input:
-            self._get_collection_from_input(fhir_input)
+            self._resource_collection = self._get_collection_from_input(fhir_input)
 
     def execute(self, fhir_input: dict = None) -> ViewResult:
         """

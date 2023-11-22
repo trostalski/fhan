@@ -173,8 +173,10 @@ def validate_view_definition(view_definition: ViewDefinition):
         errors.append("View definition must have a resource.")
     if not view_definition.select:
         errors.append("View definition must have a select.")
+    names = []
     for select in view_definition.select:
         for column in select.column:
+            names.append(column.name)
             if not column.path:
                 errors.append(
                     f"All select clauses must contain `path` fields. Got {column}."
@@ -198,6 +200,9 @@ def validate_view_definition(view_definition: ViewDefinition):
                     f"The `path` field in a select clause must be valid FHIRPath."
                     f" Got {column.path}."
                 )
+    if len(names) != len(set(names)):
+        # TODO: This should be a warning, not an error.
+        errors.append("All select clauses must have unique names.")
     if view_definition.where:
         for constraint in view_definition.where:
             if not constraint.path:

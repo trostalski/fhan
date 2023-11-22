@@ -1,4 +1,5 @@
 from importlib import import_module
+import os
 from typing import Any, Literal, Optional, Union, List, Dict
 import logging
 from cachetools import TTLCache
@@ -10,7 +11,7 @@ import requests
 from cachetools import Cache
 from fhan.client.auth import Auth
 from fhan.client.metadata import ServerMetadata
-from fhan.core.exceptions import AuthenticationException, OperationOutcomeException
+from fhan.core.exceptions import OperationOutcomeException
 from fhan.client.search_bundle import SearchBundle
 from fhan.core.fhir_package import FhirPackage, FhirPackageLoader
 from fhan.core.fhir_types import _ResourceType
@@ -39,7 +40,7 @@ class Client:
 
     def __init__(
         self,
-        base_url: str,
+        base_url: str = None,
         fhir_version: str = FHIR_VERSION,
         load_package_context: bool = False,
         authenticate: bool = True,
@@ -55,6 +56,7 @@ class Client:
         token_type: Optional[str] = None,
         logging_level: Optional[str] = "INFO",
     ):
+        base_url = base_url or os.getenv("BASE_URL")
         if not base_url:
             raise ValueError("Base URL is required.")
         self._base_url = base_url if not base_url.endswith("/") else base_url[:-1]

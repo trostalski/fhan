@@ -93,6 +93,7 @@ def _make_get_request(
     if headers is None:
         headers = {}
 
+    print("URL : ", url)
     if token:
         headers["Authorization"] = f"{token_type} {token}"
     if session:

@@ -126,10 +126,10 @@ class View:
                 lambda x: _unnest_fp_result(constraint_fn(x))
             )
 
-    def _apply_selects(self) -> list[list[list]]:
+    def _apply_selects(self) -> list[list]:
         """
-        Apply the select functions to the resource collection. Returns a list of lists of lists
-        with the shape (path_nums, resource_nums, fp_result). This means the first list is the same
+        Apply the select functions to the resource collection. Returns a list of lists
+        with the shape (path_nums, fp_result). This means the first list is the same
         length as the number of aliases and they can be merged.
         """
         select_results = []

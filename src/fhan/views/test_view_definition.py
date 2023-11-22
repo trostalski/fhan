@@ -34,6 +34,22 @@ def test_column_creation_and_validation():
     assert column.name == path
 
 
+def test_definition_with_duplicate_column_names():
+    view_def = {
+        "resource": "Patient",
+        "select": [
+            {"column": [{"path": "Patient.name", "name": "patientName"}]},
+            {"column": [{"path": "Patient.name", "name": "patientName"}]},
+        ],
+    }
+    view_def = ViewDefinition(
+        **view_def,
+    )
+    assert not view_def.is_valid()
+    with pytest.raises(Exception):
+        view_def.validate()
+
+
 def test_view_definition_creation_validation_and_dict_conversion():
     constant = Constant(name="test", value=42)
     column = Column(path="Patient.name", name="patientName")

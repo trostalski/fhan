@@ -52,6 +52,8 @@ class View:
         """
         Main class for sql on FHIR views.
         """
+        if not view_definition:
+            raise ValueError("View definition must be provided.")
         if isinstance(view_definition, dict):
             view_definition = ViewDefinition.from_dict(view_definition)
         view_definition.validate()

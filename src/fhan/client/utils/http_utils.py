@@ -2,6 +2,7 @@ import logging
 from typing import Optional
 from cachetools import TTLCache
 import requests
+from requests.exceptions import JSONDecodeError
 
 from dotenv import load_dotenv
 
@@ -9,6 +10,7 @@ from fhan.client.decorators import conditional_cache
 from fhan.client.utils.issue_types import ISSUE_TYPES
 from fhan.core.exceptions import (
     OperationOutcomeException,
+    RequestException,
 )
 from fhan.core.utils.fhir_utils import safe_get
 from fhan.models.R4 import OperationOutcome, DetectedIssue
@@ -93,7 +95,6 @@ def _make_get_request(
     if headers is None:
         headers = {}
 
-    print("URL : ", url)
     if token:
         headers["Authorization"] = f"{token_type} {token}"
     if session:
@@ -104,7 +105,10 @@ def _make_get_request(
     if raise_for_status:
         response.raise_for_status()
 
-    data = response.json()
+    try:
+        data = response.json()
+    except JSONDecodeError as e:
+        raise RequestException(f"Could not decode response as JSON, endpoint: {url}")
 
     if data["resourceType"] == "OperationOutcome":
         data = handle_operation_outcome(OperationOutcome.from_dict(data))

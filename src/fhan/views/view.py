@@ -72,6 +72,8 @@ class View:
         """
         Execute the view.
         """
+        if not fhir_input and not self._resource_collection:
+            raise ValueError("No fhir data for view execution provided.")
         if fhir_input:
             self._resource_collection = self._get_collection_from_input(fhir_input)
         if not self._resource_collection:

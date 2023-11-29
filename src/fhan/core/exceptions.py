@@ -5,6 +5,10 @@ class BaseException(Exception):
     """Base exception class."""
 
 
+class RequestException(BaseException):
+    """Raised when an error is returned from the server."""
+
+
 class OperationOutcomeException(BaseException):
     """Raised when an OperationOutcome error is returned from the server."""
 

@@ -326,7 +326,7 @@ class Client:
             )
         for param in possible_params:
             try:
-                response_resource = self._search(
+                self._search(
                     resource_type=resource_type,
                     search_string=f"_{param_name}={param}",
                     pages=1,
@@ -334,6 +334,7 @@ class Client:
                 )
                 valid_params.append(param)
             except OperationOutcomeException as e:
+                # param is not supported
                 continue
         if param_name == "revinclude":
             self.metadata.available_revincludes[resource_type] = valid_params
@@ -345,10 +346,7 @@ class Client:
     ):
         possible_revincludes = self.metadata.available_revincludes["Patient"]
         search_string = f"_id={patient_id}"
-        c = 0
         for revinclude in possible_revincludes:
-            if c > 10:
-                break
             search_string += f"&_revinclude={revinclude}"
         res = self.get(
             resource_type="Patient",

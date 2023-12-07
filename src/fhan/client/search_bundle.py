@@ -1,8 +1,9 @@
-from typing import TypeVar, Generic, List, Dict, Any
+from typing import List, Dict, Any
 
 from fhirpathpy import evaluate
 
 from fhan.core.utils.fhir_utils import is_bundle, is_empty_bundle
+from fhan.core.fhir_types import _ResourceType
 
 
 class SearchBundle:
@@ -28,7 +29,7 @@ class SearchBundle:
     def size(self) -> int:
         return len(self.resources)
 
-    def get_resources_by_type(self, resource_type: str) -> List[dict]:
+    def get_resources_by_type(self, resource_type: _ResourceType) -> List[dict]:
         return [r for r in self.resources if r["resourceType"] == resource_type]
 
     def get_path(self, path: str) -> Any:

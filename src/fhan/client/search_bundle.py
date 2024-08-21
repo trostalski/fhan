@@ -1,9 +1,9 @@
-from typing import List, Dict, Any
+from typing import Any, Dict, List
 
 from fhirpathpy import evaluate
 
-from fhan.core.utils.fhir_utils import is_bundle, is_empty_bundle
-from fhan.core.fhir_types import _ResourceType
+from fhan.client.resource_type import _ResourceType
+from fhan.client.utils.fhir_utils import is_bundle, is_empty_bundle
 
 
 class SearchBundle:

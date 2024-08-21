@@ -15,3 +15,13 @@ wheels/
 # tmp files for debugging
 tmp.py
 tmp.ipynb
+
+# pytest
+.pytest_cache/
+
+# github
+.github/
+
+# ruff
+.ruff/
+.ruff_cache/

@@ -1,5 +1,6 @@
 # generated at 2023-10-05 18:29:10.331759 from /Users/tillrostalski/Git/fhan/src/fhan/client/scripts/create_from_template.py
 from typing import Union
+
 from fhan.client.search_bundle import SearchBundle
 
 

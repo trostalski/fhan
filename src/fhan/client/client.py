@@ -1,29 +1,23 @@
-from importlib import import_module
 import os
-from typing import Any, Literal, Optional, Union, List, Dict
-import logging
-from cachetools import TTLCache
-
-from dotenv import load_dotenv
+from importlib import import_module
+from typing import Any, Dict, List, Literal, Optional, Union
 from urllib.parse import urljoin
-import requests
 
-from cachetools import Cache
+import requests
+from cachetools import Cache, TTLCache
+from dotenv import load_dotenv
+from fhirmodels.fhir_package import FhirPackage, FhirPackageLoader
+from fhirmodels.R4 import CapabilityStatement
+
 from fhan.client.auth import Auth
+from fhan.client.exceptions import OperationOutcomeException
 from fhan.client.metadata import ServerMetadata
-from fhan.core.exceptions import OperationOutcomeException
+from fhan.client.resource_type import _ResourceType
 from fhan.client.search_bundle import SearchBundle
-from fhan.core.fhir_package import FhirPackage, FhirPackageLoader
-from fhan.core.fhir_types import _ResourceType
-from fhan.core.utils.fhir_utils import is_bundle
-from fhan.models.R4.CapabilityStatement import CapabilityStatement
-from fhan.models.generator_models import BaseModel
-from fhan.client.utils.http_utils import (
-    build_fhir_get_url,
-    build_fhir_search_url,
-    _make_get_request,
-    join_urls,
-)
+from fhan.client.utils.fhir_utils import is_bundle
+from fhan.client.utils.http_utils import (_make_get_request,
+                                          build_fhir_get_url,
+                                          build_fhir_search_url, join_urls)
 
 FHIR_VERSION = "R4"
 load_dotenv()
@@ -44,7 +38,7 @@ class Client:
         fhir_version: str = FHIR_VERSION,
         load_package_context: bool = False,
         authenticate: bool = True,
-        auth_method: Literal["basic", "bearer", "cookie"] = "cookie",
+        auth_method: Literal["basic", "bearer", "cookie"] = "basic",
         use_cache: bool = False,
         cache: Cache = None,
         cache_ttl: int = 300,  # 5 minutes
@@ -152,15 +146,15 @@ class Client:
         as_object: Optional[bool] = False,
         count: Optional[int] = None,
         elements: Optional[List[str]] = None,
-        include: Optional[List[str]] = None,
-        revinclude: Optional[List[str]] = None,
+        include: Optional[str] = None,
+        revinclude: Optional[str] = None,
         total: Optional[str] = None,
         url: Optional[str] = None,
         raise_for_status: Optional[bool] = False,
         headers: Optional[Dict[str, str]] = None,
         token: Optional[str] = None,
         token_type: Optional[str] = "Bearer",
-    ) -> Union[Dict, "SearchBundle", "BaseModel"]:
+    ):
         """
         The return type is a resource only when a single id is specified.
         In every other case, the return type is a search bundle.
@@ -170,7 +164,12 @@ class Client:
         if token:
             headers["Authorization"] = f"{token_type} {token}"
         search_params = self._merge_search_params(
-            count, elements, include, revinclude, total, search_params
+            count=count,
+            elements=elements,
+            include=include,
+            revinclude=revinclude,
+            total=total,
+            search_params=search_params,
         )
         if url:
             result = self._get_result_from_url(
@@ -189,6 +188,7 @@ class Client:
             if search_string:
                 search_string += "&"
             search_string += self._convert_params_to_string(search_params)
+            print("ä######## -> ", search_string)
             result = self._execute_search(
                 resource_type=resource_type,
                 search_string=search_string,
@@ -333,7 +333,7 @@ class Client:
                     raise_for_status=False,
                 )
                 valid_params.append(param)
-            except OperationOutcomeException as e:
+            except OperationOutcomeException:
                 # param is not supported
                 continue
         if param_name == "revinclude":
@@ -468,7 +468,7 @@ def _get_params_from_kwargs(**kwargs):
     return params
 
 
-def _get_model_for_type(resource_type: str) -> BaseModel:
+def _get_model_for_type(resource_type: str):
     """
     Get the model for a resource type.
     """

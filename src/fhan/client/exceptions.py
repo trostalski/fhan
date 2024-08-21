@@ -16,6 +16,8 @@ class OperationOutcomeException(BaseException):
 class NotFoundException(BaseException):
     """Raised when a resource is not found."""
 
+    # add message to the exception
+
 
 class AuthenticationException(BaseException):
     """Raised when client is not authenticated."""

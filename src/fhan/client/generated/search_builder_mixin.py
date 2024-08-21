@@ -1,326 +1,82 @@
 # generated at 2023-10-10 10:57:20.304823 from /Users/tillrostalski/Git/fhan/src/fhan/client/scripts/create_from_template.py
 
-from fhan.client.generated.search_builder import AccountSearchBuilder
-
-from fhan.client.generated.search_builder import ActivityDefinitionSearchBuilder
-
-from fhan.client.generated.search_builder import ActorDefinitionSearchBuilder
-
 from fhan.client.generated.search_builder import (
-    AdministrableProductDefinitionSearchBuilder,
-)
-
-from fhan.client.generated.search_builder import AdverseEventSearchBuilder
-
-from fhan.client.generated.search_builder import AllergyIntoleranceSearchBuilder
-
-from fhan.client.generated.search_builder import AppointmentSearchBuilder
-
-from fhan.client.generated.search_builder import AppointmentResponseSearchBuilder
-
-from fhan.client.generated.search_builder import ArtifactAssessmentSearchBuilder
-
-from fhan.client.generated.search_builder import AuditEventSearchBuilder
-
-from fhan.client.generated.search_builder import BasicSearchBuilder
-
-from fhan.client.generated.search_builder import BinarySearchBuilder
-
-from fhan.client.generated.search_builder import BiologicallyDerivedProductSearchBuilder
-
-from fhan.client.generated.search_builder import (
+    AccountSearchBuilder, ActivityDefinitionSearchBuilder,
+    ActorDefinitionSearchBuilder, AdministrableProductDefinitionSearchBuilder,
+    AdverseEventSearchBuilder, AllergyIntoleranceSearchBuilder,
+    AppointmentResponseSearchBuilder, AppointmentSearchBuilder,
+    ArtifactAssessmentSearchBuilder, AuditEventSearchBuilder,
+    BasicSearchBuilder, BinarySearchBuilder,
     BiologicallyDerivedProductDispenseSearchBuilder,
-)
-
-from fhan.client.generated.search_builder import BodyStructureSearchBuilder
-
-from fhan.client.generated.search_builder import BundleSearchBuilder
-
-from fhan.client.generated.search_builder import CapabilityStatementSearchBuilder
-
-from fhan.client.generated.search_builder import CarePlanSearchBuilder
-
-from fhan.client.generated.search_builder import CareTeamSearchBuilder
-
-from fhan.client.generated.search_builder import ChargeItemSearchBuilder
-
-from fhan.client.generated.search_builder import ChargeItemDefinitionSearchBuilder
-
-from fhan.client.generated.search_builder import CitationSearchBuilder
-
-from fhan.client.generated.search_builder import ClaimSearchBuilder
-
-from fhan.client.generated.search_builder import ClaimResponseSearchBuilder
-
-from fhan.client.generated.search_builder import ClinicalImpressionSearchBuilder
-
-from fhan.client.generated.search_builder import ClinicalUseDefinitionSearchBuilder
-
-from fhan.client.generated.search_builder import CodeSystemSearchBuilder
-
-from fhan.client.generated.search_builder import CommunicationSearchBuilder
-
-from fhan.client.generated.search_builder import CommunicationRequestSearchBuilder
-
-from fhan.client.generated.search_builder import CompartmentDefinitionSearchBuilder
-
-from fhan.client.generated.search_builder import CompositionSearchBuilder
-
-from fhan.client.generated.search_builder import ConceptMapSearchBuilder
-
-from fhan.client.generated.search_builder import ConditionSearchBuilder
-
-from fhan.client.generated.search_builder import ConditionDefinitionSearchBuilder
-
-from fhan.client.generated.search_builder import ConsentSearchBuilder
-
-from fhan.client.generated.search_builder import ContractSearchBuilder
-
-from fhan.client.generated.search_builder import CoverageSearchBuilder
-
-from fhan.client.generated.search_builder import CoverageEligibilityRequestSearchBuilder
-
-from fhan.client.generated.search_builder import (
-    CoverageEligibilityResponseSearchBuilder,
-)
-
-from fhan.client.generated.search_builder import DetectedIssueSearchBuilder
-
-from fhan.client.generated.search_builder import DeviceSearchBuilder
-
-from fhan.client.generated.search_builder import DeviceAssociationSearchBuilder
-
-from fhan.client.generated.search_builder import DeviceDefinitionSearchBuilder
-
-from fhan.client.generated.search_builder import DeviceDispenseSearchBuilder
-
-from fhan.client.generated.search_builder import DeviceMetricSearchBuilder
-
-from fhan.client.generated.search_builder import DeviceRequestSearchBuilder
-
-from fhan.client.generated.search_builder import DeviceUsageSearchBuilder
-
-from fhan.client.generated.search_builder import DiagnosticReportSearchBuilder
-
-from fhan.client.generated.search_builder import DocumentReferenceSearchBuilder
-
-from fhan.client.generated.search_builder import EncounterSearchBuilder
-
-from fhan.client.generated.search_builder import EncounterHistorySearchBuilder
-
-from fhan.client.generated.search_builder import EndpointSearchBuilder
-
-from fhan.client.generated.search_builder import EnrollmentRequestSearchBuilder
-
-from fhan.client.generated.search_builder import EnrollmentResponseSearchBuilder
-
-from fhan.client.generated.search_builder import EpisodeOfCareSearchBuilder
-
-from fhan.client.generated.search_builder import EventDefinitionSearchBuilder
-
-from fhan.client.generated.search_builder import EvidenceSearchBuilder
-
-from fhan.client.generated.search_builder import EvidenceReportSearchBuilder
-
-from fhan.client.generated.search_builder import EvidenceVariableSearchBuilder
-
-from fhan.client.generated.search_builder import ExampleScenarioSearchBuilder
-
-from fhan.client.generated.search_builder import ExplanationOfBenefitSearchBuilder
-
-from fhan.client.generated.search_builder import FamilyMemberHistorySearchBuilder
-
-from fhan.client.generated.search_builder import FlagSearchBuilder
-
-from fhan.client.generated.search_builder import FormularyItemSearchBuilder
-
-from fhan.client.generated.search_builder import GenomicStudySearchBuilder
-
-from fhan.client.generated.search_builder import GoalSearchBuilder
-
-from fhan.client.generated.search_builder import GraphDefinitionSearchBuilder
-
-from fhan.client.generated.search_builder import GroupSearchBuilder
-
-from fhan.client.generated.search_builder import GuidanceResponseSearchBuilder
-
-from fhan.client.generated.search_builder import HealthcareServiceSearchBuilder
-
-from fhan.client.generated.search_builder import ImagingSelectionSearchBuilder
-
-from fhan.client.generated.search_builder import ImagingStudySearchBuilder
-
-from fhan.client.generated.search_builder import ImmunizationSearchBuilder
-
-from fhan.client.generated.search_builder import ImmunizationEvaluationSearchBuilder
-
-from fhan.client.generated.search_builder import ImmunizationRecommendationSearchBuilder
-
-from fhan.client.generated.search_builder import ImplementationGuideSearchBuilder
-
-from fhan.client.generated.search_builder import IngredientSearchBuilder
-
-from fhan.client.generated.search_builder import InsurancePlanSearchBuilder
-
-from fhan.client.generated.search_builder import InventoryItemSearchBuilder
-
-from fhan.client.generated.search_builder import InventoryReportSearchBuilder
-
-from fhan.client.generated.search_builder import InvoiceSearchBuilder
-
-from fhan.client.generated.search_builder import LibrarySearchBuilder
-
-from fhan.client.generated.search_builder import LinkageSearchBuilder
-
-from fhan.client.generated.search_builder import ListSearchBuilder
-
-from fhan.client.generated.search_builder import LocationSearchBuilder
-
-from fhan.client.generated.search_builder import ManufacturedItemDefinitionSearchBuilder
-
-from fhan.client.generated.search_builder import MeasureSearchBuilder
-
-from fhan.client.generated.search_builder import MeasureReportSearchBuilder
-
-from fhan.client.generated.search_builder import MedicationSearchBuilder
-
-from fhan.client.generated.search_builder import MedicationAdministrationSearchBuilder
-
-from fhan.client.generated.search_builder import MedicationDispenseSearchBuilder
-
-from fhan.client.generated.search_builder import MedicationKnowledgeSearchBuilder
-
-from fhan.client.generated.search_builder import MedicationRequestSearchBuilder
-
-from fhan.client.generated.search_builder import MedicationStatementSearchBuilder
-
-from fhan.client.generated.search_builder import MedicinalProductDefinitionSearchBuilder
-
-from fhan.client.generated.search_builder import MessageDefinitionSearchBuilder
-
-from fhan.client.generated.search_builder import MessageHeaderSearchBuilder
-
-from fhan.client.generated.search_builder import MolecularSequenceSearchBuilder
-
-from fhan.client.generated.search_builder import NamingSystemSearchBuilder
-
-from fhan.client.generated.search_builder import NutritionIntakeSearchBuilder
-
-from fhan.client.generated.search_builder import NutritionOrderSearchBuilder
-
-from fhan.client.generated.search_builder import NutritionProductSearchBuilder
-
-from fhan.client.generated.search_builder import ObservationSearchBuilder
-
-from fhan.client.generated.search_builder import ObservationDefinitionSearchBuilder
-
-from fhan.client.generated.search_builder import OperationDefinitionSearchBuilder
-
-from fhan.client.generated.search_builder import OperationOutcomeSearchBuilder
-
-from fhan.client.generated.search_builder import OrganizationSearchBuilder
-
-from fhan.client.generated.search_builder import OrganizationAffiliationSearchBuilder
-
-from fhan.client.generated.search_builder import PackagedProductDefinitionSearchBuilder
-
-from fhan.client.generated.search_builder import PatientSearchBuilder
-
-from fhan.client.generated.search_builder import PaymentNoticeSearchBuilder
-
-from fhan.client.generated.search_builder import PaymentReconciliationSearchBuilder
-
-from fhan.client.generated.search_builder import PermissionSearchBuilder
-
-from fhan.client.generated.search_builder import PersonSearchBuilder
-
-from fhan.client.generated.search_builder import PlanDefinitionSearchBuilder
-
-from fhan.client.generated.search_builder import PractitionerSearchBuilder
-
-from fhan.client.generated.search_builder import PractitionerRoleSearchBuilder
-
-from fhan.client.generated.search_builder import ProcedureSearchBuilder
-
-from fhan.client.generated.search_builder import ProvenanceSearchBuilder
-
-from fhan.client.generated.search_builder import QuestionnaireSearchBuilder
-
-from fhan.client.generated.search_builder import QuestionnaireResponseSearchBuilder
-
-from fhan.client.generated.search_builder import RegulatedAuthorizationSearchBuilder
-
-from fhan.client.generated.search_builder import RelatedPersonSearchBuilder
-
-from fhan.client.generated.search_builder import RequestOrchestrationSearchBuilder
-
-from fhan.client.generated.search_builder import RequirementsSearchBuilder
-
-from fhan.client.generated.search_builder import ResearchStudySearchBuilder
-
-from fhan.client.generated.search_builder import ResearchSubjectSearchBuilder
-
-from fhan.client.generated.search_builder import RiskAssessmentSearchBuilder
-
-from fhan.client.generated.search_builder import ScheduleSearchBuilder
-
-from fhan.client.generated.search_builder import SearchParameterSearchBuilder
-
-from fhan.client.generated.search_builder import ServiceRequestSearchBuilder
-
-from fhan.client.generated.search_builder import SlotSearchBuilder
-
-from fhan.client.generated.search_builder import SpecimenSearchBuilder
-
-from fhan.client.generated.search_builder import SpecimenDefinitionSearchBuilder
-
-from fhan.client.generated.search_builder import StructureDefinitionSearchBuilder
-
-from fhan.client.generated.search_builder import StructureMapSearchBuilder
-
-from fhan.client.generated.search_builder import SubscriptionSearchBuilder
-
-from fhan.client.generated.search_builder import SubscriptionStatusSearchBuilder
-
-from fhan.client.generated.search_builder import SubscriptionTopicSearchBuilder
-
-from fhan.client.generated.search_builder import SubstanceSearchBuilder
-
-from fhan.client.generated.search_builder import SubstanceDefinitionSearchBuilder
-
-from fhan.client.generated.search_builder import SubstanceNucleicAcidSearchBuilder
-
-from fhan.client.generated.search_builder import SubstancePolymerSearchBuilder
-
-from fhan.client.generated.search_builder import SubstanceProteinSearchBuilder
-
-from fhan.client.generated.search_builder import (
-    SubstanceReferenceInformationSearchBuilder,
-)
-
-from fhan.client.generated.search_builder import SubstanceSourceMaterialSearchBuilder
-
-from fhan.client.generated.search_builder import SupplyDeliverySearchBuilder
-
-from fhan.client.generated.search_builder import SupplyRequestSearchBuilder
-
-from fhan.client.generated.search_builder import TaskSearchBuilder
-
-from fhan.client.generated.search_builder import TerminologyCapabilitiesSearchBuilder
-
-from fhan.client.generated.search_builder import TestPlanSearchBuilder
-
-from fhan.client.generated.search_builder import TestReportSearchBuilder
-
-from fhan.client.generated.search_builder import TestScriptSearchBuilder
-
-from fhan.client.generated.search_builder import TransportSearchBuilder
-
-from fhan.client.generated.search_builder import ValueSetSearchBuilder
-
-from fhan.client.generated.search_builder import VerificationResultSearchBuilder
-
-from fhan.client.generated.search_builder import VisionPrescriptionSearchBuilder
+    BiologicallyDerivedProductSearchBuilder, BodyStructureSearchBuilder,
+    BundleSearchBuilder, CapabilityStatementSearchBuilder,
+    CarePlanSearchBuilder, CareTeamSearchBuilder,
+    ChargeItemDefinitionSearchBuilder, ChargeItemSearchBuilder,
+    CitationSearchBuilder, ClaimResponseSearchBuilder, ClaimSearchBuilder,
+    ClinicalImpressionSearchBuilder, ClinicalUseDefinitionSearchBuilder,
+    CodeSystemSearchBuilder, CommunicationRequestSearchBuilder,
+    CommunicationSearchBuilder, CompartmentDefinitionSearchBuilder,
+    CompositionSearchBuilder, ConceptMapSearchBuilder,
+    ConditionDefinitionSearchBuilder, ConditionSearchBuilder,
+    ConsentSearchBuilder, ContractSearchBuilder,
+    CoverageEligibilityRequestSearchBuilder,
+    CoverageEligibilityResponseSearchBuilder, CoverageSearchBuilder,
+    DetectedIssueSearchBuilder, DeviceAssociationSearchBuilder,
+    DeviceDefinitionSearchBuilder, DeviceDispenseSearchBuilder,
+    DeviceMetricSearchBuilder, DeviceRequestSearchBuilder, DeviceSearchBuilder,
+    DeviceUsageSearchBuilder, DiagnosticReportSearchBuilder,
+    DocumentReferenceSearchBuilder, EncounterHistorySearchBuilder,
+    EncounterSearchBuilder, EndpointSearchBuilder,
+    EnrollmentRequestSearchBuilder, EnrollmentResponseSearchBuilder,
+    EpisodeOfCareSearchBuilder, EventDefinitionSearchBuilder,
+    EvidenceReportSearchBuilder, EvidenceSearchBuilder,
+    EvidenceVariableSearchBuilder, ExampleScenarioSearchBuilder,
+    ExplanationOfBenefitSearchBuilder, FamilyMemberHistorySearchBuilder,
+    FlagSearchBuilder, FormularyItemSearchBuilder, GenomicStudySearchBuilder,
+    GoalSearchBuilder, GraphDefinitionSearchBuilder, GroupSearchBuilder,
+    GuidanceResponseSearchBuilder, HealthcareServiceSearchBuilder,
+    ImagingSelectionSearchBuilder, ImagingStudySearchBuilder,
+    ImmunizationEvaluationSearchBuilder,
+    ImmunizationRecommendationSearchBuilder, ImmunizationSearchBuilder,
+    ImplementationGuideSearchBuilder, IngredientSearchBuilder,
+    InsurancePlanSearchBuilder, InventoryItemSearchBuilder,
+    InventoryReportSearchBuilder, InvoiceSearchBuilder, LibrarySearchBuilder,
+    LinkageSearchBuilder, ListSearchBuilder, LocationSearchBuilder,
+    ManufacturedItemDefinitionSearchBuilder, MeasureReportSearchBuilder,
+    MeasureSearchBuilder, MedicationAdministrationSearchBuilder,
+    MedicationDispenseSearchBuilder, MedicationKnowledgeSearchBuilder,
+    MedicationRequestSearchBuilder, MedicationSearchBuilder,
+    MedicationStatementSearchBuilder, MedicinalProductDefinitionSearchBuilder,
+    MessageDefinitionSearchBuilder, MessageHeaderSearchBuilder,
+    MolecularSequenceSearchBuilder, NamingSystemSearchBuilder,
+    NutritionIntakeSearchBuilder, NutritionOrderSearchBuilder,
+    NutritionProductSearchBuilder, ObservationDefinitionSearchBuilder,
+    ObservationSearchBuilder, OperationDefinitionSearchBuilder,
+    OperationOutcomeSearchBuilder, OrganizationAffiliationSearchBuilder,
+    OrganizationSearchBuilder, PackagedProductDefinitionSearchBuilder,
+    PatientSearchBuilder, PaymentNoticeSearchBuilder,
+    PaymentReconciliationSearchBuilder, PermissionSearchBuilder,
+    PersonSearchBuilder, PlanDefinitionSearchBuilder,
+    PractitionerRoleSearchBuilder, PractitionerSearchBuilder,
+    ProcedureSearchBuilder, ProvenanceSearchBuilder,
+    QuestionnaireResponseSearchBuilder, QuestionnaireSearchBuilder,
+    RegulatedAuthorizationSearchBuilder, RelatedPersonSearchBuilder,
+    RequestOrchestrationSearchBuilder, RequirementsSearchBuilder,
+    ResearchStudySearchBuilder, ResearchSubjectSearchBuilder,
+    RiskAssessmentSearchBuilder, ScheduleSearchBuilder,
+    SearchParameterSearchBuilder, ServiceRequestSearchBuilder,
+    SlotSearchBuilder, SpecimenDefinitionSearchBuilder, SpecimenSearchBuilder,
+    StructureDefinitionSearchBuilder, StructureMapSearchBuilder,
+    SubscriptionSearchBuilder, SubscriptionStatusSearchBuilder,
+    SubscriptionTopicSearchBuilder, SubstanceDefinitionSearchBuilder,
+    SubstanceNucleicAcidSearchBuilder, SubstancePolymerSearchBuilder,
+    SubstanceProteinSearchBuilder, SubstanceReferenceInformationSearchBuilder,
+    SubstanceSearchBuilder, SubstanceSourceMaterialSearchBuilder,
+    SupplyDeliverySearchBuilder, SupplyRequestSearchBuilder, TaskSearchBuilder,
+    TerminologyCapabilitiesSearchBuilder, TestPlanSearchBuilder,
+    TestReportSearchBuilder, TestScriptSearchBuilder, TransportSearchBuilder,
+    ValueSetSearchBuilder, VerificationResultSearchBuilder,
+    VisionPrescriptionSearchBuilder)
 
 
 class SearchBuilderMixin:

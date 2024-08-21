@@ -1,20 +1,16 @@
-import logging
 from typing import Optional
-from cachetools import TTLCache
+
 import requests
+from cachetools import TTLCache
+from dotenv import load_dotenv
+from fhirmodels.R4 import DetectedIssue, OperationOutcome
 from requests.exceptions import JSONDecodeError
 
-from dotenv import load_dotenv
-
 from fhan.client.decorators import conditional_cache
+from fhan.client.exceptions import OperationOutcomeException, RequestException
+from fhan.client.log import logger
+from fhan.client.utils.fhir_utils import safe_get
 from fhan.client.utils.issue_types import ISSUE_TYPES
-from fhan.core.exceptions import (
-    OperationOutcomeException,
-    RequestException,
-)
-from fhan.core.utils.fhir_utils import safe_get
-from fhan.models.R4 import OperationOutcome, DetectedIssue
-
 
 load_dotenv()
 
@@ -28,89 +24,39 @@ def join_urls(*args):
     return url.rstrip("/")
 
 
-def make_put_request(
-    url: str,
-    session: Optional[requests.Session] = None,
-    data: Optional[dict] = None,
-    headers: Optional[dict] = None,
-    raise_for_status: Optional[bool] = True,
-) -> requests.Response:
-    """
-    Make a PUT request to a URL.
-    """
-    if data is None:
-        data = {}
-    if headers is None:
-        headers = {}
-
-    if session:
-        response = session.put(url, json=data, headers=headers)
-    else:
-        response = requests.put(url, json=data, headers=headers)
-
-    if raise_for_status:
-        response.raise_for_status()
-    return response
-
-
-def make_post_request(
-    url: str,
-    session: Optional[requests.Session] = None,
-    data: Optional[dict] = None,
-    headers: Optional[dict] = None,
-    raise_for_status: Optional[bool] = True,
-) -> requests.Response:
-    """
-    Make a POST request to a URL.
-    """
-    if data is None:
-        data = {}
-    if headers is None:
-        headers = {}
-
-    if session:
-        response = session.post(url, json=data, headers=headers)
-    else:
-        response = requests.post(url, json=data, headers=headers)
-
-    if raise_for_status:
-        response.raise_for_status()
-    return response
-
-
 @conditional_cache
 def _make_get_request(
     url: str,
-    session: Optional[requests.Session],
-    raise_for_status: Optional[bool],
+    session: Optional[requests.Session] = None,
+    raise_for_status: Optional[bool] = True,
     token: Optional[str] = None,
     token_type: Optional[str] = None,
     headers: Optional[dict] = None,
-    use_cache: bool = None,  # used for conditional_cache decorator
-    cache: Optional[TTLCache] = None,  # used for conditional_cache decorator
+    use_cache: bool = False,
+    cache: Optional[TTLCache] = None,
 ) -> dict:
     """
     Make a GET request to a URL.
     """
     if headers is None:
         headers = {}
-
     if token:
         headers["Authorization"] = f"{token_type} {token}"
     if session:
         response = session.get(url, headers=headers)
     else:
+        logger.info(f"GET request to {url}.")
         response = requests.get(url, headers=headers)
-
     if raise_for_status:
+        logger.info(
+            f"GET request to {url} returned status code {response.status_code}."
+        )
         response.raise_for_status()
-
     try:
         data = response.json()
-    except JSONDecodeError as e:
+    except JSONDecodeError:
         raise RequestException(f"Could not decode response as JSON, endpoint: {url}")
-
-    if data["resourceType"] == "OperationOutcome":
+    if data.get("resourceType") == "OperationOutcome":
         data = handle_operation_outcome(OperationOutcome.from_dict(data))
     return data
 
@@ -162,12 +108,13 @@ def handle_operation_outcome(operation_outcome: OperationOutcome):
     for issue in issues:
         error_text = get_error_text(issue)
         if issue.code == "success":
-            logging.info("OperationOutcome success.")
+            logger.info("OperationOutcome success.")
         elif issue.code in ISSUE_TYPES:
             raise_exc = ISSUE_TYPES[issue.code]["raise"]
+            logger.error(f"OperationOutcome issue code: {issue.code}.")
             raise raise_exc(error_text)
         else:
-            logging.error(
+            logger.info(
                 f"Unknown issue code: {issue.code}.\nOperation Outcome: {operation_outcome.as_dict()}"
             )
             raise OperationOutcomeException(error_text)

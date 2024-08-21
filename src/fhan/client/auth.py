@@ -1,10 +1,10 @@
 import os
 from typing import Literal, Optional
 
-from requests import Session
 from dotenv import load_dotenv
+from requests import Session
 
-from fhan.core.exceptions import AuthenticationException
+from fhan.client.exceptions import AuthenticationException
 
 load_dotenv()
 
@@ -40,15 +40,18 @@ class Auth:
             raise Exception("Invalid authentication method")
 
     def _basic_auth(self):
-        if not self.username or not self.password or not self.url:
+        print("Trying to authenticate with basic.")
+        if not self.username or not self.password or not self.login_url:
             raise AuthenticationException(
                 "Username, password, and URL are required for basic authentication"
             )
 
         # Perform basic authentication using the session
-        self.session.get(self.url, auth=(self.username, self.password))
+        res = self.session.get(self.login_url, auth=(self.username, self.password))
+        self.token = res.text
 
     def _bearer_auth(self):
+        print("Trying to authenticate with bearer.")
         if not self.token or not self.login_url:
             raise AuthenticationException(
                 "Token and URL are required for bearer authentication"
@@ -57,9 +60,10 @@ class Auth:
         headers = {"Authorization": f"{self.token_type} {self.token}"}
 
         # Perform bearer authentication using the session
-        self.session.get(self.url, headers=headers)
+        self.session.get(self.login_url, headers=headers)
 
     def _cookie_auth(self):
+        print("Trying to authenticate with cookie.")
         if not self.username or not self.password or not self.login_url:
             raise AuthenticationException(
                 "Username, password, and login URL are required for cookie authentication."

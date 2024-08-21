@@ -1,4 +1,4 @@
-from fhan.models.R4 import CapabilityStatement
+from fhirmodels.R4 import CapabilityStatement
 
 
 class ServerMetadata:

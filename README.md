@@ -1,6 +1,6 @@
 # Fhan
 
-Fhan is a small [FHIR](https://www.hl7.org/fhir/overview.html) query client with a focus on performance and usability
+Fhan is a small [FHIR](https://www.hl7.org/fhir/overview.html) query client with a focus on performance and usability.
 
 ```python
 from fhan.client import Client
@@ -51,8 +51,7 @@ Copy `.env.example` to `.env`.
 Fill in your authentication details in the .env file.
 Currently, Fhan supports a limited set of authentication methods. Contributions to expand authentication support are welcome!
 
-## Other Tools
+## Tools
 
-- [uv]([https://github.com/mitsuhiko/rye](https://github.com/astral-sh/uv)) for managing packages.
 - [fhirmodels](https://github.com/trostalski/fhirmodels/tree/main) for python fhir objects.
-- Use [Fhir-Views](https://fhir-views.vercel.app/) to inspect FHIR Bundles.
+- [Fhir-Views](https://fhir-views.vercel.app/) to inspect FHIR Bundles.

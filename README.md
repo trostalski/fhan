@@ -5,7 +5,7 @@ Fhan is a small [FHIR](https://www.hl7.org/fhir/overview.html) query client with
 ```python
 from fhan.client import Client
 
-client = Client(base_url="http://hapi.fhir.org/baseR4/", authenticate=False)
+client = Client(base_url="https://demo.kodjin.com/fhir", authenticate=False)
 patients = client.get("Patient", count=1)
 print(patients)
 ```
@@ -28,7 +28,7 @@ After installation, you can begin using Fhan to query FHIR resources:
 from fhan.client import Client
 
 # The server is public and does not require authentication
-client = Client("https://hapi.fhir.org/baseR4/", authenticate=False)
+client = Client("https://demo.kodjin.com/fhir/Condition", authenticate=False)
 ```
 
 Get a Resource by id:

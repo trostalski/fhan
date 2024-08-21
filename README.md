@@ -54,5 +54,5 @@ Currently, Fhan supports a limited set of authentication methods. Contributions 
 ## Other Tools
 
 - [uv]([https://github.com/mitsuhiko/rye](https://github.com/astral-sh/uv)) for managing packages.
-- [fhirmodels][https://github.com/trostalski/fhirmodels/tree/main] for python fhir objects.
+- [fhirmodels](https://github.com/trostalski/fhirmodels/tree/main) for python fhir objects.
 - Use [Fhir-Views](https://fhir-views.vercel.app/) to inspect FHIR Bundles.

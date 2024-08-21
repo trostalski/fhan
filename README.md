@@ -1,6 +1,6 @@
 # Fhan
 
-Fhan is a small [FHIR](https://www.hl7.org/fhir/overview.html) query client with a focus on performance and usability.
+Fhan is a small [FHIR](https://www.hl7.org/fhir/overview.html) query client with a focus on performance and usability
 
 ```python
 from fhan.client import Client

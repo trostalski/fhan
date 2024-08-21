@@ -40,13 +40,13 @@ class Auth:
             raise Exception("Invalid authentication method")
 
     def _basic_auth(self):
-        if not self.username or not self.password or not self.url:
+        if not self.username or not self.password or not self.login_url:
             raise AuthenticationException(
                 "Username, password, and URL are required for basic authentication"
             )
 
         # Perform basic authentication using the session
-        self.session.get(self.url, auth=(self.username, self.password))
+        self.session.get(self.login_url, auth=(self.username, self.password))
 
     def _bearer_auth(self):
         if not self.token or not self.login_url:
@@ -57,7 +57,7 @@ class Auth:
         headers = {"Authorization": f"{self.token_type} {self.token}"}
 
         # Perform bearer authentication using the session
-        self.session.get(self.url, headers=headers)
+        self.session.get(self.login_url, headers=headers)
 
     def _cookie_auth(self):
         if not self.username or not self.password or not self.login_url:

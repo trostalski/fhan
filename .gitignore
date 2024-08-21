@@ -25,3 +25,7 @@ tmp.ipynb
 # ruff
 .ruff/
 .ruff_cache/
+
+# logs
+logs/
+*.log

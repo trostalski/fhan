@@ -162,7 +162,7 @@ if __name__ == "__main__":
             "version": "R4",
             "output_file_name": "get_resource_mixin.py",
             "template_name": "get_resource_mixin.j2",
-            "model_import_path": "fhan.models.R4",
+            "model_import_path": "fhirmodels.R4",
         },
         "SRM": {  # -> Search Resource Mixin
             "creator_func": create_resource_mixin,

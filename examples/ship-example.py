@@ -1,6 +1,7 @@
 # Due to data privacy concerns, this code is not in a jupyter notebook.
 
 from pprint import pprint
+
 from fhirmodels.R4 import Observation
 
 from fhan.client import Client

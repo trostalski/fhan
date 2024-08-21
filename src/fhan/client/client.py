@@ -188,7 +188,6 @@ class Client:
             if search_string:
                 search_string += "&"
             search_string += self._convert_params_to_string(search_params)
-            print("ä######## -> ", search_string)
             result = self._execute_search(
                 resource_type=resource_type,
                 search_string=search_string,
@@ -472,7 +471,7 @@ def _get_model_for_type(resource_type: str):
     """
     Get the model for a resource type.
     """
-    module = import_module(f"fhan.models.{FHIR_VERSION}.{resource_type}")
+    module = import_module(f"fhirmodels.{FHIR_VERSION}.{resource_type}")
     model = getattr(module, resource_type)
     return model
 

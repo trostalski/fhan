@@ -34,13 +34,13 @@ client = Client("https://demo.kodjin.com/fhir/Condition", authenticate=False)
 Get a Resource by id:
 
 ```python
-client.get("Condition", "39238")
+client.get("Condition", "F16.1")
 ```
 
 Search for resources:
 
 ```python
-client.get("Observation", search_params={"code":"8310-5"}, count=20)
+client.get("Observation", search_params={"code":"249227004"}, count=20)
 ```
 
 ## Authentication

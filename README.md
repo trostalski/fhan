@@ -34,7 +34,7 @@ client = Client("https://demo.kodjin.com/fhir/Condition", authenticate=False)
 Get a Resource by id:
 
 ```python
-client.get("Condition", "F16.1")
+client.get("Condition", "13b810dc-58d5-42e3-b34f-5e2454401561")
 ```
 
 Search for resources:

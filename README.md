@@ -1,5 +1,7 @@
 # Fhan
 
+**At least Python 3.10 is required**
+
 Fhan is a small [FHIR](https://www.hl7.org/fhir/overview.html) query client with a focus on performance and usability.
 
 ```python

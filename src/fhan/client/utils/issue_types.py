@@ -1,5 +1,8 @@
-from fhan.client.exceptions import (AuthenticationException, NotFoundException,
-                                    OperationOutcomeException)
+from fhan.client.exceptions import (
+    AuthenticationException,
+    NotFoundException,
+    OperationOutcomeException,
+)
 
 ISSUE_TYPES = {
     # taken from https://www.hl7.org/fhir/codesystem-issue-type.json.html

@@ -45,10 +45,9 @@ def _make_get_request(
     if session:
         response = session.get(url, headers=headers)
     else:
-        logger.info(f"GET request to {url}.")
         response = requests.get(url, headers=headers)
     if raise_for_status:
-        logger.info(
+        logger.debug(
             f"GET request to {url} returned status code {response.status_code}."
         )
         response.raise_for_status()
@@ -108,13 +107,13 @@ def handle_operation_outcome(operation_outcome: OperationOutcome):
     for issue in issues:
         error_text = get_error_text(issue)
         if issue.code == "success":
-            logger.info("OperationOutcome success.")
+            logger.debug("OperationOutcome success.")
         elif issue.code in ISSUE_TYPES:
             raise_exc = ISSUE_TYPES[issue.code]["raise"]
-            logger.error(f"OperationOutcome issue code: {issue.code}.")
+            logger.warning(f"OperationOutcome issue code: {issue.code}.")
             raise raise_exc(error_text)
         else:
-            logger.info(
+            logger.warning(
                 f"Unknown issue code: {issue.code}.\nOperation Outcome: {operation_outcome.as_dict()}"
             )
             raise OperationOutcomeException(error_text)

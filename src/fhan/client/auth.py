@@ -5,6 +5,7 @@ from dotenv import load_dotenv
 from requests import Session
 
 from fhan.client.exceptions import AuthenticationException
+from fhan.client.log import logger
 
 load_dotenv()
 
@@ -37,11 +38,13 @@ class Auth:
         elif self.method == "cookie":
             self._cookie_auth()
         else:
+            logger.warning("Invalid authentication method", method=self.method)
             raise Exception("Invalid authentication method")
 
     def _basic_auth(self):
-        print("Trying to authenticate with basic.")
+        logger.debug("Attempting basic authentication")
         if not self.username or not self.password or not self.login_url:
+            logger.error("Missing credentials for basic authentication")
             raise AuthenticationException(
                 "Username, password, and URL are required for basic authentication"
             )
@@ -49,10 +52,12 @@ class Auth:
         # Perform basic authentication using the session
         res = self.session.get(self.login_url, auth=(self.username, self.password))
         self.token = res.text
+        logger.info("Basic authentication successful")
 
     def _bearer_auth(self):
-        print("Trying to authenticate with bearer.")
+        logger.debug("Attempting bearer authentication")
         if not self.token or not self.login_url:
+            logger.error("Missing credentials for bearer authentication")
             raise AuthenticationException(
                 "Token and URL are required for bearer authentication"
             )
@@ -61,10 +66,12 @@ class Auth:
 
         # Perform bearer authentication using the session
         self.session.get(self.login_url, headers=headers)
+        logger.info("Bearer authentication successful")
 
     def _cookie_auth(self):
-        print("Trying to authenticate with cookie.")
+        logger.debug("Attempting cookie authentication")
         if not self.username or not self.password or not self.login_url:
+            logger.error("Missing credentials for cookie authentication")
             raise AuthenticationException(
                 "Username, password, and login URL are required for cookie authentication."
             )
@@ -72,3 +79,4 @@ class Auth:
         # Perform login to get the cookie token using the session
         login_data = {"username": self.username, "password": self.password}
         self.session.post(self.login_url, data=login_data)
+        logger.info("Cookie authentication successful")

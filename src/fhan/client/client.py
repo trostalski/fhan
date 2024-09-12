@@ -15,9 +15,13 @@ from fhan.client.metadata import ServerMetadata
 from fhan.client.resource_type import _ResourceType
 from fhan.client.search_bundle import SearchBundle
 from fhan.client.utils.fhir_utils import is_bundle
-from fhan.client.utils.http_utils import (_make_get_request,
-                                          build_fhir_get_url,
-                                          build_fhir_search_url, join_urls)
+from fhan.client.utils.http_utils import (
+    _make_get_request,
+    build_fhir_get_url,
+    build_fhir_search_url,
+    join_urls,
+)
+from fhan.client.log import logger, set_logging_level
 
 FHIR_VERSION = "R4"
 load_dotenv()
@@ -48,20 +52,24 @@ class Client:
         login_url: Optional[str] = None,
         token: Optional[str] = None,
         token_type: Optional[str] = None,
-        logging_level: Optional[str] = "INFO",
+        logging_level: Optional[
+            Literal["DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"]
+        ] = "WARNING",
     ):
         base_url = base_url or os.getenv("BASE_URL")
         if not base_url:
             raise ValueError("Base URL is required.")
-        self._base_url = base_url if not base_url.endswith("/") else base_url[:-1]
         self._session = requests.Session()
+        self._base_url = base_url if not base_url.endswith("/") else base_url[:-1]
         self._fhir_version = fhir_version
+
         # context
         self.metadata = None
         self._package_context = None
         self.test_connection()
         if load_package_context:
             self._init_context(fhir_version=fhir_version)
+
         # cache
         self._init_cache(
             use_cache=use_cache,
@@ -69,6 +77,7 @@ class Client:
             cache_ttl=cache_ttl,
             cache_maxsize=cache_maxsize,
         )
+
         # auth
         self.token = token
         if authenticate:
@@ -80,6 +89,13 @@ class Client:
                 token_type=token_type,
                 login_url=login_url,
             )
+
+        # Set up logging
+        self._setup_logging(logging_level)
+
+    def _setup_logging(self, logging_level: str):
+        """Set up logging for the client."""
+        set_logging_level(logging_level)
 
     def _init_context(self, fhir_version: str):
         self._package_context: Optional[FhirPackage] = self._load_fhir_package(
@@ -128,12 +144,14 @@ class Client:
                 cache=None,
                 use_cache=False,
             )
+            logger.info("Successfully connected to the server", base_url=self._base_url)
         except requests.exceptions.ConnectionError:
+            logger.error("Failed to connect to the server", base_url=self._base_url)
             raise ConnectionError(
                 f"Could not connect to server. Make sure the URL is correct: {self._base_url}"
             )
-        except Exception:
-            # Silently ignore all other exceptions
+        except Exception as e:
+            # this is expected to fail with 401 for servers that require authentication
             pass
 
     def get(
@@ -218,6 +236,7 @@ class Client:
         token_type: Optional[str],
     ) -> Dict:
         url = join_urls(self._base_url, url)
+        logger.debug("Making GET request", url=url)
         return _make_get_request(
             url=url,
             session=self._session,
@@ -254,14 +273,17 @@ class Client:
 
     def _execute_search(
         self,
-        resource_type,
-        search_string,
-        pages,
-        raise_for_status,
-        headers,
-        token,
-        token_type,
+        resource_type: str,
+        search_string: str,
+        pages: int,
+        raise_for_status: bool,
+        headers: Optional[Dict[str, str]],
+        token: Optional[str],
+        token_type: Optional[str],
     ):
+        logger.debug(
+            "Executing search", resource_type=resource_type, search_string=search_string
+        )
         return self._search(
             resource_type=resource_type,
             search_string=search_string,
@@ -281,6 +303,7 @@ class Client:
         token: Optional[str],
         token_type: Optional[str],
     ):
+        logger.info("Getting resource by ID", resource_type=resource_type, id=id)
         return self._get(
             resource_type=resource_type,
             id=id,
@@ -393,6 +416,7 @@ class Client:
         url = build_fhir_search_url(
             base_url=self._base_url, resource_type=resource_type, search=search_string
         )
+        logger.debug(f"Fetching page 1")
         result = _make_get_request(
             url=url,
             session=self._session,
@@ -404,24 +428,27 @@ class Client:
             token_type=token_type,
         )
         next_link = _get_next_link(result, self._base_url)
-        while pages > 1 or pages == -1:
-            if next_link:
-                next_page = _make_get_request(
-                    url=next_link,
-                    session=self._session,
-                    raise_for_status=raise_for_status,
-                    headers=headers,
-                    token=token,
-                    token_type=token_type,
-                    cache=self.cache,
-                    use_cache=self.use_cache,
-                )
-                next_link = _get_next_link(next_page, self._base_url)
-                result["entry"] += next_page.get("entry", [])
-                if pages > 0:  # -1 means all pages
-                    pages -= 1
-            else:
-                break
+
+        current_page = 1
+        while (pages > 1 or pages == -1) and next_link:
+            current_page += 1
+            logger.debug(f"Fetching page {current_page}")
+            next_page = _make_get_request(
+                url=next_link,
+                session=self._session,
+                raise_for_status=raise_for_status,
+                headers=headers,
+                token=token,
+                token_type=token_type,
+                cache=self.cache,
+                use_cache=self.use_cache,
+            )
+            next_link = _get_next_link(next_page, self._base_url)
+            result["entry"] = result.get("entry", []) + next_page.get("entry", [])
+            if pages > 0:
+                pages -= 1
+
+        logger.info(f"Finished fetching {current_page} page(s)")
         return result
 
     def _load_fhir_package(
@@ -457,6 +484,7 @@ class Client:
         """
         if self.cache:
             self.cache.clear()
+            logger.info("Cache invalidated")
 
 
 def _get_params_from_kwargs(**kwargs):

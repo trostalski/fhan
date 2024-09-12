@@ -1,31 +1,38 @@
 import logging
 import sys
+from typing import Optional
 
 import structlog
 
 
-def configure_logging():
+def configure_logging(logging_level: Optional[str] = "INFO"):
     # Common processors
     processors = [
         structlog.contextvars.merge_contextvars,
         structlog.processors.add_log_level,
         structlog.processors.TimeStamper(fmt="iso"),
+        structlog.stdlib.filter_by_level,  # Add this line
     ]
 
-    # Configure logging to both file and stdout with colors for development
-    file_handler = logging.FileHandler(
-        filename="fhan.log",
-        mode="a",
-    )
-    stdout_handler = logging.StreamHandler(sys.stdout)
+    # Set logging level
+    numeric_level = getattr(logging, logging_level.upper(), None)
+    if not isinstance(numeric_level, int):
+        raise ValueError(f"Invalid log level: {logging_level}")
 
-    handlers = [file_handler, stdout_handler]
-
+    # Configure root logger
     logging.basicConfig(
         format="%(message)s",
-        level=logging.INFO,
-        handlers=handlers,
+        level=numeric_level,
+        handlers=[],  # Remove default handlers
     )
+
+    # Create handlers
+    file_handler = logging.FileHandler(filename="fhan.log", mode="a")
+    stdout_handler = logging.StreamHandler(sys.stdout)
+
+    # Set level for both handlers
+    file_handler.setLevel(numeric_level)
+    stdout_handler.setLevel(numeric_level)
 
     # Use different renderers for file and stdout
     file_processor = structlog.processors.JSONRenderer()
@@ -49,11 +56,26 @@ def configure_logging():
     )
 
     file_handler.setFormatter(file_formatter)
-    # stdout_handler.setFormatter(console_formatter)
+    stdout_handler.setFormatter(console_formatter)
 
+    # Add handlers to root logger
+    logging.getLogger().addHandler(file_handler)
+    logging.getLogger().addHandler(stdout_handler)
 
-# Configure logging based on the settings
-configure_logging()
 
 # Get a logger instance
 logger: structlog.stdlib.BoundLogger = structlog.get_logger()
+
+
+def set_logging_level(logging_level: str):
+    """Set the logging level for the logger."""
+    numeric_level = getattr(logging, logging_level.upper(), None)
+    if not isinstance(numeric_level, int):
+        raise ValueError(f"Invalid log level: {logging_level}")
+    logging.getLogger().setLevel(numeric_level)
+    for handler in logging.getLogger().handlers:
+        handler.setLevel(numeric_level)
+
+
+# Initialize logging with default level
+configure_logging()

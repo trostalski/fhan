@@ -117,7 +117,6 @@ class Client:
         pages: Optional[int] = 1,
         as_object: Optional[bool] = False,
         count: Optional[int] = None,
-        elements: Optional[List[str]] = None,
         include: Optional[str] = None,
         revinclude: Optional[str] = None,
         total: Optional[str] = None,
@@ -140,7 +139,6 @@ class Client:
             pages (Optional[int]): The number of pages to retrieve for paginated results. Defaults to 1.
             as_object (Optional[bool]): If True, return the result as a FHIR model object. Defaults to False.
             count (Optional[int]): The maximum number of resources to return per page.
-            elements (Optional[List[str]]): A list of specific elements to include in the response.
             include (Optional[str]): Resources to include that are referenced by the matched resources.
             revinclude (Optional[str]): Resources to include that reference the matched resources.
             total (Optional[str]): Indicates whether the search result should include a total count.
@@ -164,7 +162,6 @@ class Client:
             headers["Authorization"] = f"{token_type} {token}"
         kwarg_params = utils.get_params_from_kwargs(
             count=count,
-            elements=elements,
             include=include,
             revinclude=revinclude,
             total=total,

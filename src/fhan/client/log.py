@@ -27,7 +27,7 @@ def configure_logging(logging_level: Optional[str] = "INFO"):
     )
 
     # Create handlers
-    file_handler = logging.FileHandler(filename="fhan.log", mode="a")
+    file_handler = logging.FileHandler(filename=".fhan.log", mode="a")
     stdout_handler = logging.StreamHandler(sys.stdout)
 
     # Set level for both handlers

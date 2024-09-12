@@ -1,29 +1,15 @@
+import importlib
 import os
-from importlib import import_module
 from typing import Any, Dict, List, Literal, Optional, Union
-from urllib.parse import urljoin
 
 import requests
-from cachetools import Cache, TTLCache
 from dotenv import load_dotenv
-from fhirmodels.fhir_package import FhirPackage, FhirPackageLoader
-from fhirmodels.R4 import CapabilityStatement
 
+from fhan.client import log, utils
 from fhan.client.auth import Auth
-from fhan.client.exceptions import OperationOutcomeException
-from fhan.client.metadata import ServerMetadata
 from fhan.client.resource_type import _ResourceType
 from fhan.client.search_bundle import SearchBundle
-from fhan.client.utils.fhir_utils import is_bundle
-from fhan.client.utils.http_utils import (
-    _make_get_request,
-    build_fhir_get_url,
-    build_fhir_search_url,
-    join_urls,
-)
-from fhan.client.log import logger, set_logging_level
 
-FHIR_VERSION = "R4"
 load_dotenv()
 
 
@@ -31,88 +17,68 @@ class Client:
     """
     Client for interacting with a FHIR server.
 
+    This class provides methods to authenticate, retrieve, and search for FHIR resources from a specified server.
+
     Args:
-        base_url (str): Base url of the FHIR server.
-        fhir_version (str): FHIR version of the server. Defaults to version specified in the settings.
+        base_url (str, optional): Base URL of the FHIR server. If not provided, it will be read from the BASE_URL environment variable.
+        auth_method (Literal["basic", "bearer", "cookie"], optional): Authentication method to use. Defaults to "basic".
+        login_url (str, optional): URL for authentication if using cookie-based auth.
+        username (str, optional): Username for authentication.
+        password (str, optional): Password for authentication.
+        token (str, optional): Authentication token if using token-based auth.
+        token_type (str, optional): Type of the authentication token (e.g., "Bearer").
+        logging_level (Literal["DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"], optional): Logging level for the client. Defaults to "WARNING".
+
+    Raises:
+        ValueError: If base_url is not provided and cannot be read from environment variables.
+
+    Attributes:
+        _session (requests.Session): Session object for making HTTP requests.
+        _base_url (str): Base URL of the FHIR server.
+        token (str): Authentication token.
+        auth (Auth): Authentication handler.
+
     """
 
     def __init__(
         self,
         base_url: str = None,
-        fhir_version: str = FHIR_VERSION,
-        load_package_context: bool = False,
-        authenticate: bool = True,
         auth_method: Literal["basic", "bearer", "cookie"] = "basic",
-        use_cache: bool = False,
-        cache: Cache = None,
-        cache_ttl: int = 300,  # 5 minutes
-        cache_maxsize: int = 128,
+        login_url: Optional[str] = None,
         username: Optional[str] = None,
         password: Optional[str] = None,
-        login_url: Optional[str] = None,
         token: Optional[str] = None,
         token_type: Optional[str] = None,
+        fhir_version: Optional[Literal["R4", "R4B", "R5"]] = "R4",
         logging_level: Optional[
             Literal["DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"]
-        ] = "WARNING",
+        ] = "INFO",
     ):
         base_url = base_url or os.getenv("BASE_URL")
         if not base_url:
             raise ValueError("Base URL is required.")
+
         self._session = requests.Session()
         self._base_url = base_url if not base_url.endswith("/") else base_url[:-1]
-        self._fhir_version = fhir_version
+        self.fhir_version = fhir_version
 
-        # context
-        self.metadata = None
-        self._package_context = None
-        self.test_connection()
-        if load_package_context:
-            self._init_context(fhir_version=fhir_version)
-
-        # cache
-        self._init_cache(
-            use_cache=use_cache,
-            cache=cache,
-            cache_ttl=cache_ttl,
-            cache_maxsize=cache_maxsize,
-        )
-
-        # auth
         self.token = token
-        if authenticate:
-            self.authenticate(
-                auth_method=auth_method,
-                username=username,
-                password=password,
-                token=token,
-                token_type=token_type,
-                login_url=login_url,
-            )
+        self.authenticate(
+            auth_method=auth_method,
+            username=username,
+            password=password,
+            token=token,
+            token_type=token_type,
+            login_url=login_url,
+        )
 
         # Set up logging
         self._setup_logging(logging_level)
+        log.logger.info("Client initialized")
 
     def _setup_logging(self, logging_level: str):
         """Set up logging for the client."""
-        set_logging_level(logging_level)
-
-    def _init_context(self, fhir_version: str):
-        self._package_context: Optional[FhirPackage] = self._load_fhir_package(
-            fhir_version=fhir_version
-        )
-
-    def _init_cache(
-        self, use_cache: bool, cache: Cache, cache_ttl: int, cache_maxsize: int
-    ):
-        self.use_cache = use_cache
-        if self.use_cache:
-            # TODO: Add support for other cache types
-            self.cache = (
-                TTLCache(maxsize=cache_maxsize, ttl=cache_ttl) if not cache else cache
-            )
-        else:
-            self.cache = None
+        log.set_logging_level(logging_level)
 
     def authenticate(
         self,
@@ -123,6 +89,14 @@ class Client:
         login_url: str = None,
         auth_method: Literal["basic", "bearer", "cookie"] = "cookie",
     ) -> bool:
+        log.logger.debug(
+            "Authenticating",
+            auth_method=auth_method,
+            username=username,
+            token=token,
+            token_type=token_type,
+            login_url=login_url,
+        )
         self.auth = Auth(
             method=auth_method,
             session=self._session,
@@ -133,26 +107,6 @@ class Client:
             login_url=login_url,
         )
         self.auth.authenticate()
-        self._get_metadata()
-
-    def test_connection(self):
-        try:
-            _make_get_request(
-                url=self._base_url,
-                session=self._session,
-                raise_for_status=True,
-                cache=None,
-                use_cache=False,
-            )
-            logger.info("Successfully connected to the server", base_url=self._base_url)
-        except requests.exceptions.ConnectionError:
-            logger.error("Failed to connect to the server", base_url=self._base_url)
-            raise ConnectionError(
-                f"Could not connect to server. Make sure the URL is correct: {self._base_url}"
-            )
-        except Exception as e:
-            # this is expected to fail with 401 for servers that require authentication
-            pass
 
     def get(
         self,
@@ -174,39 +128,68 @@ class Client:
         token_type: Optional[str] = "Bearer",
     ):
         """
-        The return type is a resource only when a single id is specified.
-        In every other case, the return type is a search bundle.
+        Retrieve FHIR resources from the server.
+
+        This method can be used to fetch a single resource by ID, perform a search, or make a request to a specific URL.
+
+        Args:
+            resource_type (Optional[_ResourceType]): The type of FHIR resource to retrieve.
+            id (Optional[Union[str, List[str]]]): The ID(s) of the resource(s) to retrieve.
+            search_params (Optional[Dict[str, str]]): A dictionary of search parameters.
+            search_string (Optional[str]): A pre-formatted search string.
+            pages (Optional[int]): The number of pages to retrieve for paginated results. Defaults to 1.
+            as_object (Optional[bool]): If True, return the result as a FHIR model object. Defaults to False.
+            count (Optional[int]): The maximum number of resources to return per page.
+            elements (Optional[List[str]]): A list of specific elements to include in the response.
+            include (Optional[str]): Resources to include that are referenced by the matched resources.
+            revinclude (Optional[str]): Resources to include that reference the matched resources.
+            total (Optional[str]): Indicates whether the search result should include a total count.
+            url (Optional[str]): A specific URL to request instead of constructing one.
+            raise_for_status (Optional[bool]): If True, raise an exception for HTTP errors. Defaults to False.
+            headers (Optional[Dict[str, str]]): Additional headers to include in the request.
+            token (Optional[str]): An authentication token to use instead of the client's default.
+            token_type (Optional[str]): The type of the authentication token. Defaults to "Bearer".
+
+        Returns:
+            Union[Dict, Any]: The retrieved resource(s). If a single resource is requested by ID, it returns that resource.
+            Otherwise, it returns a search bundle containing the requested resources.
+
+        Raises:
+            RequestException: If there's an error with the HTTP request.
+            OperationOutcomeException: If the server returns an OperationOutcome resource indicating an error.
         """
         headers = headers or {}
         token = token or self.token
         if token:
             headers["Authorization"] = f"{token_type} {token}"
-        search_params = self._merge_search_params(
+        kwarg_params = utils.get_params_from_kwargs(
             count=count,
             elements=elements,
             include=include,
             revinclude=revinclude,
             total=total,
-            search_params=search_params,
         )
+        search_params = {**kwarg_params, **(search_params or {})}
         if url:
-            result = self._get_result_from_url(
+            # just use the provided url
+            url = utils.join_urls(self._base_url, url)
+            result = utils.make_get_request(
                 url=url,
+                session=self._session,
                 raise_for_status=raise_for_status,
                 headers=headers,
                 token=token,
                 token_type=token_type,
             )
-        elif self._is_search_request(
-            id=id, search_params=search_params, search_string=search_string
-        ):
-            search_string = self._build_search_string(
-                id=id, search_string=search_string
+        elif search_params or search_string or isinstance(id, List) or not id:
+            # build the search url
+            search_string = utils.incorporate_ids_in_search(id, search_string)
+            search_string += (
+                f"&{utils.convert_params_to_string(search_params)}"
+                if search_params
+                else ""
             )
-            if search_string:
-                search_string += "&"
-            search_string += self._convert_params_to_string(search_params)
-            result = self._execute_search(
+            result = self._search(
                 resource_type=resource_type,
                 search_string=search_string,
                 pages=pages,
@@ -216,9 +199,11 @@ class Client:
                 token_type=token_type,
             )
         else:
-            result = self._get_resource_by_id(
-                resource_type=resource_type,
-                id=id,
+            url = utils.join_urls(self._base_url, resource_type, id)
+
+            result = utils.make_get_request(
+                url=url,
+                session=self._session,
                 raise_for_status=raise_for_status,
                 headers=headers,
                 token=token,
@@ -227,180 +212,19 @@ class Client:
 
         return self._process_result(result, resource_type, as_object)
 
-    def _get_result_from_url(
-        self,
-        url: str,
-        raise_for_status: bool,
-        headers: Optional[Dict[str, str]],
-        token: Optional[str],
-        token_type: Optional[str],
-    ) -> Dict:
-        url = join_urls(self._base_url, url)
-        logger.debug("Making GET request", url=url)
-        return _make_get_request(
-            url=url,
-            session=self._session,
-            raise_for_status=raise_for_status,
-            headers=headers,
-            cache=self.cache,
-            use_cache=self.use_cache,
-            token=token,
-            token_type=token_type,
-        )
-
-    def _is_search_request(self, id, search_params, search_string) -> bool:
-        return search_params or search_string or isinstance(id, List) or not id
-
-    def _build_search_string(self, id, search_string) -> str:
-        search_string = search_string or ""
-        if isinstance(id, list):
-            search_string += f"_id={','.join(id)}"
-        elif isinstance(id, str):
-            search_string += f"_id={id}"
-        return search_string
-
-    def _merge_search_params(
-        self, count, elements, include, revinclude, total, search_params
-    ) -> Dict:
-        kwarg_params = _get_params_from_kwargs(
-            count=count,
-            elements=elements,
-            include=include,
-            revinclude=revinclude,
-            total=total,
-        )
-        return {**kwarg_params, **(search_params or {})}
-
-    def _execute_search(
-        self,
-        resource_type: str,
-        search_string: str,
-        pages: int,
-        raise_for_status: bool,
-        headers: Optional[Dict[str, str]],
-        token: Optional[str],
-        token_type: Optional[str],
+    def _process_result(
+        self, result: Dict[str, Any], resource_type: str, as_object: bool
     ):
-        logger.debug(
-            "Executing search", resource_type=resource_type, search_string=search_string
-        )
-        return self._search(
-            resource_type=resource_type,
-            search_string=search_string,
-            headers=headers,
-            pages=pages,
-            raise_for_status=raise_for_status,
-            token=token,
-            token_type=token_type,
-        )
-
-    def _get_resource_by_id(
-        self,
-        resource_type: str,
-        id: str,
-        raise_for_status: bool,
-        headers: Dict[str, str],
-        token: Optional[str],
-        token_type: Optional[str],
-    ):
-        logger.info("Getting resource by ID", resource_type=resource_type, id=id)
-        return self._get(
-            resource_type=resource_type,
-            id=id,
-            raise_for_status=raise_for_status,
-            headers=headers,
-            token=token,
-            token_type=token_type,
-        )
-
-    def _process_result(self, result, resource_type, as_object):
+        """
+        If as_object is True, return the result as a FHIR model object.
+        """
         if as_object:
-            if is_bundle(result):
+            if utils.is_bundle(result):
                 return SearchBundle(result)
             if not resource_type:
                 resource_type = result["resourceType"]
-            klass = _get_model_for_type(resource_type)
+            klass = self.get_model_for_type(resource_type)
             return klass.from_dict(result)
-        return result
-
-    def _convert_params_to_string(self, params: Dict[str, Any]) -> str:
-        """
-        Convert a dictionary of search parameters into a query string.
-        """
-        return "&".join([f"{key}={value}" for key, value in params.items()])
-
-    def filter_available_search_params(
-        self, resource_type: _ResourceType, param_name: Literal["revinclude", "include"]
-    ):
-        """When the server does not declare the supported search parameters in its
-        capability statement, the package context can be used to set these parameters.
-        However, the server might not support all parameters. This method filters out the
-        unsupported parameters for a specific resource and parameter type."""
-        valid_params: list[str] = []
-        possible_params: list[str] = []
-        if param_name == "revinclude":
-            possible_params = self.metadata.available_revincludes[resource_type]
-        elif param_name == "include":
-            possible_params = self.metadata.available_includes[resource_type]
-        else:
-            raise ValueError(
-                f"Invalid parameter name: {param_name}.\nSupported parameters are: 'revinclude', 'include'"
-            )
-        for param in possible_params:
-            try:
-                self._search(
-                    resource_type=resource_type,
-                    search_string=f"_{param_name}={param}",
-                    pages=1,
-                    raise_for_status=False,
-                )
-                valid_params.append(param)
-            except OperationOutcomeException:
-                # param is not supported
-                continue
-        if param_name == "revinclude":
-            self.metadata.available_revincludes[resource_type] = valid_params
-        elif param_name == "include":
-            self.metadata.available_includes[resource_type] = valid_params
-
-    def get_patient_data(
-        self, patient_id: str, pages: Optional[int] = -1, as_object: bool = False
-    ):
-        possible_revincludes = self.metadata.available_revincludes["Patient"]
-        search_string = f"_id={patient_id}"
-        for revinclude in possible_revincludes:
-            search_string += f"&_revinclude={revinclude}"
-        res = self.get(
-            resource_type="Patient",
-            search_string=search_string,
-            pages=pages,
-        )
-        res = self._process_result(res, "Patient", as_object)
-        return res
-
-    def _get(
-        self,
-        resource_type: str,
-        id: str,
-        raise_for_status: bool,
-        headers: Optional[Dict[str, str]],
-        token: Optional[str],
-        token_type: Optional[str],
-    ):
-        url = build_fhir_get_url(
-            base_url=self._base_url, resource_type=resource_type, id=id
-        )
-        result = _make_get_request(
-            url=url,
-            session=self._session,
-            raise_for_status=raise_for_status,
-            headers=headers,
-            cache=self.cache,
-            use_cache=self.use_cache,
-            token=token,
-            token_type=token_type,
-        )
-
         return result
 
     def _search(
@@ -413,105 +237,53 @@ class Client:
         token: Optional[str] = None,
         token_type: Optional[str] = "Bearer",
     ):
-        url = build_fhir_search_url(
-            base_url=self._base_url, resource_type=resource_type, search=search_string
-        )
-        logger.debug(f"Fetching page 1")
-        result = _make_get_request(
+        """
+        Perform a search request.
+        - If pages is 0, return only the first page.
+        - If pages is -1, fetch all pages.
+        - If pages is > 0, fetch that many pages.
+        """
+        url = utils.join_urls(self._base_url, resource_type)
+        if search_string:
+            if not search_string.startswith("?"):
+                search_string = f"?{search_string}"
+            url += search_string
+        log.logger.debug("Fetching page 1")
+        result = utils.make_get_request(
             url=url,
             session=self._session,
             raise_for_status=raise_for_status,
             headers=headers,
-            cache=self.cache,
-            use_cache=self.use_cache,
             token=token,
             token_type=token_type,
         )
-        next_link = _get_next_link(result, self._base_url)
+        next_link = utils.get_next_link(result, self._base_url)
 
         current_page = 1
         while (pages > 1 or pages == -1) and next_link:
             current_page += 1
-            logger.debug(f"Fetching page {current_page}")
-            next_page = _make_get_request(
+            log.logger.debug(f"Fetching page {current_page}")
+            next_page = utils.make_get_request(
                 url=next_link,
                 session=self._session,
                 raise_for_status=raise_for_status,
                 headers=headers,
                 token=token,
                 token_type=token_type,
-                cache=self.cache,
-                use_cache=self.use_cache,
             )
-            next_link = _get_next_link(next_page, self._base_url)
+            next_link = utils.get_next_link(next_page, self._base_url)
             result["entry"] = result.get("entry", []) + next_page.get("entry", [])
             if pages > 0:
                 pages -= 1
 
-        logger.info(f"Finished fetching {current_page} page(s)")
         return result
 
-    def _load_fhir_package(
-        self, fhir_version: Optional[str], package_name: Optional[str] = None
-    ) -> FhirPackage:
+    def get_model_for_type(self, resource_type: str):
         """
-        Load the FHIR package for the specified FHIR version.
-        TODO: Add support for loading a specific package by name.
+        Get the model for a resource type.
         """
-        fhir_version = fhir_version or self._fhir_version
-        loader = FhirPackageLoader()
-        package = loader.load_package_from_version(fhir_version=fhir_version)
-        return package
-
-    def _get_metadata(self, num_try: int = 0):
-        metadata = _make_get_request(
-            url=join_urls(self._base_url, "metadata"),
-            session=self._session,
-            raise_for_status=False,
-            cache=None,
-            use_cache=False,
+        module = importlib.import_module(
+            f"fhirmodels.{self.fhir_version}.{resource_type}"
         )
-        if self._package_context:
-            metadata = {
-                **metadata,
-                **self._package_context.base_capability_statement,
-            }
-        self.metadata = ServerMetadata(CapabilityStatement.from_dict(metadata))
-
-    def invalidate_cache(self):
-        """
-        Invalidates (clears) the cache.
-        """
-        if self.cache:
-            self.cache.clear()
-            logger.info("Cache invalidated")
-
-
-def _get_params_from_kwargs(**kwargs):
-    params = {}
-    for key, value in kwargs.items():
-        if value:
-            params[f"_{key}"] = value
-    return params
-
-
-def _get_model_for_type(resource_type: str):
-    """
-    Get the model for a resource type.
-    """
-    module = import_module(f"fhirmodels.{FHIR_VERSION}.{resource_type}")
-    model = getattr(module, resource_type)
-    return model
-
-
-def _get_next_link(bundle: dict, base_url: str) -> Optional[str]:
-    """
-    Get the next link from a bundle.
-    """
-    if "link" not in bundle:
-        return None
-    for link in bundle["link"]:
-        if link["relation"] == "next":
-            next_link = link["url"]
-            return urljoin(base_url, next_link)
-    return None
+        model = getattr(module, resource_type)
+        return model

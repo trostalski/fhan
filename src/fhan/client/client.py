@@ -1,12 +1,13 @@
 import importlib
 import os
+import threading
+import time
 from typing import Any, Dict, List, Literal, Optional, Union
 
 import requests
 from dotenv import load_dotenv
 
 from fhan.client import log, utils
-from fhan.client.auth import Auth
 from fhan.client.resource_type import _ResourceType
 from fhan.client.search_bundle import SearchBundle
 
@@ -28,6 +29,7 @@ class Client:
         token (str, optional): Authentication token if using token-based auth.
         token_type (str, optional): Type of the authentication token (e.g., "Bearer").
         logging_level (Literal["DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"], optional): Logging level for the client. Defaults to "WARNING".
+        token_refresh_interval (int, optional): Interval in seconds to refresh the token. Defaults to 500.
 
     Raises:
         ValueError: If base_url is not provided and cannot be read from environment variables.
@@ -45,68 +47,103 @@ class Client:
         base_url: str = None,
         auth_method: Literal["basic", "bearer", "cookie"] = "basic",
         login_url: Optional[str] = None,
+        refresh_url: Optional[str] = None,
+        authenticate: Optional[bool] = True,
         username: Optional[str] = None,
         password: Optional[str] = None,
         token: Optional[str] = None,
-        token_type: Optional[str] = None,
         fhir_version: Optional[Literal["R4", "R4B", "R5"]] = "R4",
         logging_level: Optional[
             Literal["DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"]
         ] = "INFO",
+        token_type: Optional[str] = "Bearer",
+        token_refresh_interval: int = 500,  # 500 seconds = 8 minutes
+        token_name: Optional[str] = None,
     ):
-        base_url = base_url or os.getenv("BASE_URL")
-        if not base_url:
-            raise ValueError("Base URL is required.")
-
-        self._session = requests.Session()
-        self._base_url = base_url if not base_url.endswith("/") else base_url[:-1]
-        self.fhir_version = fhir_version
-
-        self.token = token
-        self.authenticate(
-            auth_method=auth_method,
-            username=username,
-            password=password,
-            token=token,
-            token_type=token_type,
-            login_url=login_url,
-        )
-
-        # Set up logging
+        self._base_url = base_url or os.getenv("BASE_URL")
+        self._refresh_url = refresh_url or os.getenv("REFRESH_URL")
+        self.login_url = login_url or os.getenv("LOGIN_URL")
         self._setup_logging(logging_level)
+
+        if not self._base_url:
+            raise ValueError("Base URL is required.")
+        if not self._refresh_url:
+            log.logger.warning(
+                "Refresh URL is not set. This might cause issues with token expiration."
+            )
+
+        self._base_url = (
+            self._base_url[:-1] if self._base_url.endswith("/") else self._base_url
+        )
+        self._session = requests.Session()
+        self.fhir_version = fhir_version
+        self.auth_method = auth_method
+        self.username = username or os.getenv("USERNAME")
+        self.password = password or os.getenv("PASSWORD")
+        self.token = token
+        self.token_refresh_interval = token_refresh_interval
+        self._token_type = token_type
+        self._token_name = token_name
+        self._token_refresh_thread = None
+        self._stop_refresh = threading.Event()
+
+        if authenticate:
+            self.authenticate()
+
+        if self.token and self._refresh_url:
+            self._last_refresh_time = 0
+            self._refresh_interval = 300  # 5 minutes in seconds
+
         log.logger.info("Client initialized")
 
     def _setup_logging(self, logging_level: str):
         """Set up logging for the client."""
         log.set_logging_level(logging_level)
 
-    def authenticate(
-        self,
-        username: str = None,
-        password: str = None,
-        token: str = None,
-        token_type: str = "Bearer",
-        login_url: str = None,
-        auth_method: Literal["basic", "bearer", "cookie"] = "cookie",
-    ) -> bool:
+    def authenticate(self) -> bool:
         log.logger.debug(
             "Authenticating",
-            auth_method=auth_method,
-            username=username,
-            token=token,
-            token_type=token_type,
-            login_url=login_url,
+            auth_method=self.auth_method,
+            username=self.username,
+            token_type=self._token_type,
+            login_url=self.login_url,
         )
-        self.auth = Auth(
-            method=auth_method,
-            session=self._session,
-            username=username,
-            password=password,
-            token=token,
-            token_type=token_type,
-            login_url=login_url,
-        )
-        self.auth.authenticate()
+
+        if self.auth_method == "basic":
+            if not self.username or not self.password:
+                raise ValueError(
+                    "Username and password are required for basic authentication."
+                )
+            res = self._session.get(self.login_url, auth=(self.username, self.password))
+            self.token = res.text
+            res.raise_for_status()
+            log.logger.info("Basic authentication successful")
+        elif self.auth_method == "bearer":
+            log.logger.debug("Attempting bearer authentication")
+            if not self.token or not self.login_url:
+                raise ValueError(
+                    "Token and URL are required for bearer authentication."
+                )
+            self._session.headers["Authorization"] = f"{self._token_type} {self.token}"
+            res = self._session.get(self.login_url)
+            res.raise_for_status()
+            log.logger.info("Bearer authentication successful")
+        elif self.auth_method == "cookie":
+            if not self.login_url or not self.username or not self.password:
+                raise ValueError(
+                    "Login URL, username, and password are required for cookie authentication."
+                )
+            res = self._session.post(
+                self.login_url,
+                data={"username": self.username, "password": self.password},
+            )
+            res.raise_for_status()
+            self.token = res.cookies.get("token")
+            log.logger.info("Cookie authentication successful")
+        else:
+            raise ValueError(f"Unsupported authentication method: {self.auth_method}")
+
+        return True
 
     def get(
         self,
@@ -156,6 +193,9 @@ class Client:
             RequestException: If there's an error with the HTTP request.
             OperationOutcomeException: If the server returns an OperationOutcome resource indicating an error.
         """
+        if self.token:
+            self._check_and_refresh_token()
+
         headers = headers or {}
         token = token or self.token
         if token:
@@ -284,3 +324,32 @@ class Client:
         )
         model = getattr(module, resource_type)
         return model
+
+    def _check_and_refresh_token(self):
+        """Check if token needs refreshing and refresh if necessary."""
+        if not self.token or not self._refresh_url:
+            return
+
+        current_time = time.time()
+        if current_time - self._last_refresh_time > self._refresh_interval:
+            self._refresh_token()
+            self._last_refresh_time = current_time
+
+    def _refresh_token(self):
+        """Refresh the authentication token."""
+        log.logger.debug("Refreshing token")
+        try:
+            response = self._session.get(self._refresh_url)
+            response.raise_for_status()
+            new_token = response.text
+            if new_token:
+                self.token = new_token
+                if self.auth_method == "bearer":
+                    self._session.headers["Authorization"] = (
+                        f"{self._token_type} {self.token}"
+                    )
+                log.logger.info("Token refreshed successfully")
+            else:
+                log.logger.warning("Token refresh response did not contain a new token")
+        except Exception as e:
+            log.logger.error(f"Failed to refresh token: {str(e)}")

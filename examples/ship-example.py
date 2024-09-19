@@ -8,6 +8,7 @@ from fhan.client import Client
 
 # SET THESE ENVIRONMENT VARIABLES in the .env file
 LOGIN_URL = "https://ship.ume.de/app/Auth/v1/basicAuth"
+REFRESH_URL = "https://ship.ume.de/app/Auth/v1/refresh"
 BASE_URL = "https://ship.ume.de/app/FHIR/r4"
 
 
